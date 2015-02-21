@@ -1,8 +1,3 @@
 # FOODOOF
 Website resep makanan berbasis media sosial.
-Dikembangkan Oleh:
-(+) Abid Nurul Hakim
-(+) Agnes Agustinamora
-(+) Alfan Nur Fauzan
-(+) Fahmi Rahmat Kurniawan
-(+) Jean Fathanah
+Dikembangkan oleh Abid Nurul Hakim, Agnes Agustinamora, Alfan Nur Fauzan, Fahmi Rahmat Kurniawanm, dan Jean Fathanah.
