@@ -6,58 +6,70 @@ class Migration_Recipes extends CI_Migration {
 	public function up()
 	{
 		$this->dbforge->add_field(array(
-			'user_id' => array(
+			'recipe_id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
 			),
-			'user_email' => array(
-				'type' => 'VARCHAR',
-				'constraint' => '255',
-				'null' => FALSE
+			'recipe_name' => array(
+				'type' => 'TEXT',
+				'null' => TRUE
 			),
-			'user_name' => array(
+			'recipe_description' => array(
 				'type' => 'TEXT',
 				'null' => TRUE,
 			),
-			'user_gender' => array(
-				'type' => 'VARCHAR',
-				'constraint' => '1',
+			'recipe_equipments' => array(
+				'type' => 'TEXT',
 				'null' => TRUE,
 			),
-			'user_bdate' => array(
+			'recipe_steps' => array(
+				'type' => 'TEXT',
+				'null' => TRUE,
+			),
+			'recipe_author' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '',
+				'null' => TRUE,
+			),
+			'recipe_create_date' => array(
 				'type' => 'DATE',
 				'null' => TRUE
 			),
-			'user_phone' => array(
-				'type' => 'VARCHAR',
-				'constraint' => '20',
-				'null' => TRUE,
-			),
-			'user_status' => array(
-				'type' => 'TEXT',
-				'null' => TRUE,
-			),
-			'user_photo' => array(
-				'type' => 'MEDIUMTEXT',
-				'null' => TRUE,
-			),
-			'user_banned' => array(
-				'type' => 'BOOLEAN',
-				'null' => TRUE,
-			),
-			'user_last_activity' => array(
+			'recipe_update' => array(
 				'type' => 'TIMESTAMP',
 				'null' => TRUE,
 			),
+			'recipe_rating' => array(
+				'type' => 'DECIMAL',
+				'unsigned' => TRUE,
+				'null' => TRUE
+			),
+			'recipe_status' => array(
+				'type' => 'BOOLEAN',
+				'null' => TRUE
+			),
+			'recipe_views' => array(
+				'type' => 'INT',
+				'unsigned' => 'TRUE',
+				'null' => TRUE
+			),
+			'recipe_photo' => array(
+				'type' => 'MEDIUMTEXT',
+				'null' => TRUE,
+			),
+			'recipe_highlight' => array(
+				'type' => 'BOOLEAN',
+				'null' => TRUE
+			),
 		));
-		$this->dbforge->add_key('user_email', TRUE);
+		$this->dbforge->add_key('recipe_id', TRUE);
 		$this->dbforge->create_table('recipes');
 	}
 
 	public function down()
 	{
-		$this->dbforge->drop_table('users');
+		$this->dbforge->drop_table('recipes');
 	}
 }
 ?>
