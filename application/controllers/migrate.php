@@ -10,7 +10,7 @@ class Migrate extends CI_Controller{
 			show_error($this->migration->error_string());
 		}  
 		else{
-			echo var_dump($this->db);
+			echo "Migration Successfully";
 		}
     }
 }

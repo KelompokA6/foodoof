@@ -18,9 +18,13 @@ class Migration_Initialize_database extends CI_Migration {
 				'type' => 'VARCHAR',
 				'constraint' => '255'
 			),
-			'user_name' => array(
+			'user_email' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '255'
+			),
+			'user_password' => array(
 				'type' => 'TEXT',
-				'null' => TRUE
+				'null' => FALSE
 			),
 			'user_gender' => array(
 				'type' => 'VARCHAR',
@@ -247,13 +251,13 @@ class Migration_Initialize_database extends CI_Migration {
 
 	public function down()
 	{
-		$this->dbforge->drop_table('users');
-		$this->dbforge->drop_table('recipes');
-		$this->dbforge->drop_table('ingredients');
-		$this->dbforge->drop_table('categories');
-		$this->dbforge->drop_table('comments');
-		$this->dbforge->drop_table('conversations');
 		$this->dbforge->drop_table('conversationsList');
+		$this->dbforge->drop_table('conversations');
+		$this->dbforge->drop_table('comments');
+		$this->dbforge->drop_table('categories');
+		$this->dbforge->drop_table('ingredients');
+		$this->dbforge->drop_table('recipes');
+		$this->dbforge->drop_table('users');
 	}
 }
 ?>
