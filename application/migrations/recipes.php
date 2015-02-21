@@ -17,20 +17,19 @@ class Migration_Recipes extends CI_Migration {
 			),
 			'recipe_description' => array(
 				'type' => 'TEXT',
-				'null' => TRUE,
+				'null' => TRUE
 			),
 			'recipe_equipments' => array(
 				'type' => 'TEXT',
-				'null' => TRUE,
+				'null' => TRUE
 			),
 			'recipe_steps' => array(
 				'type' => 'TEXT',
-				'null' => TRUE,
+				'null' => TRUE
 			),
 			'recipe_author' => array(
-				'type' => 'VARCHAR',
-				'constraint' => '',
-				'null' => TRUE,
+				'type' => 'INT',
+				'null' => FALSE
 			),
 			'recipe_create_date' => array(
 				'type' => 'DATE',
