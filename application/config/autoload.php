@@ -114,3 +114,6 @@ $autoload['model'] = array();
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */
+
+# Load the Datamapper library when the spark is loaded
+$autoload['libraries'] = array('database', 'datamapper');
