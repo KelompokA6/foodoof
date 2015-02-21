@@ -29,15 +29,14 @@ class Migration_Recipes extends CI_Migration {
 			),
 			'recipe_author' => array(
 				'type' => 'INT',
-				'null' => FALSE
+				'unsigned' => TRUE,
 			),
 			'recipe_create_date' => array(
 				'type' => 'DATE',
 				'null' => TRUE
 			),
 			'recipe_update' => array(
-				'type' => 'TIMESTAMP',
-				'default' => 'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP';
+				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 				'null' => TRUE,
 			),
 			'recipe_rating' => array(
@@ -66,6 +65,7 @@ class Migration_Recipes extends CI_Migration {
 		$this->dbforge->add_key('recipe_id', TRUE);
 		$this->dbforge->add_foreign_key(array('field' => 'recipe_author', 'foreign_table' => 'users', 'foreign_field' => 'user_id'));
 		$this->dbforge->create_table('recipes');
+		$this->db->query("ALTER TABLE recipes ADD CONSTRAINT id_author FOREIGN KEY (recipe_author) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE");
 	}
 
 	public function down()

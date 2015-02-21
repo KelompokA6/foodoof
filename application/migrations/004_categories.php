@@ -11,14 +11,15 @@ class Migration_Categories extends CI_Migration {
 				'unsigned' => TRUE
 			),
 			'category_name' => array(
-				'type' => 'TEXT',
+				'type' => 'VARCHAR',
+				'constraint' => '50',
 				'null' => TRUE
 			),
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->add_key('category_name', TRUE);
-		$this->dbforge->add_foreign_key(array('field' => 'id', 'foreign_table' => 'recipes', 'foreign_field' => 'recipe_id'));
 		$this->dbforge->create_table('categories');
+		$this->db->query("ALTER TABLE categories ADD FOREIGN KEY (id) REFERENCES recipes(recipe_id) ON DELETE CASCADE ON UPDATE CASCADE");
 	}
 
 	public function down()

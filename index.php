@@ -195,7 +195,7 @@ if (defined('ENVIRONMENT'))
  * LOAD THE DATAMAPPER BOOTSTRAP FILE
  * --------------------------------------------------------------------
  */
-require_once BASEPATH.'application/third_party/datamapper/bootstrap.php';
+require_once 'application/third_party/datamapper/bootstrap.php';
 
 /*
  * --------------------------------------------------------------------

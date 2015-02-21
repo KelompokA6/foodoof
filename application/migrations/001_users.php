@@ -13,17 +13,16 @@ class Migration_Users extends CI_Migration {
 			),
 			'user_email' => array(
 				'type' => 'VARCHAR',
-				'constraint' => '255',
-				'null' => FALSE
+				'constraint' => '255'
 			),
 			'user_name' => array(
 				'type' => 'TEXT',
-				'null' => TRUE,
+				'null' => TRUE
 			),
 			'user_gender' => array(
 				'type' => 'VARCHAR',
 				'constraint' => '1',
-				'null' => TRUE,
+				'null' => TRUE
 			),
 			'user_bdate' => array(
 				'type' => 'DATE',
@@ -47,11 +46,11 @@ class Migration_Users extends CI_Migration {
 				'null' => TRUE,
 			),
 			'user_last_activity' => array(
-				'type' => 'TIMESTAMP',
-				'default' => 'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 				'null' => TRUE
 			),
 		));
+		$this->dbforge->add_key('user_id', TRUE);
 		$this->dbforge->add_key('user_email', TRUE);
 		$this->dbforge->create_table('users');
 	}

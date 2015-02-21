@@ -21,7 +21,7 @@ $config['migration_enabled'] = TRUE;
 | be upgraded / downgraded to.
 |
 */
-$config['migration_version'] = 1;
+$config['migration_version'] = array('1','2','3','4','5', '6', '7');
 
 
 /*
@@ -34,8 +34,8 @@ $config['migration_version'] = 1;
 | Also, writing permission is required within the migrations path.
 |
 */
-$config['migration_path'] = APPPATH . 'migrations/';
-
+//$config['migration_path'] = APPPATH . 'migrations/';
+$config['migration_path'] = 'application/migrations/';
 
 /* End of file migration.php */
 /* Location: ./application/config/migration.php */

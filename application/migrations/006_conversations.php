@@ -13,21 +13,20 @@ class Migration_Conversations extends CI_Migration {
 			),
 			'sender_id' => array(
 				'type' => 'INT',
-				'null' => TRUE
+				'unsigned' => TRUE,
 			),
 			'message_description' => array(
 				'type' => 'TEXT',
 				'null' => TRUE
 			),
 			'message_submit' => array(
-				'type' => 'TIMESTAMP',
-				'default' => 'CURRENT_TIMESTAMP';
+				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
 				'null' => TRUE
 			),
 		));
 		$this->dbforge->add_key('message_id', TRUE);
-		$this->dbforge->add_foreign_key(array('field' => 'sender_id', 'foreign_table' => 'users', 'foreign_field' => 'user_id'));
 		$this->dbforge->create_table('conversations');
+		$this->db->query("ALTER TABLE conversations ADD FOREIGN KEY (sender_id) REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE");
 	}
 
 	public function down()
