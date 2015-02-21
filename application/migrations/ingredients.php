@@ -13,7 +13,7 @@ class Migration_Ingredients extends CI_Migration {
 			'ingredient_name' => array(
 				'type' => 'VARCHAR',
 				'constraint' => '255',
-				'null' => FALSE
+				'null' => TRUE
 			),
 			'ingredient_price' => array(
 				'type' => 'INT',

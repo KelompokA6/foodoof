@@ -37,6 +37,7 @@ class Migration_Recipes extends CI_Migration {
 			),
 			'recipe_update' => array(
 				'type' => 'TIMESTAMP',
+				'default' => 'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP';
 				'null' => TRUE,
 			),
 			'recipe_rating' => array(

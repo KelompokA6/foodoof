@@ -48,7 +48,8 @@ class Migration_Users extends CI_Migration {
 			),
 			'user_last_activity' => array(
 				'type' => 'TIMESTAMP',
-				'null' => TRUE,
+				'default' => 'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
+				'null' => TRUE
 			),
 		));
 		$this->dbforge->add_key('user_email', TRUE);
