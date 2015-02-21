@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Recipe extends CI_Migration {
+class Migration_Recipes extends CI_Migration {
 
 	public function up()
 	{
@@ -52,7 +52,7 @@ class Migration_Recipe extends CI_Migration {
 			),
 		));
 		$this->dbforge->add_key('user_email', TRUE);
-		$this->dbforge->create_table('users');
+		$this->dbforge->create_table('recipes');
 	}
 
 	public function down()
