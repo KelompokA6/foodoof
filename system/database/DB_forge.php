@@ -124,6 +124,25 @@ class CI_DB_forge {
 	}
 
 	// --------------------------------------------------------------------
+	/**
+	 * Add Foreign Key
+	 * Custom function for DBForge
+	 *
+	 * @access	public
+	 * @param	string	key
+	 * @param	string	type
+	 * @return	void
+	 */
+	function add_foreign_key($key)
+	{
+		if ($key == '')
+		{
+			show_error('Key information is required for that operation.');
+		}
+		$this->foreign_keys[] = $key;	
+	}
+
+	// --------------------------------------------------------------------
 
 	/**
 	 * Add Field

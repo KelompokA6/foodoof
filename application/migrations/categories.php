@@ -17,6 +17,7 @@ class Migration_Categories extends CI_Migration {
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->add_key('category_name', TRUE);
+		$this->dbforge->add_foreign_key(array('field' => 'id', 'foreign_table' => 'recipes', 'foreign_field' => 'recipe_id'));
 		$this->dbforge->create_table('categories');
 	}
 

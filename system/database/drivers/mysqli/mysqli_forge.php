@@ -5,9 +5,8 @@
  * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
- * @author		EllisLab Dev Team
- * @copyright		Copyright (c) 2008 - 2014, EllisLab, Inc.
- * @copyright		Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @author		ExpressionEngine Dev Team
+ * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -20,7 +19,7 @@
  * MySQLi Forge Class
  *
  * @category	Database
- * @author		EllisLab Dev Team
+ * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
 class CI_DB_mysqli_forge extends CI_DB_forge {
@@ -143,7 +142,7 @@ class CI_DB_mysqli_forge extends CI_DB_forge {
 	 * @param	boolean	should 'IF NOT EXISTS' be added to the SQL
 	 * @return	bool
 	 */
-	function _create_table($table, $fields, $primary_keys, $keys, $if_not_exists)
+	function _create_table($table, $fields, $primary_keys, $foreign_keys, $keys, $if_not_exists)
 	{
 		$sql = 'CREATE TABLE ';
 
@@ -161,6 +160,20 @@ class CI_DB_mysqli_forge extends CI_DB_forge {
 			$key_name = $this->db->_protect_identifiers(implode('_', $primary_keys));
 			$primary_keys = $this->db->_protect_identifiers($primary_keys);
 			$sql .= ",\n\tPRIMARY KEY ".$key_name." (" . implode(', ', $primary_keys) . ")";
+		}
+
+		// custom code for adding foreign keys using DBForge
+		if (count($foreign_keys) > 0)
+		{
+			foreach( $foreign_keys as $foreign_key)
+			{
+				$key_name =  		$this->db->_protect_identifiers($foreign_key['field']);
+				$field =  			$this->db->_protect_identifiers($foreign_key['field']);
+				$foreign_table =  	$this->db->_protect_identifiers($foreign_key['foreign_table']);
+				$foreign_field =  	$this->db->_protect_identifiers($foreign_key['foreign_field']);
+
+				$sql .= ",\n\tFOREIGN KEY ".$key_name." (" . $field . ") REFERENCES " . $foreign_table . "(" . $foreign_field .")";
+			}
 		}
 
 		if (is_array($keys) && count($keys) > 0)

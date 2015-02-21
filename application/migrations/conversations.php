@@ -6,37 +6,33 @@ class Migration_Conversations extends CI_Migration {
 	public function up()
 	{
 		$this->dbforge->add_field(array(
-			'comment_id' => array(
+			'message_id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
 			),
-			'id_user' => array(
-				'type' => 'VARCHAR',
-				'constraint' => '255',
-				'null' => TRUE
-			),
-			'id_recipe' => array(
+			'sender_id' => array(
 				'type' => 'INT',
 				'null' => TRUE
 			),
-			'comment_description' => array(
+			'message_description' => array(
 				'type' => 'TEXT',
 				'null' => TRUE
 			),
-			'comment_submit' => array(
+			'message_submit' => array(
 				'type' => 'TIMESTAMP',
 				'default' => 'CURRENT_TIMESTAMP';
 				'null' => TRUE
 			),
 		));
-		$this->dbforge->add_key('comment_id', TRUE);
-		$this->dbforge->create_table('comments');
+		$this->dbforge->add_key('message_id', TRUE);
+		$this->dbforge->add_foreign_key(array('field' => 'sender_id', 'foreign_table' => 'users', 'foreign_field' => 'user_id'));
+		$this->dbforge->create_table('conversations');
 	}
 
 	public function down()
 	{
-		$this->dbforge->drop_table('comments');
+		$this->dbforge->drop_table('conversations');
 	}
 }
 ?>

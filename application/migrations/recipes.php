@@ -64,6 +64,7 @@ class Migration_Recipes extends CI_Migration {
 			),
 		));
 		$this->dbforge->add_key('recipe_id', TRUE);
+		$this->dbforge->add_foreign_key(array('field' => 'recipe_author', 'foreign_table' => 'users', 'foreign_field' => 'user_id'));
 		$this->dbforge->create_table('recipes');
 	}
 

@@ -11,12 +11,11 @@ class Migration_Comments extends CI_Migration {
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
 			),
-			'id_user' => array(
-				'type' => 'VARCHAR',
-				'constraint' => '255',
+			'user_id' => array(
+				'type' => 'INT',
 				'null' => TRUE
 			),
-			'id_recipe' => array(
+			'recipe_id' => array(
 				'type' => 'INT',
 				'null' => TRUE
 			),
@@ -31,6 +30,8 @@ class Migration_Comments extends CI_Migration {
 			),
 		));
 		$this->dbforge->add_key('comment_id', TRUE);
+		$this->dbforge->add_foreign_key(array('field' => 'user_id', 'foreign_table' => 'users', 'foreign_field' => 'user_id'));
+		$this->dbforge->add_foreign_key(array('field' => 'recipe_id', 'foreign_table' => 'recipes', 'foreign_field' => 'recipe_id'));
 		$this->dbforge->create_table('comments');
 	}
 
