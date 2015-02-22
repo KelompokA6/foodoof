@@ -106,11 +106,11 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE
 			),
 			'status' => array(
-				'type' => 'BOOLEAN',
+				'type' => 'BOOLEAN DEFAULT FALSE',
 				'null' => TRUE
 			),
 			'views' => array(
-				'type' => 'INT',
+				'type' => 'INT DEFAULT 0',
 				'unsigned' => 'TRUE',
 				'null' => TRUE
 			),
@@ -119,7 +119,7 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE,
 			),
 			'highlight' => array(
-				'type' => 'BOOLEAN',
+				'type' => 'BOOLEAN DEFAULT FALSE',
 				'null' => TRUE
 			),
 		));
