@@ -9,170 +9,178 @@ class Migration_Initialize_database extends CI_Migration {
 		Table Users
 		*/
 		$this->dbforge->add_field(array(
-			'user_id' => array(
+			'id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
 			),
-			'user_email' => array(
+			'email' => array(
 				'type' => 'VARCHAR',
 				'constraint' => '255'
 			),
-			'user_name' => array(
+			'name' => array(
 				'type' => 'TEXT',
 				'null' => TRUE
 			),
-			'user_password' => array(
+			'password' => array(
 				'type' => 'TEXT',
 				'null' => FALSE
 			),
-			'user_gender' => array(
+			'gender' => array(
 				'type' => 'VARCHAR',
 				'constraint' => '1',
 				'null' => TRUE
 			),
-			'user_bdate' => array(
+			'bdate' => array(
 				'type' => 'DATE',
 				'null' => TRUE
 			),
-			'user_phone' => array(
+			'phone' => array(
 				'type' => 'VARCHAR',
 				'constraint' => '20',
 				'null' => TRUE,
 			),
-			'user_status' => array(
-				'type' => 'TEXT',
+			'status' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '30',
+				'default' => 'MEMBER',
 				'null' => TRUE,
 			),
-			'user_photo' => array(
+			'photo' => array(
 				'type' => 'MEDIUMTEXT',
 				'null' => TRUE,
 			),
-			'user_banned' => array(
-				'type' => 'BOOLEAN',
+			'banned' => array(
+				'type' => 'BOOLEAN DEFAULT FALSE',
 				'null' => TRUE,
 			),
-			'user_last_activity' => array(
+			'last_access' => array(
 				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 				'null' => TRUE
 			),
 		));
-		$this->dbforge->add_key('user_id', TRUE);
-		$this->dbforge->add_key('user_email', TRUE);
+		$this->dbforge->add_key('id', TRUE);
+		$this->dbforge->add_key('email', TRUE);
 		$this->dbforge->create_table('users');
 
 		/*
 		Table Recipes
 		*/
 		$this->dbforge->add_field(array(
-			'recipe_id' => array(
+			'id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
 			),
-			'recipe_name' => array(
+			'name' => array(
 				'type' => 'TEXT',
 				'null' => TRUE
 			),
-			'recipe_description' => array(
+			'description' => array(
 				'type' => 'TEXT',
 				'null' => TRUE
 			),
-			'recipe_equipments' => array(
+			'equipments' => array(
 				'type' => 'TEXT',
 				'null' => TRUE
 			),
-			'recipe_steps' => array(
+			'steps' => array(
 				'type' => 'TEXT',
 				'null' => TRUE
 			),
-			'recipe_author' => array(
+			'author' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
 			),
-			'recipe_create_date' => array(
+			'create_date' => array(
 				'type' => 'DATE',
 				'null' => TRUE
 			),
-			'recipe_update' => array(
+			'update' => array(
 				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 				'null' => TRUE,
 			),
-			'recipe_rating' => array(
+			'rating' => array(
 				'type' => 'DECIMAL',
 				'unsigned' => TRUE,
 				'null' => TRUE
 			),
-			'recipe_status' => array(
+			'status' => array(
 				'type' => 'BOOLEAN',
 				'null' => TRUE
 			),
-			'recipe_views' => array(
+			'views' => array(
 				'type' => 'INT',
 				'unsigned' => 'TRUE',
 				'null' => TRUE
 			),
-			'recipe_photo' => array(
+			'photo' => array(
 				'type' => 'MEDIUMTEXT',
 				'null' => TRUE,
 			),
-			'recipe_highlight' => array(
+			'highlight' => array(
 				'type' => 'BOOLEAN',
 				'null' => TRUE
 			),
 		));
-		$this->dbforge->add_key('recipe_id', TRUE);
+		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('recipes');
 
 		/*
 		Table Ingredients
 		*/
 		$this->dbforge->add_field(array(
-			'id' => array(
+			'recipe_id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE
 			),
-			'ingredient_name' => array(
+			'name' => array(
 				'type' => 'VARCHAR',
 				'constraint' => '255',
 				'null' => TRUE
 			),
-			'ingredient_price' => array(
-				'type' => 'INT',
+			'quantity' => array(
+				'type' => 'INT DEFAULT 0',
+				'unsigned' => TRUE,
 				'null' => TRUE
 			),
-			'ingredient_units' => array(
+			'price' => array(
+				'type' => 'INT DEFAULT 0',
+				'unsigned' => TRUE,
+				'null' => TRUE
+			),
+			'units' => array(
 				'type' => 'TEXT',
 				'null' => TRUE
 			),
 		));
-		$this->dbforge->add_key('id', TRUE);
-		$this->dbforge->add_key('ingredient_name', TRUE);
+		$this->dbforge->add_key('recipe_id', TRUE);
+		$this->dbforge->add_key('name', TRUE);
 		$this->dbforge->create_table('ingredients');
 
 		/*
 		Table Categories
 		*/
 		$this->dbforge->add_field(array(
-			'id' => array(
+			'recipe_id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE
 			),
-			'category_name' => array(
+			'name' => array(
 				'type' => 'VARCHAR',
 				'constraint' => '50',
 				'null' => TRUE
 			),
 		));
-		$this->dbforge->add_key('id', TRUE);
-		$this->dbforge->add_key('category_name', TRUE);
+		$this->dbforge->add_key('recipe_id', TRUE);
+		$this->dbforge->add_key('name', TRUE);
 		$this->dbforge->create_table('categories');
 
 		/*
 		Table Comments
 		*/
 		$this->dbforge->add_field(array(
-			'comment_id' => array(
+			'id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
@@ -185,23 +193,23 @@ class Migration_Initialize_database extends CI_Migration {
 				'type' => 'INT',
 				'unsigned' => TRUE,
 			),
-			'comment_description' => array(
+			'description' => array(
 				'type' => 'TEXT',
 				'null' => TRUE
 			),
-			'comment_submit' => array(
+			'submit' => array(
 				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
 				'null' => TRUE
 			),
 		));
-		$this->dbforge->add_key('comment_id', TRUE);
+		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('comments');
 
 		/*
 		Table Conversations
 		*/
 		$this->dbforge->add_field(array(
-			'message_id' => array(
+			'id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
@@ -210,16 +218,16 @@ class Migration_Initialize_database extends CI_Migration {
 				'type' => 'INT',
 				'unsigned' => TRUE,
 			),
-			'message_description' => array(
+			'description' => array(
 				'type' => 'TEXT',
 				'null' => TRUE
 			),
-			'message_submit' => array(
+			'submit' => array(
 				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
 				'null' => TRUE
 			),
 		));
-		$this->dbforge->add_key('message_id', TRUE);
+		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('conversations');
 
 		/*
@@ -239,15 +247,15 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->dbforge->add_key('reciever_id', TRUE);
 		$this->dbforge->create_table('conversationsList');
 
-		$this->db->query("ALTER TABLE users ADD UNIQUE (user_email)");
-		$this->db->query("ALTER TABLE recipes ADD CONSTRAINT id_author FOREIGN KEY (recipe_author) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE");
-		$this->db->query("ALTER TABLE ingredients ADD FOREIGN KEY (id) REFERENCES recipes(recipe_id) ON DELETE CASCADE ON UPDATE CASCADE");
-		$this->db->query("ALTER TABLE categories ADD FOREIGN KEY (id) REFERENCES recipes(recipe_id) ON DELETE CASCADE ON UPDATE CASCADE");
-		$this->db->query("ALTER TABLE comments ADD FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE");
-		$this->db->query("ALTER TABLE comments ADD FOREIGN KEY (recipe_id) REFERENCES recipes (recipe_id) ON DELETE CASCADE ON UPDATE CASCADE");
-		$this->db->query("ALTER TABLE conversations ADD FOREIGN KEY (sender_id) REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE");
-		$this->db->query("ALTER TABLE conversationsList ADD FOREIGN KEY (message_id) REFERENCES conversations (message_id) ON DELETE CASCADE ON UPDATE CASCADE");
-		$this->db->query("ALTER TABLE conversationsList ADD FOREIGN KEY (reciever_id) REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE users ADD UNIQUE (email)");
+		$this->db->query("ALTER TABLE recipes ADD FOREIGN KEY (author) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE ingredients ADD FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE categories ADD FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE comments ADD FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE comments ADD FOREIGN KEY (recipe_id) REFERENCES recipes (id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE conversations ADD FOREIGN KEY (sender_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE conversationsList ADD FOREIGN KEY (message_id) REFERENCES conversations (id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE conversationsList ADD FOREIGN KEY (reciever_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE");
 	}
 
 	public function down()

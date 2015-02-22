@@ -27,9 +27,10 @@ class Welcome extends CI_Controller {
 	}
 	public function register(){
 		$user = new User();
-		$user->user_email = "abidnurulhakim@gmail.com";
-		$user->user_password = "abidnurulhakim";
-		$user->user_name = "Abid Nurul Hakim";
+		$user->email = "abidnurulhakim@gmail.com";
+		$user->password = "abidnurulhakim";
+		$user->name = "Abid Nurul Hakim";
+		$user->phone = "+6285714883607";
 		if($user->save()){
 			echo "Register success";
 		}
@@ -47,6 +48,37 @@ class Welcome extends CI_Controller {
 		}
 		else{
 			echo "Login Failed";
+		}
+	}
+	public function addRecipe(){
+		$recipe = new Recipe();
+		$recipe->name = "Nasi Goreng";
+		$recipe->author = "1";
+		$recipe_id = $recipe->saveRecipe();
+		if($recipe_id != 0){
+			$i = new Ingredient();
+			$i->recipe_id = $recipe_id;
+			$i->name = "Bawang Putih";
+			$i->quantity = 1;
+			$i->price = 1000;
+			$i->units = "Buah";
+			$i->save();
+			$i->recipe_id = $recipe_id;
+			$i->name = "Bawang Merah";
+			$i->quantity = 2;
+			$i->price = 1500;
+			$i->units = "Buah";
+			$i->save();
+			$i->recipe_id = $recipe_id;
+			$i->name = "Cabai";
+			$i->quantity = 3;
+			$i->price = 1000;
+			$i->units = "Buah";
+			$i->save();
+			echo "Add Recipe Success";
+		}
+		else{
+			echo "Failed Nambah Bahan";
 		}
 	}
 }
