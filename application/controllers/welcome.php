@@ -18,8 +18,36 @@ class Welcome extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{
+	{	
+		$this->load->library('encrypt');
+		$msg = 'My secret message';
+		$encrypted_string = $this->encrypt->encode($msg);
+		echo $encrypted_string;
 		$this->load->view('welcome_message');
+	}
+	public function register(){
+		$user = new User();
+		$user->user_email = "abidnurulhakim@gmail.com";
+		$user->user_password = "abidnurulhakim";
+		$user->user_name = "Abid Nurul Hakim";
+		if($user->save()){
+			echo "Register success";
+		}
+		else{
+			echo $user->error->member;
+		}
+	}
+	public function login(){
+		$user = new User();
+		$user->user_email = "abidnurulhakim@gmail.com";
+		$user->user_password = "abidnurulhakim";
+		if($user->login()){
+			 echo "Login Success";
+			 echo $this->session->userdata('user_id');
+		}
+		else{
+			echo "Login Failed";
+		}
 	}
 }
 

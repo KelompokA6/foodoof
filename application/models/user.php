@@ -9,7 +9,7 @@ class User extends DataMapper {
     var $validation = array(
         'user_email' => array(
             'label' => 'Email Address',
-            'rules' => array('required', 'trim', 'unique', 'valid_email'),
+            'rules' => array('required', 'trim', 'notmember', 'valid_email'),
         ),
         'user_password' => array(
             'label' => 'Password',
@@ -24,6 +24,11 @@ class User extends DataMapper {
             'rules' => array('trim', 'max_length' => 255)
         ),
     );
+    
+    function __construct($id = NULL)
+    {
+        parent::__construct($id);
+    }
 
     function login()
     {
@@ -31,28 +36,42 @@ class User extends DataMapper {
         $u = new User();
 
         // Get this users stored record via their username
-        $u->where('user_email', $this->user_email)->get();
-
-
-        // Validate and get this user by their property values,
-        // this will see the 'encrypt' validation run, encrypting the password with the salt
-        $this->validate()->get();
-
-        // If the username and encrypted password matched a record in the database,
-        // this user object would be fully populated, complete with their ID.
-
-        // If there was no matching record, this user would be completely cleared so their id would be empty.
-        if (empty($this->user_id))
-        {
+        $ci =& get_instance();
+        $ci->load->library('encrypt');
+        $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
+        $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
+        
+        if($u->where('user_email', $this->user_email)->count() != 1){
             // Login failed, so set a custom error message
             $this->error_message('login', 'Username or password invalid');
-
             return FALSE;
         }
-        else
-        {
-            // Login succeeded
-            echo "Login Success";
+        else{
+            $u->where('user_email', $this->user_email)->get();
+            $decryptpass = $ci->encrypt->decode($u->user_password);
+            if($this->user_password != $decryptpass){
+                // Login failed, so set a custom error message
+                $this->error_message('login', 'Username or password invalid');
+                return FALSE;
+            }
+            else{
+                // Login succeeded
+                $ci->load->library('session');
+                $ci->session->set_userdata('user_id', $u->user_id);
+                return TRUE;
+            }
+        }
+    }
+    function isLogin(){
+        $ci =& get_instance();
+        $ci->load->library('session');
+
+        if($ci->session->userdata('user_id')==""){
+            // User need login first
+            return FALSE;
+        }
+        else{
+            // User has login
             return TRUE;
         }
     }
@@ -65,9 +84,32 @@ class User extends DataMapper {
         if (!empty($this->{$field}))
         {
             // Encrypty password
-            $this->load->library('encrypt');
-
-            $this->{$field} =  $this->encrypt->encode({$field});
+            $ci =& get_instance();
+            $ci->load->library('encrypt');
+            $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
+            $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
+            $passwordEncrypt = $ci->encrypt->encode($this->{$field});
+            $this->{$field} = $passwordEncrypt;
+            // print_r($passwordEncrypt);
+            // print_r("/n");
+            // print_r($ci->encrypt->decode($passwordEncrypt));
+        }
+    }
+    function _notmember($field){
+        if (!empty($this->{$field}))
+        {
+            $u = new User();
+            // Get email have used.
+            if($u->where('user_email', $this->{$field})->count() === 0){
+                return true;
+            }
+            else{
+                $this->error_message('member', 'Email address is not available');
+                return false;
+            }
+        }
+        else{
+            return false;
         }
     }
 }

@@ -18,9 +18,9 @@ class Migration_Initialize_database extends CI_Migration {
 				'type' => 'VARCHAR',
 				'constraint' => '255'
 			),
-			'user_email' => array(
-				'type' => 'VARCHAR',
-				'constraint' => '255'
+			'user_name' => array(
+				'type' => 'TEXT',
+				'null' => TRUE
 			),
 			'user_password' => array(
 				'type' => 'TEXT',
@@ -239,6 +239,7 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->dbforge->add_key('reciever_id', TRUE);
 		$this->dbforge->create_table('conversationsList');
 
+		$this->db->query("ALTER TABLE users ADD UNIQUE (user_email)");
 		$this->db->query("ALTER TABLE recipes ADD CONSTRAINT id_author FOREIGN KEY (recipe_author) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE");
 		$this->db->query("ALTER TABLE ingredients ADD FOREIGN KEY (id) REFERENCES recipes(recipe_id) ON DELETE CASCADE ON UPDATE CASCADE");
 		$this->db->query("ALTER TABLE categories ADD FOREIGN KEY (id) REFERENCES recipes(recipe_id) ON DELETE CASCADE ON UPDATE CASCADE");
