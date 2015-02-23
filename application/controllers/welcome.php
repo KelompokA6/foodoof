@@ -22,7 +22,7 @@ class Welcome extends CI_Controller {
 		$this->load->library('encrypt');
 		$msg = 'My secret message';
 		$encrypted_string = $this->encrypt->encode($msg);
-		echo $encrypted_string;
+		echo $encrypted_string.' -- ini apa Bid? -_-';
 		$this->load->view('welcome_message');
 	}
 	public function register(){
