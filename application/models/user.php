@@ -11,13 +11,13 @@ class User extends DataMapper {
             'label' => 'Email Address',
             'rules' => array('required', 'trim', 'notmember', 'valid_email'),
         ),
+        'confirm_password' => array(
+            'label' => 'Confirm Password',
+            'rules' => array('matches' => 'password'),
+        ),
         'password' => array(
             'label' => 'Password',
             'rules' => array('required', 'min_length' => 6, 'encrypt'),
-        ),
-        'confirm_password' => array(
-            'label' => 'Confirm Password',
-            'rules' => array('encrypt', 'matches' => 'user_password'),
         ),
         'name' => array(
             'label' => 'Your Name',
@@ -62,6 +62,26 @@ class User extends DataMapper {
             }
         }
     }
+
+    function remember(){
+        if(!empty($this->email)){
+            $u = new User();
+            if($u->get_by_email($this->email)->count()!=0){
+                $ci =& get_instance();
+                $ci->load->library('encrypt');
+                $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
+                $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
+                return $ci->encrypt->decode($u->get_by_email($this->email)->password); 
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+    }
+
     function isLogin(){
         $ci =& get_instance();
         $ci->load->library('session');

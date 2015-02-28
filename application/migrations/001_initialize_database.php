@@ -54,6 +54,15 @@ class Migration_Initialize_database extends CI_Migration {
 				'type' => 'BOOLEAN DEFAULT FALSE',
 				'null' => TRUE,
 			),
+			'activation_key' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '16',
+				'null' => TRUE,
+			),
+			'active' => array(
+				'type' => 'BOOLEAN DEFAULT FALSE',
+				'null' => TRUE,
+			),
 			'last_access' => array(
 				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 				'null' => TRUE
@@ -132,7 +141,7 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->dbforge->add_field(array(
 			'recipe_id' => array(
 				'type' => 'INT',
-				'unsigned' => TRUE
+				'unsigned' => TRUE,
 			),
 			'name' => array(
 				'type' => 'VARCHAR',
@@ -141,17 +150,11 @@ class Migration_Initialize_database extends CI_Migration {
 			),
 			'quantity' => array(
 				'type' => 'INT DEFAULT 0',
-				'unsigned' => TRUE,
-				'null' => TRUE
-			),
-			'price' => array(
-				'type' => 'INT DEFAULT 0',
-				'unsigned' => TRUE,
-				'null' => TRUE
+				'null' => FALSE,
 			),
 			'units' => array(
 				'type' => 'TEXT',
-				'null' => TRUE
+				'null' => TRUE,
 			),
 		));
 		$this->dbforge->add_key('recipe_id', TRUE);
@@ -175,6 +178,44 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->dbforge->add_key('recipe_id', TRUE);
 		$this->dbforge->add_key('name', TRUE);
 		$this->dbforge->create_table('categories');
+
+		/*
+		Table Favorites
+		*/
+		$this->dbforge->add_field(array(
+			'recipe_id' => array(
+				'type' => 'INT',
+				'unsigned' => TRUE
+			),
+			'user_id' => array(
+				'type' => 'INT',
+				'unsigned' => TRUE
+			),
+		));
+		$this->dbforge->add_key('recipe_id', TRUE);
+		$this->dbforge->add_key('user_id', TRUE);
+		$this->dbforge->create_table('favorites');
+
+		/*
+		Table Cook Later
+		*/
+		$this->dbforge->add_field(array(
+			'recipe_id' => array(
+				'type' => 'INT',
+				'unsigned' => TRUE
+			),
+			'user_id' => array(
+				'type' => 'INT',
+				'unsigned' => TRUE
+			),
+			'status' => array(
+				'type' => 'BOOLEAN DEFAULT FALSE',
+				'null' => TRUE
+			),
+		));
+		$this->dbforge->add_key('recipe_id', TRUE);
+		$this->dbforge->add_key('user_id', TRUE);
+		$this->dbforge->create_table('cooklater');
 
 		/*
 		Table Comments
@@ -247,10 +288,37 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->dbforge->add_key('reciever_id', TRUE);
 		$this->dbforge->create_table('conversationsList');
 
+		/*
+		Table Catalogs
+		*/
+		$this->dbforge->add_field(array(
+			'name' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '255',
+				'null' => TRUE
+			),
+			'units' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '255',
+				'null' => TRUE
+			),
+			'price' => array(
+				'type' => 'INT DEFAULT 0',
+				'null' => TRUE
+			),
+		));
+		$this->dbforge->add_key('name', TRUE);
+		$this->dbforge->add_key('units', TRUE);
+		$this->dbforge->create_table('catalogs');
+
 		$this->db->query("ALTER TABLE users ADD UNIQUE (email)");
 		$this->db->query("ALTER TABLE recipes ADD FOREIGN KEY (author) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE");
 		$this->db->query("ALTER TABLE ingredients ADD FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE ON UPDATE CASCADE");
 		$this->db->query("ALTER TABLE categories ADD FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE favorites ADD FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE favorites ADD FOREIGN KEY (recipe_id) REFERENCES recipes (id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE cooklater ADD FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE");
+		$this->db->query("ALTER TABLE cooklater ADD FOREIGN KEY (recipe_id) REFERENCES recipes (id) ON DELETE CASCADE ON UPDATE CASCADE");
 		$this->db->query("ALTER TABLE comments ADD FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE");
 		$this->db->query("ALTER TABLE comments ADD FOREIGN KEY (recipe_id) REFERENCES recipes (id) ON DELETE CASCADE ON UPDATE CASCADE");
 		$this->db->query("ALTER TABLE conversations ADD FOREIGN KEY (sender_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE");
@@ -262,6 +330,8 @@ class Migration_Initialize_database extends CI_Migration {
 	{
 		$this->dbforge->drop_table('conversationsList');
 		$this->dbforge->drop_table('conversations');
+		$this->dbforge->drop_table('favorites');
+		$this->dbforge->drop_table('cooklater');
 		$this->dbforge->drop_table('comments');
 		$this->dbforge->drop_table('categories');
 		$this->dbforge->drop_table('ingredients');
