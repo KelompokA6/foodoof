@@ -58,6 +58,7 @@ class User extends DataMapper {
                 // Login succeeded and set session by user id.
                 $ci->load->library('session');
                 $ci->session->set_userdata('user_id', $u->id);
+                $this->access();
                 return TRUE;
             }
         }
@@ -93,6 +94,17 @@ class User extends DataMapper {
         else{
             // User has login
             return TRUE;
+        }
+    }
+
+    function access(){
+        $ci =& get_instance();
+        $ci->load->library('session');
+        if(!$ci->session->userdata('user_id')==""){
+            $u = new User();
+            date_default_timezone_set('Asia/Jakarta');
+            $now = Date("Y-m-d H:i:s");
+            $u->where('id =', $ci->session->userdata('user_id'))->update("last_access", $now);
         }
     }
 
