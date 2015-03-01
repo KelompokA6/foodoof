@@ -10,6 +10,7 @@ class Registration extends CI_Controller {
 		$this->load->view('registration');
 	}
 	public function register(){
+		$this->load->helper('string');
 		$user = new User();
 		$user->email = $this->input->post("email_user");
 		$user->password = $this->input->post("password_user");
