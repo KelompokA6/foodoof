@@ -153,6 +153,11 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => FALSE,
 			),
 			'units' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '30',
+				'null' => TRUE,
+			),
+			'info' => array(
 				'type' => 'TEXT',
 				'null' => TRUE,
 			),
@@ -299,7 +304,7 @@ class Migration_Initialize_database extends CI_Migration {
 			),
 			'units' => array(
 				'type' => 'VARCHAR',
-				'constraint' => '255',
+				'constraint' => '30',
 				'null' => TRUE
 			),
 			'price' => array(
