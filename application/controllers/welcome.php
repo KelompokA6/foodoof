@@ -115,17 +115,31 @@ class Welcome extends CI_Controller {
 	}
 
 	public function highlight(){
+		$this->load->library('parser');
+
+		
 		$recipe = new Recipe();
 		$user = new User();
 		$recipe->getHightlight();
+		$listRecipe = array();
+
 		foreach ($recipe as $r)
         {
             $user->id = $r->author;
-            echo 'ID: ' . $r->id . '<br />';
-            echo 'Name: ' . $r->name . '<br />';
-            echo 'Author: ' . $user->get_by_id()->name . '<br />';
-            echo '<br />';
+            $tmp = array(
+            		'id' => $r->id,
+            		'name' => $r->name,
+            		'author' => $user->get_by_id()->name
+            	);
+            array_push($listRecipe, $tmp);
         }
+        $data = array(
+		              'blog_title'   => 'Recipe Highlight',
+		              'blog_heading' => 'Recipe Highlight',
+		              'blog_entries' => $listRecipe,
+		              
+		            );
+        $this->parser->parse('temp', $data);
 	}
 	public function recently(){
 		$recipe = new Recipe();
