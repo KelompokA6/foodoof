@@ -50,10 +50,6 @@ class Migration_Initialize_database extends CI_Migration {
 				'type' => 'MEDIUMTEXT',
 				'null' => TRUE,
 			),
-			'banned' => array(
-				'type' => 'BOOLEAN DEFAULT FALSE',
-				'null' => TRUE,
-			),
 			'last_access' => array(
 				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 				'null' => TRUE
@@ -289,6 +285,31 @@ class Migration_Initialize_database extends CI_Migration {
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('comments');
+
+		/*
+		Table Report
+		*/
+		$this->dbforge->add_field(array(
+			'id' => array(
+				'type' => 'INT',
+				'unsigned' => TRUE,
+				'auto_increment' => TRUE
+			),
+			'user_id' => array(
+				'type' => 'INT',
+				'unsigned' => TRUE,
+			),
+			'reason' => array(
+				'type' => 'TEXT',
+				'null' => TRUE
+			),
+			'submit' => array(
+				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
+				'null' => TRUE
+			),
+		));
+		$this->dbforge->add_key('id', TRUE);
+		$this->dbforge->create_table('reports');
 
 		/*
 		Table Conversations

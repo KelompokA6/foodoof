@@ -1,43 +1,21 @@
 <?php
 
-class Comment extends DataMapper {
+class Report extends DataMapper {
 
-    var $table = "comments"; 
+    var $table = "reports"; 
     //var $has_many = array('ingredient', 'comments', 'category');
-    var $has_one = array('recipe', 'user');
+    var $has_one = array('user');
 
     var $validation = array(
         'user_id' => array(
             'label' => 'User ID',
             'rules' => array('required',  'memberuser')
         ),
-        'recipe_id' => array(
-            'label' => 'Recipe ID',
-            'rules' => array('required',  'memberrecipe')
-        ),
     );
 
     function __construct($recipe_id = NULL)
     {
         parent::__construct($recipe_id);
-    }
-
-    function _memberrecipe($field){
-        if (!empty($this->{$field}))
-        {
-            $u = new Recipe();
-            // Get email have used.
-            if($u->where('id', $this->{$field})->count() !== 0){
-                return true;
-            }
-            else{
-                $this->error_message('notmember', 'ID recipe is not exist');
-                return false;
-            }
-        }
-        else{
-            return false;
-        }
     }
 
     function _memberuser($field){

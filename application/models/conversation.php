@@ -1,10 +1,10 @@
 <?php
 
-class Comment extends DataMapper {
+class Conversation extends DataMapper {
 
-    var $table = "comments"; 
+    var $table = "conversations"; 
     //var $has_many = array('ingredient', 'comments', 'category');
-    var $has_one = array('recipe', 'user');
+    var $has_one = array('user');
 
     var $validation = array(
         'user_id' => array(
