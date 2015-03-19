@@ -81,6 +81,87 @@ class Welcome extends CI_Controller {
 			echo "Failed Nambah Bahan";
 		}
 	}
+
+	public function addRecipe2(){
+		$recipe = new Recipe();
+		$recipe->name = "Nasi Goreng 2";
+		$recipe->author = "1";
+		$recipe_id = $recipe->saveRecipe();
+		if($recipe_id != 0){
+			$i = new Ingredient();
+			$i->recipe_id = $recipe_id;
+			$i->name = "Bawang Putih";
+			$i->quantity = 1;
+			$i->price = 1000;
+			$i->units = "Buah";
+			$i->save();
+			$i->recipe_id = $recipe_id;
+			$i->name = "Bawang Merah";
+			$i->quantity = 2;
+			$i->price = 1500;
+			$i->units = "Buah";
+			$i->save();
+			$i->recipe_id = $recipe_id;
+			$i->name = "Cabai";
+			$i->quantity = 3;
+			$i->price = 1000;
+			$i->units = "Buah";
+			$i->save();
+			echo "Add Recipe Success";
+		}
+		else{
+			echo "Failed Nambah Bahan";
+		}
+	}
+
+	public function highlight(){
+		$recipe = new Recipe();
+		$user = new User();
+		$recipe->getHightlight();
+		foreach ($recipe as $r)
+        {
+            $user->id = $r->author;
+            echo 'ID: ' . $r->id . '<br />';
+            echo 'Name: ' . $r->name . '<br />';
+            echo 'Author: ' . $user->get_by_id()->name . '<br />';
+            echo '<br />';
+        }
+	}
+	public function recently(){
+		$recipe = new Recipe();
+		$user = new User();
+		$recipe->getRecently();
+		foreach ($recipe as $r)
+        {
+        	$user->id = $r->author;
+            echo 'ID: ' . $r->id . '<br />';
+            echo 'Name: ' . $r->name . '<br />';
+            echo 'Author: ' . $user->get_by_id()->name . '<br />';
+            echo '<br />';
+        }
+	}
+	public function toprecipe(){
+		$recipe = new Recipe();
+		$user = new User();
+		$recipe->getTopRecipe();
+		foreach ($recipe as $r)
+        {
+        	$user->id = $r->author;
+            echo 'ID: ' . $r->id . '<br />';
+            echo 'Name: ' . $r->name . '<br />';
+            echo 'Author: ' . $user->get_by_id()->name . '<br />';
+            echo '<br />';
+        }
+	}
+	public function addRating(){
+		$recipe = new Recipe('2');
+		if($recipe->addRating('1',3.5)){
+			echo "berhasil ngerating";
+		}	
+		else{
+			echo "gagal ngerating";
+		}
+	}
 }
 
 /* End of file welcome.php */

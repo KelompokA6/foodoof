@@ -91,7 +91,7 @@ class Migration_Initialize_database extends CI_Migration {
 				'unsigned' => TRUE,
 			),
 			'create_date' => array(
-				'type' => 'DATE',
+				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 				'null' => TRUE
 			),
 			'last_update' => array(

@@ -17,9 +17,9 @@ class Recipe extends DataMapper {
         ),
     );
 
-    function __construct($recipe_id = NULL)
+    function __construct($id = NULL)
     {
-        parent::__construct($recipe_id);
+        parent::__construct($id);
     }
 
     function saveRecipe(){
@@ -47,6 +47,24 @@ class Recipe extends DataMapper {
         else{
             return false;
         }
+    }
+    function getHightlight($limit=10){
+        $this->get_by_highlight("1")->limit($limit);
+    }
+    function getRecently($limit=10){
+        $this->order_by("create_date", "desc")->get($limit,0);
+    }
+    function getTopRecipe($limit=10){
+        $this->order_by("rating", "desc")->get($limit,0);
+    }
+    function getUserRecipe($userId){
+        $this->get_by_author($userId);
+    }
+    function addRating($user_id,$value){
+        if(!empty($this->id)){
+            return $this->query("INSERT INTO rating VALUES('".$this->id."', '".$user_id."', '".$value."')");    
+        }
+        return false;
     }
 }
 
