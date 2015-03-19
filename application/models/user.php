@@ -9,7 +9,7 @@ class User extends DataMapper {
     var $validation = array(
         'email' => array(
             'label' => 'Email Address',
-            'rules' => array('required', 'trim', 'notmember', 'valid_email'),
+            'rules' => array('required', 'trim', 'notmember', 'valid_email', 'max_length' => 255),
         ),
         'confirm_password' => array(
             'label' => 'Confirm Password',
@@ -17,7 +17,7 @@ class User extends DataMapper {
         ),
         'password' => array(
             'label' => 'Password',
-            'rules' => array('required', 'min_length' => 6, 'encrypt'),
+            'rules' => array('required', 'min_length' => 5, 'encrypt'),
         ),
         'name' => array(
             'label' => 'Your Name',

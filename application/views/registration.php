@@ -21,7 +21,7 @@
 
                     <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                         
-                    <form id="loginform" class="form-horizontal" role="form" method="post" action="registration/login">
+                    <form id="loginform" class="form-horizontal" role="form" method="post" action="login">
                                 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -68,7 +68,7 @@
                     <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
                 </div>  
                 <div class="panel-body" >
-                    <form id="signupform" class="form-horizontal" role="form" method="post" action="registration/register">
+                    <form id="signupform" class="form-horizontal" role="form" method="post" action="register">
                         
                         <div id="signupalert" style="display:none" class="alert alert-danger">
                             <p>Error:</p>
@@ -131,7 +131,7 @@
 
                     <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                         
-                    <form id="loginform" class="form-horizontal" role="form" method="post" action="registration/forgetpassword">
+                    <form id="loginform" class="form-horizontal" role="form" method="post" action="forgetpassword">
                                 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
