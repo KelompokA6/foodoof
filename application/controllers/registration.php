@@ -16,7 +16,6 @@ class Registration extends CI_Controller {
 		$user->password = $this->input->post("password_user");
 		$user->name = $this->input->post("name_user");
 		$user->confirm_password = $this->input->post("retype_password_user");
-		$user->activation_key = random_string('alnum', 16);
 		if($user->save()){
 			echo "Register success";
 		}

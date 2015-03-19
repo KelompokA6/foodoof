@@ -74,9 +74,6 @@
                             <p>Error:</p>
                             <span></span>
                         </div>
-                            
-                        
-                          
                         <div class="form-group">
                             <label for="email" class="col-md-3 control-label">Email</label>
                             <div class="col-md-9">
