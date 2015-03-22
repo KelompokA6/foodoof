@@ -55,13 +55,14 @@
         </nav>-->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
       <div class="navbar-header col-md-2">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse" style="margin:21px 10px 21px 10px">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
           </button>
-          <a href=""><img class="img-responsive pull-right" width="75px"  src="<?php echo base_url();?>assets/img/foodoof.png"/></a>
+          <a href=""><img class="img-responsive pull-left" width="75px"  src="<?php echo base_url();?>assets/img/foodoof.png"/></a>
+          <a href="" class="pull-right btn-navbar-mobile text-center"><i class="fa fa-pencil-square-o fa-2x"></i><br>Write <br>Your Recipe</a>
       </div>
         <!-- /.navbar-header -->
 
@@ -96,55 +97,7 @@
   </header>-->
     <div class="container container-mobile">
       <div class="row">
-        <div class="col-md-3 navbar-default bs-navbar-collapse category-menu">
-          <div class="panel-body" for="category">
-            <div class="col-md-12 col-xs-12 page-header category-list">
-              <a href="#">
-                <div class="col-md-3 col-xs-5">
-                  <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
-                </div>
-                <div class="col-md-8 col-xs-6 category-menu-name">
-                  Masakan Pedas
-                </div>
-                <i class="fa fa-chevron-right pull-right chevron-menu"></i>
-              </a>
-            </div>
-            <div class="col-md-12 col-xs-12 page-header category-list">
-              <a href="#">
-                <div class="col-md-3 col-xs-5">
-                  <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
-                </div>
-                <div class="col-md-8 col-xs-6 category-menu-name">
-                  Sayuran
-                </div>
-                <i class="fa fa-chevron-right pull-right chevron-menu"></i>
-              </a>
-            </div>
-            <div class="col-md-12 col-xs-12 page-header category-list">
-              <a href="#">
-                <div class="col-md-3 col-xs-5">
-                  <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
-                </div>
-                <div class="col-md-8 col-xs-6 category-menu-name">
-                  Chinese Food
-                </div>
-                <i class="fa fa-chevron-right pull-right chevron-menu"></i>
-              </a>
-            </div>
-            <div class="col-md-12 col-xs-12 page-header category-list">
-              <a href="#">
-                <div class="col-md-3 col-xs-5">
-                  <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
-                </div>
-                <div class="col-md-8 col-xs-6 category-menu-name">
-                  French Food
-                </div>
-                <i class="fa fa-chevron-right pull-right chevron-menu"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-9 pull-right">
           <div class="panel-body col-md-12">
             <div id="carousel-example-generic col-md-12" class="carousel slide" data-ride="carousel" >
               <!-- Indicators -->
@@ -189,11 +142,11 @@
           </div>
           <div class="col-md-6 col-xs-12">
             <div class="panel panel-info">
-              <div class="panel-heading">Top Recipe</div>
+              <div class="panel-heading text-center">Top Recipe</div>
               <div class="panel-body">
                 <div class="col-md-12 col-xs-12 page-header category-list">
                   <div class="col-md-3 col-xs-3 detail-list-img">
-                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                    <img class="img-responsive img-rounded img-list" src="<?php echo base_url();?>assets/img/Nasi-Goreng.jpg"/>
                   </div>
                   <div class="col-md-9 col-xs-9 detail-list">
                     <div class="col-md-12">
@@ -224,7 +177,7 @@
                 </div>
                 <div class="col-md-12 col-xs-12 page-header category-list">
                   <div class="col-md-3 col-xs-3 detail-list-img">
-                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                    <img class="img-responsive img-rounded img-list" src="<?php echo base_url();?>assets/img/sate-ayam.jpg"/>
                   </div>
                   <div class="col-md-9 col-xs-9 detail-list">
                     <div class="col-md-12">
@@ -253,16 +206,17 @@
                     </div>
                   </div>
                 </div>
+                <a href="#" class="pull-right">See More...</a>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-xs-12">
             <div class="panel panel-info">
-              <div class="panel-heading">Recently Recipe</div>
+              <div class="panel-heading text-center">Recently Recipe</div>
               <div class="panel-body">
                 <div class="col-md-12 col-xs-12 page-header category-list">
                   <div class="col-md-3 col-xs-3 detail-list-img">
-                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                    <img class="img-responsive img-rounded img-list" src="<?php echo base_url();?>assets/img/Nasi-Goreng.jpg"/>
                   </div>
                   <div class="col-md-9 col-xs-9 detail-list">
                     <div class="col-md-12">
@@ -293,7 +247,7 @@
                 </div>
                 <div class="col-md-12 col-xs-12 page-header category-list">
                   <div class="col-md-3 col-xs-3 detail-list-img">
-                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                    <img class="img-responsive img-rounded img-list" src="<?php echo base_url();?>assets/img/sate-ayam.jpg"/>
                   </div>
                   <div class="col-md-9 col-xs-9 detail-list">
                     <div class="col-md-12">
@@ -322,6 +276,58 @@
                     </div>
                   </div>
                 </div>
+                <a href="#" class="pull-right">See More...</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 category-menu pull-left">
+          <div class="panel panel-info">
+            <div class="panel-heading text-center">Category Recipe</div>
+            <div class="panel-body panel-category" for="category">
+              <div class="col-md-12 col-xs-12 page-header category-list">
+                <a href="#">
+                  <div class="col-md-3 col-xs-5">
+                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                  </div>
+                  <div class="col-md-8 col-xs-6 category-menu-name">
+                    Masakan Pedas
+                  </div>
+                  <i class="fa fa-chevron-right pull-right chevron-menu"></i>
+                </a>
+              </div>
+              <div class="col-md-12 col-xs-12 page-header category-list">
+                <a href="#">
+                  <div class="col-md-3 col-xs-5">
+                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                  </div>
+                  <div class="col-md-8 col-xs-6 category-menu-name">
+                    Sayuran
+                  </div>
+                  <i class="fa fa-chevron-right pull-right chevron-menu"></i>
+                </a>
+              </div>
+              <div class="col-md-12 col-xs-12 page-header category-list">
+                <a href="#">
+                  <div class="col-md-3 col-xs-5">
+                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                  </div>
+                  <div class="col-md-8 col-xs-6 category-menu-name">
+                    Chinese Food
+                  </div>
+                  <i class="fa fa-chevron-right pull-right chevron-menu"></i>
+                </a>
+              </div>
+              <div class="col-md-12 col-xs-12 page-header category-list">
+                <a href="#">
+                  <div class="col-md-3 col-xs-5">
+                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                  </div>
+                  <div class="col-md-8 col-xs-6 category-menu-name">
+                    French Food
+                  </div>
+                  <i class="fa fa-chevron-right pull-right chevron-menu"></i>
+                </a>
               </div>
             </div>
           </div>
