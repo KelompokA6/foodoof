@@ -6641,3 +6641,16 @@ button.close {
 .category-list{
   margin:10px 0 10px 0;
 }
+.detail-list{
+  border: dashed 1px #eee;
+  border-top:0px;
+  border-right:0px;
+  border-bottom:0px;
+  padding-left: 0px;
+}
+.detail-list-img{
+  height:78px;
+}
+.icons{
+  padding-top:4px;
+}

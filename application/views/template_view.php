@@ -187,6 +187,144 @@
               </a>
             </div>
           </div>
+          <div class="col-md-6 col-xs-12">
+            <div class="panel panel-info">
+              <div class="panel-heading">Top Recipe</div>
+              <div class="panel-body">
+                <div class="col-md-12 col-xs-12 page-header category-list">
+                  <div class="col-md-3 col-xs-3 detail-list-img">
+                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                  </div>
+                  <div class="col-md-9 col-xs-9 detail-list">
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icons">
+                        <i class="fa fa-cutlery pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                        <p class="text-capitalize">nasi goreng</p>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icons">
+                        <i class="fa fa-user pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                        <p class="text-capitalize">abid nurul hakim</p>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icons">
+                        <i class="fa fa-eye pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                        <p class="text-capitalize">104 times</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12 page-header category-list">
+                  <div class="col-md-3 col-xs-3 detail-list-img">
+                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                  </div>
+                  <div class="col-md-9 col-xs-9 detail-list">
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icons">
+                        <i class="fa fa-cutlery pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                        <p class="text-capitalize">sate ayam</p>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icons">
+                        <i class="fa fa-user pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                        <p class="text-capitalize">Alfan nur fauzan</p>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icons">
+                        <i class="fa fa-eye pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                        <p class="text-capitalize">94 times</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <div class="panel panel-info">
+              <div class="panel-heading">Recently Recipe</div>
+              <div class="panel-body">
+                <div class="col-md-12 col-xs-12 page-header category-list">
+                  <div class="col-md-3 col-xs-3 detail-list-img">
+                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                  </div>
+                  <div class="col-md-9 col-xs-9 detail-list">
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icons">
+                        <i class="fa fa-cutlery pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                        <p class="text-capitalize">nasi goreng</p>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icons">
+                        <i class="fa fa-user pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                        <p class="text-capitalize">abid nurul hakim</p>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icons">
+                        <i class="fa fa-clock-o pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                        <p class="text-capitalize">20 minutes ago</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-xs-12 page-header category-list">
+                  <div class="col-md-3 col-xs-3 detail-list-img">
+                    <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+                  </div>
+                  <div class="col-md-9 col-xs-9 detail-list">
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icons">
+                        <i class="fa fa-cutlery pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                        <p class="text-capitalize">sate ayam</p>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icons">
+                        <i class="fa fa-user pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                        <p class="text-capitalize">Alfan nur fauzan</p>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-2 col-xs-3 icon">
+                        <i class="fa fa-clock-o pull-left"></i>
+                      </div>
+                      <div class="col-md-10 col-xs-9">
+                       <p class="text-capitalize">4 hours ago</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
