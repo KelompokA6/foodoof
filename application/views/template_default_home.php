@@ -35,5 +35,6 @@
   </body>
   <script type="text/javascript">
     $('.carousel').carousel();
+    $('.btn-cus').popover();
   </script>
 </html>

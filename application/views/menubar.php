@@ -35,7 +35,38 @@
           </a>
           <div class="form-group bs-navbar-collapse text-center btn-log-nav">
               <div class="btn-group" role="group" aria-label="">
-                  <button type="button" class="btn btn-success btn-cus">    Login    </button>
+                  <button type="button" class="btn btn-success btn-cus" data-container="body" data-toggle="popover" data-placement="bottom" 
+                  data-html="TRUE"
+                  data-content="
+                    <form id='loginform' class='form-horizontal' role='form' method='post' action='login'>      
+                        <div class='input-group'>
+                            <span class='input-group-addon'><i class='fa fa-user'></i></span>
+                            <input id='login-username' type='text' class='form-control' name='email_user' value='' placeholder='email'>                                        
+                        </div><br>        
+                        <div class='input-group'>
+                                    <span class='input-group-addon'><i class='fa fa-lock'></i></span>
+                                    <input id='login-password' type='password' class='form-control' name='password_user' placeholder='password'>
+                                </div>
+                        <div style='margin-top:10px' class='form-group'>
+                            <div class='col-sm-12 controls text-center'>
+                              <button id='btn-signin' type='submit' class='btn btn-success'>Login</button>
+                            </div>
+                        </div>
+                        <div class='form-group'>
+                            <div class='col-md-12 control'>
+                                <div style='border-top: 1px solid#888; padding-top:15px; font-size:85%' >
+                                    Don't have an account! 
+                                <a href='#'>
+                                    Sign Up Here
+                                </a>
+                                </div>
+                            </div>
+                        </div>    
+                    </form>
+                  "
+                  >
+                        Login    
+                  </button>
                   <button type="button" class="btn btn-primary btn-cus">    Join    </button>
               </div>
           </div>
