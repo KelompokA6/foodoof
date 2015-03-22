@@ -6594,6 +6594,15 @@ button.close {
   .btn-log-nav{
     padding-top: 8px;
   }
+  .container-mobile{
+    padding-top: 200px;
+  }
+  .chevron-menu{
+    padding-top: 15px;
+  }
+  .category-menu-name{
+    padding:15px;
+  }
 }
 @media(min-width:768px){
   .inline-search{
@@ -6601,6 +6610,12 @@ button.close {
   }
   .btn-cus{
     width:90px;
+  }
+  .container-mobile{
+    padding-top: 110px;
+  }
+  .chevron-menu{
+  padding-top: 3px;
   }
 }
 @media(min-width:992px){
@@ -6610,6 +6625,9 @@ button.close {
   .btn-cus{
     width:90px;
   }
+  .chevron-menu{
+    padding-top: 3px;
+  }
 }
 @media(min-width:1200px){
    .inline-search{
@@ -6618,4 +6636,8 @@ button.close {
   .btn-cus{
     width:90px;
   }
+}
+
+.category-list{
+  margin:10px 0 10px 0;
 }
