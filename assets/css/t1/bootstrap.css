@@ -6613,6 +6613,9 @@ button.close {
     border-left: 0;
     border-bottom: 0;
   }
+  .btn-navbar-not-collapse{
+    display: none;
+  }
 }
 @media(min-width:768px){
   .inline-search{
