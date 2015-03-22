@@ -6,6 +6,9 @@ class Home extends CI_Controller {
 		$this->load->view('template_view');
 		$this->load->view('top');
 	}
+	public function home1(){
+		$this->load->view('home');
+	}
 }
 
 /* End of file welcome.php */
