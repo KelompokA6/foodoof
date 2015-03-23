@@ -7,7 +7,7 @@ class Home extends CI_Controller {
 		//$this->load->view('top');
 	}
 	public function home1(){
-		$this->load->library('parser');
+		// $this->load->library('parser'); // gak usah, udah diload di autoloads
 		$data = array();
 		$menubar = $this->parser->parse('menubar', $data, TRUE);
 		$category_home = $this->parser->parse('category_home', $data, TRUE);

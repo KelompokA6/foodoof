@@ -76,7 +76,7 @@
                 </select>
               </div>
               <div class="input-group form-group col-md-7 col-xs-8">
-                  <input type="text" class="form-control" placeholder="Search Recipe. Use Comma (,) As Separator For Search By Ingredient"/>
+                  <input type="text" class="form-control" placeholder="Search recipes or accounts separated by commas (,)"/>
                   <span class="input-group-btn">
                       <button class="btn btn-primary" type="submit">
                           <i class="fa fa-search"></i>
