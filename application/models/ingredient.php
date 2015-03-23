@@ -47,6 +47,43 @@ class Ingredient extends DataMapper {
             return false;
         }
     }
+    function saveIngredient($recipe_id=NULL, $name=NULL, $quantity=NULL, $units=NULL){
+        if($recipe_id !=  NULL){
+            $this->recipe_id = $recipe_id;
+        }
+        if($name !=  NULL){
+            $this->$name = $name;
+        }
+        if($quantity !=  NULL){
+            $this->$quantity = $quantity;
+        }
+        if($units !=  NULL){
+            $this->$units = $units;
+        }
+        if(!empty( $this->recipe_id) && !empty($this->$name) && !empty($this->$quantity) && !empty( $this->$units)){
+            if($this->get_where(array('recipe_id' => $this->recipe_id, 'name' => $this->name))->count() == 0){
+                return $this->save();    
+            }
+            return false;
+        }
+        return false;
+    }
+    function deleteIngredient($recipe_id=NULL, $name=NULL){
+        if($recipe_id !=  NULL){
+            $this->recipe_id = $recipe_id;
+        }
+        if($name !=  NULL){
+            $this->$name = $name;
+        }
+        if(!empty($this->recipe_id) && !empty($this->$name)){
+            if($this->get_where(array('recipe_id' => $this->recipe_id, 'name' => $this->name))->count() != 0){
+                $this->get_where(array('recipe_id' => $this->recipe_id, 'name' => $this->name));
+                return $this->delete();
+            }
+            return false;
+        }
+        return false;
+    }
 }
 
 /* End of file recipe.php */
