@@ -8,8 +8,16 @@ class Home extends CI_Controller {
 	}
 	public function home1(){
 		$this->load->library('parser');
+		$this->load->library('session');
+		$loginStatus = $this->session->userdata('login_status');
+
 		$data = array();
-		$menubar = $this->parser->parse('menubar', $data, TRUE);
+		if($loginStatus === 1){
+			$menubar = $this->parser->parse('menubar_login', $data, TRUE);	
+		}
+		else{
+			$menubar = $this->parser->parse('menubar', $data, TRUE);
+		}	
 		$category_home = $this->parser->parse('category_home', $data, TRUE);
 		$top_recipe_home = $this->parser->parse('top_recipe_home', $data, TRUE);
 		$recently_recipe_home = $this->parser->parse('recently_recipe_home', $data, TRUE);
@@ -24,8 +32,21 @@ class Home extends CI_Controller {
 
 	public function login()
 	{
-		$gembel;
-		haha
+		$email = $this->input->post("email_user");
+		$password = $this->input->post("password_user");
+		$isLogin = User::login($email,$password);
+		if($isLogin){
+			$this->session->set_userdata('login_status', 1);
+			$this->home1();
+		}
+		else{
+			$this->home1();
+		}
+	}
+
+	public function logout(){
+		$this->session->set_userdata('login_status', 0);
+		$this->home1();
 	}
 }
 
