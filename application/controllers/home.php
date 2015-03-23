@@ -7,7 +7,7 @@ class Home extends CI_Controller {
 		//$this->load->view('top');
 	}
 	public function home1(){
-		// $this->load->library('parser'); // gak usah, udah diload di autoloads
+		$this->load->library('parser');
 		$data = array();
 		$menubar = $this->parser->parse('menubar', $data, TRUE);
 		$category_home = $this->parser->parse('category_home', $data, TRUE);
@@ -20,6 +20,12 @@ class Home extends CI_Controller {
 						"recently_recipe_home"=> $recently_recipe_home,
 						);
 		$this->parser->parse('template_default_home', $datacomplete);
+	}
+
+	public function login()
+	{
+		$gembel;
+		haha
 	}
 }
 
