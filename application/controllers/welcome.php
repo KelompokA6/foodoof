@@ -176,6 +176,15 @@ class Welcome extends CI_Controller {
 			echo "gagal ngerating";
 		}
 	}
+	public function getRecipe($id){
+		$r = new Recipe();
+		if($r->getRecipe($id, '1')){
+			echo $r->name."<br>";
+			echo $r->id."<br>";
+		}
+		$r1 = new Recipe();
+		echo $r1->createRecipe();
+	}
 }
 
 /* End of file welcome.php */
