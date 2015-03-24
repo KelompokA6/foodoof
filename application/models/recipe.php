@@ -34,7 +34,7 @@ class Recipe extends DataMapper {
 
     function saveRecipe($name=NULL, $portion=NULL, $duration=NULL, $description=NULL, $last_update=NULL, $ingredients=NULL, $steps=NULL, $id=NULL){
         if($id !=  NULL){
-            $this->recipe_id = $recipe_id;
+            $this->id = $id;
         }
         if($name !=  NULL){
             $this->$name = $name;
@@ -51,9 +51,12 @@ class Recipe extends DataMapper {
         if($duration !=  NULL){
             $this->$last_update = $last_update;
         }
-        if(!empty($this->recipe_id) && !empty($this->$name) && !empty($this->$portion) 
+        if(!empty($this->id) && !empty($this->$name) && !empty($this->$portion) 
             && !empty($this->$duration) && !empty($this->$description) && !empty($this->$last_update)
             && !empty($steps) && !empty($ingredients)){
+            if(!$this->save()){
+                return FALSE;
+            }
             $this->trans_begin();
             if(is_array($ingredients)){
                 $rcp = new Ingredient();
@@ -105,6 +108,17 @@ class Recipe extends DataMapper {
         }
         return false;
     }
+    function getRecipe($id=NULL, $user_id=NULL){
+        if($id==NULL){
+
+        }
+        if($user_id==NULL){
+            $this->where('author',$user_id);
+        }
+        else{
+
+        }
+    }
 
     function _member($field){
         if (!empty($this->{$field}))
@@ -140,6 +154,20 @@ class Recipe extends DataMapper {
             return $this->query("INSERT INTO rating VALUES('".$this->id."', '".$user_id."', '".$value."')");    
         }
         return false;
+    }
+    function authEditRecipe($recipe_id=NULL, $user_id=NULL){
+        if(!empty($recipe_id) && !empty($user_id)){
+            $r = new Recipe();
+            $r->where('id',$recipe_id);
+            $r->where('author'=> $user_id);
+            if($r->count()>0){
+                return TRUE;
+            }
+            else{
+                return FALSE;
+            }
+        }
+        return FALSE;
     }
 }
 
