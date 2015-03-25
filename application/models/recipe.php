@@ -22,16 +22,67 @@ class Recipe extends DataMapper {
         $this->$id = $id;
     }
 
-    function createRecipe(){
-        $this->author = $this->session->userdata('user_id');
-        if($this->skip_validation()->save()){
-            return $this->db->insert_id();
+    /*
+        Digunakan untuk Validasi sebuh recipe baru dimana user yang membuat harus terdaftar.
+    */
+    function _member($field){
+        if (!empty($this->{$field}))
+        {
+            $u = new User();
+            // Get email have used.
+            if($u->where('id', $this->{$field})->count() !== 0){
+                return true;
+            }
+            else{
+                $this->error_message('notmember', 'ID Author is not member');
+                return false;
+            }
         }
         else{
-            return -1;
+            return false;
         }
     }
 
+    /*
+        Digunakan otentifikasi bahwa sebuah resep dimiliki oleh sebuah user yang mengkasesnya.
+    */
+    function authEditRecipe($recipe_id=NULL, $user_id=NULL){
+        if($recipe_id==NULL){
+            $recipe_id = $this->id;
+        }
+        if(!empty($recipe_id) && !empty($user_id)){
+            $r = new Recipe();
+            $r->where('id', $recipe_id);
+            $r->where('author', $user_id);
+            if($r->count()>0){
+                return TRUE;
+            }
+            else{
+                return FALSE;
+            }
+        }
+        return FALSE;
+    }
+
+    /*
+        Digunakan untuk membuat sebuah Recipe pada database. return value merupakan id dari recipe yang berhasil dibuat, -1 merupakan indikasi bahwa recipe tidak
+        berhasil dibuat.
+    */
+    function createRecipe(){
+        if(!empty($this->author)){
+            if($this->skip_validation()->save()){
+                return $this->db->insert_id();
+            }
+            else{
+                return -1;
+            }    
+        }
+        return -1;
+    }
+
+    /*
+        Digunakan untuk menyimpan data sebuah Recipe pada database. return value merupakan boolean resep berhasil dibuat.
+    */
     function saveRecipe($id=NULL, $name=NULL, $portion=NULL, $duration=NULL, $description=NULL, $last_update=NULL, $ingredients=NULL, $steps=NULL){
         $this->load->helper('file');
         if($id ==  NULL){
@@ -157,6 +208,55 @@ class Recipe extends DataMapper {
         }
         return false;
     }
+
+    /*
+        Digunakan untuk delete sebuah Recipe pada database. return value merupakan boolean.
+    */
+    function deleteRecipe($id=NULL){
+        if($id==NULL){
+            $id = $this->id;
+        }
+        if(!empty($id)){
+            return $this->where('id', $id)->delete();
+        }
+        else{
+            return false;
+        }
+    }
+
+    /*
+        Digunakan untuk memperoleh resep yang merupakan highlight, dengan parameter input limit resep yang ingin ditampilkan
+    */
+    function getHightlight($limit=10){
+        $this->where('highlight', '1');
+        $this->where('status', '1');
+        $this->get($limit,0);
+    }
+
+    /*
+        Digunakan untuk memperoleh resep yang merupakan terbaru, dengan parameter input limit resep yang ingin ditampilkan
+    */
+    function getRecently($limit=10){
+        $this->$this->where('status', '1')->order_by("create_date", "desc")->get($limit,0);
+    }
+
+    /*
+        Digunakan untuk memperoleh resep yang merupakan resep dengan rating tertinggi, dengan parameter input limit resep yang ingin ditampilkan
+    */
+    function getTopRecipe($limit=10){
+        $this->$this->where('status', '1')->order_by("rating", "desc")->get($limit,0);
+    }
+
+    /*
+        Digunakan untuk memperoleh resep-resep yang dimiliki oleh sebuah user.
+    */
+    function getUserRecipe($userId){
+        $this->get_by_author($userId);
+    }
+
+    /*
+        Digunakan untuk memperoleh profile sebuah resep. resep yang diperoleh harus berstatus publish atau yang melihat merupakan pemilik resep tersebut.
+    */
     function getRecipeProfile($id=NULL, $user_id=NULL){
         if($id == NULL){
             $id = $this->id;
@@ -166,7 +266,7 @@ class Recipe extends DataMapper {
             return true;
         }
         else{
-            if(empty($user_id)&&$this->author==$user_id){
+            if(empty($user_id) && $this->author==$user_id){
                 $this->get_by_id($id);
                 return true;
             }
@@ -176,6 +276,10 @@ class Recipe extends DataMapper {
             return false;
         }
     }
+
+    /*
+        Digunakan untuk memperoleh bahan-bahan yang digunakan oleh sebuah resep. tidak memiliki kembalian, hasil disimpan pada variabel ingredients
+    */
     function getIngredients($id=NULL){
         if($id == NULL){
             $id = $this->id;
@@ -184,6 +288,9 @@ class Recipe extends DataMapper {
         $this->ingredients = $ingredient->get_where(array('recipe_id' => $id));
     }
 
+    /*
+        Digunakan untuk memperoleh step yang digunakan oleh sebuah resep. tidak memiliki kembalian, hasil disimpan pada variabel steps
+    */
     function getSteps($id=NULL){
         if($id == NULL){
             $id = $this->id;
@@ -192,75 +299,39 @@ class Recipe extends DataMapper {
         $this->steps = $step->get_where(array('recipe_id' => $id));
     }
 
-    function _member($field){
-        if (!empty($this->{$field}))
-        {
-            $u = new User();
-            // Get email have used.
-            if($u->where('id', $this->{$field})->count() !== 0){
-                return true;
+    /*
+        Digunakan untuk memberikan rating pada sebuah resep. nilai kembalian merupakan boolean rating berhasil disimpan. bila telah ada maka akan dioverwrite
+    */
+    function saveRating($user_id, $value = 0){
+        if(!empty($this->id) && !empty($user_id)){
+            $rat = new Rating();
+            $rat->recipe_id = $this->id;
+            $rat->user_id = $user_id;
+            $rat->value = $value;
+            $ratmp = new Rating();
+            $ratmp->where('recipe_id', $this->id);
+            $ratmp->where('user_id', $user_id);
+            if($ratmp->count() > 0){
+                $rat->where('recipe_id', $this->id);
+                $rat->where('user_id', $user_id);
+                $rat->update('value', $value);
             }
             else{
-                $this->error_message('notmember', 'ID Author is not member');
-                return false;
+                return $rat->skip_validation()->save();
             }
-        }
-        else{
-            return false;
-        }
-    }
-    function getHightlight($limit=10){
-        $this->get_by_highlight("1")->limit($limit);
-    }
-    function getRecently($limit=10){
-        $this->order_by("create_date", "desc")->get($limit,0);
-    }
-    function getTopRecipe($limit=10){
-        $this->order_by("rating", "desc")->get($limit,0);
-    }
-    function getUserRecipe($userId){
-        $this->get_by_author($userId);
-    }
-    function addRating($user_id,$value){
-        if(!empty($this->id)){
-            return $this->query("INSERT INTO rating VALUES('".$this->id."', '".$user_id."', '".$value."')");    
         }
         return false;
     }
-    function authEditRecipe($recipe_id=NULL, $user_id=NULL){
-        if($recipe_id==NULL){
-            $recipe_id = $this->id;
-        }
-        if(!empty($recipe_id) && !empty($user_id)){
-            $r = new Recipe();
-            $r->where('id', $recipe_id);
-            $r->where('author', $user_id);
-            if($r->count()>0){
-                return TRUE;
-            }
-            else{
-                return FALSE;
-            }
-        }
-        return FALSE;
-    }
+    
+    /*
+        Digunakan untuk mengubah status publish dari sebuah resep. nilai kembalian merupakan boolean berhasil mengubah status.
+    */
     function publishRecipe($id=NULL, $status=FALSE){
         if($id==NULL){
             $id = $this->id;
         }
         if(!empty($id) && !empty($status)){
             return $this->where('id', $id)->update('status', $status);
-        }
-        else{
-            return false;
-        }
-    }
-    function deleteRecipe($id=NULL){
-        if($id==NULL){
-            $id = $this->id;
-        }
-        if(!empty($id)){
-            return $this->where('id', $id)->delete();
         }
         else{
             return false;
