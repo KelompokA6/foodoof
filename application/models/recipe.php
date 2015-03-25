@@ -53,6 +53,9 @@ class Recipe extends DataMapper {
         }
         $this->author = $this->session->userdata('user_id');
         $this->$name = $name;
+        if(file_exists("assets/tmp/recipe/".$id.".jpg")){
+            
+        }
         if(!empty($id) && !empty($name) && !empty($portion) 
             && !empty($duration) && !empty($description) && !empty($last_update)
             && !empty($steps) && !empty($ingredients)){
