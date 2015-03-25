@@ -10,8 +10,9 @@ class Viewer extends CI_Model
     // buat judul. kalau gak dikasih tau, tulis aja judulnya Foodoof
     $datafinal['title'] = @$data['title'] ? $data['title'] : 'FoodooF';
 
-    // load css tema 1 (t1) apa tema 2 (t2)?
+    // load css tema 1 (t1) apa tema 2 (t2)? default t1 ya...
     $data['theme'] = $this->session->userdata('theme');
+    if($data['theme'] === FALSE) $data['theme'] = 't1';
     $datafinal['css'] = $this->parser->parse('css', $data, TRUE);
 
     // sudah login? load menubar apa menubar_login?
