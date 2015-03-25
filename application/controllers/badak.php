@@ -6,4 +6,10 @@ class Badak extends CI_Controller {
     $this->load->model('viewer');
     $this->viewer->show('welcome_message');
   }
+
+  public function show($view)
+  {
+    $this->load->model('viewer');
+    $this->viewer->show($view);
+  }
 }

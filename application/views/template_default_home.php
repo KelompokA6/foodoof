@@ -5,11 +5,6 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/t1/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/t1/bootstrap-theme.css">
   <link href="/foodoof/assets/plugin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-2.1.3.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-    $('.dropdown-toggle').dropdown();
-  </script>
 </head>
   <body>
     {menubar}
@@ -33,6 +28,8 @@
       </div>
     </div>
   </body>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
   <script type="text/javascript">
     $('.carousel').carousel();
     $('.btn-cus').popover();
