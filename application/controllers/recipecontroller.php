@@ -12,7 +12,7 @@ class RecipeController extends CI_Controller {
 		$recipe->id = $id;
 		foreach ($recipe->get() as $obj)
 		{
-		    echo $obj->name;
+			
 		}
 	}
 
@@ -49,19 +49,69 @@ class RecipeController extends CI_Controller {
 		$recipe->get_by_id($id); 
 	}
 
-	// ini buat ambil top resep
-	public function top(){
+	// top resep untuk halaman top Page.
+	public function topPage(){
 		$recipe = new Recipe();
 		$recipe->order_by("rating","desc");
-		foreach ($recipe->get() as $obj)
+		
+		$this->load->library('parser');
+		$arr = array();
+
+		foreach ($recipe->get(10,0) as $obj)
 		{
-		    echo $obj->name ;
-		    echo "<br>";
+			$data = array(
+				'judul' => $obj->name,
+				'author' => $obj->author,
+				'date' => $obj->last_update,
+				'rating' => $obj->rating,
+				'views' => $obj->views,
+				'photo' => $obj->photo
+				);
+			array_push($arr, $data);
 		}
+		$data1=array(
+			'data' => $arr
+			);
+
+		$this->parser->parse("coba_top_recipe", $data1);
+	}
+
+	// top recipe untuk halaman home.
+	public function topHome(){
+		$recipe = new Recipe();
+		$recipe->order_by("rating","desc");
+		
+		$this->load->library('parser');
+		$arr = array();
+
+		foreach ($recipe->get(5,0) as $obj)
+		{
+			$data = array(
+				'judul' => $obj->name,
+				'author' => $obj->author,
+				'date' => $obj->last_update,
+				'rating' => $obj->rating,
+				'views' => $obj->views,
+				'photo' => $obj->photo
+				);
+			array_push($arr, $data);
+		}
+		$data1=array(
+			'data' => $arr
+			);
+		
+		$this->parser->parse("coba_top_recipe", $data1);
 	}
 
 	// ini buat ambil highlight resep
 	public function highlight(){
+		$recipe = new Recipe();
+		$recipe->get_by_highlight(0);
+		foreach ($recipe as $obj)
+		{
+		    echo $obj->name ;
+		    echo "<br>";
+		}
 
 	}
 
