@@ -18,7 +18,8 @@ class Viewer extends CI_Model
     $hasLogin = $this->session->userdata('login_status');
     $datafinal['menubar'] = $this->parser->parse($hasLogin ? 'menubar_login' : 'menubar', $data, TRUE);
 
-    // konten utama. misal home_view, user_timeline_view, dll. tolong ini dibuat 1 file php aja.
+    // konten utama. misal home_view, user_timeline_view, dll.
+    // tolong ini dibuat 1 file php aja yang isinya sidebar sama bagian tengahnya. oke?
     $datafinal['content'] = $this->parser->parse($view, $data, TRUE);
 
     // js di-load di akhir aja gpp. (katanya "best practice" di bootstrap)
