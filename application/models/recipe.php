@@ -19,7 +19,7 @@ class Recipe extends DataMapper {
 
     function __construct($id = NULL)
     {
-        parent::__construct($id);
+        $this->$id = $id;
     }
 
     function createRecipe(){
