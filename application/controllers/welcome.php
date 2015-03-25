@@ -178,12 +178,15 @@ class Welcome extends CI_Controller {
 	}
 	public function getRecipe($id){
 		$r = new Recipe();
-		if($r->getRecipe($id, '1')){
+		if($r->getRecipeProfile($id, '1')){
 			echo "berhsail";
 			echo $r->name."<br>";
 			echo $r->id."<br>";
 		}
 		$r1 = new Recipe();
+		$r1->id = '2';
+		$r1->getIngredients();
+		print_r($r1->ingredients->name);
 		//echo $r1->createRecipe();
 	}
 }
