@@ -6,15 +6,10 @@ class Viewer extends CI_Model
   {
     $this->load->library('parser');
     $this->load->library('session');
-    $loginStatus = $this->session->userdata('login_status');
+    $hasLogin = $this->session->userdata('login_status');
 
     $data = array();
-    if($loginStatus === 1){
-      $menubar = $this->parser->parse('menubar_login', $data, TRUE);  
-    }
-    else{
-      $menubar = $this->parser->parse('menubar', $data, TRUE);
-    }
+    $menubar = $this->parser->parse($hasLogin ? 'menubar_login' : 'menubar', $data, TRUE);  
     $datacomplete = array(
             "menubar"=> $menubar,
             );
