@@ -34,8 +34,8 @@ class Home extends CI_Controller {
 	{
 		$email = $this->input->post("email_user");
 		$password = $this->input->post("password_user");
-		$this->load->model('user');
-		$isLogin = $this->user->login($email,$password);
+		$user = new User();
+		$isLogin = $user->login($email,$password);
 		if($isLogin){
 			$this->session->set_userdata('login_status', 1);
 			$this->home1();
@@ -51,8 +51,8 @@ class Home extends CI_Controller {
 	}
 
 	public function changePassword(){
-		$this->load->model('viewer');
-		$this->viewer->show('forget_password_view');
+		$viewer = new Viewer();
+		$viewer->show('forget_password_view');
 	}
 
 /*	public function searchUser(){
