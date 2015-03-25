@@ -337,6 +337,47 @@ class Recipe extends DataMapper {
             return false;
         }
     }
+
+    /*
+        Digunakan untuk menambahkan sebuah category pada sebuah resep
+    */
+    function addCategory($id=NULL, $category=NULL){
+        if($id==NULL){
+            $id = $this->id;
+        }
+        if(!empty($id) && !empty($category)){
+            $categorytmp = new Category();
+            $categorytmp->where('recipe_id', $id);
+            $categorytmp->ilike('name', strtolower($category));
+            $category = new Category();
+            if(!$categorytmp->count() > 0){
+                $category->recipe_id = $id;
+                $category->name = strtolower($category);
+                return $category->save();
+            }
+        }
+        else{
+            return false;
+        }
+    }
+
+    /*
+        Digunakan untuk menambahkan sebuah category pada sebuah resep
+    */
+    function deleteCategory($id=NULL, $category=NULL){
+        if($id==NULL){
+            $id = $this->id;
+        }
+        if(!empty($id) && !empty($category)){
+            $categorytmp = new Category();
+            $categorytmp->where('recipe_id', $id);
+            $categorytmp->ilike('name', strtolower($category));
+            return $categorytmp->delete();
+        }
+        else{
+            return false;
+        }
+    }
 }
 
 /* End of file recipe.php */
