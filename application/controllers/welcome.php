@@ -186,7 +186,9 @@ class Welcome extends CI_Controller {
 		$r1 = new Recipe();
 		$r1->id = '2';
 		$r1->getIngredients();
+		$r1->getSteps();
 		print_r($r1->ingredients->name);
+		print_r($r1->steps->description);
 		//echo $r1->createRecipe();
 	}
 }
