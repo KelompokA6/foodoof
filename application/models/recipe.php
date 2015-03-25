@@ -158,17 +158,20 @@ class Recipe extends DataMapper {
         return false;
     }
     function getRecipe($id=NULL, $user_id=NULL){
-        if($id != NULL){
-            $this->id = $id;
+        if($id == NULL){
+            $id = $this->id;
         }
+        $this::get_by_id($id);
         if($this->status){
-            $this::get_by_id($id);
             return true;
         }
         else{
-            if($this->author==$user_id){
+            if(empty($user_id)&&$this->author==$user_id){
                 $this::get_by_id($id);
                 return true;
+            }
+            else{
+                $this::get_by_id('0');
             }
             return false;
         }
