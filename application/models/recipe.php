@@ -362,7 +362,7 @@ class Recipe extends DataMapper {
     }
 
     /*
-        Digunakan untuk menambahkan sebuah category pada sebuah resep
+        Digunakan untuk menghapus sebuah category pada sebuah resep
     */
     function deleteCategory($id=NULL, $category=NULL){
         if($id==NULL){
