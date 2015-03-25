@@ -50,7 +50,7 @@ class Home extends CI_Controller {
 		$this->home1();
 	}
 
-	public function showForgetPasswordView(){
+	public function changePassword(){
 		$this->load->model('viewer');
 		$this->viewer->show('forget_password_view');
 	}
