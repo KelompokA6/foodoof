@@ -16,29 +16,26 @@
         <form class="navbar-form collapse-navbar-search">
           <div class="col-md-1">
           </div>
-          <div class="input-group form-group col-md-7 col-xs-12" style="padding-left:20px;">
+          <div class="input-group form-group col-md-7" style="padding-left:20px;">
               <input type="text" class="form-control" placeholder="Search Recipe By Title"/>
-              <span class="input-group-btn">
-                  <!-- <button class="btn btn-primary" type="submit">
-                      <i class="fa fa-search"></i>
-                  </button> -->
-                  <div class="btn-group" role="group">
-                    <button id="searchBy" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                      Title <span class="caret"></span>
-                    </button>
-                    <input id="categorySearch" name="categorySearch" class="hidden" value="title">
-                    <ul class="dropdown-menu" id="listSearchBy"role="menu">
-                      <li class="selectSearch"><a href="#">Title</a></li>
-                      <li class="selectSearch"><a href="#">Ingredients</a></li>
-                      <li class="selectSearch"><a href="#">Account</a></li>
-                    </ul>
-                  </div>
-                  <div class="btn-group" role="group">
-                    <button class="btn btn-primary" type="submit" style="width:60px">
-                       <i class="fa fa-search"></i>
-                    </button>
-                  </div>
-              </span>
+              <div class="input-group-btn">
+                <div class="btn-group" role="group">
+                  <button id="searchBy" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                    Title <span class="caret"></span>
+                  </button>
+                  <input id="categorySearch" name="categorySearch" class="hidden" value="title" >
+                  <ul class="dropdown-menu" id="listSearchBy"role="menu" style="position:static; z-index:10">
+                    <li class="selectSearch"><a href="#">Title</a></li>
+                    <li class="selectSearch"><a href="#">Ingredients</a></li>
+                    <li class="selectSearch"><a href="#">Account</a></li>
+                  </ul>
+                </div>
+                <div class="btn-group" role="group">
+                  <button class="btn btn-primary" type="submit" style="width:60px">
+                     <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
           </div>
           
           <a href="" class="btn-navbar-not-collapse">
