@@ -14,33 +14,37 @@
   <ul class="nav navbar-top-links nav navbar-nav navbar-left col-md-11">
     <div class="col-md-12 form-inline inline-search">
         <form class="navbar-form collapse-navbar-search">
-          <!-- <div class="col-md-2 form-group col-xs-4 text-right">
-            <select class="form-control form-group btn-primary">
-              <option> Recipe </option>
-              <option> Account </option>
-            </select>
-          </div> -->
-          <div class="btn-group">
-            <button id="searchBy" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              Title <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" id="listSearchBy"role="menu">
-            </ul>
+          <div class="col-md-1">
           </div>
-          <div class="input-group form-group col-md-6 col-xs-8">
-              <input type="text" class="form-control" placeholder="Search Recipe. Use Comma (,) As Separator For Search By Ingredient"/>
+          <div class="input-group form-group col-md-7 col-xs-12" style="padding-left:20px;">
+              <input type="text" class="form-control" placeholder="Search Recipe By Title"/>
               <span class="input-group-btn">
-                  <button class="btn btn-primary" type="submit">
+                  <!-- <button class="btn btn-primary" type="submit">
                       <i class="fa fa-search"></i>
+                  </button> -->
+                  <div class="btn-group">
+                    <button id="searchBy" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                      Title <span class="caret"></span>
+                    </button>
+                    <input id="categorySearch" name="categorySearch" class="hidden" value="title">
+                    <ul class="dropdown-menu" id="listSearchBy"role="menu">
+                      <li class="selectSearch"><a href="#">Title</a></li>
+                      <li class="selectSearch"><a href="#">Ingredients</a></li>
+                      <li class="selectSearch"><a href="#">Account</a></li>
+                    </ul>
+                  </div>
+                  <button class="btn btn-primary" type="submit">
+                     Search
                   </button>
               </span>
           </div>
+          
           <a href="" class="btn-navbar-not-collapse">
             <button class="btn btn-primary" type="button">
               <i class="fa fa-pencil-square-o fa-lg"></i> Write A Recipe
             </button>
           </a>
-          <div class="form-group bs-navbar-collapse text-center btn-log-nav">
+          <div class="form-group nav-bar-mobile text-center btn-log-nav">
               <div class="btn-group" role="group" aria-label="">
                   <button type="button" class="btn btn-success btn-cus" data-container="body" data-toggle="popover" data-placement="bottom" 
                   data-html="TRUE"
