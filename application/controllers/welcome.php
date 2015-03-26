@@ -191,7 +191,12 @@ class Welcome extends CI_Controller {
 		print_r($r1->steps->description);
 		//echo $r1->createRecipe();
 	}
+	public function closify(){
+		$this->load->view('test_closify.php');
+		echo "something";
+	}
 }
+
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
