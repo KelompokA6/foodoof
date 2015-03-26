@@ -46,13 +46,13 @@ class Home extends CI_Controller {
 	}
 
 	public function logout(){
-		$this->session->set_userdata('login_status', 0);
+		$this->session->unset_userdata('login_status');
 		$this->home1();
 	}
 
 	public function changePassword(){
-		$viewer = new Viewer();
-		$viewer->show('forget_password_view');
+		$this->load->model('viewer');
+		$this->viewer->show('forget_password_view', $data);
 	}
 
 /*	public function searchUser(){
