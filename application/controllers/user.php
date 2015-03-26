@@ -35,7 +35,7 @@ class User extends CI_Controller {
 
 	public function viewChangePass(){
 		$this->load->model('viewer');
-		$this->viewer->show(change_password_view);
+		$this->viewer->show('change_password_view');
 	}
 
 	public function register(){
@@ -49,15 +49,18 @@ class User extends CI_Controller {
 			$user = new User();
 			$isCreate = $user->createUser($data);
 			if($isCreate){
-				$dataSuccess['message'] = "Registration Success"; //cara masukin nilainya gini bukan ya??
+				$dataMessage['message'] = "Registration Success"; //cara masukin nilainya gini bukan ya??
 			}
 			else{
-				$dataSuccess['message'] = "Registration Failed";
+				$dataMessage['message'] = "Registration Failed";
 			}
 		}
 		else{
-			$dataSuccess['message'] = "Registration Failed";
+			$dataMessage['message'] = "Registration Failed";
 		} 
+
+		$this->load->model('viewer');
+		$this->viewer->show('register_view', $dataMessage);
 	}
 
 	public function editProfile($id){
