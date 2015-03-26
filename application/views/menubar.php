@@ -22,7 +22,7 @@
                   <!-- <button class="btn btn-primary" type="submit">
                       <i class="fa fa-search"></i>
                   </button> -->
-                  <div class="btn-group">
+                  <div class="btn-group" role="group">
                     <button id="searchBy" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                       Title <span class="caret"></span>
                     </button>
@@ -33,9 +33,11 @@
                       <li class="selectSearch"><a href="#">Account</a></li>
                     </ul>
                   </div>
-                  <button class="btn btn-primary" type="submit" style="width:20px">
-                     <i class="fa fa-search"></i>
-                  </button>
+                  <div class="btn-group" role="group">
+                    <button class="btn btn-primary" type="submit" style="width:60px">
+                       <i class="fa fa-search"></i>
+                    </button>
+                  </div>
               </span>
           </div>
           
@@ -44,7 +46,7 @@
               <i class="fa fa-pencil-square-o fa-lg"></i> Write A Recipe
             </button>
           </a>
-          <div class="form-group nav-bar-mobile text-center btn-log-nav">
+          <div class="form-group btn-navbar-not-collapse text-center btn-log-nav">
               <div class="btn-group" role="group" aria-label="">
                   <button type="button" class="btn btn-success btn-cus" data-container="body" data-toggle="popover" data-placement="bottom" 
                   data-html="TRUE"
