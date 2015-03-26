@@ -14,11 +14,18 @@
   <ul class="nav navbar-top-links nav navbar-nav navbar-left col-md-11">
     <div class="col-md-12 form-inline inline-search">
         <form class="navbar-form collapse-navbar-search">
-          <div class="col-md-2 form-group col-xs-4 text-right">
+          <!-- <div class="col-md-2 form-group col-xs-4 text-right">
             <select class="form-control form-group btn-primary">
               <option> Recipe </option>
               <option> Account </option>
             </select>
+          </div> -->
+          <div class="btn-group">
+            <button id="searchBy" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              Title <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" id="listSearchBy"role="menu">
+            </ul>
           </div>
           <div class="input-group form-group col-md-6 col-xs-8">
               <input type="text" class="form-control" placeholder="Search Recipe. Use Comma (,) As Separator For Search By Ingredient"/>
