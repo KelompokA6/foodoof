@@ -19,7 +19,7 @@ class Recipe extends DataMapper {
 
     function __construct($id = NULL)
     {
-        $this->$id = $id;
+        //$this->$id = $id;
     }
 
     /*
@@ -237,14 +237,14 @@ class Recipe extends DataMapper {
         Digunakan untuk memperoleh resep yang merupakan terbaru, dengan parameter input limit resep yang ingin ditampilkan
     */
     function getRecently($limit=10){
-        $this->$this->where('status', '1')->order_by("create_date", "desc")->get($limit,0);
+        $this->where('status', '1')->order_by("create_date", "desc")->get($limit,0);
     }
 
     /*
         Digunakan untuk memperoleh resep yang merupakan resep dengan rating tertinggi, dengan parameter input limit resep yang ingin ditampilkan
     */
     function getTopRecipe($limit=10){
-        $this->$this->where('status', '1')->order_by("rating", "desc")->get($limit,0);
+        $this->where('status', '1')->order_by("rating", "desc")->get($limit,0);
     }
 
     /*
