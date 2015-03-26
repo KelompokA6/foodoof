@@ -20,15 +20,19 @@
               <input type="text" class="form-control" placeholder="Search Recipe By Title"/>
               <div class="input-group-btn">
                 <div class="btn-group" role="group">
-                  <button id="searchBy" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                    Title <span class="caret"></span>
-                  </button>
-                  <input id="categorySearch" name="categorySearch" class="hidden" value="title" >
+                  <!-- <button id="searchBy" type="button" class="btn btn-info" aria-expanded="true"> -->
+                    <select class="form-control info" style="width:120px">
+                      <option>Title</option>
+                      <option>Ingredients</option>
+                      <option>Account</option>
+                    </select></span>
+                  <!-- </button> -->
+                  <!-- <input id="categorySearch" name="categorySearch" class="hidden" value="title" >
                   <ul class="dropdown-menu" id="listSearchBy"role="menu" style="position:static; z-index:10">
                     <li class="selectSearch"><a href="#">Title</a></li>
                     <li class="selectSearch"><a href="#">Ingredients</a></li>
                     <li class="selectSearch"><a href="#">Account</a></li>
-                  </ul>
+                  </ul> -->
                 </div>
                 <div class="btn-group" role="group">
                   <button class="btn btn-primary" type="submit" style="width:60px">
