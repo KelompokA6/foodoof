@@ -35,7 +35,6 @@ class User extends DataMapper {
         // Create a temporary user object
         $u = new User();
 
-        // Get this users stored record via their username
         $ci =& get_instance();
         $ci->load->library('encrypt');
         $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
@@ -43,24 +42,23 @@ class User extends DataMapper {
         
         if($u->where('email', $this->email)->count() != 1){
             // Login failed, so set a custom error message
+            $this->error_message('login', $this->email.' has not registered yet');
+            return FALSE;
+        }
+
+        $u->where('email', $this->email)->get();
+        $decryptpass = $ci->encrypt->decode($u->user_password);
+        if($this->user_password != $decryptpass){
+            // Login failed, so set a custom error message
             $this->error_message('login', 'Email address or password invalid');
             return FALSE;
         }
         else{
-            $u->where('email', $this->email)->get();
-            $decryptpass = $ci->encrypt->decode($u->user_password);
-            if($this->user_password != $decryptpass){
-                // Login failed, so set a custom error message
-                $this->error_message('login', 'Email address or password invalid');
-                return FALSE;
-            }
-            else{
-                // Login succeeded and set session by user id.
-                $ci->load->library('session');
-                $ci->session->set_userdata('user_id', $u->id);
-                $this->access();
-                return TRUE;
-            }
+            // Login succeeded and set session by user id.
+            $ci->load->library('session');
+            $ci->session->set_userdata('user_id', $u->id);
+            $this->access();
+            return TRUE;
         }
     }
 

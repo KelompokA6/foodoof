@@ -1,15 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Badak extends CI_Controller {
-  public function index()
+  public function index($view = 'welcome_message')
   {
     $this->load->model('viewer');
-    $this->viewer->show('welcome_message');
+    $this->viewer->show($view);
+    // $this->output->enable_profiler(TRUE);
   }
 
   public function show($view)
   {
-    $this->load->model('viewer');
-    $this->viewer->show($view);
+    $this->index($view);
   }
 }
