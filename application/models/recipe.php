@@ -225,78 +225,227 @@ class Recipe extends DataMapper {
     }
 
     /*
-        Digunakan untuk memperoleh resep yang merupakan highlight, dengan parameter input limit resep yang ingin ditampilkan
+        Digunakan untuk memperoleh resep yang merupakan list resep highlight, dengan parameter input limit resep yang ingin ditampilkan
     */
     function getHightlight($limit=10){
-        $this->where('highlight', '1');
-        $this->where('status', '1');
-        $this->get($limit,0);
+        $recipe = new Recipe();
+        $recipe->where('highlight', '1');
+        $recipe->where('status', '1');
+        $recipe->get($limit,0);
+        $arrResult = array();
+        foreach ($recipe as $recipes) {
+            $data = array(
+                    "id" => $recipes->id,
+                    "name" => $recipes->name,
+                    "description" => $recipes->description,
+                    "portion" => $recipes->portion,
+                    "duration" => $recipes->author,
+                    "create_date" => $recipes->create_date,
+                    "last_update" => $recipes->last_update,
+                    "rating" => $recipes->rating,
+                    "status" => $recipes->status,
+                    "view" => $recipes->view,
+                    "photo" => $recipes->photo,
+                    "highlight" => $recipes->highlight,
+                );
+            array_push($arrResult, $data);
+        }
+        return $arrResult;
     }
 
     /*
         Digunakan untuk memperoleh resep yang merupakan terbaru, dengan parameter input limit resep yang ingin ditampilkan
     */
     function getRecently($limit=10){
-        $this->where('status', '1')->order_by("create_date", "desc")->get($limit,0);
+        $recipe = new Recipe();
+        $recipe->where('status', '1')->order_by("create_date", "desc")->get($limit,0);
+        $arrResult = array();
+        foreach ($recipe as $recipes) {
+            $data = array(
+                    "id" => $recipes->id,
+                    "name" => $recipes->name,
+                    "description" => $recipes->description,
+                    "portion" => $recipes->portion,
+                    "duration" => $recipes->author,
+                    "create_date" => $recipes->create_date,
+                    "last_update" => $recipes->last_update,
+                    "rating" => $recipes->rating,
+                    "status" => $recipes->status,
+                    "view" => $recipes->view,
+                    "photo" => $recipes->photo,
+                    "highlight" => $recipes->highlight,
+                );
+            array_push($arrResult, $data);
+        }
+        return $arrResult;
     }
 
     /*
         Digunakan untuk memperoleh resep yang merupakan resep dengan rating tertinggi, dengan parameter input limit resep yang ingin ditampilkan
     */
     function getTopRecipe($limit=10){
-        $this->where('status', '1')->order_by("rating", "desc")->get($limit,0);
+        $recipe = new Recipe();
+        $recipe->where('status', '1')->order_by("rating", "desc")->get($limit,0);
+        $arrResult = array();
+        foreach ($recipe as $recipes) {
+            $data = array(
+                    "id" => $recipes->id,
+                    "name" => $recipes->name,
+                    "description" => $recipes->description,
+                    "portion" => $recipes->portion,
+                    "duration" => $recipes->author,
+                    "create_date" => $recipes->create_date,
+                    "last_update" => $recipes->last_update,
+                    "rating" => $recipes->rating,
+                    "status" => $recipes->status,
+                    "view" => $recipes->view,
+                    "photo" => $recipes->photo,
+                    "highlight" => $recipes->highlight,
+                );
+            array_push($arrResult, $data);
+        }
+        return $arrResult;
     }
 
     /*
         Digunakan untuk memperoleh resep-resep yang dimiliki oleh sebuah user.
     */
     function getUserRecipe($userId){
-        $this->get_by_author($userId);
+        $recipe = new Recipe();
+        $recipe->get_by_author($userId);
+        $arrResult = array();
+        foreach ($recipe as $recipes) {
+            $data = array(
+                    "id" => $recipes->id,
+                    "name" => $recipes->name,
+                    "description" => $recipes->description,
+                    "portion" => $recipes->portion,
+                    "duration" => $recipes->author,
+                    "create_date" => $recipes->create_date,
+                    "last_update" => $recipes->last_update,
+                    "rating" => $recipes->rating,
+                    "status" => $recipes->status,
+                    "view" => $recipes->view,
+                    "photo" => $recipes->photo,
+                    "highlight" => $recipes->highlight,
+                );
+            array_push($arrResult, $data);
+        }
+        return $arrResult;
     }
 
     /*
         Digunakan untuk memperoleh profile sebuah resep. resep yang diperoleh harus berstatus publish atau yang melihat merupakan pemilik resep tersebut.
+        Kalau status tidak publish maka return false, tapi bila tidak publish dan yg request pemilik return resep.
     */
     function getRecipeProfile($id=NULL, $user_id=NULL){
         if($id == NULL){
             $id = $this->id;
         }
-        $this->get_by_id($id);
-        if($this->status){
-            return true;
+        $recipes = new Recipe();
+        $recipes->get_by_id($id);
+        if($recipe->status){
+            $data = array(
+                    "id" => $recipes->id,
+                    "name" => $recipes->name,
+                    "description" => $recipes->description,
+                    "portion" => $recipes->portion,
+                    "duration" => $recipes->author,
+                    "create_date" => $recipes->create_date,
+                    "last_update" => $recipes->last_update,
+                    "rating" => $recipes->rating,
+                    "status" => $recipes->status,
+                    "view" => $recipes->view,
+                    "photo" => $recipes->photo,
+                    "highlight" => $recipes->highlight,
+                );
+            return $data;
         }
         else{
             if(empty($user_id) && $this->author==$user_id){
-                $this->get_by_id($id);
-                return true;
+                $data = array(
+                        "id" => $recipes->id,
+                        "name" => $recipes->name,
+                        "description" => $recipes->description,
+                        "portion" => $recipes->portion,
+                        "duration" => $recipes->author,
+                        "create_date" => $recipes->create_date,
+                        "last_update" => $recipes->last_update,
+                        "rating" => $recipes->rating,
+                        "status" => $recipes->status,
+                        "view" => $recipes->view,
+                        "photo" => $recipes->photo,
+                        "highlight" => $recipes->highlight,
+                    );
+                return $data;
             }
-            else{
-                $this->get_by_id('0');
-            }
-            return false;
+            return FALSE;
         }
     }
 
     /*
-        Digunakan untuk memperoleh bahan-bahan yang digunakan oleh sebuah resep. tidak memiliki kembalian, hasil disimpan pada variabel ingredients
+        Digunakan untuk memperoleh bahan-bahan yang digunakan oleh sebuah resep. kembalian list bahan
     */
     function getIngredients($id=NULL){
         if($id == NULL){
             $id = $this->id;
         }
         $ingredient = new Ingredient();
-        $this->ingredients = $ingredient->get_where(array('recipe_id' => $id));
+        $ingredient->get_where(array('recipe_id' => $id));
+        $arrResult = array();
+        foreach ($ingredient as $ingredients) {
+            $data = array(
+                    "recipe_id" => $ingredients->recipe_id,
+                    "name" => $ingredients->name,
+                    "quantity" => $ingredients->quantity,
+                    "units" => $ingredients->units,
+                    "info" => $ingredients->info,
+                );
+            array_push($arrResult, $data);
+        }
+        return $arrResult;
     }
 
     /*
-        Digunakan untuk memperoleh step yang digunakan oleh sebuah resep. tidak memiliki kembalian, hasil disimpan pada variabel steps
+        Digunakan untuk memperoleh step yang digunakan oleh sebuah resep. kembalian list langkah
     */
     function getSteps($id=NULL){
         if($id == NULL){
             $id = $this->id;
         }
         $step = new Step();
-        $this->steps = $step->get_where(array('recipe_id' => $id));
+        $step->get_where(array('recipe_id' => $id));
+        $arrResult = array();
+        foreach ($step as $steps) {
+            $data = array(
+                    "recipe_id" => $steps->recipe_id,
+                    "no_step" => $steps->no_step,
+                    "description" => $steps->description,
+                    "photo" => $steps->photo,
+                );
+            array_push($arrResult, $data);
+        }
+        return $arrResult;
+    }
+
+    /*
+        Digunakan untuk memperoleh kategori yang dimiliki oleh sebuah resep. kembalian list kategori
+    */
+    function getCategories($id=NULL){
+        if($id == NULL){
+            $id = $this->id;
+        }
+        $category = new Category();
+        $category->get_where(array('recipe_id' => $id));
+        $arrResult = array();
+        foreach ($category as $categories) {
+            $data = array(
+                    "recipe_id" => $categories->recipe_id,
+                    "name" => $categories->name,
+                );
+            array_push($arrResult, $data);
+        }
+        return $arrResult;
     }
 
     /*
@@ -339,7 +488,7 @@ class Recipe extends DataMapper {
     }
 
     /*
-        Digunakan untuk menambahkan sebuah category pada sebuah resep
+        Digunakan untuk menambahkan sebuah category pada sebuah resep, kembalian berhasil atai tidak
     */
     function addCategory($id=NULL, $category=NULL){
         if($id==NULL){
@@ -362,7 +511,7 @@ class Recipe extends DataMapper {
     }
 
     /*
-        Digunakan untuk menghapus sebuah category pada sebuah resep
+        Digunakan untuk menghapus sebuah category pada sebuah resep, kembalian boolean berhasil atau tidak
     */
     function deleteCategory($id=NULL, $category=NULL){
         if($id==NULL){

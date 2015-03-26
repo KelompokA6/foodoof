@@ -33,8 +33,8 @@
                       <li class="selectSearch"><a href="#">Account</a></li>
                     </ul>
                   </div>
-                  <button class="btn btn-primary" type="submit">
-                     Search
+                  <button class="btn btn-primary" type="submit" style="width:20px">
+                     <i class="fa fa-search"></i>
                   </button>
               </span>
           </div>
