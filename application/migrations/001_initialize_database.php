@@ -47,7 +47,7 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE,
 			),
 			'photo' => array(
-				'type' => 'MEDIUMTEXT',
+				'type' => 'TEXT',
 				'null' => TRUE,
 			),
 			'last_access' => array(
@@ -113,7 +113,7 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE
 			),
 			'photo' => array(
-				'type' => 'MEDIUMTEXT',
+				'type' => 'TEXT',
 				'null' => TRUE,
 			),
 			'highlight' => array(
@@ -172,7 +172,7 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE,
 			),
 			'photo' => array(
-				'type' => 'MEDIUMTEXT',
+				'type' => 'TEXT',
 				'null' => TRUE,
 			),
 		));
