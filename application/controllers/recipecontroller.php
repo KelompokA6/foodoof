@@ -10,10 +10,7 @@ class RecipeController extends CI_Controller {
 	public function edit($id){
 		$recipe  = new Recipe();
 		$recipe->id = $id;
-		foreach ($recipe->get() as $obj)
-		{
-			
-		}
+		
 	}
 
 	// ini pake post, lihat registration
@@ -46,18 +43,22 @@ class RecipeController extends CI_Controller {
 	// ini buat ambil resep dengan input id
 	public function recipes($id){
 		$recipe = new Recipe();
-		$recipe->get_by_id($id); 
+		$recipe->getRecipe;	
 	}
 
 	// top resep untuk halaman top Page.
-	public function topPage(){
+	// kalo buat ditampilin di home, cuma ambil 5 resep aja. 
+	// kalo buat ditampilin di page sendiri, diambil 10 resep.
+	public function top($isOnHome = true){
 		$recipe = new Recipe();
-		$recipe->order_by("rating","desc");
-		
+		if ($isOnHome === true){
+			$recipe->getTopRecipe(5);
+		} else {
+			$recipe->getTopRecipe(10);
+		}
 		$this->load->library('parser');
 		$arr = array();
-
-		foreach ($recipe->get(10,0) as $obj)
+		foreach ($recipe as $obj)
 		{
 			$data = array(
 				'judul' => $obj->name,
@@ -73,56 +74,62 @@ class RecipeController extends CI_Controller {
 			'data' => $arr
 			);
 
-		$this->parser->parse("coba_top_recipe", $data1);
-	}
-
-	// top recipe untuk halaman home.
-	public function topHome(){
-		$recipe = new Recipe();
-		$recipe->order_by("rating","desc");
-		
-		$this->load->library('parser');
-		$arr = array();
-
-		foreach ($recipe->get(5,0) as $obj)
-		{
-			$data = array(
-				'judul' => $obj->name,
-				'author' => $obj->author,
-				'date' => $obj->last_update,
-				'rating' => $obj->rating,
-				'views' => $obj->views,
-				'photo' => $obj->photo
-				);
-			array_push($arr, $data);
-		}
-		$data1=array(
-			'data' => $arr
-			);
-		
 		$this->parser->parse("coba_top_recipe", $data1);
 	}
 
 	// ini buat ambil highlight resep
-	public function highlight(){
+	public function highlight($isOnHome = true){
 		$recipe = new Recipe();
-		$recipe->get_by_highlight(0);
+		$recipe->getHightlight(10);
+		$this->load->library('parser');
+		$arr = array();
 		foreach ($recipe as $obj)
 		{
-		    echo $obj->name ;
-		    echo "<br>";
+			$data = array(
+				'judul' => $obj->name,
+				'author' => $obj->author,
+				'date' => $obj->last_update,
+				'rating' => $obj->rating,
+				'views' => $obj->views,
+				'photo' => $obj->photo
+				);
+			array_push($arr, $data);
 		}
+		$data1=array(
+			'data' => $arr
+			);
 
+		$this->parser->parse("coba_top_recipe", $data1);
 	}
 
 	// ini buat ambil recent resep
-	public function recent(){
+	// kalo buat ditampilin di home, cuma ambil 5 resep aja. 
+	// kalo buat ditampilin di page sendiri, diambil 10 resep.
+	public function recent($isOnHome = true){
 		$recipe = new Recipe();
-		$recipe->order_by("create_date","desc");
-		foreach ($recipe->get() as $obj)
-		{
-		    echo $obj->name ;
-		    echo "<br>";
+		if ($isOnHome === true){
+			$recipe->getRecently(5);
+		} else {
+			$recipe->getRecently(10);
 		}
+		$this->load->library('parser');
+		$arr = array();
+		foreach ($recipe as $obj)
+		{
+			$data = array(
+				'judul' => $obj->name,
+				'author' => $obj->author,
+				'date' => $obj->last_update,
+				'rating' => $obj->rating,
+				'views' => $obj->views,
+				'photo' => $obj->photo
+				);
+			array_push($arr, $data);
+		}
+		$data1=array(
+			'data' => $arr
+			);
+
+		$this->parser->parse("coba_top_recipe", $data1);
 	}
 }
