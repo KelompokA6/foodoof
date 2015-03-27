@@ -20,17 +20,27 @@ class User extends CI_Controller {
 		$this->viewer->show('user_timeline_view', $data);
 	}
 
-	public function changePassword(){
+	public function updatePassword(){
 		$data['oldPass'] = $this->input->post("password_user");
 		$data['newPass'] = $this->input->post("new_password");
 		$data['confirmPass'] = $this->input->post("confirm_password");
 
 		if($this->isValid($data)){
-
+			$user = new User();
+			$isChanged = $user->updatePassword($data['newPass']);
+			if($this->isValid($data)){
+				$dataMessage['message'] = "Change Password Success"; 
+			}
+			else{
+				$dataMessage['message'] = "Change Password Failed";
+			}
 		}
 		else{
+			$dataMessage['message'] = "Change Password Failed";
+		} 
 
-		}
+		$this->load->model('viewer');
+		$this->viewer->show('change_password_view', $dataMessage);
 	}
 
 	public function viewChangePass(){
@@ -43,13 +53,12 @@ class User extends CI_Controller {
 		$data['email'] = $this->input->post("email_user");
 		$data['password'] = $this->input->post("password_user"); 
 		$data['confrimPass'] = $this->input->post("confrim_password");
-
 		
 		if($this->isValid($data)){
 			$user = new User();
 			$isCreate = $user->createUser($data);
 			if($isCreate){
-				$dataMessage['message'] = "Registration Success"; //cara masukin nilainya gini bukan ya??
+				$dataMessage['message'] = "Registration Success"; 
 			}
 			else{
 				$dataMessage['message'] = "Registration Failed";
@@ -63,15 +72,63 @@ class User extends CI_Controller {
 		$this->viewer->show('register_view', $dataMessage);
 	}
 
-	public function editProfile($id){
+	public function showFormProfile($id){
+		$u = new User();
+		$data['dataProfile'] = $u->getDataProfile($id);
 
+		$this->load->model('viewer');
+		$this->viewer->show('form_profile_view', $data);
 	}
 
-	public function getPassword($id){ //dari sequence lupa password
+	public function updateProfile(){ 		//
+		$data['photo'] = $this->input->post("photo_user");
+		$data['name'] = $this->input->post("name_user");
+		$data['gender'] = $this->input->post("gender_user");
+		$data['email'] = $this->input->post("email_user");
+		$data['phone'] = $this->input->post("phone_user");
+		$data['birthDate'] = $this->input->post("birthDate_user");
 
+		$data['twitter'] = $this->input->post("twitter_user");
+		$data['fb'] = $this->input->post("fb_user");
+		$data['ig'] = $this->input->post("ig_user");
+		$data['gplus'] = $this->input->post("gplus_user");
+		$data['linkedin'] = $this->input->post("linkedin_user");
+
+		if($this->isValid($data)){
+			$u = new User();
+			$isUpdated = $u->updateUserProfile($data);
+			if($isUpdated){
+				$dataMessage['message'] = "Update Success"; 
+			}
+			else{
+				$dataMessage['message'] = "Update Failed";
+			}
+		}
+		else{
+			$dataMessage['message'] = "Update Failed";
+		}
+
+		$this->load->model('viewer');
+		$this->viewer->show('form_profile_view', $dataMessage);
+	}
+
+	public function getPassword($email){ //dari sequence lupa password, buat minta password nya dr userManager
+		$u = new User();
+		$data['password'] = $u->getPassword($email);
+		$data['email'] = $email;
+		if($this->sendEmail($data)){
+			$dataMessage['message'] = "Email Sent";
+			$this->load->model('viewer');
+			$this->viewer->show('forget_password_view', $dataMessage); //else nya?
+		}
 	}
 
 	public function isValid(){
 		return TRUE;
 	}
+
+	public function sendEmail(){
+		return TRUE;
+	}
 }
+//udah mulai mabok -_-
