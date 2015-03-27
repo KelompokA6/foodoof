@@ -244,7 +244,7 @@ class Recipe extends DataMapper {
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
             $data->status = $recipes->status;
-            $data->view = $recipes->view;
+            $data->views = $recipes->views;
             $data->photo = $recipes->photo;
             $data->highlight = $recipes->highlight;
             array_push($arrResult, $data);
@@ -270,7 +270,7 @@ class Recipe extends DataMapper {
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
             $data->status = $recipes->status;
-            $data->view = $recipes->view;
+            $data->views = $recipes->views;
             $data->photo = $recipes->photo;
             $data->highlight = $recipes->highlight;
             array_push($arrResult, $data);
@@ -296,7 +296,7 @@ class Recipe extends DataMapper {
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
             $data->status = $recipes->status;
-            $data->view = $recipes->view;
+            $data->views = $recipes->views;
             $data->photo = $recipes->photo;
             $data->highlight = $recipes->highlight;
             array_push($arrResult, $data);
@@ -322,7 +322,7 @@ class Recipe extends DataMapper {
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
             $data->status = $recipes->status;
-            $data->view = $recipes->view;
+            $data->views = $recipes->views;
             $data->photo = $recipes->photo;
             $data->highlight = $recipes->highlight;
             array_push($arrResult, $data);
@@ -351,7 +351,7 @@ class Recipe extends DataMapper {
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
             $data->status = $recipes->status;
-            $data->view = $recipes->view;
+            $data->views = $recipes->views;
             $data->photo = $recipes->photo;
             $data->highlight = $recipes->highlight;
             return $data;
@@ -368,7 +368,7 @@ class Recipe extends DataMapper {
                 $data->last_update = $recipes->last_update;
                 $data->rating = $recipes->rating;
                 $data->status = $recipes->status;
-                $data->view = $recipes->view;
+                $data->views = $recipes->views;
                 $data->photo = $recipes->photo;
                 $data->highlight = $recipes->highlight;
                 return $data;
@@ -411,9 +411,9 @@ class Recipe extends DataMapper {
         $arrResult = array();
         foreach ($step as $steps) {
             $data = new stdClass();
-            $data->recipe_id =  $steps->recipe_id;
-            $data->no_step =  $steps->no_step;
-            $data->description =  $steps->description;
+            $data->recipe_id = $steps->recipe_id;
+            $data->no_step = $steps->no_step;
+            $data->description = $steps->description;
             $data->photo = $steps->photo;
             array_push($arrResult, $data);
         }

@@ -99,7 +99,7 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE,
 			),
 			'rating' => array(
-				'type' => 'DECIMAL(3,2)',
+				'type' => 'DECIMAL(3,2) DEFAULT 0.0',
 				'unsigned' => TRUE,
 				'null' => TRUE
 			),
