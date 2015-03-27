@@ -106,8 +106,8 @@ class Recipe extends DataMapper {
         $rcpSave = new Recipe();
         $rcpSave->get_by_id($id);
         $photo = $rcpSave->photo;
-        if(file_exists("image/tmp/recipe/".$id.".jpg")){
-            $photo = "image/recipe/".$id.".jpg";
+        if(file_exists("assets/tmp/recipe/".$id.".jpg")){
+            $photo = "assets/recipe/".$id.".jpg";
         }
         if(!empty($id) && !empty($name) && !empty($portion) 
             && !empty($duration) && !empty($description) && !empty($last_update)
@@ -125,11 +125,11 @@ class Recipe extends DataMapper {
             if(!$rcpSave->where('id', $id)->update($arrUpdate)){
                 return FALSE;
             }
-            $data = read_file("images/tmp/recipe/".$id.".jpg");
-            if(!write_file("image/recipe/".$id.".jpg", $data)){
+            $data = read_file("assets/tmp/recipe/".$id.".jpg");
+            if(!write_file("assets/recipe/".$id.".jpg", $data)){
                 return false;
             }
-            unlink("images/tmp/recipe/".$id."-".$x."jpg");
+            unlink("assets/tmp/recipe/".$id."-".$x."jpg");
             $this->trans_begin();
             if(is_array($ingredients)){
                 $ingres = new Ingredient();
@@ -157,17 +157,17 @@ class Recipe extends DataMapper {
                 $stp->delete();
                 foreach ($steps as $step) {
                     $stp = new Step();
-                    if(file_exists("images/tmp/step/".$id."-".$x.".jpg")){
-                        $stp->photo = "image/step/".$id."-".$x.".jpg";
+                    if(file_exists("assets/tmp/step/".$id."-".$x.".jpg")){
+                        $stp->photo = "assets/step/".$id."-".$x.".jpg";
                         $stp->recipe_id = $id;
                         $stp->description = $step->description;
                         $stp->step = $x;
                         if($stp->save()){
-                            $data = read_file("images/tmp/step/".$id."-".$x.".jpg");
-                            if(!write_file("image/step/".$id."-".$x.".jpg", $data)){
+                            $data = read_file("assets/tmp/step/".$id."-".$x.".jpg");
+                            if(!write_file("assets/step/".$id."-".$x.".jpg", $data)){
                                 return false;
                             }
-                            unlink("images/tmp/step/".$id."-".$x.".jpg");
+                            unlink("assets/tmp/step/".$id."-".$x.".jpg");
                         }
                     }
                     $x += 1;
@@ -178,17 +178,17 @@ class Recipe extends DataMapper {
                 $stp->get_by_id($id);
                 $stp->delete();
                 $stp = new Step();
-                if(file_exists("images/tmp/step/".$id."-".$x."jpg")){
-                    $stp->photo = "image/step/".$id."-".$x."jpg";
+                if(file_exists("assets/tmp/step/".$id."-".$x."jpg")){
+                    $stp->photo = "assets/step/".$id."-".$x."jpg";
                     $stp->recipe_id = $this->$id;
                     $stp->description = $step->description;
                     $stp->step = '1';
                     if($stp->save()){
-                        $data = read_file("images/tmp/step/".$id."-1.jpg");
-                        if(!write_file("image/step/".$id."-".$x."-1.jpg", $data)){
+                        $data = read_file("assets/tmp/step/".$id."-1.jpg");
+                        if(!write_file("assets/step/".$id."-".$x."-1.jpg", $data)){
                             return false;
                         }
-                        unlink("images/tmp/step/".$id."-".$x."jpg");
+                        unlink("assets/tmp/step/".$id."-".$x."jpg");
                     }
                 }
             }
@@ -234,20 +234,19 @@ class Recipe extends DataMapper {
         $recipe->get($limit,0);
         $arrResult = array();
         foreach ($recipe as $recipes) {
-            $data = array(
-                    "id" => $recipes->id,
-                    "name" => $recipes->name,
-                    "description" => $recipes->description,
-                    "portion" => $recipes->portion,
-                    "duration" => $recipes->author,
-                    "create_date" => $recipes->create_date,
-                    "last_update" => $recipes->last_update,
-                    "rating" => $recipes->rating,
-                    "status" => $recipes->status,
-                    "view" => $recipes->view,
-                    "photo" => $recipes->photo,
-                    "highlight" => $recipes->highlight,
-                );
+            $data = new stdClass();
+            $data->id = $recipes->id;
+            $data->name = $recipes->name;
+            $data->description = $recipes->description;
+            $data->portion = $recipes->portion;
+            $data->duration = $recipes->author;
+            $data->create_date = $recipes->create_date;
+            $data->last_update = $recipes->last_update;
+            $data->rating = $recipes->rating;
+            $data->status = $recipes->status;
+            $data->view = $recipes->view;
+            $data->photo = $recipes->photo;
+            $data->highlight = $recipes->highlight;
             array_push($arrResult, $data);
         }
         return $arrResult;
@@ -261,20 +260,19 @@ class Recipe extends DataMapper {
         $recipe->where('status', '1')->order_by("create_date", "desc")->get($limit,0);
         $arrResult = array();
         foreach ($recipe as $recipes) {
-            $data = array(
-                    "id" => $recipes->id,
-                    "name" => $recipes->name,
-                    "description" => $recipes->description,
-                    "portion" => $recipes->portion,
-                    "duration" => $recipes->author,
-                    "create_date" => $recipes->create_date,
-                    "last_update" => $recipes->last_update,
-                    "rating" => $recipes->rating,
-                    "status" => $recipes->status,
-                    "view" => $recipes->view,
-                    "photo" => $recipes->photo,
-                    "highlight" => $recipes->highlight,
-                );
+            $data = new stdClass();
+            $data->id = $recipes->id;
+            $data->name = $recipes->name;
+            $data->description = $recipes->description;
+            $data->portion = $recipes->portion;
+            $data->duration = $recipes->author;
+            $data->create_date = $recipes->create_date;
+            $data->last_update = $recipes->last_update;
+            $data->rating = $recipes->rating;
+            $data->status = $recipes->status;
+            $data->view = $recipes->view;
+            $data->photo = $recipes->photo;
+            $data->highlight = $recipes->highlight;
             array_push($arrResult, $data);
         }
         return $arrResult;
@@ -288,20 +286,19 @@ class Recipe extends DataMapper {
         $recipe->where('status', '1')->order_by("rating", "desc")->get($limit,0);
         $arrResult = array();
         foreach ($recipe as $recipes) {
-            $data = array(
-                    "id" => $recipes->id,
-                    "name" => $recipes->name,
-                    "description" => $recipes->description,
-                    "portion" => $recipes->portion,
-                    "duration" => $recipes->author,
-                    "create_date" => $recipes->create_date,
-                    "last_update" => $recipes->last_update,
-                    "rating" => $recipes->rating,
-                    "status" => $recipes->status,
-                    "view" => $recipes->view,
-                    "photo" => $recipes->photo,
-                    "highlight" => $recipes->highlight,
-                );
+            $data = new stdClass();
+            $data->id = $recipes->id;
+            $data->name = $recipes->name;
+            $data->description = $recipes->description;
+            $data->portion = $recipes->portion;
+            $data->duration = $recipes->author;
+            $data->create_date = $recipes->create_date;
+            $data->last_update = $recipes->last_update;
+            $data->rating = $recipes->rating;
+            $data->status = $recipes->status;
+            $data->view = $recipes->view;
+            $data->photo = $recipes->photo;
+            $data->highlight = $recipes->highlight;
             array_push($arrResult, $data);
         }
         return $arrResult;
@@ -315,20 +312,19 @@ class Recipe extends DataMapper {
         $recipe->get_by_author($userId);
         $arrResult = array();
         foreach ($recipe as $recipes) {
-            $data = array(
-                    "id" => $recipes->id,
-                    "name" => $recipes->name,
-                    "description" => $recipes->description,
-                    "portion" => $recipes->portion,
-                    "duration" => $recipes->author,
-                    "create_date" => $recipes->create_date,
-                    "last_update" => $recipes->last_update,
-                    "rating" => $recipes->rating,
-                    "status" => $recipes->status,
-                    "view" => $recipes->view,
-                    "photo" => $recipes->photo,
-                    "highlight" => $recipes->highlight,
-                );
+            $data = new stdClass();
+            $data->id = $recipes->id;
+            $data->name = $recipes->name;
+            $data->description = $recipes->description;
+            $data->portion = $recipes->portion;
+            $data->duration = $recipes->author;
+            $data->create_date = $recipes->create_date;
+            $data->last_update = $recipes->last_update;
+            $data->rating = $recipes->rating;
+            $data->status = $recipes->status;
+            $data->view = $recipes->view;
+            $data->photo = $recipes->photo;
+            $data->highlight = $recipes->highlight;
             array_push($arrResult, $data);
         }
         return $arrResult;
@@ -336,7 +332,7 @@ class Recipe extends DataMapper {
 
     /*
         Digunakan untuk memperoleh profile sebuah resep. resep yang diperoleh harus berstatus publish atau yang melihat merupakan pemilik resep tersebut.
-        Kalau status tidak publish maka return false, tapi bila tidak publish dan yg request pemilik return resep.
+        Kalau status tidak publish maka return false, tapi bila tidak publish dan yg request pemilik return object resep.
     */
     function getRecipeProfile($id=NULL, $user_id=NULL){
         if($id == NULL){
@@ -345,38 +341,36 @@ class Recipe extends DataMapper {
         $recipes = new Recipe();
         $recipes->get_by_id($id);
         if($recipe->status){
-            $data = array(
-                    "id" => $recipes->id,
-                    "name" => $recipes->name,
-                    "description" => $recipes->description,
-                    "portion" => $recipes->portion,
-                    "duration" => $recipes->author,
-                    "create_date" => $recipes->create_date,
-                    "last_update" => $recipes->last_update,
-                    "rating" => $recipes->rating,
-                    "status" => $recipes->status,
-                    "view" => $recipes->view,
-                    "photo" => $recipes->photo,
-                    "highlight" => $recipes->highlight,
-                );
+            $data = new stdClass();
+            $data->id = $recipes->id;
+            $data->name = $recipes->name;
+            $data->description = $recipes->description;
+            $data->portion = $recipes->portion;
+            $data->duration = $recipes->author;
+            $data->create_date = $recipes->create_date;
+            $data->last_update = $recipes->last_update;
+            $data->rating = $recipes->rating;
+            $data->status = $recipes->status;
+            $data->view = $recipes->view;
+            $data->photo = $recipes->photo;
+            $data->highlight = $recipes->highlight;
             return $data;
         }
         else{
             if(empty($user_id) && $this->author==$user_id){
-                $data = array(
-                        "id" => $recipes->id,
-                        "name" => $recipes->name,
-                        "description" => $recipes->description,
-                        "portion" => $recipes->portion,
-                        "duration" => $recipes->author,
-                        "create_date" => $recipes->create_date,
-                        "last_update" => $recipes->last_update,
-                        "rating" => $recipes->rating,
-                        "status" => $recipes->status,
-                        "view" => $recipes->view,
-                        "photo" => $recipes->photo,
-                        "highlight" => $recipes->highlight,
-                    );
+                $data = new stdClass();
+                $data->id = $recipes->id;
+                $data->name = $recipes->name;
+                $data->description = $recipes->description;
+                $data->portion = $recipes->portion;
+                $data->duration = $recipes->author;
+                $data->create_date = $recipes->create_date;
+                $data->last_update = $recipes->last_update;
+                $data->rating = $recipes->rating;
+                $data->status = $recipes->status;
+                $data->view = $recipes->view;
+                $data->photo = $recipes->photo;
+                $data->highlight = $recipes->highlight;
                 return $data;
             }
             return FALSE;
@@ -384,7 +378,7 @@ class Recipe extends DataMapper {
     }
 
     /*
-        Digunakan untuk memperoleh bahan-bahan yang digunakan oleh sebuah resep. kembalian list bahan
+        Digunakan untuk memperoleh bahan-bahan yang digunakan oleh sebuah resep. kembalian list object bahan
     */
     function getIngredients($id=NULL){
         if($id == NULL){
@@ -394,20 +388,19 @@ class Recipe extends DataMapper {
         $ingredient->get_where(array('recipe_id' => $id));
         $arrResult = array();
         foreach ($ingredient as $ingredients) {
-            $data = array(
-                    "recipe_id" => $ingredients->recipe_id,
-                    "name" => $ingredients->name,
-                    "quantity" => $ingredients->quantity,
-                    "units" => $ingredients->units,
-                    "info" => $ingredients->info,
-                );
+            $data = new stdClass();
+            $data->recipe_id = $ingredients->recipe_id;
+            $data->name = $ingredients->name;
+            $data->quantity = $ingredients->quantity;
+            $data->units = $ingredients->units;
+            $data->info = $ingredients->info;
             array_push($arrResult, $data);
         }
         return $arrResult;
     }
 
     /*
-        Digunakan untuk memperoleh step yang digunakan oleh sebuah resep. kembalian list langkah
+        Digunakan untuk memperoleh step yang digunakan oleh sebuah resep. kembalian list object langkah
     */
     function getSteps($id=NULL){
         if($id == NULL){
@@ -417,19 +410,18 @@ class Recipe extends DataMapper {
         $step->get_where(array('recipe_id' => $id));
         $arrResult = array();
         foreach ($step as $steps) {
-            $data = array(
-                    "recipe_id" => $steps->recipe_id,
-                    "no_step" => $steps->no_step,
-                    "description" => $steps->description,
-                    "photo" => $steps->photo,
-                );
+            $data = new stdClass();
+            $data->recipe_id =  $steps->recipe_id;
+            $data->no_step =  $steps->no_step;
+            $data->description =  $steps->description;
+            $data->photo = $steps->photo;
             array_push($arrResult, $data);
         }
         return $arrResult;
     }
 
     /*
-        Digunakan untuk memperoleh kategori yang dimiliki oleh sebuah resep. kembalian list kategori
+        Digunakan untuk memperoleh kategori yang dimiliki oleh sebuah resep. kembalian list object kategori
     */
     function getCategories($id=NULL){
         if($id == NULL){
@@ -439,10 +431,9 @@ class Recipe extends DataMapper {
         $category->get_where(array('recipe_id' => $id));
         $arrResult = array();
         foreach ($category as $categories) {
-            $data = array(
-                    "recipe_id" => $categories->recipe_id,
-                    "name" => $categories->name,
-                );
+            $data = new stdClass();
+            $data->recipe_id = $categories->recipe_id;
+            $data->name = $categories->name;
             array_push($arrResult, $data);
         }
         return $arrResult;

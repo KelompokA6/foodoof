@@ -195,6 +195,12 @@ class Welcome extends CI_Controller {
 		$this->load->view('test_closify.php');
 		echo "something";
 	}
+	public function getRecentlyRecipe(){
+		$recipe = new Recipe();
+		$recipes = $recipe->getRecently();
+		print_r($recipes);
+
+	}
 }
 
 

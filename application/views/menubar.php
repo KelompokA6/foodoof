@@ -21,7 +21,7 @@
               <div class="input-group-btn">
                 <div class="btn-group" role="group">
                   <!-- <button id="searchBy" type="button" class="btn btn-info" aria-expanded="true"> -->
-                    <select class="form-control info" style="width:120px">
+                    <select class="form-control btn-info" style="width:120px">
                       <option>Title</option>
                       <option>Ingredients</option>
                       <option>Account</option>
