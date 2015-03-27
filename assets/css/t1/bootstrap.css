@@ -6669,7 +6669,7 @@ button.close {
   }
 }
 @media(min-width:1200px){
-   .inline-search{
+  .inline-search{
     padding:10px;
   }
   .btn-cus{
@@ -6691,109 +6691,152 @@ button.close {
     border-left: 0;
     border-bottom: 0;
   }
+  .category-list{
+    margin:10px 0 10px 0;
+    line-height: 38px;
+  }
+  .recipe-list-home{
+    margin:10px 0 10px 0;
+  }
+  .detail-list{
+    border: dashed 1px #eee;
+    border-top:0px;
+    border-right:0px;
+    border-bottom:0px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .detail-list-img{
+    height:87px;
+    padding:5px 3px 5px 3px;
+    margin-right: 15px;
+  }
+  .icons{
+    padding-top:4px;
+  }
+  .img-list{
+    height: 77px
+  }
+  .img-category{
+    padding:0;
+  }
+  .chevron-menu{
+      line-height: inherit;
+  }
+  .details{
+    padding:0;
+  }
+  .link-menubar{
+    border:dashed 1px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    cursor: pointer;
+  }
+
+  ul.link-menubar-dropdown > li > a:hover,
+  ul.link-menubar-dropdown > li > a:focus {
+    text-decoration: none;
+    border: solid 5px;
+    border-top: 0;
+    border-bottom: 0;
+    border-right: 0;
+    border-color: #428bca;
+    color: #eee;
+    background: #5bc0de;
+  }
+  .link-menubar-dropdown > li:hover,
+  .link-menubar-dropdown > li:focus {
+    background-color: #428bca;
+  }
+  .img-profile-menubar{
+    height: 28px;
+    width: 28px;
+  }
+  .div-img-profile-menubar{
+    padding-top: 2px;
+  }
+  .link-menubar-dropdown{
+    float: left;
+    min-width: 120px;
+    padding: 5px 0;
+    margin: -10px 0 0;
+    margin-left: -10px;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+  }
+  .link-menubar-dropdown >li > a{
+    display: block;
+    padding: 3px 10px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #428bca;
+    white-space: nowrap;  
+  }
+
+  ul.dropdown-search > li > a:hover,
+  ul.dropdown-search > li > a:focus {
+    text-decoration: none;
+    border: solid 5px;
+    border-top: 0;
+    border-bottom: 0;
+    border-right: 0;
+    border-color: #428bca;
+    color: #eee;
+    background: #5bc0de;
+  }
+  .hover-menubar{
+    margin-top:-4px;
+    padding:4px;
+    text-align: center;
+  }
+  .hover-menubar:hover{
+    background: #5bc0de; 
+    border-radius: 8px;
+  }
+  .brand-menubar{
+    padding-left: 60px;
+  }
+  .col-menubar{
+    padding-left: 0; 
+    margin-left: -40px;
+  }
+  .input-search{
+    width:533px;
+  }
+  .button-group-normal{
+    min-width:60px; 
+    height:33.9915px;
+  }
+  .col-menu-user{
+    padding-left:70px;
+  }
+  .link-by-icon{
+    padding: 4px;
+  }
+  .outer-contain{
+    padding:20px 0;
+  }
+  .col-no-padding-left{
+    padding-left: 0;
+  }
+  .col-no-padding-top{
+    padding-top: 0;
+  }
+  .col-no-padding-right{
+    padding-right: 0;
+  }
+  .col-no-padding-bottom{
+    padding-bottom: 0;
+  }
+  .col-no-padding{
+    padding: 0;
+  }
 }
 
-.category-list{
-  margin:10px 0 10px 0;
-  line-height: 38px;
-}
-.recipe-list-home{
-  margin:10px 0 10px 0;
-}
-.detail-list{
-  border: dashed 1px #eee;
-  border-top:0px;
-  border-right:0px;
-  border-bottom:0px;
-  padding-left: 0px;
-  padding-right: 0px;
-}
 
-.detail-list-img{
-  height:87px;
-  padding:5px 3px 5px 3px;
-  margin-right: 15px;
-}
-.icons{
-  padding-top:4px;
-}
-.img-list{
-  height: 77px
-}
-.img-category{
-  padding:0;
-}
-.chevron-menu{
-    line-height: inherit;
-}
-.details{
-  padding:0;
-}
-.link-menubar{
-  border:dashed 1px;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  cursor: pointer;
-}
 
-ul.link-menubar-dropdown > li > a:hover,
-ul.link-menubar-dropdown > li > a:focus {
-  text-decoration: none;
-  border: solid 5px;
-  border-top: 0;
-  border-bottom: 0;
-  border-right: 0;
-  border-color: #428bca;
-  color: #eee;
-  background: #5bc0de;
-}
-.link-menubar-dropdown > li:hover,
-.link-menubar-dropdown > li:focus {
-  background-color: #428bca;
-}
-.img-profile-menubar{
-  height: 28px;
-  width: 28px;
-}
-.link-menubar-dropdown{
-  float: left;
-  min-width: 120px;
-  padding: 5px 0;
-  margin: -10px 0 0;
-  margin-left: -10px;
-  font-size: 14px;
-  text-align: left;
-  list-style: none;
-  background-color: #fff;
-}
-.link-menubar-dropdown >li > a{
-  display: block;
-  padding: 3px 10px;
-  clear: both;
-  font-weight: normal;
-  line-height: 1.42857143;
-  color: #428bca;
-  white-space: nowrap;  
-}
-
-ul.dropdown-search > li > a:hover,
-ul.dropdown-search > li > a:focus {
-  text-decoration: none;
-  border: solid 5px;
-  border-top: 0;
-  border-bottom: 0;
-  border-right: 0;
-  border-color: #428bca;
-  color: #eee;
-  background: #5bc0de;
-}
-.hover-menubar{
-  margin-top:-4px;
-  padding:4px;
-  text-align: center;
-}
-.hover-menubar:hover{
-  background: #5bc0de; 
-  border-radius: 8px;
-}
