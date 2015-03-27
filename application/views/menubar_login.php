@@ -13,40 +13,59 @@
 
   <ul class="nav navbar-top-links nav navbar-nav navbar-left col-md-11">
     <div class="col-md-12 form-inline inline-search">
-        <form class="navbar-form collapse-navbar-search">
-          <div class="col-md-1">
-          </div>
-          <div class="input-group form-group col-md-7" style="padding-left:20px;">
+        <form class="navbar-form collapse-navbar-search" style="padding-left:100px">
+          <div class="input-group form-group col-md-8" style="padding-left:20px;">
               <input type="text" class="form-control" placeholder="Search Recipe By Title"/>
               <div class="input-group-btn">
-                <div class="btn-group" role="group">
-                  <select name="category-search" class="form-control btn-info" style="width:120px">
-                    <option value="title">Title</option>
-                    <option value="ingredients">Ingredients</option>
-                    <option value="account">Account</option>
-                  </select>
-                </div>
-                <span class="btn-group" role="group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Search By<span class="caret"></span></button>
+                <ul class="dropdown-menu dropdown-search" role="menu" aria-labelledby="dropdownMenu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Recipe</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ingredient</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Account</a></li>
+                </ul>
+                <span class="btn-group">
                   <button class="btn btn-primary" type="submit" style="width:60px; height:33.9915px">
                      <i class="fa fa-search"></i>
                   </button>
                 </span>
               </div>
           </div>
-          
-          <a href="" class="btn-navbar-not-collapse" style="margin-left:-80px">
-            <button class="btn btn-primary" type="button">
-              <i class="fa fa-pencil-square-o fa-lg"></i> Write A Recipe
-            </button>
-          </a>
-          <div class="form-group btn-navbar-not-collapse text-center btn-log-nav" style="margin-left:20px">
-             <div class="col-md-3">
-                <img class="img-responsive"/>
-             </div>
-             <div class="col-md-4">Abid Nurul Hakim
-             </div>
-             <button type="button" class="btn btn-danger">    Logout    </button>
+          <div class="form-group col-md-3 pull-right btn-navbar-not-collapse text-center btn-log-nav" style="width:320px; line-height:32px; padding:0">
+            <div class="col-md-3">
+              <img class="img-responsive img-circle img-profile-menubar" src="<?php echo base_url();?>assets/img/01.jpg"/>
+            </div>
+            <div class="col-md-5" style="font-size:14px; padding:0; text-align:left">
+                <p id="dropdownMenuUser" class="popoverMenubar" data-toggle="popover" data-container="body" data-placement="bottom" 
+                  data-html="TRUE"
+                  data-content="
+                    <ul class='link-menubar-dropdown'>
+                      <li><a href='#'>My Profile</a></li>
+                      <li><a href='#'>My Recipe ()</a></li>
+                      <li><a href='#'>Message ()</a></li>
+                      <li><a href='#'>Cook Later ()</a></li>
+                      <li><a href='#'>Favorite ()</a></li>
+                    </ul>
+                  ">
+                  <span class="link-menubar">Abid</span>
+                </p>
+                <!-- <ul class="dropdown-menu link-menubar-dropdown" role="menu" aria-labelledby="dropdownMenu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Profile</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Recipe ()</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Message ()</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cook Later ()</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Favorite ()</a></li>
+                </ul> -->
+            </div>
+            <button type="button" class="btn btn-danger">Logout</button>
           </div>
+          <div class="pull-right">
+            <a href="" class="btn-navbar-not-collapse" style="margin-left:-80px" alt="New Recipe">
+              <button class="btn btn-primary" type="button">
+                <i class="fa fa-pencil-square-o fa-lg"></i> <i class="small"></i>
+              </button>
+            </a>
+          </div>
+          
         </form>
     </div>
   </ul>

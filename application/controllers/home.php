@@ -16,7 +16,7 @@ class Home extends CI_Controller {
 			$menubar = $this->parser->parse('menubar_login', $data, TRUE);	
 		}
 		else{
-			$menubar = $this->parser->parse('menubar', $data, TRUE);
+			$menubar = $this->parser->parse('menubar_login', $data, TRUE);
 		}	
 		$category_home = $this->parser->parse('category_home', $data, TRUE);
 		$top_recipe_home = $this->parser->parse('top_recipe_home', $data, TRUE);

@@ -33,5 +33,6 @@
   <script type="text/javascript">
     $('.carousel').carousel();
     $('.btn-cus').popover();
+    $('.popoverMenubar').popover();
   </script>
 </html>
