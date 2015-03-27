@@ -33,6 +33,9 @@ class Home extends CI_Controller {
 	public function profile(){
 		$this->load->view('profile_view');
 	}
+	public function editprofile(){
+		$this->load->view('edit_profile_view');
+	}
 
 	public function login()
 	{

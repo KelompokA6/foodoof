@@ -111,103 +111,131 @@
       			</div>
       		</div>
       		<div class="col-md-9">
-      			<div class="col-md-12 text-right">
-      				<a href="">
-      					<button class="btn btn-primary">
-      						<i class="fa fa-pencil-square-o fa-lg"></i>
-      						Edit
-      					</button>
-      				</a>
-      			</div>
-      			<div class="col-md-12">
-      				<h3 class="text-capitalize"> abid nurul hakim</h3>
-      			</div>
-      			<div class="col-md-12">
-      				<h3 class="text-capitalize"> Male, 20 Years old</h3>
-      			</div>
-      			<div class="col-md-12">
-      				<div class="col-md-12 col-no-padding-left">
-      					<div class="col-md-1 col-no-padding-left">
-      						<span class="fa-stack fa-lg">
-							  <i class="fa fa-square fa-stack-2x"></i>
-							  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-							</span>
-      					</div>
-      					<div class="col-md-11 col-no-padding-left">
-      						<h5>abidnurulhakim@gmail.com</h5>
-      					</div>
-      				</div>
-      				<div class="col-md-12 col-no-padding-left">
-      					<div class="col-md-1 col-no-padding-left">
-      						<span class="fa-stack fa-lg">
-							  <i class="fa fa-square fa-stack-2x"></i>
-							  <i class="fa fa-phone fa-stack-1x fa-inverse"></i>
-							</span>
-      					</div>
-      					<div class="col-md-11 col-no-padding-left">
-      						<h5>+6285714883607</h5>
-      					</div>
-      				</div>
-      				<div class="col-md-12 col-no-padding-left">
-      					<div class="col-md-1 col-no-padding-left">
-      						<span class="fa-stack fa-lg">
-							  <i class="fa fa-square fa-stack-2x"></i>
-							  <i class="fa fa-clock-o fa-stack-1x fa-inverse"></i>
-							</span>
-      					</div>
-      					<div class="col-md-11 col-no-padding-left">
-      						<h5>4 Minutes Ago</h5>
-      					</div>
-      				</div>
-      			</div>
-      			<div class="col-md-12">
-      				<div class="col-md-12 col-no-padding-left">
-      					<div class="col-md-1 col-no-padding-left">
-      						<span class="fa-stack fa-lg">
-							  <i class="fa fa-square fa-stack-2x"></i>
-							  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-							</span>
-      					</div>
-      					<div class="col-md-11 col-no-padding-left">
-      					</div>
-      				</div>
-      				<div class="col-md-12 col-no-padding-left">
-      					<div class="col-md-1 col-no-padding-left">
-      						<span class="fa-stack fa-lg">
-							  <i class="fa fa-square fa-stack-2x"></i>
-							  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-							</span>
-      					</div>
-      					<div class="col-md-11 col-no-padding-left">
-      					</div>
-      				</div>
-      				<div class="col-md-12 col-no-padding-left">
-      					<div class="col-md-1 col-no-padding-left">
-      						<span class="fa-stack fa-lg">
-							  <i class="fa fa-square fa-stack-2x"></i>
-							  <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
-							</span>
-      					</div>
-      					<div class="col-md-11 col-no-padding-left">
-      					</div>
-      				</div>
-      				<div class="col-md-12 col-no-padding-left">
-      					<div class="col-md-1 col-no-padding-left">
-      						<span class="fa-stack fa-lg">
-							  <i class="fa fa-square fa-stack-2x"></i>
-							  <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
-							</span>
-      					</div>
-      					<div class="col-md-11">
-      					</div>
-      				</div>
-      				<div class="col-md-12 col-no-padding-left">
-      					<div class="col-md-1 col-no-padding-left">
-      					</div>
-      					<div class="col-md-11 col-no-padding-left">
-      					</div>
-      				</div>
-      			</div>
+      			<div class="panel panel-default">
+				  	<div class="panel-body">
+				  		<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+					    	<div class="col-md-12">
+					    		<h3 class="page-header"> Edit Profile</h3>
+					    	</div>
+					    	<div class="col-md-12">
+								<h4>Personal Information</h4>
+								<div class="col-md-12">
+									<div class="form-group">
+									    <label for="inputEmail3" class="col-sm-2 control-label">Photo</label>
+									    <div class="col-sm-10">
+									      	<input type="file" class="form-control" id="inputEmail3" placeholder="Email">
+									    </div>
+									 </div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+									    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+									    <div class="col-sm-10">
+									      	<input type="text" class="form-control" id="inputEmail3" placeholder="Your Name">
+									    </div>
+									 </div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+									    <label for="inputEmail3" class="col-sm-2 control-label">Gender</label>
+									    <div class="col-sm-10">
+									      	<label class="radio-inline">
+											  	<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>Male
+											</label>
+											<label class="radio-inline">
+											  	<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">Female
+											</label>
+									    </div>
+									 </div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+									    <label for="inputEmail3" class="col-sm-2 control-label">Phone</label>
+									    <div class="col-sm-10">
+									      	<input type="text" class="form-control" id="inputEmail3" placeholder="Your Phone Number">
+									    </div>
+									 </div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+									    <label for="inputEmail3" class="col-sm-2 control-label">Birthdate</label>
+									    <div class="col-sm-10">
+									      	<input type="date" class="form-control" id="inputEmail3" placeholder="Your Birth Day">
+									    </div>
+									 </div>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<h4>Social Media</h4>
+								<div class="col-md-12">
+									<div class="form-group">
+									    <label class="col-sm-2 control-label">
+										    <div class="col-no-padding-left">
+					      						<span class="fa-stack fa-lg">
+												  <i class="fa fa-square fa-stack-2x"></i>
+												  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+												</span>
+					      					</div>
+					      				</label>
+									    <div class="col-sm-10">
+									      	<input type="text" class="form-control input-lg" id="inputEmail3" placeholder="@ Your Twitter">
+									    </div>
+									 </div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+									    <label class="col-sm-2 control-label">
+										    <div class="col-no-padding-left">
+					      						<span class="fa-stack fa-lg">
+												  <i class="fa fa-square fa-stack-2x"></i>
+												  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+												</span>
+					      					</div>
+					      				</label>
+									    <div class="col-sm-10">
+									      	<input type="text" class="form-control input-lg" id="inputEmail3" placeholder="Your Facebook">
+									    </div>
+									 </div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+									    <label class="col-sm-2 control-label">
+										    <div class="col-no-padding-left">
+					      						<span class="fa-stack fa-lg">
+												  <i class="fa fa-square fa-stack-2x"></i>
+												  <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+												</span>
+					      					</div>
+					      				</label>
+									    <div class="col-sm-10">
+									      	<input type="text" class="form-control input-lg" id="inputEmail3" placeholder="Your g+">
+									    </div>
+									 </div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+									    <label class="col-sm-2 control-label">
+										    <div class="col-no-padding-left">
+					      						<span class="fa-stack fa-lg">
+												  <i class="fa fa-square fa-stack-2x"></i>
+												  <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+												</span>
+					      					</div>
+					      				</label>
+									    <div class="col-sm-10">
+									      	<input type="text" class="form-control input-lg" id="inputEmail3" placeholder="Your Path">
+									    </div>
+									 </div>
+								</div>
+							</div>
+							<div class="col-md-12 text-center">
+								<button class="btn btn-success btn-lg" type="submit" style="width:150px">
+			                    	Save
+			                  	</button>
+							</div>
+						</form>
+				  	</div>
+				</div>
       		</div>
       	</div>
       </div>

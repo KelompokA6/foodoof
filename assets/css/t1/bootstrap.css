@@ -6757,6 +6757,9 @@ button.close {
   .div-img-profile-menubar{
     padding-top: 2px;
   }
+  .img-brand-menubar{
+    margin-top: 10px;
+  }
   .link-menubar-dropdown{
     float: left;
     min-width: 120px;
@@ -6799,7 +6802,7 @@ button.close {
     border-radius: 8px;
   }
   .brand-menubar{
-    padding-left: 60px;
+    padding-left: 80px;
   }
   .col-menubar{
     padding-left: 0; 
@@ -6836,6 +6839,21 @@ button.close {
   .col-no-padding{
     padding: 0;
   }
+}
+.icon-favorite{
+  color:pink;
+}
+.icon-profile{
+  color:rgb(188, 209, 254);
+}
+.icon-recipe{
+  color:rgb(134, 210, 135);
+}
+.icon-cooklater{
+  color:rgb(254, 197, 60);
+}
+.icon-key{
+  color:rgb(229, 106, 69);
 }
 
 
