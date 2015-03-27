@@ -1,6 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class User extends CI_Controller {
+	public function index(){
+		$this->load->view('profile_view');
+	}
+
 	public function getProfile($id){
 		$user = new User();
 		$profile = $user->getProfile($id);
