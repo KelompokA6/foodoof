@@ -8,7 +8,6 @@
 </head>
   <body>
     {menubar}
-  </header>-->
     <div class="container container-mobile">
       <div class="row">
         <div class="col-md-9 pull-right">

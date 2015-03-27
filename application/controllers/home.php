@@ -30,6 +30,10 @@ class Home extends CI_Controller {
 		$this->parser->parse('template_default_home', $datacomplete);
 	}
 
+	public function profile(){
+		$this->load->view('profile_view');
+	}
+
 	public function login()
 	{
 		$email = $this->input->post("email_user");

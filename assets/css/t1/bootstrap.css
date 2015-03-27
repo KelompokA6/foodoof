@@ -6753,8 +6753,8 @@ ul.link-menubar-dropdown > li > a:focus {
   background-color: #428bca;
 }
 .img-profile-menubar{
-  height: 32px;
-  width: 32px;
+  height: 28px;
+  width: 28px;
 }
 .link-menubar-dropdown{
   float: left;
@@ -6787,4 +6787,13 @@ ul.dropdown-search > li > a:focus {
   border-color: #428bca;
   color: #eee;
   background: #5bc0de;
+}
+.hover-menubar{
+  margin-top:-4px;
+  padding:4px;
+  text-align: center;
+}
+.hover-menubar:hover{
+  background: #5bc0de; 
+  border-radius: 8px;
 }

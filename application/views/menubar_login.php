@@ -30,11 +30,11 @@
                 </span>
               </div>
           </div>
-          <div class="form-group col-md-3 pull-right btn-navbar-not-collapse text-center btn-log-nav" style="width:320px; line-height:32px; padding:0">
-            <div class="col-md-3">
-              <img class="img-responsive img-circle img-profile-menubar" src="<?php echo base_url();?>assets/img/01.jpg"/>
+          <div class="form-group col-md-1 pull-right btn-navbar-not-collapse text-center btn-log-nav" style="width:320px; line-height:32px; padding:0">
+            <div class="col-md-3 hover-menubar">
+              <img class="img-circle img-profile-menubar" src="<?php echo base_url();?>assets/img/01.jpg"/>  Abid
             </div>
-            <div class="col-md-5" style="font-size:14px; padding:0; text-align:left">
+            <!-- <div class="col-md-2" style="font-size:14px; padding:0; text-align:left">
                 <p id="dropdownMenuUser" class="popoverMenubar" data-toggle="popover" data-container="body" data-placement="bottom" 
                   data-html="TRUE"
                   data-content="
@@ -48,24 +48,19 @@
                   ">
                   <span class="link-menubar">Abid</span>
                 </p>
-                <!-- <ul class="dropdown-menu link-menubar-dropdown" role="menu" aria-labelledby="dropdownMenu1">
+                <ul class="dropdown-menu link-menubar-dropdown" role="menu" aria-labelledby="dropdownMenu1">
                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Profile</a></li>
                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">My Recipe ()</a></li>
                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Message ()</a></li>
                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Cook Later ()</a></li>
                   <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Favorite ()</a></li>
-                </ul> -->
-            </div>
+                </ul>
+            </div> -->
             <button type="button" class="btn btn-danger">Logout</button>
           </div>
-          <div class="pull-right">
-            <a href="" class="btn-navbar-not-collapse" style="margin-left:-80px" alt="New Recipe">
-              <button class="btn btn-primary" type="button">
-                <i class="fa fa-pencil-square-o fa-lg"></i> <i class="small"></i>
-              </button>
-            </a>
-          </div>
-          
+          <a href="" class="pull-right text-center" style="padding:4px;" title="Write A Recipe">
+            <i class="fa fa-pencil-square-o fa-2x"></i>
+          </a>
         </form>
     </div>
   </ul>
