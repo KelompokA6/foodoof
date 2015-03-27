@@ -77,12 +77,12 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE
 			),
 			'portion' => array(
-				'type' => 'INT',
+				'type' => 'INT DEFAULT 1',
 				'unsigned' => TRUE,
 				'null' => TRUE
 			),
 			'duration' => array(
-				'type' => 'INT',
+				'type' => 'INT DEFAULT 0',
 				'unsigned' => TRUE,
 				'null' => TRUE
 			),
