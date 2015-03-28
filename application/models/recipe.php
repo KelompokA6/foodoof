@@ -138,9 +138,12 @@ class Recipe extends DataMapper {
                 foreach ($ingredients as $ingredient) {
                     $ingre = new Ingredient();
                     $ingre->recipe_id = $id;
-                    $ingre->recipe_id = $id;
-                    $ingre->recipe_id = $id;
-                    $ingre->saveIngredient($this->recipe_id, $ingredient->name, $ingredient->quantity, $ingredient->units);
+                    $ingre->name = $ingredient->name;
+                    $ingre->quantity = $ingredient->quantity;
+                    $ingre->units = $ingredient->units;
+                    if(!$ingre->save()){
+                        return false;
+                    }
                 }
             }
             else{
@@ -148,7 +151,13 @@ class Recipe extends DataMapper {
                 $ingres->get_by_id($id);
                 $ingres->delete();
                 $ingre = new Ingredient();
-                $ingre->saveIngredient($this->recipe_id, $ingredients->name, $ingredients->quantity, $ingredients->units);
+                $ingre->recipe_id = $id;
+                $ingre->name = $ingredients->name;
+                $ingre->quantity = $ingredients->quantity;
+                $ingre->units = $ingredients->units;
+                if(!$ingre->save()){
+                    return false;
+                }
             }
             if(is_array($steps)){
                 $x=1;
