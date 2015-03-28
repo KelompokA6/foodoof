@@ -36,19 +36,43 @@
                   <i class="fa fa-pencil-square-o fa-2x"></i>
                 </a>
               </div>
-              <a href="user/profile" class="col-md-5">
-                <div class="col-md-12 hover-menubar text-left" title="Profile">
-                  <div class="col-md-6 col-no-padding-left col-no-padding-right div-img-profile-menubar text-left">
-                    <img class="img-circle img-profile-menubar" src="<?php echo base_url();?>assets/img/01.jpg"/>
-                  </div>
-                  <div class="col-md-4 col-no-padding text-left" style="line-height:34px">
-                    Abid
-                  </div>
-                </div>
-              </a>
-              <div class="col-md-4 col-offset-md-3 pull-right">
-                <button type="button" class="btn btn-danger btn-sm">Logout</button>
-              </div>         
+              <div class="btn-group" role="group" aria-label="" style="padding-left: 40px;">
+                <button type="button" class="btn btn-success btn-cus" data-container="body" data-toggle="popover" data-placement="bottom" 
+                data-html="TRUE"
+                data-content="
+                  <form id='loginform' class='form-horizontal' role='form' method='post' action='login'>      
+                      <div class='input-group'>
+                          <span class='input-group-addon'><i class='fa fa-user'></i></span>
+                          <input id='login-username' type='text' class='form-control' name='email_user' value='' placeholder='Email'>                                        
+                      </div><br>        
+                      <div class='input-group'>
+                                  <span class='input-group-addon'><i class='fa fa-lock'></i></span>
+                                  <input id='login-password' type='password' class='form-control' name='password_user' placeholder='Password'>
+                              </div>
+                      <div style='margin-top:10px' class='form-group'>
+                          <div class='col-sm-12 controls text-center'>
+                            <button id='btn-signin' type='submit' class='btn btn-success'>Login</button>
+                          </div>
+                      </div>
+                      <div class='form-group'>
+                          <div class='col-md-12 control'>
+                              <div style='border-top: 1px solid#888; padding-top:15px; font-size:85%' >
+                                  Forgot password? 
+                              <a href='forgot-password'>
+                                  Remember Here
+                              </a>
+                              </div>
+                          </div>
+                      </div>    
+                  </form>
+                "
+                >
+                Login    
+                </button>
+                <a href="registration"  class="btn-group">
+                  <button type="button" class="btn btn-primary btn-cus">Join</button>
+                </a>
+              </div>    
             </div>
           </form>
       </div>

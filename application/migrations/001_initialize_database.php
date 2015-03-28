@@ -50,6 +50,22 @@ class Migration_Initialize_database extends CI_Migration {
 				'type' => 'TEXT',
 				'null' => TRUE,
 			),
+			'facebook' => array(
+				'type' => 'TEXT',
+				'null' => TRUE,
+			),
+			'twitter' => array(
+				'type' => 'TEXT',
+				'null' => TRUE,
+			),
+			'googleplus' => array(
+				'type' => 'TEXT',
+				'null' => TRUE,
+			),
+			'path' => array(
+				'type' => 'TEXT',
+				'null' => TRUE,
+			),
 			'last_access' => array(
 				'type' => 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 				'null' => TRUE

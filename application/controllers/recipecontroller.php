@@ -43,7 +43,17 @@ class RecipeController extends CI_Controller {
 	// ini buat ambil resep dengan input id
 	public function recipes($id){
 		$recipe = new Recipe();
-		$recipe->getRecipe;	
+		$this->load->library(session);
+		$userid = $this->session->userdata("user_id");
+		$data = array();
+		if (empty($userid)){
+			$recipe->getRecipeProfile($id);
+			array_push($data, $recipe);
+		} else {
+			$recipe->getRecipeProfile($id, $userid);
+			array_push($data, $recipe);
+		}
+		print_r($data);
 	}
 
 	// top resep untuk halaman top Page.
