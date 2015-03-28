@@ -89,6 +89,17 @@ class Home extends CI_Controller {
 		$this->load->view('changepassword_view');
 	}
 
+	public function register(){
+		$this->load->view('registration_view');
+	}
+
+	public function login(){
+		$this->load->view('login_view');
+	}
+
+	public function forgetpassword(){
+		$this->load->view('forgetpassword_view');
+	}
 
 	public function usertimeline(){
 		$this->load->library('parser');
