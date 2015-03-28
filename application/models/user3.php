@@ -2,11 +2,11 @@
 /**
 * 
 */
-class User extends CI_Model
+class User3 extends CI_Model
 {
-  public function login($email, $password)
+  public function tes()
   {
-    $this->load->library('encrypt');
-    echo "$email -- $password\n";
+    $this->load->model('viewer');
+    $this->viewer->show('welcome_message');
   }
 }
