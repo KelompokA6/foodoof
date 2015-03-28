@@ -83,9 +83,8 @@ class User extends CI_Controller {
 
 		$this->load->model('viewer');
 		$this->viewer->show('edit_profile_view', $data);
-		//$this->edit($id);
 	}
-
+/*
 	public function authEdit($id){ 		//
 //		$this->load->model('viewer');
 //		$this->viewer->show('edit_profile_view');
@@ -97,11 +96,11 @@ class User extends CI_Controller {
 		$data['phone'] = $this->input->post("phone_user");
 		$data['bdate'] = $this->input->post("birthDate_user");
 
-/*		$data['twitter'] = $this->input->post("twitter_user");
+		$data['twitter'] = $this->input->post("twitter_user");
 		$data['fb'] = $this->input->post("fb_user");
 		$data['ig'] = $this->input->post("ig_user");
 		$data['gplus'] = $this->input->post("gplus_user");
-		$data['linkedin'] = $this->input->post("linkedin_user");*/
+		$data['linkedin'] = $this->input->post("linkedin_user");
 
 		if($this->isValid($data)){
 			$u = new User_model();
@@ -120,7 +119,7 @@ class User extends CI_Controller {
 		$this->load->model('viewer');
 		$this->viewer->show('edit_profile_view', $dataMessage);
 	}
-
+*/
 	public function getPassword($email){ //dari sequence lupa password, buat minta password nya dr userManager
 		$u = new User_model();
 		$data['password'] = $u->getPassword($email);

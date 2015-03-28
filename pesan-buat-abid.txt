@@ -1,0 +1,24 @@
+Daftar variabel yang dibutuhin controller:
+
+UPDATE PASSWORD:
+password_user
+new_password
+confirm_password
+
+REGISTER:
+name_user
+email_user
+password_user
+confrim_password
+
+jelas semua kan?
+
+
+Daftar view yang dibuthukan controller:
+
+profile_view: UC melihat profil
+user_timeline_view: UC melihat user timeline
+change_password_view: UC merubah password
+register_view: UC mendaftar
+edit_profile_view: UC merubah profil
+forget_password_view: UC lupa password
