@@ -28,13 +28,11 @@ class User extends CI_Controller {
 		$data['oldPass'] = $this->input->post("password_user");
 		$data['newPass'] = $this->input->post("new_password");
 		$data['confirmPass'] = $this->input->post("confirm_password");
-		$dataIn['id'] = $id;
-		$dataIn['newPass'] = $data['newPass'];
- 
+		 
 		if($this->isValid($data)){
 			$user = new User();
-			$isChanged = $user->updatePassword($dataIn);
-			if($this->isValid($data)){
+			$isChanged = $user->updatePassword($id, $data['newPass']);
+			if($isChanged){
 				$dataMessage['message'] = "Change Password Success"; 
 			}
 			else{
@@ -86,13 +84,13 @@ class User extends CI_Controller {
 		$this->viewer->show('form_profile_view', $data);
 	}
 
-	public function updateProfile(){ 		//
+	public function edit($id){ 		//
 		$data['photo'] = $this->input->post("photo_user");
 		$data['name'] = $this->input->post("name_user");
 		$data['gender'] = $this->input->post("gender_user");
 		$data['email'] = $this->input->post("email_user");
 		$data['phone'] = $this->input->post("phone_user");
-		$data['birthDate'] = $this->input->post("birthDate_user");
+		$data['bdate'] = $this->input->post("birthDate_user");
 
 		$data['twitter'] = $this->input->post("twitter_user");
 		$data['fb'] = $this->input->post("fb_user");
@@ -102,7 +100,7 @@ class User extends CI_Controller {
 
 		if($this->isValid($data)){
 			$u = new User();
-			$isUpdated = $u->updateUserProfile($data);
+			$isUpdated = $u->updateUserProfile($id, $data);
 			if($isUpdated){
 				$dataMessage['message'] = "Update Success"; 
 			}
