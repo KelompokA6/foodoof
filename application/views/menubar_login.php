@@ -42,12 +42,14 @@
                     <img class="img-circle img-profile-menubar" src="<?php echo base_url();?>assets/img/01.jpg"/>
                   </div>
                   <div class="col-md-4 col-no-padding text-left" style="line-height:34px">
-                    Abid
+                    {menubar_user_name}
                   </div>
                 </div>
               </a>
               <div class="col-md-4 col-offset-md-3 pull-right">
-                <button type="button" class="btn btn-danger btn-sm">Logout</button>
+                <a href="logout">
+                  <button type="button" class="btn btn-danger btn-sm">Logout</button>
+                </a>
               </div>         
             </div>
           </form>
