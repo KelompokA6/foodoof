@@ -349,7 +349,7 @@ class Recipe extends DataMapper {
         }
         $recipes = new Recipe();
         $recipes->get_by_id($id);
-        if($recipe->status){
+        if($recipes->status){
             $data = new stdClass();
             $data->id = $recipes->id;
             $data->name = $recipes->name;
