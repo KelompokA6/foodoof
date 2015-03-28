@@ -10,16 +10,18 @@ class User extends CI_Controller {
 		$profile = $this->user_model->getProfile($id);
 		$data['profile_user_name'] = $profile['name'];
 		$data['profile_user_gender'] = $profile['gender'];
-		$data['profile_user_age'] = $profile['age'];
+		// $data['profile_user_age'] = $profile['age'];
 		$data['profile_user_email'] = $profile['email'];
 		$data['profile_user_phone'] = $profile['phone'];
 		$data['profile_user_last_access'] = $profile['last_access'];
-		$data['profile_user_twitter'] = $profile['twitter'];
-		$data['profile_user_facebook'] = $profile['facebook'];
-		$data['profile_user_googleplus'] = $profile['googleplus'];
-		$data['profile_user_path'] = $profile['path'];
+		// $data['profile_user_twitter'] = $profile['twitter'];
+		// $data['profile_user_facebook'] = $profile['facebook'];
+		// $data['profile_user_googleplus'] = $profile['googleplus'];
+		// $data['profile_user_path'] = $profile['path'];
 		$this->load->model('viewer');
-		$this->viewer->show('profile_view', $data);
+		$this->viewer->showProfile($data);
+		// $this->load->library('parser');
+		// $this->parser->parse('profile_view', $data);
 	}
 
 	public function timeline($id){
@@ -29,7 +31,7 @@ class User extends CI_Controller {
 		$data['user'] = $id;
 		$data['listRecipe'] = $recipe;
 		$this->load->model('viewer');
-		$this->viewer->show('user_timeline_view', $data);
+		$this->viewer->showUserTimeline('user_timeline_view', $data);
 	}
 
 	public function updatePassword($id){

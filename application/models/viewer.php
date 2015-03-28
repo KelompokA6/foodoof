@@ -29,4 +29,24 @@ class Viewer extends CI_Model
     // oke, sudah semua? LOAD!
     $this->parser->parse('final_view', $datafinal);
   }
+
+  public function showProfile($data = array())
+  {
+    $this->load->library('parser');
+    $this->load->library('session');
+    $category_home = $this->parser->parse('category_home', $data, TRUE);
+    $top_recipe_home = $this->parser->parse('top_recipe_home', $data, TRUE);
+    $recently_recipe_home = $this->parser->parse('recently_recipe_home', $data, TRUE);
+    $data= array(
+                    "category_home"=> $category_home,
+                    "top_recipe_home"=> $top_recipe_home,
+                    "recently_recipe_home"=> $recently_recipe_home,
+                    );
+    $content_website = $this->parser->parse('content_homepage', $data, TRUE);
+    $datacomplete = array(
+                    "menubar"=> $menubar,
+                    "content_website"=> $content_website,
+                    );
+    $this->parser->parse('template_content', $datacomplete);
+  }
 }
