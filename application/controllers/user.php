@@ -26,7 +26,7 @@ class User extends CI_Controller {
 	}
 
 	public function updatePassword($id){
-		$data['oldPass'] = $this->input->post("password_user");
+		$data['oldPass'] = $this->input->post("old_password");
 		$data['newPass'] = $this->input->post("new_password");
 		$data['confirmPass'] = $this->input->post("confirm_password");
 		 
@@ -54,10 +54,10 @@ class User extends CI_Controller {
 	}
 
 	public function register(){
-		$data['name'] = $this->input->post("name_user");
-		$data['email'] = $this->input->post("email_user");
-		$data['password'] = $this->input->post("password_user"); 
-		$data['confrimPass'] = $this->input->post("confrim_password");
+		$data['name'] = $this->input->post("name");
+		$data['email'] = $this->input->post("email");
+		$data['password'] = $this->input->post("password"); 
+		$data['confrimPass'] = $this->input->post("confirm_password");
 		
 		if($this->isValid($data)){
 			$user = new User_model();
