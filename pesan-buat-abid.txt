@@ -1,15 +1,15 @@
 Daftar variabel yang dibutuhin controller:
 
 UPDATE PASSWORD:
-password_user
+old_password
 new_password
-confirm_password
+confirm_new_password
 
 REGISTER:
-name_user
-email_user
-password_user
-confrim_password
+name
+email
+password
+confirm_password
 
 jelas semua kan?
 
