@@ -93,7 +93,7 @@ class Home extends CI_Controller {
 		$this->load->view('registration_view');
 	}
 
-	public function login(){
+	public function login1(){
 		$this->load->view('login_view');
 	}
 
