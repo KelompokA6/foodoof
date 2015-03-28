@@ -5,6 +5,25 @@ class User extends DataMapper {
     var $table = "users"; 
     var $has_many = array('recipe', 'comment', 'conversation', 'conversation_list');
 
+    var $validation = array(
+        'email' => array(
+            'label' => 'Email Address',
+            'rules' => array('required', 'trim', 'notmember', 'valid_email', 'max_length' => 255),
+        ),
+        'confirm_password' => array(
+            'label' => 'Confirm Password',
+            'rules' => array('matches' => 'password'),
+        ),
+        'password' => array(
+            'label' => 'Password',
+            'rules' => array('required', 'min_length' => 5, 'encrypt'),
+        ),
+        'name' => array(
+            'label' => 'Your Name',
+            'rules' => array('trim', 'max_length' => 255)
+        ),
+    );
+
     function login($email, $password)
     {
         if( $this->where('email', $email)->count() < 1 ) return FALSE;
@@ -43,25 +62,6 @@ class User extends DataMapper {
     {
         return $this->where('id', $id)->update($dataProfile);
     }
-
-    var $validation = array(
-        'email' => array(
-            'label' => 'Email Address',
-            'rules' => array('required', 'trim', 'notmember', 'valid_email', 'max_length' => 255),
-        ),
-        'confirm_password' => array(
-            'label' => 'Confirm Password',
-            'rules' => array('matches' => 'password'),
-        ),
-        'password' => array(
-            'label' => 'Password',
-            'rules' => array('required', 'min_length' => 5, 'encrypt'),
-        ),
-        'name' => array(
-            'label' => 'Your Name',
-            'rules' => array('trim', 'max_length' => 255)
-        ),
-    );
 }
 
 /* End of file user.php */

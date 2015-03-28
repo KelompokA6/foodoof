@@ -6,7 +6,7 @@ class User extends CI_Controller {
 	}
 
 	public function profile($id){
-		$user = new User();
+		$this->load->model('user');
 		$profile = $user->getProfile($id);
 
 		$data['data_profile'] = $profile;
@@ -84,7 +84,7 @@ class User extends CI_Controller {
 		$this->viewer->show('form_profile_view', $data);
 	}
 
-	public function edit($id){ 		//
+	public function edit(){ 		//
 		$data['photo'] = $this->input->post("photo_user");
 		$data['name'] = $this->input->post("name_user");
 		$data['gender'] = $this->input->post("gender_user");
@@ -99,8 +99,8 @@ class User extends CI_Controller {
 		$data['linkedin'] = $this->input->post("linkedin_user");
 
 		if($this->isValid($data)){
-			$u = new User();
-			$isUpdated = $u->updateUserProfile($id, $data);
+			$this->load->model('user');
+			$isUpdated = $u->updateProfile($id, $data);
 			if($isUpdated){
 				$dataMessage['message'] = "Update Success"; 
 			}
