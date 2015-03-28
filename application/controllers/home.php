@@ -85,9 +85,17 @@ class Home extends CI_Controller {
 	public function editprofile(){
 		$this->load->view('edit_profile_view');
 	}
+	public function chpass(){
+		$this->load->view('changepassword_view');
+	}
+
 
 	public function usertimeline(){
-		$this->load->view('usertimeline_view');
+		$this->load->library('parser');
+		$data= array(
+						"id"=> '1',
+						);
+		$this->parser->parse('usertimeline_view', $data);
 	}
 
 	public function login()
