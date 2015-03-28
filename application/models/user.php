@@ -4,29 +4,27 @@ class User extends DataMapper {
 
     var $table = "users"; 
     var $has_many = array('recipe', 'comment', 'conversation', 'conversation_list');
-    //var $has_one = array('country');
 
     function login($email, $password)
     {
         if( $this->where('email', $email)->count() < 1 ) return FALSE;
-
+        $this->where('email', $email)->get();
         $ci =& get_instance();
         $ci->load->library('encrypt');
         $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
         $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
-        $decrypted_password = $ci->encrypt->decode($password);
-        
-        $this->where('email', $email)->get();
-        return ($this->password == $decrypted_password);
+        $decrypted_password = $ci->encrypt->decode($this->password);        
+        return ($decrypted_password == $password);
     }
 
     function getProfile($id)
     {
+        if($this->where('id', $id)->count() < 1) return NULL;
         $this->where('id', $id)->get();
         $ret['id'] = $this->id;
         $ret['email'] = $this->email;
         $ret['name'] = $this->name;
-        $ret['password'] = $this->password;
+        $ret['password'] = 'bintangbintang';
         $ret['gender'] = $this->gender;
         $ret['bdate'] = $this->bdate;
         $ret['phone'] = $this->phone;
@@ -36,9 +34,19 @@ class User extends DataMapper {
         return $ret;
     }
 
-    
+    function updatePassword($id, $password)
+    {
+        $this->where('id', $id)->update('password', $password);
+    }
 
-/*    var $validation = array(
+    function updateProfile($id, $dataProfile)
+    {
+        $this->where('id', $id)->update($dataProfile);
+    }
+
+
+
+    var $validation = array(
         'email' => array(
             'label' => 'Email Address',
             'rules' => array('required', 'trim', 'notmember', 'valid_email', 'max_length' => 255),
@@ -55,7 +63,7 @@ class User extends DataMapper {
             'label' => 'Your Name',
             'rules' => array('trim', 'max_length' => 255)
         ),
-    );*/
+    );
 
 /*    function login()
     {

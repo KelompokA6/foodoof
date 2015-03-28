@@ -13,10 +13,9 @@ class Badak extends CI_Controller {
     $this->index($view);
   }
 
-  public function login($p1 = NULL, $p2 = NULL)
+  public function getProfile($id)
   {
     $this->load->model('user');
-    echo "$p1 dan $p2\n";
-    $this->user->login($p1, $p2);
+    print_r( $this->user->getProfile($id));
   }
 }
