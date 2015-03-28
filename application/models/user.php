@@ -36,12 +36,12 @@ class User extends DataMapper {
 
     function updatePassword($id, $password)
     {
-        $this->where('id', $id)->update('password', $password);
+        return $this->where('id', $id)->update('password', $password);
     }
 
     function updateProfile($id, $dataProfile)
     {
-        $this->where('id', $id)->update($dataProfile);
+        return $this->where('id', $id)->update($dataProfile);
     }
 
 

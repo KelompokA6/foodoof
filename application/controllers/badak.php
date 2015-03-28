@@ -13,9 +13,13 @@ class Badak extends CI_Controller {
     $this->index($view);
   }
 
-  public function getProfile($id)
+  public function tes($id = 1, $name = 'kadal')
   {
+    echo "masuk tes--";
+    // $this->user = new User();
     $this->load->model('user');
-    print_r( $this->user->getProfile($id));
+    $x = 1;
+    $x = $this->user->updateProfile($id, array('name' => $name));
+    echo $x ? "string" : "no";
   }
 }
