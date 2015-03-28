@@ -11,7 +11,7 @@ class User extends CI_Controller {
 
 		$data['data_profile'] = $profile;
 		$this->load->model('viewer');
-		$this->viewer->show('profile_page_view', $data);
+		$this->viewer->show('profile_view', $data);
 	}
 
 	public function timeline($id){
@@ -24,14 +24,16 @@ class User extends CI_Controller {
 		$this->viewer->show('user_timeline_view', $data);
 	}
 
-	public function updatePassword(){
+	public function updatePassword($id){
 		$data['oldPass'] = $this->input->post("password_user");
 		$data['newPass'] = $this->input->post("new_password");
 		$data['confirmPass'] = $this->input->post("confirm_password");
-
+		$dataIn['id'] = $id;
+		$dataIn['newPass'] = $data['newPass'];
+ 
 		if($this->isValid($data)){
 			$user = new User();
-			$isChanged = $user->updatePassword($data['newPass']);
+			$isChanged = $user->updatePassword($dataIn);
 			if($this->isValid($data)){
 				$dataMessage['message'] = "Change Password Success"; 
 			}
@@ -76,7 +78,7 @@ class User extends CI_Controller {
 		$this->viewer->show('register_view', $dataMessage);
 	}
 
-	public function showFormProfile($id){
+	public function formProfile($id){
 		$u = new User();
 		$data['dataProfile'] = $u->getDataProfile($id);
 
