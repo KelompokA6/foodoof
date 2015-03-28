@@ -6,7 +6,8 @@ class User extends CI_Controller {
 	}
 
 	public function profile($id){
-		$this->load->model('user');
+		//$this->load->model('user');
+		$user = new User();
 		$profile = $user->getProfile($id);
 
 		$data['data_profile'] = $profile;
@@ -76,15 +77,19 @@ class User extends CI_Controller {
 		$this->viewer->show('register_view', $dataMessage);
 	}
 
-	public function formProfile($id){
+	public function edit($id){
 		$u = new User();
-		$data['dataProfile'] = $u->getDataProfile($id);
+		$data['dataProfile'] = $u->getProfile($id);
 
 		$this->load->model('viewer');
-		$this->viewer->show('form_profile_view', $data);
+		$this->viewer->show('edit_profile_view', $data);
+		//$this->edit($id);
 	}
 
-	public function edit(){ 		//
+	public function authEdit($id){ 		//
+//		$this->load->model('viewer');
+//		$this->viewer->show('edit_profile_view');
+
 		$data['photo'] = $this->input->post("photo_user");
 		$data['name'] = $this->input->post("name_user");
 		$data['gender'] = $this->input->post("gender_user");
@@ -92,14 +97,14 @@ class User extends CI_Controller {
 		$data['phone'] = $this->input->post("phone_user");
 		$data['bdate'] = $this->input->post("birthDate_user");
 
-		$data['twitter'] = $this->input->post("twitter_user");
+/*		$data['twitter'] = $this->input->post("twitter_user");
 		$data['fb'] = $this->input->post("fb_user");
 		$data['ig'] = $this->input->post("ig_user");
 		$data['gplus'] = $this->input->post("gplus_user");
-		$data['linkedin'] = $this->input->post("linkedin_user");
+		$data['linkedin'] = $this->input->post("linkedin_user");*/
 
 		if($this->isValid($data)){
-			$this->load->model('user');
+			$u = new User();
 			$isUpdated = $u->updateProfile($id, $data);
 			if($isUpdated){
 				$dataMessage['message'] = "Update Success"; 
