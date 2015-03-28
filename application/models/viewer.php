@@ -34,19 +34,45 @@ class Viewer extends CI_Model
   {
     $this->load->library('parser');
     $this->load->library('session');
-    $category_home = $this->parser->parse('category_home', $data, TRUE);
-    $top_recipe_home = $this->parser->parse('top_recipe_home', $data, TRUE);
-    $recently_recipe_home = $this->parser->parse('recently_recipe_home', $data, TRUE);
-    $data= array(
-                    "category_home"=> $category_home,
-                    "top_recipe_home"=> $top_recipe_home,
-                    "recently_recipe_home"=> $recently_recipe_home,
-                    );
-    $content_website = $this->parser->parse('content_homepage', $data, TRUE);
-    $datacomplete = array(
-                    "menubar"=> $menubar,
-                    "content_website"=> $content_website,
-                    );
+    
+    // menubar
+    $datacomplete['menubar'] = $this->parser->parse(
+        $this->session->userdata('login_status') ? 'menubar_login' : 'menubar',
+        array('menubar_user_name' => $data['name']),
+        TRUE
+    );
+    // DONE
+
+    // content_website
+    // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
+    // ambil sidebar
+    $data_user_view['sidebar_user'] = $this->parser->parse(
+        'sidebar_user_view',
+        array('sidebar_user_id' => $data['id']),
+        TRUE
+    );
+    // ambil content_user
+    $data_user_view['content_user'] = $this->parser->parse(
+        'profile_view',
+        array(
+            'profile_user_name' => $data['name'],
+            'profile_user_gender' => $data['gender'],
+            // 'profile_user_age' => $data['age'],
+            'profile_user_email' => $data['email'],
+            'profile_user_phone' => $data['phone'],
+            'profile_user_last_access' => $data['last_access'],
+            // 'profile_user_twitter' => $data['twitter'],
+            // 'profile_user_facebook' => $data['facebook'],
+            // 'profile_user_googleplus' => $data['googleplus'],
+            // 'profile_user_path' => $data['path'],
+        ),
+        TRUE
+    );
+    // load template_content
+    // $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
+    $datacomplete['content_website'] = $data_user_view['sidebar_user'].$data_user_view['content_user'];
+
+    // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);
   }
 }
