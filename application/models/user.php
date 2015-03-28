@@ -6,7 +6,39 @@ class User extends DataMapper {
     var $has_many = array('recipe', 'comment', 'conversation', 'conversation_list');
     //var $has_one = array('country');
 
-    var $validation = array(
+    function login($email, $password)
+    {
+        if( $this->where('email', $email)->count() < 1 ) return FALSE;
+
+        $ci =& get_instance();
+        $ci->load->library('encrypt');
+        $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
+        $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
+        $decrypted_password = $ci->encrypt->decode($password);
+        
+        $this->where('email', $email)->get();
+        return ($this->password == $decrypted_password);
+    }
+
+    function getProfile($id)
+    {
+        $this->where('id', $id)->get();
+        $ret['id'] = $this->id;
+        $ret['email'] = $this->email;
+        $ret['name'] = $this->name;
+        $ret['password'] = $this->password;
+        $ret['gender'] = $this->gender;
+        $ret['bdate'] = $this->bdate;
+        $ret['phone'] = $this->phone;
+        $ret['status'] = $this->status;
+        $ret['photo'] = $this->photo;
+        $ret['last_access'] = $this->last_access;
+        return $ret;
+    }
+
+    
+
+/*    var $validation = array(
         'email' => array(
             'label' => 'Email Address',
             'rules' => array('required', 'trim', 'notmember', 'valid_email', 'max_length' => 255),
@@ -23,14 +55,9 @@ class User extends DataMapper {
             'label' => 'Your Name',
             'rules' => array('trim', 'max_length' => 255)
         ),
-    );
+    );*/
 
-    function __construct($user_id = NULL)
-    {
-        parent::__construct($user_id);
-    }
-
-    function login()
+/*    function login()
     {
         // Create a temporary user object
         $u = new User();
@@ -138,7 +165,7 @@ class User extends DataMapper {
         else{
             return false;
         }
-    }
+    }*/
 }
 
 /* End of file user.php */

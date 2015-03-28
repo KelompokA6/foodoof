@@ -12,4 +12,11 @@ class Badak extends CI_Controller {
   {
     $this->index($view);
   }
+
+  public function login($p1 = NULL, $p2 = NULL)
+  {
+    $this->load->model('user');
+    echo "$p1 dan $p2\n";
+    $this->user->login($p1, $p2);
+  }
 }
