@@ -6718,6 +6718,9 @@ button.close {
   .img-list{
     height: 77px
   }
+  .img-list-usertimeline{
+    height:96px;
+  }
   .img-category{
     padding:0;
   }

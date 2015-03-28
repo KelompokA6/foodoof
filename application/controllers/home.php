@@ -86,6 +86,10 @@ class Home extends CI_Controller {
 		$this->load->view('edit_profile_view');
 	}
 
+	public function usertimeline(){
+		$this->load->view('usertimeline_view');
+	}
+
 	public function login()
 	{
 		$email = $this->input->post("email_user");
