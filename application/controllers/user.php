@@ -5,7 +5,7 @@ class User extends CI_Controller {
 		$this->load->view('profile_view');
 	}
 
-	public function getProfile($id){
+	public function profile($id){
 		$user = new User();
 		$profile = $user->getProfile($id);
 
@@ -14,9 +14,9 @@ class User extends CI_Controller {
 		$this->viewer->show('profile_page_view', $data);
 	}
 
-	public function getUserTimeline($id){
+	public function timeline($id){
 		$r = new Recipe();
-		$recipe = $r->getListRecipe($id);
+		$recipe = $r->getUserRecipe($id);
 
 		$data['user'] = $id;
 		$data['listRecipe'] = $recipe;
