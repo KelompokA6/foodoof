@@ -113,7 +113,7 @@ class User extends CI_Controller {
 		}
 
 		$this->load->model('viewer');
-		$this->viewer->show('form_profile_view', $dataMessage);
+		$this->viewer->show('edit_profile_view', $dataMessage);
 	}
 
 	public function getPassword($email){ //dari sequence lupa password, buat minta password nya dr userManager
