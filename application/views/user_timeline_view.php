@@ -4,6 +4,7 @@
 	    	<div class="col-md-12 col-no-padding-right">
 	    		<h3 class="page-header" style="margin-top:5px;"> User Timeline</h3>
 	    	</div>
+	    	{user_timeline_recipe_entries}
 	    	<div class="col-md-12 col-no-padding-right">
 				<div class="col-md-2 col-xs-3 detail-list-img" style="margin-right:2px">
 			        <img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>assets/img/Nasi-Goreng.jpg"/>
@@ -11,7 +12,7 @@
 			    <div class="col-md-6 col-xs-8 detail-list">
 			    	<div class="col-md-12 details">
 			          	<div class="col-md-12 col-xs-9">
-			            	<h4><p class="text-capitalize">{usertimeline_recipe_name}</p></h4>
+			            	<h4><p class="text-capitalize">{user_timeline_recipe_name}</p></h4>
 			          	</div>
 			        </div>
 			        <div class="col-md-12 details">
@@ -19,7 +20,7 @@
 			            	<p class="text-capitalize">Last update :</p>
 			          	</div>
 			          	<div class="col-md-8 col-xs-9 col-no-padding-left">
-			            	<p class="text-capitalize">{usertimeline_recipe_last_update}</p>
+			            	<p class="text-capitalize">{user_timeline_recipe_last_update}</p>
 			          	</div>
 			        </div>
 			        <div class="col-md-12 details">
@@ -34,11 +35,11 @@
 				            <i class="fa fa-eye"></i>
 				        </div>
 				        <div class="col-md-7 col-xs-9">
-				            <p class="text-capitalize">{usertimeline_recipe_view} views</p>
+				            <p class="text-capitalize">{user_timeline_recipe_view} views</p>
 				        </div>
 			    	</div>
 			    	<div class="col-md-12 col-no-padding-right" style="padding-left:67px">
-			    		<a href="recipe/edit/{usertimeline_recipe_id}">
+			    		<a href="recipe/edit/{user_timeline_recipe_id}">
 	      					<button class="btn btn-primary btn-xs" style="width:90px">
 	      						<i class="fa fa-pencil-square-o fa-lg"></i>
 	      						Edit
@@ -48,12 +49,13 @@
 			    	<div class="col-md-12 col-no-padding-right" style="padding-left:79px">
 			    		<div class="checkbox">
 						    <label>
-						      	<input type="checkbox" {usertimeline_ischecked}{usertimeline_recipe_checked}{/usertimeline_ischecked}> Publish
+						      	<input type="checkbox" {user_timeline_ischecked}{user_timeline_recipe_checked}{/user_timeline_ischecked}> Publish
 						    </label>
 						 </div>
 			    	</div>
 			    </div>
 			</div>
+			{/user_timeline_recipe_entries}
 	  	</div>
 	</div>
 </div>
