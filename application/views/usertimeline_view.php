@@ -120,6 +120,7 @@
 				    	<div class="col-md-12 col-no-padding-right">
 				    		<h3 class="page-header" style="margin-top:5px;"> User Timeline</h3>
 				    	</div>
+				    	{usertimeline_recipe_entries}
 				    	<div class="col-md-12 col-no-padding-right">
 							<div class="col-md-2 col-xs-3 detail-list-img" style="margin-right:2px">
 						        <img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>assets/img/Nasi-Goreng.jpg"/>
@@ -127,7 +128,7 @@
 						    <div class="col-md-6 col-xs-8 detail-list">
 						    	<div class="col-md-12 details">
 						          	<div class="col-md-12 col-xs-9">
-						            	<h4><p class="text-capitalize">nasi goreng</p></h4>
+						            	<h4><p class="text-capitalize">{usertimeline_recipe_name}</p></h4>
 						          	</div>
 						        </div>
 						        <div class="col-md-12 details">
@@ -135,12 +136,12 @@
 						            	<p class="text-capitalize">Last update :</p>
 						          	</div>
 						          	<div class="col-md-8 col-xs-9 col-no-padding-left">
-						            	<p class="text-capitalize">20 minutes ago</p>
+						            	<p class="text-capitalize">{usertimeline_recipe_last_update}</p>
 						          	</div>
 						        </div>
 						        <div class="col-md-12 details">
 						        	<div class="col-md-11" title="Rating">
-						          		<input id="input-2b" class="rating" data-min="0" data-max="5" data-starts=3 data-step="0.1" data-stars=5 data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false">
+						          		<input value={usertimeline_recipe_rating} id="input-2b" class="rating" data-min="0" data-max="5" data-starts=3 data-step="0.1" data-stars=5 data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false">
     								</div>
 						        </div>  
 						    </div>
@@ -150,11 +151,11 @@
 							            <i class="fa fa-eye"></i>
 							        </div>
 							        <div class="col-md-7 col-xs-9">
-							            <p class="text-capitalize">104 views</p>
+							            <p class="text-capitalize">{usertimeline_recipe_view}</p>
 							        </div>
 						    	</div>
 						    	<div class="col-md-12 col-no-padding-right" style="padding-left:67px">
-						    		<a href="">
+						    		<a href={usertimeline_recipe_id}>
 				      					<button class="btn btn-primary btn-xs" style="width:90px">
 				      						<i class="fa fa-pencil-square-o fa-lg"></i>
 				      						Edit
@@ -170,6 +171,7 @@
 						    	</div>
 						    </div>
 						</div>
+						{/usertimeline_recipe_entries}
 				  	</div>
 				</div>
       		</div>
