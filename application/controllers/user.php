@@ -6,9 +6,9 @@ class User extends CI_Controller {
 	}
 
 	public function profile($id){
-		//$this->load->model('user');
-		$user = new User();
-		$profile = $user->getProfile($id);
+		$this->load->model('user_model');
+		$profile = $this->user->getProfile($id);
+		// print_r($profile);
 
 		$data['data_profile'] = $profile;
 		$this->load->model('viewer');

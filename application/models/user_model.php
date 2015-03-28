@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User extends DataMapper {
+class User_model extends DataMapper {
 
     var $table = "users"; 
     var $has_many = array('recipe', 'comment', 'conversation', 'conversation_list');

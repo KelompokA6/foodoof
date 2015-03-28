@@ -4,7 +4,7 @@ class Badak extends CI_Controller {
   public function index($view = 'welcome_message')
   {
     $this->load->model('viewer');
-    $this->viewer->show($view);
+    $this->viewer->show('recipe_view');
     // $this->output->enable_profiler(TRUE);
   }
 
@@ -13,7 +13,7 @@ class Badak extends CI_Controller {
     $this->index($view);
   }
 
-  public function tes($id = 1, $name = 'kadal')
+  public function tes($id = 1, $name = 'bebek')
   {
     echo "masuk tes--";
     // $this->user = new User();
