@@ -64,6 +64,7 @@ class User extends DataMapper {
             'rules' => array('trim', 'max_length' => 255)
         ),
     );
+}
 
 /*    function login()
     {
@@ -174,7 +175,6 @@ class User extends DataMapper {
             return false;
         }
     }*/
-}
 
 /* End of file user.php */
 /* Location: ./application/models/user.php */
