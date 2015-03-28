@@ -10,6 +10,7 @@
 						<div class="form-group">
 						    <label for="inputEmail3" class="col-sm-3 control-label">Old Password</label>
 						    <div class="col-sm-9">
+						      	<input type="password" class="form-control" name="old_password" placeholder="Old Password">
 						    </div>
 						 </div>
 					</div>
@@ -17,6 +18,7 @@
 						<div class="form-group">
 						    <label for="inputEmail3" class="col-sm-3 control-label">New Password</label>
 						    <div class="col-sm-9">
+						      	<input type="password" class="form-control" name="new_password" placeholder="New Password">
 						    </div>
 						 </div>
 					</div>
@@ -24,6 +26,7 @@
 						<div class="form-group">
 						    <label for="inputEmail3" class="col-sm-3 control-label">Confirm Password</label>
 						    <div class="col-sm-9">
+						      	<input type="password" class="form-control" name="confirm_new_password" placeholder="Confirm New Password">
 						    </div>
 						 </div>
 					</div>
