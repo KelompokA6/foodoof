@@ -69,8 +69,8 @@ class Viewer extends CI_Model
         TRUE
     );
     // load template_content
-    // $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
-    $datacomplete['content_website'] = $data_user_view['sidebar_user'].$data_user_view['content_user'];
+    $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
+    // $datacomplete['content_website'] = $data_user_view['sidebar_user'].$data_user_view['content_user'];
 
     // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);
