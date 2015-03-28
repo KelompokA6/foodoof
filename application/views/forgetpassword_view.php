@@ -85,14 +85,14 @@
 	                        <div style="margin-top:10px" class="form-group">
 	                            <!-- Button -->
 	                            <div class="col-sm-12 controls text-center">
-	                              <button id="btn-signin" type="submit" class="btn btn-success">Remember </button>
+	                              <button id="btn-signin" type="submit" class="btn btn-success">Send My Password </button>
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
 	                            <div class="col-md-12 control">
 	                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
 	                                    Don't have an account! 
-	                                <a href="registration" >
+	                                <a href="register" >
 	                                    Sign Up Here
 	                                </a>
 	                                </div>
