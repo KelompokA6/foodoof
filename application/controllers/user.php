@@ -32,7 +32,7 @@ class User extends CI_Controller {
 		if($this->isValid($data)){
 			$user = new User();
 			$isChanged = $user->updatePassword($id, $data['newPass']);
-			if($this->isValid($data)){
+			if($isChanged){
 				$dataMessage['message'] = "Change Password Success"; 
 			}
 			else{
@@ -90,7 +90,7 @@ class User extends CI_Controller {
 		$data['gender'] = $this->input->post("gender_user");
 		$data['email'] = $this->input->post("email_user");
 		$data['phone'] = $this->input->post("phone_user");
-		$data['birthDate'] = $this->input->post("birthDate_user");
+		$data['bdate'] = $this->input->post("birthDate_user");
 
 		$data['twitter'] = $this->input->post("twitter_user");
 		$data['fb'] = $this->input->post("fb_user");
