@@ -7,7 +7,7 @@ class User extends CI_Controller {
 
 	public function profile($id){
 		$this->load->model('user_model');
-		$profile = $this->user->getProfile($id);
+		$profile = $this->user_model->getProfile($id);
 		// print_r($profile);
 
 		$data['data_profile'] = $profile;
@@ -31,7 +31,7 @@ class User extends CI_Controller {
 		$data['confirmPass'] = $this->input->post("confirm_password");
 		 
 		if($this->isValid($data)){
-			$user = new User();
+			$user = new User_model();
 			$isChanged = $user->updatePassword($id, $data['newPass']);
 			if($isChanged){
 				$dataMessage['message'] = "Change Password Success"; 
@@ -60,7 +60,7 @@ class User extends CI_Controller {
 		$data['confrimPass'] = $this->input->post("confrim_password");
 		
 		if($this->isValid($data)){
-			$user = new User();
+			$user = new User_model();
 			$isCreate = $user->createUser($data);
 			if($isCreate){
 				$dataMessage['message'] = "Registration Success"; 
@@ -78,7 +78,7 @@ class User extends CI_Controller {
 	}
 
 	public function edit($id){
-		$u = new User();
+		$u = new User_model();
 		$data['dataProfile'] = $u->getProfile($id);
 
 		$this->load->model('viewer');
@@ -104,7 +104,7 @@ class User extends CI_Controller {
 		$data['linkedin'] = $this->input->post("linkedin_user");*/
 
 		if($this->isValid($data)){
-			$u = new User();
+			$u = new User_model();
 			$isUpdated = $u->updateProfile($id, $data);
 			if($isUpdated){
 				$dataMessage['message'] = "Update Success"; 
@@ -122,7 +122,7 @@ class User extends CI_Controller {
 	}
 
 	public function getPassword($email){ //dari sequence lupa password, buat minta password nya dr userManager
-		$u = new User();
+		$u = new User_model();
 		$data['password'] = $u->getPassword($email);
 		$data['email'] = $email;
 		if($this->sendEmail($data)){
