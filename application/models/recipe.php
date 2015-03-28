@@ -138,9 +138,9 @@ class Recipe extends DataMapper {
                 foreach ($ingredients as $ingredient) {
                     $ingre = new Ingredient();
                     $ingre->recipe_id = $id;
-                    $ingre->name = $ingredient->name;
-                    $ingre->quantity = $ingredient->quantity;
-                    $ingre->units = $ingredient->units;
+                    $ingre->name = $ingredient["name"];
+                    $ingre->quantity = $ingredient["quantity"];
+                    $ingre->units = $ingredient["units"];
                     if(!$ingre->save()){
                         return false;
                     }
@@ -152,9 +152,9 @@ class Recipe extends DataMapper {
                 $ingres->delete();
                 $ingre = new Ingredient();
                 $ingre->recipe_id = $id;
-                $ingre->name = $ingredients->name;
-                $ingre->quantity = $ingredients->quantity;
-                $ingre->units = $ingredients->units;
+                $ingre->name = $ingredients["name"];
+                $ingre->quantity = $ingredients["quantity"];
+                $ingre->units = $ingredients["units"];
                 if(!$ingre->save()){
                     return false;
                 }
@@ -169,7 +169,7 @@ class Recipe extends DataMapper {
                     if(file_exists("assets/tmp/step/".$id."-".$x.".jpg")){
                         $stp->photo = "assets/step/".$id."-".$x.".jpg";
                         $stp->recipe_id = $id;
-                        $stp->description = $step->description;
+                        $stp->description = $step["description"];
                         $stp->step = $x;
                         if($stp->save()){
                             $data = read_file("assets/tmp/step/".$id."-".$x.".jpg");
@@ -189,8 +189,8 @@ class Recipe extends DataMapper {
                 $stp = new Step();
                 if(file_exists("assets/tmp/step/".$id."-".$x."jpg")){
                     $stp->photo = "assets/step/".$id."-".$x."jpg";
-                    $stp->recipe_id = $this->$id;
-                    $stp->description = $step->description;
+                    $stp->recipe_id = $id;
+                    $stp->description = $step->["description"];
                     $stp->step = '1';
                     if($stp->save()){
                         $data = read_file("assets/tmp/step/".$id."-1.jpg");
