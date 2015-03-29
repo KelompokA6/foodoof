@@ -44,7 +44,7 @@
                   <button type="button" class="btn btn-success btn-cus" data-container="body" data-toggle="popover" data-placement="bottom" 
                   data-html="TRUE"
                   data-content="
-                    <form id='loginform' class='form-horizontal' role='form' method='post' action='login'>      
+                    <form id='loginform' class='form-horizontal' role='form' method='post' action='<?php base_url()?>login'>      
                         <div class='input-group'>
                             <span class='input-group-addon'><i class='fa fa-user'></i></span>
                             <input id='login-username' type='text' class='form-control' name='email' value='' placeholder='email'>                                        
@@ -73,7 +73,7 @@
                   >
                         Login    
                   </button>
-                  <button type="button" class="btn btn-primary btn-cus">    Join    </button>
+                  <a href="<?php base_url()?>/join"><button type="button" class="btn btn-primary btn-cus">    Join    </button>
               </div>
           </div>
         </form>

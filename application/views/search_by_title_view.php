@@ -49,7 +49,7 @@
         if($search_by_title_recipe_page_size - $search_by_title_recipe_page_now == ($search_by_title_recipe_page_size-1)){
             echo "disabled";
           }
-        echo "'><a href='search/title?q=".urlencode($search_by_title_recipe_key)."&page=".($search_by_title_recipe_page_now - 1)."' aria-label='Previous'>
+        echo "'><a href='".base_url()."search/title?q=".urlencode($search_by_title_recipe_key)."&page=".($search_by_title_recipe_page_now - 1)."' aria-label='Previous'>
             <span aria-hidden='true'>&laquo;</span>
           </a></li>";
         for ($i=1; $i <= $search_by_title_recipe_page_size ; $i++) { 
@@ -59,7 +59,7 @@
           }
           echo "
             <li class=".$active.">
-              <a href='search/title?q=".urlencode($search_by_title_recipe_key)."&page=".$i."'>".$i."</a>
+              <a href='".base_url()."search/title?q=".urlencode($search_by_title_recipe_key)."&page=".$i."'>".$i."</a>
             </li>
           ";
         }
@@ -68,7 +68,7 @@
         if($search_by_title_recipe_page_size == $search_by_title_recipe_page_now){
             echo "disabled";
           }
-        echo "'><a href='search/title?q=".urlencode($search_by_title_recipe_key)."&page=".($search_by_title_recipe_page_now + 1)."' aria-label='Next'>
+        echo "'><a href='".base_url()."search/title?q=".urlencode($search_by_title_recipe_key)."&page=".($search_by_title_recipe_page_now + 1)."' aria-label='Next'>
             <span aria-hidden='true'>&raquo;</span>
           </a></li></ul></nav>
         ";

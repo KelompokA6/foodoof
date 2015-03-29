@@ -63,6 +63,6 @@
         </div>
       </div>
     </div>
-    <a href="#" class="pull-right">See More...</a>
+    <a href="<?php echo base_url()?>toprecipe" class="pull-right">See More...</a>
   </div>
 </div>

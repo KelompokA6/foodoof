@@ -38,7 +38,7 @@
 			        </div>
 		    	</div>
 		    	<div class="col-md-12 col-no-padding-right" style="padding-left:67px">
-		    		<a href="recipe/edit/{user_timeline_recipe_id}">
+		    		<a href="<?php echo base_url()?>recipe/edit/{user_timeline_recipe_id}">
       					<button class="btn btn-primary btn-xs" style="width:90px">
       						<i class="fa fa-pencil-square-o fa-lg"></i>
       						Edit
