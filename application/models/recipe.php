@@ -385,6 +385,10 @@ class Recipe extends DataMapper {
             return FALSE;
         }
     }
+    /*
+    input merupakan string title, kembalian list resep yang sesuai dengan title.
+    bila tidak ada yang memenuhi maka mengembalikan array kosong.
+    */
     function searchRecipeByTitle($search_key=NULL){
         $arrResult = array();
         if(!empty($search_key)){
@@ -411,11 +415,15 @@ class Recipe extends DataMapper {
         }
         return $arrResult;
     }
-    function searchRecipeByIngredients($search_key=NULL){
+    /*
+    input merupakan array string bahan dan treshold yang merupakan nilai float, kembalian list resep yang sesuai dengan threshold.
+    bila tidak ada yang memenuhi maka mengembalikan array kosong.
+    */
+    function searchRecipeByIngredients($search_key=NULL, $threshold=0.3){
         $arrResult = array();
-        if(!empty($search_key)){
+        if(!empty($search_key) && is_numeric($threshold){
             $searchkey = "";
-            $treshold = floor(sizeof($search_key)*(0.3));
+            $thresholdCounter = floor(sizeof($search_key)*floatval($treshold));
             echo $treshold;
             for ($i=0; $i < sizeof($search_key) ; $i++) { 
                 if($i == 0){
