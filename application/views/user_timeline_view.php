@@ -48,7 +48,12 @@
 		    	<div class="col-md-12 col-no-padding-right" style="padding-left:79px">
 		    		<div class="checkbox">
 					    <label>
-					      	<input type="checkbox" {if user_timeline_publish == '1'}checked{/if}> Publish
+					      	<input type="checkbox"
+								<?php
+						        if($user_timeline_publish == '1'){
+						          echo "checked";
+						        }
+						      ?>> Publish
 					    </label>
 					 </div>
 		    	</div>

@@ -90,6 +90,7 @@ class CI_Parser {
 		{
 			return FALSE;
 		}
+
 		foreach ($data as $key => $val)
 		{
 			if (is_array($val))
