@@ -21,36 +21,38 @@ class User extends CI_Controller {
 		$this->viewer->showUserTimeline($profile, $listRecipe);
 	}
 
-	public function updatePassword($id){
+	public function changepassword(){
 		$this->load->library('session');
-		if (!$this->session->userdata('login_status')) {
+		if ($this->session->userdata('user_id') < 1) {
 			echo "you're not logged in";
 			return;
 		}
-		$data['oldPass'] = $this->input->post("old_password");
-		$data['newPass'] = $this->input->post("new_password");
-		$data['confirmPass'] = $this->input->post("confirm_password");
-		
-		$data['success'] = 0;
-		if($this->isValid($data)){
-			$user = new User_model();
-			$success = $user->updatePassword($id, $data['newPass']);
-			$data['message'] = $success ? "password has been updated successfully" : "change password failed";
-			$data['success'] = $success;
+
+		$id = $this->session->userdata('user_id');
+		$data = array();
+		if($this->input->server('REQUEST_METHOD') == 'POST'){
+			$data['oldPass'] = $this->input->post("old_password");
+			$data['newPass'] = $this->input->post("new_password");
+			$data['confirmPass'] = $this->input->post("confirm_password");
+
+			$data['success'] = 0;
+			if($this->isValid($data)){
+				$user = new User_model();
+				$success = $user->updatePassword($id, $data['newPass']);
+				$data['message'] = $success ? "password has been updated successfully" : "change password failed";
+				$data['success'] = $success;
+			}
+			else{
+				$data['message'] = "password doesn't match";
+			}
 		}
-		else{
-			$data['message'] = "password doesn't match";
-		}
+
 
 		$u = new User_model();
 		$profile = $u->getProfile($id);
-		$this->load->model('viewer');
-		$this->viewer->showChangePassword($id, $data);
-	}
 
-	public function viewChangePass(){
 		$this->load->model('viewer');
-		$this->viewer->showChangePassword();
+		$this->viewer->showChangePassword($profile, $data);
 	}
 
 	public function register(){

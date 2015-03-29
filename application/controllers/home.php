@@ -1,6 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Home extends CI_Controller {
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->library('parser');
+		$this->load->library('session');
+	}
+
 	public function index()
 	{	
 		$this->load->view('template_view');
@@ -67,20 +74,21 @@ class Home extends CI_Controller {
 	{
 		$email = $this->input->post("email_user");
 		$password = $this->input->post("password_user");
-		$user = new User();
-		$isLogin = $user->login($email,$password);
-		if($isLogin){
-			$this->session->set_userdata('login_status', 1);
-			$this->home1();
+		$user = new User_model();
+		$profile = $user->login($email,$password);
+		if($profile !== FALSE){
+			foreach ($profile as $key => $value) {
+				$this->session->set_userdata($key, $value);
+			}
 		}
-		else{
-			$this->home1();
-		}
+		header('Location: '.base_url());
 	}
 
 	public function logout(){
-		$this->session->unset_userdata('login_status');
-		$this->home1();
+		$this->session->unset_userdata('user_id');
+		$this->session->unset_userdata('user_name');
+		$this->session->unset_userdata('user_photo');
+		header('Location: '.base_url());
 	}
 
 	public function changePassword(){

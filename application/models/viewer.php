@@ -36,11 +36,16 @@ class Viewer extends CI_Model
     $this->load->library('session');
     
     // menubar
-    $datacomplete['menubar'] = $this->parser->parse(
-        $this->session->userdata('login_status') ? 'menubar_login' : 'menubar',
-        array('menubar_user_name' => $profile['name']),
-        TRUE
-    );
+    $datacomplete['menubar'] = $this->session->userdata('user_id') > 0 ?
+        $this->parser->parse(
+            'menubar_login',
+            array(
+                'menubar_user_name' => $this->session->userdata('user_name'),
+                'menubar_user_photo' => $this->session->userdata('user_photo'),
+            ),
+            TRUE
+        ) : 
+        $this->parser->parse('menubar', array(), TRUE);
     // DONE
 
     // content_website
@@ -84,11 +89,16 @@ class Viewer extends CI_Model
     $this->load->library('session');
     
     // menubar
-    $datacomplete['menubar'] = $this->parser->parse(
-        $this->session->userdata('login_status') ? 'menubar_login' : 'menubar',
-        array('menubar_user_name' => $profile['name']),
-        TRUE
-    );
+    $datacomplete['menubar'] = $this->session->userdata('user_id') > 0 ?
+        $this->parser->parse(
+            'menubar_login',
+            array(
+                'menubar_user_name' => $this->session->userdata('user_name'),
+                'menubar_user_photo' => $this->session->userdata('user_photo'),
+            ),
+            TRUE
+        ) :
+        $this->parser->parse('menubar', array(), TRUE);
     // DONE
 
     // content_website
@@ -124,8 +134,11 @@ class Viewer extends CI_Model
     $this->load->library('session');
     
     // menubar
-    $datacomplete['menubar'] = $this->parser->parse('menubar_login'
-        array('menubar_user_name' => $profile['name']),
+    $datacomplete['menubar'] = $this->parser->parse('menubar_login',
+        array(
+            'menubar_user_name' => $this->session->userdata('user_name'),
+            'menubar_user_photo' => $this->session->userdata('user_photo'),
+        ),
         TRUE
     );
     // DONE
