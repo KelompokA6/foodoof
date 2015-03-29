@@ -1,5 +1,5 @@
-<div class="col-md-12 col-no-padding-left">
-	<img src="<?php echo base_url();?>assets/img/01.jpg" class="img-responsive img-rounded"/>
+<div class="col-md-12 col-no-padding-left text-center">
+	<img src="<?php echo base_url();?>{sidebar_user_photo}" class="img-responsive img-rounded"/>
 </div>
 <div class="col-md-12 col-no-padding-left" style="margin-top:10px">
 	<div class="list-group">

@@ -39,7 +39,7 @@
               <a href="user/profile" class="col-md-5">
                 <div class="col-md-12 hover-menubar text-left" title="Profile">
                   <div class="col-md-6 col-no-padding-left col-no-padding-right div-img-profile-menubar text-left">
-                    <img class="img-circle img-profile-menubar" src="<?php echo base_url();?>assets/img/01.jpg"/>
+                    <img class="img-circle img-profile-menubar" src="<?php echo base_url();?>{menubar_user_photo}"/>
                   </div>
                   <div class="col-md-4 col-no-padding text-left" style="line-height:34px">
                     {menubar_user_name}

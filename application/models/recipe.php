@@ -385,6 +385,14 @@ class Recipe extends DataMapper {
             return FALSE;
         }
     }
+    function searchRecipeByTitle($id=NULL, $search_key=NULL){
+        if($id == NULL){
+            $id = $this->id;
+        }
+        $recipes = new Recipe();
+        $sql = "SELECT id, MATCH (title,body) AGAINST ('".$search_key."') FROM articles";
+        $recipes->query($sql);
+    }
 
     /*
         Digunakan untuk memperoleh bahan-bahan yang digunakan oleh sebuah resep. kembalian list object bahan

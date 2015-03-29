@@ -74,6 +74,7 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->add_key('email', TRUE);
 		$this->dbforge->create_table('users');
+		$this->db->query("ALTER TABLE users ENGINE=INNODB");
 
 		/*
 		Table Recipes
@@ -93,12 +94,12 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE
 			),
 			'portion' => array(
-				'type' => 'INT DEFAULT 1',
+				'type' => 'INT',
 				'unsigned' => TRUE,
 				'null' => TRUE
 			),
 			'duration' => array(
-				'type' => 'INT DEFAULT 0',
+				'type' => 'INT',
 				'unsigned' => TRUE,
 				'null' => TRUE
 			),
@@ -115,18 +116,18 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE,
 			),
 			'rating' => array(
-				'type' => 'DECIMAL(3,2) DEFAULT 0.0',
+				'type' => 'DECIMAL(3,2)',
 				'unsigned' => TRUE,
-				'null' => TRUE
+				'null' => FALSE
 			),
 			'status' => array(
-				'type' => 'BOOLEAN DEFAULT FALSE',
-				'null' => TRUE
+				'type' => 'BOOLEAN',
+				'null' => FALSE
 			),
 			'views' => array(
-				'type' => 'INT DEFAULT 0',
+				'type' => 'INT',
 				'unsigned' => 'TRUE',
-				'null' => TRUE
+				'null' => FAlSE
 			),
 			'photo' => array(
 				'type' => 'TEXT',
@@ -154,7 +155,7 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE
 			),
 			'quantity' => array(
-				'type' => 'INT DEFAULT 0',
+				'type' => 'INT',
 				'null' => FALSE,
 			),
 			'units' => array(
