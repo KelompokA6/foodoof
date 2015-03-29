@@ -48,7 +48,7 @@
 		    	<div class="col-md-12 col-no-padding-right" style="padding-left:79px">
 		    		<div class="checkbox">
 					    <label>
-					      	<input type="checkbox" {user_timeline_ischecked}{user_timeline_recipe_checked}{/user_timeline_ischecked}> Publish
+					      	<input type="checkbox" {if user_timeline_publish == '1'}checked{/if}> Publish
 					    </label>
 					 </div>
 		    	</div>
