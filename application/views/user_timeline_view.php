@@ -6,7 +6,7 @@
     	{user_timeline_recipe_entries}
     	<div class="col-md-12 col-no-padding-right">
 			<div class="col-md-2 col-xs-3 detail-list-img" style="margin-right:2px">
-		        <img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>assets/img/Nasi-Goreng.jpg"/>
+		        <img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>{user_timeline_recipe_photo}"/>
 		    </div>
 		    <div class="col-md-6 col-xs-8 detail-list">
 		    	<div class="col-md-12 details">
