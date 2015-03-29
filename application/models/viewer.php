@@ -86,7 +86,7 @@ class Viewer extends CI_Model
     // menubar
     $datacomplete['menubar'] = $this->parser->parse(
         $this->session->userdata('login_status') ? 'menubar_login' : 'menubar',
-        array('menubar_user_name' => $data['name']),
+        array('menubar_user_name' => $profile['name']),
         TRUE
     );
     // DONE
@@ -117,4 +117,42 @@ class Viewer extends CI_Model
     // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);
   }
+
+  public function showChangePassword($profile, $data = array())
+  {
+    $this->load->library('parser');
+    $this->load->library('session');
+    
+    // menubar
+    $datacomplete['menubar'] = $this->parser->parse('menubar_login'
+        array('menubar_user_name' => $profile['name']),
+        TRUE
+    );
+    // DONE
+
+    // content_website
+    // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
+    // ambil sidebar
+    $data_user_view['sidebar_user'] = $this->parser->parse(
+        'sidebar_user_view',
+        array(
+            'sidebar_user_id' => $profile['id'],
+            'sidebar_user_photo' => $profile['photo'],
+        ),
+        TRUE
+    );
+    // ambil content_user dari user_timeline_view
+    $data_user_view['content_user'] = $this->parser->parse(
+        'change_password_view',
+        array(),
+        TRUE
+    );
+
+    // load template_content
+    $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
+
+    // butuh menubar dan content_website
+    $this->parser->parse('template_content', $datacomplete);
+  }
+
 }

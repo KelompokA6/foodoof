@@ -15,38 +15,42 @@ class User extends CI_Controller {
 	public function timeline($id){
 		$u = new User_model();
 		$profile = $u->getProfile($id);
-		// $r = new Recipe();
-		// $listRecipe = $r->getUserRecipe($id);
+		$r = new Recipe();
+		$listRecipe = $r->getUserRecipe($id);
 		$this->load->model('viewer');
 		$this->viewer->showUserTimeline($profile, $listRecipe);
 	}
 
 	public function updatePassword($id){
+		$this->load->library('session');
+		if (!$this->session->userdata('login_status')) {
+			echo "you're not logged in";
+			return;
+		}
 		$data['oldPass'] = $this->input->post("old_password");
 		$data['newPass'] = $this->input->post("new_password");
 		$data['confirmPass'] = $this->input->post("confirm_password");
-		 
+		
+		$data['success'] = 0;
 		if($this->isValid($data)){
 			$user = new User_model();
-			$isChanged = $user->updatePassword($id, $data['newPass']);
-			if($isChanged){
-				$dataMessage['message'] = "Change Password Success"; 
-			}
-			else{
-				$dataMessage['message'] = "Change Password Failed";
-			}
+			$success = $user->updatePassword($id, $data['newPass']);
+			$data['message'] = $success ? "password has been updated successfully" : "change password failed";
+			$data['success'] = $success;
 		}
 		else{
-			$dataMessage['message'] = "Change Password Failed";
-		} 
+			$data['message'] = "password doesn't match";
+		}
 
+		$u = new User_model();
+		$profile = $u->getProfile($id);
 		$this->load->model('viewer');
-		$this->viewer->show('change_password_view', $dataMessage);
+		$this->viewer->showChangePassword($id, $data);
 	}
 
 	public function viewChangePass(){
 		$this->load->model('viewer');
-		$this->viewer->show('change_password_view');
+		$this->viewer->showChangePassword();
 	}
 
 	public function register(){
