@@ -13,13 +13,12 @@ class User extends CI_Controller {
 	}
 
 	public function timeline($id){
-		$r = new Recipe();
-		$recipe = $r->getUserRecipe($id);
-
-		$data['user'] = $id;
-		$data['listRecipe'] = $recipe;
+		$u = new User_model();
+		$profile = $u->getProfile($id);
+		// $r = new Recipe();
+		// $listRecipe = $r->getUserRecipe($id);
 		$this->load->model('viewer');
-		$this->viewer->showUserTimeline('user_timeline_view', $data);
+		$this->viewer->showUserTimeline($profile, $listRecipe);
 	}
 
 	public function updatePassword($id){

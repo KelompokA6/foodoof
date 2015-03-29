@@ -30,7 +30,55 @@ class Viewer extends CI_Model
     $this->parser->parse('final_view', $datafinal);
   }
 
-  public function showProfile($data = array())
+  public function showProfile($profile)
+  {
+    $this->load->library('parser');
+    $this->load->library('session');
+    
+    // menubar
+    $datacomplete['menubar'] = $this->parser->parse(
+        $this->session->userdata('login_status') ? 'menubar_login' : 'menubar',
+        array('menubar_user_name' => $profile['name']),
+        TRUE
+    );
+    // DONE
+
+    // content_website
+    // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
+    // ambil sidebar
+    $data_user_view['sidebar_user'] = $this->parser->parse(
+        'sidebar_user_view',
+        array(
+            'sidebar_user_id' => $profile['id'],
+            'sidebar_user_photo' => $profile['photo'],
+        ),
+        TRUE
+    );
+    // ambil content_user dari profile_view
+    $data_user_view['content_user'] = $this->parser->parse(
+        'profile_view',
+        array(
+            'profile_user_name' => $profile['name'],
+            'profile_user_gender' => $profile['gender'] == 'm' ? 'male' : 'female',
+            'profile_user_age' => (new DateTime())->diff(new DateTime($profile['bdate']))->y,
+            'profile_user_email' => $profile['email'],
+            'profile_user_phone' => $profile['phone'],
+            'profile_user_last_access' => $profile['last_access'],
+            'profile_user_twitter' => $profile['twitter'],
+            'profile_user_facebook' => $profile['facebook'],
+            'profile_user_googleplus' => $profile['googleplus'],
+            'profile_user_path' => $profile['path'],
+        ),
+        TRUE
+    );
+    // load template_content
+    $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
+
+    // butuh menubar dan content_website
+    $this->parser->parse('template_content', $datacomplete);
+  }
+
+  public function showUserTimeline($profile, $listRecipes)
   {
     $this->load->library('parser');
     $this->load->library('session');
@@ -48,29 +96,23 @@ class Viewer extends CI_Model
     // ambil sidebar
     $data_user_view['sidebar_user'] = $this->parser->parse(
         'sidebar_user_view',
-        array('sidebar_user_id' => $data['id']),
-        TRUE
-    );
-    // ambil content_user
-    $data_user_view['content_user'] = $this->parser->parse(
-        'profile_view',
         array(
-            'profile_user_name' => $data['name'],
-            'profile_user_gender' => $data['gender'],
-            // 'profile_user_age' => $data['age'],
-            'profile_user_email' => $data['email'],
-            'profile_user_phone' => $data['phone'],
-            'profile_user_last_access' => $data['last_access'],
-            // 'profile_user_twitter' => $data['twitter'],
-            // 'profile_user_facebook' => $data['facebook'],
-            // 'profile_user_googleplus' => $data['googleplus'],
-            // 'profile_user_path' => $data['path'],
+            'sidebar_user_id' => $profile['id'],
+            'sidebar_user_photo' => $profile['photo'],
         ),
         TRUE
     );
+    // ambil content_user dari user_timeline_view
+    $data_user_view['content_user'] = $this->parser->parse(
+        'user_timeline_view',
+        array(
+            'user_timeline_recipe_entries' => $listRecipes,
+        ),
+        TRUE
+    );
+
     // load template_content
     $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
-    // $datacomplete['content_website'] = $data_user_view['sidebar_user'].$data_user_view['content_user'];
 
     // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);
