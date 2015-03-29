@@ -190,7 +190,7 @@ class Recipe extends DataMapper {
                 if(file_exists("assets/tmp/step/".$id."-".$x."jpg")){
                     $stp->photo = "assets/step/".$id."-".$x."jpg";
                     $stp->recipe_id = $id;
-                    $stp->description = $step->["description"];
+                    $stp->description = $step["description"];
                     $stp->step = '1';
                     if($stp->save()){
                         $data = read_file("assets/tmp/step/".$id."-1.jpg");
@@ -366,7 +366,7 @@ class Recipe extends DataMapper {
             return $data;
         }
         else{
-            if(empty($user_id) && $this->author==$user_id){
+            if(!empty($user_id) && $this->author==$user_id){
                 $data = new stdClass();
                 $data->id = $recipes->id;
                 $data->name = $recipes->name;
@@ -385,13 +385,69 @@ class Recipe extends DataMapper {
             return FALSE;
         }
     }
-    function searchRecipeByTitle($id=NULL, $search_key=NULL){
-        if($id == NULL){
-            $id = $this->id;
+    function searchRecipeByTitle($search_key=NULL){
+        $arrResult = array();
+        if(!empty($search_key)){
+            $recipe = new Recipe();
+            $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$search_key."') order by MATCH (name) AGAINST ('".$search_key."')";
+            $recipe->query($sql);
+            foreach ($recipe as $recipes) {
+                $data = new stdClass();
+                $data->id = $recipes->id;
+                $data->name = $recipes->name;
+                $data->description = $recipes->description;
+                $data->portion = $recipes->portion;
+                $data->duration = $recipes->author;
+                $data->create_date = $recipes->create_date;
+                $data->last_update = $recipes->last_update;
+                $data->rating = $recipes->rating;
+                $data->status = $recipes->status;
+                $data->views = $recipes->views;
+                $data->photo = $recipes->photo;
+                $data->highlight = $recipes->highlight;
+                array_push($arrResult, $data);
+            }
+            return $arrResult;
         }
-        $recipes = new Recipe();
-        $sql = "SELECT id, MATCH (title,body) AGAINST ('".$search_key."') FROM articles";
-        $recipes->query($sql);
+        return $arrResult;
+    }
+    function searchRecipeByIngredients($search_key=NULL){
+        $arrResult = array();
+        if(!empty($search_key)){
+            $searchkey = "";
+            $treshold = floor(sizeof($search_key)*(0.3));
+            echo $treshold;
+            for ($i=0; $i < sizeof($search_key) ; $i++) { 
+                if($i == 0){
+                    $searchkey .= "name LIKE '%".$search_key[$i]."%'"; 
+                } 
+                $searchkey .= " OR name LIKE '%".$search_key[$i]."%'"; 
+            }
+            $ingredient = new Ingredient();
+            $sql = "SELECT recipe_id, COUNT(*) as counter FROM ingredients WHERE ".$searchkey." group by recipe_id having counter >= ".$treshold." order by counter desc";
+            $ingredient->query($sql);
+            foreach ($ingredient as $ingredients) {
+                echo $ingredients->recipe_id;
+                $recipes = new Recipe();
+                $recipes->get_by_id($ingredients->recipe_id);
+                $data = new stdClass();
+                $data->id = $recipes->id;
+                $data->name = $recipes->name;
+                $data->description = $recipes->description;
+                $data->portion = $recipes->portion;
+                $data->duration = $recipes->author;
+                $data->create_date = $recipes->create_date;
+                $data->last_update = $recipes->last_update;
+                $data->rating = $recipes->rating;
+                $data->status = $recipes->status;
+                $data->views = $recipes->views;
+                $data->photo = $recipes->photo;
+                $data->highlight = $recipes->highlight;
+                array_push($arrResult, $data);
+            }
+            return $arrResult;
+        }
+        return $arrResult;
     }
 
     /*

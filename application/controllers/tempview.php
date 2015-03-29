@@ -15,5 +15,12 @@ class Tempview extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 
 	}	
-
+	public function search(){
+		$recipe = new Recipe();
+		print_r($recipe->searchRecipeByTitle('goreng nasi'));
+	}
+	public function searchIngredient(){
+		$recipe = new Recipe();
+		print_r($recipe->searchRecipeByIngredients(array('bawang merah', 'cabai')));
+	}
 }
