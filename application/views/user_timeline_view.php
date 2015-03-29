@@ -6,12 +6,16 @@
     	{user_timeline_recipe_entries}
     	<div class="col-md-12 col-no-padding-right">
 			<div class="col-md-2 col-xs-3 detail-list-img" style="margin-right:2px">
-		        <img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>{user_timeline_recipe_photo}"/>
+		        <a href="<?php echo base_url();?>recipe/getRecipe/{user_timeline_recipe_id}">
+		        	<img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>{user_timeline_recipe_photo}"/>
+		        </a>
 		    </div>
 		    <div class="col-md-6 col-xs-8 detail-list">
 		    	<div class="col-md-12 details">
 		          	<div class="col-md-12 col-xs-9">
-		            	<h4><p class="text-capitalize">{user_timeline_recipe_name}</p></h4>
+		            	<a href="<?php echo base_url();?>recipe/getRecipe/{user_timeline_recipe_id}">
+		            		<h4><p class="text-capitalize">{user_timeline_recipe_name}</p></h4>
+		            	</a>
 		          	</div>
 		        </div>
 		        <div class="col-md-12 details">
@@ -48,7 +52,7 @@
 		    	<div class="col-md-12 col-no-padding-right" style="padding-left:79px">
 		    		<div class="checkbox">
 					    <label>
-					      	<input type="checkbox"
+					      	<input type="checkbox" id="checkedPublish"
 								<?php
 						        if($user_timeline_publish == '1'){
 						          echo "checked";

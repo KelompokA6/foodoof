@@ -48,6 +48,7 @@ class Tempview extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 	}
 	public function coba($a){
+		$a = urldecode($a);
 		echo $a;
 	}
 }

@@ -363,6 +363,9 @@ class Recipe extends DataMapper {
             $data->views = $recipes->views;
             $data->photo = $recipes->photo;
             $data->highlight = $recipes->highlight;
+            $data->category = $recipes->getCategories($recipes->id);
+            $data->ingredients = $recipes->getIngredients($recipes->id);
+            $data->steps = $recipes->getSteps($recipes->id);
             return $data;
         }
         else{
@@ -380,6 +383,9 @@ class Recipe extends DataMapper {
                 $data->views = $recipes->views;
                 $data->photo = $recipes->photo;
                 $data->highlight = $recipes->highlight;
+                $data->category = $recipes->getCategories($recipes->id);
+                $data->ingredients = $recipes->getIngredients($recipes->id);
+                $data->steps = $recipes->getSteps($recipes->id);
                 return $data;
             }
             return FALSE;
@@ -390,7 +396,7 @@ class Recipe extends DataMapper {
     kembalian aray dengan dua element element total merupakan total pencarian dan element resep_list merupakan list resep yang sesuai dengan title.
     bila tidak ada yang memenuhi maka mengembalikan array dengan sebuah element total yang bernilai nol.
     */
-    function searchRecipeByTitle($search_key=NULL, $limit=10, $offset=0){
+    function searchRecipeByTitle($search_key=NULL, $limit=10, $offset=0, $category=NULL){
         if(!empty($search_key)){
             $recipe = new Recipe();
             $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$search_key."') order by MATCH (name) AGAINST ('".$search_key."')";
@@ -398,22 +404,41 @@ class Recipe extends DataMapper {
             $recipeList = array();
             $total = 0;
             foreach ($recipe as $recipes) {
+                $validRecipe = true;
                 if($total >= $offset && $limit > 0){
-                    $data = new stdClass();
-                    $data->id = $recipes->id;
-                    $data->name = $recipes->name;
-                    $data->description = $recipes->description;
-                    $data->portion = $recipes->portion;
-                    $data->duration = $recipes->author;
-                    $data->create_date = $recipes->create_date;
-                    $data->last_update = $recipes->last_update;
-                    $data->rating = $recipes->rating;
-                    $data->status = $recipes->status;
-                    $data->views = $recipes->views;
-                    $data->photo = $recipes->photo;
-                    $data->highlight = $recipes->highlight;
-                    array_push($recipeList, $data);
-                    $limit--;
+                    if(!empty($category)){
+                        $categories = new Category();
+                        $categories->where('recipe_id', $recipes->id);
+                        if(is_array($category)){
+                            for ($i=0; $i <$category ; $i++) { 
+                                $categories->or_ilike('name', $category[$i]);
+                            }
+                        }
+                        else{
+                            $categories->or_ilike('name', $category);
+                        }
+                        if($categories->count()==0){
+                            $validRecipe = false;
+                            $total--;
+                        }
+                    }                    
+                    if($validRecipe){
+                        $data = new stdClass();
+                        $data->id = $recipes->id;
+                        $data->name = $recipes->name;
+                        $data->description = $recipes->description;
+                        $data->portion = $recipes->portion;
+                        $data->duration = $recipes->author;
+                        $data->create_date = $recipes->create_date;
+                        $data->last_update = $recipes->last_update;
+                        $data->rating = $recipes->rating;
+                        $data->status = $recipes->status;
+                        $data->views = $recipes->views;
+                        $data->photo = $recipes->photo;
+                        $data->highlight = $recipes->highlight;
+                        array_push($recipeList, $data);
+                        $limit--;
+                    }
                 }
                 $total++;
             }
@@ -430,7 +455,7 @@ class Recipe extends DataMapper {
     kembalian aray dengan dua element element total merupakan total pencarian dan element resep_list merupakan list resep yang sesuai dengan title.
     bila tidak ada yang memenuhi maka mengembalikan array dengan sebuah element total yang bernilai nol.
     */
-    function searchRecipeByIngredients($search_key=NULL, $threshold=0.3, $limit=0, $offset=0){
+    function searchRecipeByIngredients($search_key=NULL, $threshold=0.3, $limit=0, $offset=0, $category=NULL){
         $arrResult = array();
         if(!empty($search_key) && is_numeric($threshold)){
             $searchkey = "";
@@ -447,24 +472,43 @@ class Recipe extends DataMapper {
             $recipeList = array();
             $total = 0;
             foreach ($ingredient as $ingredients) {
+                $validRecipe = true;
                 if($total >= $offset && $limit > 0){
-                    $recipes = new Recipe();
-                    $recipes->get_by_id($ingredients->recipe_id);
-                    $data = new stdClass();
-                    $data->id = $recipes->id;
-                    $data->name = $recipes->name;
-                    $data->description = $recipes->description;
-                    $data->portion = $recipes->portion;
-                    $data->duration = $recipes->author;
-                    $data->create_date = $recipes->create_date;
-                    $data->last_update = $recipes->last_update;
-                    $data->rating = $recipes->rating;
-                    $data->status = $recipes->status;
-                    $data->views = $recipes->views;
-                    $data->photo = $recipes->photo;
-                    $data->highlight = $recipes->highlight;
-                    array_push($recipeList, $data);
-                    $limit--;
+                    if(!empty($category)){
+                        $categories = new Category();
+                        $categories->where('recipe_id', $recipes->id);
+                        if(is_array($category)){
+                            for ($i=0; $i <$category ; $i++) { 
+                                $categories->or_ilike('name', $category[$i]);
+                            }
+                        }
+                        else{
+                            $categories->or_ilike('name', $category);
+                        }
+                        if($categories->count()==0){
+                            $validRecipe = false;
+                            $total--;
+                        }
+                    }                    
+                    if($validRecipe){
+                        $recipes = new Recipe();
+                        $recipes->get_by_id($ingredients->recipe_id);
+                        $data = new stdClass();
+                        $data->id = $recipes->id;
+                        $data->name = $recipes->name;
+                        $data->description = $recipes->description;
+                        $data->portion = $recipes->portion;
+                        $data->duration = $recipes->author;
+                        $data->create_date = $recipes->create_date;
+                        $data->last_update = $recipes->last_update;
+                        $data->rating = $recipes->rating;
+                        $data->status = $recipes->status;
+                        $data->views = $recipes->views;
+                        $data->photo = $recipes->photo;
+                        $data->highlight = $recipes->highlight;
+                        array_push($recipeList, $data);
+                        $limit--;
+                    }
                 }
                 $total++;
             }
