@@ -57,6 +57,21 @@ class User_model extends DataMapper {
         return $this->where('id', $id)->update($dataProfile);
     }
 
+    function createUser($data)
+    {
+        $this->name = $data['name'];
+        $this->email = $data['email'];
+        $this->password = $data['password'];
+
+        // encrypt the password
+        $ci =& get_instance();
+        $ci->load->library('encrypt');
+        $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
+        $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
+        $this->password = $ci->encrypt->encode($this->password);
+        $this->save();
+    }
+
     var $validation = array(
         'email' => array(
             'label' => 'Email Address',

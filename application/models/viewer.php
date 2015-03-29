@@ -168,4 +168,21 @@ class Viewer extends CI_Model
     $this->parser->parse('template_content', $datacomplete);
   }
 
+  public function showRegister($data = array())
+  {
+    $this->load->library('parser');
+    $this->load->library('session');
+    
+    // menubar
+    $datacomplete['menubar'] = $this->parser->parse('menubar', array(), TRUE);
+    // DONE
+
+    // content_website
+    // ambil dari registration_view
+    $datacomplete['content_website'] = $this->parser->parse('registration_view', $data, TRUE);
+
+    // butuh menubar dan content_website
+    $this->parser->parse('template_content', $datacomplete);
+  }
+
 }
