@@ -421,7 +421,7 @@ class Recipe extends DataMapper {
     */
     function searchRecipeByIngredients($search_key=NULL, $threshold=0.3){
         $arrResult = array();
-        if(!empty($search_key) && is_numeric($threshold){
+        if(!empty($search_key) && is_numeric($threshold)){
             $searchkey = "";
             $thresholdCounter = floor(sizeof($search_key)*floatval($treshold));
             echo $treshold;
