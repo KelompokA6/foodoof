@@ -1,0 +1,12 @@
+RewriteEngine on
+RewriteRule ^([a-z0-9_-]+)\.html$ index.php/page/$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(index\.php|asset|robots\.txt)
+RewriteRule ^(.*)$ index.php/$1 [L]
+AddType application/vnd.ms-fontobject .eot
+AddType font/ttf .ttf
+AddType font/otf .otf
+AddType application/font-woff .woff
+AddType application/x-font-woff .woff
+AddType application/x-font-otf .otf
