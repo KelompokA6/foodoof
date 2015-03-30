@@ -19,4 +19,5 @@
 19.Pop up-pop up belom ada
 20.tambahkan gender di register!!
 21.ada 3 versi user timeline, my recipes, his recipes, her recipes
-22.
+22.halaman khusus login
+23.

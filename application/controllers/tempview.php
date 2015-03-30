@@ -15,6 +15,23 @@ class Tempview extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 
 	}	
+	public function footer(){
+		$this->load->view('footer');
+	}
+
+	public function login()
+	{	
+		$this->load->library('parser');
+		$data = array("recipe_author_id"=> 1);
+		$menubar = $this->parser->parse('menubar_login', $data, TRUE);
+		$content_website = $this->parser->parse('login_view', $data, TRUE);
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
+
+	}	
 	public function search(){
 		$recipe = new Recipe_model();
 		print_r($recipe->searchRecipeByTitle('ayam', 10, 0));
