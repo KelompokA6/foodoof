@@ -26,9 +26,25 @@ class User extends CI_Controller {
 		$this->viewer->showUserTimeline($profile, $listRecipe);
 	}
 
+	public function favorite($id){
+		$u = new User_model();
+		$profile = $u->getProfile($id);
+		$r = new Recipe();
+		$listRecipe = $r->getFavoriteRecipe($id);
+		$this->viewer->showUserTimeline($profile, $listRecipe);
+	}
+
+	public function cooklater(){
+		$id = $this->wajiblogin();
+		$u = new User_model();
+		$profile = $u->getProfile($id);
+		$r = new Recipe();
+		$listRecipe = $r->getCooklaterRecipe($id);
+		$this->viewer->showUserTimeline($profile, $listRecipe);
+	}
+
 	public function changepassword(){
-		$this->wajiblogin();
-		$id = $this->session->userdata('user_id');
+		$id = $this->wajiblogin();
 		$data = array();
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data['oldPass'] = $this->input->post("old_password");
@@ -73,9 +89,8 @@ class User extends CI_Controller {
 	}
 
 	public function edit(){
-		$this->wajiblogin();
+		$id = $this->wajiblogin();
 
-		$id = $this->session->userdata('user_id');
 		$u = new User_model();
 		$profile = $u->getProfile($id);
 
@@ -129,10 +144,11 @@ class User extends CI_Controller {
 
 	private function wajiblogin()
 	{
-		if ($this->session->userdata('user_id') < 1) {
+		$id = $this->session->userdata('user_id');
+		if ($id < 1) {
 			echo "you're not logged in";
 			exit();
 		}
+		return $id;
 	}
 }
-//udah mulai mabok -_-
