@@ -120,6 +120,7 @@ class User extends CI_Controller {
 			$email = $this->input->post('email');
 			$data['email'] = $email;
 			$password = $u->getPasswordByEmail($email);
+			echo "nyoh password: $password"; exit();
 			if($password !== FALSE) {
 				if ($this->sendPassword($email, $password)) {
 					$data['message'] = 'success';
