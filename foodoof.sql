@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2015 at 09:54 AM
+-- Generation Time: Mar 30, 2015 at 11:55 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -276,13 +276,13 @@ CREATE TABLE IF NOT EXISTS `recipes` (
 --
 
 INSERT INTO `recipes` (`id`, `name`, `description`, `portion`, `duration`, `author`, `create_date`, `last_update`, `rating`, `status`, `views`, `photo`, `highlight`, `status_temp`) VALUES
-(1, 'Ayam Goreng Bumbu Lengkuas', 'Ayam goreng bumbu lengkuas ini biasanya dihidangkan berdampingan dengan rendang pada acara-acara besar, seperti acara pernikahan dan perayaan khatam Al-Qur''an. Selain itu menu ini juga tersedia di rumah makan Padang yang bertebaran di seantero penjuru tanah air. Dengan resep ini kita pun bisa membuatnya di rumah tanpa harus menunggu ada hajatan ataupun pergi ke rumah makan.. ;)', 8, 60, 3, '2015-03-29 23:23:56', '2015-03-29 23:23:56', '0.00', 1, 0, NULL, 0, 1),
-(2, 'Spices-Shrimp (udang balado)', 'Resep ini tercipta karna LAPAR :D *apaan sih* Lgsg simak aja,cekidot~', 3, 10, 4, '2015-03-29 21:15:34', '2015-03-29 21:15:34', '0.00', 1, 0, NULL, 0, 1),
-(3, 'Mini Kebab Veggie', 'Saya tau kebab ini dari orang jualan kebab di SD dekat kampus. Berbekal ingatan "taste" rasanya,akhirnya nemu juga resep yg sesuai bahkan lebih enak jauuuuhhh~ *GR*', 10, 20, 4, '2015-03-29 21:24:21', '2015-03-29 21:24:21', '0.00', 1, 0, NULL, 0, 1),
-(4, 'Pisang keju madu ala Diaz', 'ceritanya punya sisa pisang abis dibikin kolak, pengen bikin masakan yang gampang. akhirnya bikin pisang keju deh... hehee', 7, 20, 5, '2015-03-29 21:38:47', '2015-03-29 21:38:47', '0.00', 0, 0, NULL, 0, 1),
-(5, 'Japanese Strawberry Shortcake', 'Ini cake dadakan untuk valentine kemarin bareng calon suami ^^. Alhamdulillah coment keluarga calon positif semua. Maaf berantakan baru belajar', 6, 60, 6, '2015-03-29 23:23:24', '2015-03-29 23:23:24', '0.00', 1, 0, NULL, 0, 1),
-(6, 'mac n cheese sederhana', 'Ini inspirasi dari mac n cheese instant yg ada di minimarket. Tp porsinya sedikit bagi saya ^^ . Cocok untuk sarapan cepat dan enak tentunya #sarapancepat #harike1', 2, 30, 6, '2015-03-29 23:35:08', '2015-03-29 23:35:08', '0.00', 1, 0, NULL, 0, 1),
-(7, 'Strawberry Cheesecake (No Baked)', 'Pas jaman SMA hangout ke toko buku nemu resep ini. Saya foto resepnya *bukan di beli bukunya* ^^ dan saya praktekin. Ini adalah Cake pertama yg pernah saya buat dengan menggunakan cream keju . Kebetulan ke foto dan masih ada resepnya. ^^', 6, 90, 6, '2015-03-29 23:41:49', '2015-03-29 23:41:49', '0.00', 1, 0, NULL, 0, 1);
+(1, 'Ayam Goreng Bumbu Lengkuas', 'Ayam goreng bumbu lengkuas ini biasanya dihidangkan berdampingan dengan rendang pada acara-acara besar, seperti acara pernikahan dan perayaan khatam Al-Qur''an. Selain itu menu ini juga tersedia di rumah makan Padang yang bertebaran di seantero penjuru tanah air. Dengan resep ini kita pun bisa membuatnya di rumah tanpa harus menunggu ada hajatan ataupun pergi ke rumah makan.. ;)', 8, 60, 3, '2015-03-30 09:51:19', '2015-03-30 09:51:19', '0.00', 1, 0, 'images/recipe/1.jpg', 0, 1),
+(2, 'Spices-Shrimp (udang balado)', 'Resep ini tercipta karna LAPAR :D *apaan sih* Lgsg simak aja,cekidot~', 3, 10, 4, '2015-03-30 09:51:05', '2015-03-30 09:51:05', '0.00', 1, 0, 'images/recipe/2.jpg', 0, 1),
+(3, 'Mini Kebab Veggie', 'Saya tau kebab ini dari orang jualan kebab di SD dekat kampus. Berbekal ingatan "taste" rasanya,akhirnya nemu juga resep yg sesuai bahkan lebih enak jauuuuhhh~ *GR*', 10, 20, 4, '2015-03-30 09:50:39', '2015-03-30 09:50:39', '0.00', 1, 0, 'images/recipe/3.jpg', 0, 1),
+(4, 'Pisang keju madu ala Diaz', 'ceritanya punya sisa pisang abis dibikin kolak, pengen bikin masakan yang gampang. akhirnya bikin pisang keju deh... hehee', 7, 20, 5, '2015-03-30 09:47:31', '2015-03-30 09:47:31', '0.00', 0, 0, 'images/recipe/4.jpg', 0, 1),
+(5, 'Japanese Strawberry Shortcake', 'Ini cake dadakan untuk valentine kemarin bareng calon suami ^^. Alhamdulillah coment keluarga calon positif semua. Maaf berantakan baru belajar', 6, 60, 6, '2015-03-30 09:41:54', '2015-03-30 09:41:54', '0.00', 1, 0, 'images/recipe/5.jpg', 0, 1),
+(6, 'mac n cheese sederhana', 'Ini inspirasi dari mac n cheese instant yg ada di minimarket. Tp porsinya sedikit bagi saya ^^ . Cocok untuk sarapan cepat dan enak tentunya #sarapancepat #harike1', 2, 30, 6, '2015-03-30 09:42:14', '2015-03-30 09:42:14', '0.00', 1, 0, 'images/recipe/6.jpg', 0, 1),
+(7, 'Strawberry Cheesecake (No Baked)', 'Pas jaman SMA hangout ke toko buku nemu resep ini. Saya foto resepnya *bukan di beli bukunya* ^^ dan saya praktekin. Ini adalah Cake pertama yg pernah saya buat dengan menggunakan cream keju . Kebetulan ke foto dan masih ada resepnya. ^^', 6, 90, 6, '2015-03-30 09:38:59', '2015-03-30 09:38:59', '0.00', 1, 0, 'images/recipe/7.jpg', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -379,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_access` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`,`email`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `users`
@@ -389,7 +389,8 @@ INSERT INTO `users` (`id`, `email`, `name`, `password`, `gender`, `bdate`, `phon
 (3, 'Biyay.AtharSabai@gmail.com', 'Biyay AtharSabai', 'masakmasak', 'f', NULL, NULL, 'MEMBER', NULL, NULL, NULL, NULL, NULL, '2015-03-29 20:56:29'),
 (4, 'amel@gmail.com', 'ameLicious~', 'masakmasak', 'f', '1997-03-30', '080808080808', 'MEMBER', NULL, 'Amel', '@amel', 'Amel', NULL, '2015-03-30 07:53:43'),
 (5, 'Diaz@gmail.com', 'Diaz', 'masakmasak', 'm', '1988-03-30', '081234567890', 'MEMBER', NULL, 'Diaz', '@diaz', 'Diaz', NULL, '2015-03-30 07:52:53'),
-(6, 'queen@gmail.com', 'queen', 'masakmasak', 'f', '1990-03-30', '085712345678', 'MEMBER', NULL, NULL, NULL, NULL, NULL, '2015-03-29 23:18:19');
+(6, 'queen@gmail.com', 'queen', 'masakmasak', 'f', '1990-03-30', '085712345678', 'MEMBER', 'images/user/6.jpg', NULL, NULL, NULL, NULL, '2015-03-30 09:44:57'),
+(7, 'je.fathanah@gmail.com', 'jean', 'masakmasak', 'f', '1994-06-19', '08762112191', 'MEMBER', 'images/user/7.jpg', 'Jean Fathanah', '@jeFathanah', 'Jean Fathanah', NULL, '2015-03-30 09:53:45');
 
 --
 -- Constraints for dumped tables
