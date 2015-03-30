@@ -139,7 +139,7 @@ class Migration_Initialize_database extends CI_Migration {
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('recipes');
-		$this->db->query("ALTER TABLE recipe ADD FULLTEXT (name)");
+		$this->db->query("ALTER TABLE recipes ADD FULLTEXT (name)");
 		/*
 		Table Ingredients
 		*/
