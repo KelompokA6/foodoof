@@ -28,7 +28,7 @@ class Recipe extends DataMapper {
     function _member($field){
         if (!empty($this->{$field}))
         {
-            $u = new User();
+            $u = new User_model();
             // Get email have used.
             if($u->where('id', $this->{$field})->count() !== 0){
                 return true;

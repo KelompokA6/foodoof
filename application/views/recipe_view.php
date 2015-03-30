@@ -21,7 +21,7 @@
 				</div>
 				<div class="col-md-12 col-no-padding text-center" style="margin-bottom:5px">
 					<div class="col-md-6 text-right">
-						<a href="<?php echo base_url();?>user/timeline/{recipe_author}">Abid Nurul Hakim</a>
+						<a href="<?php echo base_url();?>user/timeline/{recipe_author_id}">Abid Nurul Hakim</a>
 					</div>
 					<div class="col-md-6 text-left" style="border:dashed 1px; border-top:0; border-right:0; border-bottom:0">
 						<i class="fa fa-calendar"></i>  20-02-2014
