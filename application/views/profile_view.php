@@ -25,7 +25,9 @@
 		</span>
 		</div>
 		<div class="col-md-11 col-no-padding-left">
-			<h5>{profile_user_email}</h5>
+			<a href="mailto:{profile_user_email}">
+				<h5>{profile_user_email}</h5>
+			</a>
 		</div>
 	</div>
 	<div class="col-md-12 col-no-padding-left">
@@ -60,7 +62,9 @@
 		</span>
 		</div>
 		<div class="col-md-11 col-no-padding-left">
-			{profile_user_twitter}
+			<a href="http://https://twitter.com/{profile_user_twitter}">
+				@{profile_user_twitter}
+			</a>
 		</div>
 	</div>
 	<div class="col-md-12 col-no-padding-left">
@@ -71,7 +75,9 @@
 		</span>
 		</div>
 		<div class="col-md-11 col-no-padding-left">
-			{profile_user_facebook}
+			<a href="#">
+				{profile_user_facebook}
+			</a>
 		</div>
 	</div>
 	<div class="col-md-12 col-no-padding-left">
@@ -82,7 +88,9 @@
 		</span>
 		</div>
 		<div class="col-md-11 col-no-padding-left">
-			{profile_user_googleplus}
+			<a href="#">
+				{profile_user_googleplus}
+			</a>
 		</div>
 	</div>
 	<div class="col-md-12 col-no-padding-left">
@@ -93,7 +101,9 @@
 		</span>
 		</div>
 		<div class="col-md-11 col-no-padding-left">
-			{profile_user_path}
+			<a href="#">
+				{profile_user_path}
+			</a>
 		</div>
 	</div>
 	<div class="col-md-12 col-no-padding-left">

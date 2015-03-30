@@ -40,7 +40,7 @@
                 <button type="button" class="btn btn-success btn-cus" data-container="body" data-toggle="popover" data-placement="bottom" 
                 data-html="TRUE"
                 data-content="
-                  <form id='loginform' class='form-horizontal' role='form' method='post' action='<?php echo base_url();?>login'>      
+                  <form id='loginform' class='form-horizontal' role='form' method='post' action='<?php echo base_url();?>home/login'>      
                       <div class='input-group'>
                           <span class='input-group-addon'><i class='fa fa-user'></i></span>
                           <input id='login-username' type='text' class='form-control' name='email_user' value='' placeholder='Email'>                                        
@@ -58,7 +58,7 @@
                           <div class='col-md-12 control'>
                               <div style='border-top: 1px solid#888; padding-top:15px; font-size:85%' >
                                   Forgot password? 
-                              <a href='forgot-password'>
+                              <a href='<?php echo base_url();?>home/forgot-password'>
                                   Remember Here
                               </a>
                               </div>

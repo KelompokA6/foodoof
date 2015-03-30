@@ -1,7 +1,4 @@
 <div class="col-md-12">
-
-</div>
-<div class="col-md-12">
 	<div class="panel panel-default">
 	  	<div class="panel-body">
 	  		<h2>{recipe_name}

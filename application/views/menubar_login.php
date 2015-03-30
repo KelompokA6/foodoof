@@ -47,7 +47,7 @@
                 </div>
               </a>
               <div class="col-md-4 col-offset-md-3 pull-right">
-                <a href="<?php echo base_url();?>logout">
+                <a href="<?php echo base_url();?>home/logout">
                   <button type="button" class="btn btn-danger btn-sm">Logout</button>
                 </a>
               </div>         

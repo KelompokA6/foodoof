@@ -2,41 +2,51 @@
     <div class="panel panel-info">
         <div class="panel-heading">
             <div class="panel-title">Join Us</div>
-            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a href="<?php echo base_url();?>login">Login</a></div>
+            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a href="<?php echo base_url();?>home/login">Login</a></div>
         </div>  
         <div class="panel-body" >
+            {join_alert}
             <form id="signupform" class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>user/join">
                 <div class="form-group">
                     <label for="email" class="col-md-3 control-label">Email</label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" name="email" placeholder="Email Address">
+                        <input type="text" class="form-control" name="email" placeholder="Email Address" required>
                     </div>
-                </div>
-                    
+                </div> 
                 <div class="form-group">
                     <label for="firstname" class="col-md-3 control-label">Name</label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" name="name" placeholder="Your Name">
+                        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="gender" class="col-md-3 control-label">Gender</label>
+                    <div class="col-md-9">
+                        <label class="radio-inline">
+                          <input type="radio" name="genderOptions" id="inlineRadio1" value="F" checked> Female
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="genderOptions" id="inlineRadio2" value="M"> Male
+                        </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-md-3 control-label">Password</label>
                     <div class="col-md-9">
-                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required min-length=4>
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label for="password" class="col-md-3 control-label">Retype Password</label>
                     <div class="col-md-9">
-                        <input type="password" class="form-control" name="confirm_password" placeholder="Retype Password">
+                        <input type="password" class="form-control" name="confirm_password" placeholder="Retype Password" required min-length=4>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <!-- Button -->                                        
+                <div class="form-group">                                        
                     <div class="col-md-offset-3 col-md-9">
-                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Join</button> 
+                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Join &nbsp</button> 
                     </div>
                 </div>
             </form>

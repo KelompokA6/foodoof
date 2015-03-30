@@ -6858,6 +6858,11 @@ button.close {
 .icon-key{
   color:rgb(229, 106, 69);
 }
-
-
-
+.header-title{
+  margin-top:5px;
+}
+.page-header-title{
+  padding-bottom: 9px;
+  margin: 5px 0 20px;
+  border-bottom: 2px solid #eee;
+}

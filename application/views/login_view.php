@@ -2,13 +2,11 @@
     <div class="panel panel-info" >
         <div class="panel-heading">
             <div class="panel-title">Sign In</div>
-            <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="<?php echo base_url();?>forgetpassword">Forgot password?</a></div>
+            <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="<?php echo base_url();?>home/forgetpassword">Forgot password?</a></div>
         </div>     
 
         <div style="padding-top:30px" class="panel-body" >
-
-            <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                
+                {login_alert}
             <form id="loginform" class="form-horizontal" role="form" method="post" action="login">
                         
                 <div style="margin-bottom: 25px" class="input-group">
