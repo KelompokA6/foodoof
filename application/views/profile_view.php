@@ -1,11 +1,15 @@
-<div class="col-md-12 text-right">
-	<a href="">
-		<button class="btn btn-primary">
-			<i class="fa fa-pencil-square-o fa-lg"></i>
-			Edit
-		</button>
-	</a>
-</div>
+<?php if ($this->session->userdata('user_id')) {
+	echo "
+		<div class='col-md-12 text-right'>
+			<a href='".base_url()."user/edit/{profile_user_id}''>
+				<button class='btn btn-primary'>
+					<i class='fa fa-pencil-square-o fa-lg'></i>
+					Edit
+				</button>
+			</a>
+		</div>
+	";
+}?>
 <div class="col-md-12">
 	<h3 class="text-capitalize"> {profile_user_name}</h3>
 </div>

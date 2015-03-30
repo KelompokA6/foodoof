@@ -17,11 +17,11 @@ class Tempview extends CI_Controller {
 	}	
 	public function search(){
 		$recipe = new Recipe();
-		print_r($recipe->searchRecipeByTitle('goreng nasi'));
+		print_r($recipe->searchRecipeByTitle('goreng nasi', 10, 1));
 	}
 	public function searchIngredient(){
 		$recipe = new Recipe();
-		print_r($recipe->searchRecipeByIngredients(array('bawang merah', 'cabai')));
+		print_r($recipe->searchRecipeByIngredients(array('bawang merah', 'cabai'), 0.3, 10, 1));
 	}
 	public function searchByTitle(){
 		$this->load->library('parser');
@@ -46,5 +46,9 @@ class Tempview extends CI_Controller {
 					"content_website" => $content_website,
 				);
 		$this->parser->parse('template_content', $data);
+	}
+	public function coba($a){
+		$a = urldecode($a);
+		echo $a;
 	}
 }

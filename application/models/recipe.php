@@ -363,6 +363,9 @@ class Recipe extends DataMapper {
             $data->views = $recipes->views;
             $data->photo = $recipes->photo;
             $data->highlight = $recipes->highlight;
+            $data->category = $recipes->getCategories($recipes->id);
+            $data->ingredients = $recipes->getIngredients($recipes->id);
+            $data->steps = $recipes->getSteps($recipes->id);
             return $data;
         }
         else{
@@ -380,51 +383,83 @@ class Recipe extends DataMapper {
                 $data->views = $recipes->views;
                 $data->photo = $recipes->photo;
                 $data->highlight = $recipes->highlight;
+                $data->category = $recipes->getCategories($recipes->id);
+                $data->ingredients = $recipes->getIngredients($recipes->id);
+                $data->steps = $recipes->getSteps($recipes->id);
                 return $data;
             }
             return FALSE;
         }
     }
     /*
-    input merupakan string title, kembalian list resep yang sesuai dengan title.
-    bila tidak ada yang memenuhi maka mengembalikan array kosong.
+    input merupakan string title, limit yang merupakan jumlah resep yang ditampilkan, offset merupakan mulai dari berapa resep ditampilkan 
+    kembalian aray dengan dua element element total merupakan total pencarian dan element resep_list merupakan list resep yang sesuai dengan title.
+    bila tidak ada yang memenuhi maka mengembalikan array dengan sebuah element total yang bernilai nol.
     */
-    function searchRecipeByTitle($search_key=NULL){
-        $arrResult = array();
+    function searchRecipeByTitle($search_key=NULL, $limit=10, $offset=0, $category=NULL){
         if(!empty($search_key)){
             $recipe = new Recipe();
             $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$search_key."') order by MATCH (name) AGAINST ('".$search_key."')";
             $recipe->query($sql);
+            $recipeList = array();
+            $total = 0;
             foreach ($recipe as $recipes) {
-                $data = new stdClass();
-                $data->id = $recipes->id;
-                $data->name = $recipes->name;
-                $data->description = $recipes->description;
-                $data->portion = $recipes->portion;
-                $data->duration = $recipes->author;
-                $data->create_date = $recipes->create_date;
-                $data->last_update = $recipes->last_update;
-                $data->rating = $recipes->rating;
-                $data->status = $recipes->status;
-                $data->views = $recipes->views;
-                $data->photo = $recipes->photo;
-                $data->highlight = $recipes->highlight;
-                array_push($arrResult, $data);
+                $validRecipe = true;
+                if($total >= $offset && $limit > 0){
+                    if(!empty($category)){
+                        $categories = new Category();
+                        $categories->where('recipe_id', $recipes->id);
+                        if(is_array($category)){
+                            for ($i=0; $i <$category ; $i++) { 
+                                $categories->or_ilike('name', $category[$i]);
+                            }
+                        }
+                        else{
+                            $categories->or_ilike('name', $category);
+                        }
+                        if($categories->count()==0){
+                            $validRecipe = false;
+                            $total--;
+                        }
+                    }                    
+                    if($validRecipe){
+                        $data = new stdClass();
+                        $data->id = $recipes->id;
+                        $data->name = $recipes->name;
+                        $data->description = $recipes->description;
+                        $data->portion = $recipes->portion;
+                        $data->duration = $recipes->author;
+                        $data->create_date = $recipes->create_date;
+                        $data->last_update = $recipes->last_update;
+                        $data->rating = $recipes->rating;
+                        $data->status = $recipes->status;
+                        $data->views = $recipes->views;
+                        $data->photo = $recipes->photo;
+                        $data->highlight = $recipes->highlight;
+                        array_push($recipeList, $data);
+                        $limit--;
+                    }
+                }
+                $total++;
             }
+            $arrResult = array(
+                                "total" => $total,
+                                "recipe_list" => $recipeList,
+                                );
             return $arrResult;
         }
-        return $arrResult;
+        return $arrResult = array("total" => 0);
     }
     /*
-    input merupakan array string bahan dan treshold yang merupakan nilai float, kembalian list resep yang sesuai dengan threshold.
-    bila tidak ada yang memenuhi maka mengembalikan array kosong.
+    search_key merupakan array string bahan, limit yang merupakan jumlah resep yang ditampilkan, offset merupakan mulai dari berapa resep ditampilkan 
+    kembalian aray dengan dua element element total merupakan total pencarian dan element resep_list merupakan list resep yang sesuai dengan title.
+    bila tidak ada yang memenuhi maka mengembalikan array dengan sebuah element total yang bernilai nol.
     */
-    function searchRecipeByIngredients($search_key=NULL, $threshold=0.3){
+    function searchRecipeByIngredients($search_key=NULL, $threshold=0.3, $limit=0, $offset=0, $category=NULL){
         $arrResult = array();
         if(!empty($search_key) && is_numeric($threshold)){
             $searchkey = "";
-            $thresholdCounter = floor(sizeof($search_key)*floatval($treshold));
-            echo $treshold;
+            $thresholdCounter = floor(sizeof($search_key)*floatval($threshold));
             for ($i=0; $i < sizeof($search_key) ; $i++) { 
                 if($i == 0){
                     $searchkey .= "name LIKE '%".$search_key[$i]."%'"; 
@@ -432,30 +467,58 @@ class Recipe extends DataMapper {
                 $searchkey .= " OR name LIKE '%".$search_key[$i]."%'"; 
             }
             $ingredient = new Ingredient();
-            $sql = "SELECT recipe_id, COUNT(*) as counter FROM ingredients WHERE ".$searchkey." group by recipe_id having counter >= ".$treshold." order by counter desc";
+            $sql = "SELECT recipe_id, COUNT(*) as counter FROM ingredients WHERE ".$searchkey." group by recipe_id having counter >= ".$thresholdCounter." order by counter desc";
             $ingredient->query($sql);
+            $recipeList = array();
+            $total = 0;
             foreach ($ingredient as $ingredients) {
-                echo $ingredients->recipe_id;
-                $recipes = new Recipe();
-                $recipes->get_by_id($ingredients->recipe_id);
-                $data = new stdClass();
-                $data->id = $recipes->id;
-                $data->name = $recipes->name;
-                $data->description = $recipes->description;
-                $data->portion = $recipes->portion;
-                $data->duration = $recipes->author;
-                $data->create_date = $recipes->create_date;
-                $data->last_update = $recipes->last_update;
-                $data->rating = $recipes->rating;
-                $data->status = $recipes->status;
-                $data->views = $recipes->views;
-                $data->photo = $recipes->photo;
-                $data->highlight = $recipes->highlight;
-                array_push($arrResult, $data);
+                $validRecipe = true;
+                if($total >= $offset && $limit > 0){
+                    if(!empty($category)){
+                        $categories = new Category();
+                        $categories->where('recipe_id', $recipes->id);
+                        if(is_array($category)){
+                            for ($i=0; $i <$category ; $i++) { 
+                                $categories->or_ilike('name', $category[$i]);
+                            }
+                        }
+                        else{
+                            $categories->or_ilike('name', $category);
+                        }
+                        if($categories->count()==0){
+                            $validRecipe = false;
+                            $total--;
+                        }
+                    }                    
+                    if($validRecipe){
+                        $recipes = new Recipe();
+                        $recipes->get_by_id($ingredients->recipe_id);
+                        $data = new stdClass();
+                        $data->id = $recipes->id;
+                        $data->name = $recipes->name;
+                        $data->description = $recipes->description;
+                        $data->portion = $recipes->portion;
+                        $data->duration = $recipes->author;
+                        $data->create_date = $recipes->create_date;
+                        $data->last_update = $recipes->last_update;
+                        $data->rating = $recipes->rating;
+                        $data->status = $recipes->status;
+                        $data->views = $recipes->views;
+                        $data->photo = $recipes->photo;
+                        $data->highlight = $recipes->highlight;
+                        array_push($recipeList, $data);
+                        $limit--;
+                    }
+                }
+                $total++;
             }
+            $arrResult = array(
+                                "total" => $total,
+                                "recipe_list" => $recipeList,
+                                );
             return $arrResult;
         }
-        return $arrResult;
+        return $arrResult = array("total" => 0);
     }
 
     /*
