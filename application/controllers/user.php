@@ -5,7 +5,7 @@ class User extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('session');
-		$this->load->model('viewer');
+		$this->load->model('user_viewer');
 	}
 
 	public function index(){
