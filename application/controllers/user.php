@@ -1,14 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class User extends CI_Controller {
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->library('session');
+		$this->load->model('viewer');
+	}
+
 	public function index(){
 		$this->load->view('profile_view');
 	}
 
 	public function profile($id){
 		$this->load->model('user_model');
-		$profile = $this->user_model->getProfile($id);
-		$this->load->model('viewer');
+		$profile = $this->user_model->getProfile($id);		
 		$this->viewer->showProfile($profile);
 	}
 
@@ -17,17 +23,11 @@ class User extends CI_Controller {
 		$profile = $u->getProfile($id);
 		$r = new Recipe();
 		$listRecipe = $r->getUserRecipe($id);
-		$this->load->model('viewer');
 		$this->viewer->showUserTimeline($profile, $listRecipe);
 	}
 
 	public function changepassword(){
-		$this->load->library('session');
-		if ($this->session->userdata('user_id') < 1) {
-			echo "you're not logged in";
-			return;
-		}
-
+		$this->wajiblogin();
 		$id = $this->session->userdata('user_id');
 		$data = array();
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
@@ -35,23 +35,19 @@ class User extends CI_Controller {
 			$data['newPass'] = $this->input->post("new_password");
 			$data['confirmPass'] = $this->input->post("confirm_password");
 
-			$data['success'] = 0;
 			if($this->isValid($data)){
 				$user = new User_model();
 				$success = $user->updatePassword($id, $data['newPass']);
-				$data['message'] = $success ? "password has been updated successfully" : "change password failed";
-				$data['success'] = $success;
+				$data['message'] = $success ? "success" : "failed";
 			}
 			else{
-				$data['message'] = "password doesn't match";
+				$data['message'] = "invalid";
 			}
 		}
-
 
 		$u = new User_model();
 		$profile = $u->getProfile($id);
 
-		$this->load->model('viewer');
 		$this->viewer->showChangePassword($profile, $data);
 	}
 
@@ -66,41 +62,77 @@ class User extends CI_Controller {
 			if($this->isValid($data)){
 				$user = new User_model();
 				$success = $user->createUser($data);
-				$data['message'] = $success ? "Registration Success" : "Registration Failed";
+				$data['message'] = $success ? "success" : "failed";
 			}
 			else{
-				$data['message'] = "Input data is not valid";
+				$data['message'] = "invalid";
 			}
 		}
-		$this->load->model('viewer');
+		
 		$this->viewer->showRegister($data);
 	}
 
 	public function edit(){
-		$u = new User_model();
-		$data['dataProfile'] = $u->getProfile($id);
+		$this->wajiblogin();
 
-		$this->load->model('viewer');
-		$this->viewer->show('edit_profile_view', $data);
+		$id = $this->session->userdata('user_id');
+		$u = new User_model();
+		$profile = $u->getProfile($id);
+
+		if($this->input->server('REQUEST_METHOD') == 'POST'){
+			$data['name'] = $this->input->post('user_name');
+			$data['gender'] = $this->input->post('inlineRadioOptions');
+			$data['phone'] = $this->input->post('user_phone');
+			$data['bdate'] = $this->input->post('user_bdate');
+			$data['twitter'] = $this->input->post('user_twitter');
+			$data['facebook'] = $this->input->post('user_facebook');
+			$data['googleplus'] = $this->input->post('user_gplus');
+			$data['path'] = $this->input->post('user_path');
+			if ($this->isValid($data)) {
+				if($u->updateProfile($id, $data))
+					$profile['message'] = 'success';
+				else
+					$profile['message'] = 'failed';
+			} else $profile['message'] = 'invalid';
+		}
+		$this->viewer->showEditProfile($profile);
 	}
 
-	public function getPassword($email){ //dari sequence lupa password, buat minta password nya dr userManager
+	public function forgotpassword(){ //dari sequence lupa password, buat minta password nya dr userManager
+		$data = array();
 		$u = new User_model();
-		$data['password'] = $u->getPassword($email);
-		$data['email'] = $email;
-		if($this->sendEmail($data)){
-			$dataMessage['message'] = "Email Sent";
-			$this->load->model('viewer');
-			$this->viewer->show('forget_password_view', $dataMessage); //else nya?
+		if($this->input->server('REQUEST_METHOD') == 'POST'){
+			$email = $this->input->post('email');
+			$data['email'] = $email;
+			$password = $u->getPasswordByEmail($email);
+			if($password !== FALSE) {
+				if ($this->sendPassword($email, $password)) {
+					$data['message'] = 'success';
+				}else $data['message'] = 'failed';
+			} else $data['message'] = 'invalid';
 		}
+		$this->viewer->showForgotPassword($data);
 	}
 
 	public function isValid(){
 		return TRUE;
 	}
 
-	public function sendEmail(){
-		return TRUE;
+	public function sendPassword($email, $password){
+		$this->load->library('email');
+		$this->email->from('admin@foodoof');
+		$this->email->to($email);
+		$this->email->subject('Your FoodooF Password');
+		$this->email->message("You said that you have forgotten your password. Here you are! Your password is $password.");
+		return $this->send();
+	}
+
+	private function wajiblogin()
+	{
+		if ($this->session->userdata('user_id') < 1) {
+			echo "you're not logged in";
+			exit();
+		}
 	}
 }
 //udah mulai mabok -_-

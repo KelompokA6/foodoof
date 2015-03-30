@@ -2,11 +2,15 @@
 
 class Viewer extends CI_Model
 {
+  function __construct()
+  {
+    parent::__construct();
+    $this->load->library('session');
+    $this->load->library('parser');
+  }
+
   public function show($view, $data = array())
   {
-    $this->load->library('parser');
-    $this->load->library('session');
-
     // buat judul. kalau gak dikasih tau, tulis aja judulnya Foodoof
     $datafinal['title'] = @$data['title'] ? $data['title'] : 'FoodooF';
 
@@ -32,9 +36,6 @@ class Viewer extends CI_Model
 
   public function showProfile($profile)
   {
-    $this->load->library('parser');
-    $this->load->library('session');
-    
     // menubar
     $datacomplete['menubar'] = $this->session->userdata('user_id') > 0 ?
         $this->parser->parse(
@@ -85,9 +86,6 @@ class Viewer extends CI_Model
 
   public function showUserTimeline($profile, $listRecipes)
   {
-    $this->load->library('parser');
-    $this->load->library('session');
-    
     // menubar
     $datacomplete['menubar'] = $this->session->userdata('user_id') > 0 ?
         $this->parser->parse(
@@ -130,9 +128,6 @@ class Viewer extends CI_Model
 
   public function showChangePassword($profile, $data = array())
   {
-    $this->load->library('parser');
-    $this->load->library('session');
-    
     // menubar
     $datacomplete['menubar'] = $this->parser->parse('menubar_login',
         array(
@@ -170,9 +165,6 @@ class Viewer extends CI_Model
 
   public function showRegister($data = array())
   {
-    $this->load->library('parser');
-    $this->load->library('session');
-    
     // menubar
     $datacomplete['menubar'] = $this->parser->parse('menubar', array(), TRUE);
     // DONE
@@ -180,6 +172,72 @@ class Viewer extends CI_Model
     // content_website
     // ambil dari registration_view
     $datacomplete['content_website'] = $this->parser->parse('registration_view', $data, TRUE);
+
+    // butuh menubar dan content_website
+    $this->parser->parse('template_content', $datacomplete);
+  }
+
+  public function showEditProfile($profile)
+  {
+    // menubar
+    $datacomplete['menubar'] = $this->session->userdata('user_id') > 0 ?
+        $this->parser->parse(
+            'menubar_login',
+            array(
+                'menubar_user_name' => $this->session->userdata('user_name'),
+                'menubar_user_photo' => $this->session->userdata('user_photo'),
+            ),
+            TRUE
+        ) : 
+        $this->parser->parse('menubar', array(), TRUE);
+    // DONE
+
+    // content_website
+    // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
+    // ambil sidebar
+    $data_user_view['sidebar_user'] = $this->parser->parse(
+        'sidebar_user_view',
+        array(
+            'sidebar_user_id' => $profile['id'],
+            'sidebar_user_photo' => $profile['photo'],
+        ),
+        TRUE
+    );
+    // ambil content_user dari profile_view
+    $data_user_view['content_user'] = $this->parser->parse(
+        'edit_profile_view',
+        array(
+            'edit_profile_id' => $profile['id'],
+            'edit_profile_name' => $profile['name'],
+            'edit_profile_male' => $profile['gender'] == 'm' ? 'checked="checked"' : '',
+            'edit_profile_female' => $profile['gender'] == 'f' ? 'checked="checked"' : '',
+            'edit_profile_birth_date' => $profile['bdate'],
+            'edit_profile_email' => $profile['email'],
+            'edit_profile_phone' => $profile['phone'],
+            'edit_profile_last_access' => $profile['last_access'],
+            'edit_profile_twitter' => $profile['twitter'],
+            'edit_profile_facebook' => $profile['facebook'],
+            'edit_profile_google_plus' => $profile['googleplus'],
+            'edit_profile_path' => $profile['path'],
+        ),
+        TRUE
+    );
+    // load template_content
+    $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
+
+    // butuh menubar dan content_website
+    $this->parser->parse('template_content', $datacomplete);
+  }
+
+  function showForgotPassword($data)
+  {
+    // menubar
+    $datacomplete['menubar'] = $this->parser->parse('menubar', array(), TRUE);
+    // DONE
+
+    // content_website
+    // ambil dari registration_view
+    $datacomplete['content_website'] = $this->parser->parse('forget_password_view', $data, TRUE);
 
     // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);
