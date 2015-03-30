@@ -16,11 +16,11 @@ class Tempview extends CI_Controller {
 
 	}	
 	public function search(){
-		$recipe = new Recipe();
+		$recipe = new Recipe_model();
 		print_r($recipe->searchRecipeByTitle('goreng nasi', 10, 1));
 	}
 	public function searchIngredient(){
-		$recipe = new Recipe();
+		$recipe = new Recipe_model();
 		print_r($recipe->searchRecipeByIngredients(array('bawang merah', 'cabai'), 0.3, 10, 1));
 	}
 	public function searchByTitle(){
