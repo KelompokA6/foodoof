@@ -18,7 +18,7 @@ class User extends CI_Controller {
 		}
 		$this->load->model('user_model');
 		$profile = $this->user_model->getProfile($id);		
-		$this->viewer->showProfile($profile);
+		$this->user_viewer->showProfile($profile);
 	}
 
 	public function timeline($id = -1){
@@ -29,7 +29,7 @@ class User extends CI_Controller {
 		$profile = $u->getProfile($id);
 		$r = new Recipe_model();
 		$listRecipe = $r->getUserRecipe($id);
-		$this->viewer->showUserTimeline($profile, $listRecipe);
+		$this->user_viewer->showUserTimeline($profile, $listRecipe);
 	}
 
 	public function favorite($id = -1){
@@ -40,7 +40,7 @@ class User extends CI_Controller {
 		$profile = $u->getProfile($id);
 		$r = new Recipe_model();
 		$listRecipe = $r->getFavoriteRecipe($id);
-		$this->viewer->showUserTimeline($profile, $listRecipe);
+		$this->user_viewer->showUserTimeline($profile, $listRecipe);
 	}
 
 	public function cooklater(){
@@ -49,7 +49,7 @@ class User extends CI_Controller {
 		$profile = $u->getProfile($id);
 		$r = new Recipe_model();
 		$listRecipe = $r->getCooklaterRecipe($id);
-		$this->viewer->showUserTimeline($profile, $listRecipe);
+		$this->user_viewer->showUserTimeline($profile, $listRecipe);
 	}
 
 	public function changepassword(){
@@ -73,7 +73,7 @@ class User extends CI_Controller {
 		$u = new User_model();
 		$profile = $u->getProfile($id);
 
-		$this->viewer->showChangePassword($profile, $data);
+		$this->user_viewer->showChangePassword($profile, $data);
 	}
 
 	public function join(){
@@ -94,7 +94,7 @@ class User extends CI_Controller {
 			}
 		}
 		
-		$this->viewer->showRegister($data);
+		$this->user_viewer->showRegister($data);
 	}
 
 	public function edit(){
@@ -119,7 +119,7 @@ class User extends CI_Controller {
 					$profile['message'] = 'failed';
 			} else $profile['message'] = 'invalid';
 		}
-		$this->viewer->showEditProfile($profile);
+		$this->user_viewer->showEditProfile($profile);
 	}
 
 	public function forgotpassword(){ //dari sequence lupa password, buat minta password nya dr userManager
@@ -136,7 +136,7 @@ class User extends CI_Controller {
 				}else $data['message'] = 'failed';
 			} else $data['message'] = 'invalid';
 		}
-		$this->viewer->showForgotPassword($data);
+		$this->user_viewer->showForgotPassword($data);
 	}
 
 	public function isValid(){
