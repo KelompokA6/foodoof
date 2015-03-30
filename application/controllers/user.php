@@ -9,7 +9,7 @@ class User extends CI_Controller {
 	}
 
 	public function index(){
-		$this->load->view('profile_view');
+		$this->timeline();
 	}
 
 	public function profile($id = -1){
@@ -156,7 +156,7 @@ class User extends CI_Controller {
 	{
 		$id = $this->session->userdata('user_id');
 		if ($id < 1) {
-			echo "you're not logged in";
+			header('Location: '.base_url().'home/login');
 			exit();
 		}
 		return $id;
