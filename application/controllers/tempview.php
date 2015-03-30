@@ -17,7 +17,7 @@ class Tempview extends CI_Controller {
 	}	
 	public function search(){
 		$recipe = new Recipe_model();
-		print_r($recipe->searchRecipeByTitle('goreng nasi', 10, 1));
+		print_r($recipe->searchRecipeByTitle('ayam', 10, 0));
 	}
 	public function searchIngredient(){
 		$recipe = new Recipe_model();
