@@ -40,7 +40,7 @@
                 <button type="button" class="btn btn-success btn-cus" data-container="body" data-toggle="popover" data-placement="bottom" 
                 data-html="TRUE"
                 data-content="
-                  <form id='loginform' class='form-horizontal' role='form' method='post' action='login'>      
+                  <form id='loginform' class='form-horizontal' role='form' method='post' action='<?php echo base_url();?>login'>      
                       <div class='input-group'>
                           <span class='input-group-addon'><i class='fa fa-user'></i></span>
                           <input id='login-username' type='text' class='form-control' name='email_user' value='' placeholder='Email'>                                        
