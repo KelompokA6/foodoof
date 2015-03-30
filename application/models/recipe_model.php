@@ -1,6 +1,6 @@
 <?php
 
-class Recipe extends DataMapper {
+class Recipe_model extends DataMapper {
 
     var $table = "recipes"; 
     var $has_many = array('ingredient', 'comments', 'category');
@@ -51,7 +51,7 @@ class Recipe extends DataMapper {
             $recipe_id = $this->id;
         }
         if(!empty($recipe_id) && !empty($user_id)){
-            $r = new Recipe();
+            $r = new Recipe_model();
             $r->where('id', $recipe_id);
             $r->where('author', $user_id);
             if($r->count()>0){
@@ -68,7 +68,7 @@ class Recipe extends DataMapper {
         Digunakan untuk membuat sebuah Recipe pada database. return value merupakan id dari recipe yang berhasil dibuat, -1 merupakan indikasi bahwa recipe tidak
         berhasil dibuat.
     */
-    function createRecipe(){
+    function createRecipe_model(){
         if(!empty($this->author)){
             if($this->skip_validation()->save()){
                 return $this->db->insert_id();
@@ -103,7 +103,7 @@ class Recipe extends DataMapper {
         if($last_update ==  NULL){
             $last_update = $this->$last_update;
         }
-        $rcpSave = new Recipe();
+        $rcpSave = new Recipe_model();
         $rcpSave->get_by_id($id);
         $photo = $rcpSave->photo;
         if(file_exists("assets/tmp/recipe/".$id.".jpg")){
@@ -237,7 +237,7 @@ class Recipe extends DataMapper {
         Digunakan untuk memperoleh resep yang merupakan list resep highlight, dengan parameter input limit resep yang ingin ditampilkan
     */
     function getHightlight($limit=10){
-        $recipe = new Recipe();
+        $recipe = new Recipe_model();
         $recipe->where('highlight', '1');
         $recipe->where('status', '1');
         $recipe->get($limit,0);
@@ -265,7 +265,7 @@ class Recipe extends DataMapper {
         Digunakan untuk memperoleh resep yang merupakan terbaru, dengan parameter input limit resep yang ingin ditampilkan
     */
     function getRecently($limit=10){
-        $recipe = new Recipe();
+        $recipe = new Recipe_model();
         $recipe->where('status', '1')->order_by("create_date", "desc")->get($limit,0);
         $arrResult = array();
         foreach ($recipe as $recipes) {
@@ -291,7 +291,7 @@ class Recipe extends DataMapper {
         Digunakan untuk memperoleh resep yang merupakan resep dengan rating tertinggi, dengan parameter input limit resep yang ingin ditampilkan
     */
     function getTopRecipe($limit=10){
-        $recipe = new Recipe();
+        $recipe = new Recipe_model();
         $recipe->where('status', '1')->order_by("rating", "desc")->get($limit,0);
         $arrResult = array();
         foreach ($recipe as $recipes) {
@@ -317,7 +317,7 @@ class Recipe extends DataMapper {
         Digunakan untuk memperoleh resep-resep yang dimiliki oleh sebuah user.
     */
     function getUserRecipe($userId){
-        $recipe = new Recipe();
+        $recipe = new Recipe_model();
         $recipe->get_by_author($userId);
         $arrResult = array();
         foreach ($recipe as $recipes) {
@@ -347,7 +347,7 @@ class Recipe extends DataMapper {
         if($id == NULL){
             $id = $this->id;
         }
-        $recipes = new Recipe();
+        $recipes = new Recipe_model();
         $recipes->get_by_id($id);
         if($recipes->status){
             $data = new stdClass();
@@ -398,7 +398,7 @@ class Recipe extends DataMapper {
     */
     function searchRecipeByTitle($search_key=NULL, $limit=10, $offset=0, $category=NULL){
         if(!empty($search_key)){
-            $recipe = new Recipe();
+            $recipe = new Recipe_model();
             $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$search_key."') order by MATCH (name) AGAINST ('".$search_key."')";
             $recipe->query($sql);
             $recipeList = array();
@@ -491,7 +491,7 @@ class Recipe extends DataMapper {
                         }
                     }                    
                     if($validRecipe){
-                        $recipes = new Recipe();
+                        $recipes = new Recipe_model();
                         $recipes->get_by_id($ingredients->recipe_id);
                         $data = new stdClass();
                         $data->id = $recipes->id;
