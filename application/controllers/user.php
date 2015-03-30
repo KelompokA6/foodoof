@@ -12,13 +12,19 @@ class User extends CI_Controller {
 		$this->load->view('profile_view');
 	}
 
-	public function profile($id){
+	public function profile($id = -1){
+		if ($id == -1) {
+			$id = $this->wajiblogin();
+		}
 		$this->load->model('user_model');
 		$profile = $this->user_model->getProfile($id);		
 		$this->viewer->showProfile($profile);
 	}
 
-	public function timeline($id){
+	public function timeline($id = -1){
+		if ($id == -1) {
+			$id = $this->wajiblogin();
+		}
 		$u = new User_model();
 		$profile = $u->getProfile($id);
 		$r = new Recipe();
@@ -26,7 +32,10 @@ class User extends CI_Controller {
 		$this->viewer->showUserTimeline($profile, $listRecipe);
 	}
 
-	public function favorite($id){
+	public function favorite($id = -1){
+		if ($id == -1) {
+			$id = $this->wajiblogin();
+		}
 		$u = new User_model();
 		$profile = $u->getProfile($id);
 		$r = new Recipe();
