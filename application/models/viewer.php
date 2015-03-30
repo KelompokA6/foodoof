@@ -181,7 +181,7 @@ class Viewer extends CI_Model
 
     // content_website
     // ambil dari registration_view
-    $datacomplete['content_website'] = $this->parser->parse('registration_view', $data, TRUE);
+    $datacomplete['content_website'] = $this->parser->parse('join_view', $data, TRUE);
 
     // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);
