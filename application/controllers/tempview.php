@@ -51,4 +51,61 @@ class Tempview extends CI_Controller {
 		$a = urldecode($a);
 		echo $a;
 	}
+	public function anagram(){
+		$string = array();
+		array_push($string, array("anagram", "garanam"));
+		array_push($string, array("diba", "abid"));
+		array_push($string, array("anagram", "g1ranam"));
+		array_push($string, array("saya abid ", "saya   abid"));
+		array_push($string, array("saya abid ", "saya   abid nurul"));
+		for ($i=0; $i < sizeof($string); $i++) { 
+			$key = str_replace(" ", "", strtolower($string[$i][0]));
+			$text = str_replace(" ", "", strtolower($string[$i][1]));
+			if(strlen($key) != strlen($text)){
+				echo "string ke-".($i+1)." bernilai false karena panjang string tidak sama<br>";
+			}
+			else{
+				$valid = true;
+				for ($j=0; $j < strlen($key); $j++) { 
+					$char = substr($key, $j, 1);
+					$pos = strpos($text, $char);
+					if($pos ===  false){
+						echo "string ke-".($i+1)." bernilai false <br>";
+						$valid = false;
+						break;
+					}
+					else{
+						$text1 = substr($text, 0, $pos);
+						$text2 = substr($text, $pos+1);
+						$text = $text1.$text2;
+					}
+				}
+				if($valid){
+					echo "string ke-".($i+1)." bernilai true <br>";
+				}
+			}
+		}
+	}
+	public function test1($input){
+		$size = (($input*2)-1);
+		for ($i=1; $i <= $size; $i++) { 
+			$arra = array();
+			$x = abs($input-$i)+1;
+			$inc = $input - (abs($input-$i)+1);
+			for ($j=0 ; $j < $input-1 ; $j++) { 
+				if($j>=$inc){
+					echo $input-$inc;
+					array_push($arra, $input-$inc);
+				}else{
+					echo $input-$j;
+					array_push($arra, $input-$j);
+				}
+			}
+			echo $x;
+			for ($j=sizeof($arra)-1 ; $j >= 0 ; $j--) { 
+				echo $arra[$j];
+			}
+			echo "<br>";
+		}
+	}
 }

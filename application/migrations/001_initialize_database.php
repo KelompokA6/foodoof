@@ -74,7 +74,6 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->add_key('email', TRUE);
 		$this->dbforge->create_table('users');
-		$this->db->query("ALTER TABLE users ENGINE=INNODB");
 
 		/*
 		Table Recipes
@@ -140,7 +139,7 @@ class Migration_Initialize_database extends CI_Migration {
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('recipes');
-
+		$this->db->query("ALTER TABLE recipe ADD FULLTEXT (name)");
 		/*
 		Table Ingredients
 		*/
@@ -155,8 +154,8 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE
 			),
 			'quantity' => array(
-				'type' => 'INT',
-				'null' => FALSE,
+				'type' => 'DECIMAL(3,2)',
+				'null' => TRUE,
 			),
 			'units' => array(
 				'type' => 'VARCHAR',
