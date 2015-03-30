@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2015 at 08:06 AM
+-- Generation Time: Mar 30, 2015 at 08:51 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -165,7 +165,39 @@ INSERT INTO `ingredients` (`recipe_id`, `name`, `quantity`, `units`, `info`) VAL
 (4, 'palm sugar', NULL, 'sesuka hati', NULL),
 (4, 'pisang sanggar', 7, 'buah', NULL),
 (4, 'raw honey', NULL, 'secukupnya', NULL),
-(4, 'tepung terigu/beras', NULL, 'secukupnya', NULL);
+(4, 'tepung terigu/beras', NULL, 'secukupnya', NULL),
+(5, 'air es', 450, 'ml', NULL),
+(5, 'baking powder', 1, 'sdt', NULL),
+(5, 'bubuk wippecream instant', 200, 'gram', NULL),
+(5, 'garam', 1, 'sdt', NULL),
+(5, 'gula', 200, 'gram', NULL),
+(5, 'sp/ovalet/tbm', 2, 'sdt', NULL),
+(5, 'strawberry fresh', 1, 'kotak', NULL),
+(5, 'susu bubuk', 50, 'gram', NULL),
+(5, 'susu cair', 200, 'ml', NULL),
+(5, 'telur', 1, 'btir', NULL),
+(5, 'tepung terigu', 250, 'gram', NULL),
+(5, 'vanili esssence', 2, 'sth', NULL),
+(6, 'air untuk rebus pasta', 2, 'gelas', NULL),
+(6, 'garam', 1, 'sdt', NULL),
+(6, 'keju bubuk instant', 1, 'sachet', NULL),
+(6, 'keju cheddar', NULL, 'secukupnya', NULL),
+(6, 'macaroni/spaghetti', 2, 'cup', NULL),
+(6, 'olive oil/vegie oil', 3, 'sdm', NULL),
+(6, 'saus', NULL, 'secukupnya', NULL),
+(6, 'sosis kaleng', NULL, 'secukupnya', NULL),
+(6, 'susu bubuk', 2, 'sachet', NULL),
+(7, 'air', 2, 'sdm', NULL),
+(7, 'air jeruk lemon', 3, 'sdm', NULL),
+(7, 'biskuit regal', 1, 'bungkus', NULL),
+(7, 'butter', 100, 'gram', NULL),
+(7, 'cream cheese', 1, 'kotak', NULL),
+(7, 'gelatin', 1, 'sdm', NULL),
+(7, 'simple syrup', NULL, 'secukupnya', NULL),
+(7, 'strawberry', NULL, 'secukupnya', NULL),
+(7, 'strawberry pure', 2, 'cup', NULL),
+(7, 'wippecream', 400, 'gram', NULL),
+(7, 'yogurt strawberry flavour', 5, 'sdm', NULL);
 
 -- --------------------------------------------------------
 
@@ -235,17 +267,20 @@ CREATE TABLE IF NOT EXISTS `recipes` (
   `highlight` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `author` (`author`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `recipes`
 --
 
 INSERT INTO `recipes` (`id`, `name`, `description`, `portion`, `duration`, `author`, `create_date`, `last_update`, `rating`, `status`, `views`, `photo`, `highlight`) VALUES
-(1, 'Ayam Goreng Bumbu Lengkuas', 'Ayam goreng bumbu lengkuas ini biasanya dihidangkan berdampingan dengan rendang pada acara-acara besar, seperti acara pernikahan dan perayaan khatam Al-Qur''an. Selain itu menu ini juga tersedia di rumah makan Padang yang bertebaran di seantero penjuru tanah air. Dengan resep ini kita pun bisa membuatnya di rumah tanpa harus menunggu ada hajatan ataupun pergi ke rumah makan.. ;)', 8, 1, 3, '2015-03-30 03:58:52', '2015-03-30 03:58:52', NULL, 1, 0, NULL, 0),
+(1, 'Ayam Goreng Bumbu Lengkuas', 'Ayam goreng bumbu lengkuas ini biasanya dihidangkan berdampingan dengan rendang pada acara-acara besar, seperti acara pernikahan dan perayaan khatam Al-Qur''an. Selain itu menu ini juga tersedia di rumah makan Padang yang bertebaran di seantero penjuru tanah air. Dengan resep ini kita pun bisa membuatnya di rumah tanpa harus menunggu ada hajatan ataupun pergi ke rumah makan.. ;)', 8, 60, 3, '2015-03-30 06:23:56', '2015-03-30 06:23:56', NULL, 1, 0, NULL, 0),
 (2, 'Spices-Shrimp (udang balado)', 'Resep ini tercipta karna LAPAR :D *apaan sih* Lgsg simak aja,cekidot~', 3, 10, 4, '2015-03-30 04:15:34', '2015-03-30 04:15:34', NULL, 1, 0, NULL, 0),
 (3, 'Mini Kebab Veggie', 'Saya tau kebab ini dari orang jualan kebab di SD dekat kampus. Berbekal ingatan "taste" rasanya,akhirnya nemu juga resep yg sesuai bahkan lebih enak jauuuuhhh~ *GR*', 10, 20, 4, '2015-03-30 04:24:21', '2015-03-30 04:24:21', NULL, 1, 0, NULL, 0),
-(4, 'Pisang keju madu ala Diaz', 'ceritanya punya sisa pisang abis dibikin kolak, pengen bikin masakan yang gampang. akhirnya bikin pisang keju deh... hehee', 7, 20, 5, '2015-03-30 04:38:47', '2015-03-30 04:38:47', NULL, 0, 0, NULL, 0);
+(4, 'Pisang keju madu ala Diaz', 'ceritanya punya sisa pisang abis dibikin kolak, pengen bikin masakan yang gampang. akhirnya bikin pisang keju deh... hehee', 7, 20, 5, '2015-03-30 04:38:47', '2015-03-30 04:38:47', NULL, 0, 0, NULL, 0),
+(5, 'Japanese Strawberry Shortcake', 'Ini cake dadakan untuk valentine kemarin bareng calon suami ^^. Alhamdulillah coment keluarga calon positif semua. Maaf berantakan baru belajar', 6, 60, 6, '2015-03-30 06:23:24', '2015-03-30 06:23:24', NULL, 1, 0, NULL, 0),
+(6, 'mac n cheese sederhana', 'Ini inspirasi dari mac n cheese instant yg ada di minimarket. Tp porsinya sedikit bagi saya ^^ . Cocok untuk sarapan cepat dan enak tentunya #sarapancepat #harike1', 2, 30, 6, '2015-03-30 06:35:08', '2015-03-30 06:35:08', NULL, 1, 0, NULL, 0),
+(7, 'Strawberry Cheesecake (No Baked)', 'Pas jaman SMA hangout ke toko buku nemu resep ini. Saya foto resepnya *bukan di beli bukunya* ^^ dan saya praktekin. Ini adalah Cake pertama yg pernah saya buat dengan menggunakan cream keju . Kebetulan ke foto dan masih ada resepnya. ^^', 6, 90, 6, '2015-03-30 06:41:49', '2015-03-30 06:41:49', NULL, 1, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -304,7 +339,20 @@ INSERT INTO `steps` (`recipe_id`, `no_step`, `description`, `photo`) VALUES
 (3, 9, 'Mini kebab veggie ready to eat :) sajikan dgn mayones+saos tomat/saos sambal. NyamNyam~', NULL),
 (4, 1, 'kupas pisang, potong memanjang menjadi dua bagian, sishkan', NULL),
 (4, 2, 'buat adonan tepung celupan. campurkan tepung terigu, beri sedikir garam dan gula. celupkan pisang sanggar, goreng hingga kecoklatan. angkat dan tiriskan.', NULL),
-(4, 3, 'saat pisang masih panas, beri taburan madu, palm sugar dan parutan keju. sajikan', NULL);
+(4, 3, 'saat pisang masih panas, beri taburan madu, palm sugar dan parutan keju. sajikan', NULL),
+(5, 1, 'Masukan telur , vanili, sp/ovalet/tbm, gula, susu cair kocok dengan mixer sampai mengembang. Matikan mixer. Masukan garam aduk dengam spatula', NULL),
+(5, 2, 'Masukan baking powder ke tepung terigu. Ayak . Masukan ke adonan secara bertahap aduk dengan spatula.', NULL),
+(5, 3, 'Tuang adonam ke happy call ratakan. Pastikan happy call sudah diolesin dengan minyak/butter/margarin. Masak di atas api sedang selama 5 menit. Kemudian kecilkan api. Sering lah di lihat agar tidak gosong. Setelah matang. Angkat .', NULL),
+(5, 4, 'Wippcream: bubuk Wippcream , susu bubuk, air kocok dgn mixer sampai kaku. Simple syrup : air, gula, madu sampai tercampur. Potong strawberry sesuai selera', NULL),
+(5, 5, 'Setelah cake dingin potong menjadi 2 bagian. Bagian dasar basahi dengan simple syrup. Kemudian beri Wippcream dan strawberry. tutup dengan cake basahi kembali dengan syrup. HIAS sesuai selera', NULL),
+(6, 1, 'Masukan ke panci macaroni *pasta sesuai selera, garam, air, oil rebus sampai pasta matang istilahnya al dente ^^.', NULL),
+(6, 2, 'langsung masukan Macaroni yang sudah matang ke bowl tambahkan susu bubuk , keju bubuk aduk sampai rata.', NULL),
+(6, 3, 'Time to plating.. macaroni berbalur keju tabur dengan keju parut dan potongan sosis. Sajikan dengan saus tomat dan saus sambal', NULL),
+(7, 1, '*hancurkan biskuit. *lelehkan butter. campur dan tuang ke mika sebagai cetakan pastikan tekan tekan sampai benar benar padat.Dan masukan di freezer', NULL),
+(7, 2, '*Rendam gelatin dengan air. *Kocok Wippcream sampai kaku', NULL),
+(7, 3, 'Kocok Wippcream, cream cheese , yogurt sampai rata. Kemudian masukan gelatin, pure , air lemon. Aduk rata.', NULL),
+(7, 4, 'Tuang ke atas crust biskuit yg sudah jd. Kemudian dinginkan di kulkas.', NULL),
+(7, 5, 'Hiasi dengan strawberry dan siram dengan simple syrup', NULL);
 
 -- --------------------------------------------------------
 
@@ -328,7 +376,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `gplus` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`,`email`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `users`
@@ -339,7 +387,8 @@ INSERT INTO `users` (`id`, `email`, `name`, `password`, `gender`, `bdate`, `phon
 (2, 'je.fathanah@gmail.com', 'jean', 'jeanjean', NULL, NULL, NULL, 'MEMBER', NULL, '2015-03-28 08:55:08', NULL, NULL, ''),
 (3, 'Biyay.AtharSabai@gmail.com', 'Biyay AtharSabai', 'masakmasak', 'f', NULL, NULL, 'MEMBER', NULL, '2015-03-30 03:56:29', NULL, NULL, ''),
 (4, 'amel@gmail.com', 'ameLicious~', 'masakmasak', 'f', NULL, NULL, 'MEMBER', NULL, '2015-03-30 04:12:59', NULL, NULL, ''),
-(5, 'Diaz.Adzky@gmail.com', 'Diaz Adzky', 'masakmasak', 'm', NULL, NULL, 'MEMBER', NULL, '2015-03-30 04:36:30', NULL, NULL, '');
+(5, 'Diaz@gmail.com', 'Diaz', 'masakmasak', 'm', NULL, NULL, 'MEMBER', NULL, '2015-03-30 06:51:01', NULL, NULL, ''),
+(6, 'queen@gmail.com', 'queen', 'masakmasak', 'f', '1990-03-30', '085712345678', 'MEMBER', NULL, '2015-03-30 06:18:19', NULL, NULL, NULL);
 
 --
 -- Constraints for dumped tables
