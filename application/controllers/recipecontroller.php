@@ -14,7 +14,7 @@ class RecipeController extends CI_Controller {
 	}
 
 	// ini pake post, lihat registration
-	public function save(){
+	public function save($id){
 		$recipe = new Recipe();
 		$name = $this->input->post("title");
 		$description = $this->input->post("description");
