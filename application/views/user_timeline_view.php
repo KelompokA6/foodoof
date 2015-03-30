@@ -52,12 +52,7 @@
 		    	<div class="col-md-12 col-no-padding-right" style="padding-left:79px">
 		    		<div class="checkbox">
 					    <label>
-					      	<input type="checkbox" id="checkedPublish"
-								<?php
-						        if($user_timeline_publish == '1'){
-						          echo "checked";
-						        }
-						      ?>> Publish
+					      	<input type="checkbox" id="checkedPublish" {checked_status}> Publish
 					    </label>
 					 </div>
 		    	</div>

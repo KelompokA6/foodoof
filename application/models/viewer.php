@@ -111,6 +111,16 @@ class Viewer extends CI_Model
         TRUE
     );
     // ambil content_user dari user_timeline_view
+    foreach ($listRecipes as $row) {
+        $row->user_timeline_recipe_id = $row->id;
+        $row->user_timeline_recipe_photo = $row->photo;
+        $row->user_timeline_recipe_name = $row->name;
+        $row->user_timeline_recipe_last_update = $row->last_update;
+        $row->rating = $row->rating;
+        $row->user_timeline_recipe_view = $row->views;
+        $row->checked_status = $row->status ? "checked" : "";
+    }
+
     $data_user_view['content_user'] = $this->parser->parse(
         'user_timeline_view',
         array(
