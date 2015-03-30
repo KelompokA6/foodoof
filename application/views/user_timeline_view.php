@@ -28,7 +28,7 @@
 		        </div>
 		        <div class="col-md-12 details">
 		        	<div class="col-md-11" title="Rating">
-		          		<input id="input-2b" class="rating" data-min="0" data-max="5" data-starts=3 data-step="0.1" data-stars=5 data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false">
+		          		<input id="input-2b" class="rating" data-min="0" data-max="5" value="3" data-step="0.1" data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false">
 					</div>
 		        </div>  
 		    </div>

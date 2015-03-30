@@ -23,16 +23,16 @@ class Home extends CI_Controller {
 			$menubar = $this->parser->parse('menubar_login', $data, TRUE);	
 		}
 		else{
-			$menubar = $this->parser->parse('menubar_login', $data, TRUE);
+			$menubar = $this->parser->parse('menubar', $data, TRUE);
 		}	
 		$category_home = $this->parser->parse('category_home', $data, TRUE);
 		$top_recipe_home = $this->parser->parse('top_recipe_home', $data, TRUE);
 		$recently_recipe_home = $this->parser->parse('recently_recipe_home', $data, TRUE);
 		$data= array(
-						"category_home"=> $category_home,
-						"top_recipe_home"=> $top_recipe_home,
-						"recently_recipe_home"=> $recently_recipe_home,
-						);
+					"category_home"=> $category_home,
+					"top_recipe_home"=> $top_recipe_home,
+					"recently_recipe_home"=> $recently_recipe_home,
+					);
 		$content_website = $this->parser->parse('content_homepage', $data, TRUE);
 		$datacomplete = array(
 						"menubar"=> $menubar,
