@@ -27,7 +27,7 @@ class User extends CI_Controller {
 		}
 		$u = new User_model();
 		$profile = $u->getProfile($id);
-		$r = new Recipe();
+		$r = new Recipe_model();
 		$listRecipe = $r->getUserRecipe($id);
 		$this->viewer->showUserTimeline($profile, $listRecipe);
 	}
@@ -38,7 +38,7 @@ class User extends CI_Controller {
 		}
 		$u = new User_model();
 		$profile = $u->getProfile($id);
-		$r = new Recipe();
+		$r = new Recipe_model();
 		$listRecipe = $r->getFavoriteRecipe($id);
 		$this->viewer->showUserTimeline($profile, $listRecipe);
 	}
@@ -47,7 +47,7 @@ class User extends CI_Controller {
 		$id = $this->wajiblogin();
 		$u = new User_model();
 		$profile = $u->getProfile($id);
-		$r = new Recipe();
+		$r = new Recipe_model();
 		$listRecipe = $r->getCooklaterRecipe($id);
 		$this->viewer->showUserTimeline($profile, $listRecipe);
 	}
