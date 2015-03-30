@@ -67,7 +67,7 @@ class User extends CI_Controller {
 		$this->viewer->showChangePassword($profile, $data);
 	}
 
-	public function register(){
+	public function join(){
 		$data = array();
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data['name'] = $this->input->post("name");
