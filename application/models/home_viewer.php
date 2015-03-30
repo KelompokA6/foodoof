@@ -30,6 +30,15 @@ class Home_viewer extends CI_Model
     $this->parser->parse('template_content', $datacomplete);
   }
 
+  function showLogin($data = array())
+  {
+    $datacomplete['menubar'] = $this->getMenubar();
+    $datacomplete['content_website'] = $this->parser->parse('login_view', $data, TRUE);
+
+    // butuh menubar dan content_website
+    $this->parser->parse('template_content', $datacomplete);
+  }
+
   function getMenubar()
   {
   	return $this->session->userdata('user_id') > 0 ?

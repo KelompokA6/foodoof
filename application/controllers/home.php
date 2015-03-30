@@ -19,10 +19,23 @@ class Home extends CI_Controller {
 
 	public function login()
 	{
+		$data = array();
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {
-			$email = $this->input->post($email);
-			$email = $this->input->post($email);
+			$data['email'] = $email = $this->input->post('email');
+			$data['password'] = $password = $this->input->post('password');
+			$u = new User_model();
+			$profile = $u->login($email, $password);
+			if($profile !== FALSE) {
+				foreach ($profile as $key => $value) {
+					$this->session->set_userdata($key, $value);
+				}
+				redirect(base_url());
+			} else {
+				$data['message'] = 'failed';
+				die('failed');
+			}
 		}
+		$this->home_viewer->showLogin($data);
 	}
 }
 

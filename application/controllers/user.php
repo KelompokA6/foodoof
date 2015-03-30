@@ -129,7 +129,7 @@ class User extends CI_Controller {
 			$email = $this->input->post('email');
 			$data['email'] = $email;
 			$password = $u->getPasswordByEmail($email);
-			echo "nyoh password: $password"; exit();
+			die("nyoh password: $password");
 			if($password !== FALSE) {
 				if ($this->sendPassword($email, $password)) {
 					$data['message'] = 'success';
@@ -157,7 +157,7 @@ class User extends CI_Controller {
 		$id = $this->session->userdata('user_id');
 		if ($id < 1) {
 			header('Location: '.base_url().'home/login');
-			exit();
+			die();
 		}
 		return $id;
 	}
