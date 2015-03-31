@@ -16,7 +16,7 @@
       </a>
     </div>
     <div id="navbar" class="">
-      <form class="collapse-navbar-search col-md-7" method="get" action="<?php echo base_url();?>search/title">
+      <form class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>search/title">
         <div class="input-group form-group search-bar-menu">
           <input type="text" class="form-control" name="q" placeholder="Search Recipe By Title">
           <div class="input-group-btn">
@@ -29,7 +29,7 @@
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Account</a></li>
             </ul>
             <span class="btn-group">
-              <button class="btn btn-primary button-group-normal" type="submit" >
+              <button class="btn button-default button-group-normal" type="submit" >
                  <i class="fa fa-search"></i>
               </button>
             </span>
@@ -54,7 +54,7 @@
         </a>
         <div class="col-md-4 col-offset-md-2 text-right">
           <a href="<?php echo base_url();?>home/logout">
-            <button type="button" class="btn btn-danger btn-sm">Logout</button>
+            <button type="button" class="btn button-default btn-sm">Logout</button>
           </a>
         </div> 
       </div>

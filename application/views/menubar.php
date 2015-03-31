@@ -15,7 +15,7 @@
       </a>
     </div>
     <div id="navbar">
-      <form class="collapse-navbar-search col-md-7" method="get" action="<?php echo base_url();?>search/title">
+      <form class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>search/title">
         <div class="input-group form-group search-bar-menu">
           <input type="text" class="form-control" name="q" placeholder="Search Recipe By Title">
           <div class="input-group-btn">
@@ -28,7 +28,7 @@
               <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Account</a></li>
             </ul>
             <span class="btn-group">
-              <button class="btn btn-primary button-group-normal" type="submit" >
+              <button class="btn button-default button-group-normal" type="submit" >
                  <i class="fa fa-search"></i>
               </button>
             </span>
@@ -76,7 +76,7 @@
             Login    
             </button>
             <a href="<?php echo base_url();?>user/join"  class="btn-group">
-              <button type="button" class="btn btn-primary btn-cus">Join</button>
+              <button type="button" class="btn button-default btn-cus">Join</button>
             </a>
           </div>
         </div>

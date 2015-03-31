@@ -6803,7 +6803,7 @@ button.close {
     text-align: center;
   }
   .hover-menubar:hover{
-    background: #5bc0de; 
+    background: rgb(56,150,211); 
     border-radius: 8px;
   }
   .brand-menubar{
@@ -6849,8 +6849,11 @@ button.close {
   .profile-info{
     line-height: 36.667px;
   }
+  .btn-add-to{
+    margin-right: 30px;
+  }
 }
-.icon-favorite{
+/*.icon-favorite{
   color:pink;
 }
 .icon-profile{
@@ -6864,6 +6867,14 @@ button.close {
 }
 .icon-key{
   color:rgb(229, 106, 69);
+}*/
+.button-default{
+  background-color: rgba(56,150,211,0.9);
+  color: #eee;
+}
+.button-default:hover{
+  background-color: rgba(56,150,211,1);
+  color: #eee;
 }
 .icon-default{
   color:rgb(56,150,211);
@@ -6873,6 +6884,6 @@ button.close {
 }
 .page-header-title{
   padding-bottom: 9px;
-  margin: 5px 0 20px;
+  margin: 10px 0 20px;
   border-bottom: 2px solid #eee;
 }
