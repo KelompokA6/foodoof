@@ -6,7 +6,7 @@ class Tempview extends CI_Controller {
 	{	
 		$this->load->library('parser');
 		$data = array("recipe_author_id"=> 1);
-		$menubar = $this->parser->parse('menubar_login', $data, TRUE);
+		$menubar = $this->parser->parse('menubar', $data, TRUE);
 		$content_website = $this->parser->parse('recipe_view', $data, TRUE);
 		$data = array(
 					"menubar" => $menubar,

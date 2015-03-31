@@ -6595,7 +6595,7 @@ button.close {
     padding-top: 8px;
   }
   .container-mobile{
-    padding-top: 200px;
+    padding-top: 170px;
   }
   .chevron-menu{
     line-height: inherit;
@@ -6604,7 +6604,6 @@ button.close {
     padding:15px;
   }
   .btn-navbar-mobile{
-    height:75px;
     display: block;
     padding: 10px;
     margin-left:10px;
@@ -6615,6 +6614,9 @@ button.close {
   }
   .btn-navbar-not-collapse{
     display: none;
+  }
+  .button-group-normal{
+    height: 34px;
   }
 }
 @media(min-width:768px){
@@ -6811,15 +6813,17 @@ button.close {
     padding-left: 0; 
     margin-left: -40px;
   }
-  .input-search{
-    width:533px;
+  .search-bar-menu{
+    padding:10px 0 0 45px; 
+    margin-top:20px;
   }
   .button-group-normal{
     min-width:60px; 
     height:33.9915px;
   }
   .col-menu-user{
-    padding-left:70px;
+    padding:10px 10px 0 70px; 
+    margin-top:20px;
   }
   .link-by-icon{
     padding: 4px;
