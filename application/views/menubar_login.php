@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" style="/*background:rgb(56,150,211);*/">
   <div class="container">
     <div class="navbar-header col-md-1 col-no-padding-right" style="padding-bottom:10px">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse" style="margin:21px 10px 21px 10px">
@@ -8,10 +8,10 @@
           <span class="icon-bar"></span>
       </button>
       <a href="<?php echo base_url();?>" class="brand-menubar col-no-padding-left">
-        <img class="img-circle img-brand-menubar" width="75px" src="<?php echo base_url();?>assets/img/foodoof.png"/>
+        <img class="img-circle img-brand-menubar" width="75px" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>
       </a>
-      <a href="<?php echo base_url();?>recipe/create" class="btn-navbar-mobile pull-right text-center">
-        <i class="fa fa-pencil-square-o fa-2x">
+      <a href="<?php echo base_url();?>recipe/create" class="btn-navbar-mobile pull-right text-center" style="color:white">
+        <i class="fa fa-pencil-square-o fa-2x icon-default">
         </i><br>Write <br>A Recipe
       </a>
     </div>
@@ -39,7 +39,7 @@
       <div class="col-md-4 navbar-collapse collapse col-menu-user" style="padding-left:30px">
         <div class="col-md-3 link-by-icon text-right" >
           <a href="<?php echo base_url();?>recipe/create" title="New Recipe">
-            <i class="fa fa-pencil-square-o fa-2x"></i>
+            <i class="fa fa-pencil-square-o fa-2x icon-default"></i>
           </a>
         </div>
         <a href="user/profile" class="col-md-5">

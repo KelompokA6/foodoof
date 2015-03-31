@@ -6846,6 +6846,9 @@ button.close {
   .col-no-padding{
     padding: 0;
   }
+  .profile-info{
+    line-height: 36.667px;
+  }
 }
 .icon-favorite{
   color:pink;
@@ -6861,6 +6864,9 @@ button.close {
 }
 .icon-key{
   color:rgb(229, 106, 69);
+}
+.icon-default{
+  color:rgb(56,150,211);
 }
 .header-title{
   margin-top:5px;
