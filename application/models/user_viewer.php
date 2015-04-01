@@ -55,8 +55,8 @@ class User_viewer extends CI_Model
     $data_user_view['sidebar_user'] = $this->parser->parse(
         'sidebar_user_view',
         array(
-            'sidebar_user_id' => $profile['id'],
-            'sidebar_user_photo' => $profile['photo'],
+            'sidebar_user_id' => $profile->id,
+            'sidebar_user_photo' => $profile->photo,
         ),
         TRUE
     );
@@ -105,8 +105,8 @@ class User_viewer extends CI_Model
     $data_user_view['sidebar_user'] = $this->parser->parse(
         'sidebar_user_view',
         array(
-            'sidebar_user_id' => $profile['id'],
-            'sidebar_user_photo' => $profile['photo'],
+            'sidebar_user_id' => $profile->id,
+            'sidebar_user_photo' => $profile->photo,
         ),
         TRUE
     );
@@ -154,8 +154,8 @@ class User_viewer extends CI_Model
     $data_user_view['sidebar_user'] = $this->parser->parse(
         'sidebar_user_view',
         array(
-            'sidebar_user_id' => $profile['id'],
-            'sidebar_user_photo' => $profile['photo'],
+            'sidebar_user_id' => $profile->id,
+            'sidebar_user_photo' => $profile->photo,
         ),
         TRUE
     );
@@ -208,8 +208,8 @@ class User_viewer extends CI_Model
     $data_user_view['sidebar_user'] = $this->parser->parse(
         'sidebar_user_view',
         array(
-            'sidebar_user_id' => $profile['id'],
-            'sidebar_user_photo' => $profile['photo'],
+            'sidebar_user_id' => $profile->id,
+            'sidebar_user_photo' => $profile->photo,
         ),
         TRUE
     );
@@ -217,7 +217,7 @@ class User_viewer extends CI_Model
     $data_user_view['content_user'] = $this->parser->parse(
         'edit_profile_view',
         array(
-            'edit_profile_id' => $profile['id'],
+            'edit_profile_id' => $profile->id,
             'edit_profile_name' => $profile['name'],
             'edit_profile_male' => $profile['gender'] == 'm' ? 'checked="checked"' : '',
             'edit_profile_female' => $profile['gender'] == 'f' ? 'checked="checked"' : '',

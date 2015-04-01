@@ -11,26 +11,36 @@ class Home_viewer extends CI_Model
 
   function showHome($listTopRecipe, $listHightlight, $listRecently)
   {
+    foreach ($listTopRecipe as $row) {
+      $row->top_recipe_id = $row->id;
+      $row->top_recipe_photo = $row->photo;
+      $row->top_recipe_name = $row->name;
+      $row->top_recipe_author = $row->author;
+      $row->top_recipe_author_name = $row->author_name;
+      $row->top_recipe_views = $row->views;
+    }
+
+    foreach ($listRecently as $row) {
+      $row->recently_recipe_id = $row->id;
+      $row->recently_recipe_photo = $row->photo;
+      $row->recently_recipe_name = $row->name;
+      $row->recently_recipe_author = $row->author;
+      $row->recently_recipe_author_name = $row->author_name;
+      $row->recently_recipe_create_date = strftime("%c", strtotime($row->create_date));
+    }
   	/*print_r($listTopRecipe);
   	print_r($listHightlight);
   	print_r($listRecently);
     die;*/
-
-    foreach ($listTopRecipe as $row) {
-      $row['recently_recipe_id'] = $row['id'];
-      $row['recently_recipe_photo'] = $row['photo'];
-      $row['recently_recipe_name'] = $row['name'];
-      $row['recently_recipe_author'] = $row['author'];
-      $row['recently_recipe_author_name'] = $row['author_name'];
-    }
-    $datatop['top_recipe_entries'] = $listTopRecipe;
+    $datalist['top_recipe_entries'] = $listTopRecipe;
+    $datalist['recently_recipe_entries'] = $listRecently;
 
   	$datacomplete['menubar'] = $this->getMenubar();
 
   	// content_homepage butuh: carousel_highlight, top_recipe_home, recently_recipe_home, dan category_home
   	$data_content_homepage['carousel_highlight'] = $this->parser->parse('carousel_highlight', array(), TRUE);
-  	$data_content_homepage['top_recipe_home'] = $this->parser->parse('top_recipe_home', array(), TRUE);
-  	$data_content_homepage['recently_recipe_home'] = $this->parser->parse('recently_recipe_home', array(), TRUE);
+  	$data_content_homepage['top_recipe_home'] = $this->parser->parse('top_recipe_home', $datalist, TRUE);
+  	$data_content_homepage['recently_recipe_home'] = $this->parser->parse('recently_recipe_home', $datalist, TRUE);
   	$data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
 
   	// load content_website, isinya dari content_homepage
