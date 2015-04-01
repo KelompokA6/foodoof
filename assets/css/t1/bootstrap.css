@@ -6618,6 +6618,28 @@ button.close {
   .button-group-normal{
     height: 34px;
   }
+  .mobile-hidden{
+    display:none;
+  }
+  .pull-right-mobile{
+    float:left;
+    text-align: left;
+  }
+  .col-no-padding-left{
+    padding-left: 0;
+  }
+  .col-no-padding-top{
+    padding-top: 0;
+  }
+  .col-no-padding-right{
+    padding-right: 0;
+  }
+  .col-no-padding-bottom{
+    padding-bottom: 0;
+  }
+  .col-no-padding{
+    padding: 0;
+  }
 }
 @media(min-width:768px){
   .inline-search{

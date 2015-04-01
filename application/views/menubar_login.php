@@ -15,8 +15,8 @@
         </i><br>Write <br>A Recipe
       </a>
     </div>
-    <div id="navbar" class="">
-      <form class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>search/title">
+    <div id="navbar" class="col-md-11">
+      <form class="collapse-navbar-search col-md-8 col-no-padding-right" method="get" action="<?php echo base_url();?>search/title">
         <div class="input-group form-group search-bar-menu">
           <input type="text" class="form-control" name="q" placeholder="Search Recipe By Title">
           <div class="input-group-btn">
@@ -36,23 +36,23 @@
           </div>
         </div>
       </form>
-      <div class="col-md-4 navbar-collapse collapse col-menu-user" style="padding-left:30px">
+      <div class="col-md-4 col-menu-user mobile-hidden" style="padding-left:30px">
         <div class="col-md-3 link-by-icon text-right" >
           <a href="<?php echo base_url();?>recipe/create" title="New Recipe">
             <i class="fa fa-pencil-square-o fa-2x icon-default"></i>
           </a>
         </div>
-        <a href="user/profile" class="col-md-5">
+        <a href="user/profile" class="col-md-6">
           <div class="col-md-12 hover-menubar text-left" title="Profile">
-            <div class="col-md-6 col-no-padding-left col-no-padding-right div-img-profile-menubar text-left">
+            <div class="col-md-4 col-no-padding-left col-no-padding-right div-img-profile-menubar text-left">
               <img class="img-circle img-profile-menubar" src="<?php echo base_url();?>{menubar_user_photo}"/>
             </div>
-            <div class="col-md-4 col-no-padding text-left" style="line-height:34px">
+            <div class="col-md-8 col-no-padding text-left" style="line-height:34px">
               {menubar_user_name}
             </div>
           </div>
         </a>
-        <div class="col-md-4 col-offset-md-2 text-right">
+        <div class="col-md-3 text-right col-no-padding-left">
           <a href="<?php echo base_url();?>home/logout">
             <button type="button" class="btn button-default btn-sm">Logout</button>
           </a>
