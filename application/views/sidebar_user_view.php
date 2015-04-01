@@ -1,5 +1,5 @@
 <div class="col-md-12 col-no-padding-left text-center">
-	<a href="<?php echo base_url();?>user/profile/{sidebar_user_id}"<img src="<?php echo base_url();?>{sidebar_user_photo}" class="img-responsive img-rounded"/></a>
+	<a href="<?php echo base_url();?>user/profile/{sidebar_user_id}"><img src="<?php echo base_url();?>{sidebar_user_photo}" class="img-responsive img-rounded"/></a>
 </div>
 <div class="col-md-12 col-no-padding-left" style="margin-top:10px">
 	<div class="list-group">
