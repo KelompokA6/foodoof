@@ -41,12 +41,70 @@ class Home_viewer extends CI_Model
   	$data_content_homepage['carousel_highlight'] = $this->parser->parse('carousel_highlight', array(), TRUE);
   	$data_content_homepage['top_recipe_home'] = $this->parser->parse('top_recipe_home', $datalist, TRUE);
   	$data_content_homepage['recently_recipe_home'] = $this->parser->parse('recently_recipe_home', $datalist, TRUE);
-  	$data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
+    $data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
 
-  	// load content_website, isinya dari content_homepage
+    // load content_website, isinya dari content_homepage
     $datacomplete['content_website'] = $this->parser->parse('content_homepage', $data_content_homepage, TRUE);
 
-  	// butuh menubar dan content_website
+    // butuh menubar dan content_website
+    $this->parser->parse('template_content', $datacomplete);
+  }
+
+  function showTop($listTopRecipe)
+  {
+    $datalist['search_by_title_recipe_result'] = sizeof($listTopRecipe);
+    $datalist['search_by_title_recipe_key'] = 'Top Recipes';
+    $datalist['search_by_title_recipe_page_size'] = 1;
+    $datalist['search_by_title_recipe_page_now'] = 1;
+    foreach ($listTopRecipe as $row) {
+      $row->search_by_title_recipe_id = $row->id;
+      $row->search_by_title_recipe_photo = $row->photo;
+      $row->search_by_title_recipe_name = $row->name;
+      $row->search_by_title_recipe_author = $row->author;
+      $row->search_by_title_recipe_author_name = $row->author_name;
+      $row->search_by_title_recipe_views = $row->views;
+      $row->search_by_title_recipe_last_update = strftime("%c", strtotime($row->last_update));
+    }
+    $datalist['search_by_title_recipe_entries'] = $listTopRecipe;
+
+    $datacomplete['menubar'] = $this->getMenubar();
+
+    $data_content_homepage['content_search'] = $this->parser->parse('search_by_title_view', $datalist, TRUE);
+    $data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
+
+    // load content_website, isinya dari content_homepage
+    $datacomplete['content_website'] = $this->parser->parse('content_search', $data_content_homepage, TRUE);
+
+    // butuh menubar dan content_website
+    $this->parser->parse('template_content', $datacomplete);
+  }
+
+  function showRecently($listRecently)
+  {
+    $datalist['search_by_title_recipe_result'] = sizeof($listRecently);
+    $datalist['search_by_title_recipe_key'] = 'Recently Recipes';
+    $datalist['search_by_title_recipe_page_size'] = 1;
+    $datalist['search_by_title_recipe_page_now'] = 1;
+    foreach ($listRecently as $row) {
+      $row->search_by_title_recipe_id = $row->id;
+      $row->search_by_title_recipe_photo = $row->photo;
+      $row->search_by_title_recipe_name = $row->name;
+      $row->search_by_title_recipe_author = $row->author;
+      $row->search_by_title_recipe_author_name = $row->author_name;
+      $row->search_by_title_recipe_views = $row->views;
+      $row->search_by_title_recipe_last_update = strftime("%c", strtotime($row->last_update));
+    }
+    $datalist['search_by_title_recipe_entries'] = $listRecently;
+
+    $datacomplete['menubar'] = $this->getMenubar();
+
+    $data_content_homepage['content_search'] = $this->parser->parse('search_by_title_view', $datalist, TRUE);
+  	$data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
+
+    // load content_website, isinya dari content_homepage
+    $datacomplete['content_website'] = $this->parser->parse('content_search', $data_content_homepage, TRUE);
+
+    // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);
   }
 
@@ -61,7 +119,7 @@ class Home_viewer extends CI_Model
 
   function getMenubar()
   {
-  	return $this->session->userdata('user_id') > 0 ?
+    return $this->session->userdata('user_id') > 0 ?
         $this->parser->parse(
             'menubar_login',
             array(

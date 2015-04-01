@@ -52,14 +52,7 @@ class User_viewer extends CI_Model
     // content_website
     // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
     // ambil sidebar
-    $data_user_view['sidebar_user'] = $this->parser->parse(
-        'sidebar_user_view',
-        array(
-            'sidebar_user_id' => $profile->id,
-            'sidebar_user_photo' => $profile->photo,
-        ),
-        TRUE
-    );
+    $data_user_view['sidebar_user'] = $this->getSidebar($profile);
     // ambil content_user dari profile_view
     $data_user_view['content_user'] = $this->getContentUser($profile);
     // load template_content
@@ -87,14 +80,7 @@ class User_viewer extends CI_Model
     // content_website
     // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
     // ambil sidebar
-    $data_user_view['sidebar_user'] = $this->parser->parse(
-        'sidebar_user_view',
-        array(
-            'sidebar_user_id' => $profile->id,
-            'sidebar_user_photo' => $profile->photo,
-        ),
-        TRUE
-    );
+    $data_user_view['sidebar_user'] = $this->getSidebar($profile);
     // ambil content_user dari user_timeline_view
     foreach ($listRecipes as $row) {
         $row->user_timeline_recipe_id = $row->id;
@@ -136,14 +122,7 @@ class User_viewer extends CI_Model
     // content_website
     // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
     // ambil sidebar
-    $data_user_view['sidebar_user'] = $this->parser->parse(
-        'sidebar_user_view',
-        array(
-            'sidebar_user_id' => $profile->id,
-            'sidebar_user_photo' => $profile->photo,
-        ),
-        TRUE
-    );
+    $data_user_view['sidebar_user'] = $this->getSidebar($profile);
     // ambil content_user dari user_timeline_view
     $data_user_view['content_user'] = $this->parser->parse(
         'change_password_view',
@@ -190,14 +169,7 @@ class User_viewer extends CI_Model
     // content_website
     // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
     // ambil sidebar
-    $data_user_view['sidebar_user'] = $this->parser->parse(
-        'sidebar_user_view',
-        array(
-            'sidebar_user_id' => $profile->id,
-            'sidebar_user_photo' => $profile->photo,
-        ),
-        TRUE
-    );
+    $data_user_view['sidebar_user'] = $this->getSidebar($profile);
     // ambil content_user dari profile_view
     $data_user_view['content_user'] = $this->getContentUser($profile);
     // load template_content
@@ -236,6 +208,18 @@ class User_viewer extends CI_Model
             'profile_user_facebook' => $profile->facebook,
             'profile_user_googleplus' => $profile->googleplus,
             'profile_user_path' => $profile->path,
+        ),
+        TRUE
+    );
+  }
+
+  function getSidebar($profile)
+  {
+    return $this->parser->parse(
+        'sidebar_user_view',
+        array(
+            'sidebar_user_id' => $profile->id,
+            'sidebar_user_photo' => $profile->photo ? $profile->photo : 'images/user/0.jpg',
         ),
         TRUE
     );
