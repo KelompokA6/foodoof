@@ -61,22 +61,7 @@ class User_viewer extends CI_Model
         TRUE
     );
     // ambil content_user dari profile_view
-    $data_user_view['content_user'] = $this->parser->parse(
-        'profile_view',
-        array(
-            'profile_user_name' => $profile['name'],
-            'profile_user_gender' => $profile['gender'] == 'm' ? 'male' : 'female',
-            'profile_user_age' => (new DateTime())->diff(new DateTime($profile['bdate']))->y,
-            'profile_user_email' => $profile['email'],
-            'profile_user_phone' => $profile['phone'],
-            'profile_user_last_access' => $profile['last_access'],
-            'profile_user_twitter' => $profile['twitter'],
-            'profile_user_facebook' => $profile['facebook'],
-            'profile_user_googleplus' => $profile['googleplus'],
-            'profile_user_path' => $profile['path'],
-        ),
-        TRUE
-    );
+    $data_user_view['content_user'] = $this->getContentUser($profile);
     // load template_content
     $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
 
@@ -214,24 +199,7 @@ class User_viewer extends CI_Model
         TRUE
     );
     // ambil content_user dari profile_view
-    $data_user_view['content_user'] = $this->parser->parse(
-        'edit_profile_view',
-        array(
-            'edit_profile_id' => $profile->id,
-            'edit_profile_name' => $profile['name'],
-            'edit_profile_male' => $profile['gender'] == 'm' ? 'checked="checked"' : '',
-            'edit_profile_female' => $profile['gender'] == 'f' ? 'checked="checked"' : '',
-            'edit_profile_birth_date' => $profile['bdate'],
-            'edit_profile_email' => $profile['email'],
-            'edit_profile_phone' => $profile['phone'],
-            'edit_profile_last_access' => $profile['last_access'],
-            'edit_profile_twitter' => $profile['twitter'],
-            'edit_profile_facebook' => $profile['facebook'],
-            'edit_profile_google_plus' => $profile['googleplus'],
-            'edit_profile_path' => $profile['path'],
-        ),
-        TRUE
-    );
+    $data_user_view['content_user'] = $this->getContentUser($profile);
     // load template_content
     $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
 
@@ -251,6 +219,26 @@ class User_viewer extends CI_Model
 
     // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);
+  }
+
+  function getContentUser($profile)
+  {
+    return $this->parser->parse(
+        'profile_view',
+        array(
+            'profile_user_name' => $profile->name,
+            'profile_user_gender' => $profile->gender == 'm' ? 'male' : 'female',
+            'profile_user_age' => (new DateTime())->diff(new DateTime($profile->bdate))->y,
+            'profile_user_email' => $profile->email,
+            'profile_user_phone' => $profile->phone,
+            'profile_user_last_access' => $profile->last_access,
+            'profile_user_twitter' => $profile->twitter,
+            'profile_user_facebook' => $profile->facebook,
+            'profile_user_googleplus' => $profile->googleplus,
+            'profile_user_path' => $profile->path,
+        ),
+        TRUE
+    );
   }
 
 }
