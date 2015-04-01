@@ -29,22 +29,23 @@ class User_model extends DataMapper {
 
     function getProfile($id)
     {
-        if($this->where('id', $id)->count() < 1) return NULL;
+        if($this->where('id', $id)->count() < 1) NULL;
         $this->where('id', $id)->get();
-        $ret['id'] = $this->id;
-        $ret['email'] = $this->email;
-        $ret['name'] = $this->name;
-        $ret['password'] = $this->password;
-        $ret['gender'] = $this->gender;
-        $ret['bdate'] = $this->bdate;
-        $ret['phone'] = $this->phone;
-        $ret['status'] = $this->status;
-        $ret['photo'] = $this->photo;
-        $ret['facebook'] = $this->facebook;
-        $ret['twitter'] = $this->twitter;
-        $ret['googleplus'] = $this->googleplus;
-        $ret['path'] = $this->path;
-        $ret['last_access'] = $this->last_access;
+        $ret = new stdClass();
+        $ret->id = $this->id;
+        $ret->email = $this->email;
+        $ret->name = $this->name;
+        $ret->password = $this->password;
+        $ret->gender = $this->gender;
+        $ret->bdate = $this->bdate;
+        $ret->phone = $this->phone;
+        $ret->status = $this->status;
+        $ret->photo = $this->photo;
+        $ret->facebook = $this->facebook;
+        $ret->twitter = $this->twitter;
+        $ret->googleplus = $this->googleplus;
+        $ret->path = $this->path;
+        $ret->last_access = $this->last_access;
         return $ret;
     }
 

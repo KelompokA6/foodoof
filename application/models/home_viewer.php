@@ -13,7 +13,17 @@ class Home_viewer extends CI_Model
   {
   	/*print_r($listTopRecipe);
   	print_r($listHightlight);
-  	print_r($listRecently);*/
+  	print_r($listRecently);
+    die;*/
+
+    foreach ($listTopRecipe as $row) {
+      $row['recently_recipe_id'] = $row['id'];
+      $row['recently_recipe_photo'] = $row['photo'];
+      $row['recently_recipe_name'] = $row['name'];
+      $row['recently_recipe_author'] = $row['author'];
+      $row['recently_recipe_author_name'] = $row['author_name'];
+    }
+    $datatop['top_recipe_entries'] = $listTopRecipe;
 
   	$datacomplete['menubar'] = $this->getMenubar();
 

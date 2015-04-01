@@ -300,6 +300,7 @@ class Recipe_model extends DataMapper {
             $data->name = $recipes->name;
             $data->description = $recipes->description;
             $data->portion = $recipes->portion;
+            $data->duration = $recipes->duration;
             $data->duration = $recipes->author;
             $data->create_date = $recipes->create_date;
             $data->last_update = $recipes->last_update;
