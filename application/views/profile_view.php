@@ -3,7 +3,7 @@
 		<div class='col-md-12 text-right'>
 			<a href='".base_url()."user/edit/{profile_user_id}''>
 				<button class='btn btn-primary'>
-					<i class='fa fa-pencil-square-o fa-lg'></i>
+					<i class='fa fa-pencil fa-lg'></i>
 					Edit
 				</button>
 			</a>
@@ -97,7 +97,7 @@
 		<div class="col-md-1 col-xs-2 col-no-padding-left">
 			<span class="fa-stack fa-lg">
 		  <i class="fa fa-square fa-stack-2x icon-default"></i>
-		  <i class="fa fa-pinterest fa-stack-1x fa-inverse"></i>
+		  <i class="el el-path fa-stack-1x fa-inverse" style="padding: 8px;"></i>
 		</span>
 		</div>
 		<div class="col-md-11 col-xs-10 col-no-padding-left">

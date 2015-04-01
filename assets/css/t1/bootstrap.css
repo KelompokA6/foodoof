@@ -6669,6 +6669,15 @@ button.close {
   .xs-text-justify{
     text-align: justify;
   }
+  .list-item-step{
+    margin:10px 0 10px 0;
+  }
+  .edit-info{
+    margin:30px 0 10px 0;
+  }
+  .h4-mobile{
+    font-size: 26px;
+  }
 }
 @media(min-width:768px){
   .inline-search{
@@ -6916,6 +6925,9 @@ button.close {
   }
   .recipe-timeline-check-publish{
     padding-left:79px;
+  }
+  .list-item-step{
+    margin:10px 0 10px 0;
   }
 }
 /*.icon-favorite{

@@ -30,7 +30,9 @@ class Tempview extends CI_Controller {
 				);
 		$this->parser->parse('template_content', $data);
 	}
-
+	public function editprofile(){
+		$this->load->view('edit_profile_view');
+	}
 	public function login()
 	{	
 		$this->load->library('parser');
