@@ -49,11 +49,11 @@
               <form id='loginform' class='form-horizontal' role='form' method='post' action='<?php echo base_url();?>home/login'>      
                   <div class='input-group'>
                       <span class='input-group-addon'><i class='fa fa-user'></i></span>
-                      <input id='login-username' type='text' class='form-control' name='email_user' value='' placeholder='Email'>                                        
+                      <input id='login-username' type='text' class='form-control' name='email' value='' placeholder='Email'>                                        
                   </div><br>        
                   <div class='input-group'>
                               <span class='input-group-addon'><i class='fa fa-lock'></i></span>
-                              <input id='login-password' type='password' class='form-control' name='password_user' placeholder='Password'>
+                              <input id='login-password' type='password' class='form-control' name='password' placeholder='Password'>
                           </div>
                   <div style='margin-top:10px' class='form-group'>
                       <div class='col-sm-12 controls text-center'>

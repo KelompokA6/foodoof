@@ -77,7 +77,7 @@ class User extends CI_Controller {
 	}
 
 	public function join(){
-		$data = array();
+		$data['join_alert'] = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data['name'] = $this->input->post("name");
 			$data['email'] = $this->input->post("email");
@@ -87,10 +87,14 @@ class User extends CI_Controller {
 			if($this->isValid($data)){
 				$user = new User_model();
 				$success = $user->createUser($data);
-				$data['message'] = $success ? "success" : "failed";
+				if ($success) {
+					redirest(base_url().'user');
+					die;
+				}
+				$data['join_alert'] = '<div class="label label-warning">join failed</div>';
 			}
 			else{
-				$data['message'] = "invalid";
+				$data['join_alert'] = '<div class="label label-danger">invalid input data</div>';
 			}
 		}
 		

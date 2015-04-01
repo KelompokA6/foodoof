@@ -7,6 +7,8 @@ class User_model extends DataMapper {
 
     function login($email, $password)
     {
+        if (strlen($email) < 1)
+            $email = 'invalid';
         if( $this->where('email', $email)->count() < 1 ) return FALSE;
         $this->where('email', $email)->get();
         $ci =& get_instance();
@@ -21,7 +23,7 @@ class User_model extends DataMapper {
             array(
                 'user_id' => $this->id,
                 'user_name' => $this->name,
-                'user_photo' => $this->photo,
+                'user_photo' => $this->photo ? $this->photo : 'images/user/0.jpg',
             ) : FALSE;
     }
 
