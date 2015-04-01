@@ -248,7 +248,8 @@ class Recipe_model extends DataMapper {
             $data->name = $recipes->name;
             $data->description = $recipes->description;
             $data->portion = $recipes->portion;
-            $data->duration = $recipes->author;
+            $data->duration = $recipes->duration;
+            $data->author = $recipes->author;
             $data->create_date = $recipes->create_date;
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
@@ -274,7 +275,8 @@ class Recipe_model extends DataMapper {
             $data->name = $recipes->name;
             $data->description = $recipes->description;
             $data->portion = $recipes->portion;
-            $data->duration = $recipes->author;
+            $data->duration = $recipes->duration;
+            $data->author = $recipes->author;
             $data->create_date = $recipes->create_date;
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
@@ -327,7 +329,8 @@ class Recipe_model extends DataMapper {
             $data->name = $recipes->name;
             $data->description = $recipes->description;
             $data->portion = $recipes->portion;
-            $data->duration = $recipes->author;
+            $data->duration = $recipes->duration;
+            $data->author = $recipes->author;
             $data->create_date = $recipes->create_date;
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
@@ -431,7 +434,8 @@ class Recipe_model extends DataMapper {
                         $data->name = $recipes->name;
                         $data->description = $recipes->description;
                         $data->portion = $recipes->portion;
-                        $data->duration = $recipes->author;
+                        $data->duration = $recipes->duration;
+                        $data->author = $recipes->author;
                         $data->create_date = $recipes->create_date;
                         $data->last_update = $recipes->last_update;
                         $data->rating = $recipes->rating;
@@ -501,7 +505,8 @@ class Recipe_model extends DataMapper {
                         $data->name = $recipes->name;
                         $data->description = $recipes->description;
                         $data->portion = $recipes->portion;
-                        $data->duration = $recipes->author;
+                        $data->duration = $recipes->duration;
+                        $data->author = $recipes->author;
                         $data->create_date = $recipes->create_date;
                         $data->last_update = $recipes->last_update;
                         $data->rating = $recipes->rating;
