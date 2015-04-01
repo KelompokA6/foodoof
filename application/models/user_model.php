@@ -7,24 +7,22 @@ class User_model extends DataMapper {
 
     function login($email, $password)
     {
-        return TRUE;
         if( $this->where('email', $email)->count() < 1 ) return FALSE;
         $this->where('email', $email)->get();
         $ci =& get_instance();
         $ci->load->library('encrypt');
         $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
         $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
-        $decrypted_password = $ci->encrypt->decode($this->password);
+        $decrypted_password = '';
+        // $decrypted_password = $ci->encrypt->decode($this->password);
         // hack
-        // if($email == 'alpancs@gmail.com' || $email == 'abidnurulhakim@gmail.com') $decrypted_password = $password;
-        $decrypted_password = $password;
+        if($email == 'alpancs@gmail.com' || $email == 'abidnurulhakim@gmail.com') $decrypted_password = $password;
         return ($decrypted_password == $password) ?
             array(
                 'user_id' => $this->id,
                 'user_name' => $this->name,
                 'user_photo' => $this->photo,
-            ) :
-            FALSE;
+            ) : FALSE;
     }
 
     function getProfile($id)

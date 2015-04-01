@@ -19,20 +19,25 @@ class Home extends CI_Controller {
 
 	public function login()
 	{
+		if ($this->session->userdata('user_id') > 0) {
+			print_r($this->session->userdata()); die;
+		}
 		$data = array();
+		$data['login_alert'] = '';
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {
 			$data['email'] = $email = $this->input->post('email');
 			$data['password'] = $password = $this->input->post('password');
 			$u = new User_model();
 			$profile = $u->login($email, $password);
 			if($profile !== FALSE) {
-				foreach ($profile as $key => $value) {
+				print_r($profile); die;
+				/*foreach ($profile as $key => $value) {
 					$this->session->set_userdata($key, $value);
-				}
+				}*/
 				redirect(base_url());
 			} else {
-				$data['message'] = 'failed';
-				die('failed');
+				$data['login_alert'] = 'login failed';
+				// die('failed');
 			}
 		}
 		$this->home_viewer->showLogin($data);
