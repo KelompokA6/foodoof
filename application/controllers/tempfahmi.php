@@ -27,10 +27,10 @@ class Tempfahmi extends CI_Controller {
 			$ingredients = array();
 			for ($i=0; $i < $n; $i++) { 
 				$temp = array(
-					'ingre_name' = $this->input->post("ingre_name$i"),
-					'ingre_quantity' = $this->input->post("ingre_quantity$i"),
-					'ingre_units' = $this->input->post("ingre_units$i"),
-					'ingre_info' = $this->input->post("ingre_info$i"),
+					'name' = $this->input->post("ingre_name$i"),
+					'quantity' = $this->input->post("ingre_quantity$i"),
+					'units' = $this->input->post("ingre_units$i"),
+					'info' = $this->input->post("ingre_info$i"),
 				);
 				array_push($ingredients, $temp);
 			}
@@ -39,9 +39,9 @@ class Tempfahmi extends CI_Controller {
 			$steps = array();
 			for ($i=0; $i < $m; $i++) { 
 				$temp = array(
-					'steps_number' = $i,
-					'steps_description' = $this->input->post("steps_description$i"),
-					'steps_photo' = $this->input->post("steps_photo$i"),
+					'number' = $i,
+					'description' = $this->input->post("steps_description$i"),
+					'photo' = $this->input->post("steps_photo$i"),
 				);
 				array_push($steps, $temp);
 			}
