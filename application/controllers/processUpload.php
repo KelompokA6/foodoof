@@ -15,19 +15,19 @@ class ProcessUpload extends CI_Controller {
 		$this->upload->initialize($config);
 
 		if($this->session->userdata('user_id')==''){
-			if($this->upload->do_upload("test-file")){
-				$configImage['source_image'] = './assets/tmp/user/'.$id.'.jpg';
+			if($this->upload->do_upload("photo_user")){
+				$configImage['source_image'] = './image/tmp/user/'.$id.'.jpg';
 				$configImage['create_thumb'] = TRUE;
 				$configImage['maintain_ratio'] = TRUE;
-				$configImage['width']	= 200;
-				$configImage['height']	= 200;
+				$configImage['width']	= 360;
+				$configImage['height']	= 360;
 				$configImage['image_library'] = 'gd2';
 				$this->load->library('image_lib', $configImage);
 				$this->image_lib->resize();
 				if ($this->image_lib->resize())
 				{
-				    unlink('./assets/tmp/user/'.$id.'.jpg');
-				    rename ( './assets/tmp/user/'.$id.'_thumb.jpg', './assets/tmp/user/'.$id.'.jpg');
+				    unlink('./image/tmp/user/'.$id.'.jpg');
+				    rename ( './image/tmp/user/'.$id.'_thumb.jpg', './image/tmp/user/'.$id.'.jpg');
 				    $result = array(
 						"status" => 1,
 						"message" => "Upload success",
@@ -70,19 +70,19 @@ class ProcessUpload extends CI_Controller {
 		$this->upload->initialize($config);
 
 		if($this->session->userdata('user_id')!=''){
-			if($this->upload->do_upload($this->input->post('ImageName'))){
-				$configImage['source_image'] = '/assets/tmp/recipe/'.$id.'.jpg';
+			if($this->upload->do_upload($this->input->post('photo_recipe'))){
+				$configImage['source_image'] = '/image/tmp/recipe/'.$id.'.jpg';
 				$configImage['create_thumb'] = TRUE;
 				$configImage['maintain_ratio'] = TRUE;
-				$configImage['width']	= 200;
-				$configImage['height']	= 200;
+				$configImage['width']	= 360;
+				$configImage['height']	= 360;
 				$configImage['image_library'] = 'gd2';
 				$this->load->library('image_lib', $configImage);
 				$this->image_lib->resize();
 				if ($this->image_lib->resize())
 				{
-					unlink('./assets/tmp/recipe/'.$id.'.jpg');
-				    rename ( './assets/tmp/recipe/'.$id.'_thumb.jpg', './assets/tmp/recipe/'.$id.'.jpg');
+					unlink('./image/tmp/recipe/'.$id.'.jpg');
+				    rename ( './image/tmp/recipe/'.$id.'_thumb.jpg', './image/tmp/recipe/'.$id.'.jpg');
 				    $result = array(
 						"status" => 1,
 						"message" => "Upload success",
@@ -122,8 +122,8 @@ class ProcessUpload extends CI_Controller {
 		$this->upload->initialize($config);
 
 		if($this->session->userdata('user_id')!=''){
-			if($this->upload->do_upload($this->input->post('ImageName'))){
-				$configImage['source_image'] = '/assets/tmp/step/'.$id."-".$no_step.".jpg";
+			if($this->upload->do_upload($this->input->post("photo_step"))){
+				$configImage['source_image'] = "/image/tmp/step/".$id."-".$no_step.".jpg";
 				$configImage['create_thumb'] = TRUE;
 				$configImage['maintain_ratio'] = TRUE;
 				$configImage['width']	= 200;
@@ -133,8 +133,8 @@ class ProcessUpload extends CI_Controller {
 				$this->image_lib->resize();
 				if ($this->image_lib->resize())
 				{
-					unlink('./assets/tmp/step/'.$id.'-'.$no_step.'jpg');
-				    rename ( './assets/tmp/step/.$id.'-'.$no_step.'_thumb.'jpg', './assets/tmp/step/'.$id.'-'.$no_step.'jpg');
+					unlink("./image/tmp/step/".$id."-".$no_step."jpg");
+				    rename ( "./image/tmp/step/".$id."-".$no_step."_thumb.jpg", "./image/tmp/step/".$id."-".$no_step."jpg");
 				    $result = array(
 						"status" => 1,
 						"message" => "Upload success",
