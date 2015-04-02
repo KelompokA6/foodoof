@@ -79,25 +79,29 @@ class User extends CI_Controller {
 	public function join(){
 		$data['join_alert'] = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
-			$data['name'] = $this->input->post("name");
-			$data['email'] = $this->input->post("email");
-			$data['password'] = $this->input->post("password"); 
-			$data['confrimPass'] = $this->input->post("confirm_password");
+			$profile['name'] = $this->input->post("name");
+			$profile['email'] = $this->input->post("email");
+			$profile['gender'] = $this->input->post("genderOptions");
+			$profile['password'] = $this->input->post("password"); 
+			$profile['confrimPass'] = $this->input->post("confirm_password");
 
-			if($this->isValid($data)){
-				$user = new User_model();
-				$success = $user->createUser($data);
-				if ($success) {
-					redirest(base_url().'user');
+			if ($this->validateJoin($profile)) {
+				$u = new User_model();
+				if($u->createUser($profile)) {
+					$profile_menubar = $u->login($profile['email'], $profile['password']);
+					foreach ($profile_menubar as $key => $value) {
+						$this->session->set_userdata($key, $value);
+					}
+					redirect(base_url().'user');
 					die;
+				} else {
+					$data['join_alert'] = '<div class="label label-warning">join failed</div>';
 				}
-				$data['join_alert'] = '<div class="label label-warning">join failed</div>';
-			}
-			else{
+			} else {
 				$data['join_alert'] = '<div class="label label-danger">invalid input data</div>';
 			}
+			foreach ($profile as $key => $value) $data[$key] = $value;
 		}
-		
 		$this->user_viewer->showRegister($data);
 	}
 
@@ -143,8 +147,9 @@ class User extends CI_Controller {
 		$this->user_viewer->showForgotPassword($data);
 	}
 
-	public function isValid(){
-		return TRUE;
+	public function validateJoin($profile){
+		// cek email, udah ada belum?
+		return true;
 	}
 
 	public function sendPassword($email, $password){

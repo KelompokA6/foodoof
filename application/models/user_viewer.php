@@ -7,6 +7,7 @@ class User_viewer extends CI_Model
     parent::__construct();
     $this->load->library('session');
     $this->load->library('parser');
+    $this->load->model('home_viewer');
   }
 
   public function show($view, $data = array())
@@ -37,16 +38,7 @@ class User_viewer extends CI_Model
   public function showProfile($profile)
   {
     // menubar
-    $datacomplete['menubar'] = $this->session->userdata('user_id') > 0 ?
-        $this->parser->parse(
-            'menubar_login',
-            array(
-                'menubar_user_name' => $this->session->userdata('user_name'),
-                'menubar_user_photo' => $this->session->userdata('user_photo'),
-            ),
-            TRUE
-        ) : 
-        $this->parser->parse('menubar', array(), TRUE);
+    $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE
 
     // content_website
@@ -65,16 +57,7 @@ class User_viewer extends CI_Model
   public function showUserTimeline($profile, $listRecipes)
   {
     // menubar
-    $datacomplete['menubar'] = $this->session->userdata('user_id') > 0 ?
-        $this->parser->parse(
-            'menubar_login',
-            array(
-                'menubar_user_name' => $this->session->userdata('user_name'),
-                'menubar_user_photo' => $this->session->userdata('user_photo'),
-            ),
-            TRUE
-        ) :
-        $this->parser->parse('menubar', array(), TRUE);
+    $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE
 
     // content_website
@@ -96,6 +79,7 @@ class User_viewer extends CI_Model
         'user_timeline_view',
         array(
             'user_timeline_recipe_entries' => $listRecipes,
+            'user_timeline_name' => $profile->name,
         ),
         TRUE
     );
@@ -110,13 +94,7 @@ class User_viewer extends CI_Model
   public function showChangePassword($profile, $data = array())
   {
     // menubar
-    $datacomplete['menubar'] = $this->parser->parse('menubar_login',
-        array(
-            'menubar_user_name' => $this->session->userdata('user_name'),
-            'menubar_user_photo' => $this->session->userdata('user_photo'),
-        ),
-        TRUE
-    );
+    $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE
 
     // content_website
@@ -154,16 +132,7 @@ class User_viewer extends CI_Model
   public function showEditProfile($profile)
   {
     // menubar
-    $datacomplete['menubar'] = $this->session->userdata('user_id') > 0 ?
-        $this->parser->parse(
-            'menubar_login',
-            array(
-                'menubar_user_name' => $this->session->userdata('user_name'),
-                'menubar_user_photo' => $this->session->userdata('user_photo'),
-            ),
-            TRUE
-        ) : 
-        $this->parser->parse('menubar', array(), TRUE);
+    $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE
 
     // content_website
