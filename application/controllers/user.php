@@ -121,8 +121,11 @@ class User extends CI_Controller {
 			$data['googleplus'] = $this->input->post('user_gplus');
 			$data['path'] = $this->input->post('user_path');
 			if (true) {
-				if($u->updateProfile($id, $data))
+				if($u->updateProfile($id, $data)){
 					$profile->message = 'success';
+					$this->session->set_userdata('user_name', $data['name']);
+					$this->session->set_userdata('user_photo', $data['photo']);
+				}
 				else
 					$profile->message = 'failed';
 			} else $profile->message = 'invalid';
