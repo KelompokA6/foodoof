@@ -15,6 +15,49 @@ class Tempfahmi extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 
 	}	
+
+	public function create(){
+		$data = array();
+		if($this->input->server('REQUEST_METHOD') == 'POST'){
+			$data['title'] = $this->input->post("title");
+			$data['portion'] = $this->input->post("portion");
+			$data['duration'] = $this->input->post("duration");
+			$data['description'] = $this->input->post("description");
+			$n = (int) $this->input->post("nIngredient");
+			$ingredients = array();
+			for ($i=0; $i < $n; $i++) { 
+				$temp = array(
+					'ingre_name' = $this->input->post("ingre_name$i"),
+					'ingre_quantity' = $this->input->post("ingre_quantity$i"),
+					'ingre_units' = $this->input->post("ingre_units$i"),
+					'ingre_info' = $this->input->post("ingre_info$i"),
+				);
+				array_push($ingredients, $temp);
+			}
+			$data['ingredients'] = $ingredients;
+			$m = (int) $this->input->post("nSteps");
+			$steps = array();
+			for ($i=0; $i < $m; $i++) { 
+				$temp = array(
+					'steps_number' = $i,
+					'steps_description' = $this->input->post("steps_description$i"),
+					'steps_photo' = $this->input->post("steps_photo$i"),
+				);
+				array_push($steps, $temp);
+			}
+			$data['steps'] = $steps;
+			$user = new Recipe_model();
+			$id = $user->createRecipe_model();
+			if($id != -1){
+				$success = $user->saveRecipe($id, $data['title'], $data['portion'], $data['duration'],  $data['description'], $data['title'], $last_update=NULL, $data['ingredients'], $data['steps']);
+				$data['message'] = $success ? "success" : "failed";
+			}else{
+				$data['message'] = "invalid";
+			}
+		}
+		
+		$this->user_viewer->showRegister($data);
+	}
 	public function getR($id){
 		$recipe = new Recipe_model();
 		$user = new User_model();
