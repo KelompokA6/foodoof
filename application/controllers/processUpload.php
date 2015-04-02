@@ -118,7 +118,10 @@ class ProcessUpload extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function uploadStepsRecipe($id, $no_step){
+	public function uploadStepsRecipe($id, $no_step=null){
+		if(empty($no_step)){
+			$no_step = $this->input->post('no_step');
+		}
 		$this->load->helper('file');
 		$this->load->library('upload');
 		$this->load->library('session');
