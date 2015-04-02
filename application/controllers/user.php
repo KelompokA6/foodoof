@@ -109,8 +109,8 @@ class User extends CI_Controller {
 		$id = $this->wajiblogin();
 
 		$u = new User_model();
-		$profile = $u->getProfile($id);
 
+		$message = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data['name'] = $this->input->post('user_name');
 			$data['gender'] = $this->input->post('genderOptions');
@@ -122,14 +122,16 @@ class User extends CI_Controller {
 			$data['path'] = $this->input->post('user_path');
 			if (true) {
 				if($u->updateProfile($id, $data)){
-					$profile->message = 'success';
+					$message = 'success';
 					$this->session->set_userdata('user_name', $data['name']);
 					$this->session->set_userdata('user_photo', @$data['photo'] ? $data['photo'] : 'images/user/0.jpg');
 				}
 				else
-					$profile->message = 'failed';
-			} else $profile->message = 'invalid';
+					$message = 'failed';
+			} else $message = 'invalid';
 		}
+		$profile = $u->getProfile($id);
+		$profile->message = $message;
 		$this->user_viewer->showEditProfile($profile);
 	}
 

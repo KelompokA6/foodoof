@@ -124,7 +124,7 @@ class Home_viewer extends CI_Model
         $this->parser->parse(
             'menubar_login',
             array(
-                'menubar_user_name' => character_limiter($this->session->userdata('user_name'), 8),
+                'menubar_user_name' => ellipsize($this->session->userdata('user_name'), 7, 1),
                 'menubar_user_photo' => $this->session->userdata('user_photo'),
             ),
             TRUE
