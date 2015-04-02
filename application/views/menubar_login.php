@@ -20,14 +20,27 @@
         <div class="input-group form-group search-bar-menu">
           <input type="text" class="form-control" name="q" placeholder="Search Recipe By Title">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="border-radius:0">
-              Title<span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu dropdown-search" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Recipe</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ingredient</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Account</a></li>
-            </ul>
+            <div class="btn-group">
+              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" style="border-radius:0">
+                Title<span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-search bullet pull-center">
+                <li>
+                  <input type="radio" id="ex1_1" name="ex1" value="Title" checked>
+                    <label for="ex1_1">Title</label>
+                </li>
+                <li>
+                  <input type="radio" id="ex1_2" name="ex1" value="Ingredient">
+                    <label for="ex1_2">Ingredient</label>
+                </li>
+                <li>
+                  <input type="radio" id="ex1_3" name="ex1" value="Account">
+                    <label for="ex1_3">Account</label>
+                </li>
+                <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ingredient</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Account</a></li> -->
+              </ul>
+            </div>
             <span class="btn-group">
               <button class="btn button-default button-group-normal" type="submit" >
                  <i class="fa fa-search"></i>
