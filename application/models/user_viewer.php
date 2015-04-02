@@ -49,7 +49,6 @@ class User_viewer extends CI_Model
     $data_user_view['content_user'] = $this->parser->parse(
         'profile_view',
         array(
-            'profile_user_id' => '',
             'profile_user_name' => $profile->name,
             'profile_user_gender' => $profile->gender == 'M' ? 'male' : 'female',
             'profile_user_age' => (new DateTime())->diff(new DateTime($profile->bdate))->y,
