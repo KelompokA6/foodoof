@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   	<div class="panel-body">
-    	<form class="form-horizontal" action="<?php echo base_url();?>changepassword" method="post" enctype="multipart/form-data">
+    	<form class="form-horizontal" action="<?php echo base_url();?>user/changepassword" method="post" enctype="multipart/form-data">
 	    	<div class="col-md-12">
 	    		<h3 class="page-header"> Change Password</h3>
 	    	</div>

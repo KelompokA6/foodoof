@@ -113,19 +113,19 @@ class User extends CI_Controller {
 
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data['name'] = $this->input->post('user_name');
-			$data['gender'] = $this->input->post('inlineRadioOptions');
+			$data['gender'] = $this->input->post('genderOptions');
 			$data['phone'] = $this->input->post('user_phone');
 			$data['bdate'] = $this->input->post('user_bdate');
 			$data['twitter'] = $this->input->post('user_twitter');
 			$data['facebook'] = $this->input->post('user_facebook');
 			$data['googleplus'] = $this->input->post('user_gplus');
 			$data['path'] = $this->input->post('user_path');
-			if ($this->isValid($data)) {
+			if (true) {
 				if($u->updateProfile($id, $data))
-					$profile['message'] = 'success';
+					$profile->message = 'success';
 				else
-					$profile['message'] = 'failed';
-			} else $profile['message'] = 'invalid';
+					$profile->message = 'failed';
+			} else $profile->message = 'invalid';
 		}
 		$this->user_viewer->showEditProfile($profile);
 	}
