@@ -15,7 +15,7 @@
 		  <i class="fa fa-square fa-stack-2x icon-default"></i>
 		  <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
 		</span>
-		My Recipe
+		Recipes
 	</a>
   	<a href="<?php echo base_url();?>user/favorite/{sidebar_user_id}" class="list-group-item disabled" title="Favorite Recipe">
   		<span class="fa-stack fa-lg">
