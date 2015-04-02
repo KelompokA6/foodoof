@@ -171,6 +171,7 @@ class Recipe extends CI_Controller {
 					'recipe_ingredients' => $ingre,
 					'recipe_steps' => $steps,
 					'recipe_rating' => $r->rating,
+					'recipe_photo' => $r->photo,
 				);
 		$content_website = $this->parser->parse('recipe_view', $data, TRUE);
 		$data = array(

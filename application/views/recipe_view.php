@@ -12,7 +12,7 @@
 	  		</h2>	
 			<div class="col-md-4 col-no-padding-left">
 				<div class="col-md-12 col-no-padding">
-					<img src="<?php echo base_url();?>assets/img/Nasi-Goreng.jpg" class="img-rounded img-responsive">
+					<img src="<?php echo base_url();?>{recipe_photo}" class="img-rounded img-responsive">
 				</div>
 				<div class="col-md-12 col-no-padding text-center">
 					<div class="col-md-11" title="Rating">
