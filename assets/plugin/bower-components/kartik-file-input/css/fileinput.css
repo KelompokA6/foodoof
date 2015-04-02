@@ -131,7 +131,8 @@
 }
 
 .file-preview-image {
-    height: 160px;
+    height: auto;
+    width: 100%;
     vertical-align: text-center;
 }
 

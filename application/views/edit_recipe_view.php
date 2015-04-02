@@ -8,10 +8,11 @@
 			  		<div class="col-md-4">
 			  			<div class="col-md-12 col-no-padding">
 			  				<h4 class="page-header-title">Photo Recipe</h4>
-			  				<input id="image-recipe" type="file" accept="image/*" >
+			  				<input id="image-recipe" name="photo-recipe" class="file-loading" multiple=false type="file" accept="image/*" >
 							<script>
 							/* Initialize your widget via javascript as follows */
-							$("#image-recipe").fileinput({
+							$photoRecipe = $("#image-recipe");
+							$photoRecipe.fileinput({
 								previewFileType: "image",
 								browseClass: "btn button-default btn-block",
 								browseLabel: "  Pick Image",
@@ -19,6 +20,9 @@
 								showCaption: false,
 								showRemove: false,
 								showUpload: false,
+    							maxFileCount: 1,
+								uploadUrl: "http://localhost/foodoof/processUpload/uploadProfileRecipe/edit_recipe_id", // server upload action
+								uploadAsync: false,
 								previewTemplates: {
 							    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
 						        "   <img src='{data}' class='file-preview-image img-responsive' title='{caption}' alt='{caption}'>\n" +
@@ -28,7 +32,7 @@
 							    layoutTemplates:{
 							    	preview: "<div class='file-preview {class}''>\n" +
 								        "    <div class='close fileinput-remove' style='display:none'>&times;</div>\n" +
-								        "    <div class='{dropClass}'>\n" +
+								        "    <div class=''>\n" +
 								        "    <div class='file-preview-thumbnails'>\n" +
 								        "    </div>\n" +
 								        "    <div class='clearfix'></div>" +
@@ -36,12 +40,20 @@
 								        "    <div class='kv-fileinput-error'></div>\n" +
 								        "    </div>\n" +
 								        "</div>",
+								    progress: '<div class="progress" style="display:none;">\n' +
+								        '    <div class="{class}" role="progressbar" aria-valuenow="{percent}" aria-valuemin="0" aria-valuemax="100" style="width:{percent}%;">\n' +
+								        '        {percent}%\n' +
+								        '     </div>\n' +
+								        '</div>',
 							    },
 								initialPreview: [
 							        "<img src='<?php echo base_url();?>assets/img/Nasi-Goreng.jpg' class='file-preview-image img-responsive' alt='abid' title='Abid'>",
 							    ],
 							    overwriteInitial: true,
 							    maxFileSize: 500,
+							}).on("filebatchselected", function(event, files) {
+						    	// trigger upload method immediately after files are selecte
+						    	$photoRecipe.fileinput("upload");
 							});
 							</script>
 			  			</div>
@@ -86,7 +98,7 @@
 								      		<textarea class="form-control" rows="6" placeholder="Steps"></textarea>
 								    	</div>
 								    	<div class="col-sm-4 col-xs-5 ">
-								      		<input class="image-steps" type="file" accept="image/*" >
+								      		<input class="image-steps" name="photo-step" type="file" accept="image/*" >
 								    	</div>
 								    </div>
 								    <div class="col-sm-12 col-xs-12 col-no-padding list-item-step">
@@ -94,7 +106,7 @@
 								      		<textarea class="form-control" rows="6" placeholder="Steps"></textarea>
 								    	</div>
 								    	<div class="col-sm-4 col-xs-5">
-								      		<input class="image-steps" type="file" accept="image/*" >
+								      		<input class="image-steps" name="photo-step" type="file" accept="image/*" >
 								    	</div>
 								    </div>
 						    	</div>
@@ -139,38 +151,52 @@
 		</div>
 		<script>
 		/* Initialize your widget via javascript as follows */
-		$(".image-steps").fileinput({
-			previewFileType: "image",
-			browseClass: "btn button-default btn-block",
-			browseLabel: "  Pick Image",
-			browseIcon: '<i class="fa fa-image"> </i>',
-			showCaption: false,
-			showRemove: false,
-			showUpload: false,
-			previewTemplates: {
-		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
-	        "   <img src='{data}' class='file-preview-image img-responsive' title='{caption}' alt='{caption}'>\n" +
-	        "   {footer}\n" +
-	        "</div>\n",
-		    },
-		    layoutTemplates:{
-		    	preview: "<div class='file-preview {class}''>\n" +
-			        "    <div class='close fileinput-remove' style='display:none'>&times;</div>\n" +
-			        "    <div class='{dropClass}'>\n" +
-			        "    <div class='file-preview-thumbnails'>\n" +
-			        "    </div>\n" +
-			        "    <div class='clearfix'></div>" +
-			        "    <div class='file-preview-status text-center text-success'></div>\n" +
-			        "    <div class='kv-fileinput-error'></div>\n" +
-			        "    </div>\n" +
-			        "</div>",
-		    },
-			initialPreview: [
-		        "<img src='<?php echo base_url();?>assets/img/Nasi-Goreng.jpg' class='file-preview-image img-responsive' alt='abid' title='Abid'>",
-		    ],
-		    overwriteInitial: true,
-		    maxFileSize: 500,
+		$photoStep = $(".image-steps");
+		$photoStep.click(function() {
+			this.fileinput({
+				previewFileType: "image",
+				browseClass: "btn button-default btn-block",
+				browseLabel: "  Pick Image",
+				browseIcon: '<i class="fa fa-image"> </i>',
+				showCaption: false,
+				showRemove: false,
+				showUpload: false,
+				uploadUrl: "http://localhost/foodoof/processUpload/uploadStepsRecipe/1/"+($photoStep.index(this)+1), // server upload action
+				uploadAsync: false,	
+				previewTemplates: {
+			    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
+		        "   <img src='{data}' class='file-preview-image img-responsive' title='{caption}' alt='{caption}'>\n" +
+		        "   {footer}\n" +
+		        "</div>\n",
+			    },
+			    layoutTemplates:{
+			    	preview: "<div class='file-preview {class}''>\n" +
+				        "    <div class='close fileinput-remove' style='display:none'>&times;</div>\n" +
+				        "    <div class=''>\n" +
+				        "    <div class='file-preview-thumbnails'>\n" +
+				        "    </div>\n" +
+				        "    <div class='clearfix'></div>" +
+				        "    <div class='file-preview-status text-center text-success'></div>\n" +
+				        "    <div class='kv-fileinput-error'></div>\n" +
+				        "    </div>\n" +
+				        "</div>",
+				    progress: '<div class="progress" style="display:none;">\n' +
+				        '    <div class="{class}" role="progressbar" aria-valuenow="{percent}" aria-valuemin="0" aria-valuemax="100" style="width:{percent}%;">\n' +
+				        '        {percent}%\n' +
+				        '     </div>\n' +
+				        '</div>',
+			    },
+				initialPreview: [
+			        "<img src='<?php echo base_url();?>assets/img/Nasi-Goreng.jpg' class='file-preview-image img-responsive' alt='abid' title='Abid'>",
+			    ],
+			    overwriteInitial: true,
+			    maxFileSize: 500,
+			}).on("filebatchselected", function(event, files) {
+		    	// trigger upload method immediately after files are selecte
+		    	this.fileinput("upload");
+			});
 		});
+		
 		</script>
 	</div>
 </div>

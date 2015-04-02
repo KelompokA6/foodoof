@@ -43,7 +43,7 @@
         </div>
         <div class="col-md-8 col-no-padding-right">
           <div class="btn-group" role="group" aria-label="" style="padding-left: 40px; ">
-            <button type="button" class="btn btn-success btn-cus" data-container="body" data-toggle="popover" data-placement="bottom" 
+            <button type="button" class="btn btn-success btn-cus btn-popover" data-container="body" data-toggle="popover" data-placement="bottom" 
             data-html="TRUE"
             data-content="
               <form id='loginform' class='form-horizontal' role='form' method='post' action='<?php echo base_url();?>home/login'>      

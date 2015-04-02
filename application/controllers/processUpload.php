@@ -7,32 +7,35 @@ class ProcessUpload extends CI_Controller {
 		$this->load->helper('file');
 		$this->load->library('upload');
 		$this->load->library('session');
-		$config['upload_path'] = './assets/tmp/user/';
+		$config['upload_path'] = './images/tmp/user/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '5120';
 		$config['overwrite'] = TRUE;
 		$config['file_name'] = $id.".jpg";
 		$this->upload->initialize($config);
 
-		if($this->session->userdata('user_id')==''){
-			if($this->upload->do_upload("photo_user")){
-				$configImage['source_image'] = './image/tmp/user/'.$id.'.jpg';
+		if($this->session->userdata('user_id')!=''){
+			if($this->upload->do_upload("photo-user")){
+				$configImage['source_image'] = './images/tmp/user/'.$id.'.jpg';
 				$configImage['create_thumb'] = TRUE;
 				$configImage['maintain_ratio'] = TRUE;
 				$configImage['width']	= 360;
 				$configImage['height']	= 360;
 				$configImage['image_library'] = 'gd2';
 				$this->load->library('image_lib', $configImage);
-				$this->image_lib->resize();
 				if ($this->image_lib->resize())
 				{
-				    unlink('./image/tmp/user/'.$id.'.jpg');
-				    rename ( './image/tmp/user/'.$id.'_thumb.jpg', './image/tmp/user/'.$id.'.jpg');
+				    unlink('./images/tmp/user/'.$id.'.jpg');
+				    rename ( './images/tmp/user/'.$id.'_thumb.jpg', './images/tmp/user/'.$id.'.jpg');
+				    $p1 = "<img src='".base_url()."images/tmp/user/".$id.".jpg' class='file-preview-image'>";
+					$p2 = ['caption' => "user-".$id , 'width' => '120px', 'url' => base_url()."images/tmp/user/".$id.".jpg"];
 				    $result = array(
-						"status" => 1,
+				    	"status" => 1,
 						"message" => "Upload success",
+						'initialPreview' => $p1, 
+					    'initialPreviewConfig' => $p2,   
+					    'append' => false
 						);
-
 				}
 				else{
 					echo $this->image_lib->display_errors();
@@ -62,7 +65,7 @@ class ProcessUpload extends CI_Controller {
 		$this->load->helper('file');
 		$this->load->library('upload');
 		$this->load->library('session');
-		$config['upload_path'] = './assets/tmp/recipe';
+		$config['upload_path'] = './images/tmp/recipe';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '5120';
 		$config['overwrite'] = TRUE;
@@ -70,22 +73,26 @@ class ProcessUpload extends CI_Controller {
 		$this->upload->initialize($config);
 
 		if($this->session->userdata('user_id')!=''){
-			if($this->upload->do_upload($this->input->post('photo_recipe'))){
-				$configImage['source_image'] = '/image/tmp/recipe/'.$id.'.jpg';
+			if($this->upload->do_upload('photo-recipe')){
+				$configImage['source_image'] = './images/tmp/recipe/'.$id.'.jpg';
 				$configImage['create_thumb'] = TRUE;
 				$configImage['maintain_ratio'] = TRUE;
 				$configImage['width']	= 360;
 				$configImage['height']	= 360;
 				$configImage['image_library'] = 'gd2';
 				$this->load->library('image_lib', $configImage);
-				$this->image_lib->resize();
 				if ($this->image_lib->resize())
 				{
-					unlink('./image/tmp/recipe/'.$id.'.jpg');
-				    rename ( './image/tmp/recipe/'.$id.'_thumb.jpg', './image/tmp/recipe/'.$id.'.jpg');
+					unlink('./images/tmp/recipe/'.$id.'.jpg');
+				    rename ( './images/tmp/recipe/'.$id.'_thumb.jpg', './images/tmp/recipe/'.$id.'.jpg');
+				   	$p1 = "<img src='".base_url()."images/tmp/recipe/".$id.".jpg' class='file-preview-image'>";
+					$p2 = ['caption' => "recipe-".$id , 'width' => '120px', 'url' => base_url()."images/tmp/recipe/".$id.".jpg"];
 				    $result = array(
-						"status" => 1,
+				    	"status" => 1,
 						"message" => "Upload success",
+						'initialPreview' => $p1, 
+					    'initialPreviewConfig' => $p2,   
+					    'append' => false
 						);
 				}
 				else{
@@ -115,29 +122,34 @@ class ProcessUpload extends CI_Controller {
 		$this->load->helper('file');
 		$this->load->library('upload');
 		$this->load->library('session');
-		$config['upload_path'] = './assets/tmp/step';
+		$config['upload_path'] = './images/tmp/step';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '5120';
+		$config['overwrite'] = TRUE;
 		$config['file_name'] = $id."-".$no_step.".jpg";
 		$this->upload->initialize($config);
 
-		if($this->session->userdata('user_id')!=''){
-			if($this->upload->do_upload($this->input->post("photo_step"))){
-				$configImage['source_image'] = "/image/tmp/step/".$id."-".$no_step.".jpg";
+		if($this->session->userdata('user_id')==''){
+			if($this->upload->do_upload("photo-step")){
+				$configImage['source_image'] = "./images/tmp/step/".$id."-".$no_step.".jpg";
 				$configImage['create_thumb'] = TRUE;
 				$configImage['maintain_ratio'] = TRUE;
 				$configImage['width']	= 200;
 				$configImage['height']	= 200;
 				$configImage['image_library'] = 'gd2';
 				$this->load->library('image_lib', $configImage);
-				$this->image_lib->resize();
 				if ($this->image_lib->resize())
 				{
-					unlink("./image/tmp/step/".$id."-".$no_step."jpg");
-				    rename ( "./image/tmp/step/".$id."-".$no_step."_thumb.jpg", "./image/tmp/step/".$id."-".$no_step."jpg");
+					unlink("./images/tmp/step/".$id."-".$no_step.".jpg");
+				    rename ( "./images/tmp/step/".$id."-".$no_step."_thumb.jpg", "./images/tmp/step/".$id."-".$no_step.".jpg");
+				    $p1 = "<img src='".base_url()."images/tmp/step/".$id."-".$no_step.".jpg' class='file-preview-image'>";
+					$p2 = ['caption' => "recipe-".$id."-".$no_step , 'width' => '120px', 'url' => base_url()."images/tmp/step/".$id."-".$no_step.".jpg"];
 				    $result = array(
-						"status" => 1,
+				    	"status" => 1,
 						"message" => "Upload success",
+						'initialPreview' => $p1, 
+					    'initialPreviewConfig' => $p2,   
+					    'append' => false
 						);
 				}
 				else{
