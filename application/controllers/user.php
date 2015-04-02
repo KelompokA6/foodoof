@@ -9,7 +9,7 @@ class User extends CI_Controller {
 	}
 
 	public function index(){
-		$this->load->view('profile_view');
+		$this->timeline();
 	}
 
 	public function profile($id = -1){
@@ -77,23 +77,31 @@ class User extends CI_Controller {
 	}
 
 	public function join(){
-		$data = array();
+		$data['join_alert'] = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
-			$data['name'] = $this->input->post("name");
-			$data['email'] = $this->input->post("email");
-			$data['password'] = $this->input->post("password"); 
-			$data['confrimPass'] = $this->input->post("confirm_password");
+			$profile['name'] = $this->input->post("name");
+			$profile['email'] = $this->input->post("email");
+			$profile['gender'] = $this->input->post("genderOptions");
+			$profile['password'] = $this->input->post("password"); 
+			$profile['confrimPass'] = $this->input->post("confirm_password");
 
-			if($this->isValid($data)){
-				$user = new User_model();
-				$success = $user->createUser($data);
-				$data['message'] = $success ? "success" : "failed";
+			if ($this->validateJoin($profile)) {
+				$u = new User_model();
+				if($u->createUser($profile)) {
+					$profile_menubar = $u->login($profile['email'], $profile['password']);
+					foreach ($profile_menubar as $key => $value) {
+						$this->session->set_userdata($key, $value);
+					}
+					redirect(base_url().'user');
+					die;
+				} else {
+					$data['join_alert'] = '<div class="label label-warning">join failed</div>';
+				}
+			} else {
+				$data['join_alert'] = '<div class="label label-danger">invalid input data</div>';
 			}
-			else{
-				$data['message'] = "invalid";
-			}
+			foreach ($profile as $key => $value) $data[$key] = $value;
 		}
-		
 		$this->user_viewer->showRegister($data);
 	}
 
@@ -101,24 +109,29 @@ class User extends CI_Controller {
 		$id = $this->wajiblogin();
 
 		$u = new User_model();
-		$profile = $u->getProfile($id);
 
+		$message = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data['name'] = $this->input->post('user_name');
-			$data['gender'] = $this->input->post('inlineRadioOptions');
+			$data['gender'] = $this->input->post('genderOptions');
 			$data['phone'] = $this->input->post('user_phone');
 			$data['bdate'] = $this->input->post('user_bdate');
 			$data['twitter'] = $this->input->post('user_twitter');
 			$data['facebook'] = $this->input->post('user_facebook');
 			$data['googleplus'] = $this->input->post('user_gplus');
 			$data['path'] = $this->input->post('user_path');
-			if ($this->isValid($data)) {
-				if($u->updateProfile($id, $data))
-					$profile['message'] = 'success';
+			if (true) {
+				if($u->updateProfile($id, $data)){
+					$message = 'success';
+					$this->session->set_userdata('user_name', $data['name']);
+					$this->session->set_userdata('user_photo', @$data['photo'] ? $data['photo'] : 'images/user/0.jpg');
+				}
 				else
-					$profile['message'] = 'failed';
-			} else $profile['message'] = 'invalid';
+					$message = 'failed';
+			} else $message = 'invalid';
 		}
+		$profile = $u->getProfile($id);
+		$profile->message = $message;
 		$this->user_viewer->showEditProfile($profile);
 	}
 
@@ -129,7 +142,7 @@ class User extends CI_Controller {
 			$email = $this->input->post('email');
 			$data['email'] = $email;
 			$password = $u->getPasswordByEmail($email);
-			echo "nyoh password: $password"; exit();
+			die("nyoh password: $password");
 			if($password !== FALSE) {
 				if ($this->sendPassword($email, $password)) {
 					$data['message'] = 'success';
@@ -139,8 +152,9 @@ class User extends CI_Controller {
 		$this->user_viewer->showForgotPassword($data);
 	}
 
-	public function isValid(){
-		return TRUE;
+	public function validateJoin($profile){
+		// cek email, udah ada belum?
+		return true;
 	}
 
 	public function sendPassword($email, $password){
@@ -156,8 +170,8 @@ class User extends CI_Controller {
 	{
 		$id = $this->session->userdata('user_id');
 		if ($id < 1) {
-			echo "you're not logged in";
-			exit();
+			header('Location: '.base_url().'home/login');
+			die();
 		}
 		return $id;
 	}

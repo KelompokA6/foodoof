@@ -6595,7 +6595,7 @@ button.close {
     padding-top: 8px;
   }
   .container-mobile{
-    padding-top: 200px;
+    padding-top: 170px;
   }
   .chevron-menu{
     line-height: inherit;
@@ -6604,7 +6604,6 @@ button.close {
     padding:15px;
   }
   .btn-navbar-mobile{
-    height:75px;
     display: block;
     padding: 10px;
     margin-left:10px;
@@ -6615,6 +6614,69 @@ button.close {
   }
   .btn-navbar-not-collapse{
     display: none;
+  }
+  .button-group-normal{
+    height: 34px;
+  }
+  .mobile-hidden{
+    display:none;
+  }
+  .pull-right-mobile{
+    float:left;
+    text-align: left;
+  }
+  .col-no-padding-left{
+    padding-left: 0;
+  }
+  .col-no-padding-top{
+    padding-top: 0;
+  }
+  .col-no-padding-right{
+    padding-right: 0;
+  }
+  .col-no-padding-bottom{
+    padding-bottom: 0;
+  }
+  .col-no-padding{
+    padding: 0;
+  }
+  .recipe-timeline-view{
+    text-align: center;
+    padding: 10px;
+  }
+  .recipe-timeline-edit-btn{
+    text-align: center;
+    padding: 6px;
+  }
+  .recipe-timeline-check-publish > .checkbox{
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-align: center;
+  }
+  .text-viewer{
+    line-height: 34px;
+    text-align: left;
+  }
+  .xs-text-center{
+    text-align: center;
+  }
+  .xs-text-right{
+    text-align: right;
+  }
+  .xs-text-left{
+    text-align: left;
+  }
+  .xs-text-justify{
+    text-align: justify;
+  }
+  .list-item-step{
+    margin:10px 0 10px 0;
+  }
+  .edit-info{
+    margin:30px 0 10px 0;
+  }
+  .h4-mobile{
+    font-size: 26px;
   }
 }
 @media(min-width:768px){
@@ -6801,7 +6863,7 @@ button.close {
     text-align: center;
   }
   .hover-menubar:hover{
-    background: #5bc0de; 
+    background: rgb(56,150,211); 
     border-radius: 8px;
   }
   .brand-menubar{
@@ -6811,15 +6873,17 @@ button.close {
     padding-left: 0; 
     margin-left: -40px;
   }
-  .input-search{
-    width:533px;
+  .search-bar-menu{
+    padding:10px 0 0 45px; 
+    margin-top:20px;
   }
   .button-group-normal{
     min-width:60px; 
     height:33.9915px;
   }
   .col-menu-user{
-    padding-left:70px;
+    padding:10px 10px 0 70px; 
+    margin-top:20px;
   }
   .link-by-icon{
     padding: 4px;
@@ -6842,8 +6906,31 @@ button.close {
   .col-no-padding{
     padding: 0;
   }
+  .profile-info{
+    line-height: 36.667px;
+  }
+  .btn-add-to{
+    margin-right: 30px;
+  }
+  .col-edit-recipe-timeline{
+    margin-left:62px; 
+    margin-top:10px;
+  }
+  .recipe-timeline-view{
+    margin-left:5px;
+    margin-right:-15px
+  }
+  .recipe-timeline-edit-btn{
+    padding-left:67px;
+  }
+  .recipe-timeline-check-publish{
+    padding-left:79px;
+  }
+  .list-item-step{
+    margin:10px 0 10px 0;
+  }
 }
-.icon-favorite{
+/*.icon-favorite{
   color:pink;
 }
 .icon-profile{
@@ -6857,7 +6944,23 @@ button.close {
 }
 .icon-key{
   color:rgb(229, 106, 69);
+}*/
+.button-default{
+  background-color: rgba(56,150,211,0.9);
+  color: #eee;
 }
-
-
-
+.button-default:hover{
+  background-color: rgba(56,150,211,1);
+  color: #eee;
+}
+.icon-default{
+  color:rgb(56,150,211);
+}
+.header-title{
+  margin-top:5px;
+}
+.page-header-title{
+  padding-bottom: 9px;
+  margin: 10px 0 20px;
+  border-bottom: 2px solid #eee;
+}

@@ -4,127 +4,82 @@ class Home extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->library('parser');
 		$this->load->library('session');
+		$this->load->model('home_viewer');
 	}
 
 	public function index()
-	{	
-		$this->load->view('template_view');
-		//$this->load->view('top');
-	}	
-	public function homepage(){
-		$this->load->library('parser');
-		$this->load->library('session');
-		$loginStatus = $this->session->userdata('login_status');
-
-		$data = array();
-		if($loginStatus === 1){
-			$menubar = $this->parser->parse('menubar_login', $data, TRUE);	
-		}
-		else{
-			$menubar = $this->parser->parse('menubar', $data, TRUE);
-		}	
-		$category_home = $this->parser->parse('category_home', $data, TRUE);
-		$top_recipe_home = $this->parser->parse('top_recipe_home', $data, TRUE);
-		$recently_recipe_home = $this->parser->parse('recently_recipe_home', $data, TRUE);
-		$data= array(
-					"category_home"=> $category_home,
-					"top_recipe_home"=> $top_recipe_home,
-					"recently_recipe_home"=> $recently_recipe_home,
-					);
-		$content_website = $this->parser->parse('content_homepage', $data, TRUE);
-		$datacomplete = array(
-						"menubar"=> $menubar,
-						"content_website"=> $content_website,
-						);
-		$this->parser->parse('template_content', $datacomplete);
-	}
-	public function profile(){
-		$this->load->view('profile_view');
-	}
-	public function editprofile(){
-		$this->load->view('edit_profile_view');
-	}
-	public function chpass(){
-		$this->load->view('changepassword_view');
-	}
-
-	public function register(){
-		$this->load->view('registration_view');
-	}
-
-	public function login1(){
-		$this->load->view('login_view');
-	}
-
-	public function forgetpassword(){
-		$this->load->view('forgetpassword_view');
-	}
-
-	public function usertimeline(){
-		$this->load->library('parser');
-		$data= array(
-						"id"=> '1',
-						);
-		$this->parser->parse('usertimeline_view', $data);
+	{
+		$r = new Recipe_model();
+		$listTopRecipe = $r->getTopRecipe(5);
+		$listHightlight = $r->getHightlight(5);
+		$listRecently = $r->getRecently(5);
+		$u = new User_model();
+		foreach ($listTopRecipe as $row)
+			$row->author_name = $u->getProfile($row->author)->name;
+		foreach ($listRecently as $row)
+			$row->author_name = $u->getProfile($row->author)->name;
+		foreach ($listHightlight as $row)
+			$row->author_name = $u->getProfile($row->author)->name;
+		
+		$this->home_viewer->showHome($listTopRecipe, $listHightlight, $listRecently);
 	}
 
 	public function login()
 	{
-		$email = $this->input->post("email_user");
-		$password = $this->input->post("password_user");
-		$user = new User_model();
-		$profile = $user->login($email,$password);
-		if($profile !== FALSE){
-			foreach ($profile as $key => $value) {
-				$this->session->set_userdata($key, $value);
+		if ($this->session->userdata('user_id') > 0) {
+			redirect(base_url()); die;
+		}
+		$data['email'] = '';
+		$data['login_alert'] = '';
+		if ($this->input->server('REQUEST_METHOD') == 'POST') {
+			$data['email'] = $email = $this->input->post('email');
+			$data['password'] = $password = $this->input->post('password');
+			$u = new User_model();
+			$profile = $u->login($email, $password);
+			if($profile !== FALSE) {
+				// print_r($profile); die;
+				foreach ($profile as $key => $value) {
+					$this->session->set_userdata($key, $value);
+				}
+				redirect(base_url());
+			} else {
+				$data['login_alert'] = '<div class="label label-danger">login failed</div>';
 			}
 		}
-		header('Location: '.base_url());
+		$this->home_viewer->showLogin($data);
 	}
 
-	public function logout(){
+	public function logout()
+	{
 		$this->session->unset_userdata('user_id');
 		$this->session->unset_userdata('user_name');
 		$this->session->unset_userdata('user_photo');
-		header('Location: '.base_url());
+		redirect(base_url());
+		die;
 	}
 
-	public function changePassword(){
-		$this->load->model('viewer');
-		$this->viewer->show('forget_password_view', $data);
+	public function toprecipe()
+	{
+		$r = new Recipe_model();
+		$listTopRecipe = $r->getTopRecipe(1001);
+		$u = new User_model();
+		foreach ($listTopRecipe as $row)
+			$row->author_name = $u->getProfile($row->author)->name;
+		
+		$this->home_viewer->showTop($listTopRecipe);
 	}
 
-/*	public function searchUser(){
-		$key = $this->input->post('keyword');
-		$this->load->model('user');
-		$search_result = $this->user->searchUser($key);
-
-		$data['listUserFound'] = $search_result;
-		$this->load->model('viewer');
-		$this->viewer->show('search_view', $data);
+	public function recently()
+	{
+		$r = new Recipe_model();
+		$listRecently = $r->getRecently(1001);
+		$u = new User_model();
+		foreach ($listRecently as $row)
+			$row->author_name = $u->getProfile($row->author)->name;
+		
+		$this->home_viewer->showRecently($listRecently);
 	}
-
-	public function searchRecipe(){
-		$key = $this->input->post('keyword');
-		$this->load->model('recipe');
-		$search_result = $this->recipe->getListRecipeByTitle($key);
-
-		$data['listRecipe'] = $search_result;
-		$this->load->model('viewer');
-		$this->viewer->show('search_view', $data);
-	}
-
-	public function searchRecipeByIngedients(){
-		$key = $this->input->post('keyword');
-		$this->load->model('recipe');
-		$search_result = $this->recipe->getListRecipeByIngredients($key);
-
-		$data['listRecipe'] = $search_result;
-		$this->load->model('viewer');
-		$this->viewer->show('search_view', $data);
-	}*/
 }
 
 /* End of file welcome.php */

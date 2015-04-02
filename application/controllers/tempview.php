@@ -6,7 +6,7 @@ class Tempview extends CI_Controller {
 	{	
 		$this->load->library('parser');
 		$data = array("recipe_author_id"=> 1);
-		$menubar = $this->parser->parse('menubar_login', $data, TRUE);
+		$menubar = $this->parser->parse('menubar', $data, TRUE);
 		$content_website = $this->parser->parse('recipe_view', $data, TRUE);
 		$data = array(
 					"menubar" => $menubar,
@@ -19,6 +19,20 @@ class Tempview extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function editrecipe(){
+		$this->load->library('parser');
+		$data = array("recipe_author_id"=> 1);
+		$menubar = $this->parser->parse('menubar', $data, TRUE);
+		$content_website = $this->parser->parse('edit_recipe_view', $data, TRUE);
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
+	}
+	public function editprofile(){
+		$this->load->view('edit_profile_view');
+	}
 	public function login()
 	{	
 		$this->load->library('parser');

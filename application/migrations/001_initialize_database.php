@@ -115,7 +115,7 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE,
 			),
 			'rating' => array(
-				'type' => 'DECIMAL(3,2)',
+				'type' => 'DECIMAL(2,1)',
 				'unsigned' => TRUE,
 				'null' => FALSE
 			),
@@ -154,7 +154,7 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE
 			),
 			'quantity' => array(
-				'type' => 'DECIMAL(3,2)',
+				'type' => 'DECIMAL(2,1)',
 				'null' => TRUE,
 			),
 			'units' => array(
@@ -227,7 +227,7 @@ class Migration_Initialize_database extends CI_Migration {
 				'unsigned' => TRUE
 			),
 			'value' => array(
-				'type' => 'DECIMAL(3,2)',
+				'type' => 'DECIMAL(2,1)',
 				'unsigned' => TRUE
 			),
 		));

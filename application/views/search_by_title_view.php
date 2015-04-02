@@ -16,14 +16,16 @@
   {search_by_title_recipe_entries}
   <div class="col-md-12 col-no-padding-right page-header" style="margin-top:5px">
     <div class="col-md-2 col-xs-3 detail-list-img" style="margin-right:2px">
-        <a href="<?php echo base_url();?>recipe/getRecipe/{search_by_title_view_recipe_id}">
+        <a href="<?php echo base_url();?>recipe/get/{search_by_title_view_recipe_id}">
           <img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>{search_by_title_view_recipe_photo}"/>
         </a>
     </div>
     <div class="col-md-6 col-xs-8 detail-list">
       <div class="col-md-12 details">
             <div class="col-md-12 col-xs-9">
-              <h4><p class="text-capitalize">{search_by_title_recipe_name}</p></h4>
+              <a href="<?php echo base_url();?>recipe/get/{search_by_title_view_recipe_id}">
+                <h4><p class="text-capitalize">{search_by_title_recipe_name}</p></h4>
+              </a>
             </div>
         </div>
         <div class="col-md-12 details">

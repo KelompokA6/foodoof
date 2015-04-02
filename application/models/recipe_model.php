@@ -68,7 +68,7 @@ class Recipe_model extends DataMapper {
         Digunakan untuk membuat sebuah Recipe pada database. return value merupakan id dari recipe yang berhasil dibuat, -1 merupakan indikasi bahwa recipe tidak
         berhasil dibuat.
     */
-    function createRecipe_model(){
+    function createRecipe(){
         if(!empty($this->author)){
             if($this->skip_validation()->save()){
                 return $this->db->insert_id();
@@ -248,7 +248,8 @@ class Recipe_model extends DataMapper {
             $data->name = $recipes->name;
             $data->description = $recipes->description;
             $data->portion = $recipes->portion;
-            $data->duration = $recipes->author;
+            $data->duration = $recipes->duration;
+            $data->author = $recipes->author;
             $data->create_date = $recipes->create_date;
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
@@ -274,7 +275,8 @@ class Recipe_model extends DataMapper {
             $data->name = $recipes->name;
             $data->description = $recipes->description;
             $data->portion = $recipes->portion;
-            $data->duration = $recipes->author;
+            $data->duration = $recipes->duration;
+            $data->author = $recipes->author;
             $data->create_date = $recipes->create_date;
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
@@ -300,7 +302,8 @@ class Recipe_model extends DataMapper {
             $data->name = $recipes->name;
             $data->description = $recipes->description;
             $data->portion = $recipes->portion;
-            $data->duration = $recipes->author;
+            $data->duration = $recipes->duration;
+            $data->author = $recipes->author;
             $data->create_date = $recipes->create_date;
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
@@ -326,7 +329,8 @@ class Recipe_model extends DataMapper {
             $data->name = $recipes->name;
             $data->description = $recipes->description;
             $data->portion = $recipes->portion;
-            $data->duration = $recipes->author;
+            $data->duration = $recipes->duration;
+            $data->author = $recipes->author;
             $data->create_date = $recipes->create_date;
             $data->last_update = $recipes->last_update;
             $data->rating = $recipes->rating;
@@ -430,7 +434,8 @@ class Recipe_model extends DataMapper {
                         $data->name = $recipes->name;
                         $data->description = $recipes->description;
                         $data->portion = $recipes->portion;
-                        $data->duration = $recipes->author;
+                        $data->duration = $recipes->duration;
+                        $data->author = $recipes->author;
                         $data->create_date = $recipes->create_date;
                         $data->last_update = $recipes->last_update;
                         $data->rating = $recipes->rating;
@@ -500,7 +505,8 @@ class Recipe_model extends DataMapper {
                         $data->name = $recipes->name;
                         $data->description = $recipes->description;
                         $data->portion = $recipes->portion;
-                        $data->duration = $recipes->author;
+                        $data->duration = $recipes->duration;
+                        $data->author = $recipes->author;
                         $data->create_date = $recipes->create_date;
                         $data->last_update = $recipes->last_update;
                         $data->rating = $recipes->rating;

@@ -7,6 +7,7 @@ class User_viewer extends CI_Model
     parent::__construct();
     $this->load->library('session');
     $this->load->library('parser');
+    $this->load->model('home_viewer');
   }
 
   public function show($view, $data = array())
@@ -37,43 +38,28 @@ class User_viewer extends CI_Model
   public function showProfile($profile)
   {
     // menubar
-    $datacomplete['menubar'] = $this->session->userdata('user_id') > 0 ?
-        $this->parser->parse(
-            'menubar_login',
-            array(
-                'menubar_user_name' => $this->session->userdata('user_name'),
-                'menubar_user_photo' => $this->session->userdata('user_photo'),
-            ),
-            TRUE
-        ) : 
-        $this->parser->parse('menubar', array(), TRUE);
+    $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE
 
     // content_website
     // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
     // ambil sidebar
-    $data_user_view['sidebar_user'] = $this->parser->parse(
-        'sidebar_user_view',
-        array(
-            'sidebar_user_id' => $profile['id'],
-            'sidebar_user_photo' => $profile['photo'],
-        ),
-        TRUE
-    );
+    $data_user_view['sidebar_user'] = $this->getSidebar($profile);
     // ambil content_user dari profile_view
     $data_user_view['content_user'] = $this->parser->parse(
         'profile_view',
         array(
-            'profile_user_name' => $profile['name'],
-            'profile_user_gender' => $profile['gender'] == 'm' ? 'male' : 'female',
-            'profile_user_age' => (new DateTime())->diff(new DateTime($profile['bdate']))->y,
-            'profile_user_email' => $profile['email'],
-            'profile_user_phone' => $profile['phone'],
-            'profile_user_last_access' => $profile['last_access'],
-            'profile_user_twitter' => $profile['twitter'],
-            'profile_user_facebook' => $profile['facebook'],
-            'profile_user_googleplus' => $profile['googleplus'],
-            'profile_user_path' => $profile['path'],
+            'profile_user_id' => '',
+            'profile_user_name' => $profile->name,
+            'profile_user_gender' => $profile->gender == 'M' ? 'male' : 'female',
+            'profile_user_age' => (new DateTime())->diff(new DateTime($profile->bdate))->y,
+            'profile_user_email' => $profile->email,
+            'profile_user_phone' => $profile->phone,
+            'profile_user_last_access' => $profile->last_access,
+            'profile_user_twitter' => $profile->twitter,
+            'profile_user_facebook' => $profile->facebook,
+            'profile_user_googleplus' => $profile->googleplus,
+            'profile_user_path' => $profile->path,
         ),
         TRUE
     );
@@ -87,29 +73,13 @@ class User_viewer extends CI_Model
   public function showUserTimeline($profile, $listRecipes)
   {
     // menubar
-    $datacomplete['menubar'] = $this->session->userdata('user_id') > 0 ?
-        $this->parser->parse(
-            'menubar_login',
-            array(
-                'menubar_user_name' => $this->session->userdata('user_name'),
-                'menubar_user_photo' => $this->session->userdata('user_photo'),
-            ),
-            TRUE
-        ) :
-        $this->parser->parse('menubar', array(), TRUE);
+    $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE
 
     // content_website
     // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
     // ambil sidebar
-    $data_user_view['sidebar_user'] = $this->parser->parse(
-        'sidebar_user_view',
-        array(
-            'sidebar_user_id' => $profile['id'],
-            'sidebar_user_photo' => $profile['photo'],
-        ),
-        TRUE
-    );
+    $data_user_view['sidebar_user'] = $this->getSidebar($profile);
     // ambil content_user dari user_timeline_view
     foreach ($listRecipes as $row) {
         $row->user_timeline_recipe_id = $row->id;
@@ -125,6 +95,7 @@ class User_viewer extends CI_Model
         'user_timeline_view',
         array(
             'user_timeline_recipe_entries' => $listRecipes,
+            'user_timeline_name' => $profile->name,
         ),
         TRUE
     );
@@ -139,26 +110,13 @@ class User_viewer extends CI_Model
   public function showChangePassword($profile, $data = array())
   {
     // menubar
-    $datacomplete['menubar'] = $this->parser->parse('menubar_login',
-        array(
-            'menubar_user_name' => $this->session->userdata('user_name'),
-            'menubar_user_photo' => $this->session->userdata('user_photo'),
-        ),
-        TRUE
-    );
+    $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE
 
     // content_website
     // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
     // ambil sidebar
-    $data_user_view['sidebar_user'] = $this->parser->parse(
-        'sidebar_user_view',
-        array(
-            'sidebar_user_id' => $profile['id'],
-            'sidebar_user_photo' => $profile['photo'],
-        ),
-        TRUE
-    );
+    $data_user_view['sidebar_user'] = $this->getSidebar($profile);
     // ambil content_user dari user_timeline_view
     $data_user_view['content_user'] = $this->parser->parse(
         'change_password_view',
@@ -190,45 +148,29 @@ class User_viewer extends CI_Model
   public function showEditProfile($profile)
   {
     // menubar
-    $datacomplete['menubar'] = $this->session->userdata('user_id') > 0 ?
-        $this->parser->parse(
-            'menubar_login',
-            array(
-                'menubar_user_name' => $this->session->userdata('user_name'),
-                'menubar_user_photo' => $this->session->userdata('user_photo'),
-            ),
-            TRUE
-        ) : 
-        $this->parser->parse('menubar', array(), TRUE);
+    $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE
 
     // content_website
     // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
     // ambil sidebar
-    $data_user_view['sidebar_user'] = $this->parser->parse(
-        'sidebar_user_view',
-        array(
-            'sidebar_user_id' => $profile['id'],
-            'sidebar_user_photo' => $profile['photo'],
-        ),
-        TRUE
-    );
+    $data_user_view['sidebar_user'] = $this->getSidebar($profile);
     // ambil content_user dari profile_view
     $data_user_view['content_user'] = $this->parser->parse(
         'edit_profile_view',
         array(
-            'edit_profile_id' => $profile['id'],
-            'edit_profile_name' => $profile['name'],
-            'edit_profile_male' => $profile['gender'] == 'm' ? 'checked="checked"' : '',
-            'edit_profile_female' => $profile['gender'] == 'f' ? 'checked="checked"' : '',
-            'edit_profile_birth_date' => $profile['bdate'],
-            'edit_profile_email' => $profile['email'],
-            'edit_profile_phone' => $profile['phone'],
-            'edit_profile_last_access' => $profile['last_access'],
-            'edit_profile_twitter' => $profile['twitter'],
-            'edit_profile_facebook' => $profile['facebook'],
-            'edit_profile_google_plus' => $profile['googleplus'],
-            'edit_profile_path' => $profile['path'],
+            'edit_profile_id' => '',
+            'edit_profile_name' => $profile->name,
+            'edit_profile_male' => $profile->gender == 'M' ? 'checked' : '',
+            'edit_profile_female' => $profile->gender == 'F' ? 'checked' : '',
+            'edit_profile_birth_date' => (new DateTime($profile->bdate))->format('Y-m-d'),
+            'edit_profile_email' => $profile->email,
+            'edit_profile_phone' => $profile->phone,
+            'edit_profile_last_access' => $profile->last_access,
+            'edit_profile_twitter' => $profile->twitter,
+            'edit_profile_facebook' => $profile->facebook,
+            'edit_profile_google_plus' => $profile->googleplus,
+            'edit_profile_path' => $profile->path,
         ),
         TRUE
     );
@@ -251,6 +193,18 @@ class User_viewer extends CI_Model
 
     // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);
+  }
+
+  function getSidebar($profile)
+  {
+    return $this->parser->parse(
+        'sidebar_user_view',
+        array(
+            'sidebar_user_id' => $profile->id,
+            'sidebar_user_photo' => $profile->photo ? $profile->photo : 'images/user/0.jpg',
+        ),
+        TRUE
+    );
   }
 
 }
