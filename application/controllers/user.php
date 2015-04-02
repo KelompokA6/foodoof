@@ -124,7 +124,7 @@ class User extends CI_Controller {
 				if($u->updateProfile($id, $data)){
 					$profile->message = 'success';
 					$this->session->set_userdata('user_name', $data['name']);
-					$this->session->set_userdata('user_photo', $data['photo']);
+					$this->session->set_userdata('user_photo', @$data['photo'] ? $data['photo'] : 'images/user/0.jpg');
 				}
 				else
 					$profile->message = 'failed';
