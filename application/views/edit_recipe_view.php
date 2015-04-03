@@ -64,7 +64,7 @@
 						  	<div class="form-group">
 						    	<label for="inputEmail3" class="col-sm-2 control-label">Title</label>
 						    	<div class="col-sm-10">
-						      		<input type="text" value="{edit_recipe_photo}" name="recipe_title" class="form-control" placeholder="Title Recipe" required>
+						      		<input type="text" value="{edit_recipe_title}" name="recipe_title" class="form-control" placeholder="Title Recipe" required>
 						    	</div>
 							</div>
 							<div class="form-group">
