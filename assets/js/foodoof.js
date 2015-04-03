@@ -1,5 +1,7 @@
 $( document ).ready(function() {
-	/* Initialize widget step */
+	/*
+	script for init fileinput of step's photo
+	*/
 	var index = 0;
 	$(".image-steps").click(function(){
 		index = $(".image-steps").index(this)+1;
@@ -57,7 +59,9 @@ $( document ).ready(function() {
 		});
 	});
 	
-	/* Initialize widget photo recipe */
+	/*
+	script for init fileinput of recipe's photo
+	*/
 	$photoRecipe = $("#image-recipe");
 	$photoRecipe.fileinput({
 		previewFileType: "image",
@@ -102,6 +106,20 @@ $( document ).ready(function() {
     	// trigger upload method immediately after files are selecte
     	$photoRecipe.fileinput("upload");
 	});
+
+	$('.typeahead').typeahead({ 
+		source : function(query, process) {
+                return ["Deluxe Bicycle", "Super Deluxe Trampoline", "Super Duper Scooter"];
+            },
+		autoSelect :true, 
+	});
+	/*
+	tester
+	
+	*/
+	/*
+	init javascript bootstrap;
+	*/
 	$('.carousel').carousel();
     $('.btn-popover').popover();
     $('.popoverMenubar').popover();

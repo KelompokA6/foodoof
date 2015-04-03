@@ -17,7 +17,7 @@
     <div id="navbar">
       <form class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>search/title">
         <div class="input-group form-group search-bar-menu">
-          <input type="text" class="form-control" name="q" placeholder="Search Recipe By Title">
+          <input type="text" class="form-control" name="q" class="typeahead" autocomplete="off" data-provide="typeahead" placeholder="Search Recipe By Title">
           <div class="input-group-btn">
             <div class="btn-group">
               <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" style="border-radius:0">
