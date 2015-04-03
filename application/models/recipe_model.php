@@ -20,6 +20,9 @@ class Recipe_model extends DataMapper {
     function __construct($id = NULL)
     {
         parent::__construct($id);
+        $ci = &get_instance();
+        $ci->load->library('session');
+        $this->session = $ci->session;
     }
 
     /*

@@ -52,6 +52,8 @@ class Recipe extends CI_Controller {
 						"content_website" => $content_website,
 					);
 			$this->parser->parse('template_content', $data);
+		} else {
+			redirect(base_url()."recipe/get/$id");
 		}
 		
 	}
@@ -85,7 +87,7 @@ class Recipe extends CI_Controller {
 			array_push($steps, $temp);
 		}
 
-		$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, NULL, $ingredients, $steps);
+		$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d"), $ingredients, $steps);
 		if($isSuccess === false){
 			echo "gagal";
 		} else{
