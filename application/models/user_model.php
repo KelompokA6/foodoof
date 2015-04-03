@@ -87,8 +87,9 @@ class User_model extends DataMapper {
 
     private function wajiblogin()
     {
-        $this->load->library('session');
-        $id = $this->session->userdata('user_id');
+        $ci =& get_instance();
+        $ci->load->library('session');
+        $id = $ci->session->userdata('user_id');
         if ($id < 1) {
             header('Location: '.base_url().'home/login');
             die();
