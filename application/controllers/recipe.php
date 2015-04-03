@@ -11,7 +11,8 @@ class Recipe extends CI_Controller {
 		$this->load->library('parser');
 		$recipe = new Recipe_model();
 		$user = new User_model();
-		$auth = $recipe->authEditRecipe($id);
+		$user_id = $user->wajiblogin();
+		$auth = $recipe->authEditRecipe($id, $user_id);
 		if ($auth){
 			$r = $recipe->getRecipeProfile($id);
 			$data = array();
@@ -40,7 +41,7 @@ class Recipe extends CI_Controller {
 						'edit_recipe_title' => $r->name,
 						'edit_recipe_portion' => $r->portion,
 						'edit_recipe_description' => $r->description,
-						'edit_recipe_uration' => $r->duration,
+						'edit_recipe_duration' => $r->duration,
 						'edit_recipe_ingredient_entries' => $ingre,
 						'edit_recipe_step_entries' => $steps,
 					);
