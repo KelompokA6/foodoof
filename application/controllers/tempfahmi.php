@@ -59,7 +59,6 @@ class Tempfahmi extends CI_Controller {
 						"content_website" => $content_website,
 					);
 			$this->parser->parse('template_content', $data);
-		
 		}
 	}	
 

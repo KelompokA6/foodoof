@@ -8,8 +8,49 @@ class Recipe extends CI_Controller {
 	}
 
 	public function edit($id){
-		$recipe  = new Recipe();
-		$recipe->id = $id;
+		$this->load->library('parser');
+		$recipe = new Recipe_model();
+		$user = new User_model();
+		$auth = $recipe->authEditRecipe($id);
+		if ($auth){
+			$r = $recipe->getRecipeProfile($id);
+			$data = array();
+			$this->load->model('home_viewer');
+			$menubar = $this->home_viewer->getMenubar();
+			$ingre = array();
+			foreach ($r->ingredients as $obj) {
+				$temp = array(
+						'edit_recipe_ingredient_subject' => $obj->name,
+						'edit_recipe_ingredient_quantity' => $obj->quantity,
+						'edit_recipe_ingredient_unit' => $obj->units,
+					);
+				array_push($ingre, $temp);
+			}
+			//print_r($ingre);
+			$steps = array();
+			foreach ($r->steps as $obj) {
+				$temp = array(
+						'edit_recipe_step_no_step' => $obj->no_step,
+						'edit_recipe_step_description' => $obj->description,
+						'edit_recipe_step_photo' => $obj->photo,
+					);
+				array_push($steps, $temp);
+			}
+			$data = array(
+						'edit_recipe_title' => $r->name,
+						'edit_recipe_portion' => $r->portion,
+						'edit_recipe_description' => $r->description,
+						'edit_recipe_uration' => $r->duration,
+						'edit_recipe_ingredient_entries' => $ingre,
+						'edit_recipe_step_entries' => $steps,
+					);
+			$content_website = $this->parser->parse('edit_recipe_view', $data, TRUE);
+			$data = array(
+						"menubar" => $menubar,
+						"content_website" => $content_website,
+					);
+			$this->parser->parse('template_content', $data);
+		}
 		
 	}
 
@@ -46,7 +87,7 @@ class Recipe extends CI_Controller {
 	// 
 	public function create(){
 		$recipe = new Recipe();
-		$id = $recipe->createRecipe(); 
+		$id = $recipe->createRecipe_model(); 
 		if ($id != 0) {
 			$this->edit($id);
 		} else {
