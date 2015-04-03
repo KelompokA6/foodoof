@@ -28,7 +28,7 @@ class User extends CI_Controller {
 		$u = new User_model();
 		$profile = $u->getProfile($id);
 		$r = new Recipe_model();
-		$listRecipe = $r->getUserRecipe($id);
+		$listRecipe = $r->getUserRecipe($id, 1001);
 		$this->user_viewer->showUserTimeline($profile, $listRecipe);
 	}
 
