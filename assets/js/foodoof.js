@@ -6,7 +6,7 @@ $( document ).ready(function() {
 	$(".image-steps").click(function(){
 		index = $(".image-steps").index(this)+1;
 	});
-	$id = $("#id-recipe").data("id");
+	$recipeId = $("#image-recipe").data("id");
 	$input = $(".image-steps");
 	$input.each(function(i){
 		$(this).fileinput({
@@ -17,7 +17,7 @@ $( document ).ready(function() {
 			showCaption: false,
 			showRemove: false,
 			showUpload: false,
-			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$id+"/", // server upload action
+			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
 			uploadAsync: false,	
 			previewTemplates: {
 		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -119,7 +119,7 @@ $( document ).ready(function() {
 		showRemove: false,
 		showUpload: false,
 		maxFileCount: 1,
-		uploadUrl: "http://localhost/foodoof/processAjax/uploadProfileRecipe/"+$("#image-recipe").data("id"), // server upload action
+		uploadUrl: "http://localhost/foodoof/processAjax/uploadProfileRecipe/"+$recipeId, // server upload action
 		uploadAsync: false,
 		previewTemplates: {
 	    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -234,7 +234,7 @@ $( document ).ready(function() {
 			showCaption: false,
 			showRemove: false,
 			showUpload: false,
-			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$id+"/", // server upload action
+			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
 			uploadAsync: false,	
 			previewTemplates: {
 		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -287,6 +287,21 @@ $( document ).ready(function() {
 		else{
 			$("#remove-step").hide();	
 		}
+	});
+
+	/*
+	handler event click save rating recipe
+	*/
+	$(document).on("click", "#rating-recipe", function(){
+		$valueRating = $("#rating-recipe").val();
+		$.get( "./processAjax/setRating/"+$recipeId+"/"+$valueRating, function( data ) {
+		  	if(data.status == '1'){
+		  		console.log(data.message);
+		  	}
+		  	else{
+		  		console.log(data.message);
+		  	}
+		},"json");
 	});
 
 	/*

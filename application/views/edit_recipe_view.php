@@ -2,7 +2,6 @@
 	<div class="panel panel-default">
 	  	<div class="panel-body">
 	  		<h2 class="page-header-title text-capitalize"> Edit Recipe<!-- {edit_recipe_action} bisa Edit atau pun Create-->
-	  			<div id="id-recipe" data-id={edit_recipe_id} class="hidden"></div>
 	  		</h2>
 	  		<form action="<?php echo base_url()?>recipe/save/{edit_recipe_id}" method="POST" role="form">
 	  			<div class="col-md-12 page-header-title col-no-padding">
