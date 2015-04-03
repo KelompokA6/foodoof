@@ -14,6 +14,57 @@ class Tempfahmi extends CI_Controller {
 				);
 		$this->parser->parse('template_content', $data);
 
+	}
+
+	public function edit($id){
+		$this->load->library('parser');
+		$recipe = new Recipe_model();
+		$user = new User_model();
+		$auth = $recipe->authEditRecipe($id);
+		if ($auth){
+			$r = $recipe->getRecipeProfile($id);
+			$data = array();
+			$this->load->model('home_viewer');
+			$menubar = $this->home_viewer->getMenubar();
+			$ingre = array();
+			foreach ($r->ingredients as $obj) {
+				$temp = array(
+						'ingre_name' => $obj->name,
+						'ingre_quantity' => $obj->quantity,
+						'ingre_units' => $obj->units,
+						'ingre_info' => $obj->info,
+					);
+				array_push($ingre, $temp);
+			}
+			//print_r($ingre);
+			$steps = array();
+			foreach ($r->steps as $obj) {
+				$temp = array(
+						'steps_number' => $obj->no_step,
+						'steps_description' => $obj->description,
+						'steps_photo' => $obj->photo,
+					);
+				array_push($steps, $temp);
+			}
+			$data = array(
+						'recipe_name' => $r->name,
+						'recipe_portion' => $r->portion,
+						'recipe_duration' => $r->duration,
+						'recipe_author_id' => $r->author,
+						'recipe_author_name' => $user->getProfile($r->author)->name,
+						'recipe_last_update' => substr($r->last_update, 0, -8),
+						'recipe_ingredients' => $ingre,
+						'recipe_steps' => $steps,
+						'recipe_rating' => $r->rating,
+					);
+			$content_website = $this->parser->parse('recipe_view', $data, TRUE);
+			$data = array(
+						"menubar" => $menubar,
+						"content_website" => $content_website,
+					);
+			$this->parser->parse('template_content', $data);
+		
+		}
 	}	
 
 	public function create(){
