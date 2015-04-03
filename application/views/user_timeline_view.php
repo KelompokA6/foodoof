@@ -41,6 +41,7 @@
 			            <p class="text-capitalize">{user_timeline_recipe_view} views</p>
 			        </div>
 		    	</div>
+		    	<?php if ($this->session->userdata('user_id') == $user_timeline_id): ?>
 		    	<div class="col-md-12 col-xs-4 col-no-padding-right recipe-timeline-edit-btn">
 		    		<a href="<?php echo base_url()?>recipe/edit/{user_timeline_recipe_id}">
       					<button class="btn btn-primary btn-xs" style="width:90px">
@@ -56,6 +57,7 @@
 					    </label>
 					 </div>
 		    	</div>
+		    <?php endif;?>
 		    </div>
 		</div>
 		{/user_timeline_recipe_entries}

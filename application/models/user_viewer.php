@@ -95,6 +95,7 @@ class User_viewer extends CI_Model
         array(
             'user_timeline_recipe_entries' => $listRecipes,
             'user_timeline_name' => $profile->name,
+            'user_timeline_id' => $profile->id,
             'user_timeline_recipe_page_size' => 1,
             'user_timeline_recipe_page_now' => 1,
         ),
