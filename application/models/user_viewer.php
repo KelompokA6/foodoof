@@ -49,7 +49,7 @@ class User_viewer extends CI_Model
     $data_user_view['content_user'] = $this->parser->parse(
         'profile_view',
         array(
-            'profile_user_id' => '',
+            'profile_user_id' => $profile->id,
             'profile_user_name' => $profile->name,
             'profile_user_gender' => $profile->gender == 'M' ? 'male' : 'female',
             'profile_user_age' => (new DateTime())->diff(new DateTime($profile->bdate))->y,
@@ -95,6 +95,8 @@ class User_viewer extends CI_Model
         array(
             'user_timeline_recipe_entries' => $listRecipes,
             'user_timeline_name' => $profile->name,
+            'user_timeline_recipe_page_size' => 1,
+            'user_timeline_recipe_page_now' => 1,
         ),
         TRUE
     );
