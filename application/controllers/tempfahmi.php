@@ -29,10 +29,9 @@ class Tempfahmi extends CI_Controller {
 			$ingre = array();
 			foreach ($r->ingredients as $obj) {
 				$temp = array(
-						'ingre_name' => $obj->name,
-						'ingre_quantity' => $obj->quantity,
-						'ingre_units' => $obj->units,
-						'ingre_info' => $obj->info,
+						'edit_recipe_ingredient_subject' => $obj->name,
+						'edit_recipe_ingredient_quantity' => $obj->quantity,
+						'edit_recipe_ingredient_unit' => $obj->units,
 					);
 				array_push($ingre, $temp);
 			}
@@ -40,9 +39,9 @@ class Tempfahmi extends CI_Controller {
 			$steps = array();
 			foreach ($r->steps as $obj) {
 				$temp = array(
-						'steps_number' => $obj->no_step,
-						'steps_description' => $obj->description,
-						'steps_photo' => $obj->photo,
+						'edit_recipe_step_no_step' => $obj->no_step,
+						'edit_recipe_step_description' => $obj->description,
+						'edit_recipe_step_photo' => $obj->photo,
 					);
 				array_push($steps, $temp);
 			}
@@ -53,11 +52,11 @@ class Tempfahmi extends CI_Controller {
 						'recipe_author_id' => $r->author,
 						'recipe_author_name' => $user->getProfile($r->author)->name,
 						'recipe_last_update' => substr($r->last_update, 0, -8),
-						'recipe_ingredients' => $ingre,
-						'recipe_steps' => $steps,
+						'edit_recipe_ingredient_entries' => $ingre,
+						'edit_recipe_step_entries' => $steps,
 						'recipe_rating' => $r->rating,
 					);
-			$content_website = $this->parser->parse('recipe_view', $data, TRUE);
+			$content_website = $this->parser->parse('edit_recipe_view', $data, TRUE);
 			$data = array(
 						"menubar" => $menubar,
 						"content_website" => $content_website,

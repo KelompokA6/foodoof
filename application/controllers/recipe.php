@@ -166,6 +166,7 @@ class Recipe extends CI_Controller {
 		}
 		$data = array(
 					'recipe_name' => $r->name,
+					'recipe_description' => $r->description,
 					'recipe_portion' => $r->portion,
 					'recipe_duration' => $r->duration,
 					'recipe_author_name' => $user->getProfile($r->author)->name,
