@@ -379,7 +379,6 @@ class Recipe_model extends DataMapper {
             }
             $x++;
         }
-        $arrResult["total"] = $x;
         return $arrResult;
     }
 
