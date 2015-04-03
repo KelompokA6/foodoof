@@ -5,6 +5,7 @@ class User extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('session');
+		// $this->load->model('user_model');
 		$this->load->model('user_viewer');
 	}
 
@@ -164,15 +165,5 @@ class User extends CI_Controller {
 		$this->email->subject('Your FoodooF Password');
 		$this->email->message("You said that you have forgotten your password. Here you are! Your password is $password.");
 		return $this->send();
-	}
-
-	private function wajiblogin()
-	{
-		$id = $this->session->userdata('user_id');
-		if ($id < 1) {
-			header('Location: '.base_url().'home/login');
-			die();
-		}
-		return $id;
 	}
 }

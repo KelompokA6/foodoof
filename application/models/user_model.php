@@ -85,6 +85,16 @@ class User_model extends DataMapper {
         return $this->save();
     }
 
+    private function wajiblogin()
+    {
+        $this->load->library('session');
+        $id = $this->session->userdata('user_id');
+        if ($id < 1) {
+            header('Location: '.base_url().'home/login');
+            die();
+        }
+        return $id;
+    }
 }
 
 /* End of file user.php */
