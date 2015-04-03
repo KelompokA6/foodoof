@@ -23,6 +23,12 @@ class Tempview extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function getTopRecipe(){
+		$recipe = new Recipe_model();
+		$recipes = $recipe->getTopRecipe();
+		print_r($recipes);
+	}
+
 	public function editrecipe(){
 		$this->load->library('parser');
 		$data = array("recipe_author_id"=> 1);

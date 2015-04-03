@@ -17,7 +17,7 @@ $( document ).ready(function() {
 			showCaption: false,
 			showRemove: false,
 			showUpload: false,
-			uploadUrl: "http://localhost/foodoof/processUpload/uploadStepsRecipe/"+$id+"/", // server upload action
+			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$id+"/", // server upload action
 			uploadAsync: false,	
 			previewTemplates: {
 		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -71,7 +71,7 @@ $( document ).ready(function() {
 		showCaption: false,
 		showRemove: false,
 		showUpload: false,
-		uploadUrl: "http://localhost/foodoof/processUpload/uploadProfileUser/"+$("#photo-profile").data("id"), // server upload action
+		uploadUrl: "http://localhost/foodoof/processAjax/uploadProfileUser/"+$("#photo-profile").data("id"), // server upload action
 		uploadAsync: false,
 		previewTemplates: {
 	    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -119,7 +119,7 @@ $( document ).ready(function() {
 		showRemove: false,
 		showUpload: false,
 		maxFileCount: 1,
-		uploadUrl: "http://localhost/foodoof/processUpload/uploadProfileRecipe/"+$("#image-recipe").data("id"), // server upload action
+		uploadUrl: "http://localhost/foodoof/processAjax/uploadProfileRecipe/"+$("#image-recipe").data("id"), // server upload action
 		uploadAsync: false,
 		previewTemplates: {
 	    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -234,7 +234,7 @@ $( document ).ready(function() {
 			showCaption: false,
 			showRemove: false,
 			showUpload: false,
-			uploadUrl: "http://localhost/foodoof/processUpload/uploadStepsRecipe/"+$id+"/", // server upload action
+			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$id+"/", // server upload action
 			uploadAsync: false,	
 			previewTemplates: {
 		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +

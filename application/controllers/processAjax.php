@@ -1,12 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ProcessUpload extends CI_Controller {
+class ProcessAjax extends CI_Controller {
 
-
-	public function uploadProfileUser($id){
-		$this->load->helper('file');
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->library('session');
 		$this->load->library('upload');
 		$this->load->library('session');
+		$this->load->helper('file');
+	}
+
+	public function uploadProfileUser($id){
 		$config['upload_path'] = './images/tmp/user/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '5120';
@@ -62,9 +67,6 @@ class ProcessUpload extends CI_Controller {
 	}
 
 	public function uploadProfileRecipe($id){
-		$this->load->helper('file');
-		$this->load->library('upload');
-		$this->load->library('session');
 		$config['upload_path'] = './images/tmp/recipe';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '5120';
@@ -122,9 +124,6 @@ class ProcessUpload extends CI_Controller {
 		if(empty($no_step)){
 			$no_step = $this->input->post('no_step');
 		}
-		$this->load->helper('file');
-		$this->load->library('upload');
-		$this->load->library('session');
 		$config['upload_path'] = './images/tmp/step';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '5120';
@@ -132,7 +131,7 @@ class ProcessUpload extends CI_Controller {
 		$config['file_name'] = $id."-".$no_step.".jpg";
 		$this->upload->initialize($config);
 
-		if($this->session->userdata('user_id')==''){
+		if($this->session->userdata('user_id')!=''){
 			if($this->upload->do_upload("photo-step")){
 				$configImage['source_image'] = "./images/tmp/step/".$id."-".$no_step.".jpg";
 				$configImage['create_thumb'] = TRUE;
@@ -168,6 +167,31 @@ class ProcessUpload extends CI_Controller {
 						"message" => "Upload failed",
 						);
 			}	
+		}
+		else{
+			$result = array(
+					"status" => 0,
+					"message" => "Please login first",
+					);
+		}
+		echo json_encode($result);
+	}
+	public function setRating($recipe_id=null, $value = 0){
+		$user_id = $this->session->userdata('user_id');
+		if(!empty($user_id) && !empty($recipe_id)){
+			$recipe = new Recipe();
+			if($recipe->saveRating($user_id, $recipe_id, $value)){
+				$result = array(
+					"status" => 1,
+					"message" => "Your rating was save",
+					);
+			}
+			else{
+				$result = array(
+					"status" => 0,
+					"message" => "There are error in server",
+					);	
+			}
 		}
 		else{
 			$result = array(
