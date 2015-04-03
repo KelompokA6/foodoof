@@ -154,4 +154,3 @@
 		</div>
 	</div>
 </div>
-<script src="/foodoof/assets/js/custom.dynamic.add.js"></script>
