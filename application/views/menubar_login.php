@@ -16,25 +16,25 @@
       </a>
     </div>
     <div id="navbar" class="col-md-11">
-      <form class="collapse-navbar-search col-md-8 col-no-padding-right" method="get" action="<?php echo base_url();?>search/title">
+      <form id="form-search" class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>search/title">
         <div class="input-group form-group search-bar-menu">
-          <input type="text" class="form-control" name="q" placeholder="Search Recipe By Title">
+          <input type="text" id="searchbar" class="form-control" name="q" class="typeahead" autocomplete="off" data-provide="typeahead" placeholder="Search Recipe By Title">
           <div class="input-group-btn">
             <div class="btn-group">
               <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" style="border-radius:0">
                 Title<span class="caret"></span>
               </button>
-              <ul class="dropdown-menu-enhancement dropdown-search bullet pull-center">
+              <ul id="listSearch" class="dropdown-menu dropdown-search bullet pull-center">
                 <li>
-                  <input type="radio" id="ex1_1" name="ex1" value="Title" checked>
+                  <input type="radio" id="ex1_1" name="category-search" checked>
                     <label for="ex1_1">Title</label>
                 </li>
                 <li>
-                  <input type="radio" id="ex1_2" name="ex1" value="Ingredient">
+                  <input type="radio" id="ex1_2" name="category-search">
                     <label for="ex1_2">Ingredient</label>
                 </li>
                 <li>
-                  <input type="radio" id="ex1_3" name="ex1" value="Account">
+                  <input type="radio" id="ex1_3" name="category-search">
                     <label for="ex1_3">Account</label>
                 </li>
               </ul>

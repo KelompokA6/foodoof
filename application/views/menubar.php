@@ -75,7 +75,7 @@
                       <div class='col-md-12 control'>
                           <div style='border-top: 1px solid#888; padding-top:15px; font-size:85%' >
                               Forgot password? 
-                          <a href='<?php echo base_url();?>home/forgot-password'>
+                          <a href='<?php echo base_url();?>user/forgotpassword'>
                               Remember Here
                           </a>
                           </div>
