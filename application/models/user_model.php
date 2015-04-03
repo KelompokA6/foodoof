@@ -85,7 +85,7 @@ class User_model extends DataMapper {
         return $this->save();
     }
 
-    private function wajiblogin()
+    function wajiblogin()
     {
         $ci =& get_instance();
         $ci->load->library('session');

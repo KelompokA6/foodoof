@@ -15,19 +15,17 @@ class User extends CI_Controller {
 
 	public function profile($id = -1){
 		if ($id == -1) {
-			$id = $this->wajiblogin();
+			$id = $this->user_model->wajiblogin();
 		}
-		$this->load->model('user_model');
 		$profile = $this->user_model->getProfile($id);		
 		$this->user_viewer->showProfile($profile);
 	}
 
 	public function timeline($id = -1){
 		if ($id == -1) {
-			$id = $this->wajiblogin();
+			$id = $this->user_model->wajiblogin();
 		}
-		$u = new User_model();
-		$profile = $u->getProfile($id);
+		$profile = $this->user_model->getProfile($id);
 		$r = new Recipe_model();
 		$listRecipe = $r->getUserRecipe($id, 1001);
 		$this->user_viewer->showUserTimeline($profile, $listRecipe);
@@ -35,26 +33,24 @@ class User extends CI_Controller {
 
 	public function favorite($id = -1){
 		if ($id == -1) {
-			$id = $this->wajiblogin();
+			$id = $this->user_model->wajiblogin();
 		}
-		$u = new User_model();
-		$profile = $u->getProfile($id);
+		$profile = $this->user_model->getProfile($id);
 		$r = new Recipe_model();
 		$listRecipe = $r->getFavoriteRecipe($id);
 		$this->user_viewer->showUserTimeline($profile, $listRecipe);
 	}
 
 	public function cooklater(){
-		$id = $this->wajiblogin();
-		$u = new User_model();
-		$profile = $u->getProfile($id);
+		$id = $this->user_model->wajiblogin();
+		$profile = $this->user_model->getProfile($id);
 		$r = new Recipe_model();
 		$listRecipe = $r->getCooklaterRecipe($id);
 		$this->user_viewer->showUserTimeline($profile, $listRecipe);
 	}
 
 	public function changepassword(){
-		$id = $this->wajiblogin();
+		$id = $this->user_model->wajiblogin();
 		$data = array();
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data['oldPass'] = $this->input->post("old_password");
@@ -62,8 +58,7 @@ class User extends CI_Controller {
 			$data['confirmPass'] = $this->input->post("confirm_password");
 
 			if($this->isValid($data)){
-				$user = new User_model();
-				$success = $user->updatePassword($id, $data['newPass']);
+				$success = $this->user_model->updatePassword($id, $data['newPass']);
 				$data['message'] = $success ? "success" : "failed";
 			}
 			else{
@@ -71,8 +66,7 @@ class User extends CI_Controller {
 			}
 		}
 
-		$u = new User_model();
-		$profile = $u->getProfile($id);
+		$profile = $this->user_model->getProfile($id);
 
 		$this->user_viewer->showChangePassword($profile, $data);
 	}
@@ -87,9 +81,8 @@ class User extends CI_Controller {
 			$profile['confrimPass'] = $this->input->post("confirm_password");
 
 			if ($this->validateJoin($profile)) {
-				$u = new User_model();
-				if($u->createUser($profile)) {
-					$profile_menubar = $u->login($profile['email'], $profile['password']);
+				if($this->user_model->createUser($profile)) {
+					$profile_menubar = $this->user_model->login($profile['email'], $profile['password']);
 					foreach ($profile_menubar as $key => $value) {
 						$this->session->set_userdata($key, $value);
 					}
@@ -107,9 +100,7 @@ class User extends CI_Controller {
 	}
 
 	public function edit(){
-		$id = $this->wajiblogin();
-
-		$u = new User_model();
+		$id = $this->user_model->wajiblogin();
 
 		$message = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
@@ -122,7 +113,7 @@ class User extends CI_Controller {
 			$data['googleplus'] = $this->input->post('user_gplus');
 			$data['path'] = $this->input->post('user_path');
 			if (true) {
-				if($u->updateProfile($id, $data)){
+				if($this->user_model->updateProfile($id, $data)){
 					$message = 'success';
 					$this->session->set_userdata('user_name', $data['name']);
 					$this->session->set_userdata('user_photo', @$data['photo'] ? $data['photo'] : 'images/user/0.jpg');
@@ -131,18 +122,17 @@ class User extends CI_Controller {
 					$message = 'failed';
 			} else $message = 'invalid';
 		}
-		$profile = $u->getProfile($id);
+		$profile = $this->user_model->getProfile($id);
 		$profile->message = $message;
 		$this->user_viewer->showEditProfile($profile);
 	}
 
 	public function forgotpassword(){ //dari sequence lupa password, buat minta password nya dr userManager
 		$data = array();
-		$u = new User_model();
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$email = $this->input->post('email');
 			$data['email'] = $email;
-			$password = $u->getPasswordByEmail($email);
+			$password = $this->user_model->getPasswordByEmail($email);
 			die("nyoh password: $password");
 			if($password !== FALSE) {
 				if ($this->sendPassword($email, $password)) {
