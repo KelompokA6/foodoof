@@ -24,7 +24,7 @@
               <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" style="border-radius:0">
                 Title<span class="caret"></span>
               </button>
-              <ul class="dropdown-menu dropdown-search bullet pull-center">
+              <ul class="dropdown-menu-enhancement dropdown-search bullet pull-center">
                 <li>
                   <input type="radio" id="ex1_1" name="ex1" value="Title" checked>
                     <label for="ex1_1">Title</label>
