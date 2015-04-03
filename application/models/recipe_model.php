@@ -109,8 +109,8 @@ class Recipe_model extends DataMapper {
         $rcpSave = new Recipe_model();
         $rcpSave->get_by_id($id);
         $photo = $rcpSave->photo;
-        if(file_exists("assets/tmp/recipe/".$id.".jpg")){
-            $photo = "assets/recipe/".$id.".jpg";
+        if(file_exists("./images/tmp/recipe/".$id.".jpg")){
+            $photo = "images/recipe/".$id.".jpg";
         }
         if(!empty($id) && !empty($name) && !empty($portion) 
             && !empty($duration) && !empty($description) && !empty($last_update)
@@ -173,7 +173,7 @@ class Recipe_model extends DataMapper {
                 foreach ($steps as $step) {
                     $stp = new Step();
                     if(file_exists("./images/tmp/step/".$id."-".$x.".jpg")){
-                        $stp->photo = "./images/step/".$id."-".$x.".jpg";
+                        $stp->photo = "images/step/".$id."-".$x.".jpg";
                         $stp->recipe_id = $id;
                         $stp->description = $step["description"];
                         $stp->step = $x;
@@ -194,7 +194,7 @@ class Recipe_model extends DataMapper {
                 $stp->delete();
                 $stp = new Step();
                 if(file_exists("./images/tmp/step/".$id."-".$x."jpg")){
-                    $stp->photo = "./images/step/".$id."-".$x."jpg";
+                    $stp->photo = "images/step/".$id."-".$x."jpg";
                     $stp->recipe_id = $id;
                     $stp->description = $step["description"];
                     $stp->step = '1';
@@ -296,7 +296,8 @@ class Recipe_model extends DataMapper {
     }
 
     /*
-        Digunakan untuk memperoleh resep yang merupakan resep dengan rating tertinggi, dengan parameter input limit resep yang ingin ditampilkan
+        Digunakan untuk memperoleh resep yang merupakan resep dengan rating tertinggi, dengan parameter input limit resep yang ingin ditampilkan.
+        kembalian list resep yang menjadi top
     */
     function getTopRecipe($limit=10){
         $recipe = new Recipe_model();
@@ -639,8 +640,11 @@ class Recipe_model extends DataMapper {
     /*
         Digunakan untuk memberikan rating pada sebuah resep. nilai kembalian merupakan boolean rating berhasil disimpan. bila telah ada maka akan dioverwrite
     */
-    function saveRating($user_id, $value = 0){
-        if(!empty($this->id) && !empty($user_id)){
+    function saveRating($user_id=null, $recipe_id=null, $value = 0){
+        if(empty($recipe_id)){
+            $recipe_id = $this->id;
+        }
+        if(!empty($recipe_id) && !empty($user_id)){
             $rat = new Rating();
             $rat->recipe_id = $this->id;
             $rat->user_id = $user_id;
