@@ -59,5 +59,41 @@
 		    </div>
 		</div>
 		{/user_timeline_recipe_entries}
+		<div class="col-md-12 text-center">
+		    <?php
+		      if($user_timeline_recipe_page_size > 0){
+		        echo "<nav>
+		                <ul class='pager'>
+		                  <li class='";
+		        if($user_timeline_recipe_page_size - $user_timeline_recipe_page_now == ($user_timeline_recipe_page_size-1)){
+		            echo "disabled";
+		          }
+		        echo "'><a href='".base_url()."user/timeline/{user_timeline_id}?page=".($search_by_title_recipe_page_now - 1)."' aria-label='Previous'>
+		            <span aria-hidden='true'>&laquo;</span>
+		          </a></li>";
+		        for ($i=1; $i <= $user_timeline_recipe_page_size ; $i++) { 
+		          $active = "";
+		          if($i == $user_timeline_recipe_page_now){
+		            $active = "active";
+		          }
+		          echo "
+		            <li class=".$active.">
+		              <a href='".base_url()."user/timeline/{user_timeline_id}?page=".$i."'>".$i."</a>
+		            </li>
+		          ";
+		        }
+		        echo "<li class='";
+		        if($user_timeline_recipe_page_size == $user_timeline_recipe_page_now){
+		            echo "disabled";
+		          }
+		        echo "'><a href='".base_url()."user/timeline/{user_timeline_id}?page=".($search_by_title_recipe_page_now + 1)."' aria-label='Next'>
+		            <span aria-hidden='true'>&raquo;</span>
+		          </a></li>
+		          </ul>
+		          </nav>
+		        ";
+		      }
+		    ?>
+		</div>
   	</div>
 </div>
