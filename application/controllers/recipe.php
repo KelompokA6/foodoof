@@ -3,19 +3,19 @@
 class Recipe extends CI_Controller {
 
 	public function publish($id, $isPublished){
-		$recipe  = new Recipe_model();
+		$recipe  = new Recipe();
 		$recipe->get_by_id($id)->update('status', $isPublished);
 	}
 
 	public function edit($id){
-		$recipe  = new Recipe_model();
+		$recipe  = new Recipe();
 		$recipe->id = $id;
 		
 	}
 
 	// ini pake post, lihat registration
 	public function save($id){
-		$recipe = new Recipe_model();
+		$recipe = new Recipe();
 		$name = $this->input->post("title");
 		$description = $this->input->post("description");
 		$portion = $this->input->post("portion");
@@ -45,7 +45,7 @@ class Recipe extends CI_Controller {
 
 	// 
 	public function create(){
-		$recipe = new Recipe_model();
+		$recipe = new Recipe();
 		$id = $recipe->createRecipe(); 
 		if ($id != 0) {
 			$this->edit($id);
@@ -56,7 +56,7 @@ class Recipe extends CI_Controller {
 
 	// ini buat ambil resep dengan input id
 	public function recipes($id){
-		$recipe = new Recipe_model();
+		$recipe = new Recipe();
 		$this->load->library(session);
 		$userid = $this->session->userdata("user_id");
 		if (empty($userid)){
@@ -79,7 +79,7 @@ class Recipe extends CI_Controller {
 	// kalo buat ditampilin di home, cuma ambil 5 resep aja. 
 	// kalo buat ditampilin di page sendiri, diambil 10 resep.
 	public function top($isOnHome = true){
-		$recipe = new Recipe_model();
+		$recipe = new Recipe();
 		if ($isOnHome === 'true'){
 			$data=$recipe->getTopRecipe(5);
 		} else {
@@ -98,7 +98,7 @@ class Recipe extends CI_Controller {
 
 	// ini buat ambil highlight resep
 	public function highlight($isOnHome = true){
-		$recipe = new Recipe_model();
+		$recipe = new Recipe();
 		if ($isOnHome === 'true'){
 			$data=$recipe->getHightlight(5);
 		} else {
@@ -119,7 +119,7 @@ class Recipe extends CI_Controller {
 	// kalo buat ditampilin di home, cuma ambil 5 resep aja. 
 	// kalo buat ditampilin di page sendiri, diambil 10 resep.
 	public function recent($isOnHome = 'true'){
-		$recipe = new Recipe_model();
+		$recipe = new Recipe();
 		if ($isOnHome === 'true'){
 			$data=$recipe->getRecently(5);
 		} else {
@@ -141,9 +141,7 @@ class Recipe extends CI_Controller {
 		$r = $recipe->getRecipeProfile($id);
 		$data = array();
 		$this->load->library('parser');
-		// $menubar = $this->parser->parse('menubar_login', $data, TRUE);
-		$this->load->model('home_viewer');
-		$menubar = $this->home_viewer->getMenubar();
+		$menubar = $this->parser->parse('menubar_login', $data, TRUE);
 		$ingre = array();
 		foreach ($r->ingredients as $obj) {
 			$temp = array(
@@ -168,8 +166,7 @@ class Recipe extends CI_Controller {
 					'recipe_name' => $r->name,
 					'recipe_portion' => $r->portion,
 					'recipe_duration' => $r->duration,
-					'recipe_author_id' => $r->author,
-					'recipe_author_name' => $user->getProfile($r->author)->name,
+					'recipe_author_name' => $user->getProfile($r->author)['name'],
 					'recipe_last_update' => substr($r->last_update, 0, -8),
 					'recipe_ingredients' => $ingre,
 					'recipe_steps' => $steps,
