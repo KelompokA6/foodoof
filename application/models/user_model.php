@@ -39,7 +39,7 @@ class User_model extends DataMapper {
         $ret->bdate = $this->bdate;
         $ret->phone = $this->phone;
         $ret->status = $this->status;
-        $ret->photo = $this->photo;
+        $ret->photo = $this->photo ? $this->photo : 'images/user/0.jpg';
         $ret->facebook = $this->facebook;
         $ret->twitter = $this->twitter;
         $ret->googleplus = $this->googleplus;

@@ -101,14 +101,8 @@ class User extends CI_Controller {
 
 	public function edit(){
 		$id = $this->user_model->wajiblogin();
-		$message = '';
-		$profile = $this->user_model->getProfile($id);
-		$profile->message = $message;
-		$this->user_viewer->showEditProfile($profile);
-	}
 
-	public function save()
-	{
+		$message = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data['name'] = $this->input->post('user_name');
 			$data['gender'] = $this->input->post('genderOptions');
@@ -128,7 +122,9 @@ class User extends CI_Controller {
 					$message = 'failed';
 			} else $message = 'invalid';
 		}
-		redirect(base_url().'user/edit');
+		$profile = $this->user_model->getProfile($id);
+		$profile->message = $message;
+		$this->user_viewer->showEditProfile($profile);
 	}
 
 	public function forgotpassword(){ //dari sequence lupa password, buat minta password nya dr userManager
