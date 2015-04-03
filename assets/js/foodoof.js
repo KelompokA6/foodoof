@@ -159,10 +159,22 @@ $( document ).ready(function() {
             },
 		autoSelect :true, 
 	});
-	/*
-	tester
 	
+	/*
+	event handler for search bar
 	*/
+	$("ul#listSearch > li").click(function(e){
+		var search = $(this).find("label").html();
+		if(search==="Title"){	
+			$("#searchbar").attr("placeholder", "Search Recipe By Title");
+		}
+		else if(search==="Ingredient"){	
+			$("#searchbar").attr("placeholder", "Search Recipe By Ingredient");
+		}
+		else if(search==="Account"){	
+			$("#searchbar").attr("placeholder", "Search Account");
+		}
+	});
 	/*
 	init javascript bootstrap;
 	*/
