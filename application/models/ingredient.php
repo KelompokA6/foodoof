@@ -33,7 +33,7 @@ class Ingredient extends DataMapper {
     function _member($field){
         if (!empty($this->{$field}))
         {
-            $u = new Recipe();
+            $u = new Recipe_model();
             // Get email have used.
             if($u->where('id', $this->{$field})->count() !== 0){
                 return true;
@@ -83,6 +83,11 @@ class Ingredient extends DataMapper {
             return false;
         }
         return false;
+    }
+    function getById($id)
+    {
+        $this->where('recipe_id', $id)->get();
+        return $this;
     }
 }
 

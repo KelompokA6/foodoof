@@ -79,14 +79,13 @@ class Recipe extends CI_Controller {
 			array_push($ingredients, $temp);
 		}
 		
-		$description =  $this->input->post("step-description");
+		$stdes =  $this->input->post("step-description");
 		$poto =  $this->input->post("photo-step");
 		$steps = array();
-		for ($i=0; $i < sizeof($description); $i++) { 
-			$temp['description'] = $description[$i];
+		for ($i=0; $i < sizeof($stdes); $i++) { 
+			$temp['description'] = $stdes[$i];
 			array_push($steps, $temp);
 		}
-
 		$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d"), $ingredients, $steps);
 		if($isSuccess === false){
 			echo "gagal";
