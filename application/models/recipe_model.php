@@ -132,11 +132,14 @@ class Recipe_model extends DataMapper {
             if(!write_file("./images/recipe/".$id.".jpg", $data)){
                 return false;
             }
-            unlink("./images/tmp/recipe/".$id."-".$x."jpg");
+            if(file_exists("./images/tmp/step/".$id.".jpg")){
+            unlink("./images/tmp/recipe/".$id.".jpg");
+            }
             $this->trans_begin();
             if(is_array($ingredients)){
                 $ingres = new Ingredient();
-                $ingres->get_by_id($id);
+                        // die('------------');
+                $ingres->getById($id);
                 $ingres->delete();
                 foreach ($ingredients as $ingredient) {
                     $ingre = new Ingredient();
