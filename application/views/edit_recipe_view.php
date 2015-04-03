@@ -14,7 +14,7 @@
 			  			<div class="col-md-12 col-no-padding" style="margin-top:15px">
 			  				<h4 class="page-header-title">Description Recipe</h4>
 			  				<div clas="col-md-12 col-no-padding">
-			  					<textarea class="form-control" rows="6" placeholder="Description of your recipe" name="recipe_description">{edit_recipe_description}</textarea>
+			  					<textarea class="form-control" rows="6" placeholder="Description of your recipe">{edit_recipe_description}</textarea>
 			  				</div>
 			  			</div>
 			  			<div class="col-md-12 col-xs-12 col-no-padding" style="margin-top:15px">
