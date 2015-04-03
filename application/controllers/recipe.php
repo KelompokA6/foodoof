@@ -57,11 +57,11 @@ class Recipe extends CI_Controller {
 
 	// ini pake post, lihat registration
 	public function save($id){
-		$recipe = new Recipe();
-		$name = $this->input->post("title");
+		$recipe = new Recipe_model();
+		$name = $this->input->post("recipe_title");
 		$description = $this->input->post("description");
-		$portion = $this->input->post("portion");
-		$duration = $this->input->post("duration");
+		$portion = $this->input->post("recipe_portion");
+		$duration = $this->input->post("recipe_duration");
 		$author = $this->input->post("author");
 		$n = (int) $this->input->post("n");
 		$ingredients = array();
@@ -87,7 +87,7 @@ class Recipe extends CI_Controller {
 
 	// 
 	public function create(){
-		$recipe = new Recipe();
+		$recipe = new Recipe_model();
 		$id = $recipe->createRecipe_model(); 
 		if ($id != 0) {
 			$this->edit($id);
