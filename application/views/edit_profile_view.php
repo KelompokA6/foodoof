@@ -1,48 +1,13 @@
 <div class="panel panel-default">
   	<div class="panel-body">
-  		<form class="form-horizontal" action="<?php echo base_url();?>user/edit/{edit_profile_id}" method="post" enctype="multipart/form-data">
+  		<form class="form-horizontal" action="<?php echo base_url();?>user/save/{edit_profile_id}" method="post" enctype="multipart/form-data">
 	    	<div class="col-md-12">
 	    		<h3 class="page-header"> Edit Profile</h3>
 	    	</div>
 	    	<div class="col-md-12">
 				<h4>Personal Information</h4>
 				<div class="col-md-12">
-					<input id="photo-profile" type="file" accept="image/*" >
-						<script>
-						/* Initialize your widget via javascript as follows */
-						$("#photo-profile").fileinput({
-							previewFileType: "image",
-							browseClass: "btn button-default btn-block",
-							browseLabel: "  Pick Image",
-							browseIcon: '<i class="fa fa-image"> </i>',
-							showCaption: false,
-							showRemove: false,
-							showUpload: false,
-							previewTemplates: {
-						    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
-					        "   <img src='{data}' class='file-preview-image img-responsive' title='{caption}' alt='{caption}'>\n" +
-					        "   {footer}\n" +
-					        "</div>\n",
-						    },
-						    layoutTemplates:{
-						    	preview: "<div class='file-preview {class}''>\n" +
-							        "    <div class='close fileinput-remove' style='display:none'>&times;</div>\n" +
-							        "    <div class='{dropClass}'>\n" +
-							        "    <div class='file-preview-thumbnails'>\n" +
-							        "    </div>\n" +
-							        "    <div class='clearfix'></div>" +
-							        "    <div class='file-preview-status text-center text-success'></div>\n" +
-							        "    <div class='kv-fileinput-error'></div>\n" +
-							        "    </div>\n" +
-							        "</div>",
-						    },
-							initialPreview: [
-						        "<img src='<?php echo base_url();?>assets/img/Nasi-Goreng.jpg' class='file-preview-image img-responsive' alt='abid' title='Abid'>",
-						    ],
-						    overwriteInitial: true,
-						    maxFileSize: 500,
-						});
-						</script>
+					<input id="photo-profile" type="file" data-src="<?php echo base_url()?>{edit_profile_photo}" class="file-loading" data-id='{edit_profile_id}' data-title="{edit_profile_title}" accept="image/*" >
 				</div>
 				<div class="col-md-12">
 					<div class="form-group">

@@ -8,7 +8,7 @@
 			  		<div class="col-md-4">
 			  			<div class="col-md-12 col-no-padding">
 			  				<h4 class="page-header-title">Photo Recipe</h4>
-			  				<input id="image-recipe" name="photo-recipe" data-src="<?php echo base_url()?>{edit_recipe_photo}" class="file-loading" multiple=false type="file" accept="image/*" >
+			  				<input id="image-recipe" name="photo-recipe" data-src="<?php echo base_url()?>{edit_recipe_photo}" class="file-loading" data-id='{edit_recipe_id}' data-title="{edit_recipe_title}" multiple=false type="file" accept="image/*" >
 			  			</div>
 			  			<div class="col-md-12 col-no-padding" style="margin-top:15px">
 			  				<h4 class="page-header-title">Description Recipe</h4>
