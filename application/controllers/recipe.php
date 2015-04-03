@@ -38,6 +38,7 @@ class Recipe extends CI_Controller {
 				array_push($steps, $temp);
 			}
 			$data = array(
+						'edit_recipe_id' => $id,
 						'edit_recipe_title' => $r->name,
 						'edit_recipe_portion' => $r->portion,
 						'edit_recipe_description' => $r->description,
@@ -62,26 +63,34 @@ class Recipe extends CI_Controller {
 		$description = $this->input->post("recipe_description");
 		$portion = $this->input->post("recipe_portion");
 		$duration = $this->input->post("recipe_duration");
-		$n = (int) $this->input->post("n");
+
+		$subjek =  $this->input->post("ingredient_subject");
+		// print_r($subjek);
+		// die;
+		$quantity =  $this->input->post("ingredient_quantity");
+		$unit =  $this->input->post("ingredient_unit");
 		$ingredients = array();
-		for ($i=0; $i < $n; $i++) { 
-			$temp['bahan'] = $this->input->post("bahan".$i."");
-			$temp['takaran'] = $this->input->post("takaran".$i."");
-			$temp['unit'] = $this->input->post("unit".$i."");
+		for ($i=0; $i < sizeof($subjek) ; $i++) { 
+			$temp['name'] = $subjek[$i];
+			$temp['quantity'] = $quantity[$i];
+			$temp['units'] = $unit[$i];
 			array_push($ingredients, $temp);
 		}
-		$m = (int) $this->input->post("m");
+		
+		$description =  $this->input->post("step-description");
+		$poto =  $this->input->post("photo-step");
 		$steps = array();
-		for ($i=0; $i < $m; $i++) { 
-			$temp['no_step'] = $i+1;
-			$temp['description'] = $this->input->post("description".$i."");
-			$temp['photo'] = $this->input->post("photo".$i."");
+		for ($i=0; $i < sizeof($description); $i++) { 
+			$temp['description'] = $description[$i];
 			array_push($steps, $temp);
 		}
-		$recipe->saveRecipe($id, $name, $portion, $duration, $description, $last_update, $ingredients, $steps);
-		
-		$this->load->model('viewer');
-		$this->viewer->show('coba_top_recipe', ($SUCCESS=1));
+
+		$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, NULL, $ingredients, $steps);
+		if($isSuccess === false){
+			echo "gagal";
+		} else{
+			echo "berhasil";
+		}
 	}
 
 	// 

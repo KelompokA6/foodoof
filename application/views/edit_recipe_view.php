@@ -4,7 +4,7 @@
 	  		<h2 class="page-header-title text-capitalize"> Edit Recipe<!-- {edit_recipe_action} bisa Edit atau pun Create-->
 	  			<div id="id-recipe" data-id={edit_recipe_id} class="hidden"></div>
 	  		</h2>
-	  		<form action="<?php echo base_url()?>recipe/saveRecipe/{edit_recipe_id}" method="POST" role="form">
+	  		<form action="<?php echo base_url()?>recipe/save/{edit_recipe_id}" method="POST" role="form">
 	  			<div class="col-md-12 page-header-title col-no-padding">
 			  		<div class="col-md-4">
 			  			<div class="col-md-12 col-no-padding">
@@ -121,7 +121,7 @@
 									      		<textarea class="form-control" rows="6" name="step-description[]" placeholder="Steps">{edit_recipe_step_description}</textarea>
 									    	</div>
 									    	<div class="col-sm-4 col-xs-5">
-									      		<input class="image-steps" name="photo-step" data-src="<?php echo base_url()?>{edit_recipe_step_photo}" index='{edit_recipe_step_no_step}' data-title="{edit_recipe_step_title}" type="file" accept="image/*" >
+									      		<input class="image-steps" name="photo-step[]" data-src="<?php echo base_url()?>{edit_recipe_step_photo}" index='{edit_recipe_step_no_step}' data-title="{edit_recipe_step_title}" type="file" accept="image/*" >
 									    	</div>
 									    </div>
 							    	</div>
