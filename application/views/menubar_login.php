@@ -37,8 +37,6 @@
                   <input type="radio" id="ex1_3" name="ex1" value="Account">
                     <label for="ex1_3">Account</label>
                 </li>
-                <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ingredient</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Account</a></li> -->
               </ul>
             </div>
             <span class="btn-group">

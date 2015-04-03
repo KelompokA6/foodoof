@@ -7,7 +7,11 @@ class Tempview extends CI_Controller {
 		$this->load->library('parser');
 		$data = array("recipe_author_id"=> 1);
 		$menubar = $this->parser->parse('menubar', $data, TRUE);
-		$content_website = $this->parser->parse('recipe_view', $data, TRUE);
+		$data1 = array("recipe_category_entries"=> array(
+												array("recipe_category"=> "Pedas"), 
+												array("recipe_category"=> "Chinese Food")),
+		);
+		$content_website = $this->parser->parse('recipe_view', $data1, TRUE);
 		$data = array(
 					"menubar" => $menubar,
 					"content_website" => $content_website,

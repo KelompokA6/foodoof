@@ -6964,3 +6964,13 @@ button.close {
   margin: 10px 0 20px;
   border-bottom: 2px solid #eee;
 }
+.border-right{
+  border:2px dashed rgba(56,150,211,1); 
+  border-left:0; 
+  border-top:0; 
+  border-bottom:0;
+}
+.category-recipe-list{
+  height: 30px;
+  line-height: 30px;
+}

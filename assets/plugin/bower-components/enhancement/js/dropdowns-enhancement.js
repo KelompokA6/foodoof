@@ -10,11 +10,11 @@
 
     var toggle   = '[data-toggle="dropdown"]',
         disabled = '.disabled, :disabled',
-        backdrop = '.dropdown-backdrop-enhancement',
-        menuClass = 'dropdown-menu-enhancement',
-        subMenuClass = 'dropdown-submenu-enhancement',
-        namespace = '.bs.dropdown.data-api-enhancement',
-        eventNamespace = '.bs.dropdown-enhancement',
+        backdrop = '.dropdown-backdrop',
+        menuClass = 'dropdown-menu',
+        subMenuClass = 'dropdown-submenu',
+        namespace = '.bs.dropdown.data-api',
+        eventNamespace = '.bs.dropdown',
         openClass = 'open',
         touchSupport = 'ontouchstart' in document.documentElement,
         opened;

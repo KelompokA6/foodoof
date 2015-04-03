@@ -1,3 +1,10 @@
+<div class="col-md-12 col-xs-12 page-header-title" style="margin-bottom:10px">
+		{recipe_category_entries}
+		<div class="col-md-2 col-xs-4 border-right category-recipe-list text-center">
+			<a href='<?php echo base_url();?>home/category?category={recipe_category}'><h4>{recipe_category}</h4></a>
+		</div>
+		{/recipe_category_entries}
+	</div>
 <div class="col-md-12">
 	<div class="panel panel-default">
 	  	<div class="panel-body">
@@ -49,7 +56,7 @@
 						<button class="btn button-default col-md-12"><i class="fa fa-share-alt pull-left fa-inverse icons"></i>  Share</button>
 					</div>
 					<div class="col-md-6" style="padding-left:5px">
-						<button class="btn button-default col-md-12"><i class="fa fa-mail-forward pull-left fa-inverse icons"></i>  Report</button>
+						<button class="btn button-default col-md-12"><i class="fa fa-flag pull-left fa-inverse icons"></i>  Report</button>
 					</div>
 				</div>
 				<div class="col-md-12 col-no-padding text-center" style="margin-top:5px">

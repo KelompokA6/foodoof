@@ -25,16 +25,16 @@
               </button>
               <ul class="dropdown-menu dropdown-search bullet pull-center">
                 <li>
-                  <input type="radio" id="searchByTitle" name="ex1" value="Title" checked>
-                    <label for="searchByTitle">Title</label>
+                  <input type="radio" id="ex1_1" name="ex1" value="Title" checked>
+                    <label for="ex1_1">Title</label>
                 </li>
                 <li>
-                  <input type="radio" id="searchByIngredient" name="ex1" value="Ingredient">
-                    <label for="searchByIngredient">Ingredient</label>
+                  <input type="radio" id="ex1_2" name="ex1" value="Ingredient">
+                    <label for="ex1_2">Ingredient</label>
                 </li>
                 <li>
-                  <input type="radio" id="searchByAccount" name="ex1" value="Account">
-                    <label for="searchByAccount">Account</label>
+                  <input type="radio" id="ex1_3" name="ex1" value="Account">
+                    <label for="ex1_3">Account</label>
                 </li>
               </ul>
             </div>
