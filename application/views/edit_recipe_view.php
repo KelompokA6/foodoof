@@ -16,6 +16,46 @@
 			  					<textarea class="form-control" rows="6" placeholder="Description of your recipe">{edit_recipe_description}</textarea>
 			  				</div>
 			  			</div>
+			  			<div class="col-md-12 col-xs-12 col-no-padding" style="margin-top:15px">
+				  			<h4 class="page-header-title">Category</h4>
+							<div class="col-md-12 col-xs-12 col-no-padding">
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox1" value="Pedas"> Pedas
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox2" value="Sayur"> Sayur
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox3" value="Daging"> Daging
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox1" value="Seafood"> Seafood
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox1" value="Chinese Food"> Chinese Food
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox1" value="French Food"> French Food
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox1" value="Other" checked> Other
+									</label>
+								</div>
+							</div>
+						</div>
 			  		</div>
 			  		<div class="col-md-8 col-no-padding-left edit-info">
 			  			<h4 class="page-header-title h4-mobile">Information Recipe</h4>
@@ -62,31 +102,6 @@
 						    	<div class="col-sm-1 col-xs-1 col-no-padding-left" style="padding:2.5px">
 						      		<i class="fa fa-plus fa-2x icon-default" title="add ingredient"></i> 
 							    </div>
-							</div>
-						</div>
-						<h4 class="page-header-title">Category</h4>
-						<div class="col-md-12">
-							<div class="form-group">
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox1" value="option1"> Pedas
-								</label>
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox2" value="option2"> Sayur
-								</label>
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox3" value="option3"> Daging
-								</label>
-							</div>
-							<div class="form-group">
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox1" value="option1"> Seafood
-								</label>
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox2" value="option2"> Chinese Food
-								</label>
-								<label class="checkbox-inline">
-								  	<input type="checkbox" id="inlineCheckbox3" value="option3"> French Food
-								</label>
 							</div>
 						</div>
 			  		</div>

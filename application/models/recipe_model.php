@@ -317,6 +317,40 @@ class Recipe_model extends DataMapper {
     }
 
     /*
+        Digunakan untuk memperoleh resep berdasarkan category, dengan parameter input limit resep yang ingin ditampilkan 
+        dan parameter category. kembalian list resep dan jumlah yang berada resep pada kategori tersebut di database
+    */
+    function getCategoryRecipe($category = "other", $limit=10, $offset=0){
+        $arrResult = array();
+        $category = new Category();
+        $category->ilike('name', $other)->order_by("recipe_id", "asc")->get();
+        foreach ($category as $categories){
+            if($x >= $offset && $limit > 0){
+                $recipes = new Recipe_model();
+                $recipes->get_by_id($categories->recipe_id);
+                $data = new stdClass();
+                $data->id = $recipes->id;
+                $data->name = $recipes->name;
+                $data->description = $recipes->description;
+                $data->portion = $recipes->portion;
+                $data->duration = $recipes->duration;
+                $data->author = $recipes->author;
+                $data->create_date = $recipes->create_date;
+                $data->last_update = $recipes->last_update;
+                $data->rating = $recipes->rating;
+                $data->status = $recipes->status;
+                $data->views = $recipes->views;
+                $data->photo = $recipes->photo;
+                $data->highlight = $recipes->highlight;
+                array_push($arrResult, $data);
+                $limit--;
+            }
+        }
+        $arrResult["total"] = $x;
+        return $arrResult;
+    }
+
+    /*
         Digunakan untuk memperoleh resep-resep yang dimiliki oleh sebuah user.
     */
     function getUserRecipe($userId, $limit=10, $offset=0){
