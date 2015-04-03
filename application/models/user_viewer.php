@@ -160,6 +160,8 @@ class User_viewer extends CI_Model
         array(
             'edit_profile_id' => '',
             'edit_profile_name' => $profile->name,
+            'edit_profile_photo' => $profile->photo,
+            'edit_profile_title' => $profile->name."'s photo",
             'edit_profile_male' => $profile->gender == 'M' ? 'checked' : '',
             'edit_profile_female' => $profile->gender == 'F' ? 'checked' : '',
             'edit_profile_birth_date' => (new DateTime($profile->bdate))->format('Y-m-d'),
