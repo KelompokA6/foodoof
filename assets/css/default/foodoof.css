@@ -388,3 +388,19 @@
   height: 30px;
   line-height: 30px;
 }
+.ingredient-item{
+  margin: 10px 0 10px 0;
+}
+.step-item{
+  margin: 10px 0 10px 0; 
+}
+#add-and-remove-btn-ingredient{
+  position: absolute;
+  bottom:5px;
+  right: 0;
+}
+#add-and-remove-btn-step{
+  position: absolute;
+  bottom:60px;
+  right: 0;
+}

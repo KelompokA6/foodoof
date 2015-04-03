@@ -44,9 +44,9 @@
 	<div class="col-md-12 col-xs-12 col-no-padding-left profile-info">
 		<div class="col-md-1 col-xs-2 col-no-padding-left">
 			<span class="fa-stack fa-lg">
-		  <i class="fa fa-square fa-stack-2x icon-default"></i>
-		  <i class="fa fa-clock-o fa-stack-1x fa-inverse"></i>
-		</span>
+			  	<i class="fa fa-square fa-stack-2x icon-default"></i>
+			  	<i class="fa fa-clock-o fa-stack-1x fa-inverse"></i>
+			</span>
 		</div>
 		<div class="col-md-11 col-xs-10 col-no-padding-left">
 			<h4>{profile_user_last_access}</h4>
