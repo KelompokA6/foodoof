@@ -389,10 +389,10 @@
   line-height: 30px;
 }
 .ingredient-item{
-  margin: 10px 0 10px 0;
+  margin: 5px 0 5px 0;
 }
 .step-item{
-  margin: 10px 0 10px 0; 
+  margin: 5px 0 5px 0; 
 }
 #add-and-remove-btn-ingredient{
   position: absolute;
