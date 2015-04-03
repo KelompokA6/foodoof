@@ -125,11 +125,11 @@ class Recipe_model extends DataMapper {
             if(!$rcpSave->where('id', $id)->update($arrUpdate)){
                 return FALSE;
             }
-            $data = read_file("assets/tmp/recipe/".$id.".jpg");
-            if(!write_file("assets/recipe/".$id.".jpg", $data)){
+            $data = read_file("./images/tmp/recipe/".$id.".jpg");
+            if(!write_file("./images/recipe/".$id.".jpg", $data)){
                 return false;
             }
-            unlink("assets/tmp/recipe/".$id."-".$x."jpg");
+            unlink("./images/tmp/recipe/".$id."-".$x."jpg");
             $this->trans_begin();
             if(is_array($ingredients)){
                 $ingres = new Ingredient();
@@ -166,17 +166,17 @@ class Recipe_model extends DataMapper {
                 $stp->delete();
                 foreach ($steps as $step) {
                     $stp = new Step();
-                    if(file_exists("assets/tmp/step/".$id."-".$x.".jpg")){
-                        $stp->photo = "assets/step/".$id."-".$x.".jpg";
+                    if(file_exists("./images/tmp/step/".$id."-".$x.".jpg")){
+                        $stp->photo = "./images/step/".$id."-".$x.".jpg";
                         $stp->recipe_id = $id;
                         $stp->description = $step["description"];
                         $stp->step = $x;
                         if($stp->save()){
-                            $data = read_file("assets/tmp/step/".$id."-".$x.".jpg");
-                            if(!write_file("assets/step/".$id."-".$x.".jpg", $data)){
+                            $data = read_file("./images/tmp/step/".$id."-".$x.".jpg");
+                            if(!write_file("./images/step/".$id."-".$x.".jpg", $data)){
                                 return false;
                             }
-                            unlink("assets/tmp/step/".$id."-".$x.".jpg");
+                            unlink("./images/tmp/step/".$id."-".$x.".jpg");
                         }
                     }
                     $x += 1;
@@ -187,17 +187,17 @@ class Recipe_model extends DataMapper {
                 $stp->get_by_id($id);
                 $stp->delete();
                 $stp = new Step();
-                if(file_exists("assets/tmp/step/".$id."-".$x."jpg")){
-                    $stp->photo = "assets/step/".$id."-".$x."jpg";
+                if(file_exists("./images/tmp/step/".$id."-".$x."jpg")){
+                    $stp->photo = "./images/step/".$id."-".$x."jpg";
                     $stp->recipe_id = $id;
                     $stp->description = $step["description"];
                     $stp->step = '1';
                     if($stp->save()){
-                        $data = read_file("assets/tmp/step/".$id."-1.jpg");
-                        if(!write_file("assets/step/".$id."-".$x."-1.jpg", $data)){
+                        $data = read_file("./images/tmp/step/".$id."-1.jpg");
+                        if(!write_file("./images/step/".$id."-".$x."-1.jpg", $data)){
                             return false;
                         }
-                        unlink("assets/tmp/step/".$id."-".$x."jpg");
+                        unlink("./images/tmp/step/".$id."-".$x."jpg");
                     }
                 }
             }
@@ -319,26 +319,31 @@ class Recipe_model extends DataMapper {
     /*
         Digunakan untuk memperoleh resep-resep yang dimiliki oleh sebuah user.
     */
-    function getUserRecipe($userId){
+    function getUserRecipe($userId, $limit=10, $offset=0){
         $recipe = new Recipe_model();
         $recipe->get_by_author($userId);
         $arrResult = array();
+        $x = 0;
         foreach ($recipe as $recipes) {
-            $data = new stdClass();
-            $data->id = $recipes->id;
-            $data->name = $recipes->name;
-            $data->description = $recipes->description;
-            $data->portion = $recipes->portion;
-            $data->duration = $recipes->duration;
-            $data->author = $recipes->author;
-            $data->create_date = $recipes->create_date;
-            $data->last_update = $recipes->last_update;
-            $data->rating = $recipes->rating;
-            $data->status = $recipes->status;
-            $data->views = $recipes->views;
-            $data->photo = $recipes->photo;
-            $data->highlight = $recipes->highlight;
-            array_push($arrResult, $data);
+            if($x >= $offset && $limit > 0){
+                $data = new stdClass();
+                $data->id = $recipes->id;
+                $data->name = $recipes->name;
+                $data->description = $recipes->description;
+                $data->portion = $recipes->portion;
+                $data->duration = $recipes->duration;
+                $data->author = $recipes->author;
+                $data->create_date = $recipes->create_date;
+                $data->last_update = $recipes->last_update;
+                $data->rating = $recipes->rating;
+                $data->status = $recipes->status;
+                $data->views = $recipes->views;
+                $data->photo = $recipes->photo;
+                $data->highlight = $recipes->highlight;
+                array_push($arrResult, $data);
+                $limit--;
+            }
+            $x++;
         }
         return $arrResult;
     }
