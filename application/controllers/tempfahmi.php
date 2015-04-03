@@ -46,15 +46,12 @@ class Tempfahmi extends CI_Controller {
 				array_push($steps, $temp);
 			}
 			$data = array(
-						'recipe_name' => $r->name,
-						'recipe_portion' => $r->portion,
-						'recipe_duration' => $r->duration,
-						'recipe_author_id' => $r->author,
-						'recipe_author_name' => $user->getProfile($r->author)->name,
-						'recipe_last_update' => substr($r->last_update, 0, -8),
+						'edit_recipe_title' => $r->name,
+						'edit_recipe_portion' => $r->portion,
+						'edit_recipe_description' => $r->description,
+						'edit_recipe_uration' => $r->duration,
 						'edit_recipe_ingredient_entries' => $ingre,
 						'edit_recipe_step_entries' => $steps,
-						'recipe_rating' => $r->rating,
 					);
 			$content_website = $this->parser->parse('edit_recipe_view', $data, TRUE);
 			$data = array(
