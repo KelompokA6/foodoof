@@ -141,7 +141,9 @@ class Recipe extends CI_Controller {
 		$r = $recipe->getRecipeProfile($id);
 		$data = array();
 		$this->load->library('parser');
-		$menubar = $this->parser->parse('menubar_login', $data, TRUE);
+		// $menubar = $this->parser->parse('menubar_login', $data, TRUE);
+		$this->load->model('home_viewer');
+		$menubar = $this->home_viewer->getMenubar();
 		$ingre = array();
 		foreach ($r->ingredients as $obj) {
 			$temp = array(
@@ -166,7 +168,7 @@ class Recipe extends CI_Controller {
 					'recipe_name' => $r->name,
 					'recipe_portion' => $r->portion,
 					'recipe_duration' => $r->duration,
-					'recipe_author_name' => $user->getProfile($r->author)['name'],
+					'recipe_author_name' => $user->getProfile($r->author)->name,
 					'recipe_last_update' => substr($r->last_update, 0, -8),
 					'recipe_ingredients' => $ingre,
 					'recipe_steps' => $steps,
