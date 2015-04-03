@@ -22,37 +22,37 @@
 							<div class="col-md-12 col-xs-12 col-no-padding">
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Pedas"> Pedas
+									  	<input type="checkbox" name="category[]" value="Pedas"> Pedas
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox2" value="Sayur"> Sayur
+									  	<input type="checkbox" name="category[]" value="Sayur"> Sayur
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox3" value="Daging"> Daging
+									  	<input type="checkbox" name="category[]" value="Daging"> Daging
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Seafood"> Seafood
+									  	<input type="checkbox" name="category[]" value="Seafood"> Seafood
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Chinese Food"> Chinese Food
+									  	<input type="checkbox" name="category[]" value="Chinese Food"> Chinese Food
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="French Food"> French Food
+									  	<input type="checkbox" name="category[]" value="French Food"> French Food
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Other" checked> Other
+									  	<input type="checkbox" name="category[]" value="Other" checked> Other
 									</label>
 								</div>
 							</div>
