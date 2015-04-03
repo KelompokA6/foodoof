@@ -122,7 +122,6 @@ class User extends CI_Controller {
 					$message = 'failed';
 			} else $message = 'invalid';
 		}
-		// modaro
 		$profile = $this->user_model->getProfile($id);
 		$profile->message = $message;
 		$this->user_viewer->showEditProfile($profile);
