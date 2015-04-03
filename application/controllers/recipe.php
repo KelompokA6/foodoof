@@ -59,10 +59,9 @@ class Recipe extends CI_Controller {
 	public function save($id){
 		$recipe = new Recipe_model();
 		$name = $this->input->post("recipe_title");
-		$description = $this->input->post("description");
+		$description = $this->input->post("recipe_description");
 		$portion = $this->input->post("recipe_portion");
 		$duration = $this->input->post("recipe_duration");
-		$author = $this->input->post("author");
 		$n = (int) $this->input->post("n");
 		$ingredients = array();
 		for ($i=0; $i < $n; $i++) { 
