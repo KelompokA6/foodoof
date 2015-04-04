@@ -70,7 +70,7 @@
 		        if($user_timeline_recipe_page_size - $user_timeline_recipe_page_now == ($user_timeline_recipe_page_size-1)){
 		            echo "disabled";
 		          }
-		        echo "'><a href='".base_url()."user/timeline/{user_timeline_id}?page=".($search_by_title_recipe_page_now - 1)."' aria-label='Previous'>
+		        echo "'><a href='".base_url()."user/timeline/{user_timeline_id}?page=".($user_timeline_recipe_page_now - 1)."' aria-label='Previous'>
 		            <span aria-hidden='true'>&laquo;</span>
 		          </a></li>";
 		        for ($i=1; $i <= $user_timeline_recipe_page_size ; $i++) { 
@@ -88,7 +88,7 @@
 		        if($user_timeline_recipe_page_size == $user_timeline_recipe_page_now){
 		            echo "disabled";
 		          }
-		        echo "'><a href='".base_url()."user/timeline/{user_timeline_id}?page=".($search_by_title_recipe_page_now + 1)."' aria-label='Next'>
+		        echo "'><a href='".base_url()."user/timeline/{user_timeline_id}?page=".($user_timeline_recipe_page_now + 1)."' aria-label='Next'>
 		            <span aria-hidden='true'>&raquo;</span>
 		          </a></li>
 		          </ul>
