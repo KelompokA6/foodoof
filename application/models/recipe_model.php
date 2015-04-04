@@ -75,7 +75,7 @@ class Recipe_model extends DataMapper {
         if(!empty($user_id)){
             $this->author = $user_id;
         }
-        else if(empty($user_id)){{
+        else if(empty($user_id)){
             $this->author = $this->session->userdata('user_id');   
         }
         if(!empty($this->author)){
