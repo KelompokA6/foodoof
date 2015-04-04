@@ -69,6 +69,10 @@ class Tempview extends CI_Controller {
         $ingre->units = "kg";
         echo $ingre->skip_validation->save();
 	}
+	public function deleteCategory(){
+		$rcp = new Recipe_model();
+		echo $rcp->deleteCategory('2', 'pedas');
+	}
 	public function search(){
 		$recipe = new Recipe_model();
 		print_r($recipe->searchRecipeByTitle('ayam', 10, 0));

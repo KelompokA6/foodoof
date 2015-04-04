@@ -4,7 +4,7 @@ class Conversation extends DataMapper {
 
     var $table = "conversations"; 
     //var $has_many = array('ingredient', 'comments', 'category');
-    var $has_one = array('user_model');
+    var $has_one = array('user');
 
     var $validation = array(
         'user_id' => array(

@@ -4,7 +4,7 @@ class Step extends DataMapper {
 
     var $table = "steps"; 
     //var $has_many = array('ingredient', 'comments', 'category');
-    var $has_one = array('recipe_model');
+    var $has_one = array('recipe');
 
     var $validation = array(
         'recipe_id' => array(

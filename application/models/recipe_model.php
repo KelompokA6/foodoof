@@ -726,6 +726,7 @@ class Recipe_model extends DataMapper {
             $categorytmp = new Category();
             $categorytmp->where('recipe_id', $id);
             $categorytmp->ilike('name', strtolower($category));
+            $categorytmp->get_by_recipe_id($id);
             return $categorytmp->delete();
         }
         else{

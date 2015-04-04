@@ -3,7 +3,7 @@
 class Rating extends DataMapper {
 
     var $table = "rating"; 
-    var $has_one = array('user_model','recipe_model');
+    var $has_one = array('user','recipe');
 
     function __construct($recipe_id = NULL, $user_id=NULL)
     {

@@ -273,7 +273,7 @@ class DataMapper implements IteratorAggregate {
 	 * set to FALSE if you RDBMS takes care of this using constraints
 	 * @var bool
 	 */
-	public $cascade_delete = TRUE;
+	public $cascade_delete = FALSE;
 	/**
 	 * Contains the database fields for this object.
 	 * ** Automatically configured **
