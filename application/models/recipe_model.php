@@ -138,10 +138,13 @@ class Recipe_model extends DataMapper {
             }
             $this->trans_begin();
             if(is_array($ingredients)){
+                $rcp = new Recipe_model();
+                $rcp->get_by_id($id);
                 $ingres = new Ingredient();
                         // die('------------');
-                $ingres->where("recipe_id", $id)->get();
-                $ingres->delete();
+                echo "bahan array";
+                //$ingres->where("recipe_id", $id)->get();
+                $ingres->delete($rcp);
                 foreach ($ingredients as $ingredient) {
                     $ingre = new Ingredient();
                     $ingre->recipe_id = $id;
@@ -154,6 +157,7 @@ class Recipe_model extends DataMapper {
                 }
             }
             if(!is_array($ingredients)){
+                echo "bahan bukan array";
                 $ingres = new Ingredient();
                 $ingres->where("recipe_id", $id)->get();
                 $ingres->delete();

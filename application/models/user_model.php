@@ -3,7 +3,7 @@
 class User_model extends DataMapper {
 
     var $table = "users"; 
-    var $has_many = array('recipe', 'comment', 'conversation', 'conversation_list');
+    var $has_many = array('recipe_model', 'comment', 'conversation', 'conversation_list');
 
     function login($email, $password)
     {

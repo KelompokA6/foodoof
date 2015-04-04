@@ -4,7 +4,7 @@ class Ingredient extends DataMapper {
 
     var $table = "ingredients"; 
     //var $has_many = array('ingredient', 'comments', 'category');
-    var $has_one = array('recipe');
+    var $has_one = array('recipe_model');
 
     var $validation = array(
         'recipe_id' => array(

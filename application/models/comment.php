@@ -4,7 +4,7 @@ class Comment extends DataMapper {
 
     var $table = "comments"; 
     //var $has_many = array('ingredient', 'comments', 'category');
-    var $has_one = array('recipe', 'user');
+    var $has_one = array('recipe_model', 'user_model');
 
     var $validation = array(
         'user_id' => array(

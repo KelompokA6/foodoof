@@ -4,7 +4,7 @@ class Category extends DataMapper {
 
     var $table = "categories"; 
     //var $has_many = array('ingredient', 'comments', 'category');
-    var $has_one = array('recipe');
+    var $has_one = array('recipe_model');
 
     var $validation = array(
         'recipe_id' => array(
