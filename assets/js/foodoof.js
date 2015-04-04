@@ -1,65 +1,6 @@
 $( document ).ready(function() {
-	/*
-	script for init fileinput of step's photo
-	*/
-	var index = 0;
-	$(".image-steps").click(function(){
-		index = $(".image-steps").index(this)+1;
-	});
-	$recipeId = $("#image-recipe").data("id");
-	$input = $(".image-steps");
-	$input.each(function(i){
-		$(this).fileinput({
-			previewFileType: "image",
-			browseClass: "btn button-default btn-block",
-			browseLabel: "  Pick Image",
-			browseIcon: '<i class="fa fa-image"> </i>',
-			showCaption: false,
-			showRemove: false,
-			showUpload: false,
-			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
-			uploadAsync: false,	
-			previewTemplates: {
-		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
-	        "   <img src='{data}' class='file-preview-image img-responsive' title='{caption}' alt='{caption}'>\n" +
-	        "   {footer}\n" +
-	        "</div>\n",
-		    },
-		    layoutTemplates:{
-		    	preview: "<div class='file-preview {class}''>\n" +
-			        "    <div class='close fileinput-remove' style='display:none'>&times;</div>\n" +
-			        "    <div class=''>\n" +
-			        "    <div class='file-preview-thumbnails'>\n" +
-			        "    </div>\n" +
-			        "    <div class='clearfix'></div>" +
-			        "    <div class='file-preview-status text-center text-success'></div>\n" +
-			        "    <div class='kv-fileinput-error'></div>\n" +
-			        "    </div>\n" +
-			        "</div>",
-			    progress: '<div class="progress" style="display:none;">\n' +
-			        '    <div class="{class}" role="progressbar" aria-valuenow="{percent}" aria-valuemin="0" aria-valuemax="100" style="width:{percent}%;">\n' +
-			        '        {percent}%\n' +
-			        '     </div>\n' +
-			        '</div>',
-		    },
-			initialPreview: [
-	        	"<img src='"+$(".image-steps[index='"+(i+1)+"']").data("src")+"' class='file-preview-image img-responsive' alt='"+$(".image-steps[index='"+(i+1)+"']").data("title")+"' title='"+$(".image-steps[index='"+(i+1)+"']").data("title")+"'>",
-	    	],
-		    uploadExtraData:
-		    		function() {
-					    return {
-					       no_step: index,
-					    };
-					}
-		    ,
-		    overwriteInitial: true,
-		    maxFileSize: 500,
-		}).on("filebatchselected", function(event, files) {
-	    	// trigger upload method immediately after files are selecte
-	    	$(this).fileinput("upload");
-		});
-	});
 	
+	$recipeId = $("#image-recipe").data("id");
 	/*
 	script for init fileinput of user's photo
 	*/
@@ -154,6 +95,144 @@ $( document ).ready(function() {
     	$photoRecipe.fileinput("upload");
 	});
 
+	/*
+	script for init fileinput of step's photo
+	*/
+	var index = 0;
+	$(".image-steps").click(function(){
+		index = $(".image-steps").index(this)+1;
+	});
+	$input = $(".image-steps");
+	$input.each(function(i){
+		$(this).fileinput({
+			previewFileType: "image",
+			browseClass: "btn button-default btn-block",
+			browseLabel: "  Pick Image",
+			browseIcon: '<i class="fa fa-image"> </i>',
+			showCaption: false,
+			showRemove: false,
+			showUpload: false,
+			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
+			uploadAsync: false,	
+			previewTemplates: {
+		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
+	        "   <img src='{data}' class='file-preview-image img-responsive' title='{caption}' alt='{caption}'>\n" +
+	        "   {footer}\n" +
+	        "</div>\n",
+		    },
+		    layoutTemplates:{
+		    	preview: "<div class='file-preview {class}''>\n" +
+			        "    <div class='close fileinput-remove' style='display:none'>&times;</div>\n" +
+			        "    <div class=''>\n" +
+			        "    <div class='file-preview-thumbnails'>\n" +
+			        "    </div>\n" +
+			        "    <div class='clearfix'></div>" +
+			        "    <div class='file-preview-status text-center text-success'></div>\n" +
+			        "    <div class='kv-fileinput-error'></div>\n" +
+			        "    </div>\n" +
+			        "</div>",
+			    progress: '<div class="progress" style="display:none;">\n' +
+			        '    <div class="{class}" role="progressbar" aria-valuenow="{percent}" aria-valuemin="0" aria-valuemax="100" style="width:{percent}%;">\n' +
+			        '        {percent}%\n' +
+			        '     </div>\n' +
+			        '</div>',
+		    },
+			initialPreview: [
+	        	"<img src='"+$(".image-steps[index='"+(i+1)+"']").data("src")+"' class='file-preview-image img-responsive' alt='"+$(".image-steps[index='"+(i+1)+"']").data("title")+"' title='"+$(".image-steps[index='"+(i+1)+"']").data("title")+"'>",
+	    	],
+		    uploadExtraData:
+		    		function() {
+					    return {
+					       no_step: index,
+					    };
+					}
+		    ,
+		    overwriteInitial: true,
+		    maxFileSize: 500,
+		}).on("filebatchselected", function(event, files) {
+	    	// trigger upload method immediately after files are selecte
+	    	$(this).fileinput("upload");
+		});
+	});
+
+	/*
+	init ingredient if create recipe
+	*/
+	$countIngredient = $(".ingredient-item").length;
+	if($countIngredient<1){
+		$colAddRemoveBtnIngredient = $("#add-and-remove-btn-ingredient").clone();
+		$ingredientItemFirst = "<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'><div class='col-sm-6 col-xs-6'><input type='text' value='' name='ingredient_subject[]' class='form-control' placeholder='Ingredient Name'></div><div class='col-sm-3 col-xs-3 col-no-padding-left'><input type='text' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'></div><div class='col-sm-3 col-xs-3 col-no-padding-left'><input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'></div></div>";
+		$("#add-and-remove-btn-ingredient").remove();
+		$("#ingredient-entry").append($ingredientItemFirst);
+		$("#ingredient-entry").append($colAddRemoveBtnIngredient);
+	}
+	$(".ingredient-item:first > div > input").each(function(i){
+		$(this).attr("required", true);
+	});
+
+	/*
+	init step if create recipe
+	*/
+	$countStep = $(".step-item").length;
+	if($countStep < 1){
+		$colAddRemoveBtnStep = $("#add-and-remove-btn-step").clone();
+		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'><div class='col-sm-8 col-xs-7 col-no-padding-right'><textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'>Description step</textarea></div><div class='col-sm-4 col-xs-5'><input class='image-steps' name='photo-step' data-src='../assets/img/01.jpg' index='1' data-title='new step' type='file' accept='image/*'></div></div>";
+		$("#add-and-remove-btn-step").remove();
+		$("#ingredient-entry").append($stepItem);
+		$("#ingredient-entry").append($colAddRemoveBtnStep);
+		$inputStepFirst = $(".image-steps[index='1']");
+		$inputStepFirst.fileinput({
+			previewFileType: "image",
+			browseClass: "btn button-default btn-block",
+			browseLabel: "  Pick Image",
+			browseIcon: '<i class="fa fa-image"> </i>',
+			showCaption: false,
+			showRemove: false,
+			showUpload: false,
+			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
+			uploadAsync: false,	
+			previewTemplates: {
+		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
+	        "   <img src='{data}' class='file-preview-image img-responsive' title='{caption}' alt='{caption}'>\n" +
+	        "   {footer}\n" +
+	        "</div>\n",
+		    },
+		    layoutTemplates:{
+		    	preview: "<div class='file-preview {class}''>\n" +
+			        "    <div class='close fileinput-remove' style='display:none'>&times;</div>\n" +
+			        "    <div class=''>\n" +
+			        "    <div class='file-preview-thumbnails'>\n" +
+			        "    </div>\n" +
+			        "    <div class='clearfix'></div>" +
+			        "    <div class='file-preview-status text-center text-success'></div>\n" +
+			        "    <div class='kv-fileinput-error'></div>\n" +
+			        "    </div>\n" +
+			        "</div>",
+			    progress: '<div class="progress" style="display:none;">\n' +
+			        '    <div class="{class}" role="progressbar" aria-valuenow="{percent}" aria-valuemin="0" aria-valuemax="100" style="width:{percent}%;">\n' +
+			        '        {percent}%\n' +
+			        '     </div>\n' +
+			        '</div>',
+		    },
+			initialPreview: [
+	        	"<img src='"+$inputStepFirst.data("src")+"' class='file-preview-image img-responsive' alt='"+$inputStepFirst.data("title")+"' title='"+$inputStepFirst.data("title")+"'>",
+	    	],
+		    uploadExtraData:
+		    		function() {
+					    return {
+					       no_step: 0,
+					    };
+					}
+		    ,
+		    overwriteInitial: true,
+		    maxFileSize: 500,
+		}).on("filebatchselected", function(event, files) {
+	    	// trigger upload method immediately after files are selecte
+	    	$input.fileinput("upload");
+		});
+	}
+	$(".step-item:first > div > textarea").attr("required", true);
+
 	$('.typeahead').typeahead({ 
 		source : function(query, process) {
                 return ["Deluxe Bicycle", "Super Deluxe Trampoline", "Super Duper Scooter"];
@@ -207,7 +286,7 @@ $( document ).ready(function() {
 	});
 
 	/*
-	event for add ingredient
+	event for add step
 	*/
 	$countStep = $(".step-item").length;
 	if($countstep=1){
@@ -216,7 +295,7 @@ $( document ).ready(function() {
 	$colAddRemoveBtnStep = $("#add-and-remove-btn-step").clone();
 	$(document).on('click',"#add-step",function(){
 		$countStep++;
-		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'><div class='col-sm-12 col-xs-12 col-no-padding list-item-step'><div class='col-sm-8 col-xs-7 col-no-padding-right'><textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'>Description step</textarea></div><div class='col-sm-4 col-xs-5'><input class='image-steps' name='photo-step' data-src='../assets/img/01.jpg' index='"+$countStep+"' data-title='new step' type='file' accept='image/*'></div></div></div>";
+		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'><div class='col-sm-8 col-xs-7 col-no-padding-right'><textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'>Description step</textarea></div><div class='col-sm-4 col-xs-5'><input class='image-steps' name='photo-step' data-src='../assets/img/01.jpg' index='"+$countStep+"' data-title='new step' type='file' accept='image/*'></div></div>";
 		$("#add-and-remove-btn-step").remove();
 		$("#step-entry").append($stepItem);
 		$("#step-entry").append($colAddRemoveBtnStep);

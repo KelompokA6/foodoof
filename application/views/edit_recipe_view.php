@@ -115,14 +115,12 @@
 						    	<div id="step-entry" class="col-sm-10 col-xs-12 col-no-padding">
 						    		{edit_recipe_step_entries}
 							    	<div class="col-sm-10 col-xs-10 col-no-padding step-item">
-									    <div class="col-sm-12 col-xs-12 col-no-padding list-item-step">
-								    		<div class="col-sm-8 col-xs-7 col-no-padding-right">
-									      		<textarea class="form-control" rows="6" name="step-description[]" placeholder="Steps">{edit_recipe_step_description}</textarea>
-									    	</div>
-									    	<div class="col-sm-4 col-xs-5">
-									      		<input class="image-steps" name="photo-step[]" data-src="<?php echo base_url()?>{edit_recipe_step_photo}" index='{edit_recipe_step_no_step}' data-title="{edit_recipe_step_title}" type="file" accept="image/*" >
-									    	</div>
-									    </div>
+							    		<div class="col-sm-8 col-xs-7 col-no-padding-right">
+								      		<textarea class="form-control" rows="6" name="step-description[]" placeholder="Steps">{edit_recipe_step_description}</textarea>
+								    	</div>
+								    	<div class="col-sm-4 col-xs-5 col-no-padding-right">
+								      		<input class="image-steps" name="photo-step[]" data-src="<?php echo base_url()?>{edit_recipe_step_photo}" index='{edit_recipe_step_no_step}' data-title="{edit_recipe_step_title}" type="file" accept="image/*" >
+								    	</div>
 							    	</div>
 							    	{/edit_recipe_step_entries}
 						    		<div id="add-and-remove-btn-step" class="col-sm-2 col-xs-2 col-no-padding" style="padding:2.5px">
