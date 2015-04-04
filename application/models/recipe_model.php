@@ -140,8 +140,8 @@ class Recipe_model extends DataMapper {
             if(is_array($ingredients)){
                 $ingres = new Ingredient();
                         // die('------------');
-                $ingres->delete(array(
-                        'recipe_id' => $id,));
+                $ingres->where("recipe_id", $id)->get();
+                $ingres->delete();
                 foreach ($ingredients as $ingredient) {
                     $ingre = new Ingredient();
                     $ingre->recipe_id = $id;
@@ -155,8 +155,8 @@ class Recipe_model extends DataMapper {
             }
             if(!is_array($ingredients)){
                 $ingres = new Ingredient();
-                $ingres->delete(array(
-                        'recipe_id' => $id,));
+                $ingres->where("recipe_id", $id)->get();
+                $ingres->delete();
                 $ingre = new Ingredient();
                 $ingre->recipe_id = $id;
                 $ingre->name = $ingredients["name"];
@@ -169,8 +169,8 @@ class Recipe_model extends DataMapper {
             if(is_array($steps)){
                 $x=1;
                 $stp = new Step();
-                $stp->delete(array(
-                        'recipe_id' => $id,));
+                $stp->where("recipe_id", $id)->get();
+                $stp->delete();
                 foreach ($steps as $step) {
                     $stp = new Step();
                     if(file_exists("./images/tmp/step/".$id."-".$x.".jpg")){
@@ -196,8 +196,8 @@ class Recipe_model extends DataMapper {
             }
             if(!is_array($steps)){
                 $stp = new Step();
-                $stp->delete(array(
-                        'recipe_id' => $id,));
+                $stp->where("recipe_id", $id)->get();
+                $stp->delete();
                 $stp = new Step();
                 if(file_exists("./images/tmp/step/".$id."-".$x."jpg")){
                     $stp->photo = "images/step/".$id."-".$x."jpg";
