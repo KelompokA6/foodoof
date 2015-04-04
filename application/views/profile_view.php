@@ -63,7 +63,7 @@
 		</div>
 		<div class="col-md-11 col-xs-10 col-no-padding-left">
 			<a href="http://https://twitter.com/{profile_user_twitter}">
-				<h4>@{profile_user_twitter}</h4>
+				<h4>{profile_user_twitter}</h4>
 			</a>
 		</div>
 	</div>
