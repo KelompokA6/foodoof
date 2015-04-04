@@ -189,7 +189,7 @@ class Recipe_model extends DataMapper {
                         }
                     }
                     else{
-                        return false
+                        return false;
                     }
                     $x += 1;
                 }
@@ -217,7 +217,7 @@ class Recipe_model extends DataMapper {
                         }
                     }
                     else{
-                        return false
+                        return false;
                     }
                 }
             }
