@@ -11,7 +11,7 @@ class ProcessAjax extends CI_Controller {
 		$this->load->helper('file');
 	}
 
-	public function uploadProfileUser($id){
+	public function uploadProfileUser(){
 		$config['upload_path'] = './images/tmp/user/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '5120';
@@ -66,15 +66,22 @@ class ProcessAjax extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function uploadProfileRecipe($id){
+	public function uploadProfileRecipe($id=null){
 		$config['upload_path'] = './images/tmp/recipe';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '5120';
 		$config['overwrite'] = TRUE;
 		$config['file_name'] = $id.".jpg";
 		$this->upload->initialize($config);
-
-		if($this->session->userdata('user_id')!=''){
+		if(empty($id)){
+			if(!empty($this->input->get("id"))){
+				$id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$id = $this->input->post("id");
+			}
+		}
+		if($this->session->userdata('user_id')!='' && !empty($id)){
 			if($this->upload->do_upload('photo-recipe')){
 				$configImage['source_image'] = './images/tmp/recipe/'.$id.'.jpg';
 				$configImage['create_thumb'] = TRUE;
@@ -123,6 +130,14 @@ class ProcessAjax extends CI_Controller {
 	public function uploadStepsRecipe($id, $no_step=null){
 		if(empty($no_step)){
 			$no_step = $this->input->post('no_step');
+		}
+		if(empty($id)){
+			if(!empty($this->input->get("id"))){
+				$id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$id = $this->input->post("id");
+			}
 		}
 		$config['upload_path'] = './images/tmp/step';
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -177,6 +192,20 @@ class ProcessAjax extends CI_Controller {
 		echo json_encode($result);
 	}
 	public function setRating($recipe_id=null, $value = 0){
+		if(empty($recipe_id)){
+			if(!empty($this->input->get("id"))){
+				$recipe_id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$recipe_id = $this->input->post("id");
+			}
+		}
+		if(!empty($this->input->get("value"))){
+			$value = $this->input->get("value");
+		}
+		if(!empty($this->input->post("value"))){
+			$value = $this->input->post("value");
+		}
 		$user_id = $this->session->userdata('user_id');
 		if(!empty($user_id) && !empty($recipe_id)){
 			$recipe = new Recipe();
