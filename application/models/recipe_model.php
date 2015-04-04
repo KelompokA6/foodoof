@@ -71,10 +71,20 @@ class Recipe_model extends DataMapper {
         Digunakan untuk membuat sebuah Recipe pada database. return value merupakan id dari recipe yang berhasil dibuat, -1 merupakan indikasi bahwa recipe tidak
         berhasil dibuat.
     */
-    function createRecipe_model(){
+    function createRecipe_model($user_id=null){
+        if(!empty($user_id)){
+            $this->author = $user_id;
+        }
+        else if(empty($user_id)){{
+            $this->author = $this->session->userdata('user_id');   
+        }
         if(!empty($this->author)){
-            if($this->skip_validation()->save()){
-                return $this->db->insert_id();
+            $u = new User_model();
+            if($u->where("id", $this->author)->count() == 1){
+                if($this->skip_validation()->save()){
+                    return $this->db->insert_id();
+                }
+                return -1;    
             }
             else{
                 return -1;
