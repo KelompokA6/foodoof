@@ -385,6 +385,66 @@ $( document ).ready(function() {
 	});
 
 	/*
+	handler event click add favorite recipe
+	*/
+	$(document).on("click", "#add-favorite", function(){
+		$recipeIdFav = window.location.href;
+		$recipeIdFav = $recipeIdFav.split("/");
+		$length = $recipeId.length;
+		$recipeIdFav = $recipeIdFav[$length].split("?");
+		$.get( "../processAjax/addFavorite/"+$recipeIdFav[0], function( data ) {
+		  	if(data.status == '1'){
+		  		$.notify({
+					// options
+					message: data.message
+				},{
+					// settings
+					type: 'success'
+				});  		
+		  	}
+		  	else{
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					type: 'warning'
+				});  	
+		  	}
+		},"json");
+	});
+
+	/*
+	handler event click add cook-later recipe
+	*/
+	$(document).on("click", "#add-cook-later", function(){
+		$recipeIdCL = window.location.href;
+		$recipeIdCL = $recipeIdCL.split("/");
+		$length = $recipeId.length;
+		$recipeIdCL = $recipeIdCL[$length].split("?");
+		$.get( "../processAjax/addCookLater/"+$recipeIdCL[0], function( data ) {
+		  	if(data.status == '1'){
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					type: 'success'
+				});  		
+		  	}
+		  	else{
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					type: 'warning'
+				});  	
+		  	}
+		},"json");
+	});
+
+	/*
 	init javascript bootstrap;
 	*/
 	$('.carousel').carousel();

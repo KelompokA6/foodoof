@@ -412,3 +412,25 @@
   color:#eee;
   background-color: rgb(56,150,211);
 }
+ul.dropdown-search > li > a:hover,
+ul.dropdown-search > li > a:focus {
+  text-decoration: none;
+  border: solid 5px;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+  border-color: #428bca;
+  color: #eee;
+  background: #5bc0de;
+}
+ul.dropdown-search > li >label:hover,
+ul.dropdown-search > li >label:focus {
+  text-decoration: none;
+  border: solid 5px;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+  border-color: #428bca;
+  color: #eee;
+  background: #5bc0de;
+}

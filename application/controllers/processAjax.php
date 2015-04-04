@@ -196,6 +196,7 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($result);
 	}
+
 	public function setRating($recipe_id=null, $value = 0){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){
@@ -213,12 +214,98 @@ class ProcessAjax extends CI_Controller {
 		}
 		$user_id = $this->session->userdata('user_id');
 		if(!empty($user_id) && !empty($recipe_id)){
-			$recipe = new Recipe();
+			$recipe = new Recipe_model();
 			if($recipe->saveRating($user_id, $recipe_id, $value)){
 				$result = array(
 					"status" => 1,
 					"message" => "Your rating was save",
 					);
+			}
+			else{
+				$result = array(
+					"status" => 0,
+					"message" => "There are error in server",
+					);	
+			}
+		}
+		else{
+			$result = array(
+					"status" => 0,
+					"message" => "Please login first",
+					);
+		}
+		echo json_encode($result);
+	}
+
+	public function addFavorite($recipe_id=null){
+		if(empty($recipe_id)){
+			if(!empty($this->input->get("id"))){
+				$recipe_id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$recipe_id = $this->input->post("id");
+			}
+		}
+		$user_id = $this->session->userdata('user_id');
+		if(!empty($user_id) && !empty($recipe_id)){
+			$recipe = new Recipe_model();
+			$status = $recipe->addFavorite($user_id, $recipe_id);
+			if($status){
+				if(strtolower($status['action']) === "delete"){
+					$result = array(
+						"status" => 1,
+						"message" => "The Recipe Was Delete To Your Favorite",
+					);
+				}
+				if(strtolower($status['action']) === "add"){
+					$result = array(
+						"status" => 1,
+						"message" => "The Recipe Was Add To Your Favorite",
+					);
+				}
+			}
+			else{
+				$result = array(
+					"status" => 0,
+					"message" => "There are error in server",
+					);	
+			}
+		}
+		else{
+			$result = array(
+					"status" => 0,
+					"message" => "Please login first",
+					);
+		}
+		echo json_encode($result);
+	}
+
+	public function addCookLater($recipe_id=null){
+		if(empty($recipe_id)){
+			if(!empty($this->input->get("id"))){
+				$recipe_id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$recipe_id = $this->input->post("id");
+			}
+		}
+		$user_id = $this->session->userdata('user_id');
+		if(!empty($user_id) && !empty($recipe_id)){
+			$recipe = new Recipe_model();
+			$status = $recipe->addCookLater($user_id, $recipe_id);
+			if($status){
+				if(strtolower($status['action']) === "delete"){
+					$result = array(
+						"status" => 1,
+						"message" => "The Recipe Was Delete To Your Cook Later",
+					);
+				}
+				if(strtolower($status['action']) === "add"){
+					$result = array(
+						"status" => 1,
+						"message" => "The Recipe Was Add To Your Cook Later",
+					);
+				}
 			}
 			else{
 				$result = array(

@@ -41,9 +41,9 @@
 				              <span class="caret" style="color:#eee"></span>
 				              <span class="sr-only">Toggle Dropdown</span>
 				            </button>
-				            <ul class="dropdown-menu dropdown-search" role="menu" aria-labelledby="dropdownMenu1">
-				              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-plus icons"></i> Favorite</a></li>
-				              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-plus icons"></i> Cook Later</a></li>
+				            <ul class="dropdown-menu dropdown-search bullet pull-center" role="menu" aria-labelledby="dropdownMenu1">
+				              <li role="presentation" id="add-favorite"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Favorite</a></li>
+				              <li role="presentation" id="add-cook-later"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Cook Later</a></li>
 				            </ul>
 						</div>
 					</div>

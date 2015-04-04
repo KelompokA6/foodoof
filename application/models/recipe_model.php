@@ -686,6 +686,76 @@ class Recipe_model extends DataMapper {
         }
         return false;
     }
+
+    function addFavorite($user_id=null, $recipe_id=null){
+        if(empty($recipe_id)){
+            $recipe_id = $this->id;
+        }
+        if(!empty($recipe_id) && !empty($user_id)){
+            $favorite = new Fovorite();
+            $favorite->recipe_id = $recipe_id;
+            $favorite->user_id = $user_id;
+            $favoritetmp = new Fovorite();
+            $favoritetmp->where('recipe_id', $recipe_id);
+            $favoritetmp->where('user_id', $user_id);
+            if($favoritetmp->count() > 0){
+                if($this->db->delete('favorites', array('recipe_id' => $recipe_id, 'user_id' => $user_id ))){
+                    $result['status'] = true;
+                    $result['action'] = "delete";
+                    return $result;
+                }
+                else{
+                    return false;
+                } 
+            }
+            else{
+                if($favorite->skip_validation()->save()){
+                    $result['status'] = true;
+                    $result['action'] = "add";
+                    return $result;
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    function addCookLater($user_id=null, $recipe_id=null){
+        if(empty($recipe_id)){
+            $recipe_id = $this->id;
+        }
+        if(!empty($recipe_id) && !empty($user_id)){
+            $CL = new cooklater();
+            $CL->recipe_id = $recipe_id;
+            $CL->user_id = $user_id;
+            $CLtmp = new cooklater();
+            $CLtmp->where('recipe_id', $recipe_id);
+            $CLtmp->where('user_id', $user_id);
+            if($CLtmp->count() > 0){
+                if($this->db->delete('cooklater', array('recipe_id' => $recipe_id, 'user_id' => $user_id ))){
+                    $result['status'] = true;
+                    $result['action'] = "delete";
+                    return $result;
+                }
+                else{
+                    return false;
+                } 
+            }
+            else{
+                if($CL->skip_validation()->save()){
+                    $result['status'] = true;
+                    $result['action'] = "add";
+                    return $result;
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
     
     /*
         Digunakan untuk mengubah status publish dari sebuah resep. nilai kembalian merupakan boolean berhasil mengubah status.

@@ -10,7 +10,7 @@
       <a href="<?php echo base_url();?>" class="brand-menubar col-no-padding-left">
         <img class="img-circle img-brand-menubar" width="75px" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>
       </a>
-      <a href="<?php echo base_url();?>recipe/create" class="btn-navbar-mobile pull-right text-center" style="color:white">
+      <a href="<?php echo base_url();?>recipe/create" class="btn-navbar-mobile pull-right text-center">
         <i class="fa fa-pencil-square-o fa-2x icon-default">
         </i><br>Write <br>A Recipe
       </a>
