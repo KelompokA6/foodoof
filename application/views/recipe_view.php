@@ -20,7 +20,7 @@
 				</div>
 				<div class="col-md-12 col-no-padding text-center">
 					<div class="col-md-11" title="Rating">
-		          		<input id="rating-recipe" class="rating" data-min="0" data-max="5" value="{recipe_rating}" data-step="0.1" data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false">
+		          		<input id="rating-recipe" class="rating" data-recipeId="{recipe_id}" data-min="0" data-max="5" value="{recipe_rating}" data-step="0.1" data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false">
 					</div>
 				</div>
 				<div class="col-md-12 col-no-padding text-center" style="margin-bottom:5px">

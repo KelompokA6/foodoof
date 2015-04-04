@@ -292,9 +292,10 @@ $( document ).ready(function() {
 	/*
 	handler event click save rating recipe
 	*/
-	$(document).on("click", "#rating-recipe", function(){
+	$(document).on("click", ".rating-container", function(){
 		$valueRating = $("#rating-recipe").val();
-		$.get( "./processAjax/setRating/"+$recipeId+"/"+$valueRating, function( data ) {
+		$recipeIdView = $("#rating-recipe").data("recipeId");
+		$.get( "../processAjax/setRating/"+$recipeIdView+"/"+$valueRating, function( data ) {
 		  	if(data.status == '1'){
 		  		console.log(data.message);
 		  	}
