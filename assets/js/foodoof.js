@@ -167,7 +167,7 @@ $( document ).ready(function() {
 		$("#ingredient-entry").append($colAddRemoveBtnIngredient);
 	}
 	$(".ingredient-item:first > div > input").each(function(i){
-		$(this).attr("required", true);
+		$(this).prop('required',true);
 	});
 
 	/*
@@ -231,7 +231,7 @@ $( document ).ready(function() {
 	    	$input.fileinput("upload");
 		});
 	}
-	$(".step-item:first > div > textarea").attr("required", true);
+	//$(".step-item:first > div > textarea").prop('required',true);
 
 	$('.typeahead').typeahead({ 
 		source : function(query, process) {
