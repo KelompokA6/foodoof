@@ -61,6 +61,14 @@ class Tempview extends CI_Controller {
 		$t = $recipe->getRecipeProfile(1)->name;
 		print_r($t);
 	}
+	public function delete($id){
+		$ingre = new Ingredient();
+		$ingre->recipe_id = $id;
+		$ingre->name = "cabe";
+        $ingre->quantity = "2.0";
+        $ingre->units = "kg";
+        echo $ingre->skip_validation->save();
+	}
 	public function search(){
 		$recipe = new Recipe_model();
 		print_r($recipe->searchRecipeByTitle('ayam', 10, 0));

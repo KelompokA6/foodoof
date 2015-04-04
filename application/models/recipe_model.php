@@ -138,70 +138,61 @@ class Recipe_model extends DataMapper {
             }
             $this->trans_begin();
             if(is_array($ingredients)){
-                $rcp = new Recipe_model();
-                $rcp->get_by_id($id);
-                $ingres = new Ingredient();
-                        // die('------------');
-                echo "bahan array";
-                //$ingres->where("recipe_id", $id)->get();
-                $ingres->delete($rcp);
+                $this->db->delete('ingredients', array('recipe_id' => $id));
                 foreach ($ingredients as $ingredient) {
                     $ingre = new Ingredient();
                     $ingre->recipe_id = $id;
                     $ingre->name = $ingredient["name"];
                     $ingre->quantity = $ingredient["quantity"];
                     $ingre->units = $ingredient["units"];
-                    if(!$ingre->save()){
+                    if(!$ingre->skip_validation()->save()){
+                        echo "salah ngesave bahan1 ";
                         return false;
                     }
                 }
             }
             if(!is_array($ingredients)){
-                echo "bahan bukan array";
-                $ingres = new Ingredient();
-                $ingres->where("recipe_id", $id)->get();
-                $ingres->delete();
+                $this->db->delete('ingredients', array('recipe_id' => $id)); 
                 $ingre = new Ingredient();
                 $ingre->recipe_id = $id;
                 $ingre->name = $ingredients["name"];
                 $ingre->quantity = $ingredients["quantity"];
                 $ingre->units = $ingredients["units"];
-                if(!$ingre->save()){
+                if(!$ingre->skip_validation()->save()){
+                    echo "salah ngesave bahan2 ";
                     return false;
                 }
             }
             if(is_array($steps)){
-                $x=1;
-                $stp = new Step();
-                $stp->where("recipe_id", $id)->get();
-                $stp->delete();
+                $xStep=1;
+                $this->db->delete('steps', array('recipe_id' => $id)); 
                 foreach ($steps as $step) {
                     $stp = new Step();
-                    if(file_exists("./images/tmp/step/".$id."-".$x.".jpg")){
-                        $stp->photo = "images/step/".$id."-".$x.".jpg";
+                    if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
+                        $stp->photo = "images/step/".$id."-".$xStep.".jpg";
                     }
                     $stp->recipe_id = $id;
                     $stp->description = $step["description"];
-                    $stp->step = $x;
-                    if($stp->save()){
-                        if(file_exists("./images/tmp/step/".$id."-".$x.".jpg")){
-                            $data = read_file("./images/tmp/step/".$id."-".$x.".jpg");
-                            if(!write_file("./images/step/".$id."-".$x.".jpg", $data)){
+                    $stp->no_step = $xStep;
+                    if($stp->skip_validation()->save()){
+                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
+                            $data = read_file("./images/tmp/step/".$id."-".$xStep.".jpg");
+                            if(!write_file("./images/step/".$id."-".$xStep.".jpg", $data)){
                                 return false;
                             }
-                            unlink("./images/tmp/step/".$id."-".$x.".jpg");
+                            unlink("./images/tmp/step/".$id."-".$xStep.".jpg");
                         }
                     }
                     else{
+                        echo "salah ngesave step";
                         return false;
                     }
-                    $x += 1;
+                    $xStep++;
                 }
             }
             if(!is_array($steps)){
                 $stp = new Step();
-                $stp->where("recipe_id", $id)->get();
-                $stp->delete();
+                $this->db->delete('steps', array('recipe_id' => $id)); 
                 $stp = new Step();
                 if(file_exists("./images/tmp/step/".$id."-".$x."jpg")){
                     $stp->photo = "images/step/".$id."-".$x."jpg";
@@ -210,8 +201,8 @@ class Recipe_model extends DataMapper {
                     $stp->step = '1';
                     $stp->recipe_id = $id;
                     $stp->description = $step["description"];
-                    $stp->step = $x;
-                    if($stp->save()){
+                    $stp->no_step = $x;
+                    if($stp->skip_validation()->save()){
                         if(file_exists("./images/tmp/step/".$id."-".$x.".jpg")){
                             $data = read_file("./images/tmp/step/".$id."-".$x.".jpg");
                             if(!write_file("./images/step/".$id."-".$x.".jpg", $data)){
@@ -221,23 +212,27 @@ class Recipe_model extends DataMapper {
                         }
                     }
                     else{
+                        echo "salah ngesave step";
                         return false;
                     }
                 }
             }
-            if ($this->trans_status() === FALSE)
+           if ($this->trans_status() === FALSE)
             {
                 // Transaction failed, rollback
                 $this->trans_rollback();
                 // Add error message
                 $this->error_message('transaction', 'The transaction failed to save (insert)');
+                echo "salah transaction";
                 return false;
             }
             if ($this->trans_status() === TRUE)
             {
                 // Transaction successful, commit
                 $this->trans_commit();
+                return true;
             }
+            return true;
         }
         return false;
     }
@@ -673,7 +668,7 @@ class Recipe_model extends DataMapper {
             if($ratmp->count() > 0){
                 $rat->where('recipe_id', $this->id);
                 $rat->where('user_id', $user_id);
-                $rat->update('value', $value);
+                return $rat->update('value', $value);
             }
             else{
                 return $rat->skip_validation()->save();
