@@ -404,3 +404,11 @@
   bottom: 55px;
   right: 0;
 }
+.pager > li > a:hover{
+  color:#eee;
+  background-color: rgb(56,150,211);
+}
+.pager li.active > a{
+  color:#eee;
+  background-color: rgb(56,150,211);
+}

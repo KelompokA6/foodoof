@@ -129,7 +129,12 @@ class ProcessAjax extends CI_Controller {
 
 	public function uploadStepsRecipe($id, $no_step=null){
 		if(empty($no_step)){
-			$no_step = $this->input->post('no_step');
+			if(!empty($this->input->get('no_step'))){
+				$no_step = $this->input->get('no_step');
+			}
+			if(!empty($this->input->post('no_step'))){
+				$no_step = $this->input->post('no_step');
+			}
 		}
 		if(empty($id)){
 			if(!empty($this->input->get("id"))){

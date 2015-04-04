@@ -79,7 +79,7 @@
 		            $active = "active";
 		          }
 		          echo "
-		            <li class=".$active.">
+		            <li class='".$active."'>
 		              <a href='".base_url()."user/timeline/{user_timeline_id}?page=".$i."'>".$i."</a>
 		            </li>
 		          ";
