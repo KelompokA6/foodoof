@@ -140,7 +140,7 @@ class Recipe_model extends DataMapper {
             if(is_array($ingredients)){
                 $ingres = new Ingredient();
                         // die('------------');
-                $ingres->getById($id);
+                $ingres->get_by_id($id);
                 $ingres->delete();
                 foreach ($ingredients as $ingredient) {
                     $ingre = new Ingredient();
