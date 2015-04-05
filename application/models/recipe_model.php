@@ -133,6 +133,7 @@ class Recipe_model extends DataMapper {
                         'description' => $description,
                         'last_update' => $last_update,
                         'photo' => $photo,
+                        //'tmp_status' => true,
                         );
             if(!$rcpSave->where('id', $id)->update($arrUpdate)){
                 return FALSE;
