@@ -421,7 +421,7 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->db->query("ALTER TABLE comments ADD FOREIGN KEY (recipe_id) REFERENCES recipes (id) ON DELETE CASCADE ON UPDATE CASCADE");
 		$this->db->query("ALTER TABLE conversations ADD FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE");
 		$this->db->query("ALTER TABLE messages ADD FOREIGN KEY (conversation_id) REFERENCES conversations (id) ON DELETE CASCADE ON UPDATE CASCADE");
-		$this->db->query("CREATE TRIGGER `avg_rating_delete` BEFORE DELETE ON `rating` FOR EACH ROW UPDATE recipes SET rating = (SELECT AVG(rating.value) from rating where rating.recipe_id=recipes.id) WHERE recipes.id=OLD.recipe_id");
+		$this->db->query("CREATE TRIGGER `avg_rating_delete` AFTER DELETE ON `rating` FOR EACH ROW UPDATE recipes SET rating = (SELECT AVG(rating.value) from rating where rating.recipe_id=recipes.id) WHERE recipes.id=OLD.recipe_id");
 		$this->db->query("CREATE TRIGGER `avg_rating_insert` AFTER INSERT ON `rating` FOR EACH ROW UPDATE recipes SET rating = (SELECT AVG(rating.value) from rating where rating.recipe_id=recipes.id) WHERE recipes.id=NEW.recipe_id");
 		$this->db->query("CREATE TRIGGER `avg_rating_update` AFTER UPDATE ON `rating` FOR EACH ROW UPDATE recipes SET rating = (SELECT AVG(rating.value) from rating where rating.recipe_id=recipes.id) WHERE recipes.id=NEW.recipe_id");
 		$this->db->query("CREATE TRIGGER `add_recipe_default` BEFORE INSERT ON `recipes` FOR EACH ROW if (NEW.photo is null ) then set NEW.photo = '/assets/img/recipe-default.jpg'; end if;");
