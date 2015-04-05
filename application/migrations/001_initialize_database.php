@@ -94,11 +94,13 @@ class Migration_Initialize_database extends CI_Migration {
 			),
 			'portion' => array(
 				'type' => 'INT',
+				'default' => 1,
 				'unsigned' => TRUE,
 				'null' => TRUE
 			),
 			'duration' => array(
 				'type' => 'INT',
+				'default' => 0,
 				'unsigned' => TRUE,
 				'null' => TRUE
 			),
@@ -159,6 +161,7 @@ class Migration_Initialize_database extends CI_Migration {
 			),
 			'quantity' => array(
 				'type' => 'DECIMAL(2,1)',
+				'default' => 0.0,
 				'null' => TRUE,
 			),
 			'units' => array(
@@ -232,6 +235,7 @@ class Migration_Initialize_database extends CI_Migration {
 			),
 			'value' => array(
 				'type' => 'DECIMAL(2,1)',
+				'default' => 0.0,
 				'unsigned' => TRUE
 			),
 		));
@@ -420,6 +424,9 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->db->query("CREATE TRIGGER `avg_rating_delete` BEFORE DELETE ON `rating` FOR EACH ROW UPDATE recipes SET rating = (SELECT AVG(rating.value) from rating where rating.recipe_id=recipes.id) WHERE recipes.id=OLD.recipe_id");
 		$this->db->query("CREATE TRIGGER `avg_rating_insert` AFTER INSERT ON `rating` FOR EACH ROW UPDATE recipes SET rating = (SELECT AVG(rating.value) from rating where rating.recipe_id=recipes.id) WHERE recipes.id=NEW.recipe_id");
 		$this->db->query("CREATE TRIGGER `avg_rating_update` AFTER UPDATE ON `rating` FOR EACH ROW UPDATE recipes SET rating = (SELECT AVG(rating.value) from rating where rating.recipe_id=recipes.id) WHERE recipes.id=NEW.recipe_id");
+		$this->db->query("CREATE TRIGGER `add_recipe_default` BEFORE INSERT ON `recipes` FOR EACH ROW if (NEW.photo is null ) then set NEW.photo = '/assets/img/recipe-default.jpg'; end if;");
+		$this->db->query("CREATE TRIGGER `add_step_default` BEFORE INSERT ON `steps` FOR EACH ROW if (NEW.photo is null ) then set NEW.photo = '/assets/img/step-default.jpg'; end if;");
+		$this->db->query("CREATE TRIGGER `add_user_default` BEFORE INSERT ON `users` FOR EACH ROW if (LOWER(NEW.gender) = 'f' ) then set NEW.photo = 'assets/img/user-female.jpg'; elseif (LOWER(NEW.gender) = 'm' ) then set NEW.photo = 'assets/img/user-male.jpg'; end if;");
 	}
 
 	public function down()
