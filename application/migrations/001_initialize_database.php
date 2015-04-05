@@ -29,10 +29,12 @@ class Migration_Initialize_database extends CI_Migration {
 			'gender' => array(
 				'type' => 'VARCHAR',
 				'constraint' => '1',
+				'default' => 'f',
 				'null' => TRUE
 			),
 			'bdate' => array(
 				'type' => 'DATE',
+				'default' => '1970-01-01',
 				'null' => TRUE
 			),
 			'phone' => array(
@@ -118,19 +120,21 @@ class Migration_Initialize_database extends CI_Migration {
 			),
 			'rating' => array(
 				'type' => 'DECIMAL(2,1)',
+				'default' => 0.0,
 				'unsigned' => TRUE,
 				'null' => FALSE
 			),
 			'status' => array(
-				'type' => 'BOOLEAN',
+				'type' => 'BOOLEAN DEFAULT FALSE',
 				'null' => FALSE
 			),
 			'tmp_status' => array(
-				'type' => 'BOOLEAN',
+				'type' => 'BOOLEAN DEFAULT TRUE',
 				'null' => FALSE
 			),
 			'views' => array(
 				'type' => 'INT',
+				'default' => 0,
 				'unsigned' => 'TRUE',
 				'null' => FAlSE
 			),
@@ -188,6 +192,7 @@ class Migration_Initialize_database extends CI_Migration {
 			),
 			'no_step' => array(
 				'type' => 'TINYINT',
+				'default' => 0,
 				'unsigned' => TRUE,
 			),
 			'description' => array(
