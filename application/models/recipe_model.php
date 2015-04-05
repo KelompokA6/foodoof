@@ -174,17 +174,29 @@ class Recipe_model extends DataMapper {
                 }
             }
             if(is_array($steps)){
-                $xStep=1;
-                $this->db->delete('steps', array('recipe_id' => $id)); 
+                $xStep=0;
+                $stp = new Step();
+                $countStep = $stp->where("recipe_id", $id)->count(); 
                 foreach ($steps as $step) {
-                    $stp = new Step();
-                    if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
-                        $stp->photo = "images/step/".$id."-".$xStep.".jpg";
-                    }
-                    $stp->recipe_id = $id;
-                    $stp->description = $step["description"];
-                    $stp->no_step = $xStep;
-                    if($stp->skip_validation()->save()){
+                    $xStep++;
+                    $stptmp = new Step();
+                    $stptmp->where('recipe_id', $id);
+                    $stptmp->where('no_step', $xStep);
+                    $stptmp->get();
+                    if(!$stptmp->exists()){
+                        $stp = new Step();
+                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
+                            $stp->photo = "images/step/".$id."-".$xStep.".jpg";
+                        }
+                        else{
+                            $stp->photo = $stptmp->photo;   
+                        }
+                        $stp->recipe_id = $id;
+                        $stp->description = $step["description"];
+                        $stp->no_step = $xStep;
+                        if(!$stp->skip_validation()->save()){
+                            return false;
+                        }
                         if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
                             $data = read_file("./images/tmp/step/".$id."-".$xStep.".jpg");
                             if(!write_file("./images/step/".$id."-".$xStep.".jpg", $data)){
@@ -194,36 +206,79 @@ class Recipe_model extends DataMapper {
                         }
                     }
                     else{
-                        echo "salah ngesave step";
-                        return false;
+                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
+                            $photo = "images/step/".$id."-".$xStep.".jpg";
+                        }
+                        else{
+                            $photo = $stptmp->photo;   
+                        }
+                        $dataUpdate = array(
+                                        'description' => $step["description"],
+                                        'photo' => $photo);
+                        if(!$stptmp->update($dataUpdate)){
+                            return false;
+                        }
+                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
+                            $data = read_file("./images/tmp/step/".$id."-".$xStep.".jpg");
+                            if(!write_file("./images/step/".$id."-".$xStep.".jpg", $data)){
+                                return false;
+                            }
+                            unlink("./images/tmp/step/".$id."-".$xStep.".jpg");
+                        }
                     }
-                    $xStep++;
+                }
+                if( $xStep < $countStep ){
+                    $this->db->where('recipe_id',$id)
+                    $this->db->where('no_step >', $xStep);
+                    $this->db->delete('steps');
                 }
             }
             if(!is_array($steps)){
-                $stp = new Step();
-                $this->db->delete('steps', array('recipe_id' => $id)); 
-                $stp = new Step();
-                if(file_exists("./images/tmp/step/".$id."-".$x."jpg")){
-                    $stp->photo = "images/step/".$id."-".$x."jpg";
-                    $stp->recipe_id = $id;
-                    $stp->description = $step["description"];
-                    $stp->step = '1';
-                    $stp->recipe_id = $id;
-                    $stp->description = $step["description"];
-                    $stp->no_step = $x;
-                    if($stp->skip_validation()->save()){
-                        if(file_exists("./images/tmp/step/".$id."-".$x.".jpg")){
-                            $data = read_file("./images/tmp/step/".$id."-".$x.".jpg");
-                            if(!write_file("./images/step/".$id."-".$x.".jpg", $data)){
-                                return false;
-                            }
-                            unlink("./images/tmp/step/".$id."-".$x.".jpg");
-                        }
+                $stptmp = new Step();
+                $stptmp->where('recipe_id', $id);
+                $stptmp->where('no_step', "0");
+                $stptmp->get();
+                if(!$stptmp->exists()){
+                    $stp = new Step();
+                    if(file_exists("./images/tmp/step/".$id."-0.jpg")){
+                        $stp->photo = "images/step/".$id."-0.jpg";
                     }
                     else{
-                        echo "salah ngesave step";
+                        $stp->photo = $stptmp->photo;   
+                    }
+                    $stp->recipe_id = $id;
+                    $stp->description = $step["description"];
+                    $stp->no_step = "0";
+                    if(!$stp->skip_validation()->save()){
                         return false;
+                    }
+                    if(file_exists("./images/tmp/step/".$id."-0.jpg")){
+                        $data = read_file("./images/tmp/step/".$id."-0.jpg");
+                        if(!write_file("./images/step/".$id."-0.jpg", $data)){
+                            return false;
+                        }
+                        unlink("./images/tmp/step/".$id."-0.jpg");
+                    }
+                }
+                else{
+                    if(file_exists("./images/tmp/step/".$id."-0.jpg")){
+                        $photo = "images/step/".$id."-0.jpg";
+                    }
+                    else{
+                        $photo = $stptmp->photo;   
+                    }
+                    $dataUpdate = array(
+                                    'description' => $step["description"],
+                                    'photo' => $photo);
+                    if(!$stptmp->update($dataUpdate)){
+                        return false;
+                    }
+                    if(file_exists("./images/tmp/step/".$id."-0.jpg")){
+                        $data = read_file("./images/tmp/step/".$id."-0.jpg");
+                        if(!write_file("./images/step/".$id."-0.jpg", $data)){
+                            return false;
+                        }
+                        unlink("./images/tmp/step/".$id."-0.jpg");
                     }
                 }
             }
@@ -255,7 +310,7 @@ class Recipe_model extends DataMapper {
             $id = $this->id;
         }
         if(!empty($id)){
-            return $this->where('id', $id)->delete();
+            return $this->db->where('id', $id)->delete();
         }
         else{
             return false;
