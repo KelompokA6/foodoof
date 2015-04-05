@@ -316,11 +316,11 @@ class Recipe_model extends DataMapper {
     /*
         Digunakan untuk memperoleh resep yang merupakan list resep highlight, dengan parameter input limit resep yang ingin ditampilkan
     */
-    function getHightlight($limit=10){
+    function getHightlight($limit=10, $offset=0){
         $recipe = new Recipe_model();
         $recipe->where('highlight', '1');
         $recipe->where('status', '1');
-        $recipe->get($limit,0);
+        $recipe->get($limit, $offset);
         $arrResult = array();
         foreach ($recipe as $recipes) {
             $data = new stdClass();
@@ -345,9 +345,9 @@ class Recipe_model extends DataMapper {
     /*
         Digunakan untuk memperoleh resep yang merupakan terbaru, dengan parameter input limit resep yang ingin ditampilkan
     */
-    function getRecently($limit=10){
+    function getRecently($limit=10, $offset=0){
         $recipe = new Recipe_model();
-        $recipe->where('status', '1')->order_by("create_date", "desc")->get($limit,0);
+        $recipe->where('status', '1')->order_by("create_date", "desc")->get($limit, $offset);
         $arrResult = array();
         foreach ($recipe as $recipes) {
             $data = new stdClass();
@@ -373,9 +373,9 @@ class Recipe_model extends DataMapper {
         Digunakan untuk memperoleh resep yang merupakan resep dengan rating tertinggi, dengan parameter input limit resep yang ingin ditampilkan.
         kembalian list resep yang menjadi top
     */
-    function getTopRecipe($limit=10){
+    function getTopRecipe($limit=10, $offset=0){
         $recipe = new Recipe_model();
-        $recipe->where('status', '1')->order_by("rating", "desc")->get($limit,0);
+        $recipe->where('status', '1')->order_by("rating", "desc")->order_by("views", "desc")->get($limit, $offset);
         $arrResult = array();
         foreach ($recipe as $recipes) {
             $data = new stdClass();
@@ -738,6 +738,24 @@ class Recipe_model extends DataMapper {
         return false;
     }
 
+    /*
+        Digunakan melakukan penambahan viewer sebuah resep. kembalian boolean
+    */
+    function incrementViews($recipe_id=null){
+        if(empty($recipe_id)){
+            $recipe_id = $this->id;
+        }
+        $recipe = new Recipe_model();
+        $recipe->get_by_id($recipe_id);
+        $countViews = $recipe->views;
+        $countViews++;
+        $recipe->clear();
+        return $recipe->where('id', $recipe_id)->update('views', $countViews);
+    }
+
+    /*
+        Digunakan untuk menyimpan recipe to favorite list, bila sudah ada maka akan dihapus dari list
+    */
     function addFavorite($user_id=null, $recipe_id=null){
         if(empty($recipe_id)){
             $recipe_id = $this->id;
@@ -773,6 +791,9 @@ class Recipe_model extends DataMapper {
         return false;
     }
 
+    /*
+        Digunakan untuk menyimpan recipe to cook later list, bila sudah ada maka akan dihapus dari list
+    */
     function addCookLater($user_id=null, $recipe_id=null){
         if(empty($recipe_id)){
             $recipe_id = $this->id;
