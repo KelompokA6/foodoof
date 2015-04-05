@@ -156,7 +156,6 @@ class Recipe_model extends DataMapper {
                     $ingre->quantity = $ingredient["quantity"];
                     $ingre->units = $ingredient["units"];
                     if(!$ingre->skip_validation()->save()){
-                        echo "salah ngesave bahan1 ";
                         return false;
                     }
                 }
@@ -169,7 +168,6 @@ class Recipe_model extends DataMapper {
                 $ingre->quantity = $ingredients["quantity"];
                 $ingre->units = $ingredients["units"];
                 if(!$ingre->skip_validation()->save()){
-                    echo "salah ngesave bahan2 ";
                     return false;
                 }
             }
@@ -228,9 +226,7 @@ class Recipe_model extends DataMapper {
                     }
                 }
                 if( $xStep < $countStep ){
-                    $this->db->where('recipe_id',$id)
-                    $this->db->where('no_step >', $xStep);
-                    $this->db->delete('steps');
+                    $this->db->where('recipe_id',$id)->where('no_step >', $xStep)->delete('steps');
                 }
             }
             if(!is_array($steps)){
@@ -288,7 +284,6 @@ class Recipe_model extends DataMapper {
                 $this->trans_rollback();
                 // Add error message
                 $this->error_message('transaction', 'The transaction failed to save (insert)');
-                echo "salah transaction";
                 return false;
             }
             if ($this->trans_status() === TRUE)
