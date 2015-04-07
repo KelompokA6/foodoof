@@ -237,29 +237,29 @@ class Recipe_model extends DataMapper {
                 $stptmp->get();
                 if(!$stptmp->exists()){
                     $stp = new Step();
-                    if(file_exists("./images/tmp/step/".$id."-0.jpg")){
-                        $stp->photo = "images/step/".$id."-0.jpg";
+                    if(file_exists("./images/tmp/step/".$id."-1.jpg")){
+                        $stp->photo = "images/step/".$id."-1.jpg";
                     }
                     else{
                         $stp->photo = $stptmp->photo;   
                     }
                     $stp->recipe_id = $id;
                     $stp->description = $step["description"];
-                    $stp->no_step = "0";
+                    $stp->no_step = "1";
                     if(!$stp->skip_validation()->save()){
                         return false;
                     }
-                    if(file_exists("./images/tmp/step/".$id."-0.jpg")){
-                        $data = read_file("./images/tmp/step/".$id."-0.jpg");
-                        if(!write_file("./images/step/".$id."-0.jpg", $data)){
+                    if(file_exists("./images/tmp/step/".$id."-1.jpg")){
+                        $data = read_file("./images/tmp/step/".$id."-1.jpg");
+                        if(!write_file("./images/step/".$id."-1.jpg", $data)){
                             return false;
                         }
-                        unlink("./images/tmp/step/".$id."-0.jpg");
+                        unlink("./images/tmp/step/".$id."-1.jpg");
                     }
                 }
                 else{
-                    if(file_exists("./images/tmp/step/".$id."-0.jpg")){
-                        $photo = "images/step/".$id."-0.jpg";
+                    if(file_exists("./images/tmp/step/".$id."-1.jpg")){
+                        $photo = "images/step/".$id."-1.jpg";
                     }
                     else{
                         $photo = $stptmp->photo;   
@@ -270,12 +270,12 @@ class Recipe_model extends DataMapper {
                     if(!$stptmp->update($dataUpdate)){
                         return false;
                     }
-                    if(file_exists("./images/tmp/step/".$id."-0.jpg")){
-                        $data = read_file("./images/tmp/step/".$id."-0.jpg");
-                        if(!write_file("./images/step/".$id."-0.jpg", $data)){
+                    if(file_exists("./images/tmp/step/".$id."-1.jpg")){
+                        $data = read_file("./images/tmp/step/".$id."-1.jpg");
+                        if(!write_file("./images/step/".$id."-1.jpg", $data)){
                             return false;
                         }
-                        unlink("./images/tmp/step/".$id."-0.jpg");
+                        unlink("./images/tmp/step/".$id."-1.jpg");
                     }
                 }
             }
