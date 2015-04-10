@@ -1,6 +1,8 @@
 $( document ).ready(function() {
 	
 	$recipeId = $("#image-recipe").data("id");
+	$lock = 0;
+	$submitStatus=false;
 	/*
 	script for init fileinput of user's photo
 	*/
@@ -94,6 +96,13 @@ $( document ).ready(function() {
     	// trigger upload method immediately after files are selecte
     	$photoRecipe.fileinput("upload");
 	});
+	$photoRecipe.on('filelock', function(event, filestack, extraData) {
+	    $lock++;
+    });
+    $photoRecipe.on('fileunlock', function(event, filestack, extraData) {
+	    $lock--;
+	    $("form").trigger("submit");
+    });
 
 	/*
 	script for init fileinput of step's photo
@@ -153,6 +162,13 @@ $( document ).ready(function() {
 	    	// trigger upload method immediately after files are selecte
 	    	$(this).fileinput("upload");
 		});
+		$(this).on('filelock', function(event, filestack, extraData) {
+	    	$lock++;
+	    });
+	    $(this).on('fileunlock', function(event, filestack, extraData) {
+		    $lock--;
+		    $("form").trigger("submit");
+	    });
 	});
 
 	/*
@@ -230,6 +246,13 @@ $( document ).ready(function() {
 	    	// trigger upload method immediately after files are selecte
 	    	$input.fileinput("upload");
 		});
+		$inputStepFirst.on('filelock', function(event, filestack, extraData) {
+		    $lock++;
+	    });
+	    $inputStepFirst.on('fileunlock', function(event, filestack, extraData) {
+		    $lock--;
+		    $("form").trigger("submit");
+	    });
 	}
 	//$(".step-item:first > div > textarea").prop('required',true);
 
@@ -264,7 +287,7 @@ $( document ).ready(function() {
 		$("#remove-ingredient").hide();
 	}
 	$colAddRemoveBtnIngredient = $("#add-and-remove-btn-ingredient").clone();
-	$ingredientItem = "<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'><div class='col-sm-6 col-xs-6'><input type='text' value='' name='ingredient_subject[]' class='form-control' placeholder='Ingredient Name'></div><div class='col-sm-3 col-xs-3 col-no-padding-left'><input type='text' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'></div><div class='col-sm-3 col-xs-3 col-no-padding-left'><input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'></div></div>";
+	$ingredientItem = 	"<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'>"+"<div class='col-sm-6 col-xs-6'>"+"<input type='text' value='' name='ingredient_subject[]' class='form-control' placeholder='Ingredient Name'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'>"+"</div>"+"</div>";
 	$(document).on('click',"#add-ingredient",function(){
 		$("#add-and-remove-btn-ingredient").remove();
 		$("#ingredient-entry").append($ingredientItem);
@@ -295,7 +318,7 @@ $( document ).ready(function() {
 	$colAddRemoveBtnStep = $("#add-and-remove-btn-step").clone();
 	$(document).on('click',"#add-step",function(){
 		$countStep++;
-		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'><div class='col-sm-8 col-xs-7 col-no-padding-right'><textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'>Description step</textarea></div><div class='col-sm-4 col-xs-5'><input class='image-steps' name='photo-step' data-src='../assets/img/01.jpg' index='"+$countStep+"' data-title='new step' type='file' accept='image/*'></div></div>";
+		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'>"+"<div class='col-sm-8 col-xs-7 col-no-padding-right'>"+"<textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'>Description step</textarea>"+"</div>"+"<div class='col-sm-4 col-xs-5'>"+"<input class='image-steps' name='photo-step' data-src='../assets/img/01.jpg' index='"+$countStep+"' data-title='new step' type='file' accept='image/*'>"+"</div>"+"</div>";
 		$("#add-and-remove-btn-step").remove();
 		$("#step-entry").append($stepItem);
 		$("#step-entry").append($colAddRemoveBtnStep);
@@ -354,7 +377,15 @@ $( document ).ready(function() {
 	    	// trigger upload method immediately after files are selecte
 	    	$input.fileinput("upload");
 		});
+		$input.on('filelock', function(event, filestack, extraData) {
+		    $lock++;
+	    });
+	    $input.on('fileunlock', function(event, filestack, extraData) {
+		    $lock--;
+		    $("form").trigger("submit");
+	    });
 	});
+
 	$(document).on('click',"#remove-step",function(){
 		$("#add-and-remove-btn-step").remove();
 		$(".step-item:last").remove();
@@ -445,9 +476,21 @@ $( document ).ready(function() {
 	});
 
 	/*
+	handler buat submit form
+	*/
+	$("form").on("submit", function(e){
+		if($lock>0){
+			e.preventDefault();
+			$("#modalWaiting").modal("show");
+		}
+		else{
+			$("#modalWaiting").modal("hide");	
+		}
+	});
+	/*
 	init javascript bootstrap;
 	*/
 	$('.carousel').carousel();
     $('.btn-popover').popover();
-    $('.popoverMenubar').popover();
+    //$('.popoverMenubar').popover();
 });

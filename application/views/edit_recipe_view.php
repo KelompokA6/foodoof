@@ -3,7 +3,7 @@
 	  	<div class="panel-body">
 	  		<h2 class="page-header-title text-capitalize"> Edit Recipe<!-- {edit_recipe_action} bisa Edit atau pun Create-->
 	  		</h2>
-	  		<form action="<?php echo base_url()?>recipe/save/{edit_recipe_id}" method="POST" role="form">
+	  		<form id="edit-recipe" action="<?php echo base_url()?>recipe/save/{edit_recipe_id}" method="POST" role="form">
 	  			<div class="col-md-12 page-header-title col-no-padding">
 			  		<div class="col-md-4">
 			  			<div class="col-md-12 col-no-padding">
@@ -96,14 +96,14 @@
 							    	{/edit_recipe_ingredient_entries}
 							    	<div id="add-and-remove-btn-ingredient" class="col-sm-2 col-xs-2 col-no-padding" style="padding:2.5px">
 							      		<div class="col-sm-6 col-xs-6">
-							      			<span id="add-ingredient" class="fa-stack fa-lg" title="Add Ingredient" style="cursor:pointer;">
-											  	<i class="fa fa-square fa-stack-2x icon-default"></i>
+							      			<span id="add-ingredient" class="fa-stack fa-lg icon-default" title="Add Ingredient" style="cursor:pointer;">
+											  	<i class="fa fa-square fa-stack-2x"></i>
 											  	<i class="fa fa-plus fa-stack-1x fa-inverse"></i>
 											</span>
 							      		</div>
 							      		<div class="col-sm-6 col-xs-6">
-							      			<span id="remove-ingredient" class="fa-stack fa-lg" title="Remove Ingredient" style="cursor:pointer;">
-											  	<i class="fa fa-square fa-stack-2x icon-default"></i>
+							      			<span id="remove-ingredient" class="fa-stack fa-lg icon-default" title="Remove Ingredient" style="cursor:pointer;">
+											  	<i class="fa fa-square fa-stack-2x"></i>
 											  	<i class="fa fa-minus fa-stack-1x fa-inverse"></i>
 											</span>
 							      		</div>
@@ -125,14 +125,14 @@
 							    	{/edit_recipe_step_entries}
 						    		<div id="add-and-remove-btn-step" class="col-sm-2 col-xs-2 col-no-padding" style="padding:2.5px">
 							      		<div class="col-sm-6 col-xs-6">
-							      			<span id="add-step" class="fa-stack fa-lg" title="Add Step" style="cursor:pointer;">
-											  	<i class="fa fa-square fa-stack-2x icon-default"></i>
+							      			<span id="add-step" class="fa-stack fa-lg icon-default" title="Add Step" style="cursor:pointer;">
+											  	<i class="fa fa-square fa-stack-2x"></i>
 											  	<i class="fa fa-plus fa-stack-1x fa-inverse"></i>
 											</span>
 							      		</div>
 							      		<div class="col-sm-6 col-xs-6">
-							      			<span id="remove-step" class="fa-stack fa-lg" title="Remove Step" style="cursor:pointer;">
-											  	<i class="fa fa-square fa-stack-2x icon-default"></i>
+							      			<span id="remove-step" class="fa-stack fa-lg icon-default" title="Remove Step" style="cursor:pointer;">
+											  	<i class="fa fa-square fa-stack-2x"></i>
 											  	<i class="fa fa-minus fa-stack-1x fa-inverse"></i>
 											</span>
 							      		</div>

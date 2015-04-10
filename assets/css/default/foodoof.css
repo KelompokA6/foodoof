@@ -1,4 +1,7 @@
 @media(max-width:767px){
+  body, footer, header{
+    font-size: 11px;
+  }
   .collapse-navbar-search{
     padding-left: 10px;
   }
@@ -343,6 +346,10 @@
   .list-item-step{
     margin:10px 0 10px 0;
   }
+  /*.input-default{
+    height:40px;
+    font-size: 16px
+  }*/
 }
 /*.icon-favorite{
   color:pink;
@@ -419,9 +426,11 @@ ul.dropdown-search > li > a:focus {
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-color: #428bca;
-  color: #eee;
-  background: #5bc0de;
+  border-color: #f97b0c;
+  background-color: rgb(56,150,211);
+}
+ul.dropdown-menu > li > label{
+  color:rgb(56,150,211);
 }
 ul.dropdown-search > li >label:hover,
 ul.dropdown-search > li >label:focus {
@@ -430,7 +439,47 @@ ul.dropdown-search > li >label:focus {
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-color: #428bca;
-  color: #eee;
-  background: #5bc0de;
+  border-color: #f97b0c;
+  color: rgb(56,150,211);
+}
+/*.icon-default:hover{
+  color: #f97b0c;
+}
+.button-default:hover{
+  background-color: #fff;
+  color: rgba(56,150,211,0.9);
+  border-color: rgba(56,150,211,0.9);
+}*/
+*::-webkit-input-placeholder { /* WebKit browsers */
+  color: rgb(56,150,211);
+}
+*:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: rgb(56,150,211);
+  opacity:  1;
+}
+*::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: rgb(56,150,211);
+  opacity:  1;
+}
+*:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: rgb(56,150,211);
+}
+.modal-backdrop {
+  z-index: -1;
+}
+.modal-loading{
+  text-align: center;
+}
+
+.modal-loading:before {
+  display: inline-block;
+  vertical-align: middle;
+  content: " ";
+  height: 100%;
+}
+
+.modal-dialog-loading {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
 }

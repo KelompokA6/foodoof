@@ -22,6 +22,40 @@
 	  		</div>
 	  	</div>
 	</div>
+  <footer style="background-color:#eee">
+    <div class="container">
+      <div class="col-md-12 col-xs-12 page-header-title">
+        <div class="col-md-2 col-xs-3">
+           <img class="img-responsive" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px; margin:auto"/>
+        </div>
+        <div class="col-md-10 col-xs-9">
+          <div class="col-md-2 col-xs-4" style="border-right:dashed 1px rgb(56,150,211)">
+            <h4>About</h4>
+            <a href="">Contact Us</a><br>
+            <a href="">Our Team</a><br>
+            <a href="">F.A.Q</a><br>
+          </div>
+          <div class="col-md-2 col-xs-4">
+            <h4>Others</h4>
+            <a href="">Information</a><br>
+            <a href="">Term of Services</a><br>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-xs-12 text-center">
+        Copyright &copy 2015, FoodooF (PPL-A06)
+      </div>
+    </div>
+  </footer>
+  <div class="modal fade modal-loading" id="modalWaiting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-sm modal-dialog-loading">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          Please Wait ...
+        </div>
+      </div>
+    </div>
+  </div>    
 	</body>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-2.1.3.min.js"></script>
   <script src="/foodoof/assets/plugin/bower-components/kartik-file-input/js/fileinput.min.js" type="text/javascript"></script>
