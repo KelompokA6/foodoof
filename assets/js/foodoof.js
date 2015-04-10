@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 	
 	$recipeId = $("#image-recipe").data("id");
-	$lock = 0;
+	$lock = 1;
 	$submitStatus=false;
 	/*
 	script for init fileinput of user's photo

@@ -477,9 +477,15 @@ ul.dropdown-search > li >label:focus {
   content: " ";
   height: 100%;
 }
-
 .modal-dialog-loading {
   display: inline-block;
   text-align: left;
   vertical-align: middle;
+}
+.modal-dialog-loading > .modal-content{
+  background-color: transparent;
+  border:0;
+  -webkit-box-shadow: 0;
+  box-shadow: 0;
+  border-radius: 0px;
 }

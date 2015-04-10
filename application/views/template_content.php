@@ -51,7 +51,7 @@
     <div class="modal-dialog modal-sm modal-dialog-loading">
       <div class="modal-content">
         <div class="modal-body text-center">
-          Please Wait ...
+          <img class="responsive" width="50px" src="../assets/img/loading-spinner.gif"/>
         </div>
       </div>
     </div>
