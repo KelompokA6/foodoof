@@ -870,16 +870,12 @@ class Recipe_model extends DataMapper {
     /*
         Digunakan untuk menghapus sebuah category pada sebuah resep, kembalian boolean berhasil atau tidak
     */
-    function deleteCategory($id=NULL, $category=NULL){
+    function deleteAllCategory($id=NULL){
         if($id==NULL){
             $id = $this->id;
         }
-        if(!empty($id) && !empty($category)){
-            $categorytmp = new Category();
-            $categorytmp->where('recipe_id', $id);
-            $categorytmp->ilike('name', strtolower($category));
-            $categorytmp->get_by_recipe_id($id);
-            return $categorytmp->delete();
+        if(!empty($id)){
+            return $this->db->delete('categories', array('recipe_id' => $id));
         }
         else{
             return false;
