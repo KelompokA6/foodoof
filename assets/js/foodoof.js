@@ -43,7 +43,7 @@ $(function() {
 	        "<img src='"+$("#photo-profile").data("src")+"' class='file-preview-image img-responsive' alt='"+$("#photo-profile").data("title")+"' title='"+$("#photo-profile").data("title")+"'>",
 	    ],
 	    overwriteInitial: true,
-	    maxFileSize: 500,
+	    maxFileSize: 5120,
 	}).on("filebatchselected", function(event, files) {
     	// trigger upload method immediately after files are selecte
     	$("#photo-profile").fileinput("upload");
@@ -91,7 +91,7 @@ $(function() {
 	        "<img src='"+$("#image-recipe").data("src")+"' class='file-preview-image img-responsive' alt='"+$("#image-recipe").data("title")+"' title='"+$("#image-recipe").data("title")+"'>",
 	    ],
 	    overwriteInitial: true,
-	    maxFileSize: 500,
+	    maxFileSize: 5120,
 	}).on("filebatchselected", function(event, files) {
     	// trigger upload method immediately after files are selecte
     	$photoRecipe.fileinput("upload");
@@ -245,7 +245,7 @@ $(function() {
 					}
 		    ,
 		    overwriteInitial: true,
-		    maxFileSize: 500,
+		    maxFileSize: 5120,
 		}).on("filebatchselected", function(event, files) {
 	    	// trigger upload method immediately after files are selecte
 	    	$inputStepFirst.fileinput("upload");
@@ -529,5 +529,4 @@ $(function() {
 	*/
 	$('.carousel').carousel();
     $('.btn-popover').popover();
-    //$('.popoverMenubar').popover();
 });

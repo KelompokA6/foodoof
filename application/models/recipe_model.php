@@ -143,9 +143,7 @@ class Recipe_model extends DataMapper {
                 if(!write_file("./images/recipe/".$id.".jpg", $data)){
                     return false;
                 }
-                if(file_exists("./images/tmp/step/".$id.".jpg")){
-                    unlink("./images/tmp/recipe/".$id.".jpg");
-                }
+                unlink("./images/tmp/recipe/".$id.".jpg");
             }
             $this->trans_begin();
             if(is_array($ingredients)){
