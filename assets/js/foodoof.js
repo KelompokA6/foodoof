@@ -101,9 +101,6 @@ $( document ).ready(function() {
     });
     $photoRecipe.on('fileunlock', function(event, filestack, extraData) {
 	    $lock -= 2;
-	    if($lock>0){
-	    	alert("gagal lepas lock");	
-	    }
 	    if ($submitStatus){
 	    	$("form").trigger("submit");
 	    }
@@ -171,8 +168,10 @@ $( document ).ready(function() {
 	    	$lock++;
 	    });
 	    $(this).on('fileunlock', function(event, filestack, extraData) {
-		    $lock--;
-		    $("form").trigger("submit");
+		    $lock-=2;
+		    if ($submitStatus){
+		    	$("form").trigger("submit");
+		    }
 	    });
 	});
 
@@ -241,7 +240,7 @@ $( document ).ready(function() {
 		    uploadExtraData:
 		    		function() {
 					    return {
-					       no_step: 0,
+					       no_step: 1,
 					    };
 					}
 		    ,
@@ -249,14 +248,16 @@ $( document ).ready(function() {
 		    maxFileSize: 500,
 		}).on("filebatchselected", function(event, files) {
 	    	// trigger upload method immediately after files are selecte
-	    	$input.fileinput("upload");
+	    	$inputStepFirst.fileinput("upload");
 		});
 		$inputStepFirst.on('filelock', function(event, filestack, extraData) {
 		    $lock++;
 	    });
 	    $inputStepFirst.on('fileunlock', function(event, filestack, extraData) {
-		    $lock--;
-		    $("form").trigger("submit");
+		    $lock-=2;
+		    if ($submitStatus){
+		    	$("form").trigger("submit");
+		    }
 	    });
 	}
 	//$(".step-item:first > div > textarea").prop('required',true);
@@ -386,8 +387,10 @@ $( document ).ready(function() {
 		    $lock++;
 	    });
 	    $input.on('fileunlock', function(event, filestack, extraData) {
-		    $lock--;
-		    $("form").trigger("submit");
+		    $lock-=2;
+		    if ($submitStatus){
+		    	$("form").trigger("submit");
+		    }
 	    });
 	});
 

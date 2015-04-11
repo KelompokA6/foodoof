@@ -65,6 +65,8 @@ class Recipe extends CI_Controller {
 	// ini pake post, lihat registration
 	public function save($id){
 		$recipe = new Recipe_model();
+		$user = new User_model();
+		$user_id = $user->wajiblogin();
 		$name = $this->input->post("recipe_title");
 		$description = $this->input->post("recipe_description");
 		$portion = $this->input->post("recipe_portion");
@@ -94,7 +96,7 @@ class Recipe extends CI_Controller {
 		if($isSuccess === false){
 			echo "gagal";
 		} else{
-			echo "berhasil";
+			redirect(base_url()."user/timeline/".$user_id);
 		}
 	}
 
@@ -193,31 +195,36 @@ class Recipe extends CI_Controller {
 	public function get($id){
 		$recipe = new Recipe_model();
 		$user = new User_model();
-		$r = $recipe->getRecipeProfile($id);
+		$user_id = $user->wajiblogin();
+		$r = $recipe->getRecipeProfile($id, $user_id);
 		$data = array();
 		$this->load->library('parser');
 		// $menubar = $this->parser->parse('menubar_login', $data, TRUE);
 		$this->load->model('home_viewer');
 		$menubar = $this->home_viewer->getMenubar();
 		$ingre = array();
-		foreach ($r->ingredients as $obj) {
-			$temp = array(
-					'ingre_name' => $obj->name,
-					'ingre_quantity' => $obj->quantity,
-					'ingre_units' => $obj->units,
-					'ingre_info' => $obj->info,
-				);
-			array_push($ingre, $temp);
+		if (!empty($r->ingredients)){
+			foreach ($r->ingredients as $obj) {
+				$temp = array(
+						'ingre_name' => $obj->name,
+						'ingre_quantity' => $obj->quantity,
+						'ingre_units' => $obj->units,
+						'ingre_info' => $obj->info,
+					);
+				array_push($ingre, $temp);
+			}
 		}
 		//print_r($ingre);
 		$steps = array();
-		foreach ($r->steps as $obj) {
-			$temp = array(
-					'steps_number' => $obj->no_step,
-					'steps_description' => $obj->description,
-					'steps_photo' => $obj->photo,
-				);
-			array_push($steps, $temp);
+		if (!empty($r->steps)){
+			foreach ($r->steps as $obj) {
+				$temp = array(
+						'steps_number' => $obj->no_step,
+						'steps_description' => $obj->description,
+						'steps_photo' => $obj->photo,
+					);
+				array_push($steps, $temp);
+			}
 		}
 		$data = array(
 					'recipe_name' => $r->name,
