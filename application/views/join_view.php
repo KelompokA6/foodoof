@@ -10,23 +10,23 @@
                 <div class="form-group">
                     <label for="email" class="col-md-3 control-label">Email</label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" name="email" placeholder="Email Address" required>
+                        <input type="text" class="form-control" name="email" placeholder="Email Address" value="{email}" required>
                     </div>
                 </div> 
                 <div class="form-group">
                     <label for="firstname" class="col-md-3 control-label">Name</label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                        <input type="text" class="form-control" name="name" placeholder="Your Name" value="{name}" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="gender" class="col-md-3 control-label">Gender</label>
                     <div class="col-md-9">
                         <label class="radio-inline">
-                          <input type="radio" name="genderOptions" id="inlineRadio1" value="F" checked> Female
+                          <input type="radio" name="genderOptions" id="inlineRadio1" value="F" {checked_female}> Female
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="genderOptions" id="inlineRadio2" value="M"> Male
+                          <input type="radio" name="genderOptions" id="inlineRadio2" value="M" {checked_male}> Male
                         </label>
                     </div>
                 </div>
