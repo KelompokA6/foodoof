@@ -203,7 +203,7 @@ class ProcessAjax extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function setPublish($recipe_id=is_null(var)){
+	public function setPublish($recipe_id=null){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){
 				$recipe_id = $this->input->get("id");
