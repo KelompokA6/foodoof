@@ -85,12 +85,11 @@ class Recipe extends CI_Controller {
 		// for ($i=0; $i < sizeof($category) ; $i++) { 
 		// 	$recipe->addCategory($id, $category[$i]);
 		// }
-		foreach($category as $selected){
-			$res = $recipe->addCategory($id, $selected);
-			if (!$res)
-				print_r("ggal");
+		if (!empty($category)){
+			foreach($category as $selected){
+				$res = $recipe->addCategory($id, $selected);
+			}
 		}
-		die();
 		$ingredients = array();
 		for ($i=0; $i < sizeof($subjek) ; $i++) { 
 			$temp['name'] = $subjek[$i];
