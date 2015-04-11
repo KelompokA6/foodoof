@@ -32,8 +32,10 @@ class Recipe extends CI_Controller {
 			//print_r($ingre);
 			$steps = array();
 			if (!empty($r->steps)){
+				$i = 1;
 				foreach ($r->steps as $obj) {
 					$temp = array(
+							'edit_recipe_step_title' => $id+"-"+$i++,
 							'edit_recipe_step_no_step' => $obj->no_step,
 							'edit_recipe_step_description' => $obj->description,
 							'edit_recipe_step_photo' => $obj->photo,
@@ -43,6 +45,7 @@ class Recipe extends CI_Controller {
 			}
 			$data = array(
 						'edit_recipe_id' => $id,
+						'edit_recipe_photo' => $r->photo,
 						'edit_recipe_title' => $r->name,
 						'edit_recipe_portion' => $r->portion,
 						'edit_recipe_description' => $r->description,
@@ -236,6 +239,7 @@ class Recipe extends CI_Controller {
 					'recipe_ingredients' => $ingre,
 					'recipe_steps' => $steps,
 					'recipe_rating' => $r->rating,
+					'recipe_photo' => $r->photo,
 				);
 		$content_website = $this->parser->parse('recipe_view', $data, TRUE);
 		$data = array(
