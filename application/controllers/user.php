@@ -92,10 +92,10 @@ class User extends CI_Controller {
 					redirect(base_url().'user');
 					die;
 				} else {
-					$data['join_alert'] = '<div class="alert alert-warning">join failed</div>';
+					$data['join_alert'] = '<div class="alert alert-warning">Join Failed!</div>';
 				}
 			} else {
-				$data['join_alert'] = '<div class="alert alert-danger">invalid input data</div>';
+				$data['join_alert'] = '<div class="alert alert-danger">Email Invalid!</div>';
 			}
 			foreach ($profile as $key => $value) $data[$key] = $value;
 		}
