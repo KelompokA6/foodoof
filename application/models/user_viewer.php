@@ -161,7 +161,7 @@ class User_viewer extends CI_Model
     $data_user_view['content_user'] = $this->parser->parse(
         'edit_profile_view',
         array(
-            'edit_profile_id' => '',
+            'edit_profile_id' => $profile->id,
             'edit_profile_name' => $profile->name,
             'edit_profile_photo' => $profile->photo,
             'edit_profile_title' => $profile->name."'s photo",
