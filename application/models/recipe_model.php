@@ -842,6 +842,21 @@ class Recipe_model extends DataMapper {
         }
     }
 
+     /*
+        Digunakan untuk mengubah status publish dari sebuah resep. nilai kembalian merupakan boolean berhasil mengubah status.
+    */
+    function highlightRecipe($id=NULL, $status=FALSE){
+        if($id==NULL){
+            $id = $this->id;
+        }
+        if(!empty($id)){
+            return $this->where('id', $id)->update('hightlight', $status);
+        }
+        else{
+            return false;
+        }
+    }
+
     /*
         Digunakan untuk menambahkan sebuah category pada sebuah resep, kembalian berhasil atai tidak
     */

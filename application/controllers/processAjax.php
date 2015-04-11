@@ -253,16 +253,16 @@ class ProcessAjax extends CI_Controller {
 			$recipe = new Recipe_model();
 			$recipe->get_by_id($recipe_id);
 			$recipetmp = new Recipe_model();
-			if($recipetmp->publishRecipe($recipe_id, ($recipe->status != 1))){
+			if($recipetmp->highlightRecipe($recipe_id, ($recipe->status != 1))){
 				$result = array(
 						"status" => 1,
-						"message" => "Set Publish Success",
+						"message" => "Set Highlight Success",
 						);
 			}
 			else{
 				$result = array(
 						"status" => 0,
-						"message" => "Set Publish Failed",
+						"message" => "Set Highlight Failed",
 						);
 			}
 		}
