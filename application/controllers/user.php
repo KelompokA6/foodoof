@@ -73,19 +73,27 @@ class User extends CI_Controller {
 
 	public function join(){
 		$data['join_alert'] = '';
-		if($this->input->server('REQUEST_METHOD') == 'POST'){
-			$profile['name'] = $this->input->post("name");
-			$profile['email'] = $this->input->post("email");
-			$profile['gender'] = $this->input->post("genderOptions");
-			$profile['password'] = $this->input->post("password"); 
-			$profile['confrimPass'] = $this->input->post("confirm_password");
+		$data['name'] = '';
+		$data['email'] = '';
+		$data['gender'] = '';
+		$data['checked_male'] = '';
+		$data['checked_female'] = '';
 
-			if ($this->validateJoin($profile)) {
-				if(!$this->_send_email($profile)) {
+		if($this->input->server('REQUEST_METHOD') == 'POST') {
+			$data['name'] = $this->input->post("name");
+			$data['email'] = $this->input->post("email");
+			$data['gender'] = $this->input->post("genderOptions");
+			$data['checked_male'] = $data['gender'] == 'M' ? 'checked="checked"' : '';
+			$data['checked_female'] = $data['gender'] == 'F' ? 'checked="checked"' : '';
+			$data['password'] = $this->input->post("password"); 
+			$data['confirm_password'] = $this->input->post("confirm_password");
+
+			if ($this->_validateJoin($data)) {
+				if(!$this->_send_email($data)) {
 					die("email gagal");
 				}
-				if($this->user_model->createUser($profile)) {
-					$profile_menubar = $this->user_model->login($profile['email'], $profile['password']);
+				if($this->user_model->createUser($data)) {
+					$profile_menubar = $this->user_model->login($data['email'], $data['password']);
 					foreach ($profile_menubar as $key => $value) {
 						$this->session->set_userdata($key, $value);
 					}
@@ -97,7 +105,6 @@ class User extends CI_Controller {
 			} else {
 				$data['join_alert'] = '<div class="alert alert-danger">Email Invalid!</div>';
 			}
-			foreach ($profile as $key => $value) $data[$key] = $value;
 		}
 		$this->user_viewer->showRegister($data);
 	}
@@ -149,7 +156,7 @@ class User extends CI_Controller {
 			$password = $this->user_model->getPasswordByEmail($email);
 			die("nyoh password: $password");
 			if($password !== FALSE) {
-				if ($this->sendPassword($email, $password)) {
+				if ($this->_sendPassword($email, $password)) {
 					$data['message'] = 'success';
 				}else $data['message'] = 'failed';
 			} else $data['message'] = 'invalid';
@@ -157,16 +164,17 @@ class User extends CI_Controller {
 		$this->user_viewer->showForgotPassword($data);
 	}
 
-	public function validateJoin($profile){
+	private function _validateJoin($profile){
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|trim');
+		if($profile['password'] !== $profile['confirm_password']) return FALSE;
 		return $this->form_validation->run();
 	}
 
-	public function sendPassword($email, $password){
+	private function _sendPassword($email, $password){
 		$this->load->library('email');
-		$this->email->from('admin@foodoof');
+		$this->email->from('noreply@foodoof');
 		$this->email->to($email);
 		$this->email->subject('Your FoodooF Password');
 		$this->email->message("You said that you have forgotten your password. Here you are! Your password is $password.");

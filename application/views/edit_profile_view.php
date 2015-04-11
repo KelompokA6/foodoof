@@ -11,6 +11,12 @@
 				</div>
 				<div class="col-md-12">
 					<div class="form-group">
+					   <label for="inputemail" class="col-sm-2 control-label">Email</label>
+					   <div class="col-sm-10">
+					     	<input type="text" disabled="disabled" class="form-control" value="{edit_profile_email}">
+					   </div>
+					</div>
+					<div class="form-group">
 					    <label for="inputname" class="col-sm-2 control-label">Name</label>
 					    <div class="col-sm-10">
 					      	<input type="text" class="form-control" name="user_name" value="{edit_profile_name}" placeholder="Your Name">
