@@ -171,6 +171,9 @@ class ProcessAjax extends CI_Controller {
 				    rename ( "./images/tmp/step/".$id."-".$no_step."_thumb.jpg", "./images/tmp/step/".$id."-".$no_step.".jpg");
 				    $p1 = "<img src='".base_url()."images/tmp/step/".$id."-".$no_step.".jpg' class='file-preview-image'>";
 					$p2 = ['caption' => "recipe-".$id."-".$no_step , 'width' => '120px', 'url' => base_url()."images/tmp/step/".$id."-".$no_step.".jpg"];
+				    if(file_exists("./images/tmp/step/".$recipe_id."-".$no_step."-default.jpg")){
+						unlink("./images/tmp/step/".$recipe_id."-".$no_step."-default.jpg");
+					}
 				    $result = array(
 				    	"status" => 1,
 						"message" => "Upload success",
@@ -265,10 +268,24 @@ class ProcessAjax extends CI_Controller {
 					);
 			}
 		}
+		else if(file_exists("./images/tmp/step/".$recipe_id."-".$no_step.".jpg")){
+			if(unlink("./images/tmp/step/".$recipe_id."-".$no_step.".jpg")){
+				$result = array(
+			    	"status" => 1,
+					"message" => "Remove Success",
+					);
+			}
+			else{
+				$result = array(
+					"status" => 0,
+					"message" => "Remove Failed",
+					);
+			}
+		}
 		else{
 			$result = array(
-		    	"status" => 1,
-				"message" => "Remove Success",
+		    	"status" => 0,
+				"message" => "Remove Failed",
 				);
 		}
 		echo json_encode($result);
