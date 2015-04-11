@@ -486,7 +486,7 @@ $( document ).ready(function() {
 	/*
 	handler event click publish recipe
 	*/
-	$(document).on("click", ".publish", function(){
+	$(document).on("click", ".checkedPublish", function(){
 		var check = $(this).prop('checked');
 		$.get( "../processAjax/setPublish/"+$(this).val(), function( data ) {
 		  	if(data.status == '1'){
