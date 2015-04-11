@@ -14,7 +14,13 @@ class Recipe extends CI_Controller {
 		$user_id = $user->wajiblogin();
 		$auth = $recipe->authEditRecipe($id, $user_id);
 		if ($auth){
-			$r = $recipe->getRecipeProfile($id);
+			print_r("masuk");
+			$r = $recipe->getRecipeProfile($id, $user_id);
+			print_r($user_id);
+			if (!$r){
+				print_r("false");
+			}
+			print_r($r);
 			$data = array();
 			$this->load->model('home_viewer');
 			$menubar = $this->home_viewer->getMenubar();
@@ -41,6 +47,7 @@ class Recipe extends CI_Controller {
 					array_push($steps, $temp);
 				}
 			}
+			print_r($r);
 			$data = array(
 						'edit_recipe_id' => $id,
 						'edit_recipe_title' => $r->name,
