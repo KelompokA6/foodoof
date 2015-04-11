@@ -103,11 +103,7 @@ class User extends CI_Controller {
 					$data['join_alert'] = '<div class="alert alert-warning">Join Failed!</div>';
 				}
 			} else {
-<<<<<<< HEAD
 				$data['join_alert'] = '<div class="alert alert-danger">'.$this->_validateJoin($data).'</div>';
-=======
-				$data['join_alert'] = '<div class="alert alert-danger">Input Invalid!</div>';
->>>>>>> origin/master
 			}
 		}
 		$this->user_viewer->showRegister($data);
