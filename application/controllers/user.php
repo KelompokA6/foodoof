@@ -168,7 +168,7 @@ class User extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|trim');
-		if($profile['password'] !== $profile['confirm_password']) return FALSE;
+		if($profile['password'] !== $profile['confirm_password'] || strlen($profile['password']) < 5) return FALSE;
 		return $this->form_validation->run();
 	}
 
