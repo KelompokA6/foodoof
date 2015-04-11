@@ -105,7 +105,8 @@ class Recipe extends CI_Controller {
 			$temp['description'] = $stdes[$i];
 			array_push($steps, $temp);
 		}
-		$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d"), $ingredients, $steps);
+		date_default_timezone_set ('Asia/Jakarta');
+		$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d %H:%M:%S"), $ingredients, $steps);
 		if($isSuccess === false){
 			echo "gagal";
 		} else{
