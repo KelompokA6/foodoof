@@ -18,11 +18,13 @@ class User_model extends DataMapper {
         $decrypted_password = $ci->encrypt->decode($this->password);
         // hack
         // $decrypted_password = $password;
+        // FOTONE ENDI?
+        $this->photo = file_exists('images/user/'.$this->id.'.jpg') ? 'images/user/'.$this->id.'.jpg' : 'images/user/0.jpg';
         return ($decrypted_password == $password) ?
             array(
                 'user_id' => $this->id,
                 'user_name' => $this->name,
-                'user_photo' => $this->photo ? $this->photo : 'images/user/0.jpg',
+                'user_photo' => $this->photo,
             ) : FALSE;
     }
 

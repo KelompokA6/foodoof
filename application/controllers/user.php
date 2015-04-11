@@ -50,15 +50,15 @@ class User extends CI_Controller {
 	}
 
 	public function changepassword(){
-		$id = $this->user_model->wajiblogin();
+		$data['id'] = $this->user_model->wajiblogin();
 		$data = array();
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data['oldPass'] = $this->input->post("old_password");
 			$data['newPass'] = $this->input->post("new_password");
 			$data['confirmPass'] = $this->input->post("confirm_password");
 
-			if($this->isValid($data)){
-				$success = $this->user_model->updatePassword($id, $data['newPass']);
+			if($this->_is_valid_changepassword($data)){
+				$success = $this->user_model->updatePassword($data['id'], $data['newPass']);
 				$data['message'] = $success ? "success" : "failed";
 			}
 			else{
@@ -66,9 +66,24 @@ class User extends CI_Controller {
 			}
 		}
 
-		$profile = $this->user_model->getProfile($id);
+		$profile = $this->user_model->getProfile($data['id']);
 
 		$this->user_viewer->showChangePassword($profile, $data);
+	}
+
+	private function _is_valid_changepassword($data)
+	{
+		$u = new user_model();
+		if($u->where('id', $data['id'])->count() > 0)
+		{
+			$u->where('id', $data['id'])->get();
+			$email = $u->email;
+			if($u->login($email, $data['password']) !== FALSE)
+			{
+				return TRUE;
+			}
+		}
+		return FALSE;
 	}
 
 	public function join(){
