@@ -204,8 +204,8 @@ class User_viewer extends CI_Model
     return $this->parser->parse(
         'sidebar_user_view',
         array(
-            'sidebar_user_id' => $profile->id,
-            'sidebar_user_photo' => $profile->photo ? $profile->photo : 'images/user/0.jpg',
+            'sidebar_user_id' => $this->session->userdata('user_id'),
+            'sidebar_user_photo' => $this->session->userdata('user_photo'),
         ),
         TRUE
     );

@@ -142,6 +142,7 @@ class User extends CI_Controller {
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			if (file_exists('images/tmp/user/'.$data['id'].'.jpg')) {
 				rename('images/tmp/user/'.$data['id'].'.jpg', 'images/user/'.$data['id'].'.jpg');
+				$data['photo'] = 'images/user/'.$data['id'].'.jpg';
 			}
 			$data['name'] = $this->input->post('user_name');
 			$data['gender'] = $this->input->post('genderOptions');
