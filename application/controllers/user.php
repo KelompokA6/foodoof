@@ -160,7 +160,7 @@ class User extends CI_Controller {
 	public function validateJoin($profile){
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 		return $this->form_validation->run();
 	}
 
