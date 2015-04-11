@@ -486,9 +486,10 @@ $( document ).ready(function() {
 	/*
 	handler event click publish recipe
 	*/
-	$(document).on("click", ".checkedPublish", function(){
+	$(document).on("change", ".checkedPublish", function(){
 		var check = $(this).prop('checked');
-		$.get( "../processAjax/setPublish/"+$(this).val(), function( data ) {
+		alert($(this).val());
+		$.get( "foodoof/processAjax/setPublish/"+$(this).val(), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
