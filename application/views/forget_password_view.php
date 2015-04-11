@@ -21,7 +21,7 @@
                     <div class="col-md-12 control">
                         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
                             Don't have an account! 
-                        <a href="<?php echo base_url();?>join" >
+                        <a href="<?php echo base_url();?>user/join" >
                             Join Here
                         </a>
                         </div>
