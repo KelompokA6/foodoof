@@ -21,37 +21,37 @@
 							<div class="col-md-12 col-xs-12 col-no-padding">
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Pedas"> Pedas
+									  	<input type="checkbox" id="inlineCheckbox1" value="Pedas" name="recipe_category[]"> Pedas
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox2" value="Sayur"> Sayur
+									  	<input type="checkbox" id="inlineCheckbox2" value="Sayur" name="recipe_category[]"> Sayur
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox3" value="Daging"> Daging
+									  	<input type="checkbox" id="inlineCheckbox3" value="Daging" name="recipe_category[]"> Daging
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Seafood"> Seafood
+									  	<input type="checkbox" id="inlineCheckbox1" value="Seafood" name="recipe_category[]"> Seafood
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Chinese Food"> Chinese Food
+									  	<input type="checkbox" id="inlineCheckbox1" value="Chinese Food" name="recipe_category[]"> Chinese Food
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="French Food"> French Food
+									  	<input type="checkbox" id="inlineCheckbox1" value="French Food" name="recipe_category[]"> French Food
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Other" checked> Other
+									  	<input type="checkbox" id="inlineCheckbox1" value="Other" name="recipe_category[]"> Other
 									</label>
 								</div>
 							</div>
