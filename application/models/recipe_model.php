@@ -834,7 +834,7 @@ class Recipe_model extends DataMapper {
         if($id==NULL){
             $id = $this->id;
         }
-        if(!empty($id) && !empty($status)){
+        if(!empty($id)){
             return $this->where('id', $id)->update('status', $status);
         }
         else{

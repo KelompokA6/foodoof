@@ -215,8 +215,9 @@ class ProcessAjax extends CI_Controller {
 		$user_id = $this->session->userdata('user_id');
 		if(!empty($user_id) && !empty($recipe_id)){
 			$recipe = new Recipe_model();
-			$tmp = $recipe->get_by_id($recipe_id);
-			if($recipe->publishRecipe($recipe_id, !($tmp->status))){
+			$recipe->get_by_id($recipe_id);
+			$recipetmp = new Recipe_model();
+			if($recipetmp->publishRecipe($recipe_id, ($recipe->status != 1))){
 				$result = array(
 						"status" => 1,
 						"message" => "Set Publish Success",

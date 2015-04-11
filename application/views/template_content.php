@@ -49,15 +49,14 @@
     <div class="modal-dialog modal-sm modal-dialog-loading">
       <div class="modal-content">
         <div class="modal-body text-center">
-          <img class="responsive" width="50px" src="../assets/img/loading-spinner.gif"/>
+          <img class="responsive" width="50px" src="/foodoof/assets/img/loading-spinner.gif"/>
         </div>
       </div>
     </div>
   </div>    
 	</body>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="/foodoof/assets/plugin/bower-components/kartik-star-rating/js/star-rating.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-2.1.3.min.js"></script>
+  <script src="/foodoof/assets/plugin/bower-components/kartik-star-rating/js/star-rating.min.js" type="text/javascript"></script>
   <script src="/foodoof/assets/plugin/bower-components/kartik-file-input/js/fileinput.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
   <script src="/foodoof/assets/plugin/bower-components/typeahead/bootstrap3-typeahead.js" type="text/javascript"></script>
