@@ -260,7 +260,7 @@ $( document ).ready(function() {
 		    }
 	    });
 	}
-	//$(".step-item:first > div > textarea").prop('required',true);
+	$(".step-item:first > div > textarea").prop('required',true);
 
 	$('.typeahead').typeahead({ 
 		source : function(query, process) {
@@ -289,9 +289,13 @@ $( document ).ready(function() {
 	event for add ingredient
 	*/
 	$countIngredient = $(".ingredient-item").length;
-	if($countIngredient=1){
-		$("#remove-ingredient").hide();
-	}
+	$(document).ready(function(){
+		if($countIngredient=1){
+			alert($countIngredient);
+			$("#remove-ingredient").hide();
+		}
+	});
+
 	$colAddRemoveBtnIngredient = $("#add-and-remove-btn-ingredient").clone();
 	$ingredientItem = 	"<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'>"+"<div class='col-sm-6 col-xs-6'>"+"<input type='text' value='' name='ingredient_subject[]' class='form-control' placeholder='Ingredient Name'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'>"+"</div>"+"</div>";
 	$(document).on('click',"#add-ingredient",function(){
