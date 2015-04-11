@@ -484,8 +484,34 @@ $( document ).ready(function() {
 	});
 
 	/*
+	handler event click publish recipe
+	*/
+	$(document).on("click", ".publish", function(){
+		var check = $(this).prop('checked');
+		$.get( "../processAjax/setPublish/"+$(this).val(), function( data ) {
+		  	if(data.status == '1'){
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					type: 'success'
+				});  		
+		  	}
+		  	else{
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					type: 'warning'
+				});  	
+		  	}
+		},"json");
+	});
+
+	/*
 	handler buat submit form
-		
 	*/
 	$("form").on("submit", function(e){
 		if($lock>0){

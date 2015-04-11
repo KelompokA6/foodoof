@@ -197,6 +197,38 @@ class ProcessAjax extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	public function setPublish($recipe_id){
+		if(empty($recipe_id)){
+			if(!empty($this->input->get("id"))){
+				$recipe_id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$recipe_id = $this->input->post("id");
+			}
+		}
+		$user_id = $this->session->userdata('user_id');
+		if(!empty($user_id) && !empty($recipe_id)){
+			$recipe = new Recipe_model();
+			$tmp = $recipe->get_by_id($recipe_id);
+			if($recipe->publishRecipe($recipe_id, !($tmp->status))){
+				$result = array(
+						"status" => 1,
+						"message" => "Set Publish Success",
+						);
+			}
+			else{
+				$result = array(
+						"status" => 0,
+						"message" => "Set Publish Failed",
+						);
+			}
+		}
+		$result = array(
+						"status" => 0,
+						"message" => "Please Login First",
+						);
+	}
+
 	public function setRating($recipe_id=null, $value = 0){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){

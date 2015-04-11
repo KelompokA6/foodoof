@@ -53,7 +53,7 @@
 		    	<div class="col-md-12 col-xs-4 col-no-padding-right recipe-timeline-check-publish">
 		    		<div class="checkbox">
 					    <label>
-					      	<input type="checkbox" id="checkedPublish" {checked_status}> Publish
+					      	<input type="checkbox" id="checkedPublish" value='{user_timeline_recipe_id}' {checked_status}> Publish
 					    </label>
 					 </div>
 		    	</div>
