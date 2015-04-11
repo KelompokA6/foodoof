@@ -27,7 +27,7 @@ class Category extends DataMapper {
         {
             $u = new Recipe();
             // Get email have used.
-            if($u->where('id', $this->{$field})->count() !== 0){
+            if($u->where('recipe_id', $this->{$field})->count() !== 0){
                 return true;
             }
             else{
