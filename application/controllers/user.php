@@ -88,7 +88,7 @@ class User extends CI_Controller {
 			$data['password'] = $this->input->post("password"); 
 			$data['confirm_password'] = $this->input->post("confirm_password");
 
-			if ($this->_validateJoin($data) !== TRUE) {
+			if ($this->_validateJoin($data) === TRUE) {
 				if(!$this->_send_email($data)) {
 					die("email gagal");
 				}
