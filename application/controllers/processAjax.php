@@ -215,9 +215,8 @@ class ProcessAjax extends CI_Controller {
 		$user_id = $this->session->userdata('user_id');
 		if(!empty($user_id) && !empty($recipe_id)){
 			$recipe = new Recipe_model();
-			$recipe->get_by_id($recipe_id);
-			$recipetmp = new Recipe_model();
-			if($recipetmp->publishRecipe($recipe_id, ($recipe->status != 1))){
+			$tmp = $recipe->get_by_id($recipe_id);
+			if($recipe->publishRecipe($recipe_id, !($tmp->status))){
 				$result = array(
 						"status" => 1,
 						"message" => "Set Publish Success",
@@ -266,13 +265,10 @@ class ProcessAjax extends CI_Controller {
 						);
 			}
 		}
-		else{
-			$result = array(
+		$result = array(
 						"status" => 0,
 						"message" => "Please Login First",
 						);
-		}
-		echo json_encode($result);
 	}
 
 	public function setRating($recipe_id=null, $value = 0){

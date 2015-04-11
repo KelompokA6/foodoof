@@ -85,6 +85,7 @@ class User_viewer extends CI_Model
         $row->user_timeline_recipe_id = $row->id;
         $row->user_timeline_recipe_photo = $row->photo;
         $row->user_timeline_recipe_name = $row->name;
+        $row->user_timeline_recipe_rating = $row->rating;
         $row->user_timeline_recipe_last_update = $row->last_update;
         $row->user_timeline_recipe_view = $row->views;
         $row->checked_status = $row->status ? "checked" : "";
