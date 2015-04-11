@@ -847,18 +847,18 @@ class Recipe_model extends DataMapper {
     /*
         Digunakan untuk menambahkan sebuah category pada sebuah resep, kembalian berhasil atai tidak
     */
-    function addCategory($id=NULL, $category=NULL){
+    function addCategory($id=NULL, $category1=NULL){
         if($id==NULL){
             $id = $this->id;
         }
         if(!empty($id) && !empty($category)){
             $categorytmp = new Category();
             $categorytmp->where('recipe_id', $id);
-            $categorytmp->ilike('name', strtolower($category));
+            $categorytmp->ilike('name', strtolower($category1));
             $category = new Category();
             if(!$categorytmp->count() > 0){
                 $category->recipe_id = $id;
-                $category->name = strtolower($category);
+                $category->name = strtolower($category1);
                 return $category->skip_validation()->save();
             }
         }

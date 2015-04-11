@@ -74,12 +74,20 @@ class Recipe extends CI_Controller {
 		$description = $this->input->post("recipe_description");
 		$portion = $this->input->post("recipe_portion");
 		$duration = $this->input->post("recipe_duration");
-
+		$category = $this->input->post("recipe_category");
 		$subjek =  $this->input->post("ingredient_subject");
 		// print_r($subjek);
 		// die;
 		$quantity =  $this->input->post("ingredient_quantity");
 		$unit =  $this->input->post("ingredient_unit");
+		// print_r($category);
+		// for ($i=0; $i < sizeof($category) ; $i++) { 
+		// 	$recipe->addCategory($id, $category[$i]);
+		// }
+		foreach($category as $selected){
+			$res = $recipe->addCategory($id, $selected);
+			print_r($res);
+		}
 		$ingredients = array();
 		for ($i=0; $i < sizeof($subjek) ; $i++) { 
 			$temp['name'] = $subjek[$i];
