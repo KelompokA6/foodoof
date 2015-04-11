@@ -11,16 +11,23 @@ class ProcessAjax extends CI_Controller {
 		$this->load->helper('file');
 	}
 
-	public function uploadProfileUser(){
-		$config['upload_path'] = './images/tmp/user/';
+	public function uploadProfileUser($id){
+		$config['upload_path'] = './images/tmp/user';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '5120';
 		$config['overwrite'] = TRUE;
 		$config['file_name'] = $id.".jpg";
 		$this->upload->initialize($config);
-
-		if($this->session->userdata('user_id')!=''){
-			if($this->upload->do_upload("photo-user")){
+		if(empty($id)){
+			if(!empty($this->input->get("id"))){
+				$id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$id = $this->input->post("id");
+			}
+		}
+		if($this->session->userdata('user_id')!='' && !empty($id)){
+			if($this->upload->do_upload('photo-user')){
 				$configImage['source_image'] = './images/tmp/user/'.$id.'.jpg';
 				$configImage['create_thumb'] = TRUE;
 				$configImage['maintain_ratio'] = TRUE;
@@ -30,9 +37,9 @@ class ProcessAjax extends CI_Controller {
 				$this->load->library('image_lib', $configImage);
 				if ($this->image_lib->resize())
 				{
-				    unlink('./images/tmp/user/'.$id.'.jpg');
+					unlink('./images/tmp/user/'.$id.'.jpg');
 				    rename ( './images/tmp/user/'.$id.'_thumb.jpg', './images/tmp/user/'.$id.'.jpg');
-				    $p1 = "<img src='".base_url()."images/tmp/user/".$id.".jpg' class='file-preview-image'>";
+				   	$p1 = "<img src='".base_url()."images/tmp/user/".$id.".jpg' class='file-preview-image'>";
 					$p2 = ['caption' => "user-".$id , 'width' => '120px', 'url' => base_url()."images/tmp/user/".$id.".jpg"];
 				    $result = array(
 				    	"status" => 1,
@@ -43,7 +50,6 @@ class ProcessAjax extends CI_Controller {
 						);
 				}
 				else{
-					echo $this->image_lib->display_errors();
 					$result = array(
 						"status" => 0,
 						"message" => "Web server error",
