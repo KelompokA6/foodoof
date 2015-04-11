@@ -100,8 +100,13 @@ $( document ).ready(function() {
 	    $lock++;
     });
     $photoRecipe.on('fileunlock', function(event, filestack, extraData) {
-	    $lock--;
-	    $("form").trigger("submit");
+	    $lock -= 2;
+	    if($lock>0){
+	    	alert("gagal lepas lock");	
+	    }
+	    if ($submitStatus){
+	    	$("form").trigger("submit");
+	    }
     });
 
 	/*
@@ -477,9 +482,9 @@ $( document ).ready(function() {
 
 	/*
 	handler buat submit form
+		
 	*/
 	$("form").on("submit", function(e){
-		alert($lock);
 		if($lock>0){
 			e.preventDefault();
 			$("#modalWaiting").modal("show");
