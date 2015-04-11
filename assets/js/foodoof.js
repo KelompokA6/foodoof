@@ -194,8 +194,8 @@ $( document ).ready(function() {
 		$colAddRemoveBtnStep = $("#add-and-remove-btn-step").clone();
 		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'><div class='col-sm-8 col-xs-7 col-no-padding-right'><textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'>Description step</textarea></div><div class='col-sm-4 col-xs-5'><input class='image-steps' name='photo-step' data-src='../assets/img/01.jpg' index='1' data-title='new step' type='file' accept='image/*'></div></div>";
 		$("#add-and-remove-btn-step").remove();
-		$("#ingredient-entry").append($stepItem);
-		$("#ingredient-entry").append($colAddRemoveBtnStep);
+		$("#step-entry").append($stepItem);
+		$("#step-entry").append($colAddRemoveBtnStep);
 		$inputStepFirst = $(".image-steps[index='1']");
 		$inputStepFirst.fileinput({
 			previewFileType: "image",

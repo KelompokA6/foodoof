@@ -19,23 +19,27 @@ class Recipe extends CI_Controller {
 			$this->load->model('home_viewer');
 			$menubar = $this->home_viewer->getMenubar();
 			$ingre = array();
-			foreach ($r->ingredients as $obj) {
-				$temp = array(
-						'edit_recipe_ingredient_subject' => $obj->name,
-						'edit_recipe_ingredient_quantity' => $obj->quantity,
-						'edit_recipe_ingredient_unit' => $obj->units,
-					);
-				array_push($ingre, $temp);
+			if (!empty($r->ingredients)){
+				foreach ($r->ingredients as $obj) {
+					$temp = array(
+							'edit_recipe_ingredient_subject' => $obj->name,
+							'edit_recipe_ingredient_quantity' => $obj->quantity,
+							'edit_recipe_ingredient_unit' => $obj->units,
+						);
+					array_push($ingre, $temp);
+				}
 			}
 			//print_r($ingre);
 			$steps = array();
-			foreach ($r->steps as $obj) {
-				$temp = array(
-						'edit_recipe_step_no_step' => $obj->no_step,
-						'edit_recipe_step_description' => $obj->description,
-						'edit_recipe_step_photo' => $obj->photo,
-					);
-				array_push($steps, $temp);
+			if (!empty($r->steps)){
+				foreach ($r->steps as $obj) {
+					$temp = array(
+							'edit_recipe_step_no_step' => $obj->no_step,
+							'edit_recipe_step_description' => $obj->description,
+							'edit_recipe_step_photo' => $obj->photo,
+						);
+					array_push($steps, $temp);
+				}
 			}
 			$data = array(
 						'edit_recipe_id' => $id,
