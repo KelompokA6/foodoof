@@ -196,7 +196,7 @@ $(document).ready(function() {
 	$countStep = $(".step-item").length;
 	if($countStep < 1){
 		$colAddRemoveBtnStep = $("#add-and-remove-btn-step").clone();
-		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'><div class='col-sm-8 col-xs-7 col-no-padding-right'><textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'></textarea></div><div class='col-sm-4 col-xs-5'><input class='image-steps' name='photo-step' data-src='../assets/img/step-default.jpg' index='1' data-title='new step' type='file' accept='image/*'></div></div>";
+		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'><div class='col-sm-8 col-xs-7 col-no-padding-right'><textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'></textarea></div><div class='col-sm-4 col-xs-5'><input class='image-steps' name='photo-step' data-src='/foodoof/assets/img/step-default.jpg' index='1' data-title='new step' type='file' accept='image/*'></div></div>";
 		$("#add-and-remove-btn-step").remove();
 		$("#step-entry").append($stepItem);
 		$("#step-entry").append($colAddRemoveBtnStep);
@@ -325,7 +325,7 @@ $(document).ready(function() {
 	$colAddRemoveBtnStep = $("#add-and-remove-btn-step").clone();
 	$(document).on('click',"#add-step",function(){
 		$countStep++;
-		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'>"+"<div class='col-sm-8 col-xs-7 col-no-padding-right'>"+"<textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'></textarea>"+"</div>"+"<div class='col-sm-4 col-xs-5'>"+"<input class='image-steps' name='photo-step' data-src='../assets/img/step-default.jpg' index='"+$countStep+"' data-title='new step' type='file' accept='image/*'>"+"</div>"+"</div>";
+		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'>"+"<div class='col-sm-8 col-xs-7 col-no-padding-right'>"+"<textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'></textarea>"+"</div>"+"<div class='col-sm-4 col-xs-5'>"+"<input class='image-steps' name='photo-step' data-src='/foodoof/assets/img/step-default.jpg' index='"+$countStep+"' data-title='new step' type='file' accept='image/*'>"+"</div>"+"</div>";
 		$("#add-and-remove-btn-step").remove();
 		$("#step-entry").append($stepItem);
 		$("#step-entry").append($colAddRemoveBtnStep);
