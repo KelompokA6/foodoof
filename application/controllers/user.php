@@ -28,6 +28,9 @@ class User extends CI_Controller {
 		$profile = $this->user_model->getProfile($id);
 		$r = new Recipe_model();
 		$listRecipe = $r->getUserRecipe($id, 1001);
+		if ($id != $this->session->userdata('user_id')) {
+			$listRecipes = array_filter($listRecipes, function($row){return $row->status == 1});
+		}
 		$this->user_viewer->showUserTimeline($profile, $listRecipe);
 	}
 
@@ -152,7 +155,7 @@ class User extends CI_Controller {
 			$data['facebook'] = $this->input->post('user_facebook');
 			$data['googleplus'] = $this->input->post('user_gplus');
 			$data['path'] = $this->input->post('user_path');
-			if (true) {
+			if (true) { // jika data editan benar
 				if($this->user_model->updateProfile($data['id'], $data)){
 					$message = 'success';
 					$this->session->set_userdata('user_name', $data['name']);
