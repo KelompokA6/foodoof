@@ -48,6 +48,15 @@ $(document).ready(function() {
     	// trigger upload method immediately after files are selecte
     	$("#photo-profile").fileinput("upload");
 	});
+	$("#photo-profile").on('filelock', function(event, filestack, extraData) {
+	    $lock++;
+    });
+   $("#photo-profile").on('fileunlock', function(event, filestack, extraData) {
+	    $lock-=2;
+	    if ($submitStatus){
+	    	$("form").trigger("submit");
+	    }
+    });
 
 	/*
 	script for init fileinput of recipe's photo
