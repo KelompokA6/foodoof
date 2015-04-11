@@ -494,7 +494,7 @@ class Recipe_model extends DataMapper {
             return $data;
         }
         else{
-            if(!empty($user_id) && $this->author==$user_id){
+            if(!empty($user_id) && $recipes->author==$user_id){
                 $data = new stdClass();
                 $data->id = $recipes->id;
                 $data->name = $recipes->name;
