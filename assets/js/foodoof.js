@@ -319,7 +319,7 @@ $(document).ready(function() {
 	event for add step
 	*/
 	$countStep = $(".step-item").length;
-	if($countstep == 1){
+	if($countStep == 1){
 		$("#remove-step").hide();
 	}
 	$colAddRemoveBtnStep = $("#add-and-remove-btn-step").clone();
