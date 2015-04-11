@@ -75,6 +75,7 @@ class Recipe extends CI_Controller {
 		$portion = $this->input->post("recipe_portion");
 		$duration = $this->input->post("recipe_duration");
 		$category = $this->input->post("recipe_category");
+		//print_r($category);
 		$subjek =  $this->input->post("ingredient_subject");
 		// print_r($subjek);
 		// die;
@@ -86,8 +87,10 @@ class Recipe extends CI_Controller {
 		// }
 		foreach($category as $selected){
 			$res = $recipe->addCategory($id, $selected);
-			print_r($res);
+			if (!$res)
+				print_r("ggal");
 		}
+		die();
 		$ingredients = array();
 		for ($i=0; $i < sizeof($subjek) ; $i++) { 
 			$temp['name'] = $subjek[$i];
@@ -203,6 +206,7 @@ class Recipe extends CI_Controller {
 		$this->load->library('parser');
 		$this->parser->parse("coba_top_recipe", $data1);
 	}
+
 	public function get($id){
 		$recipe = new Recipe_model();
 		$user = new User_model();
@@ -225,7 +229,6 @@ class Recipe extends CI_Controller {
 				array_push($ingre, $temp);
 			}
 		}
-		//print_r($ingre);
 		$steps = array();
 		if (!empty($r->steps)){
 			foreach ($r->steps as $obj) {
@@ -235,6 +238,15 @@ class Recipe extends CI_Controller {
 						'steps_photo' => $obj->photo,
 					);
 				array_push($steps, $temp);
+			}
+		}
+		$category = array();
+		if (!empty($r->category)){
+			foreach ($r->category as $obj) {
+				$temp = array(
+					'recipe_category' => $obj->name,
+				);
+				array_push($category, $temp);
 			}
 		}
 		$data = array(
@@ -248,6 +260,7 @@ class Recipe extends CI_Controller {
 					'recipe_steps' => $steps,
 					'recipe_rating' => $r->rating,
 					'recipe_photo' => $r->photo,
+					'recipe_category_entries' => $category,
 				);
 		$content_website = $this->parser->parse('recipe_view', $data, TRUE);
 		$data = array(

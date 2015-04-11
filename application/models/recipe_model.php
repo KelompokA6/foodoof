@@ -851,7 +851,7 @@ class Recipe_model extends DataMapper {
         if($id==NULL){
             $id = $this->id;
         }
-        if(!empty($id) && !empty($category)){
+        if(!empty($id) && !empty($category1)){
             $categorytmp = new Category();
             $categorytmp->where('recipe_id', $id);
             $categorytmp->ilike('name', strtolower($category1));
@@ -860,6 +860,8 @@ class Recipe_model extends DataMapper {
                 $category->recipe_id = $id;
                 $category->name = strtolower($category1);
                 return $category->skip_validation()->save();
+            } else{
+                return true;         
             }
         }
         else{
