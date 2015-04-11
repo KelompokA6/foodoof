@@ -2,6 +2,7 @@
   	<div class="panel-body">
     	<div class="col-md-12 col-xs-12 col-no-padding-right">
     		<h3 class="page-header" style="margin-top:5px;"> {user_timeline_name}'s Timeline</h3>
+    		<div class="pull-right"><a href="<?php echo base_url();?>recipe/create" title="Add Recipe"><button><i class="fa fa-plus fa-lg"></i></button></a></div>
     	</div>
     	{user_timeline_recipe_entries}
     	<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title">
