@@ -489,7 +489,7 @@ $(document).ready(function() {
 	*/
 	$(document).on("change", ".checkedPublish", function(){
 		var check = $(this).prop('checked');
-		$.get( "foodoof/processAjax/setPublish/"+$(this).val(), function( data ) {
+		$.get( "/foodoof/processAjax/setPublish/"+$(this).val(), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
