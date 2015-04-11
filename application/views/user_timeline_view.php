@@ -2,7 +2,13 @@
   	<div class="panel-body">
     	<div class="col-md-12 col-xs-12 col-no-padding-right">
     		<h3 class="page-header" style="margin-top:5px;"> {user_timeline_name}'s Timeline</h3>
-    		<div class="pull-right"><a href="<?php echo base_url();?>recipe/create" title="Add Recipe"><button class="btn button-default"><i class="fa fa-plus fa-lg inverse"></i></button></a></div>
+    		<div class="pull-right">
+    			<a href="<?php echo base_url();?>recipe/create" title="Add Recipe">
+    				<button class="btn button-default">
+    					<i class="fa fa-plus fa-lg inverse" style="padding-top:2px"></i>
+    				</button>
+    			</a>
+    		</div>
     	</div>
     	{user_timeline_recipe_entries}
     	<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title">
@@ -36,7 +42,7 @@
 		    <div class="col-md-3 col-xs-12 col-no-padding col-edit-recipe-timeline">
 		    	<div class="col-md-12 col-xs-4 col-no-padding-right text-right">
 		    		<div class="col-md-4 col-xs-4 icons col-no-padding-right recipe-timeline-view">
-			            <i class="fa fa-eye"></i>
+			            <i class="fa fa-eye icon-default"></i>
 			        </div>
 			        <div class="col-md-7 col-xs-8 text-viewer">
 			            <p class="text-capitalize">{user_timeline_recipe_view} views</p>
