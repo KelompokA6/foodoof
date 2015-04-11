@@ -75,6 +75,7 @@ class User_model extends DataMapper {
 
     function createUser($profile)
     {
+        if( $this->where('email', $profile['email'])->count() > 0 ) return FALSE;
         foreach ($profile as $key => $value) $this->$key = $value;
         // encrypt the password
         $ci =& get_instance();
@@ -82,8 +83,6 @@ class User_model extends DataMapper {
         $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
         $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
         $this->password = $ci->encrypt->encode($this->password);
-        // send email
-        $ci->load->library('email');
         return $this->save();
     }
 

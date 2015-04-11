@@ -17,7 +17,7 @@ class User extends CI_Controller {
 		if ($id == -1) {
 			$id = $this->user_model->wajiblogin();
 		}
-		$profile = $this->user_model->getProfile($id);		
+		$profile = $this->user_model->getProfile($id);
 		$this->user_viewer->showProfile($profile);
 	}
 
@@ -81,6 +81,9 @@ class User extends CI_Controller {
 			$profile['confrimPass'] = $this->input->post("confirm_password");
 
 			if ($this->validateJoin($profile)) {
+				if(!$this->_send_email($profile)) {
+					die("email gagal");
+				}
 				if($this->user_model->createUser($profile)) {
 					$profile_menubar = $this->user_model->login($profile['email'], $profile['password']);
 					foreach ($profile_menubar as $key => $value) {
@@ -89,14 +92,25 @@ class User extends CI_Controller {
 					redirect(base_url().'user');
 					die;
 				} else {
-					$data['join_alert'] = '<div class="label label-warning">join failed</div>';
+					$data['join_alert'] = '<div class="alert alert-warning">join failed</div>';
 				}
 			} else {
-				$data['join_alert'] = '<div class="label label-danger">invalid input data</div>';
+				$data['join_alert'] = '<div class="alert alert-danger">invalid input data</div>';
 			}
 			foreach ($profile as $key => $value) $data[$key] = $value;
 		}
 		$this->user_viewer->showRegister($data);
+	}
+
+	private function _send_email($profile)
+	{
+		extract($profile);
+		$this->load->library('email');
+		$this->email->from('noreply@foodoof.com');
+		$this->email->to($email);
+		$this->email->subject('Welcome to Foodoof');
+		$this->email->message("Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in http://foodoof.com/home/login, using this email and your password is $password");
+		return $this->email->send();
 	}
 
 	public function edit(){
@@ -144,8 +158,10 @@ class User extends CI_Controller {
 	}
 
 	public function validateJoin($profile){
-		// cek email, udah ada belum?
-		return true;
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		return $this->form_validation->run();
 	}
 
 	public function sendPassword($email, $password){
