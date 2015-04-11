@@ -467,6 +467,9 @@ ul.dropdown-search > li >label:focus {
 .input-group-btn > .btn-group > button.dropdown-cat-search:hover, .input-group-btn > .btn-group > button.dropdown-cat-search{
   border-left: dashed 1px rgb(56,150,211);
   color: rgb(56,150,211);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .form-control::-moz-placeholder {
   color: rgb(56,150,211);
