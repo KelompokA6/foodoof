@@ -121,7 +121,7 @@ class User extends CI_Controller {
 	}
 
 	public function edit(){
-		$id = $this->user_model->wajiblogin();
+		$data['id'] = $this->user_model->wajiblogin();
 
 		$message = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
@@ -134,7 +134,7 @@ class User extends CI_Controller {
 			$data['googleplus'] = $this->input->post('user_gplus');
 			$data['path'] = $this->input->post('user_path');
 			if (true) {
-				if($this->user_model->updateProfile($id, $data)){
+				if($this->user_model->updateProfile($data['id'], $data)){
 					$message = 'success';
 					$this->session->set_userdata('user_name', $data['name']);
 					$this->session->set_userdata('user_photo', @$data['photo'] ? $data['photo'] : 'images/user/0.jpg');
@@ -143,7 +143,7 @@ class User extends CI_Controller {
 					$message = 'failed';
 			} else $message = 'invalid';
 		}
-		$profile = $this->user_model->getProfile($id);
+		$profile = $this->user_model->getProfile($data['id']);
 		$profile->message = $message;
 		$this->user_viewer->showEditProfile($profile);
 	}
