@@ -7,7 +7,7 @@
 	    	<div class="col-md-12">
 				<h4>Personal Information</h4>
 				<div class="col-md-12">
-					<input id="photo-profile" type="file" data-src="<?php echo base_url()?>{edit_profile_photo}" class="file-loading" data-id='{edit_profile_id}' data-title="{edit_profile_title}" accept="image/*" >
+					<input id="photo-profile" name="photo-user" type="file" data-src="<?php echo base_url()?>{edit_profile_photo}" class="file-loading" data-id='{edit_profile_id}' data-title="{edit_profile_title}" accept="image/*" >
 				</div>
 				<div class="col-md-12">
 					<div class="form-group">
