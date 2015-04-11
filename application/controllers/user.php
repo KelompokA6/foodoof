@@ -169,17 +169,16 @@ class User extends CI_Controller {
 	}
 
 	public function forgotpassword(){ //dari sequence lupa password, buat minta password nya dr userManager
-		$data = array();
+		$data['forget_password_alert'] = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
-			$email = $this->input->post('email');
+			$email = $this->input->post('email_user');
 			$data['email'] = $email;
 			$password = $this->user_model->getPasswordByEmail($email);
-			die("nyoh password: $password");
 			if($password !== FALSE) {
 				if ($this->_sendPassword($email, $password)) {
-					$data['message'] = 'success';
-				}else $data['message'] = 'failed';
-			} else $data['message'] = 'invalid';
+					$data['forget_password_alert'] = "<div class=\"alert alert-success\">password: $password</div>";
+				}else $data['forget_password_alert'] = '<div class="alert alert-warning">sending email failed</div>';
+			} else $data['forget_password_alert'] = "<div class=\"alert alert-danger\">$email not registered</div>";
 		}
 		$this->user_viewer->showForgotPassword($data);
 	}
@@ -197,6 +196,6 @@ class User extends CI_Controller {
 		$this->email->to($email);
 		$this->email->subject('Your FoodooF Password');
 		$this->email->message("You said that you have forgotten your password. Here you are! Your password is $password.");
-		return $this->send();
+		return $this->email->send();
 	}
 }
