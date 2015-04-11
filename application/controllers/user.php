@@ -88,7 +88,7 @@ class User extends CI_Controller {
 			$data['password'] = $this->input->post("password"); 
 			$data['confirm_password'] = $this->input->post("confirm_password");
 
-			if ($this->_validateJoin($data)) {
+			if ($this->_validateJoin($data) !== TRUE) {
 				if(!$this->_send_email($data)) {
 					die("email gagal");
 				}
@@ -103,7 +103,7 @@ class User extends CI_Controller {
 					$data['join_alert'] = '<div class="alert alert-warning">Join Failed!</div>';
 				}
 			} else {
-				$data['join_alert'] = '<div class="alert alert-danger">Email Invalid!</div>';
+				$data['join_alert'] = '<div class="alert alert-danger">'.$this->_validateJoin($data).'</div>';
 			}
 		}
 		$this->user_viewer->showRegister($data);
@@ -125,6 +125,9 @@ class User extends CI_Controller {
 
 		$message = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
+			if (file_exists('')) {
+				# code...
+			}
 			$data['name'] = $this->input->post('user_name');
 			$data['gender'] = $this->input->post('genderOptions');
 			$data['phone'] = $this->input->post('user_phone');
@@ -165,11 +168,10 @@ class User extends CI_Controller {
 	}
 
 	private function _validateJoin($profile){
-		$this->load->helper(array('form', 'url'));
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|trim');
-		if($profile['password'] !== $profile['confirm_password'] || strlen($profile['password']) < 5) return FALSE;
-		return $this->form_validation->run();
+		if(!filter_var($profile['email'], FILTER_VALIDATE_EMAIL)) return "invalid email";
+		if($profile['password'] !== $profile['confirm_password']) return "password doesn't match";
+		if(strlen($profile['password']) < 5) return "minimum password length is 5";
+		return TRUE;
 	}
 
 	private function _sendPassword($email, $password){
