@@ -139,11 +139,9 @@ class Recipe_model extends DataMapper {
                 return FALSE;
             }
             if(file_exists("./images/tmp/recipe/".$id.".jpg")){
-                $data = read_file("./images/tmp/recipe/".$id.".jpg");
-                if(!write_file("./images/recipe/".$id.".jpg", $data)){
+                if(!rename("./images/tmp/recipe/".$id.".jpg", "./images/recipe/".$id.".jpg")){
                     return false;
                 }
-                unlink("./images/tmp/recipe/".$id.".jpg");
             }
             $this->trans_begin();
             if(is_array($ingredients)){
@@ -186,7 +184,13 @@ class Recipe_model extends DataMapper {
                             $stp->photo = "images/step/".$id."-".$xStep.".jpg";
                         }
                         else{
-                            $stp->photo = $stptmp->photo;   
+                            if(file_exists("./images/tmp/step/".$id."-".$xStep."-default.jpg")){
+                                $stp->photo = 'assets/img/step-default.jpg';
+                                unlink("./images/tmp/step/".$id."-".$no_step."-default.jpg");     
+                            }
+                            else{
+                                $stp->photo = $stptmp->photo;       
+                            }
                         }
                         $stp->recipe_id = $id;
                         $stp->description = $step["description"];
@@ -194,12 +198,8 @@ class Recipe_model extends DataMapper {
                         if(!$stp->skip_validation()->save()){
                             return false;
                         }
-                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
-                            $data = read_file("./images/tmp/step/".$id."-".$xStep.".jpg");
-                            if(!write_file("./images/step/".$id."-".$xStep.".jpg", $data)){
-                                return false;
-                            }
-                            unlink("./images/tmp/step/".$id."-".$xStep.".jpg");
+                        if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
+                            return false;
                         }
                     }
                     else{
@@ -207,7 +207,13 @@ class Recipe_model extends DataMapper {
                             $photo = "images/step/".$id."-".$xStep.".jpg";
                         }
                         else{
-                            $photo = $stptmp->photo;   
+                            if(file_exists("./images/tmp/step/".$id."-".$xStep."-default.jpg")){
+                                $photo = 'assets/img/step-default.jpg'; 
+                                unlink("./images/tmp/step/".$id."-".$no_step."-default.jpg");   
+                            }
+                            else{
+                                $photo = $stptmp->photo;       
+                            }
                         }
                         $dataUpdate = array(
                                         'description' => $step["description"],
@@ -215,12 +221,8 @@ class Recipe_model extends DataMapper {
                         if(!$stptmp->update($dataUpdate)){
                             return false;
                         }
-                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
-                            $data = read_file("./images/tmp/step/".$id."-".$xStep.".jpg");
-                            if(!write_file("./images/step/".$id."-".$xStep.".jpg", $data)){
-                                return false;
-                            }
-                            unlink("./images/tmp/step/".$id."-".$xStep.".jpg");
+                        if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
+                            return false;
                         }
                     }
                 }

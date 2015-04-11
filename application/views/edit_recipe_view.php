@@ -84,13 +84,13 @@
 						    		{edit_recipe_ingredient_entries}
 							    	<div class="col-sm-10 col-xs-10 col-no-padding ingredient-item">
 							    		<div class="col-sm-6 col-xs-6">
-								      		<input type="text" value="{edit_recipe_ingredient_subject}" name="ingredient_subject[]" class="form-control" placeholder="Ingredient Name">
+								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_subject}" name="ingredient_subject[]" class="form-control" placeholder="Ingredient Name">
 								    	</div>
 								    	<div class="col-sm-3 col-xs-3 col-no-padding-left">
-								      		<input type="text" value="{edit_recipe_ingredient_quantity}" name="ingredient_quantity[]" class="form-control" placeholder="Quantity">
+								      		<input type="number" min="0" value="{edit_recipe_ingredient_quantity}" name="ingredient_quantity[]" class="form-control" placeholder="Quantity">
 								    	</div>
 								    	<div class="col-sm-3 col-xs-3 col-no-padding-left">
-								      		<input type="text" value="{edit_recipe_ingredient_unit}" name="ingredient_unit[]" class="form-control" placeholder="Unit">
+								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_unit}" name="ingredient_unit[]" class="form-control" placeholder="Unit">
 								    	</div>
 							    	</div>
 							    	{/edit_recipe_ingredient_entries}

@@ -168,7 +168,6 @@ class ProcessAjax extends CI_Controller {
 				$this->load->library('image_lib', $configImage);
 				if ($this->image_lib->resize())
 				{
-					unlink("./images/tmp/step/".$id."-".$no_step.".jpg");
 				    rename ( "./images/tmp/step/".$id."-".$no_step."_thumb.jpg", "./images/tmp/step/".$id."-".$no_step.".jpg");
 				    $p1 = "<img src='".base_url()."images/tmp/step/".$id."-".$no_step.".jpg' class='file-preview-image'>";
 					$p2 = ['caption' => "recipe-".$id."-".$no_step , 'width' => '120px', 'url' => base_url()."images/tmp/step/".$id."-".$no_step.".jpg"];
@@ -199,6 +198,78 @@ class ProcessAjax extends CI_Controller {
 					"status" => 0,
 					"message" => "Please login first",
 					);
+		}
+		echo json_encode($result);
+	}
+
+	public function addStepImage($recipe_id = null, $no_step=null){
+		if(empty($no_step)){
+			if(!empty($this->input->get('no_step'))){
+				$no_step = $this->input->get('no_step');
+			}
+			if(!empty($this->input->post('no_step'))){
+				$no_step = $this->input->post('no_step');
+			}
+		}
+		if(empty($recipe_id)){
+			if(!empty($this->input->get("id"))){
+				$recipe_id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$recipe_id = $this->input->post("id");
+			}
+		}
+		if(copy( "./assets/img/step-default.jpg", "./images/tmp/step/".$recipe_id."-".$no_step."-default.jpg")){
+			$result = array(
+		    	"status" => 1,
+				"message" => "Add Success",
+				);
+		}
+		else{
+			$result = array(
+				"status" => 0,
+				"message" => "Add Failed",
+				);
+		}
+		echo json_encode($result);
+	}
+
+	public function removeStepImage($recipe_id = null, $no_step=null){
+		if(empty($no_step)){
+			if(!empty($this->input->get('no_step'))){
+				$no_step = $this->input->get('no_step');
+			}
+			if(!empty($this->input->post('no_step'))){
+				$no_step = $this->input->post('no_step');
+			}
+		}
+		if(empty($recipe_id)){
+			if(!empty($this->input->get("id"))){
+				$recipe_id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$recipe_id = $this->input->post("id");
+			}
+		}
+		if(file_exists("./images/tmp/step/".$recipe_id."-".$no_step."-default.jpg")){
+			if(unlink("./images/tmp/step/".$recipe_id."-".$no_step."-default.jpg")){
+				$result = array(
+			    	"status" => 1,
+					"message" => "Remove Success",
+					);
+			}
+			else{
+				$result = array(
+					"status" => 0,
+					"message" => "Remove Failed",
+					);
+			}
+		}
+		else{
+			$result = array(
+		    	"status" => 1,
+				"message" => "Remove Success",
+				);
 		}
 		echo json_encode($result);
 	}
