@@ -10,8 +10,8 @@
 	  	<div class="panel-body">
 	  		<h2 class="page-header-title text-capitalize">{recipe_name}
 	  			<small class="pull-right" style="line-height:33px; font-size:16px">
-	  				<i class="fa fa-users">  {recipe_portion} orang</i>   |      
-	  				<i class="fa fa-clock-o"> {recipe_duration} Menit</i> 
+	  				<i class="fa fa-users">  {recipe_portion} Persons</i>   |      
+	  				<i class="fa fa-clock-o"> {recipe_duration} Minutes</i> 
 	  			</small>
 	  		</h2>	
 			<div class="col-md-4 col-no-padding-left">
