@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
 	
 	$recipeId = $("#image-recipe").data("id");
 	$lock = 0;
