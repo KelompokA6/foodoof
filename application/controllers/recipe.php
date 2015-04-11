@@ -229,6 +229,7 @@ class Recipe extends CI_Controller {
 				array_push($ingre, $temp);
 			}
 		}
+		//print_r($ingre);
 		$steps = array();
 		if (!empty($r->steps)){
 			foreach ($r->steps as $obj) {
