@@ -229,10 +229,13 @@ class ProcessAjax extends CI_Controller {
 						);
 			}
 		}
-		$result = array(
+		else{
+			$result = array(
 						"status" => 0,
 						"message" => "Please Login First",
 						);
+		}
+		echo json_encode($result);
 	}
 
 	public function setRating($recipe_id=null, $value = 0){
