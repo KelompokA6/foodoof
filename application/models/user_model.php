@@ -82,6 +82,8 @@ class User_model extends DataMapper {
         $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
         $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
         $this->password = $ci->encrypt->encode($this->password);
+        // send email
+        $ci->load->library('email');
         return $this->save();
     }
 
