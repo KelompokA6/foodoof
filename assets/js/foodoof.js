@@ -289,7 +289,7 @@ $(function() {
 	event for add ingredient
 	*/
 	$countIngredient = $(".ingredient-item").length;
-	if($countIngredient==1){
+	if($countIngredient == 1){
 		$("#remove-ingredient").hide();
 	}
 
@@ -319,7 +319,7 @@ $(function() {
 	event for add step
 	*/
 	$countStep = $(".step-item").length;
-	if($countstep==1){
+	if($countstep == 1){
 		$("#remove-step").hide();
 	}
 	$colAddRemoveBtnStep = $("#add-and-remove-btn-step").clone();
@@ -489,7 +489,6 @@ $(function() {
 	*/
 	$(document).on("change", ".checkedPublish", function(){
 		var check = $(this).prop('checked');
-		alert($(this).val());
 		$.get( "foodoof/processAjax/setPublish/"+$(this).val(), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
