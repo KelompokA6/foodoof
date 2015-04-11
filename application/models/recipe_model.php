@@ -859,7 +859,7 @@ class Recipe_model extends DataMapper {
             if(!$categorytmp->count() > 0){
                 $category->recipe_id = $id;
                 $category->name = strtolower($category);
-                return $category->save();
+                return $category->skip_validation()->save();
             }
         }
         else{
