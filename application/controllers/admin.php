@@ -36,6 +36,12 @@ class Admin extends CI_Controller {
 
 	public function save(){
 		$recipe = new Recipe_model();
+		
+		$list = $recipe->getAllRecipe();
+		foreach ($list as $obj) {
+			$recipe->highlightRecipe($obj->id, FALSE);
+		}	
+
 		$highlight = $this->input->post("id_highlight");
 		if (!empty($highlight)){
 			foreach($highlight as $selected){
