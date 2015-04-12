@@ -406,15 +406,16 @@ class Recipe_model extends DataMapper {
         Digunakan untuk memperoleh resep berdasarkan category, dengan parameter input limit resep yang ingin ditampilkan 
         dan parameter category. kembalian list resep dan jumlah yang berada resep pada kategori tersebut di database
     */
-    function getCategoryRecipe($category = "other", $limit=10, $offset=0){
+    function getCategoryRecipe($category1 = "other", $limit=10, $offset=0){
         $arrResult = array();
         $category = new Category();
-        $category->ilike('name', $other)->order_by("recipe_id", "asc")->get();
+        $category->ilike('name', $category1)->order_by("recipe_id", "asc")->get();
+        $x = 0;
         foreach ($category as $categories){
             if($x >= $offset && $limit > 0){
                 $recipes = new Recipe_model();
                 $recipes->get_by_id($categories->recipe_id);
-                if($recipe->status=='1'){
+                if($recipes->status=='1'){
                     $data = new stdClass();
                     $data->id = $recipes->id;
                     $data->name = $recipes->name;
@@ -432,7 +433,8 @@ class Recipe_model extends DataMapper {
                     array_push($arrResult, $data);
                     $limit--;
                 }
-            }
+            } 
+            $x++;
         }
         $arrResult["total"] = $x;
         return $arrResult;

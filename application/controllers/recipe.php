@@ -211,66 +211,83 @@ class Recipe extends CI_Controller {
 		$recipe = new Recipe_model();
 		$recipe->incrementViews($id);
 		$user = new User_model();
-		// $user_id = $user->wajiblogin();
-		$r = $recipe->getRecipeProfile($id);
-		$data = array();
-		$this->load->library('parser');
-		// $menubar = $this->parser->parse('menubar_login', $data, TRUE);
-		$this->load->model('home_viewer');
-		$menubar = $this->home_viewer->getMenubar();
-		$ingre = array();
-		if (!empty($r->ingredients)){
-			foreach ($r->ingredients as $obj) {
-				$temp = array(
-						'ingre_name' => $obj->name,
-						'ingre_quantity' => $obj->quantity,
-						'ingre_units' => $obj->units,
-						'ingre_info' => $obj->info,
+		$user_id = $this->session->userdata('user_id');
+		$r = $recipe->getRecipeProfile($id, $user_id);
+		if($r){
+			$data = array();
+			$this->load->library('parser');
+			// $menubar = $this->parser->parse('menubar_login', $data, TRUE);
+			$this->load->model('home_viewer');
+			$menubar = $this->home_viewer->getMenubar();
+			$ingre = array();
+			if (!empty($r->ingredients)){
+				foreach ($r->ingredients as $obj) {
+					$temp = array(
+							'ingre_name' => $obj->name,
+							'ingre_quantity' => $obj->quantity,
+							'ingre_units' => $obj->units,
+							'ingre_info' => $obj->info,
+						);
+					array_push($ingre, $temp);
+				}
+			}
+			$steps = array();
+			if (!empty($r->steps)){
+				foreach ($r->steps as $obj) {
+					$temp = array(
+							'steps_number' => $obj->no_step,
+							'steps_description' => $obj->description,
+							'steps_photo' => $obj->photo,
+						);
+					array_push($steps, $temp);
+				}
+			}
+			$category = array();
+			if (!empty($r->category)){
+				foreach ($r->category as $obj) {
+					$temp = array(
+						'recipe_category' => $obj->name,
 					);
-				array_push($ingre, $temp);
+					array_push($category, $temp);
+				}
 			}
-		}
-		$steps = array();
-		if (!empty($r->steps)){
-			foreach ($r->steps as $obj) {
-				$temp = array(
-						'steps_number' => $obj->no_step,
-						'steps_description' => $obj->description,
-						'steps_photo' => $obj->photo,
+			$data = array(
+						'recipe_name' => $r->name,
+						'recipe_description' => $r->description,
+						'recipe_portion' => $r->portion,
+						'recipe_duration' => $r->duration,
+						'recipe_author_name' => $user->getProfile($r->author)->name,
+						'recipe_last_update' => substr($r->last_update, 0, -8),
+						'recipe_author' => $r->author,
+						'recipe_id' => $id,
+						'recipe_ingredients' => $ingre,
+						'recipe_steps' => $steps,
+						'recipe_rating' => $r->rating,
+						'recipe_photo' => $r->photo,
+						'recipe_category_entries' => $category,
 					);
-				array_push($steps, $temp);
-			}
-		}
-		$category = array();
-		if (!empty($r->category)){
-			foreach ($r->category as $obj) {
-				$temp = array(
-					'recipe_category' => $obj->name,
-				);
-				array_push($category, $temp);
-			}
-		}
-		$data = array(
-					'recipe_name' => $r->name,
-					'recipe_description' => $r->description,
-					'recipe_portion' => $r->portion,
-					'recipe_duration' => $r->duration,
-					'recipe_author_name' => $user->getProfile($r->author)->name,
-					'recipe_last_update' => substr($r->last_update, 0, -8),
-					'recipe_author' => $r->author,
-					'recipe_id' => $id,
-					'recipe_ingredients' => $ingre,
-					'recipe_steps' => $steps,
-					'recipe_rating' => $r->rating,
-					'recipe_photo' => $r->photo,
-					'recipe_category_entries' => $category,
-				);
-		$content_website = $this->parser->parse('recipe_view', $data, TRUE);
-		$data = array(
-					"menubar" => $menubar,
-					"content_website" => $content_website,
-				);
-		$this->parser->parse('template_content', $data);
+			$content_website = $this->parser->parse('recipe_view', $data, TRUE);
+			$data = array(
+						"menubar" => $menubar,
+						"content_website" => $content_website,
+					);
+			$this->parser->parse('template_content', $data);
+		} else {
+			$this->pageNotFound();
+		}	
+	}
 
+	function pageNotFound(){
+
+	}
+
+	function category($name){
+		$recipe = new Recipe_model();
+		$arr = $recipe->getCategoryRecipe($name);
+		$total = $arr['total'];
+		for ($i=0; $i < $total; $i++) { 
+			
+		}
+		var_dump($total);
 	}
 }
