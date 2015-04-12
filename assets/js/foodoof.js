@@ -565,7 +565,7 @@ $(document).ready(function() {
 			$("#modalWaiting").modal("show");
 		}
 		else{
-			$hasChanged = true;
+			$hasChanged = false;
 			$("#modalWaiting").modal("hide");	
 		}
 	});
