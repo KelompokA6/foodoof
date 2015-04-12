@@ -282,12 +282,34 @@ class Recipe extends CI_Controller {
 	}
 
 	function category($name){
+		$this->load->library('parser');
+		$this->load->model('home_viewer');
+		$menubar = $this->home_viewer->getMenubar();
+
 		$recipe = new Recipe_model();
 		$arr = $recipe->getCategoryRecipe($name);
 		$total = $arr['total'];
-		for ($i=0; $i < $total; $i++) { 
-			
+		array_pop($arr);
+		$entries = array();
+		for ($i=0; $i < sizeof($arr); $i++) { 
+			$temp = array(
+				'category_recipe_name' => ,
+				'category_recipe_last_update' => 
+				'category_recipe_rating' => 
+			);
+			array_push($entries, $temp);
 		}
+		$data = array(
+						'category_name' =>$name,
+						'category_recipe_entries' => $entries,
+					);
+		$content_website = $this->parser->parse('category_view', $data, TRUE);	
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
+
 		var_dump($total);
 	}
 }

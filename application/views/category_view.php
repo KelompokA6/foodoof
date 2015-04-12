@@ -34,7 +34,7 @@
       </div>  
     </div>
   </div>
-  {/search_by_title_recipe_entries}
+  {/category_recipe_entries}
   <div class="col-md-12 col-xs-12 text-center">
     <?php
       if($category_recipe_page_size > 0){
