@@ -7,14 +7,14 @@
   {category_recipe_entries}
   <div class="col-md-12 col-xs-12col-no-padding-right page-header" style="margin-top:5px">
     <div class="col-md-2 col-xs-3 detail-list-img" style="margin-right:2px">
-        <a href="<?php echo base_url();?>recipe/get/{search_by_title_view_recipe_id}">
-          <img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>{search_by_title_view_recipe_photo}"/>
+        <a href="<?php echo base_url();?>recipe/get/{category_recipe_id}">
+          <img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>{category_recipe_photo}"/>
         </a>
     </div>
     <div class="col-md-6 col-xs-9 detail-list">
       <div class="col-md-12 col-xs-12 details">
           <div class="col-md-12 col-xs-9">
-            <a href="<?php echo base_url();?>recipe/get/{search_by_title_view_recipe_id}">
+            <a href="<?php echo base_url();?>recipe/get/category_recipe_id}">
               <h4><p class="text-capitalize">{category_recipe_name}</p></h4>
             </a>
           </div>
@@ -34,7 +34,7 @@
       </div>  
     </div>
   </div>
-  {/search_by_title_recipe_entries}
+  {/category_recipe_entries}
   <div class="col-md-12 col-xs-12 text-center">
     <?php
       if($category_recipe_page_size > 0){
@@ -44,7 +44,7 @@
         if($category_recipe_page_size - $category_recipe_page_now == ($category_recipe_page_size-1)){
             echo "disabled";
           }
-        echo "'><a href='".base_url()."search/category?category=".urlencode($category_recipe_name)."&page=".($category_recipe_page_now - 1)."' aria-label='Previous'>
+        echo "'><a href='".base_url()."recipe/category?category=".urlencode($category_recipe_name)."&page=".($category_recipe_page_now - 1)."' aria-label='Previous'>
             <span aria-hidden='true'>&laquo;</span>
           </a></li>";
         for ($i=1; $i <= $category_recipe_page_size ; $i++) { 
@@ -54,7 +54,7 @@
           }
           echo "
             <li class=".$active.">
-              <a href='".base_url()."search/title?q=".urlencode($category_recipe_name)."&page=".$i."'>".$i."</a>
+              <a href='".base_url()."recipe/category?category=".urlencode($category_recipe_name)."&page=".$i."'>".$i."</a>
             </li>
           ";
         }
@@ -63,7 +63,7 @@
         if($category_recipe_page_size == $category_recipe_page_now){
             echo "disabled";
           }
-        echo "'><a href='".base_url()."search/category?category=".urlencode($category_recipe_name)."&page=".($category_recipe_page_now + 1)."' aria-label='Next'>
+        echo "'><a href='".base_url()."recipe/category?category=".urlencode($category_recipe_name)."&page=".($category_recipe_page_now + 1)."' aria-label='Next'>
             <span aria-hidden='true'>&raquo;</span>
           </a></li></ul></nav>
         ";
