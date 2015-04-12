@@ -85,11 +85,7 @@ class Recipe extends CI_Controller {
 		// for ($i=0; $i < sizeof($category) ; $i++) { 
 		// 	$recipe->addCategory($id, $category[$i]);
 		// }
-		if (!empty($category)){
-			foreach($category as $selected){
-				$res = $recipe->addCategory($id, $selected);
-			}
-		}
+
 		$ingredients = array();
 		for ($i=0; $i < sizeof($subjek) ; $i++) { 
 			$temp['name'] = $subjek[$i];
@@ -110,11 +106,16 @@ class Recipe extends CI_Controller {
 		if($isSuccess === false){
 			echo "gagal";
 		} else{
+			if (!empty($category)){
+				$recipe->deleteAllCategory($id);
+				foreach($category as $selected){
+					$res = $recipe->addCategory($id, $selected);
+				}
+			}
 			redirect(base_url()."user/timeline/".$user_id);
 		}
 	}
 
-	// 
 	public function create(){
 		$recipe = new Recipe_model();
 		$id = $recipe->createRecipe_model(); 
@@ -281,8 +282,8 @@ class Recipe extends CI_Controller {
 
 	}
 
-	function category(){
-		$name=$this->input->get("category");
+	function category($name){
+		$name=urldecode($name);
 		$page=$this->input->get("page");
 		$this->load->library('parser');
 		$this->load->model('home_viewer');
