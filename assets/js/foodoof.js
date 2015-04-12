@@ -529,6 +529,8 @@ $(document).ready(function() {
 					message: data.message 
 				},{
 					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
 					allow_dismiss: false,
 					type: 'success',
 					delay: 1500,
@@ -544,6 +546,8 @@ $(document).ready(function() {
 					message: data.message 
 				},{
 					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
 					allow_dismiss: false,
 					type: 'warning',
 					delay: 1500,

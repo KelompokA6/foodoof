@@ -19,13 +19,13 @@
 		    </div>
 		    <div class="col-md-5 col-xs-12 detail-list">
 		    	<div class="col-md-12 col-xs-12 details xs-text-center">
-		          	<div class="col-md-12 col-xs-12">
+		          	<div class="col-md-12 col-xs-12 col-no-padding-right">
 		            	<a href="<?php echo base_url();?>recipe/get/{user_timeline_recipe_id}">
 		            		<h4><p class="text-capitalize">{user_timeline_recipe_name}</p></h4>
 		            	</a>
 		          	</div>
 		        </div>
-		        <div class="col-md-12 col-xs-12 details">
+		        <div class="col-md-12 col-xs-12 details" style="font-size:12px">
 		          	<div class="col-md-4 col-xs-5 col-no-padding-right xs-text-right">
 		            	<p class="text-capitalize">Last update :</p>
 		          	</div>
