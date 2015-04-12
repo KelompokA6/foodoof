@@ -52,7 +52,19 @@ class Recipe extends CI_Controller {
 						'edit_recipe_duration' => $r->duration,
 						'edit_recipe_ingredient_entries' => $ingre,
 						'edit_recipe_step_entries' => $steps,
+
 					);
+			$categories = $recipe->getCategories($id);
+			if(!empty($categories)){
+				foreach ($categories as $obj) {
+					$data['edit_recipe_'.$obj->name.'_checked'] = "checked";
+					// $temp = array(
+					// 	'{edit_recipe_'.$obj->name.'_checked}' => "checked",
+					// );
+					// array_push($listCategories, $temp);
+				}
+			}
+
 			$content_website = $this->parser->parse('edit_recipe_view', $data, TRUE);
 			$data = array(
 						"menubar" => $menubar,
@@ -85,11 +97,7 @@ class Recipe extends CI_Controller {
 		// for ($i=0; $i < sizeof($category) ; $i++) { 
 		// 	$recipe->addCategory($id, $category[$i]);
 		// }
-		if (!empty($category)){
-			foreach($category as $selected){
-				$res = $recipe->addCategory($id, $selected);
-			}
-		}
+
 		$ingredients = array();
 		for ($i=0; $i < sizeof($subjek) ; $i++) { 
 			$temp['name'] = $subjek[$i];
@@ -110,11 +118,16 @@ class Recipe extends CI_Controller {
 		if($isSuccess === false){
 			echo "gagal";
 		} else{
+			if (!empty($category)){
+				$recipe->deleteAllCategory($id);
+				foreach($category as $selected){
+					$res = $recipe->addCategory($id, $selected);
+				}
+			}
 			redirect(base_url()."user/timeline/".$user_id);
 		}
 	}
 
-	// 
 	public function create(){
 		$recipe = new Recipe_model();
 		$id = $recipe->createRecipe_model(); 
@@ -281,8 +294,8 @@ class Recipe extends CI_Controller {
 
 	}
 
-	function category(){
-		$name=$this->input->get("category");
+	function category($name){
+		$name=urldecode($name);
 		$page=$this->input->get("page");
 		$this->load->library('parser');
 		$this->load->model('home_viewer');

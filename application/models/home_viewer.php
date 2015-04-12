@@ -54,7 +54,7 @@ class Home_viewer extends CI_Model
   {
     $datalist['search_by_title_recipe_result'] = sizeof($listTopRecipe);
     $datalist['search_by_title_recipe_key'] = 'Top Recipes';
-    $datalist['search_by_title_recipe_page_size'] = 1;
+    $datalist['search_by_title_recipe_page_size'] = 0;
     $datalist['search_by_title_recipe_page_now'] = 1;
     foreach ($listTopRecipe as $row) {
       $row->search_by_title_recipe_id = $row->id;
@@ -83,7 +83,7 @@ class Home_viewer extends CI_Model
   {
     $datalist['search_by_title_recipe_result'] = sizeof($listRecently);
     $datalist['search_by_title_recipe_key'] = 'Recently Recipes';
-    $datalist['search_by_title_recipe_page_size'] = 1;
+    $datalist['search_by_title_recipe_page_size'] = 0;
     $datalist['search_by_title_recipe_page_now'] = 1;
     foreach ($listRecently as $row) {
       $row->search_by_title_recipe_id = $row->id;
