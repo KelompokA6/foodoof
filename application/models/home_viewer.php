@@ -14,6 +14,7 @@ class Home_viewer extends CI_Model
     foreach ($listHightlight as $key => $value) {
       $value->num = $key;
     }
+    $listHightlight[0]->isactive = "active";
 
     foreach ($listTopRecipe as $row) {
       $row->top_recipe_id = $row->id;
@@ -36,8 +37,9 @@ class Home_viewer extends CI_Model
   	print_r($listHightlight);
   	print_r($listRecently);
     die;*/
-    $datalist['highlight_recipe_entries'] = $listHightlight;
-    print_r($listHightlight); die();
+    $datalist['list_recipes1'] = $listHightlight;
+    $datalist['list_recipes2'] = $listHightlight;
+    // print_r($listHightlight); die();
     $datalist['top_recipe_entries'] = $listTopRecipe;
     $datalist['recently_recipe_entries'] = $listRecently;
 
