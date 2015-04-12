@@ -43,16 +43,9 @@
       </div> 
       <div class="col-md-12 col-xs-12 details">
           Found 
-          <?php
-          for ($i=0; $i < sizeof($search_by_ingredient_recipe_found) ; $i++) { 
-            if($i==(sizeof($search_by_ingredient_recipe_found)-1)){
-              echo $search_by_ingredient_recipe_found[$i];
-            }
-            else{
-              echo $search_by_ingredient_recipe_found[$i].", ";
-            }
-          }
-          ?>
+          {search_by_ingredient_recipe_found_entries}
+            {search_by_ingredient_recipe_found} 
+          {/search_by_ingredient_recipe_found_entries}
       </div> 
     </div>
   </div>
