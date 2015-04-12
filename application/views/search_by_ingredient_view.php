@@ -44,12 +44,12 @@
       <div class="col-md-12 col-xs-12 details">
           Found 
           <?php
-          for ($i=0; $i < sizeof($search_by_ingredient_recipe_found_ingredient) ; $i++) { 
-            if($i==(sizeof($search_by_ingredient_recipe_found_ingredient)-1)){
-              echo $search_by_ingredient_recipe_found_ingredient[$i];
+          for ($i=0; $i < sizeof($search_by_ingredient_recipe_found) ; $i++) { 
+            if($i==(sizeof($search_by_ingredient_recipe_found)-1)){
+              echo $search_by_ingredient_recipe_found[$i];
             }
             else{
-              echo $search_by_ingredient_recipe_found_ingredient[$i].", ";
+              echo $search_by_ingredient_recipe_found[$i].", ";
             }
           }
           ?>
