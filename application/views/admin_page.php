@@ -24,7 +24,7 @@
 		  				Choose Recipes
 		  			</div>
 		  			<div class="col-md-4 col-no-padding-right">
-		  				<div class="list-group">
+		  				<div class="list-group" id="listHightlight">
 		  					<a href="" class="list-group-item" title="highlight setting">
 					    		<center> Recipes 1</center>
 				  			</a>

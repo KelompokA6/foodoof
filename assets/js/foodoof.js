@@ -583,9 +583,26 @@ $(document).ready(function() {
 		}
 	});
 
+	/*
+	handle click untuk create resep bila belum login
+	*/
 	$("#createRecipeMenubar").click(function(e){
 		$('.btn-popover').popover('show');	
 	});
+
+	$("#listHightlight");
+	$(document).on('change', "checkedHighlight > label > input[type='checkbox']", function(e){
+		$idHighlight = $(this).val();
+		if($(this).prop('checked')){
+			$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'>Recipes <span>"+$idHighlight+"</span></div>";
+			$("#listHightlight").append($addHighlightRecipe);
+		}
+		else{
+			$("#listHightlight").find(".list-group-item[data]")	
+		}
+
+	});
+
 	/*
 	init javascript bootstrap;
 	*/

@@ -4,7 +4,7 @@
   </div>
   <div class="panel-body panel-category" for="category">
     <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
-      <a href="<?php echo base_url();?>/category/masakan%20pedas">
+      <a href="<?php echo base_url();?>recipe/category/masakan%20pedas">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/sate-ayam.jpg"/>
         </div>
@@ -15,7 +15,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
-      <a href="<?php echo base_url();?>/category/sayuran">
+      <a href="<?php echo base_url();?>recipe/category/sayuran">
         <div class="col-md-3 col-xs-5">
           <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
         </div>
@@ -26,7 +26,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
-      <a href="<?php echo base_url();?>/category/Chinese%20Food">
+      <a href="<?php echo base_url();?>recipe/category/Chinese%20Food">
         <div class="col-md-3 col-xs-5">
           <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
         </div>
@@ -37,7 +37,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-12 category-list">
-      <a href="<?php echo base_url();?>/category/French%20Food">
+      <a href="<?php echo base_url();?>recipe/category/French%20Food">
         <div class="col-md-3 col-xs-5">
           <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
         </div>

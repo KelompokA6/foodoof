@@ -1,7 +1,7 @@
 <div class="col-md-12 col-xs-12 page-header-title" style="margin-bottom:10px">
 		{recipe_category_entries}
 		<div class="col-md-1 col-xs-3 border-right category-recipe-list text-center">
-			<a href='<?php echo base_url();?>home/category?category={recipe_category}'><h4>{recipe_category}</h4></a>
+			<a href='<?php echo base_url();?>home/category?category={recipe_category}'><h5>{recipe_category}</h5></a>
 		</div>
 		{/recipe_category_entries}
 	</div>
