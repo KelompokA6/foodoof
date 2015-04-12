@@ -24,7 +24,7 @@ class Search extends CI_Controller {
 
       if ($searchby == 'title') {
         $result = $r->searchRecipeByTitle($q, $limit, $limit * $page - $limit);
-        $this->show_search_by_title($q, $result['recipe_list'], ceil($result['total']/$limit), $page $result['total']);
+        $this->show_search_by_title($q, $result['recipe_list'], ceil($result['total']/$limit), $page, $result['total']);
       } elseif ($searchby == 'ingredient') {
         $qs = array_map(function($x){return trim($x);}, explode(",", $q));
         $result = $r->searchRecipeByIngredients($qs, 0.3, $limit, $limit * $page - $limit);

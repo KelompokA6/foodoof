@@ -14,6 +14,7 @@ class Home extends CI_Controller {
 		$listTopRecipe = $r->getTopRecipe(5);
 		$listHightlight = $r->getHightlight(5);
 		$listRecently = $r->getRecently(5);
+		// print_r($listHightlight); die();
 		$u = new User_model();
 		foreach ($listTopRecipe as $row)
 			$row->author_name = $u->getProfile($row->author)->name;
