@@ -21,37 +21,37 @@
 							<div class="col-md-12 col-xs-12 col-no-padding">
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Pedas" name="recipe_category[]"> Pedas
+									  	<input type="checkbox" id="inlineCheckbox1" value="Pedas" name="recipe_category[]" {edit_recipe_pedas_checked}> Pedas
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox2" value="Sayur" name="recipe_category[]"> Sayur
+									  	<input type="checkbox" id="inlineCheckbox2" value="Sayur" name="recipe_category[]" {edit_recipe_sayur_checked}> Sayur
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox3" value="Daging" name="recipe_category[]"> Daging
+									  	<input type="checkbox" id="inlineCheckbox3" value="Daging" name="recipe_category[]" {edit_recipe_daging_checked}> Daging
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Seafood" name="recipe_category[]"> Seafood
+									  	<input type="checkbox" id="inlineCheckbox1" value="Seafood" name="recipe_category[]" {edit_recipe_seafood_checked}> Seafood
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Chinese Food" name="recipe_category[]"> Chinese Food
+									  	<input type="checkbox" id="inlineCheckbox1" value="Chinese Food" name="recipe_category[]" {edit_recipe_chinese_food_checked}> Chinese Food
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="French Food" name="recipe_category[]"> French Food
+									  	<input type="checkbox" id="inlineCheckbox1" value="French Food" name="recipe_category[]" {edit_recipe_french_food_checked}> French Food
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Other" name="recipe_category[]"> Other
+									  	<input type="checkbox" id="inlineCheckbox1" value="Other" name="recipe_category[]" {edit_recipe_other_checked}> Other
 									</label>
 								</div>
 							</div>
@@ -87,7 +87,7 @@
 								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_subject}" name="ingredient_subject[]" class="form-control" placeholder="Ingredient Name">
 								    	</div>
 								    	<div class="col-sm-3 col-xs-3 col-no-padding-left">
-								      		<input type="number" min="0" value="{edit_recipe_ingredient_quantity}" name="ingredient_quantity[]" class="form-control" placeholder="Quantity">
+								      		<input type="number" min="0" step="0.1" value="{edit_recipe_ingredient_quantity}" name="ingredient_quantity[]" class="form-control" placeholder="Quantity">
 								    	</div>
 								    	<div class="col-sm-3 col-xs-3 col-no-padding-left">
 								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_unit}" name="ingredient_unit[]" class="form-control" placeholder="Unit">
