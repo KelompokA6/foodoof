@@ -567,7 +567,7 @@ class Recipe_model extends DataMapper {
         if(!empty($search_key)){
             $search_key = strtolower($search_key);
             $recipe = new Recipe_model();
-            $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$search_key."') AND status=1 OR LOWER(name) LIKE '%".$search_key."%' order by MATCH (name) AGAINST ('".$search_key."')";
+            $sql = "SELECT * FROM recipes WHERE (MATCH (name) AGAINST ('".$search_key."') OR LOWER(name) LIKE '%".$search_key."%') AND status=1 AND tmp_status=0 order by MATCH (name) AGAINST ('".$search_key."')";
             $recipe->query($sql);
             $recipeList = array();
             $total = 0;
@@ -590,7 +590,7 @@ class Recipe_model extends DataMapper {
                             $total--;
                         }
                     }                    
-                    if($validRecipe && $recipes->tmp_status=='0'){
+                    if($validRecipe){
                         $data = new stdClass();
                         $data->id = $recipes->id;
                         $data->name = $recipes->name;
@@ -636,7 +636,7 @@ class Recipe_model extends DataMapper {
                 $searchkey .= " OR LOWER(name) LIKE LOWER('%".$search_key[$i]."%')"; 
             }
             $ingredient = new Ingredient();
-            $sql = "SELECT recipe_id, COUNT(*) as counter FROM ingredients WHERE ".$searchkey." group by recipe_id having counter >= ".$thresholdCounter." order by counter desc";
+            $sql = "SELECT recipe_id, COUNT(*) as counter FROM ingredients WHERE (".$searchkey.") AND status=1 AND tmp_status=0 group by recipe_id having counter >= ".$thresholdCounter." order by counter desc";
             $ingredient->query($sql);
             $recipeList = array();
             $total = 0;
