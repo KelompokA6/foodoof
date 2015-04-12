@@ -561,7 +561,7 @@ class Recipe_model extends DataMapper {
     function searchRecipeByTitle($search_key=NULL, $limit=10, $offset=0, $category=NULL){
         if(!empty($search_key)){
             $recipe = new Recipe_model();
-            $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$search_key."') order by MATCH (name) AGAINST ('".$search_key."')";
+            $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$search_key."') AND status=1 order by MATCH (name) AGAINST ('".$search_key."')";
             $recipe->query($sql);
             $recipeList = array();
             $total = 0;

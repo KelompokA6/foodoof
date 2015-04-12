@@ -16,7 +16,7 @@
       </a>
     </div>
     <div id="navbar" class="col-md-11">
-      <form id="form-search" class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>search/title">
+      <form id="form-search" class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>search">
         <div class="input-group form-group search-bar-menu">
           <input type="search" id="searchbar" class="form-control input-group-dropdown" name="q" class="typeahead" autocomplete="off" data-provide="typeahead" placeholder="Search Recipe By Title">
           <div class="input-group-btn">
@@ -26,15 +26,15 @@
               </button>
               <ul id="listSearch" class="dropdown-menu dropdown-search bullet pull-center">
                 <li>
-                  <input type="radio" id="ex1_1" name="category-search" checked>
+                  <input type="radio" id="ex1_1" value='title' name="searchby" checked>
                     <label for="ex1_1">Title </label>
                 </li>
                 <li>
-                  <input type="radio" id="ex1_2" name="category-search">
+                  <input type="radio" id="ex1_2" value='ingredient' name="searchby">
                     <label for="ex1_2">Ingredient </label>
                 </li>
                 <li>
-                  <input type="radio" id="ex1_3" name="category-search">
+                  <input type="radio" id="ex1_3" value='account' name="searchby">
                     <label for="ex1_3">Account </label>
                 </li>
               </ul>

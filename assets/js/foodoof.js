@@ -593,14 +593,37 @@ $(document).ready(function() {
 	/*
 	handle for check highlight recipe
 	*/
+	$countHighlight = $("#listHightlight > .list-group-item").length;
 	$(document).on('change', ".checkedHighlight", function(e){
 		$idHighlight = $(this).val();
 		if($(this).prop('checked')){
-			$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'>Recipes <span>"+$idHighlight+"</span></div>";
-			$("#listHightlight").append($addHighlightRecipe);
+			if($countHighlight < 10){
+				$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'>Recipes <span>"+$idHighlight+"</span></div>";
+				$("#listHightlight").append($addHighlightRecipe);
+				$countHighlight++;
+			}
+			else{
+				$.notify({
+					// options
+					message: "You have selected 10 recipes" 
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'warning',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});
+				$(this).prop('checked', false);
+			}
 		}
 		else{
-			$("#listHightlight").find(".list-group-item[data-id='"+$idHighlight+"']").remove();	
+			$("#listHightlight").find(".list-group-item[data-id='"+$idHighlight+"']").remove();
+			$countHighlight--;	
 		}
 
 	});
