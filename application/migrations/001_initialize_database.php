@@ -76,6 +76,7 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->add_key('email', TRUE);
 		$this->dbforge->create_table('users');
+		$this->db->query("ALTER TABLE users ADD FULLTEXT (name)");
 
 		/*
 		Table Recipes
