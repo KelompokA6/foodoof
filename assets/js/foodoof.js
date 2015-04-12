@@ -3,6 +3,7 @@ $(document).ready(function() {
 	$recipeId = $("#image-recipe").data("id");
 	$lock = 0;
 	$submitStatus=false;
+	$hasChanged = false;
 	/*
 	script for init fileinput of user's photo
 	*/
@@ -50,6 +51,7 @@ $(document).ready(function() {
 	});
 	$("#photo-profile").on('filelock', function(event, filestack, extraData) {
 	    $lock++;
+	    $hasChanged = true;
     });
    $("#photo-profile").on('fileunlock', function(event, filestack, extraData) {
 	    $lock-=2;
@@ -107,6 +109,7 @@ $(document).ready(function() {
 	});
 	$photoRecipe.on('filelock', function(event, filestack, extraData) {
 	    $lock++;
+	    $hasChanged = true;
     });
     $photoRecipe.on('fileunlock', function(event, filestack, extraData) {
 	    $lock -= 2;
@@ -175,6 +178,7 @@ $(document).ready(function() {
 		});
 		$(this).on('filelock', function(event, filestack, extraData) {
 	    	$lock++;
+	    	$hasChanged = true;
 	    });
 	    $(this).on('fileunlock', function(event, filestack, extraData) {
 		    $lock-=2;
@@ -310,6 +314,7 @@ $(document).ready(function() {
 		$("#ingredient-entry").append($colAddRemoveBtnIngredient);
 		$("#remove-ingredient").show();
 		$countIngredient++;
+		$hasChanged = true;
 	});
 	$(document).on('click',"#remove-ingredient",function(){
 		$("#add-and-remove-btn-ingredient").remove();
@@ -322,6 +327,7 @@ $(document).ready(function() {
 		else{
 			$("#remove-ingredient").hide();	
 		}
+		$hasChanged = true;
 	});
 
 	/*
@@ -403,6 +409,7 @@ $(document).ready(function() {
 		});
 		$input.on('filelock', function(event, filestack, extraData) {
 		    $lock++;
+		    $hasChanged = true;
 	    });
 	    $input.on('fileunlock', function(event, filestack, extraData) {
 		    $lock-=2;
@@ -431,6 +438,7 @@ $(document).ready(function() {
 		else{
 			$("#remove-step").hide();	
 		}
+		$hasChanged = true;
 	});
 
 	/*
@@ -562,9 +570,17 @@ $(document).ready(function() {
 	});
 
 	$(window).bind('beforeunload', function(){ 
-		return '';
+		if($hasChanged){
+			return 'You have unsaved changes!';	
+		}
+		else{
+			return ;
+		}
 	});
 
+	$("#createRecipeMenubar").click(function(e){
+		$('.btn-popover').popover('show');	
+	});
 	/*
 	init javascript bootstrap;
 	*/

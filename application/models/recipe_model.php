@@ -350,6 +350,7 @@ class Recipe_model extends DataMapper {
         $recipe->where('status', '1')->order_by("create_date", "desc")->get($limit, $offset);
         $arrResult = array();
         foreach ($recipe as $recipes) {
+            if($recipe->status){}
             $data = new stdClass();
             $data->id = $recipes->id;
             $data->name = $recipes->name;
@@ -409,22 +410,24 @@ class Recipe_model extends DataMapper {
             if($x >= $offset && $limit > 0){
                 $recipes = new Recipe_model();
                 $recipes->get_by_id($categories->recipe_id);
-                $data = new stdClass();
-                $data->id = $recipes->id;
-                $data->name = $recipes->name;
-                $data->description = $recipes->description;
-                $data->portion = $recipes->portion;
-                $data->duration = $recipes->duration;
-                $data->author = $recipes->author;
-                $data->create_date = $recipes->create_date;
-                $data->last_update = $recipes->last_update;
-                $data->rating = $recipes->rating;
-                $data->status = $recipes->status;
-                $data->views = $recipes->views;
-                $data->photo = $recipes->photo;
-                $data->highlight = $recipes->highlight;
-                array_push($arrResult, $data);
-                $limit--;
+                if($recipe->status=='1'){
+                    $data = new stdClass();
+                    $data->id = $recipes->id;
+                    $data->name = $recipes->name;
+                    $data->description = $recipes->description;
+                    $data->portion = $recipes->portion;
+                    $data->duration = $recipes->duration;
+                    $data->author = $recipes->author;
+                    $data->create_date = $recipes->create_date;
+                    $data->last_update = $recipes->last_update;
+                    $data->rating = $recipes->rating;
+                    $data->status = $recipes->status;
+                    $data->views = $recipes->views;
+                    $data->photo = $recipes->photo;
+                    $data->highlight = $recipes->highlight;
+                    array_push($arrResult, $data);
+                    $limit--;
+                }
             }
         }
         $arrResult["total"] = $x;

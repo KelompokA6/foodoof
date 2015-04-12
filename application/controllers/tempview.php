@@ -55,7 +55,22 @@ class Tempview extends CI_Controller {
 				);
 		$this->parser->parse('template_content', $data);
 
-	}	
+	}
+
+	public function admin()
+	{	
+		$this->load->library('parser');
+		$data = array("recipe_author_id"=> 1);
+		$menubar = $this->parser->parse('menubar', $data, TRUE);
+		$content_website = $this->parser->parse('admin_page', $data, TRUE);
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
+
+	}
+
 	public function getR(){
 		$recipe = new Recipe_model();
 		$t = $recipe->getRecipeProfile(1)->name;

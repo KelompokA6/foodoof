@@ -48,7 +48,7 @@
       </form>
       <div class="col-md-4 navbar-collapse collapse col-menu-user col-no-padding-right" style="padding-left:20px; width: 380px;">
         <div class="col-md-3 link-by-icon text-right" >
-          <a href="<?php echo base_url();?>recipe/create" title="New Recipe">
+          <a id="createRecipeMenubar" title="New Recipe">
             <i class="fa fa-pencil-square-o fa-2x icon-default"></i>
           </a>
         </div>

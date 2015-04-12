@@ -53,6 +53,23 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="modal fade" id="confirmBeforeUnload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content panel-warning">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+        </div>
+        <div class="modal-body">
+          Your Changes Will Be Discard ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-unload" class="btn btn-warning">Leave</button>
+          <button type="button" class="btn btn-primary"  data-dismiss="modal">Stay</button>
+        </div>
+      </div>
+    </div>
   </div>    
 	</body>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-2.1.3.min.js"></script>
