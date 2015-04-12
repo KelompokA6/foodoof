@@ -210,8 +210,8 @@ class Recipe extends CI_Controller {
 	public function get($id){
 		$recipe = new Recipe_model();
 		$user = new User_model();
-		$user_id = $user->wajiblogin();
-		$r = $recipe->getRecipeProfile($id, $user_id);
+		// $user_id = $user->wajiblogin();
+		$r = $recipe->getRecipeProfile($id);
 		$data = array();
 		$this->load->library('parser');
 		// $menubar = $this->parser->parse('menubar_login', $data, TRUE);
@@ -250,11 +250,13 @@ class Recipe extends CI_Controller {
 			}
 		}
 		$data = array(
+					'recipe_id' => $id,
 					'recipe_name' => $r->name,
 					'recipe_description' => $r->description,
 					'recipe_portion' => $r->portion,
 					'recipe_duration' => $r->duration,
 					'recipe_author_name' => $user->getProfile($r->author)->name,
+					'recipe_author' => $r->author,
 					'recipe_last_update' => substr($r->last_update, 0, -8),
 					'recipe_ingredients' => $ingre,
 					'recipe_steps' => $steps,

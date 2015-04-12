@@ -71,7 +71,7 @@
 						<h3 style="margin-top:0" class="page-header">Ingredients</h3>
 						<?php if ($this->session->userdata('user_id') == $recipe_author) {
 							echo "
-								<a href='".base_url()."recipe/edit/".$recipe_id."'>
+								<a href='".base_url()."recipe/edit/".$recipe_id."' class='pull-right'>
 									<button class='btn btn-primary'>
 										<i class='fa fa-pencil fa-lg'></i>
 										Edit Recipe
