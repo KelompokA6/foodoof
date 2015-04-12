@@ -443,8 +443,11 @@ class Recipe_model extends DataMapper {
     /*
         Digunakan untuk memperoleh resep-resep yang dimiliki oleh sebuah user.
     */
-    function getUserRecipe($userId, $limit=10, $offset=0){
+    function getUserRecipe($userId, $flag = 'all',$limit=10, $offset=0){
         $recipe = new Recipe_model();
+        if(strtolower($flag) != 'all'){
+            $recipe->where('status','1');    
+        }
         $recipe->get_by_author($userId);
         $arrResult = array();
         $x = 0;

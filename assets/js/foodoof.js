@@ -447,7 +447,7 @@ $(document).ready(function() {
 	$(document).on("click", ".rating-container", function(){
 		$valueRating = $("#rating-recipe").val();
 		$recipeIdView = $("#rating-recipe").data("recipeId");
-		$.get( "../processAjax/setRating/"+$recipeIdView+"/"+$valueRating, function( data ) {
+		$.get( "/foodoof/processAjax/setRating/"+$recipeIdView+"/"+$valueRating, function( data ) {
 		  	if(data.status == '1'){
 		  		console.log(data.message);
 		  	}
@@ -465,7 +465,7 @@ $(document).ready(function() {
 		$recipeIdFav = $recipeIdFav.split("/");
 		$length = $recipeId.length;
 		$recipeIdFav = $recipeIdFav[$length].split("?");
-		$.get( "../processAjax/addFavorite/"+$recipeIdFav[0], function( data ) {
+		$.get( "/foodoof/processAjax/addFavorite/"+$recipeIdFav[0], function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
@@ -495,7 +495,7 @@ $(document).ready(function() {
 		$recipeIdCL = $recipeIdCL.split("/");
 		$length = $recipeId.length;
 		$recipeIdCL = $recipeIdCL[$length].split("?");
-		$.get( "../processAjax/addCookLater/"+$recipeIdCL[0], function( data ) {
+		$.get( "/foodoof/processAjax/addCookLater/"+$recipeIdCL[0], function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
@@ -590,7 +590,9 @@ $(document).ready(function() {
 		$('.btn-popover').popover('show');	
 	});
 
-	$("#listHightlight");
+	/*
+	handle for check highlight recipe
+	*/
 	$(document).on('change', ".checkedHighlight", function(e){
 		$idHighlight = $(this).val();
 		if($(this).prop('checked')){
