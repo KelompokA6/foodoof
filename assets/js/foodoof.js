@@ -591,6 +591,17 @@ $(document).ready(function() {
 	});
 
 	/*
+	init admin page
+	*/
+	$(".checkedHighlight").each(function(i){
+		if($(this).prop('checked')){
+			$idHighlight = $(this).val();
+			$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'>Recipes <span>"+$idHighlight+"</span></div>";
+			$("#listHightlight").append($addHighlightRecipe);
+			$countHighlight++;
+		}
+	});
+	/*
 	handle for check highlight recipe
 	*/
 	$countHighlight = $("#listHightlight > .list-group-item").length;
