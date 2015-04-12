@@ -662,6 +662,8 @@ class Recipe_model extends DataMapper {
                             $ingredient->where('recipe_id', $recipes->id);
                             $ingredient->ilike('name', $search_key[$i]);
                             if($ingredient->count()>0){
+                                $ingredient->where('recipe_id', $recipes->id);
+                                $ingredient->ilike('name', $search_key[$i]);
                                 $ingredient->get();
                                 array_push($foundIngredients, $ingredient->name);
                             }
