@@ -106,7 +106,7 @@ class User extends CI_Controller {
 			$data['name'] = $this->input->post("name");
 			$data['email'] = $this->input->post("email");
 			$data['gender'] = $this->input->post("genderOptions");
-			$data['photo'] = $data['gender'] == 'M' ? 'assets/img/man.png' : 'assets/img/woman.png';
+			$data['photo'] = $data['gender'] == 'M' ? 'assets/img/user-male.png' : 'assets/img/user-female.png';
 			$data['password'] = $this->input->post("password"); 
 			$data['confirm_password'] = $this->input->post("confirm_password");
 
