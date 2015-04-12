@@ -123,7 +123,7 @@ class Recipe_model extends DataMapper {
             $photo = "images/recipe/".$id.".jpg";
         }
         if(!empty($id) && !empty($name) && !empty($portion) 
-            && !empty($duration) && !empty($description) && !empty($last_update)
+            && !empty($duration) && !empty($last_update)
             && !empty($steps) && !empty($ingredients)){
             $arrUpdate = array(
                         'author' => $this->session->userdata('user_id'),
@@ -198,8 +198,10 @@ class Recipe_model extends DataMapper {
                         if(!$stp->skip_validation()->save()){
                             return false;
                         }
-                        if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
-                            return false;
+                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
+                            if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
+                                return false;
+                            }
                         }
                     }
                     else{
@@ -221,8 +223,10 @@ class Recipe_model extends DataMapper {
                         if(!$stptmp->update($dataUpdate)){
                             return false;
                         }
-                        if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
-                            return false;
+                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
+                            if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
+                                return false;
+                            }
                         }
                     }
                 }
