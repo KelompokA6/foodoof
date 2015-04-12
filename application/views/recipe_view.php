@@ -1,6 +1,6 @@
 <div class="col-md-12 col-xs-12 page-header-title" style="margin-bottom:10px">
 		{recipe_category_entries}
-		<div class="col-md-1 col-xs-3 border-right category-recipe-list text-center">
+		<div class="col-md-1 col-xs-3 border-right category-recipe-list text-center" style="font-size:12px">
 			<a href='<?php echo base_url();?>recip/category/<?php echo urlencode($recipe_category); ?>'><h5>{recipe_category}</h5></a>
 		</div>
 		{/recipe_category_entries}

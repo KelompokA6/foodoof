@@ -319,6 +319,7 @@ class Recipe_model extends DataMapper {
 
     function getAllRecipe(){
         $recipe = new Recipe_model();
+        $recipe->where('tmp_status', 0);
         $recipe->get();
         $arrResult = array();
         foreach ($recipe as $recipes) {
@@ -346,6 +347,7 @@ class Recipe_model extends DataMapper {
     */
     function getHightlight($limit=10, $offset=0){
         $recipe = new Recipe_model();
+        $recipe->where('tmp_status', 0);
         $recipe->where('highlight', '1');
         $recipe->where('status', '1');
         $recipe->get($limit, $offset);
@@ -375,6 +377,7 @@ class Recipe_model extends DataMapper {
     */
     function getRecently($limit=10, $offset=0){
         $recipe = new Recipe_model();
+        $recipe->where('tmp_status', 0);
         $recipe->where('status', '1')->order_by("create_date", "desc")->get($limit, $offset);
         $arrResult = array();
         foreach ($recipe as $recipes) {
@@ -404,6 +407,7 @@ class Recipe_model extends DataMapper {
     */
     function getTopRecipe($limit=10, $offset=0){
         $recipe = new Recipe_model();
+        $recipe->where('tmp_status', 0);
         $recipe->where('status', '1')->order_by("rating", "desc")->order_by("views", "desc")->get($limit, $offset);
         $arrResult = array();
         foreach ($recipe as $recipes) {
@@ -439,7 +443,7 @@ class Recipe_model extends DataMapper {
             if($x >= $offset && $limit > 0){
                 $recipes = new Recipe_model();
                 $recipes->get_by_id($categories->recipe_id);
-                if($recipes->status=='1'){
+                if($recipes->status=='1' && $recipes->tmp_status=='0'){
                     $data = new stdClass();
                     $data->id = $recipes->id;
                     $data->name = $recipes->name;
@@ -472,6 +476,7 @@ class Recipe_model extends DataMapper {
         if(strtolower($flag) != 'all'){
             $recipe->where('status','1');    
         }
+        $recipe->where('tmp_status', 0);
         $recipe->get_by_author($userId);
         $arrResult = array();
         $x = 0;
@@ -508,6 +513,7 @@ class Recipe_model extends DataMapper {
             $id = $this->id;
         }
         $recipes = new Recipe_model();
+        $recipes->where('tmp_status', 0);
         $recipes->get_by_id($id);
         if($recipes->status){
             $data = new stdClass();
@@ -584,7 +590,7 @@ class Recipe_model extends DataMapper {
                             $total--;
                         }
                     }                    
-                    if($validRecipe){
+                    if($validRecipe && $recipes->tmp_status=='0'){
                         $data = new stdClass();
                         $data->id = $recipes->id;
                         $data->name = $recipes->name;
@@ -668,7 +674,7 @@ class Recipe_model extends DataMapper {
                                 array_push($foundIngredients, $ingredient->name);
                             }
                         }
-                        if($recipes->status=='1'){
+                        if($recipes->status=='1' && $recipes->tmp_status=='0'){
                             $data = new stdClass();
                             $data->id = $recipes->id;
                             $data->name = $recipes->name;
