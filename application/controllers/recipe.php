@@ -30,6 +30,18 @@ class Recipe extends CI_Controller {
 				}
 			}
 			//print_r($ingre);
+			$categories = $recipe->getCategories($id);
+			$listCategories = array();
+			if(!empty($categories)){
+				foreach ($categories as $obj) {
+					$temp = array(
+						'{edit_recipe_'.$obj->name.'_checked}' => "checked",
+					);
+					array_push($listCategories, $temp);
+				}
+			}
+			print_r($listCategories);
+			die();
 			$steps = array();
 			if (!empty($r->steps)){
 				$i = 1;
