@@ -18,7 +18,7 @@ class Search extends CI_Controller {
       $q = urldecode($q);
       $page = $this->input->get('page');
       if ($page === FALSE) $page = 1;
-      $limit = 2;
+      $limit = 10;
       $r = new Recipe_model();
       $u = new Recipe_model();
 
@@ -86,6 +86,7 @@ class Search extends CI_Controller {
       $row->search_by_ingredient_recipe_author_name = $u->name;
       $row->search_by_ingredient_recipe_views = $row->views;
       $row->search_by_ingredient_recipe_last_update = strftime("%c", strtotime($row->last_update));
+      $row->search_by_ingredient_recipe_found = implode(", ", $row->found_ingredient);
     }
     $datalist['search_by_ingredient_recipe_entries'] = $list_recipe;
 
@@ -112,7 +113,7 @@ class Search extends CI_Controller {
       $row->search_by_account_photo = $row->photo;
       $row->search_by_account_name = $row->name;
       $row->search_by_account_gender = $row->gender;
-      $row->search_by_account_age = (new DateTime())->diff(new DateTime($row->bdate))->y,;
+      $row->search_by_account_age = (new DateTime())->diff(new DateTime($row->bdate))->y;
     }
     $datalist['search_by_account_entries'] = $list_account;
 

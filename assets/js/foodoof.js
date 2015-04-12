@@ -287,13 +287,13 @@ $(document).ready(function() {
 	*/
 	$("ul#listSearch > li").click(function(e){
 		var search = $(this).find("label").html();
-		if(search==="Title"){	
+		if(search==="Title "){	
 			$("#searchbar").attr("placeholder", "Search Recipe By Title");
 		}
-		else if(search==="Ingredient"){	
+		else if(search==="Ingredient "){	
 			$("#searchbar").attr("placeholder", "Search Recipe By Ingredient");
 		}
-		else if(search==="Account"){	
+		else if(search==="Account "){	
 			$("#searchbar").attr("placeholder", "Search Account");
 		}
 	});
