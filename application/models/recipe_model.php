@@ -888,7 +888,7 @@ class Recipe_model extends DataMapper {
             $id = $this->id;
         }
         if(!empty($id)){
-            return $this->where('id', $id)->update('hightlight', $status);
+            return $this->where('id', $id)->update('highlight', $status);
         }
         else{
             return false;
