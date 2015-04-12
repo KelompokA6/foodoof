@@ -40,7 +40,20 @@
         <div class="col-md-11" title="Rating">
             <input id="input-2b" class="rating" value="{search_by_ingredient_recipe_rating}" data-min="0" data-max="5" data-starts=3 data-step="0.1" data-stars=5 data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false">
         </div>
-      </div>  
+      </div> 
+      <div class="col-md-12 col-xs-12 details">
+          Found 
+          <?php
+          for ($i=0; $i < sizeof($search_by_ingredient_recipe_found_ingredient) ; $i++) { 
+            if($i==(sizeof($search_by_ingredient_recipe_found_ingredient)-1)){
+              echo $search_by_ingredient_recipe_found_ingredient[$i];
+            }
+            else{
+              echo $search_by_ingredient_recipe_found_ingredient[$i].", ";
+            }
+          }
+          ?>
+      </div> 
     </div>
   </div>
   {/search_by_ingredient_recipe_entries}

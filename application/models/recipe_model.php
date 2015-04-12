@@ -656,6 +656,16 @@ class Recipe_model extends DataMapper {
                     if($validRecipe){
                         $recipes = new Recipe_model();
                         $recipes->get_by_id($ingredients->recipe_id);
+                        $foundIngredients = array();
+                        for ($i=0; $i < sizeof($search_key) ; $i++) { 
+                            $ingredient = new Ingredient();
+                            $ingredient->where('recipe_id', $recipes->id);
+                            $ingredient->ilike('name', $search_key[$i]);
+                            if($ingredient->count()>0){
+                                $ingredient->get();
+                                array_push($foundIngredients, $ingredient->name);
+                            }
+                        }
                         $data = new stdClass();
                         $data->id = $recipes->id;
                         $data->name = $recipes->name;
@@ -670,6 +680,7 @@ class Recipe_model extends DataMapper {
                         $data->views = $recipes->views;
                         $data->photo = $recipes->photo;
                         $data->highlight = $recipes->highlight;
+                        $data->found_ingredient = $foundIngredients;
                         array_push($recipeList, $data);
                         $limit--;
                     }
