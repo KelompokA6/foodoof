@@ -149,7 +149,6 @@ class User extends CI_Controller {
 				$data['photo'] = 'images/user/'.$data['id'].'.jpg';
 			}
 			$data['name'] = $this->input->post('user_name');
-			$data['gender'] = $this->input->post('genderOptions');
 			$data['phone'] = $this->input->post('user_phone');
 			$data['bdate'] = $this->input->post('user_bdate');
 			$data['twitter'] = $this->input->post('user_twitter');
@@ -160,8 +159,9 @@ class User extends CI_Controller {
 				if($this->user_model->updateProfile($data['id'], $data)){
 					$message = 'success';
 					$this->session->set_userdata('user_name', $data['name']);
-					$this->session->set_userdata('user_photo', 
-						file_exists('images/user/'.$data['id'].'.jpg') ? 'images/user/'.$data['id'].'.jpg' : 'images/user/0.jpg');
+					if(file_exists('images/user/'.$data['id'].'.jpg')) {
+						$this->session->set_userdata('user_photo', 'images/user/'.$data['id'].'.jpg');
+					}
 				}
 				else
 					$message = 'failed';

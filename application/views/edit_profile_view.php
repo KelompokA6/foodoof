@@ -28,10 +28,10 @@
 					    <label for="inputgender" class="col-sm-2 control-label">Gender</label>
 					    <div class="col-sm-10">
 					      	<label class="radio-inline">
-							  	<input type="radio" name="genderOptions" id="inlineRadio1" value="M" {edit_profile_male}>Male
+							  	<input type="radio" id="inlineRadio1" value="M" {edit_profile_male} disabled>Male
 							</label>
 							<label class="radio-inline">
-							  	<input type="radio" name="genderOptions" id="inlineRadio2" value="F" {edit_profile_female}>Female
+							  	<input type="radio" id="inlineRadio2" value="F" {edit_profile_female} disabled>Female
 							</label>
 					    </div>
 					 </div>

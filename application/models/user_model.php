@@ -19,7 +19,7 @@ class User_model extends DataMapper {
         // hack
         // $decrypted_password = $password;
         // FOTONE ENDI?
-        $this->photo = file_exists('images/user/'.$this->id.'.jpg') ? 'images/user/'.$this->id.'.jpg' : 'images/user/0.jpg';
+        $this->photo = file_exists('images/user/'.$this->id.'.jpg') ? 'images/user/'.$this->id.'.jpg' : 'assets/img/'.($this->gender == 'M' ? 'man.png' : 'woman.png');
         return ($decrypted_password == $password) ?
             array(
                 'user_id' => $this->id,
@@ -41,7 +41,7 @@ class User_model extends DataMapper {
         $ret->bdate = $this->bdate;
         $ret->phone = $this->phone;
         $ret->status = $this->status;
-        $ret->photo = $this->photo ? $this->photo : 'images/user/0.jpg';
+        $ret->photo = $this->photo ? $this->photo : 'assets/img/'.($this->gender == 'M' ? 'man.png' : 'woman.png');
         $ret->facebook = $this->facebook;
         $ret->twitter = $this->twitter;
         $ret->googleplus = $this->googleplus;
