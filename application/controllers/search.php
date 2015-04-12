@@ -111,7 +111,8 @@ class Search extends CI_Controller {
       $row->search_by_account_id = $row->id;
       $row->search_by_account_photo = $row->photo;
       $row->search_by_account_name = $row->name;
-      $row->search_by_account_last_update = strftime("%c", strtotime($row->last_update));
+      $row->search_by_account_gender = $row->gender;
+      $row->search_by_account_age = (new DateTime())->diff(new DateTime($row->bdate))->y,;
     }
     $datalist['search_by_account_entries'] = $list_account;
 
