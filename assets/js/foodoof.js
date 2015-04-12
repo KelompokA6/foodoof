@@ -598,7 +598,6 @@ $(document).ready(function() {
 			$idHighlight = $(this).val();
 			$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'>Recipes <span>"+$idHighlight+"</span></div>";
 			$("#listHightlight").append($addHighlightRecipe);
-			$countHighlight++;
 		}
 	});
 	/*
