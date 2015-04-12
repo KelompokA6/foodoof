@@ -1,6 +1,6 @@
 <div class="panel panel-info">
   <div class="col-md-12 panel-home-title text-center">
-    Recently Recipe
+    <a href="<?php echo base_url();?>home/recently">Recently Recipe</a>
   </div>
   <div class="panel-body">
     {recently_recipe_entries}
