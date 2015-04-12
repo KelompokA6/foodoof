@@ -42,10 +42,7 @@
         </div>
       </div> 
       <div class="col-md-12 col-xs-12 details">
-          Found 
-          {search_by_ingredient_recipe_found_entries}
-            {search_by_ingredient_recipe_found} 
-          {/search_by_ingredient_recipe_found_entries}
+          Found {search_by_ingredient_recipe_found} 
       </div> 
     </div>
   </div>
