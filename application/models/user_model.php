@@ -82,7 +82,7 @@ class User_model extends DataMapper {
 
     function createUser($profile)
     {
-        if( $this->where('email', $profile['email'])->count() > 0 ) return FALSE;
+        // if( $this->where('email', $profile['email'])->count() > 0 ) return FALSE;
         foreach ($profile as $key => $value) $this->$key = $value;
         // encrypt the password
         $ci =& get_instance();
