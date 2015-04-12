@@ -52,24 +52,25 @@ class Home_viewer extends CI_Model
 
   function showTop($listTopRecipe)
   {
-    $datalist['search_by_title_recipe_result'] = sizeof($listTopRecipe);
-    $datalist['search_by_title_recipe_key'] = 'Top Recipes';
-    $datalist['search_by_title_recipe_page_size'] = 0;
-    $datalist['search_by_title_recipe_page_now'] = 1;
+    $datalist['top_recipe_result'] = sizeof($listTopRecipe);
+    $datalist['top_recipe_key'] = 'Top Recipes';
+    $datalist['top_recipe_page_size'] = 0;
+    $datalist['top_recipe_page_now'] = 1;
     foreach ($listTopRecipe as $row) {
-      $row->search_by_title_recipe_id = $row->id;
-      $row->search_by_title_recipe_photo = $row->photo;
-      $row->search_by_title_recipe_name = $row->name;
-      $row->search_by_title_recipe_author = $row->author;
-      $row->search_by_title_recipe_author_name = $row->author_name;
-      $row->search_by_title_recipe_views = $row->views;
-      $row->search_by_title_recipe_last_update = strftime("%c", strtotime($row->last_update));
+      $row->top_recipe_id = $row->id;
+      $row->top_recipe_photo = $row->photo;
+      $row->top_recipe_name = $row->name;
+      $row->top_recipe_rating = $row->rating;
+      $row->top_recipe_author = $row->author;
+      $row->top_recipe_author_name = $row->author_name;
+      $row->top_recipe_views = $row->views;
+      $row->top_recipe_last_update = strftime("%c", strtotime($row->last_update));
     }
-    $datalist['search_by_title_recipe_entries'] = $listTopRecipe;
+    $datalist['top_recipe_entries'] = $listTopRecipe;
 
     $datacomplete['menubar'] = $this->getMenubar();
 
-    $data_content_homepage['content_search'] = $this->parser->parse('search_by_title_view', $datalist, TRUE);
+    $data_content_homepage['content_search'] = $this->parser->parse('top_recipe_view', $datalist, TRUE);
     $data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
 
     // load content_website, isinya dari content_homepage
@@ -81,24 +82,25 @@ class Home_viewer extends CI_Model
 
   function showRecently($listRecently)
   {
-    $datalist['search_by_title_recipe_result'] = sizeof($listRecently);
-    $datalist['search_by_title_recipe_key'] = 'Recently Recipes';
-    $datalist['search_by_title_recipe_page_size'] = 0;
-    $datalist['search_by_title_recipe_page_now'] = 1;
+    $datalist['recently_recipe_result'] = sizeof($listRecently);
+    $datalist['recently_recipe_key'] = 'Recently Recipes';
+    $datalist['recently_recipe_page_size'] = 0;
+    $datalist['recently_recipe_page_now'] = 1;
     foreach ($listRecently as $row) {
-      $row->search_by_title_recipe_id = $row->id;
-      $row->search_by_title_recipe_photo = $row->photo;
-      $row->search_by_title_recipe_name = $row->name;
-      $row->search_by_title_recipe_author = $row->author;
-      $row->search_by_title_recipe_author_name = $row->author_name;
-      $row->search_by_title_recipe_views = $row->views;
-      $row->search_by_title_recipe_last_update = strftime("%c", strtotime($row->last_update));
+      $row->recently_recipe_id = $row->id;
+      $row->recently_recipe_photo = $row->photo;
+      $row->recently_recipe_name = $row->name;
+      $row->recently_recipe_rating = $row->rating;
+      $row->recently_recipe_author = $row->author;
+      $row->recently_recipe_author_name = $row->author_name;
+      $row->recently_recipe_views = $row->views;
+      $row->recently_recipe_last_update = strftime("%c", strtotime($row->last_update));
     }
-    $datalist['search_by_title_recipe_entries'] = $listRecently;
+    $datalist['recently_recipe_entries'] = $listRecently;
 
     $datacomplete['menubar'] = $this->getMenubar();
 
-    $data_content_homepage['content_search'] = $this->parser->parse('search_by_title_view', $datalist, TRUE);
+    $data_content_homepage['content_search'] = $this->parser->parse('recently_recipe_view', $datalist, TRUE);
   	$data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
 
     // load content_website, isinya dari content_homepage

@@ -62,7 +62,7 @@ class Home extends CI_Controller {
 	public function toprecipe()
 	{
 		$r = new Recipe_model();
-		$listTopRecipe = $r->getTopRecipe(1001);
+		$listTopRecipe = $r->getTopRecipe(11);
 		$u = new User_model();
 		foreach ($listTopRecipe as $row)
 			$row->author_name = $u->getProfile($row->author)->name;
@@ -73,7 +73,7 @@ class Home extends CI_Controller {
 	public function recently()
 	{
 		$r = new Recipe_model();
-		$listRecently = $r->getRecently(1001);
+		$listRecently = $r->getRecently(11);
 		$u = new User_model();
 		foreach ($listRecently as $row)
 			$row->author_name = $u->getProfile($row->author)->name;
