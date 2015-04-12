@@ -26,7 +26,7 @@
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox2" value="noodle" name="recipe_category[]" {edit_recipe_noodle_checked}> Noodle Anf Pasta
+									  	<input type="checkbox" id="inlineCheckbox2" value="noodle" name="recipe_category[]" {edit_recipe_noodle_checked}> Noodle
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
