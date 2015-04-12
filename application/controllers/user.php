@@ -30,11 +30,12 @@ class User extends CI_Controller {
 		$page = $this->input->get('page');
 		if($page === FALSE) $page = 1;
 		$limit = 5;
-		$listRecipe = $r->getUserRecipe($id, $limit, $limit * $page - $limit);
-		if ($id != $this->session->userdata('user_id')) {
+		$flag = $id == $this->session->userdata('user_id') ? 'all' : '';
+		$listRecipe = $r->getUserRecipe($id, $flag, $limit, $limit * $page - $limit);
+		/*if ($id != $this->session->userdata('user_id')) {
 			$listRecipe = array_filter($listRecipe, function($row){return $row->status == 1;});
-		}
-		$totalpage = ceil(sizeof( $r->getUserRecipe($id, 1000111) )/$limit);
+		}*/
+		$totalpage = ceil(sizeof( $r->getUserRecipe($id, $flag, 1000111) )/$limit);
 		$this->user_viewer->showUserTimeline($profile, $listRecipe, $page, $totalpage);
 	}
 
