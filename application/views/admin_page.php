@@ -26,15 +26,17 @@
 			  				Choose Recipes
 			  			</div>
 			  			<div class="col-md-4 col-no-padding-right">
-			  				<div class="list-group" id="listHightlight">
+			  				
+			  				<div class="list-group" id="listHightlight"> 
 			  				</div>
+			  				
 			  			</div>
 			  			<div class="col-md-6 col-no-padding-right">
 			  				<div id='div1' style='overflow:scroll;max-height:411px;display:block; border:1px'>
 					    		<div class="checkbox" >
 					    			{highlighted_recipe_entries}
 			  					    <label class="form-control" style='padding-left:30px'>
-								      	<input type="checkbox" class="checkedHighlight" name= 'id_highlight[]' value='{highlight_recipe_id}'> {highlight_recipe_name}
+								      	<input type="checkbox" class="checkedHighlight" name= 'id_highlight[]' value='{highlight_recipe_id}' {highlight_checked}> {highlight_recipe_name}
 								    </label>
 								   	{/highlighted_recipe_entries}
 								</div> 
