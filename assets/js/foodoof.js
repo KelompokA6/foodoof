@@ -446,7 +446,7 @@ $(document).ready(function() {
 	*/
 	$(document).on("click", ".rating-container", function(){
 		$valueRating = $("#rating-recipe").val();
-		$recipeIdView = $("#rating-recipe").data("recipeId");
+		$recipeIdView = $("#rating-recipe").data("recipeid");
 		$.get( "/foodoof/processAjax/setRating/"+$recipeIdView+"/"+$valueRating, function( data ) {
 		  	if(data.status == '1'){
 		  		console.log(data.message);

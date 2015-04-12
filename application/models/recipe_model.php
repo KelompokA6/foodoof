@@ -513,7 +513,6 @@ class Recipe_model extends DataMapper {
             $id = $this->id;
         }
         $recipes = new Recipe_model();
-        $recipes->where('tmp_status', 0);
         $recipes->get_by_id($id);
         if($recipes->status){
             $data = new stdClass();
@@ -777,18 +776,18 @@ class Recipe_model extends DataMapper {
         }
         if(!empty($recipe_id) && !empty($user_id)){
             $rat = new Rating();
-            $rat->recipe_id = $this->id;
-            $rat->user_id = $user_id;
-            $rat->value = $value;
             $ratmp = new Rating();
-            $ratmp->where('recipe_id', $this->id);
+            $ratmp->where('recipe_id', $recipe_id);
             $ratmp->where('user_id', $user_id);
             if($ratmp->count() > 0){
-                $rat->where('recipe_id', $this->id);
+                $rat->where('recipe_id', $recipe_id);
                 $rat->where('user_id', $user_id);
                 return $rat->update('value', $value);
             }
             else{
+                $rat->recipe_id = $recipe_id;
+                $rat->user_id = $user_id;
+                $rat->value = $value;
                 return $rat->skip_validation()->save();
             }
         }

@@ -52,12 +52,11 @@ class Recipe extends CI_Controller {
 						'edit_recipe_duration' => $r->duration,
 						'edit_recipe_ingredient_entries' => $ingre,
 						'edit_recipe_step_entries' => $steps,
-
 					);
 			$categories = $recipe->getCategories($id);
 			if(!empty($categories)){
 				foreach ($categories as $obj) {
-					$data['edit_recipe_'.$obj->name.'_checked'] = "checked";
+					$data['edit_recipe_'.str_replace(" ","_",$obj->name).'_checked'] = "checked";
 					// $temp = array(
 					// 	'{edit_recipe_'.$obj->name.'_checked}' => "checked",
 					// );
