@@ -19,12 +19,13 @@ class Search extends CI_Controller {
       if ($page === FALSE) $page = 1;
       $limit = 10;
       $r = new Recipe_model();
+
       if ($searchby == 'title') {
         $result = $r->searchRecipeByTitle($q, $limit, $limit * $page - $limit);
-        // print_r($result['recipe_list']); die();
         $this->show_search_by_title($q, $result['recipe_list'], $result['total'], $page);
       } elseif ($searchby == 'ingredient') {
-        # ingredient
+        $result = $r->searchRecipeByIngredients($q, $limit, $limit * $page - $limit);
+        $this->show_search_by_title($q, $result['recipe_list'], $result['total'], $page);
       } else {
         # by account
       }
@@ -39,11 +40,11 @@ class Search extends CI_Controller {
     $datalist['search_by_title_recipe_page_now'] = $pagenow;
     $u = new User_model();
     foreach ($list_recipe as $row) {
-      $row->search_by_title_view_recipe_id = $row->id;
-      $row->search_by_title_view_recipe_photo = $row->photo;
+      $row->search_by_title_recipe_id = $row->id;
+      $row->search_by_title_recipe_photo = $row->photo;
       $row->search_by_title_recipe_name = $row->name;
       $row->search_by_title_recipe_rating = $row->rating;
-      $row->search_by_title_recipe_author = $row->author;
+      $row->search_by_title_recipe_author_id = $row->author;
       $u->get_by_id($row->author);
       $row->search_by_title_recipe_author_name = $u->name;
       $row->search_by_title_recipe_views = $row->views;
