@@ -209,8 +209,9 @@ class Recipe extends CI_Controller {
 
 	public function get($id){
 		$recipe = new Recipe_model();
+		$recipe->incrementViews($id);
 		$user = new User_model();
-		$user_id = $user->wajiblogin();
+		// $user_id = $user->wajiblogin();
 		$r = $recipe->getRecipeProfile($id);
 		$data = array();
 		$this->load->library('parser');
@@ -256,6 +257,8 @@ class Recipe extends CI_Controller {
 					'recipe_duration' => $r->duration,
 					'recipe_author_name' => $user->getProfile($r->author)->name,
 					'recipe_last_update' => substr($r->last_update, 0, -8),
+					'recipe_author' => $r->author,
+					'recipe_id' => $id,
 					'recipe_ingredients' => $ingre,
 					'recipe_steps' => $steps,
 					'recipe_rating' => $r->rating,
