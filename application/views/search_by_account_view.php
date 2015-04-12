@@ -32,7 +32,7 @@
           <div class="col-md-2 col-xs-3 col-no-padding-right">
             <p class="text-capitalize">{search_by_account_gender}, </p>
           </div>
-          <div class="col-md-10 col-xs-9 col-no-padding-left">
+          <div class="col-md-10 col-xs-9">
             <p class="text-capitalize">{search_by_account_age} Years Old</p>
           </div>
       </div>  
