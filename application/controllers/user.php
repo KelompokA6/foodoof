@@ -111,9 +111,7 @@ class User extends CI_Controller {
 			$data['confirm_password'] = $this->input->post("confirm_password");
 
 			if ($this->_validate_join($data) === TRUE) {
-				if(!$this->_send_email($data)) {
-					die("email gagal");
-				}
+				if(!$this->_send_email($data)) { }
 				if($this->user_model->createUser($data)) {
 					$profile_menubar = $this->user_model->login($data['email'], $data['password']);
 					foreach ($profile_menubar as $key => $value) {
