@@ -631,12 +631,14 @@ class Recipe_model extends DataMapper {
             $thresholdCounter = floor(sizeof($search_key)*floatval($threshold));
             for ($i=0; $i < sizeof($search_key) ; $i++) { 
                 if($i == 0){
-                    $searchkey .= "LOWER(name) LIKE LOWER('%".$search_key[$i]."%)'"; 
-                } 
-                $searchkey .= " OR LOWER(name) LIKE LOWER('%".$search_key[$i]."%')"; 
+                    $searchkey .= "LOWER(name) LIKE LOWER('%".$search_key[$i]."%')"; 
+                }
+                else {
+                    $searchkey .= " OR LOWER(name) LIKE LOWER('%".$search_key[$i]."%')"; 
+                }
             }
             $ingredient = new Ingredient();
-            $sql = "SELECT recipe_id, COUNT(*) as counter FROM ingredients WHERE (".$searchkey.") AND status=1 AND tmp_status=0 group by recipe_id having counter >= ".$thresholdCounter." order by counter desc";
+            $sql = "SELECT recipe_id, COUNT(*) as counter FROM ingredients WHERE ".$searchkey." group by recipe_id having counter >= ".$thresholdCounter." order by counter desc";
             $ingredient->query($sql);
             $recipeList = array();
             $total = 0;
@@ -692,6 +694,9 @@ class Recipe_model extends DataMapper {
                             $data->found_ingredient = $foundIngredients;
                             array_push($recipeList, $data);
                             $limit--;
+                        }
+                        else{
+                            $total--;
                         }
                     }
                 }
