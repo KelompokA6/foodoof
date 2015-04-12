@@ -27,11 +27,15 @@ class User extends CI_Controller {
 		}
 		$profile = $this->user_model->getProfile($id);
 		$r = new Recipe_model();
-		$listRecipe = $r->getUserRecipe($id, 1001);
+		$page = $this->input->get('page');
+		if($page === FALSE) $page = 1;
+		$limit = 5;
+		$listRecipe = $r->getUserRecipe($id, $limit, $limit * $page - $limit);
 		if ($id != $this->session->userdata('user_id')) {
-			$listRecipes = array_filter($listRecipes, function($row){return $row->status == 1;});
+			$listRecipe = array_filter($listRecipe, function($row){return $row->status == 1;});
 		}
-		$this->user_viewer->showUserTimeline($profile, $listRecipe);
+		$totalpage = ceil(sizeof( $r->getUserRecipe($id, 1000111) )/$limit);
+		$this->user_viewer->showUserTimeline($profile, $listRecipe, $page, $totalpage);
 	}
 
 	public function favorite($id = -1){
@@ -105,7 +109,7 @@ class User extends CI_Controller {
 			$data['password'] = $this->input->post("password"); 
 			$data['confirm_password'] = $this->input->post("confirm_password");
 
-			if ($this->_validateJoin($data) === TRUE) {
+			if ($this->_validate_join($data) === TRUE) {
 				if(!$this->_send_email($data)) {
 					die("email gagal");
 				}
@@ -120,7 +124,7 @@ class User extends CI_Controller {
 					$data['join_alert'] = '<div class="alert alert-warning">Join Failed!</div>';
 				}
 			} else {
-				$data['join_alert'] = '<div class="alert alert-danger">'.$this->_validateJoin($data).'</div>';
+				$data['join_alert'] = '<div class="alert alert-danger">'.$this->_validate_join($data).'</div>';
 			}
 		}
 		$data['checked_male'] = $data['gender'] == 'M' ? 'checked="checked"' : '';
@@ -142,7 +146,7 @@ class User extends CI_Controller {
 	public function edit(){
 		$data['id'] = $this->user_model->wajiblogin();
 
-		$message = '';
+		$data['edit_profile_alert'] = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			if (file_exists('images/tmp/user/'.$data['id'].'.jpg')) {
 				rename('images/tmp/user/'.$data['id'].'.jpg', 'images/user/'.$data['id'].'.jpg');
@@ -155,21 +159,30 @@ class User extends CI_Controller {
 			$data['facebook'] = $this->input->post('user_facebook');
 			$data['googleplus'] = $this->input->post('user_gplus');
 			$data['path'] = $this->input->post('user_path');
-			if (true) { // jika data editan benar
-				if($this->user_model->updateProfile($data['id'], $data)){
-					$message = 'success';
+			$message = $this->_validate_edit_profile($data);
+			if ($message === TRUE) { // jika data editan benar
+				unset($data['edit_profile_alert']);
+				if($this->user_model->updateProfile($data['id'], $data)) {
+					$data['edit_profile_alert'] = "<div class=\"alert alert-success\">profile has been updated successfully</div>";
 					$this->session->set_userdata('user_name', $data['name']);
 					if(file_exists('images/user/'.$data['id'].'.jpg')) {
 						$this->session->set_userdata('user_photo', 'images/user/'.$data['id'].'.jpg');
 					}
 				}
 				else
-					$message = 'failed';
-			} else $message = 'invalid';
+					$data['edit_profile_alert'] = "<div class=\"alert alert-warning\">update profile failed</div>";
+			} else $data['edit_profile_alert'] = "<div class=\"alert alert-danger\">$message</div>";
 		}
 		$profile = $this->user_model->getProfile($data['id']);
-		$profile->message = $message;
+		foreach ($data as $key => $value) $profile->$key = $value;
 		$this->user_viewer->showEditProfile($profile);
+	}
+
+	private function _validate_edit_profile($profile)
+	{
+		// cek bdate
+		if( (new DateTime($profile['bdate'])) > (new DateTime) ) return 'invalid birth date';
+		return TRUE;
 	}
 
 	public function forgotpassword(){ //dari sequence lupa password, buat minta password nya dr userManager
@@ -187,7 +200,7 @@ class User extends CI_Controller {
 		$this->user_viewer->showForgotPassword($data);
 	}
 
-	private function _validateJoin($profile){
+	private function _validate_join($profile){
 		if(!filter_var($profile['email'], FILTER_VALIDATE_EMAIL)) return "invalid email";
 		if($profile['password'] !== $profile['confirm_password']) return "password doesn't match";
 		if(strlen($profile['password']) < 5) return "minimum password length is 5";
