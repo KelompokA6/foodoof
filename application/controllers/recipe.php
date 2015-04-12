@@ -30,18 +30,6 @@ class Recipe extends CI_Controller {
 				}
 			}
 			//print_r($ingre);
-			$categories = $recipe->getCategories($id);
-			$listCategories = array();
-			if(!empty($categories)){
-				foreach ($categories as $obj) {
-					$temp = array(
-						'{edit_recipe_'.$obj->name.'_checked}' => "checked",
-					);
-					array_push($listCategories, $temp);
-				}
-			}
-			print_r($listCategories);
-			die();
 			$steps = array();
 			if (!empty($r->steps)){
 				$i = 1;
@@ -64,7 +52,19 @@ class Recipe extends CI_Controller {
 						'edit_recipe_duration' => $r->duration,
 						'edit_recipe_ingredient_entries' => $ingre,
 						'edit_recipe_step_entries' => $steps,
+
 					);
+			$categories = $recipe->getCategories($id);
+			if(!empty($categories)){
+				foreach ($categories as $obj) {
+					$data['edit_recipe_'.$obj->name.'_checked'] = "checked";
+					// $temp = array(
+					// 	'{edit_recipe_'.$obj->name.'_checked}' => "checked",
+					// );
+					// array_push($listCategories, $temp);
+				}
+			}
+
 			$content_website = $this->parser->parse('edit_recipe_view', $data, TRUE);
 			$data = array(
 						"menubar" => $menubar,
