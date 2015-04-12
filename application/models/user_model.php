@@ -107,6 +107,33 @@ class User_model extends DataMapper {
 
     function searchAccountByName($q, $limit = 10, $offset = 0)
     {
+        $u = new User_model();
+        $sql = "SELECT * FROM users WHERE MATCH (name) AGAINST ('".$q."') order by MATCH (name) AGAINST ('".$q."') DESC";
+        $u->query($sql);
+        $accountList = array();
+        foreach ($u as $user) {
+            $data = new stdClass();
+            $data->id = $user->id;
+            $data->name = $user->name;
+            $data->email = $user->email;
+            $data->gender = $user->gender;
+            $data->bdate = $user->bdate;
+            $data->phone = $user->phone;
+            $data->status = $user->status;
+            $data->photo = $user->photo;
+            $data->facebook = $user->facebook;
+            $data->twitter = $user->twitter;
+            $data->googleplus = $user->googleplus;
+            $data->path = $user->path;
+            $data->last_access = $user->last_access;
+            array_push($accountList, $data);
+        }
+        $res = array();
+        for ($i=$offset; $i < $limit && $i < sizeof($accountList); $i++) { 
+            array_push($res, $accountList[$i]);
+        }
+        return $res;
+
         /*$u = new User_model();
         $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$search_key."') AND status=1 order by MATCH (name) AGAINST ('".$search_key."')";
         $recipe->query($sql);

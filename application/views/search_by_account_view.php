@@ -10,7 +10,7 @@
           echo "result"; 
         }
       ?>
-      of {search_by_account_result} 
+      of '{search_by_account_key}' 
     </h3>
   </div>
   {search_by_account_entries}

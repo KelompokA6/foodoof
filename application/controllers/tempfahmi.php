@@ -62,7 +62,7 @@ class Tempfahmi extends CI_Controller {
 		}
 	}	
 
-	public function create(){
+	/*public function create(){
 		$data = array();
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data['title'] = $this->input->post("title");
@@ -240,5 +240,38 @@ class Tempfahmi extends CI_Controller {
 			}
 			echo "<br>";
 		}
+	}*/
+
+	function search($name, $limit){
+		$u = new User_model();
+		$res = $u->searchAccountByName($name, $limit);
+		$this->load->library('parser');
+		$this->load->model('home_viewer');
+		$menubar = $this->home_viewer->getMenubar();
+		$hasil = array();
+		foreach ($res as $obj) {
+			$temp = array(
+				'search_by_account_name' => $obj->name,
+				'search_by_account_photo' => $obj->photo,
+				'search_by_account_id' => $obj->id,
+				'search_by_account_gender' => $obj->gender,
+				'search_by_account_age' => $obj->bdate,
+			);
+			array_push($hasil, $temp);
+		}
+		$total = $u->searchAccountByName($name, 10000000);
+		$data = array(
+			'search_by_account_entries' => $hasil,
+			'search_by_account_result' => sizeof($total),
+			'search_by_account_key' => $name,
+			'search_by_account_page_size' => ceil(sizeof($total)/10),
+			'search_by_account_page_now' => 3,
+		);
+		$content_website = $this->parser->parse('search_by_account_view', $data, TRUE);
+			$data = array(
+						"menubar" => $menubar,
+						"content_website" => $content_website,
+					);
+			$this->parser->parse('template_content', $data);
 	}
 }
