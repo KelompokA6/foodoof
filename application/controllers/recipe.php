@@ -290,7 +290,15 @@ class Recipe extends CI_Controller {
 	}
 
 	function pageNotFound(){
-
+		$this->load->library('parser');
+		$this->load->model('home_viewer');
+		$menubar = $this->home_viewer->getMenubar();
+		$content_website = $this->parser->parse('page_not_found', array(), TRUE);
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
 	}
 
 	function category($name){
