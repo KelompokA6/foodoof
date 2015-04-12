@@ -281,29 +281,43 @@ class Recipe extends CI_Controller {
 
 	}
 
-	function category($name){
+	function category(){
+		$name=$this->input->get("category");
+		$page=$this->input->get("page");
 		$this->load->library('parser');
 		$this->load->model('home_viewer');
 		$menubar = $this->home_viewer->getMenubar();
-
 		$recipe = new Recipe_model();
-		$arr = $recipe->getCategoryRecipe($name);
+		$arr = $recipe->getCategoryRecipe($name, 10, ($page-1)*10);
 		$total = $arr['total'];
 		array_pop($arr);
 		$entries = array();
-		for ($i=0; $i < sizeof($arr); $i++) { 
+		foreach ($arr as $obj) {
 			$temp = array(
-				'category_recipe_name' => ,
-				'category_recipe_last_update' => 
-				'category_recipe_rating' => 
+				'category_recipe_id' => $obj->id,
+				'category_recipe_photo' => $obj->photo,
+				'category_recipe_name' => $obj->name,
+				'category_recipe_last_update' => $obj->last_update,
+				'category_recipe_rating' => $obj->rating,
 			);
 			array_push($entries, $temp);
 		}
+
 		$data = array(
-						'category_name' =>$name,
-						'category_recipe_entries' => $entries,
-					);
-		$content_website = $this->parser->parse('category_view', $data, TRUE);	
+			'category_name' =>$name,
+			'category_recipe_entries' => $entries,
+			'category_recipe_name' => $name,
+			'category_recipe_page_now' => $page,
+			'category_recipe_page_size' =>  ceil($total/10),
+		);
+		$content_page = $this->parser->parse('category_view', $data, TRUE);	
+		$category_home = $this->parser->parse('category_home', array(), TRUE);
+		$data = array(
+			'content_page' => $content_page,
+			'category_home' => $category_home,
+		);
+
+		$content_website = $this->parser->parse('content_page', $data, TRUE);
 		$data = array(
 					"menubar" => $menubar,
 					"content_website" => $content_website,
