@@ -3,29 +3,106 @@
     Category Recipe
   </div>
   <div class="panel-body panel-category" for="category">
-    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
-      <a href="<?php echo base_url();?>recipe/category/masakan%20pedas">
-        <div class="col-md-3 col-xs-5 img-category">
-          <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/sate-ayam.jpg"/>
-        </div>
-        <div class="col-md-8 col-xs-6 category-menu-name">
-          Masakan Pedas
-        </div>
-        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
-      </a>
-    </div>
-    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
-      <a href="<?php echo base_url();?>recipe/category/sayur">
+    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+      <a href="<?php echo base_url();?>recipe/category/Indonesian%20Food">
         <div class="col-md-3 col-xs-5">
           <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
         </div>
         <div class="col-md-8 col-xs-6 category-menu-name">
-          Sayuran
+          Indonesian Food
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
     </div>
     <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
+      <a href="<?php echo base_url();?>recipe/category/rice">
+        <div class="col-md-3 col-xs-5 img-category">
+          <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/sate-ayam.jpg"/>
+        </div>
+        <div class="col-md-8 col-xs-6 category-menu-name">
+          Rice
+        </div>
+        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
+      </a>
+    </div>
+    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
+      <a href="<?php echo base_url();?>recipe/category/Noodle%20And%20Pasta">
+        <div class="col-md-3 col-xs-5">
+          <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+        </div>
+        <div class="col-md-8 col-xs-6 category-menu-name">
+          Noodle And Pasta
+        </div>
+        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
+      </a>
+    </div>
+    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
+      <a href="<?php echo base_url();?>recipe/category/Meat">
+        <div class="col-md-3 col-xs-5">
+          <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+        </div>
+        <div class="col-md-8 col-xs-6 category-menu-name">
+          Meat
+        </div>
+        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
+      </a>
+    </div>
+    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+      <a href="<?php echo base_url();?>recipe/category/Vegetarian">
+        <div class="col-md-3 col-xs-5">
+          <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+        </div>
+        <div class="col-md-8 col-xs-6 category-menu-name">
+          Vegetarian
+        </div>
+        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
+      </a>
+    </div>
+    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+      <a href="<?php echo base_url();?>recipe/category/Seafood">
+        <div class="col-md-3 col-xs-5">
+          <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+        </div>
+        <div class="col-md-8 col-xs-6 category-menu-name">
+          Seafood
+        </div>
+        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
+      </a>
+    </div>
+    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+      <a href="<?php echo base_url();?>recipe/category/Snack">
+        <div class="col-md-3 col-xs-5">
+          <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+        </div>
+        <div class="col-md-8 col-xs-6 category-menu-name">
+          Snack
+        </div>
+        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
+      </a>
+    </div>
+    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+      <a href="<?php echo base_url();?>recipe/category/Desert">
+        <div class="col-md-3 col-xs-5">
+          <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+        </div>
+        <div class="col-md-8 col-xs-6 category-menu-name">
+          Desert
+        </div>
+        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
+      </a>
+    </div>
+    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+      <a href="<?php echo base_url();?>recipe/category/Beverage">
+        <div class="col-md-3 col-xs-5">
+          <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+        </div>
+        <div class="col-md-8 col-xs-6 category-menu-name">
+          Beverage
+        </div>
+        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
+      </a>
+    </div>
+    <div class="col-md-12 col-xs-12 hr-list-item category-list">
       <a href="<?php echo base_url();?>recipe/category/Chinese%20Food">
         <div class="col-md-3 col-xs-5">
           <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
@@ -36,13 +113,24 @@
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
     </div>
-    <div class="col-md-12 col-xs-12 category-list">
-      <a href="<?php echo base_url();?>recipe/category/French%20Food">
+    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+      <a href="<?php echo base_url();?>recipe/category/Western%20Food">
         <div class="col-md-3 col-xs-5">
           <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
         </div>
         <div class="col-md-8 col-xs-6 category-menu-name">
-          French Food
+          Western Food
+        </div>
+        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
+      </a>
+    </div>
+    <div class="col-md-12 col-xs-12 category-list">
+      <a href="<?php echo base_url();?>recipe/category/Middle-East%20Food">
+        <div class="col-md-3 col-xs-5">
+          <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+        </div>
+        <div class="col-md-8 col-xs-6 category-menu-name">
+          Middle-East Food
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>

@@ -21,32 +21,62 @@
 							<div class="col-md-12 col-xs-12 col-no-padding">
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Pedas" name="recipe_category[]" {edit_recipe_pedas_checked}> Pedas
+									  	<input type="checkbox" id="inlineCheckbox1" value="rice" name="recipe_category[]" {edit_recipe_rice_checked}> Rice
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox2" value="Sayur" name="recipe_category[]" {edit_recipe_sayur_checked}> Sayur
+									  	<input type="checkbox" id="inlineCheckbox2" value="noodle" name="recipe_category[]" {edit_recipe_noodle_checked}> Noodle Anf Pasta
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox3" value="Daging" name="recipe_category[]" {edit_recipe_daging_checked}> Daging
+									  	<input type="checkbox" id="inlineCheckbox3" value="meat" name="recipe_category[]" {edit_recipe_meat_checked}> Meat
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Seafood" name="recipe_category[]" {edit_recipe_seafood_checked}> Seafood
+									  	<input type="checkbox" id="inlineCheckbox1" value="vegetarian" name="recipe_category[]" {edit_recipe_vegetarian_checked}> Vegetarian
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="Chinese Food" name="recipe_category[]" {edit_recipe_chinese_food_checked}> Chinese Food
+									  	<input type="checkbox" id="inlineCheckbox1" value="seafood" name="recipe_category[]" {edit_recipe_seafood_checked}> Seafood
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="French Food" name="recipe_category[]" {edit_recipe_french_food_checked}> French Food
+									  	<input type="checkbox" id="inlineCheckbox1" value="snack" name="recipe_category[]" {edit_recipe_snack_checked}> Snack
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox1" value="desert" name="recipe_category[]" {edit_recipe_desert_checked}> Desert
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox1" value="beverage" name="recipe_category[]" {edit_recipe_beverage_checked}> Beverage
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox1" value="indonesian food" name="recipe_category[]" {edit_recipe_indonesian_food_checked}> Indonesian Food
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox1" value="chinese food" name="recipe_category[]" {edit_recipe_chinese_food_checked}> Chinese Food
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox1" value="western food" name="recipe_category[]" {edit_recipe_western_food_checked}> Western Food
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
+									  	<input type="checkbox" id="inlineCheckbox1" value="middle-east food" name="recipe_category[]" {edit_recipe_middle-east_food_checked}> Middle-East Food
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
