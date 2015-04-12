@@ -70,7 +70,7 @@ class User_viewer extends CI_Model
     $this->parser->parse('template_content', $datacomplete);
   }
 
-  public function showUserTimeline($profile, $listRecipes)
+  public function showUserTimeline($profile, $listRecipes, $pagenow, $totalpage)
   {
     // menubar
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
@@ -97,8 +97,8 @@ class User_viewer extends CI_Model
             'user_timeline_recipe_entries' => $listRecipes,
             'user_timeline_name' => $profile->name,
             'user_timeline_id' => $profile->id,
-            'user_timeline_recipe_page_size' => sizeof($listRecipes),
-            'user_timeline_recipe_page_now' => 1,
+            'user_timeline_recipe_page_size' => $totalpage,
+            'user_timeline_recipe_page_now' => $pagenow,
         ),
         TRUE
     );
@@ -176,6 +176,7 @@ class User_viewer extends CI_Model
             'edit_profile_facebook' => $profile->facebook,
             'edit_profile_google_plus' => $profile->googleplus,
             'edit_profile_path' => $profile->path,
+            'edit_profile_alert' => $profile->edit_profile_alert,
         ),
         TRUE
     );
@@ -206,7 +207,7 @@ class User_viewer extends CI_Model
         'sidebar_user_view',
         array(
             'sidebar_user_id' => $profile->id,
-            'sidebar_user_photo' => $profile->photo ? $profile->photo : 'images/user/0.jpg',
+            'sidebar_user_photo' => $profile->photo,
         ),
         TRUE
     );

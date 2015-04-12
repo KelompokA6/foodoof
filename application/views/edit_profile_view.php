@@ -5,6 +5,7 @@
 	    		<h3 class="page-header"> Edit Profile</h3>
 	    	</div>
 	    	<div class="col-md-12">
+	    	{edit_profile_alert}
 				<h4>Personal Information</h4>
 				<div class="col-md-12">
 					<input id="photo-profile" name="photo-user" type="file" data-src="<?php echo base_url()?>{edit_profile_photo}" class="file-loading" data-id='{edit_profile_id}' data-title="{edit_profile_title}" accept="image/*" >
