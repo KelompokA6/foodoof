@@ -44,7 +44,7 @@ class Home extends CI_Controller {
 				}
 				redirect(base_url());
 			} else {
-				$data['login_alert'] = '<div class="alert alert-danger">login failed</div>';
+				$data['login_alert'] = '<div class="alert alert-danger">email not registered or password doesn\'t match</div>';
 			}
 		}
 		$this->home_viewer->showLogin($data);

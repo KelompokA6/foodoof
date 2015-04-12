@@ -23,10 +23,10 @@
                     <label for="gender" class="col-md-3 control-label">Gender</label>
                     <div class="col-md-9">
                         <label class="radio-inline">
-                          <input type="radio" name="genderOptions" id="inlineRadio1" value="F" {checked_female}> Female
+                          <input type="radio" name="genderOptions" id="inlineRadio1" value="F" {checked_female} required> Female
                         </label>
                         <label class="radio-inline">
-                          <input type="radio" name="genderOptions" id="inlineRadio2" value="M" {checked_male}> Male
+                          <input type="radio" name="genderOptions" id="inlineRadio2" value="M" {checked_male} required> Male
                         </label>
                     </div>
                 </div>

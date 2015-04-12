@@ -66,6 +66,12 @@ class User_model extends DataMapper {
 
     function updatePassword($id, $password)
     {
+        // encrypt the password
+        $ci =& get_instance();
+        $ci->load->library('encrypt');
+        $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
+        $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
+        $password = $ci->encrypt->encode($password);
         return $this->where('id', $id)->update('password', $password);
     }
 

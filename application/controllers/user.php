@@ -29,7 +29,7 @@ class User extends CI_Controller {
 		$r = new Recipe_model();
 		$listRecipe = $r->getUserRecipe($id, 1001);
 		if ($id != $this->session->userdata('user_id')) {
-			$listRecipes = array_filter($listRecipes, function($row){return $row->status == 1});
+			$listRecipes = array_filter($listRecipes, function($row){return $row->status == 1;});
 		}
 		$this->user_viewer->showUserTimeline($profile, $listRecipe);
 	}
@@ -54,18 +54,18 @@ class User extends CI_Controller {
 
 	public function changepassword(){
 		$data['id'] = $this->user_model->wajiblogin();
-		$data = array();
+		$data['change_password_alert'] = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$data['oldPass'] = $this->input->post("old_password");
 			$data['newPass'] = $this->input->post("new_password");
-			$data['confirmPass'] = $this->input->post("confirm_password");
+			$data['confirmPass'] = $this->input->post("confirm_new_password");
 
 			if($this->_is_valid_changepassword($data)){
 				$success = $this->user_model->updatePassword($data['id'], $data['newPass']);
-				$data['message'] = $success ? "success" : "failed";
+				$data['change_password_alert'] = $success ? "<div class=\"alert alert-success\">password has been changed successfully</div>" : "<div class=\"alert alert-danger\">change password failed</div>";
 			}
 			else{
-				$data['message'] = "invalid";
+				$data['change_password_alert'] = "<div class=\"alert alert-danger\">old password or confirm password doesn't match</div>";
 			}
 		}
 
@@ -76,14 +76,14 @@ class User extends CI_Controller {
 
 	private function _is_valid_changepassword($data)
 	{
-		$u = new user_model();
+		$u = new User_model();
 		if($u->where('id', $data['id'])->count() > 0)
 		{
 			$u->where('id', $data['id'])->get();
 			$email = $u->email;
-			if($u->login($email, $data['password']) !== FALSE)
+			if($u->login($email, $data['oldPass']) !== FALSE)
 			{
-				return TRUE;
+				return $data['newPass'] == $data['confirmPass'] && strlen($data['newPass']) >= 5;
 			}
 		}
 		return FALSE;

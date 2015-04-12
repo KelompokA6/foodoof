@@ -5,6 +5,7 @@
 	    		<h3 class="page-header"> Change Password</h3>
 	    	</div>
 	    	<div class="col-md-12">
+	    	{change_password_alert}
 				<div class="col-md-12">
 					<div class="form-group">
 					    <label for="inputEmail3" class="col-sm-3 control-label">Old Password</label>

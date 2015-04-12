@@ -123,7 +123,7 @@ class User_viewer extends CI_Model
     // ambil content_user dari user_timeline_view
     $data_user_view['content_user'] = $this->parser->parse(
         'change_password_view',
-        array(),
+        $data,
         TRUE
     );
 
