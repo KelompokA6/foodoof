@@ -49,6 +49,9 @@ class Admin extends CI_Controller {
 			}
 		}
 
+//		$success = TRUE;
+//		$data['set_highlight_alert'] = $success ? "<div class=\"alert alert-success\">highlight recipe updated</div>" : "<div class=\"alert alert-danger\">update highlight failed</div>";
 		//$highlighted = $recipe->getHighlight();
+//		redirect(base_url()."admin/".$id);
 	}
 }
