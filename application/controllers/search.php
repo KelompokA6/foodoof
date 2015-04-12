@@ -20,7 +20,7 @@ class Search extends CI_Controller {
       if ($page === FALSE) $page = 1;
       $limit = 10;
       $r = new Recipe_model();
-      $u = new Recipe_model();
+      $u = new User_model();
 
       if ($searchby == 'title') {
         $result = $r->searchRecipeByTitle($q, $limit, $limit * $page - $limit);
@@ -31,8 +31,18 @@ class Search extends CI_Controller {
         // print_r($result); die();
         $this->show_search_by_ingredient($q, $result['recipe_list'], ceil($result['total']/$limit), $page, $result['total']);
       } else {
+<<<<<<< HEAD
         $result = $u->searchAccountByName($q, $limit, $limit * $page - $limit);
         $this->show_search_by_account($q, $result['account_list'], ceil($result['total']/$limit), $page, $result['total']);
+=======
+        // die('haha');
+        $temp = $u->searchAccountByName($q, $limit, $limit * $page - $limit);
+        $result['account_list'] = $temp;
+        $result['total'] = sizeof($u->searchAccountByName($q, 10000000));
+        // print_r($result);
+        // die();
+        $this->show_search_by_account($q, $result['account_list'], ceil($result['total']/$limit), $page);
+>>>>>>> origin/master
       }
     }else redirect(base_url());
   }

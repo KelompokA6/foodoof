@@ -23,14 +23,14 @@
     <div class="col-md-6 col-xs-9 detail-list">
       <div class="col-md-12 col-xs-12 details">
           <div class="col-md-12 col-xs-9">
-            <a href="<?php echo base_url();?>recipe/get/{search_by_account_id}">
+            <a href="<?php echo base_url();?>user/timeline/{search_by_account_id}">
               <h4><p class="text-capitalize">{search_by_account_name}</p></h4>
             </a>
           </div>
       </div>
       <div class="col-md-12 col-xs-12 details">
           <div class="col-md-2 col-xs-3 col-no-padding-right">
-            <p class="text-capitalize">{search_by_account_gender},</p>
+            <p class="text-capitalize">{search_by_account_gender}, </p>
           </div>
           <div class="col-md-10 col-xs-9 col-no-padding-left">
             <p class="text-capitalize">{search_by_account_age} Years Old</p>

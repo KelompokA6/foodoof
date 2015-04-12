@@ -108,7 +108,7 @@ class User_model extends DataMapper {
     function searchAccountByName($q, $limit = 10, $offset = 0)
     {
         $u = new User_model();
-        $sql = "SELECT * FROM users WHERE MATCH (name) AGAINST ('".$q."') order by MATCH (name) AGAINST ('".$q."') DESC";
+        $sql = "SELECT * FROM users WHERE MATCH (name) AGAINST ('".$q."') order by MATCH (name) AGAINST ('".$q."') DESC LIMIT ".$limit." OFFSET ".$offset."";
         $u->query($sql);
         $accountList = array();
         foreach ($u as $user) {
@@ -116,7 +116,7 @@ class User_model extends DataMapper {
             $data->id = $user->id;
             $data->name = $user->name;
             $data->email = $user->email;
-            $data->gender = $user->gender;
+            $data->gender = ($user->gender == "f") ? "Female" : "Male";
             $data->bdate = $user->bdate;
             $data->phone = $user->phone;
             $data->status = $user->status;
@@ -126,13 +126,17 @@ class User_model extends DataMapper {
             $data->googleplus = $user->googleplus;
             $data->path = $user->path;
             $data->last_access = $user->last_access;
+            // print_r($data->name);
             array_push($accountList, $data);
         }
-        $res = array();
-        for ($i=$offset; $i < $limit && $i < sizeof($accountList); $i++) { 
-            array_push($res, $accountList[$i]);
-        }
-        return $res;
+        // print_r($offset);
+        // print_r($limit);
+        // print_r(sizeof($accountList));
+        // die();
+        // for ($i=0; $i < $limit && $i < sizeof($accountList); $i++) { 
+        //     array_push($res, $accountList[$i]);
+        // }
+        return $accountList;
 
         /*$u = new User_model();
         $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$search_key."') AND status=1 order by MATCH (name) AGAINST ('".$search_key."')";
