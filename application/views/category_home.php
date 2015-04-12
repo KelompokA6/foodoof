@@ -26,12 +26,12 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
-      <a href="<?php echo base_url();?>recipe/category/Noodle%20And%20Pasta">
+      <a href="<?php echo base_url();?>recipe/category/Noodle">
         <div class="col-md-3 col-xs-5">
           <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
         </div>
         <div class="col-md-8 col-xs-6 category-menu-name">
-          Noodle And Pasta
+          Noodle
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
