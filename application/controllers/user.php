@@ -138,7 +138,7 @@ class User extends CI_Controller {
 		$this->email->from('noreply@foodoof');
 		$this->email->to($email);
 		$this->email->subject('Welcome to Foodoof');
-		$this->email->message("Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in http://foodoof.com/home/login, using this email and your password is $password");
+		$this->email->message("Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password");
 		return $this->email->send();
 	}
 
