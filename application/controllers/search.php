@@ -18,7 +18,7 @@ class Search extends CI_Controller {
       $q = urldecode($q);
       $page = $this->input->get('page');
       if ($page === FALSE) $page = 1;
-      $limit = 2;
+      $limit = 10;
       $r = new Recipe_model();
       $u = new Recipe_model();
 
