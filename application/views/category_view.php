@@ -4,6 +4,11 @@
       '{category_name}' Recipe's
     </h3>
   </div>
+  <?php
+  if(empty(($category_recipe_entries)){
+      echo "No Recipes Found";
+    }
+  ?>
   {category_recipe_entries}
   <div class="col-md-12 col-xs-12col-no-padding-right page-header" style="margin-top:5px">
     <div class="col-md-2 col-xs-3 detail-list-img" style="margin-right:2px">

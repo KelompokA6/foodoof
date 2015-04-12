@@ -30,9 +30,9 @@
       </div>
       <div class="col-md-12 col-xs-12 details">
           <div class="col-md-6 col-xs-3 col-no-padding-right">
-            <a href="<php echo base_url();?>user/timeline/{search_by_title_recipe_author_id}"><p class="text-capitalize">{search_by_title_recipe_author_name}</p></a>
+            <a href="<?php echo base_url();?>user/timeline/{search_by_title_recipe_author_id}"><p class="text-capitalize">{search_by_title_recipe_author_name}</p></a>
           </div>
-          <div class="col-md-6 col-xs-9 col-no-padding-left" style="border-left:dashed 1px rgb(56,150,211)">
+          <div class="col-md-6 col-xs-9" style="border-left:dashed 1px rgb(56,150,211)">
             <p class="text-capitalize">{search_by_title_recipe_last_update}</p>
           </div>
       </div>
