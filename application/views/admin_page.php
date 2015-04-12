@@ -7,11 +7,11 @@
 			    
 				<center> Highlight Recipes </center>
 		  	</a>
-		  	<a href="" class="list-group-item" title="broadcast">
+		  	<a href="" class="list-group-item disabled" title="broadcast">
 			  	
 				<center> Broadcast Message </center>
 			</a>
-		  	<a href="" class="list-group-item" title="reported">
+		  	<a href="" class="list-group-item disabled" title="reported">
 		  		
 				<center> Reported User </center>
 		  	</a>
