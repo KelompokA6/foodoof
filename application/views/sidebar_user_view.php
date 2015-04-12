@@ -31,12 +31,15 @@
 		</span>
 		Cook Later
   	</a>
-  	<a href="<?php echo base_url();?>user/changepassword" class="list-group-item" title="Change Password">
-  		<span class="fa-stack fa-lg">
-		  <i class="fa fa-square fa-stack-2x icon-default"></i>
-		  <i class="fa fa-key fa-stack-1x fa-inverse"></i>
-		</span>
-		Change Password
-  	</a>
+  	<?php if($this->session->userdata('user_id') == $sidebar_user_id){
+  		echo "<a href='".base_url()."user/changepassword' class='list-group-item' title='Change Password'>
+		  		<span class='fa-stack fa-lg'>
+				  <i class='fa fa-square fa-stack-2x icon-default'></i>
+				  <i class='fa fa-key fa-stack-1x fa-inverse'></i>
+				</span>
+				Change Password
+		  	</a>";
+  	}?>
+  	
 </div>
 </div>
