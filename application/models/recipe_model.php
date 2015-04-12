@@ -317,6 +317,30 @@ class Recipe_model extends DataMapper {
         }
     }
 
+    function getAllRecipe(){
+        $recipe = new Recipe_model();
+        $recipe->get();
+        $arrResult = array();
+        foreach ($recipe as $recipes) {
+            $data = new stdClass();
+            $data->id = $recipes->id;
+            $data->name = $recipes->name;
+            $data->description = $recipes->description;
+            $data->portion = $recipes->portion;
+            $data->duration = $recipes->duration;
+            $data->author = $recipes->author;
+            $data->create_date = $recipes->create_date;
+            $data->last_update = $recipes->last_update;
+            $data->rating = $recipes->rating;
+            $data->status = $recipes->status;
+            $data->views = $recipes->views;
+            $data->photo = $recipes->photo;
+            $data->highlight = $recipes->highlight;
+            array_push($arrResult, $data);
+        }
+        return $arrResult;
+    }
+
     /*
         Digunakan untuk memperoleh resep yang merupakan list resep highlight, dengan parameter input limit resep yang ingin ditampilkan
     */
