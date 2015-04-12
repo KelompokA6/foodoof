@@ -22,6 +22,9 @@
 	  			<div class="panel panel-default">
 	  				<div class="panel-body">
 	  					<h3 class="page-header-title"> Set Highlight Recipes </h3>
+	  					<?php
+	  						echo $this->session->flashdata('alert-admin');
+	  					?>
 			  			<div class="col-md-2 col-no-padding-right">
 			  				Choose Recipes
 			  			</div>

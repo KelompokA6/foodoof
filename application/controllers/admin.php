@@ -36,22 +36,21 @@ class Admin extends CI_Controller {
 
 	public function save(){
 		$recipe = new Recipe_model();
-		
+		$success = TRUE;
 		$list = $recipe->getAllRecipe();
 		foreach ($list as $obj) {
 			$recipe->highlightRecipe($obj->id, FALSE);
 		}	
-
 		$highlight = $this->input->post("id_highlight");
 		if (!empty($highlight)){
 			foreach($highlight as $selected){
-				$recipe->highlightRecipe($selected, TRUE);
+				if(!$recipe->highlightRecipe($selected, TRUE)){
+					$success = FALSE;
+				}
 			}
-		}
-
-//		$success = TRUE;
-//		$data['set_highlight_alert'] = $success ? "<div class=\"alert alert-success\">highlight recipe updated</div>" : "<div class=\"alert alert-danger\">update highlight failed</div>";
-		//$highlighted = $recipe->getHighlight();
-//		redirect(base_url()."admin/".$id);
+		}		
+		$highlight_alert = $success ? "<div class=\"alert alert-success text-center\">highlight recipe updated</div>" : "<div class=\"alert alert-danger\">update highlight failed</div>";
+		$this->session->set_flashdata('alert-admin', $highlight_alert);
+		redirect(base_url()."admin, 'refresh');
 	}
 }
