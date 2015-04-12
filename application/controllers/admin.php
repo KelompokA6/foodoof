@@ -7,7 +7,7 @@ class Admin extends CI_Controller {
 		$menubar = $this->parser->parse('menubar', $data, TRUE);
 		
 		$r = new Recipe_model();
-		$list = $r->getAllRecipe();
+		$list = $r->getAllRecipe(1);
 		$entries = array();
 		foreach ($list as $obj) {
 			$check="";

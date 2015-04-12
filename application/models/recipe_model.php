@@ -317,9 +317,10 @@ class Recipe_model extends DataMapper {
         }
     }
 
-    function getAllRecipe(){
+    function getAllRecipe($flaggg = 0){
         $recipe = new Recipe_model();
         $recipe->where('tmp_status', 0);
+        $recipe->where('status >=', $flaggg);
         $recipe->get();
         $arrResult = array();
         foreach ($recipe as $recipes) {
