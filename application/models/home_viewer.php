@@ -32,13 +32,14 @@ class Home_viewer extends CI_Model
   	print_r($listHightlight);
   	print_r($listRecently);
     die;*/
+    $datalist['highlight_recipe_entries'] = $listHightlight;
     $datalist['top_recipe_entries'] = $listTopRecipe;
     $datalist['recently_recipe_entries'] = $listRecently;
 
   	$datacomplete['menubar'] = $this->getMenubar();
 
   	// content_homepage butuh: carousel_highlight, top_recipe_home, recently_recipe_home, dan category_home
-  	$data_content_homepage['carousel_highlight'] = $this->parser->parse('carousel_highlight', array(), TRUE);
+  	$data_content_homepage['carousel_highlight'] = $this->parser->parse('carousel_highlight', $datalist, TRUE);
   	$data_content_homepage['top_recipe_home'] = $this->parser->parse('top_recipe_home', $datalist, TRUE);
   	$data_content_homepage['recently_recipe_home'] = $this->parser->parse('recently_recipe_home', $datalist, TRUE);
     $data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
