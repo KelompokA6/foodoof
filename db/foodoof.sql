@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2015 at 11:49 AM
+-- Generation Time: Apr 12, 2015 at 03:26 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -42,6 +42,20 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `recipe_id` int(10) unsigned NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`recipe_id`, `name`) VALUES
+(33, 'daging'),
+(33, 'french food'),
+(33, 'seafood'),
+(35, 'chinese food'),
+(35, 'french food'),
+(35, 'other'),
+(38, 'chinese food'),
+(38, 'seafood');
 
 -- --------------------------------------------------------
 
@@ -111,13 +125,27 @@ CREATE TABLE IF NOT EXISTS `ingredients` (
 --
 
 INSERT INTO `ingredients` (`recipe_id`, `name`, `quantity`, `units`, `info`) VALUES
-(12, 'Air', '3.0', 'sdm', NULL),
-(12, 'Air perasan jeruk nipis', '3.0', 'sdm', NULL),
-(13, 'Air perasan jeruk nipis', '3.0', 'sdm', NULL),
-(15, 'caos', '3.0', 'a', NULL),
-(15, 'kambing', '3.0', 'sdm', NULL),
-(16, 'Air perasan jeruk nipis', '3.0', 'sdm', NULL),
-(17, 'kambing', '3.0', 'sdm', NULL);
+(33, 'Air jeruk lemon', '1.0', 'sdm', NULL),
+(33, 'Butter', '9.9', 'gr', NULL),
+(33, 'Cream cheese, suhu ruang', '9.9', 'gr', NULL),
+(33, 'Garam', '1.0', 'sdt', NULL),
+(33, 'Gula pasir', '9.9', 'gr', NULL),
+(33, 'Kuning telur', '6.0', 'butir', NULL),
+(33, 'Parutan kulit jeruk lemon (skip jika tidak suka)', '1.0', 'sdt', NULL),
+(33, 'Putih telur', '6.0', 'butir', NULL),
+(33, 'Susu cair', '9.9', 'cc', NULL),
+(33, 'Tepung maizena', '9.9', 'gr', NULL),
+(33, 'Tepung terigu', '9.9', 'gr', NULL),
+(35, 'garam', '1.0', 'sdm', NULL),
+(35, 'gula', '2.0', 'sdm', NULL),
+(35, 'keju cheddar parut', '2.0', 'sdm', NULL),
+(35, 'mentega', '1.5', 'sdm', NULL),
+(35, 'roti tawar', '7.0', 'lembar', NULL),
+(35, 'susu cair', '9.9', 'ml', NULL),
+(35, 'tepung terigu', '2.0', 'sdm', NULL),
+(35, 'vanili bubuk', '1.0', 'sdm', NULL),
+(38, 'Air jeruk lemon', '3.0', 'sdm', NULL),
+(38, 'Air perasan jeruk nipis', '4.0', 'lembar', NULL);
 
 -- --------------------------------------------------------
 
@@ -201,20 +229,18 @@ CREATE TABLE IF NOT EXISTS `recipes` (
   `views` int(11) NOT NULL DEFAULT '0',
   `photo` text,
   `highlight` tinyint(1) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `recipes`
 --
 
 INSERT INTO `recipes` (`id`, `name`, `description`, `portion`, `duration`, `author`, `create_date`, `last_update`, `rating`, `status`, `tmp_status`, `views`, `photo`, `highlight`) VALUES
-(12, 'Ayam Goreng Bumbu Lengkuas', 'Ayam bakar', 1, 5, 1, '2015-04-11 08:12:02', '2015-04-10 17:00:00', '0.0', 0, 1, 0, 'images/recipe/12.jpg', 0),
-(13, 'Ayam godog', 'masak', 4, 5, 1, '2015-04-11 08:13:59', '2015-04-10 17:00:00', '0.0', 0, 1, 0, 'images/recipe/13.jpg', 0),
-(15, 'Kambing guling', 'ayam guling', 4, 12, 1, '2015-04-11 08:21:00', '2015-04-10 17:00:00', '0.0', 0, 1, 0, 'images/recipe/15.jpg', 0),
-(16, 'Ayam Goreng Bumbu Lengkuas', 'dskripsi', 1, 4, 1, '2015-04-11 08:23:22', '2015-04-10 17:00:00', '0.0', 0, 1, 0, 'images/recipe/16.jpg', 0),
-(17, 'Ayam Goreng Bumbu', 'deskripsi', 4, 9, 1, '2015-04-11 09:13:37', '2015-04-11 09:13:37', '0.0', 0, 1, 0, 'assets/img/recipe-default.jpg', 0),
-(18, NULL, NULL, 1, 0, 1, '2015-04-11 08:56:21', '2015-04-11 08:56:21', '0.0', 0, 1, 0, '/assets/img/recipe-default.jpg', 0),
-(19, NULL, NULL, 1, 0, 1, '2015-04-11 09:38:51', '2015-04-11 09:38:51', '0.0', 0, 1, 0, '/assets/img/recipe-default.jpg', 0);
+(33, 'Japanese Cheesecake', 'Japanese cheesecake lembut membelai lidah,, rasanya enak bgt, sajikan dalam keadaan dingin dari kulkas', 6, 60, 1, '2015-04-12 13:09:53', '2015-04-12 13:09:53', '3.0', 1, 0, 20, 'images/recipe/33.jpg', 0),
+(35, 'Roti Isi Vla Keju', 'Alternatif bekal atau sarapan :)', 2, 4, 1, '2015-04-12 13:10:51', '2015-04-12 13:10:51', '0.0', 1, 0, 3, 'images/recipe/35.jpg', 0),
+(36, NULL, NULL, 1, 0, 1, '2015-04-12 12:46:36', '2015-04-12 12:46:36', '0.0', 0, 1, 0, '/assets/img/recipe-default.jpg', 0),
+(37, NULL, NULL, 1, 0, 1, '2015-04-12 12:46:44', '2015-04-12 12:46:44', '0.0', 0, 1, 0, '/assets/img/recipe-default.jpg', 0),
+(38, 'Ayam Goreng Bumbu Lengkuas', 'Ini Ayam Goreng', 2, 5, 1, '2015-04-12 13:12:27', '2015-04-12 13:12:27', '0.0', 0, 0, 1, '/assets/img/recipe-default.jpg', 0);
 
 --
 -- Triggers `recipes`
@@ -256,12 +282,19 @@ CREATE TABLE IF NOT EXISTS `steps` (
 --
 
 INSERT INTO `steps` (`recipe_id`, `no_step`, `description`, `photo`) VALUES
-(12, 1, 'asdasd', 'assets/img/step-default.jpg'),
-(12, 2, 'Sampah', 'images/step/12-2.jpg'),
-(13, 1, 'asdasd', 'assets/img/step-default.jpg'),
-(15, 1, 'asdasd', 'assets/img/step-default.jpg'),
-(16, 1, 'asdasd', 'assets/img/step-default.jpg'),
-(17, 1, 'asdasd', 'assets/img/step-default.jpg');
+(33, 1, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
+(33, 2, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
+(33, 3, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
+(33, 4, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
+(33, 5, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
+(33, 6, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
+(33, 7, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
+(33, 8, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
+(35, 1, 'Vla: Campur smua bahan. Masak diatas api kecil sambil terus diaduk hingga mengental dan tidak lengket di panci. Setelah masak diamkan sejenak hingga panas berkurang.', 'assets/img/step-default.jpg'),
+(35, 2, 'Gilas roti tawar hingga tipis. Isi vla keju secukupnya, gulung lalu padatkan.', 'assets/img/step-default.jpg'),
+(35, 3, 'Masak bahan celupan hingga cair. Celup ujung-ujung roti tadi di coklat cair, lalu beri meises warna warni. Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(38, 1, 'Ayam goreng', 'assets/img/step-default.jpg'),
+(38, 2, 'Rebus Aer', 'assets/img/step-default.jpg');
 
 --
 -- Triggers `steps`
@@ -293,21 +326,31 @@ CREATE TABLE IF NOT EXISTS `users` (
   `googleplus` text,
   `path` text,
   `last_access` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `name`, `password`, `gender`, `bdate`, `phone`, `status`, `photo`, `facebook`, `twitter`, `googleplus`, `path`, `last_access`) VALUES
-(1, 'admin', 'admin', 'lAXRpW8GKBPmIENej39btL8ggO+ckmqoimiTTOhGS1BMcINPgzDfeFPu6eCfoPcE2o8m8wK/GSzzqPDRFcpGMA==', 'F', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.jpg', NULL, NULL, NULL, NULL, '2015-04-11 07:38:27');
+(1, 'admin', 'Fahmi Rahmat Kurniawan Hidayat', 'lAXRpW8GKBPmIENej39btL8ggO+ckmqoimiTTOhGS1BMcINPgzDfeFPu6eCfoPcE2o8m8wK/GSzzqPDRFcpGMA==', 'F', '1970-01-01', '', 'MEMBER', 'images/user/1.jpg', '', '', '', '', '2015-04-12 11:37:29'),
+(2, 'fahmi@a.com', 'Kurniawan Hidayat Fahmi', 'admin', 'f', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.png', NULL, NULL, NULL, NULL, '2015-04-12 11:37:35'),
+(3, 'fa@g.com', 'fahmi hidayat', 'admin', 'f', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.png', NULL, NULL, NULL, NULL, '2015-04-12 10:19:42'),
+(4, 'hasd@fa.cm', 'nurwahid hidayat', 'admin', 'f', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.png', NULL, NULL, NULL, NULL, '2015-04-12 10:20:31'),
+(5, 'a@gam.com', 'Hidayat Rahmat', 'admin', 'f', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.png', NULL, NULL, NULL, NULL, '2015-04-12 11:38:07'),
+(7, 'aasd@gam.com', 'Hidayat Jupri', 'admin', 'f', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.png', NULL, NULL, NULL, NULL, '2015-04-12 11:38:46'),
+(8, 'asdaa@gam.com', 'Guri Hidayat', 'admin', 'f', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.png', NULL, NULL, NULL, NULL, '2015-04-12 11:39:04'),
+(9, 'aasdad@gam.com', 'Jupo Hidayat', 'admin', 'f', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.png', NULL, NULL, NULL, NULL, '2015-04-12 11:39:22'),
+(10, 'basda@gam.com', 'Hidayat Urip', 'admin', 'f', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.png', NULL, NULL, NULL, NULL, '2015-04-12 11:39:59'),
+(11, 'asd@gam.coma', 'Hidayat Turko', 'admin', 'f', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.png', NULL, NULL, NULL, NULL, '2015-04-12 11:40:24'),
+(12, 'asd@a.com', 'Hidayat Hasda', 'admin', 'f', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.png', NULL, NULL, NULL, NULL, '2015-04-12 11:48:01');
 
 --
 -- Triggers `users`
 --
 DELIMITER //
 CREATE TRIGGER `add_user_default` BEFORE INSERT ON `users`
- FOR EACH ROW if (LOWER(NEW.gender) = 'f' ) then set NEW.photo = 'assets/img/user-female.jpg'; elseif (LOWER(NEW.gender) = 'm' ) then set NEW.photo = 'assets/img/user-male.jpg'; end if
+ FOR EACH ROW if (LOWER(NEW.gender) = 'f' ) then set NEW.photo = 'assets/img/user-female.png'; elseif (LOWER(NEW.gender) = 'm' ) then set NEW.photo = 'assets/img/user-male.png'; end if
 //
 DELIMITER ;
 
@@ -391,7 +434,7 @@ ALTER TABLE `steps`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`id`,`email`), ADD UNIQUE KEY `email` (`email`);
+ ADD PRIMARY KEY (`id`,`email`), ADD UNIQUE KEY `email` (`email`), ADD FULLTEXT KEY `name` (`name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -416,7 +459,7 @@ MODIFY `message_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `recipes`
 --
 ALTER TABLE `recipes`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `reports`
 --
@@ -426,7 +469,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- Constraints for dumped tables
 --
