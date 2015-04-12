@@ -243,8 +243,9 @@ class Tempfahmi extends CI_Controller {
 	}*/
 
 	function search($name, $limit){
+		$page = $this->input->get('page')=="" ? 0 : $this->input->get('page');
 		$u = new User_model();
-		$res = $u->searchAccountByName($name, $limit);
+		$res = $u->searchAccountByName($name, $limit, ($page-1)*$limit);
 		$this->load->library('parser');
 		$this->load->model('home_viewer');
 		$menubar = $this->home_viewer->getMenubar();
@@ -265,7 +266,7 @@ class Tempfahmi extends CI_Controller {
 			'search_by_account_result' => sizeof($total),
 			'search_by_account_key' => $name,
 			'search_by_account_page_size' => ceil(sizeof($total)/10),
-			'search_by_account_page_now' => 3,
+			'search_by_account_page_now' => $page,
 		);
 		$content_website = $this->parser->parse('search_by_account_view', $data, TRUE);
 			$data = array(
