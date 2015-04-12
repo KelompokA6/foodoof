@@ -5,7 +5,7 @@
     </h3>
   </div>
   <?php
-  if(empty(($category_recipe_entries)){
+  if(empty(($category_recipe_entries))){
       echo "No Recipes Found";
     }
   ?>
