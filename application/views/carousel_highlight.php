@@ -1,8 +1,11 @@
 <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+    {list_recipes}
+      <li data-target="#carousel-example-captions" data-slide-to="{num}" class=""></li>
+    {/list_recipes}
+    <!-- <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-captions" data-slide-to="1" class=""></li>
-    <li data-target="#carousel-example-captions" data-slide-to="2" class=""></li>
+    <li data-target="#carousel-example-captions" data-slide-to="2" class=""></li> -->
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="item active">

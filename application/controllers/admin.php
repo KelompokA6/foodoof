@@ -51,6 +51,6 @@ class Admin extends CI_Controller {
 		}		
 		$highlight_alert = $success ? "<div class=\"alert alert-success text-center\">highlight recipe updated</div>" : "<div class=\"alert alert-danger\">update highlight failed</div>";
 		$this->session->set_flashdata('alert-admin', $highlight_alert);
-		redirect(base_url()."admin, 'refresh');
+		redirect(base_url()."admin");
 	}
 }

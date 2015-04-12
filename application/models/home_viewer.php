@@ -11,6 +11,10 @@ class Home_viewer extends CI_Model
 
   function showHome($listTopRecipe, $listHightlight, $listRecently)
   {
+    foreach ($listHightlight as $key => $value) {
+      $value->num = $key;
+    }
+
     foreach ($listTopRecipe as $row) {
       $row->top_recipe_id = $row->id;
       $row->top_recipe_photo = $row->photo;
@@ -33,6 +37,7 @@ class Home_viewer extends CI_Model
   	print_r($listRecently);
     die;*/
     $datalist['highlight_recipe_entries'] = $listHightlight;
+    print_r($listHightlight); die();
     $datalist['top_recipe_entries'] = $listTopRecipe;
     $datalist['recently_recipe_entries'] = $listRecently;
 
