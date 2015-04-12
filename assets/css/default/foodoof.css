@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Lilly';
+  src: url('Lilly-webfont.eot'); /* IE9 Compat Modes */
+  src: url('Lilly-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Lilly-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+       url('Lilly-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('Lilly-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Lilly-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+body{
+  font-family: 'Lilly'
+}
+
 @media(max-width:767px){
   body, footer, header{
     font-size: 11px;
@@ -111,6 +125,8 @@
   }
   .panel-category{
     line-height: inherit;
+    border: 1px solid rgba(56,150,211,0.9);
+    border-radius: 4px;
   }
   .btn-navbar-mobile{
     height:75px;
@@ -135,6 +151,8 @@
   }
   .panel-category{
     padding:0;
+    border: 1px solid rgba(56,150,211,0.9);
+    border-radius: 4px;
   }
   .btn-navbar-mobile{
     height:75px;
@@ -159,6 +177,8 @@
   }
   .panel-category{
     padding:0;
+    border: 1px solid rgba(56,150,211,0.9);
+    border-radius: 4px;
   }
   .btn-navbar-mobile{
     height:75px;
@@ -515,3 +535,18 @@ ul.dropdown-search > li >label:focus {
   box-shadow: 0;
   border-radius: 0px;
 }
+.panel-home > .panel-heading{
+  color: #fff;
+  background-color: rgb(56,150,211);
+}
+.hr-list-item{
+  border-bottom: 1px solid rgba(56,150,211,0.9);
+}
+.panel-home-title{
+  color: #fff;
+  background-color: rgb(56,150,211);
+  padding: 10px 0 9px 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+

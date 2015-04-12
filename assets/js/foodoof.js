@@ -560,6 +560,11 @@ $(document).ready(function() {
 			$("#modalWaiting").modal("hide");	
 		}
 	});
+
+	$(window).bind('beforeunload', function(){ 
+		return '';
+	});
+
 	/*
 	init javascript bootstrap;
 	*/
