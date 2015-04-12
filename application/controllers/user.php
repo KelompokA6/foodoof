@@ -101,8 +101,7 @@ class User extends CI_Controller {
 			$data['name'] = $this->input->post("name");
 			$data['email'] = $this->input->post("email");
 			$data['gender'] = $this->input->post("genderOptions");
-			$data['checked_male'] = $data['gender'] == 'M' ? 'checked="checked"' : '';
-			$data['checked_female'] = $data['gender'] == 'F' ? 'checked="checked"' : '';
+			$data['photo'] = $data['gender'] == 'M' ? 'assets/img/man.png' : 'assets/img/woman.png';
 			$data['password'] = $this->input->post("password"); 
 			$data['confirm_password'] = $this->input->post("confirm_password");
 
@@ -124,6 +123,8 @@ class User extends CI_Controller {
 				$data['join_alert'] = '<div class="alert alert-danger">'.$this->_validateJoin($data).'</div>';
 			}
 		}
+		$data['checked_male'] = $data['gender'] == 'M' ? 'checked="checked"' : '';
+		$data['checked_female'] = $data['gender'] == 'F' ? 'checked="checked"' : '';
 		$this->user_viewer->showRegister($data);
 	}
 
