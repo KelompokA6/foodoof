@@ -3,11 +3,14 @@
     	<div class="col-md-12 col-xs-12 col-no-padding-right">
     		<h3 class="page-header" style="margin-top:5px;"> {user_timeline_name}'s Timeline</h3>
     		<div class="pull-right">
+    			<?php
+    			if($this->session->userdata('user_id') == $user_timeline_id): ?>
     			<a href="<?php echo base_url();?>recipe/create" title="Add Recipe">
     				<button class="btn button-default">
     					<i class="fa fa-plus fa-lg inverse" style="padding-top:2px"></i>
     				</button>
     			</a>
+    			<?php endif; ?>
     		</div>
     	</div>
     	{user_timeline_recipe_entries}
