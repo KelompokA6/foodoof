@@ -2,6 +2,14 @@
 
 class Admin extends CI_Controller {
 	public function index(){
+		if($this->session->userdata('user_id')==''){
+			redirect(base_url()."home/login", "refresh");
+		}
+		$u = new User_model();
+		$u->get_by_id($this->session->userdata('user_id'));
+		if(strtolower($u->status)!='admin'){
+			$this->pageNotFound();	
+		}
 		$this->load->library('parser');
 		$data = array("recipe_author_id"=> 1);
 		$menubar = $this->parser->parse('menubar', $data, TRUE);
@@ -52,5 +60,16 @@ class Admin extends CI_Controller {
 		$highlight_alert = $success ? "<div class=\"alert alert-success text-center\">highlight recipe updated</div>" : "<div class=\"alert alert-danger\">update highlight failed</div>";
 		$this->session->set_flashdata('alert-admin', $highlight_alert);
 		redirect(base_url()."admin");
+	}
+	function pageNotFound(){
+		$this->load->library('parser');
+		$this->load->model('home_viewer');
+		$menubar = $this->home_viewer->getMenubar();
+		$content_website = $this->parser->parse('page_not_found', array(), TRUE);
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
 	}
 }
