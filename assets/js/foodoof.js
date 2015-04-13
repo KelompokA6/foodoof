@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+	$validate = true;	
 	$recipeId = $("#image-recipe").data("id");
 	$lock = 0;
 	$submitStatus=false;
@@ -194,7 +194,7 @@ $(document).ready(function() {
 	$countIngredient = $(".ingredient-item").length;
 	if($countIngredient<1){
 		$colAddRemoveBtnIngredient = $("#add-and-remove-btn-ingredient").clone();
-		$ingredientItemFirst = "<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'><div class='col-sm-6 col-xs-6'><input type='text' maxlength='254' value='' name='ingredient_subject[]' class='form-control' placeholder='Ingredient Name'></div><div class='col-sm-3 col-xs-3 col-no-padding-left'><input type='number' min='0' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'></div><div class='col-sm-3 col-xs-3 col-no-padding-left'><input type='text' maxlength='254' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'></div></div>";
+		$ingredientItemFirst = "<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'><div class='col-sm-6 col-xs-6'><input type='text' maxlength='254' value='' name='ingredient_subject[]' class='form-control  input-ingredient' placeholder='Ingredient Name'></div><div class='col-sm-3 col-xs-3 col-no-padding-left'><input type='number' min='0' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'></div><div class='col-sm-3 col-xs-3 col-no-padding-left'><input type='text' maxlength='254' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'></div></div>";
 		$("#add-and-remove-btn-ingredient").remove();
 		$("#ingredient-entry").append($ingredientItemFirst);
 		$("#ingredient-entry").append($colAddRemoveBtnIngredient);
@@ -307,7 +307,7 @@ $(document).ready(function() {
 	}
 
 	$colAddRemoveBtnIngredient = $("#add-and-remove-btn-ingredient").clone();
-	$ingredientItem = 	"<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'>"+"<div class='col-sm-6 col-xs-6'>"+"<input type='text' value='' name='ingredient_subject[]' class='form-control' placeholder='Ingredient Name'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'>"+"</div>"+"</div>";
+	$ingredientItem = 	"<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'>"+"<div class='col-sm-6 col-xs-6'>"+"<input type='text' value='' name='ingredient_subject[]' class='form-control input-ingredient' placeholder='Ingredient Name'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'>"+"</div>"+"</div>";
 	$(document).on('click',"#add-ingredient",function(){
 		$("#add-and-remove-btn-ingredient").remove();
 		$("#ingredient-entry").append($ingredientItem);
@@ -639,6 +639,57 @@ $(document).ready(function() {
 
 	});
 
+	/*
+	handle if has change in page
+	*/
+	$("input .option-category-recipe").change(function(e){
+		$hasChanged = true;
+	});
+	$(".ingredient-item > div > input").change(function(e){
+		$hasChanged = true;
+	});
+	$(".step-item > div > textarea").change(function(e){
+		$hasChanged = true;
+	});
+	$("input.form-profile").change(function(e){
+		$hasChanged = true;
+	});
+
+	/*
+	validate same ingredient
+	*/
+	$(document).on("change", ".input-ingredient", function(x){
+		console.log("trigger");
+		$indexValidation = $(".input-ingredient").index(this);
+		$valueIngredient = $(this).val().toLowerCase();
+		$(".ingredient-item > div > .input-ingredient").each(function(e){
+			if(e != $indexValidation){
+				if($(this).val().toLowerCase() == $valueIngredient){
+					console.log(e);
+					console.log($indexValidation);
+					$validate = false;
+					$.notify({
+						// options
+						message: "Duplicate Ingredient" 
+					},{
+						// settings
+						element: ".input-ingredient:eq("+e+")",
+						position: 'relative',
+						mouse_over:'pause',
+						newest_on_top: true,
+						allow_dismiss: false,
+						type: 'danger',
+						delay: 1500,
+						placement: {
+							from: 'top',
+							align: 'center'
+						},
+					});
+				}
+			}
+		});
+	});
+	
 	/*
 	init javascript bootstrap;
 	*/

@@ -301,6 +301,7 @@ body{
   }
   .hover-menubar:hover{
     background: rgb(56,150,211); 
+    color: #fff;
     border-radius: 8px;
   }
   .brand-menubar{

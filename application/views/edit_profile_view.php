@@ -7,8 +7,8 @@
 	    	<div class="col-md-12">
 	    	{edit_profile_alert}
 				<h4>Personal Information</h4>
-				<div class="col-md-12">
-					<input id="photo-profile" name="photo-user" type="file" data-src="<?php echo base_url()?>{edit_profile_photo}" class="file-loading" data-id='{edit_profile_id}' data-title="{edit_profile_title}" accept="image/*" >
+				<div class="col-md-12" style="margin-bottom:15px;">
+					<input id="photo-profile" name="photo-user" type="file" multiple='false' data-src="<?php echo base_url()?>{edit_profile_photo}" class="file-loading" data-id='{edit_profile_id}' data-title="{edit_profile_title}" accept="image/*" >
 				</div>
 				<div class="col-md-12">
 					<div class="form-group">
@@ -20,7 +20,7 @@
 					<div class="form-group">
 					    <label for="inputname" class="col-sm-2 control-label">Name</label>
 					    <div class="col-sm-10">
-					      	<input type="text" class="form-control" name="user_name" value="{edit_profile_name}" placeholder="Your Name">
+					      	<input type="text" class="form-control form-profile" name="user_name" value="{edit_profile_name}" placeholder="Your Name">
 					    </div>
 					 </div>
 				</div>
@@ -41,7 +41,7 @@
 					<div class="form-group">
 					    <label for="inputphone" class="col-sm-2 control-label">Phone</label>
 					    <div class="col-sm-10">
-					      	<input type="text" class="form-control" name="user_phone" value="{edit_profile_phone}" placeholder="Your Phone Number">
+					      	<input type="text" class="form-control form-profile" name="user_phone" value="{edit_profile_phone}" placeholder="Your Phone Number">
 					    </div>
 					 </div>
 				</div>
@@ -49,7 +49,7 @@
 					<div class="form-group">
 					    <label for="inputbirth" class="col-sm-2 control-label">Birthdate</label>
 					    <div class="col-sm-10">
-					      	<input type="date" class="form-control" name="user_bdate" value="{edit_profile_birth_date}" placeholder="Your Birth Day">
+					      	<input type="date" class="form-control form-profile" name="user_bdate" value="{edit_profile_birth_date}" placeholder="Your Birth Day">
 					    </div>
 					 </div>
 				</div>
@@ -67,7 +67,7 @@
 	      					</div>
 	      				</label>
 					    <div class="col-sm-10">
-					      	<input type="text" class="form-control input-lg" name="user_twitter" value="{edit_profile_twitter}" placeholder="@ Your Twitter">
+					      	<input type="text" class="form-control input-lg form-profile" name="user_twitter" value="{edit_profile_twitter}" placeholder="@ Your Twitter">
 					    </div>
 					 </div>
 				</div>
@@ -82,7 +82,7 @@
 	      					</div>
 	      				</label>
 					    <div class="col-sm-10">
-					      	<input type="text" class="form-control input-lg" name="user_facebook" value="{edit_profile_facebook}" placeholder="Your Facebook">
+					      	<input type="text" class="form-control input-lg form-profile" name="user_facebook" value="{edit_profile_facebook}" placeholder="Your Facebook">
 					    </div>
 					 </div>
 				</div>
@@ -97,7 +97,7 @@
 	      					</div>
 	      				</label>
 					    <div class="col-sm-10">
-					      	<input type="text" class="form-control input-lg" name="user_gplus" value="{edit_profile_google_plus}" placeholder="Your g+">
+					      	<input type="text" class="form-control input-lg form-profile" name="user_gplus" value="{edit_profile_google_plus}" placeholder="Your g+">
 					    </div>
 					 </div>
 				</div>
@@ -112,7 +112,7 @@
 	      					</div>
 	      				</label>
 					    <div class="col-sm-10">
-					      	<input type="text" class="form-control input-lg" name="user_path" value="{edit_profile_path}" placeholder="Your Path">
+					      	<input type="text" class="form-control input-lg form-profile" name="user_path" value="{edit_profile_path}" placeholder="Your Path">
 					    </div>
 					 </div>
 				</div>

@@ -11,11 +11,11 @@
                         
                 <div style="margin-bottom: 25px" class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input id="login-username" type="text" class="form-control" name="email" value="{email}" placeholder="Email">                                        
+                    <input id="login-username" type="text" class="form-control" name="email" value="{email}" placeholder="Email" required>                                        
                 </div>        
                 <div style="margin-bottom: 25px" class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input id="login-password" type="password" class="form-control" name="password" placeholder="Password">
+                    <input id="login-password" type="password" class="form-control" name="password" placeholder="Password" required>
                 </div>	
                 <div style="margin-top:10px" class="form-group">
                     <!-- Button -->

@@ -26,7 +26,7 @@ class ProcessAjax extends CI_Controller {
 				$id = $this->input->post("id");
 			}
 		}
-		if($this->session->userdata('user_id')!='' && !empty($id)){
+		if($this->session->userdata('user_id')!='' && !empty($id)){ 
 			if($this->upload->do_upload('photo-user')){
 				$configImage['source_image'] = './images/tmp/user/'.$id.'.jpg';
 				$configImage['create_thumb'] = TRUE;
