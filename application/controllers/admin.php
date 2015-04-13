@@ -9,7 +9,7 @@ class Admin extends CI_Controller {
 		$u = new User_model();
 		$u->get_by_id($this->session->userdata('user_id'));
 		if(strtolower($u->status)!='admin'){
-			$this->pageNotFound();	
+			return $this->pageNotFound();	
 		}
 		$this->load->library('parser');
 		$data = array("recipe_author_id"=> 1);
@@ -80,7 +80,6 @@ class Admin extends CI_Controller {
 					"menubar" => $menubar,
 					"content_website" => $content_website,
 				);
-		$this->parser->parse('template_content', $data);
-		die();
+		$this->parser->parse('template_content', $data);	
 	}
 }

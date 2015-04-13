@@ -165,7 +165,7 @@ class Migration_Initialize_database extends CI_Migration {
 				'null' => TRUE
 			),
 			'quantity' => array(
-				'type' => 'DECIMAL(2,1)',
+				'type' => 'DECIMAL(8,1)',
 				'default' => 0.0,
 				'null' => TRUE,
 			),
