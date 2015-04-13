@@ -171,8 +171,8 @@ class ProcessAjax extends CI_Controller {
 				    rename ( "./images/tmp/step/".$id."-".$no_step."_thumb.jpg", "./images/tmp/step/".$id."-".$no_step.".jpg");
 				    $p1 = "<img src='".base_url()."images/tmp/step/".$id."-".$no_step.".jpg' class='file-preview-image'>";
 					$p2 = ['caption' => "recipe-".$id."-".$no_step , 'width' => '120px', 'url' => base_url()."images/tmp/step/".$id."-".$no_step.".jpg"];
-				    if(file_exists("./images/tmp/step/".$recipe_id."-".$no_step."-default.jpg")){
-						unlink("./images/tmp/step/".$recipe_id."-".$no_step."-default.jpg");
+				    if(file_exists("./images/tmp/step/".$id."-".$no_step."-default.jpg")){
+						unlink("./images/tmp/step/".$id."-".$no_step."-default.jpg");
 					}
 				    $result = array(
 				    	"status" => 1,
