@@ -60,6 +60,17 @@ class Home extends CI_Controller {
 		die;
 	}
 
+	public function highlight()
+	{
+		$r = new Recipe_model();
+		$listHightlight = $r->getHightlight(11);
+		$u = new User_model();
+		foreach ($listHightlight as $row)
+			$row->author_name = $u->getProfile($row->author)->name;
+		
+		$this->home_viewer->showTop($listHightlight);
+	}
+
 	public function toprecipe()
 	{
 		$r = new Recipe_model();

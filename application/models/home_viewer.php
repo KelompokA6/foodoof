@@ -58,6 +58,36 @@ class Home_viewer extends CI_Model
     $this->parser->parse('template_content', $datacomplete);
   }
 
+  function showHighlight($listHightlight)
+  {
+    $datalist['highlight_recipe_result'] = sizeof($listHightlight);
+    $datalist['highlight_recipe_key'] = 'Highlight Recipes';
+    $datalist['highlight_recipe_page_size'] = 0;
+    $datalist['highlight_recipe_page_now'] = 1;
+    foreach ($listHightlight as $row) {
+      $row->highlight_recipe_id = $row->id;
+      $row->highlight_recipe_photo = $row->photo;
+      $row->highlight_recipe_name = $row->name;
+      $row->highlight_recipe_rating = $row->rating;
+      $row->highlight_recipe_author = $row->author;
+      $row->highlight_recipe_author_name = $row->author_name;
+      $row->highlight_recipe_views = $row->views;
+      $row->highlight_recipe_last_update = strftime("%c", strtotime($row->last_update));
+    }
+    $datalist['highlight_recipe_entries'] = $listHightlight;
+
+    $datacomplete['menubar'] = $this->getMenubar();
+
+    $data_content_homepage['content_search'] = $this->parser->parse('highlight_recipe_view', $datalist, TRUE);
+    $data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
+
+    // load content_website, isinya dari content_homepage
+    $datacomplete['content_website'] = $this->parser->parse('content_search', $data_content_homepage, TRUE);
+
+    // butuh menubar dan content_website
+    $this->parser->parse('template_content', $datacomplete);
+  }
+
   function showTop($listTopRecipe)
   {
     $datalist['top_recipe_result'] = sizeof($listTopRecipe);
