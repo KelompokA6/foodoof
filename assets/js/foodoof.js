@@ -605,6 +605,7 @@ $(document).ready(function() {
 	*/
 	$countHighlight = $("#listHightlight > .list-group-item").length;
 	$(document).on('change', ".checkedHighlight", function(e){
+		$hasChanged = true;
 		$idHighlight = $(this).val();
 		if($(this).prop('checked')){
 			if($countHighlight < 10){
