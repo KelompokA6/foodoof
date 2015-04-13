@@ -1,3 +1,4 @@
+<?php if(sizeof($list_recipes1) > 0):?>
 <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     {list_recipes1}
@@ -27,3 +28,4 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+<?php endif;?>
