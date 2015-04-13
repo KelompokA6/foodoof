@@ -135,6 +135,8 @@ class User extends CI_Controller {
 	{
 		extract($profile);
 		$tosend = array(
+			'email' => $email,
+			'password' => $password,
 			'from' => 'noreply@foodoof',
 			'to' => $email,
 			'subject' => 'Welcome to Foodoof',
@@ -219,12 +221,15 @@ class User extends CI_Controller {
 
 	private function _sendPassword($email, $password){
 		$tosend = array(
+			'email' => $email,
+			'password' => $password,
 			'from' => 'noreply@foodoof',
 			'to' => $email,
 			'subject' => 'Your FoodooF Password',
 			'message' => "You said that you have forgotten your password. Here you are! Your password is $password.",
 			);
 		file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend));
+		// die('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend));
 		$this->load->library('email');
 		$this->email->from('noreply@foodoof');
 		$this->email->to($email);
