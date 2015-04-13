@@ -34,5 +34,5 @@
       </div>  
     </div>
   </div>
-  {/recently_recipe_entries}
+  {/highlight_recipe_entries}
 </div>
