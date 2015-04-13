@@ -128,7 +128,7 @@ class User_model extends DataMapper {
             $data->id = $user->id;
             $data->name = $user->name;
             $data->email = $user->email;
-            $data->gender = ($user->gender == "f") ? "Female" : "Male";
+            $data->gender = (strtolower($user->gender) == "f") ? "Female" : "Male";
             $data->bdate = $user->bdate;
             $data->phone = $user->phone;
             $data->status = $user->status;
