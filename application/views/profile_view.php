@@ -73,7 +73,7 @@
 		</span>
 		</div>
 		<div class="col-md-11 col-xs-10 col-no-padding-left">
-			<a href="http://https://twitter.com/{profile_user_twitter}">
+			<a href="https://twitter.com/{profile_user_twitter}">
 				<h4>{profile_user_twitter}</h4>
 			</a>
 		</div>
@@ -86,7 +86,7 @@
 		</span>
 		</div>
 		<div class="col-md-11 col-xs-10 col-no-padding-left">
-			<a href="#">
+			<a href="https://facebook.com/{profile_user_facebook}">
 				<h4>{profile_user_facebook}</h4>
 			</a>
 		</div>
@@ -99,7 +99,7 @@
 		</span>
 		</div>
 		<div class="col-md-11 col-xs-10 col-no-padding-left">
-			<a href="#">
+			<a href="https://plus.google.com/{profile_user_googleplus}">
 				<h4>{profile_user_googleplus}</h4>
 			</a>
 		</div>
