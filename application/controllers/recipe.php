@@ -29,7 +29,8 @@ class Recipe extends CI_Controller {
 					array_push($ingre, $temp);
 				}
 			}
-			//print_r($ingre);
+			print_r($ingre);
+			die();
 			$steps = array();
 			if (!empty($r->steps)){
 				$i = 1;

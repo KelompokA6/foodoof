@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2015 at 03:26 PM
+-- Generation Time: Apr 13, 2015 at 03:37 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -50,9 +50,8 @@ CREATE TABLE IF NOT EXISTS `categories` (
 INSERT INTO `categories` (`recipe_id`, `name`) VALUES
 (33, 'daging'),
 (33, 'french food'),
-(33, 'seafood'),
+(33, 'Indonesian Food'),
 (35, 'chinese food'),
-(35, 'french food'),
 (35, 'other'),
 (38, 'chinese food'),
 (38, 'seafood');
@@ -115,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `favorites` (
 CREATE TABLE IF NOT EXISTS `ingredients` (
   `recipe_id` int(10) unsigned NOT NULL,
   `name` varchar(255) NOT NULL DEFAULT '',
-  `quantity` decimal(2,1) DEFAULT '0.0',
+  `quantity` decimal(8,2) DEFAULT '0.00',
   `units` varchar(30) DEFAULT NULL,
   `info` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -125,27 +124,27 @@ CREATE TABLE IF NOT EXISTS `ingredients` (
 --
 
 INSERT INTO `ingredients` (`recipe_id`, `name`, `quantity`, `units`, `info`) VALUES
-(33, 'Air jeruk lemon', '1.0', 'sdm', NULL),
-(33, 'Butter', '9.9', 'gr', NULL),
-(33, 'Cream cheese, suhu ruang', '9.9', 'gr', NULL),
-(33, 'Garam', '1.0', 'sdt', NULL),
-(33, 'Gula pasir', '9.9', 'gr', NULL),
-(33, 'Kuning telur', '6.0', 'butir', NULL),
-(33, 'Parutan kulit jeruk lemon (skip jika tidak suka)', '1.0', 'sdt', NULL),
-(33, 'Putih telur', '6.0', 'butir', NULL),
-(33, 'Susu cair', '9.9', 'cc', NULL),
-(33, 'Tepung maizena', '9.9', 'gr', NULL),
-(33, 'Tepung terigu', '9.9', 'gr', NULL),
-(35, 'garam', '1.0', 'sdm', NULL),
-(35, 'gula', '2.0', 'sdm', NULL),
-(35, 'keju cheddar parut', '2.0', 'sdm', NULL),
-(35, 'mentega', '1.5', 'sdm', NULL),
-(35, 'roti tawar', '7.0', 'lembar', NULL),
-(35, 'susu cair', '9.9', 'ml', NULL),
-(35, 'tepung terigu', '2.0', 'sdm', NULL),
-(35, 'vanili bubuk', '1.0', 'sdm', NULL),
-(38, 'Air jeruk lemon', '3.0', 'sdm', NULL),
-(38, 'Air perasan jeruk nipis', '4.0', 'lembar', NULL);
+(33, 'Air jeruk lemon', '1.00', 'sdm', NULL),
+(33, 'Butter', '9.90', 'gr', NULL),
+(33, 'Cream cheese, suhu ruang', '9.90', 'gr', NULL),
+(33, 'Garam', '1.00', 'sdt', NULL),
+(33, 'Gula pasir', '9.90', 'gr', NULL),
+(33, 'Kuning telur', '6.00', 'butir', NULL),
+(33, 'Parutan kulit jeruk lemon (skip jika tidak suka)', '1.00', 'sdt', NULL),
+(33, 'Putih telur', '6.00', 'butir', NULL),
+(33, 'Susu cair', '9.90', 'cc', NULL),
+(33, 'Tepung maizena', '9.90', 'gr', NULL),
+(33, 'Tepung terigu', '9.90', 'gr', NULL),
+(35, 'garam', '1.00', 'sdm', NULL),
+(35, 'gula', '2.00', 'sdm', NULL),
+(35, 'keju cheddar parut', '2.00', 'sdm', NULL),
+(35, 'mentega', '1.50', 'sdm', NULL),
+(35, 'roti tawar', '90.00', 'lembar', NULL),
+(35, 'susu cair', '3.00', 'ml', NULL),
+(35, 'tepung terigu', '2.00', 'sdm', NULL),
+(35, 'vanili bubuk', '1.00', 'sdm', NULL),
+(38, 'Air jeruk lemon', '3.00', 'sdm', NULL),
+(38, 'Air perasan jeruk nipis', '4.00', 'lembar', NULL);
 
 -- --------------------------------------------------------
 
@@ -236,8 +235,8 @@ CREATE TABLE IF NOT EXISTS `recipes` (
 --
 
 INSERT INTO `recipes` (`id`, `name`, `description`, `portion`, `duration`, `author`, `create_date`, `last_update`, `rating`, `status`, `tmp_status`, `views`, `photo`, `highlight`) VALUES
-(33, 'Japanese Cheesecake', 'Japanese cheesecake lembut membelai lidah,, rasanya enak bgt, sajikan dalam keadaan dingin dari kulkas', 6, 60, 1, '2015-04-12 13:09:53', '2015-04-12 13:09:53', '3.0', 1, 0, 20, 'images/recipe/33.jpg', 0),
-(35, 'Roti Isi Vla Keju', 'Alternatif bekal atau sarapan :)', 2, 4, 1, '2015-04-12 13:10:51', '2015-04-12 13:10:51', '0.0', 1, 0, 3, 'images/recipe/35.jpg', 0),
+(33, 'Japanese Cheesecake', 'Japanese cheesecake lembut membelai lidah,, rasanya enak bgt, sajikan dalam keadaan dingin dari kulkas', 6, 60, 1, '2015-04-13 00:44:31', '2015-04-13 00:44:31', '3.0', 1, 0, 23, 'images/recipe/33.jpg', 0),
+(35, 'Roti Isi Vla Keju', 'Alternatif bekal atau sarapan :)', 2, 4, 1, '2015-04-13 01:34:03', '2015-04-13 01:34:03', '0.0', 1, 0, 11, 'images/recipe/35.jpg', 0),
 (36, NULL, NULL, 1, 0, 1, '2015-04-12 12:46:36', '2015-04-12 12:46:36', '0.0', 0, 1, 0, '/assets/img/recipe-default.jpg', 0),
 (37, NULL, NULL, 1, 0, 1, '2015-04-12 12:46:44', '2015-04-12 12:46:44', '0.0', 0, 1, 0, '/assets/img/recipe-default.jpg', 0),
 (38, 'Ayam Goreng Bumbu Lengkuas', 'Ini Ayam Goreng', 2, 5, 1, '2015-04-12 13:12:27', '2015-04-12 13:12:27', '0.0', 0, 0, 1, '/assets/img/recipe-default.jpg', 0);
@@ -282,19 +281,19 @@ CREATE TABLE IF NOT EXISTS `steps` (
 --
 
 INSERT INTO `steps` (`recipe_id`, `no_step`, `description`, `photo`) VALUES
-(33, 1, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
-(33, 2, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
-(33, 3, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
-(33, 4, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
-(33, 5, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
-(33, 6, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
-(33, 7, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
-(33, 8, 'Setelah matang angkat, tunggu dingin baru dikeluarkan perlahan dari loyang. Sajikan dengan glaze selai atau topping sesuai selera', 'assets/img/step-default.jpg'),
-(35, 1, 'Vla: Campur smua bahan. Masak diatas api kecil sambil terus diaduk hingga mengental dan tidak lengket di panci. Setelah masak diamkan sejenak hingga panas berkurang.', 'assets/img/step-default.jpg'),
-(35, 2, 'Gilas roti tawar hingga tipis. Isi vla keju secukupnya, gulung lalu padatkan.', 'assets/img/step-default.jpg'),
-(35, 3, 'Masak bahan celupan hingga cair. Celup ujung-ujung roti tadi di coklat cair, lalu beri meises warna warni. Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
-(38, 1, 'Ayam goreng', 'assets/img/step-default.jpg'),
-(38, 2, 'Rebus Aer', 'assets/img/step-default.jpg');
+(33, 1, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(33, 2, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(33, 3, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(33, 4, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(33, 5, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(33, 6, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(33, 7, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(33, 8, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(35, 1, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(35, 2, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(35, 3, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(38, 1, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg'),
+(38, 2, 'Dinginkan di kulkas.', 'assets/img/step-default.jpg');
 
 --
 -- Triggers `steps`
