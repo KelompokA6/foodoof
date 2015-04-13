@@ -76,7 +76,7 @@
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" id="inlineCheckbox1" value="middle-east food" name="recipe_category[]" {edit_recipe_middle-east_food_checked}> Middle-East Food
+									  	<input type="checkbox" id="inlineCheckbox1" value="middle-east food" name="recipe_category[]" {edit_recipe_middle-eastern_food_checked}> Middle-Eastern Food
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
