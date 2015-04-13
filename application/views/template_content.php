@@ -24,7 +24,7 @@
     <div class="container">
       <div class="col-md-12 col-xs-12 page-header-title">
         <div class="col-md-2 col-xs-3">
-           <img class="img-responsive" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px; margin:auto"/>
+           
         </div>
         <div class="col-md-10 col-xs-9">
           <div class="col-md-2 col-xs-4" style="border-right:dashed 1px rgb(56,150,211)">
