@@ -20,10 +20,10 @@
           </div>
       </div>
       <div class="col-md-12 col-xs-12 details">
-          <div class="col-md-4 col-xs-3 col-no-padding-right">
-            <p class="text-capitalize">Last update :</p>
+          <div class="col-md-6 col-xs-3 col-no-padding-right">
+            <a href="<?php echo base_url();?>user/timeline/{recently_recipe_author_id}"><p class="text-capitalize">{recently_recipe_author_name}</p></a>
           </div>
-          <div class="col-md-8 col-xs-9 col-no-padding-left">
+          <div class="col-md-6 col-xs-9" style="border-left:dashed 1px rgb(56,150,211)">
             <p class="text-capitalize">{recently_recipe_last_update}</p>
           </div>
       </div>
