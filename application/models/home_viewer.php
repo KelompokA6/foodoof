@@ -14,7 +14,7 @@ class Home_viewer extends CI_Model
     foreach ($listHightlight as $key => $value) {
       $value->num = $key;
     }
-    $listHightlight[0]->isactive = "active";
+    if(@$listHightlight[0]) $listHightlight[0]->isactive = "active";
 
     foreach ($listTopRecipe as $row) {
       $row->top_recipe_id = $row->id;
