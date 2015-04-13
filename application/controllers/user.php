@@ -202,7 +202,7 @@ class User extends CI_Controller {
 			$password = $this->user_model->getPasswordByEmail($email);
 			if($password !== FALSE) {
 				if ($this->_sendPassword($email, $password)) {
-					// $data['forget_password_alert'] = "<div class=\"alert alert-success\">password: $password</div>";
+					$data['forget_password_alert'] = "<div class=\"alert alert-success\">your password has been sent to $email.</div>";
 				}else $data['forget_password_alert'] = '<div class="alert alert-warning">sending email failed</div>';
 			} else $data['forget_password_alert'] = "<div class=\"alert alert-danger\">$email not registered</div>";
 		}
