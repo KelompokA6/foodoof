@@ -480,7 +480,7 @@ class Recipe_model extends DataMapper {
             $recipe->where('status','1');    
         }
         $recipe->where('tmp_status', 0);
-        order_by("last_update", "desc");
+        $recipe->order_by("last_update", "desc");
         $recipe->get_by_author($userId);
         $arrResult = array();
         $x = 0;
