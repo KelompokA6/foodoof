@@ -108,7 +108,18 @@ class User_model extends DataMapper {
     function searchAccountByName($q, $limit = 10, $offset = 0)
     {
         $u = new User_model();
-        $sql = "SELECT * FROM users WHERE MATCH (name) AGAINST ('".$q."') order by MATCH (name) AGAINST ('".$q."') DESC LIMIT ".$limit." OFFSET ".$offset."";
+        $arrayKey = explode(" ", $q);
+        for ($i=0; $i < sizeof($arrayKey); $i++) { 
+            if(!empty($arrayKey)){
+                if($i == 0){
+                    $searchkey .= "LOWER(name) LIKE LOWER('%".$arrayKey[$i]."%')"; 
+                }
+                else {
+                    $searchkey .= " OR LOWER(name) LIKE LOWER('%".$arrayKey[$i]."%')"; 
+                }    
+            }
+        }
+        $sql = "SELECT * FROM users WHERE MATCH (name) AGAINST ('".$q."') OR LOWER(name) ".$search_key." order by MATCH (name) AGAINST ('".$q."') DESC LIMIT ".$limit." OFFSET ".$offset."";
         $u->query($sql);
         $accountList = array();
         foreach ($u as $user) {
@@ -138,57 +149,7 @@ class User_model extends DataMapper {
         // }
         return $accountList;
 
-        /*$u = new User_model();
-        $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$search_key."') AND status=1 order by MATCH (name) AGAINST ('".$search_key."')";
-        $recipe->query($sql);
-        $recipeList = array();
-        $total = 0;
-        foreach ($recipe as $recipes) {
-            $validRecipe = true;
-            if($total >= $offset && $limit > 0){
-                if(!empty($category)){
-                    $categories = new Category();
-                    $categories->where('recipe_id', $recipes->id);
-                    if(is_array($category)){
-                        for ($i=0; $i <$category ; $i++) { 
-                            $categories->or_ilike('name', $category[$i]);
-                        }
-                    }
-                    else{
-                        $categories->or_ilike('name', $category);
-                    }
-                    if($categories->count()==0){
-                        $validRecipe = false;
-                        $total--;
-                    }
-                }                    
-                if($validRecipe){
-                    $data = new stdClass();
-                    $data->id = $recipes->id;
-                    $data->name = $recipes->name;
-                    $data->description = $recipes->description;
-                    $data->portion = $recipes->portion;
-                    $data->duration = $recipes->duration;
-                    $data->author = $recipes->author;
-                    $data->create_date = $recipes->create_date;
-                    $data->last_update = $recipes->last_update;
-                    $data->rating = $recipes->rating;
-                    $data->status = $recipes->status;
-                    $data->views = $recipes->views;
-                    $data->photo = $recipes->photo;
-                    $data->highlight = $recipes->highlight;
-                    array_push($recipeList, $data);
-                    $limit--;
-                }
-            }
-            $total++;
-        }
-        $arrResult = array(
-                            "total" => $total,
-                            "recipe_list" => $recipeList,
-                            );
-        return $arrResult;*/
-        // LENGKAPI MI
+        
     }
 }
 
