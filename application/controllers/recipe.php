@@ -29,8 +29,8 @@ class Recipe extends CI_Controller {
 					array_push($ingre, $temp);
 				}
 			}
-			print_r($ingre);
-			die();
+			// print_r($ingre);
+			// die()
 			$steps = array();
 			if (!empty($r->steps)){
 				$i = 1;
@@ -105,7 +105,8 @@ class Recipe extends CI_Controller {
 			$temp['units'] = $unit[$i];
 			array_push($ingredients, $temp);
 		}
-		
+		print_r($ingredients);
+		die();
 		$stdes =  $this->input->post("step-description");
 		$poto =  $this->input->post("photo-step");
 		$steps = array();
