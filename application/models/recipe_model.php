@@ -205,8 +205,6 @@ class Recipe_model extends DataMapper {
                         }
                     }
                     else{
-                        print_r(" haloooo");
-                        print_r($xStep);
                         if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
                             $photo = "images/step/".$id."-".$xStep.".jpg";
                         }
@@ -219,20 +217,12 @@ class Recipe_model extends DataMapper {
                                 $photo = $stptmp->photo;       
                             }
                         }
-                        $stptmp->where('recipe_id', $id);
-                        $stptmp->where('no_step', $xStep);
-                        $stptmp->get();
                         $dataUpdate = array(
                                         'description' => $step["description"],
                                         'photo' => $photo);
-                        if(!$stptmp->update($dataUpdate)){
+                        if(!$stptmp->where('recipe_id', $id)->where('no_step', $xStep)->update($dataUpdate)){
                             return false;
                         }
-                        $a = new Step();
-                        $a->where('recipe_id', $id);
-                        $a->where('no_step', $xStep);
-                        $a->get();
-                        print_r($a->description);
                         if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
                             if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
                                 return false;
