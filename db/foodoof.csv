@@ -1,0 +1,65 @@
+"33","beverage"
+"33","indonesian food"
+"33","seafood"
+"35","chinese food"
+"35","other"
+"38","chinese food"
+"38","seafood"
+"39","beverage"
+"39","snack"
+"33","Air jeruk lemon","1.00","sdm",NULL
+"33","Butter","10.00","gr",NULL
+"33","Cream cheese, suhu ruang","12.00","gr",NULL
+"33","Garam","13.00","sdt",NULL
+"33","Gula pasir","14.00","gr",NULL
+"33","Kuning telur","6.00","butir",NULL
+"33","Parutan kulit jeruk lemon (skip jika tidak suka)","1.00","sdt",NULL
+"33","Putih telur","6.00","butir",NULL
+"33","Susu cair","10.00","cc",NULL
+"33","Tepung maizena","10.00","gr",NULL
+"33","Tepung terigu","19.00","gr",NULL
+"35","garam","1.00","sdm",NULL
+"35","gula","2.00","sdm",NULL
+"35","keju cheddar parut","2.00","sdm",NULL
+"35","mentega","1.50","sdm",NULL
+"35","roti tawar","90.00","lembar",NULL
+"35","susu cair","3.00","ml",NULL
+"35","tepung terigu","2.00","sdm",NULL
+"35","vanili bubuk","1.00","sdm",NULL
+"38","Air jeruk lemon","3.00","sdm",NULL
+"38","Air perasan jeruk nipis","4.00","lembar",NULL
+"39","gram","1.00","sdt",NULL
+"39","gula pasir","400.00","gram",NULL
+"39","kuning telur","16.00","butir",NULL
+"39","tepung sagu tani","300.00","gram",NULL
+"1"
+"33","Japanese Cheesecake","Japanese cheesecake lembut membelai lidah,, rasanya enak bgt, sajikan dalam keadaan dingin dari kulkas","6","60","1","2015-04-13 09:25:25","2015-04-13 09:25:25","3.0","1","0","32","images/recipe/33.jpg","0"
+"35","Roti Isi Vla Keju","Alternatif bekal atau sarapan :)","2","4","1","2015-04-13 09:00:43","2015-04-13 09:00:43","0.0","1","0","16","images/recipe/35.jpg","0"
+"36",NULL,NULL,"1","0","1","2015-04-12 19:46:36","2015-04-12 19:46:36","0.0","0","1","0","/assets/img/recipe-default.jpg","0"
+"37",NULL,NULL,"1","0","1","2015-04-12 19:46:44","2015-04-12 19:46:44","0.0","0","1","0","/assets/img/recipe-default.jpg","0"
+"38","Ayam Goreng Bumbu Lengkuas","Ini Ayam Goreng","2","5","1","2015-04-12 20:12:27","2015-04-12 20:12:27","0.0","0","0","1","/assets/img/recipe-default.jpg","0"
+"39","Bika Ambon Andalan","Tantangan dalam membuat kue ini adalah bentuk sarang atau bolong-bolongnya itu loh... Jadinya penasaran, pokoknya harus muncul sarangnya. Dapat resep dari mba Ferona dan ternyata ada beberapa tips sederhana yang membuat kue ini pasti jadi :) Silahkan dicoba aja, semua tips sudah saya rangkum di sini.","5","240","1","2015-04-13 09:36:10","2015-04-13 09:36:10","0.0","1","0","2","images/recipe/39.jpg","0"
+"33","1","Step 1","assets/img/step-default.jpg"
+"33","2","Step 2","assets/img/step-default.jpg"
+"33","3","Step 3","assets/img/step-default.jpg"
+"35","1","Step 11","assets/img/step-default.jpg"
+"35","2","Step 12","assets/img/step-default.jpg"
+"35","3","Step 13","assets/img/step-default.jpg"
+"38","1","Step 2","assets/img/step-default.jpg"
+"38","2","Step 2","assets/img/step-default.jpg"
+"39","1","Masak santan kental dengan api kecil hingga agak berminyak, kemudian masukkan daun pandan, daun sereh dan daun jeruk. Aduk sampai tercium wanginya baru diangkat.","images/step/39-1.jpg"
+"39","2","Buatlah bahan biang dengan mencampur tepung terigu, air kelapa dan ragi instan hingga rata. Diamkan selama 15 menit.","assets/img/step-default.jpg"
+"39","3","Aduk kuning telur, gula, garam dan vanili hingga rata. Kemudian masukkan bahan biang dan tepung sagu. Sesekali masukkan santan sedikit demi sedikit sambil diaduk rata. Saring adonan dan diamkan selama 2 jam.","images/step/39-3.jpg"
+"39","4","Panaskan loyang yang sudah diolesi dengan minyak. Jika sudah benar-benar panas baru tuangkan adonan, jangan diaduk lagi.
+","images/step/39-4.jpg"
+"1","admin","Fahmi Rahmat Kurniawan Hidayat","lAXRpW8GKBPmIENej39btL8ggO+ckmqoimiTTOhGS1BMcINPgzDfeFPu6eCfoPcE2o8m8wK/GSzzqPDRFcpGMA==","F","1970-01-01",,"MEMBER","images/user/1.jpg",,,,,"2015-04-12 18:37:29"
+"2","fahmi@a.com","Kurniawan Hidayat Fahmi","admin","f","1970-01-01",NULL,"MEMBER","assets/img/user-female.png",NULL,NULL,NULL,NULL,"2015-04-12 18:37:35"
+"3","fa@g.com","fahmi hidayat","admin","f","1970-01-01",NULL,"MEMBER","assets/img/user-female.png",NULL,NULL,NULL,NULL,"2015-04-12 17:19:42"
+"4","hasd@fa.cm","nurwahid hidayat","admin","f","1970-01-01",NULL,"MEMBER","assets/img/user-female.png",NULL,NULL,NULL,NULL,"2015-04-12 17:20:31"
+"5","a@gam.com","Hidayat Rahmat","admin","f","1970-01-01",NULL,"MEMBER","assets/img/user-female.png",NULL,NULL,NULL,NULL,"2015-04-12 18:38:07"
+"7","aasd@gam.com","Hidayat Jupri","admin","f","1970-01-01",NULL,"MEMBER","assets/img/user-female.png",NULL,NULL,NULL,NULL,"2015-04-12 18:38:46"
+"8","asdaa@gam.com","Guri Hidayat","admin","f","1970-01-01",NULL,"MEMBER","assets/img/user-female.png",NULL,NULL,NULL,NULL,"2015-04-12 18:39:04"
+"9","aasdad@gam.com","Jupo Hidayat","admin","f","1970-01-01",NULL,"MEMBER","assets/img/user-female.png",NULL,NULL,NULL,NULL,"2015-04-12 18:39:22"
+"10","basda@gam.com","Hidayat Urip","admin","f","1970-01-01",NULL,"MEMBER","assets/img/user-female.png",NULL,NULL,NULL,NULL,"2015-04-12 18:39:59"
+"11","asd@gam.coma","Hidayat Turko","admin","f","1970-01-01",NULL,"MEMBER","assets/img/user-female.png",NULL,NULL,NULL,NULL,"2015-04-12 18:40:24"
+"12","asd@a.com","Hidayat Hasda","admin","f","1970-01-01",NULL,"MEMBER","assets/img/user-female.png",NULL,NULL,NULL,NULL,"2015-04-12 18:48:01"
