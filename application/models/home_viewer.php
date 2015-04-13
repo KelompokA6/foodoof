@@ -130,15 +130,17 @@ class Home_viewer extends CI_Model
   function getMenubar()
   {
     $this->load->helper('text');
-    return $this->session->userdata('user_id') > 0 ?
-        $this->parser->parse(
+    if($this->session->userdata('user_id') > 0) {
+        $oneword = word_limiter($this->session->userdata('user_name'), 1);
+        if (strlen($oneword) > 7) $oneword = ellipsize($oneword, 7, 1);
+        return $this->parser->parse(
             'menubar_login',
             array(
-                'menubar_user_name' => ellipsize($this->session->userdata('user_name'), 7, 1),
+                'menubar_user_name' =>  $oneword,
                 'menubar_user_photo' => $this->session->userdata('user_photo'),
             ),
             TRUE
-        ) : 
-        $this->parser->parse('menubar', array(), TRUE);
+        );
+    } else return $this->parser->parse('menubar', array(), TRUE);
   }
 }
