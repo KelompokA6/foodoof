@@ -3,7 +3,7 @@
     Category Recipe
   </div>
   <div class="panel-body panel-category" for="category">
-    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
       <a href="<?php echo base_url();?>recipe/category/Indonesian%20Food">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/indonesian-food.jpg"/>
@@ -47,7 +47,7 @@
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
     </div>
-    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
       <a href="<?php echo base_url();?>recipe/category/Vegetarian">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/vegetarian.jpg"/>
@@ -58,7 +58,7 @@
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
     </div>
-    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
       <a href="<?php echo base_url();?>recipe/category/Seafood">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/seafood.jpg"/>
@@ -69,7 +69,7 @@
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
     </div>
-    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
       <a href="<?php echo base_url();?>recipe/category/Snack">
        <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/snack.jpg"/>
@@ -80,7 +80,7 @@
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
     </div>
-    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
       <a href="<?php echo base_url();?>recipe/category/Dessert">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/dessert.jpg"/>
@@ -91,7 +91,7 @@
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
     </div>
-    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
       <a href="<?php echo base_url();?>recipe/category/Beverage">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/beverage.jpg"/>
@@ -102,7 +102,7 @@
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
     </div>
-    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
       <a href="<?php echo base_url();?>recipe/category/Chinese%20Food">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/chinese-food.jpg"/>
@@ -113,7 +113,7 @@
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
     </div>
-    <div class="col-md-12 col-xs-12 hr-list-item category-list">
+    <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
       <a href="<?php echo base_url();?>recipe/category/Western%20Food">
        <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/western-food.jpg"/>
@@ -124,7 +124,7 @@
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
     </div>
-    <div class="col-md-12 col-xs-12 category-list">
+    <div class="col-md-12 col-xs-12 page-header category-list">
       <a href="<?php echo base_url();?>recipe/category/Middle-East%20Food">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/middle-eastern-food.jpg"/>
