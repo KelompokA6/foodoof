@@ -23,7 +23,7 @@
   <footer style="background-color:#eee">
     <div class="container">
       <div class="col-md-12 col-xs-12 page-header-title">
-        <div class="col-md-2 col-xs-3">
+        <div class="col-md-1 col-xs-3">
            
         </div>
         <div class="col-md-10 col-xs-9">
