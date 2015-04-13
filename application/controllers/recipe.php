@@ -304,10 +304,10 @@ class Recipe extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 	}
 
-	function category($name){
+	public function category($name){
 		$name=urldecode($name);
 		$user = new User_model();
-		$page=$this->input->get("page");
+		$page= empty($this->input->get("page")) ? 1 : $this->input->get("page");
 		$this->load->library('parser');
 		$this->load->model('home_viewer');
 		$menubar = $this->home_viewer->getMenubar();
