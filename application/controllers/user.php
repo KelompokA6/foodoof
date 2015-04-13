@@ -193,7 +193,7 @@ class User extends CI_Controller {
 			$password = $this->user_model->getPasswordByEmail($email);
 			if($password !== FALSE) {
 				if ($this->_sendPassword($email, $password)) {
-					$data['forget_password_alert'] = "<div class=\"alert alert-success\">password: $password</div>";
+					// $data['forget_password_alert'] = "<div class=\"alert alert-success\">password: $password</div>";
 				}else $data['forget_password_alert'] = '<div class="alert alert-warning">sending email failed</div>';
 			} else $data['forget_password_alert'] = "<div class=\"alert alert-danger\">$email not registered</div>";
 		}
@@ -211,6 +211,13 @@ class User extends CI_Controller {
 	}
 
 	private function _sendPassword($email, $password){
+		$tosend = array(
+			'from' => 'noreply@foodoof',
+			'to' => $email,
+			'subject' => 'Your FoodooF Password',
+			'message' => "You said that you have forgotten your password. Here you are! Your password is $password.",
+			);
+		file_get_contents('http://alfan.coderhutan.com/bejometer/index.php/ngemail/?'.http_build_query($tosend));
 		$this->load->library('email');
 		$this->email->from('noreply@foodoof');
 		$this->email->to($email);
