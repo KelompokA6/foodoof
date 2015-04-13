@@ -56,7 +56,7 @@
         if($search_by_ingredient_recipe_page_size - $search_by_ingredient_recipe_page_now == ($search_by_ingredient_recipe_page_size-1)){
             echo "disabled";
           }
-        echo "'><a href='".base_url()."search/?q=".urlencode($search_by_ingredient_recipe_key)."&searchby=ingredient&page=".($search_by_ingredient_recipe_page_now - 1)."' aria-label='Previous'>
+        echo "'><a href='".base_url()."search/?q=".$search_by_ingredient_recipe_key."&searchby=ingredient&page=".($search_by_ingredient_recipe_page_now - 1)."' aria-label='Previous'>
             <span aria-hidden='true'>&laquo;</span>
           </a></li>";
         for ($i=1; $i <= $search_by_ingredient_recipe_page_size ; $i++) { 
@@ -66,7 +66,7 @@
           }
           echo "
             <li class=".$active.">
-              <a href='".base_url()."search/?q=".urlencode($search_by_ingredient_recipe_key)."&searchby=ingredient&page=".$i."'>".$i."</a>
+              <a href='".base_url()."search/?q=".$search_by_ingredient_recipe_key."&searchby=ingredient&page=".$i."'>".$i."</a>
             </li>
           ";
         }
@@ -75,7 +75,7 @@
         if($search_by_ingredient_recipe_page_size == $search_by_ingredient_recipe_page_now){
             echo "disabled";
           }
-        echo "'><a href='".base_url()."search/?q=".$search_by_ingredient_recipe_key)."&searchby=ingredient&page=".($search_by_ingredient_recipe_page_now + 1)."' aria-label='Next'>
+        echo "'><a href='".base_url()."search/?q=".$search_by_ingredient_recipe_key."&searchby=ingredient&page=".($search_by_ingredient_recipe_page_now + 1)."' aria-label='Next'>
             <span aria-hidden='true'>&raquo;</span>
           </a></li></ul></nav>
         ";
