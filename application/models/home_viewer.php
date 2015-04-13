@@ -131,8 +131,8 @@ class Home_viewer extends CI_Model
   {
     $this->load->helper('text');
     if($this->session->userdata('user_id') > 0) {
-        $oneword = word_limiter($this->session->userdata('user_name'), 1);
-        if (strlen($oneword) > 7) $oneword = ellipsize($oneword, 7, 1);
+        $oneword = explode(" ", $this->session->userdata('user_name'))[0];
+        if (strlen($oneword) > 7) $oneword = ellipsize($oneword, 8, 1);
         return $this->parser->parse(
             'menubar_login',
             array(
