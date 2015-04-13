@@ -43,6 +43,14 @@ class Admin extends CI_Controller {
 	}
 
 	public function save(){
+		if($this->session->userdata('user_id')==''){
+			redirect(base_url()."home/login", "refresh");
+		}
+		$u = new User_model();
+		$u->get_by_id($this->session->userdata('user_id'));
+		if(strtolower($u->status)!='admin'){
+			$this->pageNotFound();	
+		}
 		$recipe = new Recipe_model();
 		$success = TRUE;
 		$list = $recipe->getAllRecipe();
