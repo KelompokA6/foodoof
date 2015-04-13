@@ -105,8 +105,6 @@ class Recipe extends CI_Controller {
 			$temp['units'] = $unit[$i];
 			array_push($ingredients, $temp);
 		}
-		print_r($ingredients);
-		die();
 		$stdes =  $this->input->post("step-description");
 		$poto =  $this->input->post("photo-step");
 		$steps = array();
@@ -114,6 +112,8 @@ class Recipe extends CI_Controller {
 			$temp['description'] = $stdes[$i];
 			array_push($steps, $temp);
 		}
+		// print_r($steps);
+		// die();
 		date_default_timezone_set ('Asia/Jakarta');
 		$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d %H:%M:%S"), $ingredients, $steps);
 		if($isSuccess === false){

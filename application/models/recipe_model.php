@@ -205,6 +205,8 @@ class Recipe_model extends DataMapper {
                         }
                     }
                     else{
+                        print_r(" haloooo");
+                        print_r($xStep);
                         if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
                             $photo = "images/step/".$id."-".$xStep.".jpg";
                         }
@@ -217,12 +219,20 @@ class Recipe_model extends DataMapper {
                                 $photo = $stptmp->photo;       
                             }
                         }
+                        $stptmp->where('recipe_id', $id);
+                        $stptmp->where('no_step', $xStep);
+                        $stptmp->get();
                         $dataUpdate = array(
                                         'description' => $step["description"],
                                         'photo' => $photo);
                         if(!$stptmp->update($dataUpdate)){
                             return false;
                         }
+                        $a = new Step();
+                        $a->where('recipe_id', $id);
+                        $a->where('no_step', $xStep);
+                        $a->get();
+                        print_r($a->description);
                         if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
                             if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
                                 return false;
@@ -234,6 +244,7 @@ class Recipe_model extends DataMapper {
                     $this->db->where('recipe_id',$id)->where('no_step >', $xStep)->delete('steps');
                 }
             }
+                        
             if(!is_array($steps)){
                 $stptmp = new Step();
                 $stptmp->where('recipe_id', $id);
@@ -295,6 +306,7 @@ class Recipe_model extends DataMapper {
             {
                 // Transaction successful, commit
                 $this->trans_commit();
+                // die();
                 return true;
             }
             return true;
