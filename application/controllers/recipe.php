@@ -306,6 +306,7 @@ class Recipe extends CI_Controller {
 
 	function category($name){
 		$name=urldecode($name);
+		$user = new User_model();
 		$page=$this->input->get("page");
 		$this->load->library('parser');
 		$this->load->model('home_viewer');
@@ -318,6 +319,8 @@ class Recipe extends CI_Controller {
 		foreach ($arr as $obj) {
 			$temp = array(
 				'category_recipe_id' => $obj->id,
+				'category_recipe_author_name' => $user->getProfile($obj->author)->name,
+				'category_recipe_author_id' => ($obj->author),
 				'category_recipe_photo' => $obj->photo,
 				'category_recipe_name' => $obj->name,
 				'category_recipe_last_update' => $obj->last_update,
