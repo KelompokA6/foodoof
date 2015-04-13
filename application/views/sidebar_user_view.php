@@ -24,6 +24,7 @@
 			</span>
 			Favorite
 	  	</a>
+	  	<?php if($this->session->userdata('user_id') == $sidebar_user_id): ?>
 	  	<a class="list-group-item disabled" title="Cook Later">
 	  		<span class="fa-stack fa-lg">
 			  <i class="fa fa-square fa-stack-2x icon-default"></i>
@@ -31,6 +32,7 @@
 			</span>
 			Cook Later
 	  	</a>
+	  	<?php endif; ?>
 	  	<?php if($this->session->userdata('user_id') == $sidebar_user_id): ?>
 	  		<a href='<?php echo base_url();?>user/changepassword' class='list-group-item' title='Change Password'>
 			  		<span class='fa-stack fa-lg'>

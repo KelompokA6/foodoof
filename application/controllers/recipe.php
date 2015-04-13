@@ -2,6 +2,14 @@
 
 class Recipe extends CI_Controller {
 
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->library('session');
+		$this->load->model('user_model');
+		$this->load->model('user_viewer');
+	}
+
 	public function publish($id, $isPublished){
 		$recipe  = new Recipe();
 		$recipe->get_by_id($id)->update('status', $isPublished);
@@ -117,7 +125,8 @@ class Recipe extends CI_Controller {
 		date_default_timezone_set ('Asia/Jakarta');
 		$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d %H:%M:%S"), $ingredients, $steps);
 		if($isSuccess === false){
-			echo "gagal";
+			$alert = "<div id='alert-edit' data-status='failed' class='hidden'></div>";
+			$this->session->set_flashdata('alert-edit', $alert);
 		} else{
 			if (!empty($category)){
 				$recipe->deleteAllCategory($id);
@@ -125,8 +134,10 @@ class Recipe extends CI_Controller {
 					$res = $recipe->addCategory($id, $selected);
 				}
 			}
-			redirect(base_url()."recipe/get/$id");
+			$alert = "<div id='alert-edit' data-status='success' class='hidden'></div>";
+			$this->session->set_flashdata('alert-edit', $alert);
 		}
+		redirect(base_url()."recipe/edit/$id");
 	}
 
 	public function create(){
@@ -142,7 +153,7 @@ class Recipe extends CI_Controller {
 	// ini buat ambil resep dengan input id
 	public function recipes($id){
 		$recipe = new Recipe();
-		$this->load->library(session);
+		$this->load->library('session');
 		$userid = $this->session->userdata("user_id");
 		if (empty($userid)){
 			$data['profile']= $recipe->getRecipeProfile($id);

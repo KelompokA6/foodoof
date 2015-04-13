@@ -564,7 +564,7 @@ $(document).ready(function() {
 	handler buat submit form
 	*/
 	$("form").on("submit", function(e){
-		if($lock>0){
+		if($lock>0 && !$validate){
 			e.preventDefault();
 			$("#modalWaiting").modal("show");
 		}
@@ -663,6 +663,7 @@ $(document).ready(function() {
 		$indexValidation = $(".input-ingredient").index(this);
 		$valueIngredient = $(this).val().toLowerCase();
 		$(".ingredient-item > div > .input-ingredient").each(function(e){
+			$validate = true;
 			if(e != $indexValidation){
 				if($(this).val().toLowerCase() == $valueIngredient){
 					console.log(e);
@@ -673,13 +674,12 @@ $(document).ready(function() {
 						message: "Duplicate Ingredient" 
 					},{
 						// settings
-						element: ".input-ingredient:eq("+e+")",
-						position: 'relative',
+						element: "body",
 						mouse_over:'pause',
 						newest_on_top: true,
 						allow_dismiss: false,
 						type: 'danger',
-						delay: 1500,
+						delay: 10000,
 						placement: {
 							from: 'top',
 							align: 'center'
@@ -689,7 +689,40 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
+	if($("#alert-edit").data('status')=='success'){
+		$.notify({
+			// options
+			message: "Your Changed Has Been Save." 
+		},{
+			// settings
+			mouse_over:'pause',
+			newest_on_top: true,
+			allow_dismiss: false,
+			type: 'success',
+			delay: 2000,
+			placement: {
+				from: 'top',
+				align: 'center'
+			},
+		});
+	}
+	if($("#alert-edit").data('status')=='failed'){
+		$.notify({
+			// options
+			message: "There Are Someting Wrong." 
+		},{
+			// settings
+			mouse_over:'pause',
+			newest_on_top: true,
+			allow_dismiss: false,
+			type: 'danger',
+			delay: 2000,
+			placement: {
+				from: 'top',
+				align: 'center'
+			},
+		});
+	}
 	/*
 	init javascript bootstrap;
 	*/
