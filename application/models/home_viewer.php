@@ -69,7 +69,7 @@ class Home_viewer extends CI_Model
       $row->top_recipe_photo = $row->photo;
       $row->top_recipe_name = $row->name;
       $row->top_recipe_rating = $row->rating;
-      $row->top_recipe_author = $row->author;
+      $row->top_recipe_author_id = $row->author;
       $row->top_recipe_author_name = $row->author_name;
       $row->top_recipe_views = $row->views;
       $row->top_recipe_last_update = strftime("%c", strtotime($row->last_update));
@@ -99,7 +99,7 @@ class Home_viewer extends CI_Model
       $row->recently_recipe_photo = $row->photo;
       $row->recently_recipe_name = $row->name;
       $row->recently_recipe_rating = $row->rating;
-      $row->recently_recipe_author = $row->author;
+      $row->recently_recipe_author_id = $row->author;
       $row->recently_recipe_author_name = $row->author_name;
       $row->recently_recipe_views = $row->views;
       $row->recently_recipe_last_update = strftime("%c", strtotime($row->last_update));
