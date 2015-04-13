@@ -277,6 +277,7 @@ class Recipe extends CI_Controller {
 						'recipe_rating' => $r->rating,
 						'recipe_photo' => $r->photo,
 						'recipe_category_entries' => $category,
+						'recipe_author_id' => ($r->author),
 					);
 			$content_website = $this->parser->parse('recipe_view', $data, TRUE);
 			$data = array(
