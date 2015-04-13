@@ -1,6 +1,5 @@
 <?php if(sizeof($list_recipes1) > 0):?>
 <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
-  <a href='<?php echo base_url();?>home/highlight' style="position:relative; z-index:1000px; left:15px; top:15px;"><h3>Highlight Recipe</h3></a>
   <ol class="carousel-indicators" style="bottom:10px;">
     {list_recipes1}
       <li data-target="#carousel-example-captions" data-slide-to="{num}" class="{isactive}" style="background-color:rgb(56,150,211);"></li>
@@ -26,4 +25,7 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+<a href='<?php echo base_url();?>home/highlight' style="position:absolute; top:0px; left:30px;">
+  <h3>Highlight Recipe</h3>
+</a>
 <?php endif;?>
