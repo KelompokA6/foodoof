@@ -1,12 +1,9 @@
 <?php if(sizeof($list_recipes1) > 0):?>
 <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
+  <ol class="carousel-indicators" style="bottom:10px;">
     {list_recipes1}
-      <li data-target="#carousel-example-captions" data-slide-to="{num}" class="{isactive}"></li>
+      <li data-target="#carousel-example-captions" data-slide-to="{num}" class="{isactive}" style="background-color:rgb(56,150,211);"></li>
     {/list_recipes1}
-    <!-- <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-captions" data-slide-to="1" class=""></li>
-    <li data-target="#carousel-example-captions" data-slide-to="2" class=""></li> -->
   </ol>
   <div class="carousel-inner" role="listbox">
     {list_recipes2}
@@ -20,11 +17,11 @@
     {/list_recipes2}
   </div>
   <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="color:rgb(56,150,211);"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="color:rgb(56,150,211);"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
