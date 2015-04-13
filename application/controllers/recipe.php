@@ -123,7 +123,7 @@ class Recipe extends CI_Controller {
 					$res = $recipe->addCategory($id, $selected);
 				}
 			}
-			redirect(base_url()."user/timeline/".$user_id);
+			redirect(base_url()."recipe/get/$id");
 		}
 	}
 

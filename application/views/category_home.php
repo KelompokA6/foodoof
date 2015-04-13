@@ -6,7 +6,7 @@
     <div class="col-md-12 col-xs-12 hr-list-item category-list">
       <a href="<?php echo base_url();?>recipe/category/Indonesian%20Food">
         <div class="col-md-3 col-xs-5">
-          <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/category/indonesian-food.jpg"/>
+          <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/indonesian-food.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 category-menu-name">
           Indonesian Food
@@ -27,8 +27,8 @@
     </div>
     <div class="col-md-12 col-xs-12 page-header hr-list-item category-list">
       <a href="<?php echo base_url();?>recipe/category/Noodle">
-        <div class="col-md-3 col-xs-5">
-          <img class="img-responsive img-circle" src="<?php echo base_url();?>assets/img/foodoof-vs.png"/>
+        <div class="col-md-3 col-xs-5 img-category">
+          <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/noodle.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 category-menu-name">
           Noodle
