@@ -2,6 +2,7 @@
 
 class Admin extends CI_Controller {
 	public function index(){
+		$this->load->library('session');
 		if($this->session->userdata('user_id')==''){
 			redirect(base_url()."home/login", "refresh");
 		}
@@ -43,6 +44,7 @@ class Admin extends CI_Controller {
 	}
 
 	public function save(){
+		$this->load->library('session');
 		if($this->session->userdata('user_id')==''){
 			redirect(base_url()."home/login", "refresh");
 		}
