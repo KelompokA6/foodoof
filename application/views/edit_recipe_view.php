@@ -117,7 +117,7 @@
 								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_subject}" name="ingredient_subject[]" class="form-control" placeholder="Ingredient Name">
 								    	</div>
 								    	<div class="col-sm-3 col-xs-3 col-no-padding-left">
-								      		<input type="number" min="0" step="0.1" value="{edit_recipe_ingredient_quantity}" name="ingredient_quantity[]" class="form-control" placeholder="Quantity">
+								      		<input type="number" min="0" step="0.01" value="{edit_recipe_ingredient_quantity}" name="ingredient_quantity[]" class="form-control" placeholder="Quantity">
 								    	</div>
 								    	<div class="col-sm-3 col-xs-3 col-no-padding-left">
 								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_unit}" name="ingredient_unit[]" class="form-control" placeholder="Unit">
