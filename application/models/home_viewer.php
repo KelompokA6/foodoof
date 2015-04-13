@@ -69,7 +69,7 @@ class Home_viewer extends CI_Model
       $row->highlight_recipe_photo = $row->photo;
       $row->highlight_recipe_name = $row->name;
       $row->highlight_recipe_rating = $row->rating;
-      $row->highlight_recipe_author = $row->author;
+      $row->highlight_recipe_author_id = $row->author;
       $row->highlight_recipe_author_name = $row->author_name;
       $row->highlight_recipe_views = $row->views;
       $row->highlight_recipe_last_update = strftime("%c", strtotime($row->last_update));
@@ -78,7 +78,7 @@ class Home_viewer extends CI_Model
 
     $datacomplete['menubar'] = $this->getMenubar();
 
-    $data_content_homepage['content_search'] = $this->parser->parse('highlight_recipe_view', $datalist, TRUE);
+    $data_content_homepage['content_search'] = $this->parser->parse('highlight_view', $datalist, TRUE);
     $data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
 
     // load content_website, isinya dari content_homepage

@@ -68,7 +68,7 @@ class Home extends CI_Controller {
 		foreach ($listHightlight as $row)
 			$row->author_name = $u->getProfile($row->author)->name;
 		
-		$this->home_viewer->showTop($listHightlight);
+		$this->home_viewer->showHighlight($listHightlight);
 	}
 
 	public function toprecipe()
