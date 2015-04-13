@@ -109,6 +109,7 @@ class User_model extends DataMapper {
     {
         $u = new User_model();
         $arrayKey = explode(" ", $q);
+        $searchkey = "";
         for ($i=0; $i < sizeof($arrayKey); $i++) { 
             if(!empty($arrayKey)){
                 if($i == 0){
