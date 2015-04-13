@@ -120,7 +120,7 @@ class User_model extends DataMapper {
                 }    
             }
         }
-        $sql = "SELECT * FROM users WHERE MATCH (name) AGAINST ('".$q."') OR LOWER(name) ".$searchkey." order by MATCH (name) AGAINST ('".$q."') DESC LIMIT ".$limit." OFFSET ".$offset."";
+        $sql = "SELECT * FROM users WHERE MATCH (name) AGAINST ('".$q."') OR ".$searchkey." order by MATCH (name) AGAINST ('".$q."') DESC LIMIT ".$limit." OFFSET ".$offset."";
         $u->query($sql);
         $accountList = array();
         foreach ($u as $user) {
