@@ -1,4 +1,4 @@
-<div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+<div id="signupbox" style="margin-top:20px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
     <div class="panel panel-info">
         <div class="panel-heading">
             <div class="panel-title">Join Us</div>
@@ -45,8 +45,8 @@
                 </div>
 
                 <div class="form-group">                                        
-                    <div class="col-md-offset-3 col-md-9">
-                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Join &nbsp</button> 
+                    <div class="col-md-offset-3 col-md-6 text-center">
+                        <button id="btn-signup" type="submit" class="btn button-default"><i class="icon-hand-right"></i> &nbsp Join &nbsp</button> 
                     </div>
                 </div>
             </form>

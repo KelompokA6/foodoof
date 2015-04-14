@@ -22,25 +22,26 @@
 	</div>
   <footer style="background-color:#eee">
     <div class="container">
-      <div class="col-md-12 col-xs-12 page-header-title">
-        <div class="col-md-1 col-xs-3">
-           
-        </div>
-        <div class="col-md-10 col-xs-9">
-          <div class="col-md-2 col-xs-4" style="border-right:dashed 1px rgb(56,150,211)">
-            <h4>About</h4>
-            <a href="">Contact Us</a><br>
-            <a href="">Our Team</a><br>
-            <a href="">F.A.Q</a><br>
+      <div class="col-md-12 col-xs-12 col-no-padding page-header-title">
+        <div class="col-md-12 col-xs-12  col-no-padding">
+          <div class="col-md-offset-1 col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(56,150,211)">
+              <a href="">About</a>      
           </div>
-          <div class="col-md-2 col-xs-4">
-            <h4>Others</h4>
-            <a href="">Information</a><br>
-            <a href="">Term of Services</a><br>
+          <div class="col-md-2 col-xs-3 text-center" style="border-right:dashed 1px rgb(56,150,211)">
+              <a href="">Contact Us</a>      
+          </div>
+          <div class="col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(56,150,211)">
+              <a href="">Our Team</a>      
+          </div>
+          <div class="col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(56,150,211)">
+              <a href="">F.A.Q</a>     
+          </div>
+          <div class="col-md-2 col-xs-3 text-center">
+              <a href="">Term of Services</a>     
           </div>
         </div>
       </div>
-      <div class="col-md-12 col-xs-12 text-center">
+      <div class="col-md-12 col-xs-12 text-center" style="color:rgb(56,150,211)">
         Copyright &copy 2015, FoodooF (PPL-A06)
       </div>
     </div>
@@ -50,23 +51,6 @@
       <div class="modal-content">
         <div class="modal-body text-center">
           <img class="responsive" width="50px" src="/foodoof/assets/img/loading-spinner.gif"/>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="confirmBeforeUnload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content panel-warning">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
-        </div>
-        <div class="modal-body">
-          Your Changes Will Be Discard ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" id="btn-unload" class="btn btn-warning">Leave</button>
-          <button type="button" class="btn btn-primary"  data-dismiss="modal">Stay</button>
         </div>
       </div>
     </div>

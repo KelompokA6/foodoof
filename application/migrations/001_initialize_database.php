@@ -76,7 +76,6 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->add_key('email', TRUE);
 		$this->dbforge->create_table('users');
-		$this->db->query("ALTER TABLE users ADD FULLTEXT (name)");
 
 		/*
 		Table Recipes
@@ -150,7 +149,7 @@ class Migration_Initialize_database extends CI_Migration {
 		));
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('recipes');
-		$this->db->query("ALTER TABLE recipes ADD FULLTEXT (name)");
+		
 		/*
 		Table Ingredients
 		*/
@@ -432,7 +431,9 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->db->query("CREATE TRIGGER `avg_rating_update` AFTER UPDATE ON `rating` FOR EACH ROW UPDATE recipes SET rating = (SELECT AVG(rating.value) from rating where rating.recipe_id=recipes.id) WHERE recipes.id=NEW.recipe_id");
 		$this->db->query("CREATE TRIGGER `add_recipe_default` BEFORE INSERT ON `recipes` FOR EACH ROW if (NEW.photo is null ) then set NEW.photo = 'assets/img/recipe-default.jpg'; end if;");
 		$this->db->query("CREATE TRIGGER `add_step_default` BEFORE INSERT ON `steps` FOR EACH ROW if (NEW.photo is null ) then set NEW.photo = 'assets/img/step-default.jpg'; end if;");
-		$this->db->query("CREATE TRIGGER `add_user_default` BEFORE INSERT ON `users` FOR EACH ROW if (LOWER(NEW.gender) = 'f' ) then set NEW.photo = 'assets/img/user-female.jpg'; elseif (LOWER(NEW.gender) = 'm' ) then set NEW.photo = 'assets/img/user-male.jpg'; end if;");
+		$this->db->query("CREATE TRIGGER `add_user_default` BEFORE INSERT ON `users` FOR EACH ROW if (LOWER(NEW.gender) = 'f' ) then set NEW.photo = 'assets/img/user-female.png'; elseif (LOWER(NEW.gender) = 'm' ) then set NEW.photo = 'assets/img/user-male.png'; end if;");
+		$this->db->query("ALTER TABLE users ADD FULLTEXT (name)");
+		$this->db->query("ALTER TABLE recipes ADD FULLTEXT (name)");
 	}
 
 	public function down()

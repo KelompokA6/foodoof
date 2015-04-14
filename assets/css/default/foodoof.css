@@ -31,9 +31,6 @@ body{
   .chevron-menu{
     line-height: inherit;
   }
-  .category-menu-name{
-    padding:15px;
-  }
   .btn-navbar-mobile{
     display: block;
     padding: 10px;
@@ -108,6 +105,22 @@ body{
   }
   .h4-mobile{
     font-size: 26px;
+  }
+  .category-list:nth-child(even){
+    margin:10px 0 0 0;
+    line-height: 48px;
+    border-left: dashed 1px rgb(56,150,211);
+    border-bottom: dashed 1px rgb(56,150,211);
+    padding:10px;
+    height: 68px;
+  }
+  .category-list-last{
+    margin:10px 0 0 0;
+    line-height: 48px;
+    border-left: dashed 1px rgb(56,150,211);
+    border-bottom: dashed 1px rgb(56,150,211);
+    padding:10px;
+    height: 68px;
   }
 }
 @media(min-width:768px){
@@ -189,10 +202,6 @@ body{
     border-top: 0;
     border-left: 0;
     border-bottom: 0;
-  }
-  .category-list{
-    margin:10px 0 10px 0;
-    line-height: 38px;
   }
   .recipe-list-home{
     margin:10px 0 10px 0;
@@ -367,29 +376,11 @@ body{
   .list-item-step{
     margin:10px 0 10px 0;
   }
-  /*.input-default{
-    height:40px;
-    font-size: 16px
-  }*/
+  
 }
-/*.icon-favorite{
-  color:pink;
-}
-.icon-profile{
-  color:rgb(188, 209, 254);
-}
-.icon-recipe{
-  color:rgb(134, 210, 135);
-}
-.icon-cooklater{
-  color:rgb(254, 197, 60);
-}
-.icon-key{
-  color:rgb(229, 106, 69);
-}*/
 .button-default{
   background-color: rgba(56,150,211,0.9);
-  color: #eee;
+  color: #f5f5f5;
 }
 .button-default:hover{
   background-color: rgba(56,150,211,1);
@@ -555,5 +546,18 @@ ul.dropdown-search > li >label:focus {
   font-size:12px; 
   height:50px; 
   line-height:50px;
+}
+.category-list{
+  margin:10px 0 0 0;
+  line-height: 48px;
+  border-bottom: dashed 1px rgb(56,150,211);
+  padding:10px;
+  height: 68px;
+}
+.category-list-last{
+  margin:10px 0 0 0;
+  line-height: 48px;
+  padding:10px;
+  height: 68px;
 }
 

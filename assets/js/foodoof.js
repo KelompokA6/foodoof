@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$validate = true;	
+	$validateDuplicate = true;	
 	$recipeId = $("#image-recipe").data("id");
 	$lock = 0;
 	$submitStatus=false;
@@ -564,9 +564,27 @@ $(document).ready(function() {
 	handler buat submit form
 	*/
 	$("form").on("submit", function(e){
-		if($lock>0 && !$validate){
+		if($lock>0){
 			e.preventDefault();
 			$("#modalWaiting").modal("show");
+		}
+		else if(!$validateDuplicate){
+			e.preventDefault();
+			$.notify({
+				// options
+				message: "There are duplicate in ingredient"
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 5000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
 		}
 		else{
 			$hasChanged = false;
@@ -659,19 +677,16 @@ $(document).ready(function() {
 	validate same ingredient
 	*/
 	$(document).on("change", ".input-ingredient", function(x){
-		console.log("trigger");
 		$indexValidation = $(".input-ingredient").index(this);
 		$valueIngredient = $(this).val().toLowerCase();
+		$validateDuplicate = true;
 		$(".ingredient-item > div > .input-ingredient").each(function(e){
-			$validate = true;
 			if(e != $indexValidation){
 				if($(this).val().toLowerCase() == $valueIngredient){
-					console.log(e);
-					console.log($indexValidation);
-					$validate = false;
+					$validateDuplicate = false;
 					$.notify({
 						// options
-						message: "Duplicate Ingredient" 
+						message: "There are duplicate in ingredient" 
 					},{
 						// settings
 						element: "body",
@@ -679,7 +694,7 @@ $(document).ready(function() {
 						newest_on_top: true,
 						allow_dismiss: false,
 						type: 'danger',
-						delay: 10000,
+						delay: 5000,
 						placement: {
 							from: 'top',
 							align: 'center'
