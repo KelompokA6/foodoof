@@ -5,11 +5,11 @@ class Favorite extends DataMapper {
     var $table = "Favorites"; 
     var $has_one = array('user','recipe');
 
-    function __construct($recipe_id = NULL, $user_id=NULL)
+    /*function __construct($recipe_id = NULL, $user_id=NULL)
     {
         $this->recipe_id = $recipe_id;
         $this->user_id = $user_id;
-    }
+    }*/
 
     function getFavoriteRecipeByUser($user_id=NULL){
         if(empty($user_id)){

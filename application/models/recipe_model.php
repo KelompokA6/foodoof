@@ -798,7 +798,7 @@ class Recipe_model extends DataMapper {
                 $rat->recipe_id = $recipe_id;
                 $rat->user_id = $user_id;
                 $rat->value = $value;
-                return $rat->skip_validation()->save();
+                return $rat->save();
             }
         }
         return false;
