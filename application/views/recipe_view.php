@@ -1,7 +1,7 @@
 <div class="col-md-12 col-xs-12 page-header-title hr-dashed" style="margin-bottom:10px padding-bottom:0;">
 		{recipe_category_entries}
 		<div class="col-md-1 col-xs-3 border-right category-recipe-list text-center text-capitalize category-recipe-list">
-			<a href='<?php echo base_url();?>recipe/category/{recipe_category}'><h5>{recipe_category}</h5></a>
+			<a href='<?php echo base_url();?>index.php/recipe/category/{recipe_category}'><h5>{recipe_category}</h5></a>
 		</div>
 		{/recipe_category_entries}
 	</div>
@@ -26,7 +26,7 @@
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-bottom:5px">
 					<div class="col-md-6 col-xs-6 text-right text-capitalize">
-						<a href="<?php echo base_url();?>user/timeline/{recipe_author_id}">{recipe_author_name}</a>
+						<a href="<?php echo base_url();?>index.php/user/timeline/{recipe_author_id}">{recipe_author_name}</a>
 					</div>
 					<div class="col-md-6 col-xs-6 text-left text-capitalize" style="border:dashed 1px; border-top:0; border-right:0; border-bottom:0">
 						<i class="fa fa-calendar"></i>  {recipe_last_update}
@@ -72,7 +72,7 @@
 						<h3 style="margin-top:0" class="page-header">Ingredients</h3>
 						<?php if ($this->session->userdata('user_id') == $recipe_author) {
 							echo "
-								<a href='".base_url()."recipe/edit/".$recipe_id."' class='pull-right' style='margin-bottom:15px'>
+								<a href='".base_url()."index.php/recipe/edit/".$recipe_id."' class='pull-right' style='margin-bottom:15px'>
 									<button class='btn button-default'>
 										<i class='fa fa-pencil fa-lg'></i>
 										Edit Recipe

@@ -6,7 +6,7 @@
 
         <div style="padding-top:30px" class="panel-body" >
             {forget_password_alert}                
-            <form id="loginform" class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>user/forgotpassword">
+            <form id="loginform" class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>index.php/user/forgotpassword">
                         
                 <div style="margin-bottom: 25px" class="input-group">
                     <span class="input-group-addon button-default"><i class="fa fa-user"></i></span>
@@ -21,7 +21,7 @@
                     <div class="col-md-12 control">
                         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
                             Don't have an account! 
-                        <a href="<?php echo base_url();?>user/join" >
+                        <a href="<?php echo base_url();?>index.php/user/join" >
                             Join Here
                         </a>
                         </div>

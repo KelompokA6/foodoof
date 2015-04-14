@@ -4,7 +4,7 @@
   </div>
   <div class="panel-body panel-category" for="category">
     <div class="col-md-12 col-xs-6 category-list">
-      <a href="<?php echo base_url();?>recipe/category/Indonesian%20Food">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Indonesian%20Food">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/indonesian-food.jpg"/>
         </div>
@@ -15,7 +15,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list">
-      <a href="<?php echo base_url();?>recipe/category/rice">
+      <a href="<?php echo base_url();?>index.php/recipe/category/rice">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/rice.jpg"/>
         </div>
@@ -26,7 +26,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list">
-      <a href="<?php echo base_url();?>recipe/category/Noodle">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Noodle">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/noodle.jpg"/>
         </div>
@@ -37,7 +37,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list">
-      <a href="<?php echo base_url();?>recipe/category/Meat">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Meat">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/meat.jpg"/>
         </div>
@@ -48,7 +48,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list">
-      <a href="<?php echo base_url();?>recipe/category/Vegetarian">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Vegetarian">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/vegetarian.jpg"/>
         </div>
@@ -59,7 +59,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list">
-      <a href="<?php echo base_url();?>recipe/category/Seafood">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Seafood">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/seafood.jpg"/>
         </div>
@@ -70,7 +70,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list">
-      <a href="<?php echo base_url();?>recipe/category/Snack">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Snack">
        <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/snack.jpg"/>
         </div>
@@ -81,7 +81,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list">
-      <a href="<?php echo base_url();?>recipe/category/Dessert">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Dessert">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/dessert.jpg"/>
         </div>
@@ -92,7 +92,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list">
-      <a href="<?php echo base_url();?>recipe/category/Beverage">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Beverage">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/beverage.jpg"/>
         </div>
@@ -103,7 +103,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list">
-      <a href="<?php echo base_url();?>recipe/category/Chinese%20Food">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Chinese%20Food">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/chinese-food.jpg"/>
         </div>
@@ -114,7 +114,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list">
-      <a href="<?php echo base_url();?>recipe/category/Western%20Food">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Western%20Food">
        <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/western-food.jpg"/>
         </div>
@@ -125,7 +125,7 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list-last">
-      <a href="<?php echo base_url();?>recipe/category/Middle-East%20Food">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Middle-East%20Food">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/middle-eastern-food.jpg"/>
         </div>

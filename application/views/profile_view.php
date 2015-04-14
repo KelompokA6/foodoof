@@ -1,7 +1,7 @@
 <?php if ($this->session->userdata('user_id') == $profile_user_id) {
 	echo "
 		<div class='col-md-12 text-right'>
-			<a href='".base_url()."user/edit'>
+			<a href='".base_url()."index.php/user/edit'>
 				<button class='btn btn-primary'>
 					<i class='fa fa-pencil fa-lg'></i>
 					Edit

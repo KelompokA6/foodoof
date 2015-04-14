@@ -1,5 +1,5 @@
 <div class = "panel">
-	<form class="form-horizontal" action="<?php echo base_url();?>admin/save" method="post" enctype="multipart/form-data">
+	<form class="form-horizontal" action="<?php echo base_url();?>index.php/admin/save" method="post" enctype="multipart/form-data">
 	<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title">
 		<div class="col-md-3 col-no-padding-left" style="margin-top:10px">
 			<div class="list-group">

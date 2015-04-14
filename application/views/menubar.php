@@ -7,15 +7,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
       </button>
-      <a href="<?php echo base_url();?>" class="brand-menubar col-no-padding-left">
+      <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left">
         <img class="img-circle img-brand-menubar" width="75px" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>
       </a>
-      <a href="<?php echo base_url();?>recipe/create" class="btn-navbar-mobile pull-right text-center">
+      <a href="<?php echo base_url();?>index.php/recipe/create" class="btn-navbar-mobile pull-right text-center">
         <i class="fa fa-pencil-square-o fa-2x icon-default"></i><br>Write <br>A Recipe
       </a>
     </div>
     <div id="navbar">
-      <form id="form-search" class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>search">
+      <form id="form-search" class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>index.php/search">
         <div class="input-group form-group search-bar-menu">
           <input type="search" id="searchbar" class="form-control input-group-dropdown" name="q" class="typeahead" autocomplete="off" data-provide="typeahead" placeholder="Search Recipe By Title">
           <div class="input-group-btn">
@@ -57,7 +57,7 @@
             <button type="button" class="btn btn-success btn-cus btn-popover" data-container="body" data-toggle="popover" data-placement="bottom" 
             data-html="TRUE"
             data-content="
-              <form id='loginform' class='form-horizontal' role='form' method='post' action='<?php echo base_url();?>home/login'>      
+              <form id='loginform' class='form-horizontal' role='form' method='post' action='<?php echo base_url();?>index.php/home/login'>      
                   <div class='input-group'>
                       <span class='input-group-addon button-default'><i class='fa fa-user'></i></span>
                       <input id='login-username' type='text' class='form-control' name='email' value='' placeholder='Email' required>                                        
@@ -75,7 +75,7 @@
                       <div class='col-md-12 control'>
                           <div style='border-top: 1px solid#888; padding-top:15px; font-size:85%' >
                               Forgot password? 
-                          <a href='<?php echo base_url();?>user/forgotpassword'>
+                          <a href='<?php echo base_url();?>index.php/user/forgotpassword'>
                               Remember Here
                           </a>
                           </div>
@@ -86,7 +86,7 @@
             >
             Login    
             </button>
-            <a href="<?php echo base_url();?>user/join"  class="btn-group">
+            <a href="<?php echo base_url();?>index.php/user/join"  class="btn-group">
               <button type="button" class="btn button-default btn-cus">Join</button>
             </a>
           </div>

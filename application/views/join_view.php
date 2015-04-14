@@ -2,11 +2,11 @@
     <div class="panel panel-info">
         <div class="panel-heading">
             <div class="panel-title">Join Us</div>
-            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a href="<?php echo base_url();?>home/login">Login</a></div>
+            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a href="<?php echo base_url();?>index.php/home/login">Login</a></div>
         </div>  
         <div class="panel-body" >
             {join_alert}
-            <form id="signupform" class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>user/join">
+            <form id="signupform" class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>index.php/user/join">
                 <div class="form-group">
                     <label for="email" class="col-md-3 control-label">Email</label>
                     <div class="col-md-9">

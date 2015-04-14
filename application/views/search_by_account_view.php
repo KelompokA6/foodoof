@@ -16,14 +16,14 @@
   {search_by_account_entries}
   <div class="col-md-12 col-xs-12col-no-padding-right page-header" style="margin-top:5px">
     <div class="col-md-2 col-xs-3 detail-list-img" style="margin-right:2px">
-        <a href="<?php echo base_url();?>recipe/get/{search_by_account_id}">
+        <a href="<?php echo base_url();?>index.php/recipe/get/{search_by_account_id}">
           <img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>{search_by_account_photo}"/>
         </a>
     </div>
     <div class="col-md-6 col-xs-9 detail-list">
       <div class="col-md-12 col-xs-12 details">
           <div class="col-md-12 col-xs-9">
-            <a href="<?php echo base_url();?>user/timeline/{search_by_account_id}">
+            <a href="<?php echo base_url();?>index.php/user/timeline/{search_by_account_id}">
               <h4><p class="text-capitalize">{search_by_account_name}</p></h4>
             </a>
           </div>
@@ -48,7 +48,7 @@
         if($search_by_account_page_size - $search_by_account_page_now == ($search_by_account_size-1)){
             echo "disabled";
           }
-        echo "'><a href='".base_url()."search/?q=".$search_by_account_key."&searchby=account&page=".($search_by_account_page_now - 1)."' aria-label='Previous'>
+        echo "'><a href='".base_url()."index.php/search/?q=".$search_by_account_key."&searchby=account&page=".($search_by_account_page_now - 1)."' aria-label='Previous'>
             <span aria-hidden='true'>&laquo;</span>
           </a></li>";
         for ($i=1; $i <= $search_by_account_page_size ; $i++) { 
@@ -58,7 +58,7 @@
           }
           echo "
             <li class=".$active.">
-              <a href='".base_url()."search/?q=".$search_by_account_key."&searchby=account&page=".$i."'>".$i."</a>
+              <a href='".base_url()."index.php/search/?q=".$search_by_account_key."&searchby=account&page=".$i."'>".$i."</a>
             </li>
           ";
         }
@@ -67,7 +67,7 @@
         if($search_by_account_page_size == $search_by_account_page_now){
             echo "disabled";
           }
-        echo "'><a href='".base_url()."search/?q=".$search_by_account_key."&searchby=account&page=".($search_by_account_page_now + 1)."' aria-label='Next'>
+        echo "'><a href='".base_url()."index.php/search/?q=".$search_by_account_key."&searchby=account&page=".($search_by_account_page_now + 1)."' aria-label='Next'>
             <span aria-hidden='true'>&raquo;</span>
           </a></li></ul></nav>
         ";
