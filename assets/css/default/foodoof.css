@@ -2,7 +2,6 @@
   font-family: 'Lilly';
   src: url('Lilly-webfont.eot'); /* IE9 Compat Modes */
   src: url('Lilly-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('Lilly-webfont.woff2') format('woff2'), /* Super Modern Browsers */
        url('Lilly-webfont.woff') format('woff'), /* Pretty Modern Browsers */
        url('Lilly-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
        url('Lilly-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
@@ -559,5 +558,9 @@ ul.dropdown-search > li >label:focus {
   line-height: 48px;
   padding:10px;
   height: 68px;
+}
+
+.hr-dashed{
+  border-bottom: dashed 2px rgb(56,150,211);
 }
 
