@@ -1,7 +1,7 @@
 <div class="col-md-12">
 	<div class="panel panel-default">
 	  	<div class="panel-body">
-	  		<h2 class="page-header-title text-capitalize"> Edit Recipe<?php echo $this->session->flashdata('alert-edit');?>
+	  		<h2 class="page-header-title text-capitalize"> Edit Recipe<?php echo $this->session->flashdata('alert-notification');?>
 	  		</h2>
 	  		<form id="edit-recipe" action="<?php echo base_url()?>index.php/recipe/save/{edit_recipe_id}" method="POST" role="form">
 	  			<div class="col-md-12 page-header-title col-no-padding">
