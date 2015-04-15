@@ -704,7 +704,7 @@ $(document).ready(function() {
 			}
 		});
 	});
-	if($("#alert-edit").data('status')=='success'){
+	if($("#alert-notification").data('status')=='success'){
 		$.notify({
 			// options
 			message: $("#alert-notification").data('message') 

@@ -134,7 +134,7 @@ class Recipe extends CI_Controller {
 					$res = $recipe->addCategory($id, $selected);
 				}
 			}
-			$alert = "<div id='alert-notification' data-status='success' data-message='success edit recipe' class='hidden'></div>";
+			$alert = "<div id='alert-notification' data-status='success' data-message='Success Edit Recipe' class='hidden'></div>";
 			$this->session->set_flashdata('alert-notification', $alert);
 		}
 		redirect(base_url()."index.php/recipe/edit/$id");
