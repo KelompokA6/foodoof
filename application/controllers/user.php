@@ -145,7 +145,14 @@ class User extends CI_Controller {
 			'message' => "Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password",
 			);
 		file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend));*/
-		$this->load->library('email');
+		$config = array(
+			'protocol' => 'main',
+			'useragent' => 'FoodooF',
+			'wordwrap' => TRUE,
+			'mailtype' => 'html',
+			'priority' => 1,
+		);
+		$this->load->library('email', $config);
 		$this->email->from('noreply@foodoof');
 		$this->email->to($email);
 		$this->email->subject('Welcome to Foodoof');
@@ -206,9 +213,10 @@ class User extends CI_Controller {
 			$data['email'] = $email;
 			$password = $this->user_model->getPasswordByEmail($email);
 			if($password !== FALSE) {
-				if ($this->_sendPassword($email, $password)) {
+				$sendreport = $this->_sendPassword($email, $password);
+				if ($sendreport === TRUE) {
 					$data['forget_password_alert'] = "<div class=\"alert alert-success\">your password has been sent to $email.</div>";
-				}else $data['forget_password_alert'] = '<div class="alert alert-warning">sending email failed</div>';
+				}else $data['forget_password_alert'] = '<div class="alert alert-warning">sending email failed: $sendreport</div>';
 			} else $data['forget_password_alert'] = "<div class=\"alert alert-danger\">$email not registered</div>";
 		}
 		$this->user_viewer->showForgotPassword($data);
@@ -234,11 +242,23 @@ class User extends CI_Controller {
 			'message' => "You said that you have forgotten your password. Here you are! Your password is $password.",
 			);
 		file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend));*/
-		$this->load->library('email');
+		$config = array(
+			'protocol' => 'smtp',
+  		'smtp_host' => 'ssl://smtp.googlemail.com',
+  		'smtp_port' => 465,
+			'smtp_user'	=> '',
+			'smtp_pass'	=> '',
+			'wordwrap' => TRUE,
+			'mailtype' => 'html',
+			'priority' => 1,
+		);
+		$this->load->library('email', $config);
 		$this->email->from('noreply@foodoof');
 		$this->email->to($email);
 		$this->email->subject('Your FoodooF Password');
 		$this->email->message("You said that you have forgotten your password. Here you are! Your password is $password.");
-		return $this->email->send();
+		if($this->email->send())
+			return TRUE;
+		return $this->email->print_debugger();
 	}
 }
