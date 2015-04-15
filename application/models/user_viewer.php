@@ -37,6 +37,7 @@ class User_viewer extends CI_Model
 
   public function showProfile($profile)
   {
+    $profile = (object)array_map("htmlspecialchars", (array)$profile);
     // menubar
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE
@@ -73,6 +74,7 @@ class User_viewer extends CI_Model
 
   public function showUserTimeline($profile, $listRecipes, $pagenow, $totalpage)
   {
+    $profile = (object)array_map("htmlspecialchars", (array)$profile);
     // menubar
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE
@@ -113,6 +115,7 @@ class User_viewer extends CI_Model
 
   public function showChangePassword($profile, $data = array())
   {
+    $profile = (object)array_map("htmlspecialchars", (array)$profile);
     // menubar
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE
@@ -151,6 +154,7 @@ class User_viewer extends CI_Model
 
   public function showEditProfile($profile)
   {
+    $profile = (object)array_map("htmlspecialchars", (array)$profile);
     // menubar
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
     // DONE

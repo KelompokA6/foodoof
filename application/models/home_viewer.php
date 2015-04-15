@@ -38,18 +38,21 @@ class Home_viewer extends CI_Model
   	print_r($listHightlight);
   	print_r($listRecently);
     die;*/
+    $listHightlight = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $listHightlight);
+    $listTopRecipe = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $listTopRecipe);
+    $listRecently = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $listRecently);
     $datalist['list_recipes1'] = $listHightlight;
     $datalist['list_recipes2'] = $listHightlight;
     // print_r($listHightlight); die();
     $datalist['top_recipe_entries'] = $listTopRecipe;
     $datalist['recently_recipe_entries'] = $listRecently;
 
-  	$datacomplete['menubar'] = $this->getMenubar();
+    $datacomplete['menubar'] = $this->getMenubar();
 
-  	// content_homepage butuh: carousel_highlight, top_recipe_home, recently_recipe_home, dan category_home
-  	$data_content_homepage['carousel_highlight'] = $this->parser->parse('carousel_highlight', $datalist, TRUE);
-  	$data_content_homepage['top_recipe_home'] = $this->parser->parse('top_recipe_home', $datalist, TRUE);
-  	$data_content_homepage['recently_recipe_home'] = $this->parser->parse('recently_recipe_home', $datalist, TRUE);
+    // content_homepage butuh: carousel_highlight, top_recipe_home, recently_recipe_home, dan category_home
+    $data_content_homepage['carousel_highlight'] = $this->parser->parse('carousel_highlight', $datalist, TRUE);
+    $data_content_homepage['top_recipe_home'] = $this->parser->parse('top_recipe_home', $datalist, TRUE);
+    $data_content_homepage['recently_recipe_home'] = $this->parser->parse('recently_recipe_home', $datalist, TRUE);
     $data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
 
     // load content_website, isinya dari content_homepage
@@ -75,6 +78,7 @@ class Home_viewer extends CI_Model
       $row->highlight_recipe_views = $row->views;
       $row->highlight_recipe_last_update = strftime("%c", strtotime($row->last_update));
     }
+    $listHightlight = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $listHightlight);
     $datalist['highlight_recipe_entries'] = $listHightlight;
 
     $datacomplete['menubar'] = $this->getMenubar();
@@ -105,6 +109,7 @@ class Home_viewer extends CI_Model
       $row->top_recipe_views = $row->views;
       $row->top_recipe_last_update = strftime("%c", strtotime($row->last_update));
     }
+    $listTopRecipe = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $listTopRecipe);
     $datalist['top_recipe_entries'] = $listTopRecipe;
 
     $datacomplete['menubar'] = $this->getMenubar();
@@ -135,12 +140,13 @@ class Home_viewer extends CI_Model
       $row->recently_recipe_views = $row->views;
       $row->recently_recipe_last_update = strftime("%c", strtotime($row->last_update));
     }
+    $listRecently = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $listRecently);
     $datalist['recently_recipe_entries'] = $listRecently;
 
     $datacomplete['menubar'] = $this->getMenubar();
 
     $data_content_homepage['content_search'] = $this->parser->parse('recently_recipe_view', $datalist, TRUE);
-  	$data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
+    $data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
 
     // load content_website, isinya dari content_homepage
     $datacomplete['content_website'] = $this->parser->parse('content_search', $data_content_homepage, TRUE);
@@ -152,6 +158,7 @@ class Home_viewer extends CI_Model
   function showLogin($data)
   {
     $data['menubar'] = $this->getMenubar();
+    $data = array_map("htmlspecialchars", $data);
     $data['content_website'] = $this->parser->parse('login_view', $data, TRUE);
 
     // butuh menubar dan content_website
@@ -166,10 +173,10 @@ class Home_viewer extends CI_Model
         if (strlen($oneword) > 7) $oneword = ellipsize($oneword, 8, 1);
         return $this->parser->parse(
             'menubar_login',
-            array(
+            array_map("htmlspecialchars", array(
                 'menubar_user_name' =>  $oneword,
                 'menubar_user_photo' => $this->session->userdata('user_photo'),
-            ),
+            )),
             TRUE
         );
     } else return $this->parser->parse('menubar', array(), TRUE);

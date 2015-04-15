@@ -73,11 +73,13 @@ class Recipe extends CI_Controller {
 				}
 			}
 
+			$data = array_map("htmlspecialchars", $data);
 			$content_website = $this->parser->parse('edit_recipe_view', $data, TRUE);
 			$data = array(
 						"menubar" => $menubar,
 						"content_website" => $content_website,
 					);
+			$data = array_map("htmlspecialchars", $data);
 			$this->parser->parse('template_content', $data);
 		} else {
 			redirect(base_url()."index.php/recipe/get/$id");
@@ -292,11 +294,13 @@ class Recipe extends CI_Controller {
 						'recipe_category_entries' => $category,
 						'recipe_author_id' => ($r->author),
 					);
+			$data = array_map("htmlspecialchars", $data);
 			$content_website = $this->parser->parse('recipe_view', $data, TRUE);
 			$data = array(
 						"menubar" => $menubar,
 						"content_website" => $content_website,
 					);
+			$data = array_map("htmlspecialchars", $data);
 			$this->parser->parse('template_content', $data);
 		} else {
 			$this->pageNotFound();
@@ -312,6 +316,7 @@ class Recipe extends CI_Controller {
 					"menubar" => $menubar,
 					"content_website" => $content_website,
 				);
+		$data = array_map("htmlspecialchars", $data);
 		$this->parser->parse('template_content', $data);
 	}
 
@@ -347,6 +352,7 @@ class Recipe extends CI_Controller {
 			'category_recipe_page_now' => $page,
 			'category_recipe_page_size' =>  ceil($total/10),
 		);
+		$data = array_map("htmlspecialchars", $data);
 		$content_page = $this->parser->parse('category_view', $data, TRUE);	
 		$category_home = $this->parser->parse('category_home', array(), TRUE);
 		$data = array(
@@ -354,13 +360,15 @@ class Recipe extends CI_Controller {
 			'category_home' => $category_home,
 		);
 
+		$data = array_map("htmlspecialchars", $data);
 		$content_website = $this->parser->parse('content_page', $data, TRUE);
 		$data = array(
 					"menubar" => $menubar,
 					"content_website" => $content_website,
 				);
+		$data = array_map("htmlspecialchars", $data);
 		$this->parser->parse('template_content', $data);
 
-		var_dump($total);
+		// var_dump($total);
 	}
 }

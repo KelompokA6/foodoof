@@ -57,6 +57,7 @@ class Search extends CI_Controller {
       $row->search_by_title_recipe_views = $row->views;
       $row->search_by_title_recipe_last_update = strftime("%c", strtotime($row->last_update));
     }
+    $list_recipe = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $list_recipe);
     $datalist['search_by_title_recipe_entries'] = $list_recipe;
 
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
@@ -90,6 +91,7 @@ class Search extends CI_Controller {
       $row->search_by_ingredient_recipe_last_update = strftime("%c", strtotime($row->last_update));
       $row->search_by_ingredient_recipe_found = implode(", ", $row->found_ingredient);
     }
+    $list_recipe = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $list_recipe);
     $datalist['search_by_ingredient_recipe_entries'] = $list_recipe;
 
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
@@ -117,6 +119,7 @@ class Search extends CI_Controller {
       $row->search_by_account_gender = $row->gender;
       $row->search_by_account_age = (new DateTime())->diff(new DateTime($row->bdate))->y;
     }
+    $list_recipe = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $list_recipe);
     $datalist['search_by_account_entries'] = $list_account;
 
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
