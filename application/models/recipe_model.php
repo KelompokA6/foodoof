@@ -440,12 +440,11 @@ class Recipe_model extends DataMapper {
     function getCategoryRecipe($category1 = "other", $limit=10, $offset=0){
         $arrResult = array();
         $category = new Category();
-        $category->ilike('name', $category1)->order_by("recipe_id", "asc")->get();
+        $sql = "SELECT * FROM categories JOIN recipes ON categories.recipe_id=recipes.id WHERE categories.name = LOWER('".$category1."') ORDER BY recipes.rating desc, recipes.views desc";
+        $category->query($sql);
         $x = 0;
-        foreach ($category as $categories){
+        foreach ($category as $recipes) {
             if($x >= $offset && $limit > 0){
-                $recipes = new Recipe_model();
-                $recipes->get_by_id($categories->recipe_id);
                 if($recipes->status=='1' && $recipes->tmp_status=='0'){
                     $data = new stdClass();
                     $data->id = $recipes->id;
