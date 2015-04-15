@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2015 at 11:32 PM
+-- Generation Time: Apr 16, 2015 at 12:56 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -569,8 +569,8 @@ CREATE TABLE IF NOT EXISTS `recipes` (
   `portion` int(10) unsigned DEFAULT '1',
   `duration` int(10) unsigned DEFAULT '0',
   `author` int(10) unsigned NOT NULL,
-  `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `last_update` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_update` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `rating` decimal(2,1) unsigned NOT NULL DEFAULT '0.0',
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `tmp_status` tinyint(1) NOT NULL DEFAULT '1',
@@ -591,11 +591,11 @@ INSERT INTO `recipes` (`id`, `name`, `description`, `portion`, `duration`, `auth
 (2, 'Oreo Pudding', 'Pudding yang satu ini memang selalu menjadi juara dessert dirumah, apalagi bila di dukung dengan cuaca yg panas ^_^ \r\nby Iien Soegie', 20, 60, 1, '2015-04-15 21:14:29', '2015-04-15 21:14:29', '0.0', 1, 0, 3, 'images/recipe/2.jpg', 0),
 (3, 'ES CREAM UBI UNGU', 'warnanya bagus dan tentunya lebih sehat tanpa bahan pewarna \r\nby MEMEY\r\n', 5, 240, 1, '2015-04-15 21:11:48', '2015-04-15 21:11:48', '0.0', 1, 0, 1, 'images/recipe/3.jpg', 0),
 (4, 'spaghetti panggang', 'resep pasta yang mudah dan cepat, rasanya lebih mantap daripada spagheti biasa \r\nby Mega Fitri', 3, 30, 1, '2015-04-15 21:10:54', '2015-04-15 21:10:54', '3.1', 1, 0, 3, 'images/recipe/4.jpg', 0),
-(5, 'Fuyunghai Authentic Chinese Style', 'fuyunghai #homemade \r\nby Riska', 3, 60, 1, '2015-04-15 21:20:53', '2015-04-15 21:20:53', '0.0', 1, 0, 2, 'images/recipe/5.jpg', 1),
+(5, 'Fuyunghai Authentic Chinese Style', 'fuyunghai #homemade \r\nby Riska', 3, 60, 1, '2015-04-15 21:46:50', '2015-04-15 21:46:50', '0.0', 1, 0, 4, 'images/recipe/5.jpg', 1),
 (6, 'Mini Kebab Veggie', 'by ameLicious~', 10, 20, 1, '2015-04-15 21:18:12', '2015-04-15 21:18:12', '0.0', 1, 0, 2, 'images/recipe/6.jpg', 0),
 (7, 'broccoli tofu saus tiram', 'Menu sayur super gampang :D \r\nby Titie Aisyiah Nugraha', 4, 20, 1, '2015-04-15 21:12:30', '2015-04-15 21:12:30', '0.0', 1, 0, 1, 'images/recipe/7.jpg', 0),
 (8, '"Pempek Adaan"', 'Membuatnya mudah dan cepat, adonannya langsung digoreng tanpa harus melewati proses perebusan lagi\r\nby Nova Rilandari', 5, 60, 1, '2015-04-15 21:12:48', '2015-04-15 21:12:48', '0.0', 1, 0, 1, 'images/recipe/8.jpg', 0),
-(9, 'Dadar Vegeroni (Vegeroni Omelette)', 'Cepat, praktis, dan sehat. Cocok untuk menu sarapan, lauk makan siang, atau camilan =)\r\n_Papao', 2, 20, 1, '2015-04-15 21:19:46', '2015-04-15 21:19:46', '0.0', 0, 0, 1, 'images/recipe/9.jpg', 0),
+(9, 'Dadar Vegeroni (Vegeroni Omelette)', 'Cepat, praktis, dan sehat. Cocok untuk menu sarapan, lauk makan siang, atau camilan =)\r\n_Papao', 2, 20, 1, '2015-04-15 22:12:43', '2015-04-15 22:12:43', '0.0', 0, 0, 2, 'images/recipe/9.jpg', 0),
 (10, 'Gurame Pedas Manis Yummy', 'by Wattini Yudo', 3, 20, 1, '2015-04-15 21:16:43', '2015-04-15 21:16:43', '0.0', 1, 0, 1, 'images/recipe/10.jpg', 0),
 (11, 'Yakulty-fresh', 'Yakulty-fresh siap mjd temen #minumansegar mu di weekend ceria :)\r\nby Andra Tersiana', 1, 2, 2, '2015-04-15 05:07:32', '2015-04-15 05:07:32', '0.0', 1, 0, 2, 'images/recipe/11.jpg', 0),
 (12, 'LASAGNA GULUNG PRAKTIS', 'Resep praktis dan kilatnya pasta nih!\r\nby nining wahyoe\r\n', 2, 10, 2, '2015-04-15 05:16:25', '2015-04-15 05:16:25', '0.0', 1, 0, 1, 'images/recipe/12.jpg', 0),
@@ -616,8 +616,7 @@ INSERT INTO `recipes` (`id`, `name`, `description`, `portion`, `duration`, `auth
 (27, 'Fruity squash', 'Slruupp... segeerrr... \r\nby Andra Tersiana', 4, 20, 4, '2015-04-15 20:55:05', '2015-04-15 20:55:05', '0.0', 1, 0, 0, 'images/recipe/27.jpg', 0),
 (28, 'sandwich pang', 'by ibu Rafa bektim', 4, 10, 4, '2015-04-15 21:31:03', '2015-04-15 21:31:03', '0.0', 1, 0, 1, 'images/recipe/28.jpg', 1),
 (29, 'Chicken Teriyaki saus Honey Lemon', 'Resep sederhana cocok untuk menemani santap makan malam. \r\nby Akari Papa', 2, 20, 4, '2015-04-15 21:01:48', '2015-04-15 21:01:48', '4.8', 1, 0, 2, 'images/recipe/29.jpg', 0),
-(30, 'Gyoza isi ayam sayur (dumpling)', 'Resep ini saya ambil dr NHK world dan JTT selebihnya saya modifikasi sendiri^^ \r\nby Nova Paramita', 5, 60, 4, '2015-04-15 21:20:53', '2015-04-15 21:20:53', '0.0', 1, 0, 0, 'images/recipe/30.jpg', 1),
-(31, NULL, NULL, 1, 0, 3, '2015-04-15 21:25:49', '2015-04-15 21:25:49', '0.0', 0, 1, 0, '/assets/img/recipe-default.jpg', 0);
+(30, 'Gyoza isi ayam sayur (dumpling)', 'Resep ini saya ambil dr NHK world dan JTT selebihnya saya modifikasi sendiri^^ \r\nby Nova Paramita', 5, 60, 4, '2015-04-15 21:20:53', '2015-04-15 21:20:53', '0.0', 1, 0, 0, 'images/recipe/30.jpg', 1);
 
 --
 -- Triggers `recipes`
@@ -714,7 +713,7 @@ INSERT INTO `steps` (`recipe_id`, `no_step`, `description`, `photo`) VALUES
 (8, 6, 'Cuko :  Campurkan semua bahan. Masak di atas api sedang sambil diaduk sesekali hingga mengental. Angkat dan dinginkan, lalu saring', 'assets/img/step-default.jpg'),
 (9, 1, 'Rebus vegeroni dalam air mendidih selama kurleb 10 menit atau hingga al dente (empuk). Kemudian tiriskan.', 'assets/img/step-default.jpg'),
 (9, 2, 'Sediakan sebuah mangkuk, kocok lepas telur, masukkan garam dan lada, kocok hingga merata dan mengembang.', 'assets/img/step-default.jpg'),
-(9, 3, '\r\n4\r\nW1siziisijiwmtuvmdqvmdevmdyvntuvmdqvmjc2lzmynjk2njuynta1mzjlmji1yzbjlmpwzyjdlfsiccisimnvbnzlcnqilcityxv0by1vcmllbnqgil0swyjwiiwidgh1bwiilcixodb4il1d?sha=da67e616\r\nSelamat menikmati =)\r\nBagikan via:Fac', 'assets/img/step-default.jpg'),
+(9, 3, '4\r\nW1siziisijiwmtuvmdqvmdevmdyvntuvmdqvmjc2lzmynjk2njuynta1mzjlmji1yzbjlmpwzyjdlfsiccisimnvbnzlcnqilcityxv0by1vcmllbnqgil0swyjwiiwidgh1bwiilcixodb4il1d?sha=da67e616\r\nSelamat menikmati =)\r\nBagikan via:Fac', 'assets/img/step-default.jpg'),
 (9, 4, 'Selamat menikmati =)', 'images/step/9-4.jpg'),
 (10, 1, 'Cuci bersih ikan gurame dan bumbui dengan bawang putih dan garam, lalu goreng, jangan sampai kering banget. Angkat.', 'assets/img/step-default.jpg'),
 (10, 2, 'Panaskan minyak goreng, tumis Bawang Bombay, Bawang Putih, Saus Sambal, Saus tomat, Kecap manis, Lengkuas. Aduk-aduk.', 'assets/img/step-default.jpg'),
@@ -864,7 +863,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `name`, `password`, `gender`, `bdate`, `phone`, `status`, `photo`, `facebook`, `twitter`, `googleplus`, `path`, `last_access`) VALUES
-(1, 'je.fathanah@gmail.com', 'admin_jean', 'H+E4bPq8B0Lum7MAz+q7FDPpapuBZLlsWi5lM2Iv+6YzJstDRpC85IzNLh8EF0wa7TYJnFB4Pv1sdzsjmrfZYw==', 'F', '1994-06-19', '085762112191', 'ADMIN', 'images/user/1.jpg', '', '', '', '', '2015-04-15 04:45:09'),
+(1, 'je.fathanah@gmail.com', 'admin_jean', 'YsfsEXKSif6XmFKbyOPl87tWrcPzWcODN2MEgEf3Hg7sI9+plpnHKf0yday5HGdKYBanFf20nkSMhS5v1h3elg==', 'F', '1994-06-19', '085762112191', 'ADMIN', 'images/user/1.jpg', '', '', '', '', '2015-04-15 22:21:02'),
 (2, 'aagustinamora@gmail.com', 'admin_mora', 'im7fiUftv1nU1CYkaW7zOPzZ0ZBRwRnibtzpv1HuLbmV2zmn3CXa2HBslgVxPhYG3BQlrKpMNDhWSSgHhmaE4g==', 'F', '1994-08-05', '', 'ADMIN', 'assets/img/user-female.png', '', '', '', '', '2015-04-15 21:29:30'),
 (3, 'abidnurulhakim@gmail.com', 'admin_abid', 'GJrHN3jOqpxqKNa7IvYm45pWSQ6U8pb1FIEoJRrH8TMLsDDHV52ZXpOVBYHJf/JY/3XN5sTGhR9e6lqzaLPJng==', 'M', '1994-04-16', '', 'ADMIN', 'assets/img/user-male.png', '', '', '', '', '2015-04-15 21:26:34'),
 (4, 'alpancs@gmail.com', 'admin_alfan', 'hiaPR4oPdj/f3mayvd867Rgyoe21g/FomoZJ7MT/lQ67caJ5203zasrOTf40XzDTv6xA1x5jqWU4duDV3xhJsg==', 'M', '1994-07-28', '', 'ADMIN', 'assets/img/user-male.png', '', '', '', '', '2015-04-15 21:28:47'),
