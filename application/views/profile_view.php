@@ -1,15 +1,13 @@
-<?php if ($this->session->userdata('user_id') == $profile_user_id) {
-	echo "
-		<div class='col-md-12 text-right'>
-			<a href='".base_url()."index.php/user/edit'>
-				<button class='btn btn-primary'>
-					<i class='fa fa-pencil fa-lg'></i>
-					Edit
-				</button>
-			</a>
-		</div>
-	";
-}?>
+<?php if ($this->session->userdata('user_id') == $profile_user_id): ?>
+	<div class='col-md-12 text-right'>
+		<a href='<?php echo base_url();?>index.php/user/edit'>
+			<button class='btn button-default'>
+				<i class='fa fa-pencil fa-lg'></i>
+				Edit
+			</button>
+		</a>
+	</div>
+<?php endif;?>
 <div class="col-md-12 col-xs-12">
 	<h3 class="text-capitalize"> {profile_user_name}</h3>
 </div>

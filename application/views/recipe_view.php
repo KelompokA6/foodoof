@@ -76,16 +76,14 @@
 				<div class="col-md-12 col-xs-12 col-no-padding">
 					<div class="col-md-12 col-xs-12 col-no-padding">
 						<h3 style="margin-top:0" class="page-header">Ingredients</h3>
-						<?php if ($this->session->userdata('user_id') == $recipe_author) {
-							echo "
-								<a href='".base_url()."index.php/recipe/edit/".$recipe_id."' class='pull-right' style='margin-bottom:15px'>
-									<button class='btn button-default'>
-										<i class='fa fa-pencil fa-lg'></i>
-										Edit Recipe
-									</button>
-								</a>
-							";
-						}?>
+						<?php if ($this->session->userdata('user_id') == $recipe_author):?>
+							<a href='<?php echo base_url();?>index.php/recipe/edit/{recipe_id}' class='pull-right' style='margin-bottom:15px'>
+								<button class='btn button-default'>
+									<i class='fa fa-pencil fa-lg'></i>
+									Edit Recipe
+								</button>
+							</a>
+						<?php endif;?>
 					</div>
 					<div class="col-md-12 col-xs-12 col-no-padding-right">
 						<table class="table table-striped table-hover">
