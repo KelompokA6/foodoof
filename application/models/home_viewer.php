@@ -173,10 +173,10 @@ class Home_viewer extends CI_Model
         if (strlen($oneword) > 7) $oneword = ellipsize($oneword, 8, 1);
         return $this->parser->parse(
             'menubar_login',
-            array_map("htmlspecialchars", array(
-                'menubar_user_name' =>  $oneword,
+            array(
+                'menubar_user_name' =>  htmlspecialchars($oneword),
                 'menubar_user_photo' => $this->session->userdata('user_photo'),
-            )),
+            ),
             TRUE
         );
     } else return $this->parser->parse('menubar', array(), TRUE);
