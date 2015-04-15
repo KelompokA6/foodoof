@@ -176,6 +176,7 @@ class User extends CI_Controller {
 					if(file_exists('images/user/'.$data['id'].'.jpg')) {
 						$this->session->set_userdata('user_photo', 'images/user/'.$data['id'].'.jpg');
 					}
+					redirect(base_url()."index.php/user/profile/".$data['id']);
 				}
 				else
 					$data['edit_profile_alert'] = "<div class=\"alert alert-warning\">update profile failed</div>";
