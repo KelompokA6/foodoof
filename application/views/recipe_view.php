@@ -65,6 +65,12 @@
 						<button class="btn button-default col-md-12 col-xs-12"><i class="fa fa-money pull-left fa-inverse icons"></i> Generate Harga</button>
 					</div>
 				</div>
+				<div class="col-md-12 col-xs-12 col-no-padding" style="margin-top:15px">
+	  				<h4 class="page-header-title">Description Recipe</h4>
+	  				<div clas="col-md-12 col-no-padding">
+	  					<textarea  readonly class="form-control" rows="6" placeholder="Description of your recipe"  name="recipe_description">{recipe_description}</textarea>
+	  				</div>
+	  			</div>
 			</div>
 			<div class="col-md-8 col-xs-12" style="margin:10px 0 15px 0;">
 				<div class="col-md-12 col-xs-12 col-no-padding">
