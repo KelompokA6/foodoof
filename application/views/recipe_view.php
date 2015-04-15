@@ -9,7 +9,7 @@
 	<div class="panel panel-default">
 	  	<div class="panel-body">
 	  		<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title text-capitalize hr-dashed"  style="line-height:33px; font-size:16px;">
-	  			<div class="col-md-9 col-xs-6"><h2 style="margin:0">{recipe_name}<?php echo $this->session->flashdata('alert-edit');?></h2></div>
+	  			<div class="col-md-9 col-xs-6"><h2 style="margin:0">{recipe_name}</h2></div>
 	  			<div class="col-md-3 col-xs-6 pull-right col-no-padding" style="bottom:0">
 	  				<i class="fa fa-users icon-default"></i> {recipe_portion} Persons   |      
 		  			<i class="fa fa-clock-o icon-default"></i> {recipe_duration} Minutes

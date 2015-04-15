@@ -137,7 +137,7 @@ class Recipe extends CI_Controller {
 			$alert = "<div id='alert-edit' data-status='success' class='hidden'></div>";
 			$this->session->set_flashdata('alert-edit', $alert);
 		}
-		redirect(base_url()."index.php/recipe/get/$id");
+		redirect(base_url()."index.php/recipe/edit/$id");
 	}
 
 	public function create(){
