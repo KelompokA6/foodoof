@@ -7,7 +7,7 @@
           <span class="icon-bar"></span>
       </button>
       <a href="<?php echo base_url();?>"><img class="img-responsive pull-left" width="75px"  src="<?php echo base_url();?>assets/img/foodoof.png"/></a>
-      <a href="<?php echo base_url();?>recipe/create" class="pull-right btn-navbar-mobile text-center"><i class="fa fa-pencil-square-o fa-2x"></i><br>Write <br>A Recipe</a>
+      <a href="<?php echo base_url();?>index.php/recipe/create" class="pull-right btn-navbar-mobile text-center"><i class="fa fa-pencil-square-o fa-2x"></i><br>Write <br>A Recipe</a>
   </div>
     <!-- /.navbar-header -->
 

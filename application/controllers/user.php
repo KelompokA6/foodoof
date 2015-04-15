@@ -117,7 +117,7 @@ class User extends CI_Controller {
 					foreach ($profile_menubar as $key => $value) {
 						$this->session->set_userdata($key, $value);
 					}
-					redirect(base_url().'user');
+					redirect(base_url().'index.php/user');
 					die;
 				} else {
 					$data['join_alert'] = '<div class="alert alert-warning">Join Failed!</div>';

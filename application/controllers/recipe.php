@@ -144,7 +144,7 @@ class Recipe extends CI_Controller {
 		$recipe = new Recipe_model();
 		$id = $recipe->createRecipe_model(); 
 		if ($id != 0) {
-			redirect(base_url()."recipe/edit/".$id);
+			redirect(base_url()."index.php/recipe/edit/".$id);
 		} else {
 
 		}

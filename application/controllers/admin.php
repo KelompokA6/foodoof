@@ -4,7 +4,7 @@ class Admin extends CI_Controller {
 	public function index(){
 		$this->load->library('session');
 		if($this->session->userdata('user_id')==''){
-			redirect(base_url()."home/login", "refresh");
+			redirect(base_url()."index.php/home/login", "refresh");
 		}
 		$u = new User_model();
 		$u->get_by_id($this->session->userdata('user_id'));
@@ -46,7 +46,7 @@ class Admin extends CI_Controller {
 	public function save(){
 		$this->load->library('session');
 		if($this->session->userdata('user_id')==''){
-			redirect(base_url()."home/login", "refresh");
+			redirect(base_url()."index.php/home/login", "refresh");
 		}
 		$u = new User_model();
 		$u->get_by_id($this->session->userdata('user_id'));
@@ -69,7 +69,7 @@ class Admin extends CI_Controller {
 		}		
 		$highlight_alert = $success ? "<div class=\"alert alert-success text-center\">highlight recipe updated</div>" : "<div class=\"alert alert-danger\">update highlight failed</div>";
 		$this->session->set_flashdata('alert-admin', $highlight_alert);
-		redirect(base_url()."admin");
+		redirect(base_url()."index.php/admin");
 	}
 	function pageNotFound(){
 		$this->load->library('parser');
