@@ -282,7 +282,7 @@ class Recipe extends CI_Controller {
 						'recipe_portion' => $r->portion,
 						'recipe_duration' => $r->duration,
 						'recipe_author_name' => $user->getProfile($r->author)->name,
-						'recipe_last_update' => substr($r->last_update, 0, -8),
+						'recipe_last_update' => $r->last_update,
 						'recipe_author' => $r->author,
 						'recipe_id' => $id,
 						'recipe_ingredients' => $ingre,

@@ -315,6 +315,7 @@ $(document).ready(function() {
 		$("#remove-ingredient").show();
 		$countIngredient++;
 		$hasChanged = true;
+		$(".ingredient-item > div > .input-ingredient").last().focus();
 	});
 	$(document).on('click',"#remove-ingredient",function(){
 		$("#add-and-remove-btn-ingredient").remove();
@@ -353,7 +354,7 @@ $(document).ready(function() {
 		$("#step-entry").append($stepItem);
 		$("#step-entry").append($colAddRemoveBtnStep);
 		$("#remove-step").show();
-		
+		$(".step-item > div > textarea").last().focus();
 		/*
 		init pick photo for new step
 		*/

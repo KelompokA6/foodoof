@@ -29,7 +29,7 @@
 						<a href="<?php echo base_url();?>index.php/user/timeline/{recipe_author_id}">{recipe_author_name}</a>
 					</div>
 					<div class="col-md-6 col-xs-6 text-left text-capitalize" style="border:dashed 1px; border-top:0; border-right:0; border-bottom:0">
-						<i class="fa fa-calendar"></i>  {recipe_last_update}
+						<i class="fa fa-calendar icon-default"></i>  {recipe_last_update}
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-top:5px;">
@@ -68,7 +68,11 @@
 				<div class="col-md-12 col-xs-12 col-no-padding" style="margin-top:15px">
 	  				<h4 class="page-header-title">Description Recipe</h4>
 	  				<div clas="col-md-12 col-no-padding">
-	  					<textarea  readonly class="form-control" rows="6" placeholder="Description of your recipe"  name="recipe_description">{recipe_description}</textarea>
+	  					<div class="panel panel-info">
+	  						<div class="panel-body">
+							    {recipe_description}
+							</div>
+	  					</div>
 	  				</div>
 	  			</div>
 			</div>
