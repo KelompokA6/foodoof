@@ -3,6 +3,7 @@
   		<form class="form-horizontal" action="<?php echo base_url();?>index.php/user/edit" method="post" enctype="multipart/form-data">
 	    	<div class="col-md-12">
 	    		<h3 class="page-header"> Edit Profile</h3>
+	    		<?php echo $this->session->flashdata('alert-notification');?>
 	    	</div>
 	    	<div class="col-md-12">
 	    	{edit_profile_alert}

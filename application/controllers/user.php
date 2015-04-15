@@ -117,6 +117,8 @@ class User extends CI_Controller {
 					foreach ($profile_menubar as $key => $value) {
 						$this->session->set_userdata($key, $value);
 					}
+					$alert = "<div id='alert-notification' data-status='success' data-message='Welcome to Foodoof' class='hidden'></div>";
+					$this->session->set_flashdata('alert-notification', $alert);
 					redirect(base_url().'index.php/user');
 					die;
 				} else {
@@ -176,7 +178,9 @@ class User extends CI_Controller {
 					if(file_exists('images/user/'.$data['id'].'.jpg')) {
 						$this->session->set_userdata('user_photo', 'images/user/'.$data['id'].'.jpg');
 					}
-					redirect(base_url()."index.php/user/profile/".$data['id']);
+					$alert = "<div id='alert-notification' data-status='success' data-message='Success edit profile' class='hidden'></div>";
+					$this->session->set_flashdata('alert-notification', $alert);
+					 redirect(base_url()."index.php/user/edit/".$data['id']);
 				}
 				else
 					$data['edit_profile_alert'] = "<div class=\"alert alert-warning\">update profile failed</div>";

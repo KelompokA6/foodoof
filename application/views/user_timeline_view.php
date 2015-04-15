@@ -1,4 +1,5 @@
 <div class="panel panel-default">
+<?php echo $this->session->flashdata('alert-notification');?>
   	<div class="panel-body">
     	<div class="col-md-12 col-xs-12 col-no-padding-right">
     		<h3 class="page-header" style="margin-top:5px;"> {user_timeline_name}'s Timeline</h3>

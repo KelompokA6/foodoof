@@ -43,6 +43,12 @@ class Home extends CI_Controller {
 				foreach ($profile as $key => $value) {
 					$this->session->set_userdata($key, $value);
 				}
+				$alert = "<div id='alert-notification' data-status='success' data-message='Success Login' class='hidden'></div>";
+				$this->session->set_flashdata('alert-notification', $alert);
+				$u->where('email', $this->input->post('email'))->get();
+				if(strtolower($u->status) === "admin"){
+					redirect(base_url()."admin");
+				}
 				redirect(base_url());
 			} else {
 				$data['login_alert'] = '<div class="alert alert-danger">email not registered or password doesn\'t match</div>';
@@ -56,6 +62,8 @@ class Home extends CI_Controller {
 		$this->session->unset_userdata('user_id');
 		$this->session->unset_userdata('user_name');
 		$this->session->unset_userdata('user_photo');
+		$alert = "<div id='alert-notification' data-status='success' data-message='You have logout' class='hidden'></div>";
+		$this->session->set_flashdata('alert-notification', $alert);
 		redirect(base_url());
 		die;
 	}

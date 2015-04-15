@@ -2,6 +2,7 @@
 
 class Admin extends CI_Controller {
 	public function index(){
+		$this->load->model('home_viewer');
 		$this->load->library('session');
 		if($this->session->userdata('user_id')==''){
 			redirect(base_url()."index.php/home/login", "refresh");
@@ -13,7 +14,7 @@ class Admin extends CI_Controller {
 		}
 		$this->load->library('parser');
 		$data = array("recipe_author_id"=> 1);
-		$menubar = $this->parser->parse('menubar', $data, TRUE);
+		$menubar = $this->home_viewer->getMenubar();
 		
 		$r = new Recipe_model();
 		$list = $r->getAllRecipe(1);

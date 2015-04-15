@@ -42,5 +42,14 @@
 					Change Password
 			  	</a>
 		<?php endif; ?>
+		<?php if(strtolower($sidebar_user_status)==='admin'): ?>
+	  		<a href='<?php echo base_url();?>index.php/admin' class='list-group-item' title='Admin Page'>
+			  		<span class='fa-stack fa-lg'>
+					  <i class='fa fa-square fa-stack-2x icon-default'></i>
+					  <i class='fa fa-gear fa-stack-1x fa-inverse'></i>
+					</span>
+					Admin Page
+			  	</a>
+		<?php endif; ?>
 	</div>
 </div>

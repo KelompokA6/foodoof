@@ -209,6 +209,7 @@ class User_viewer extends CI_Model
         array(
             'sidebar_user_id' => $profile->id,
             'sidebar_user_photo' => $profile->photo,
+            'sidebar_user_status' => $profile->status,
         ),
         TRUE
     );

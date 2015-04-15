@@ -51,7 +51,7 @@
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" class="option-category-recipe" value="desert" name="recipe_category[]" {edit_recipe_desert_checked}> Desert
+									  	<input type="checkbox" class="option-category-recipe" value="dessert" name="recipe_category[]" {edit_recipe_dessert_checked}> Dessert
 									</label>
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
