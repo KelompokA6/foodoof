@@ -136,7 +136,7 @@ class User extends CI_Controller {
 	private function _send_email($profile)
 	{
 		extract($profile);
-		$tosend = array(
+		/*$tosend = array(
 			'email' => $email,
 			'password' => $password,
 			'from' => 'noreply@foodoof',
@@ -144,7 +144,7 @@ class User extends CI_Controller {
 			'subject' => 'Welcome to Foodoof',
 			'message' => "Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password",
 			);
-		file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend));
+		file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend));*/
 		$this->load->library('email');
 		$this->email->from('noreply@foodoof');
 		$this->email->to($email);
@@ -225,7 +225,7 @@ class User extends CI_Controller {
 	}
 
 	private function _sendPassword($email, $password){
-		$tosend = array(
+		/*$tosend = array(
 			'email' => $email,
 			'password' => $password,
 			'from' => 'noreply@foodoof',
@@ -233,8 +233,7 @@ class User extends CI_Controller {
 			'subject' => 'Your FoodooF Password',
 			'message' => "You said that you have forgotten your password. Here you are! Your password is $password.",
 			);
-		file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend));
-		// die('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend));
+		file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend));*/
 		$this->load->library('email');
 		$this->email->from('noreply@foodoof');
 		$this->email->to($email);
