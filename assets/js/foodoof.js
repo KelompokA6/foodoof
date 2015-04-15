@@ -707,7 +707,7 @@ $(document).ready(function() {
 	if($("#alert-edit").data('status')=='success'){
 		$.notify({
 			// options
-			message: "Your Changed Has Been Save." 
+			message: $("#alert-notification").data('message') 
 		},{
 			// settings
 			mouse_over:'pause',
@@ -721,10 +721,10 @@ $(document).ready(function() {
 			},
 		});
 	}
-	if($("#alert-edit").data('status')=='failed'){
+	if($("#alert-notification").data('status')=='failed'){
 		$.notify({
 			// options
-			message: "There Are Someting Wrong." 
+			message: $("#alert-notification").data('message') 
 		},{
 			// settings
 			mouse_over:'pause',
@@ -738,6 +738,25 @@ $(document).ready(function() {
 			},
 		});
 	}
+
+	if($("#alert-notification").data('status')=='warning'){
+		$.notify({
+			// options
+			message: $("#alert-notification").data('message') 
+		},{
+			// settings
+			mouse_over:'pause',
+			newest_on_top: true,
+			allow_dismiss: false,
+			type: 'warning',
+			delay: 2000,
+			placement: {
+				from: 'top',
+				align: 'center'
+			},
+		});
+	}
+
 	/*
 	init javascript bootstrap;
 	*/
