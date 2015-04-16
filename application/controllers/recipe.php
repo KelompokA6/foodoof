@@ -300,7 +300,7 @@ class Recipe extends CI_Controller {
 						"menubar" => $menubar,
 						"content_website" => $content_website,
 					);
-			$data = array_map("htmlspecialchars", $data);
+			// $data = array_map("htmlspecialchars", $data);
 			$this->parser->parse('template_content', $data);
 		} else {
 			$this->pageNotFound();
@@ -316,7 +316,7 @@ class Recipe extends CI_Controller {
 					"menubar" => $menubar,
 					"content_website" => $content_website,
 				);
-		$data = array_map("htmlspecialchars", $data);
+		// $data = array_map("htmlspecialchars", $data);
 		$this->parser->parse('template_content', $data);
 	}
 
