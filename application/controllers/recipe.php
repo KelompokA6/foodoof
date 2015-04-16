@@ -152,88 +152,6 @@ class Recipe extends CI_Controller {
 		}
 	}
 
-	// ini buat ambil resep dengan input id
-	public function recipes($id){
-		$recipe = new Recipe();
-		$this->load->library('session');
-		$userid = $this->session->userdata("user_id");
-		if (empty($userid)){
-			$data['profile']= $recipe->getRecipeProfile($id);
-			$data['ingredients'] = $recipe->getIngredients($id);
-			$data['steps'] = $recipe->getSteps($id);
-			$data['categories']= $recipe->getCategories($id);
-		} else {
-			$data['profile']= $recipe->getRecipeProfile($id, $userid);
-			$data['ingredients'] = $recipe->getIngredients($id, $userid);
-			$data['steps'] = $recipe->getSteps($id, $userid);
-			$data['categories']= $recipe->getCategories($id, $userid);
-		}
-
-		$this->load->model('viewer');
-		$this->viewer->show('coba_top_recipe', $data);
-	}
-
-	// top resep untuk halaman top Page.
-	// kalo buat ditampilin di home, cuma ambil 5 resep aja. 
-	// kalo buat ditampilin di page sendiri, diambil 10 resep.
-	public function top($isOnHome = true){
-		$recipe = new Recipe();
-		if ($isOnHome === 'true'){
-			$data=$recipe->getTopRecipe(5);
-		} else {
-			$data=$recipe->getTopRecipe(10);
-		}
-		$arr = array();
-		foreach ($data as $obj) {
-			array_push($arr, $obj);
-		}
-		$data1=array(
-			'data' => $arr
-			);
-		$this->load->library('parser');
-		$this->parser->parse("coba_top_recipe", $data1);
-	}
-
-	// ini buat ambil highlight resep
-	public function highlight($isOnHome = true){
-		$recipe = new Recipe();
-		if ($isOnHome === 'true'){
-			$data=$recipe->getHightlight(5);
-		} else {
-			$data=$recipe->getHightlight(10);
-		}
-		$arr = array();
-		foreach ($data as $obj) {
-			array_push($arr, $obj);
-		}
-		$data1=array(
-			'data' => $arr
-			);
-		$this->load->library('parser');
-		$this->parser->parse("coba_top_recipe", $data1);
-	}
-
-	// ini buat ambil recent resep
-	// kalo buat ditampilin di home, cuma ambil 5 resep aja. 
-	// kalo buat ditampilin di page sendiri, diambil 10 resep.
-	public function recent($isOnHome = 'true'){
-		$recipe = new Recipe();
-		if ($isOnHome === 'true'){
-			$data=$recipe->getRecently(5);
-		} else {
-			$data=$recipe->getRecently(10);
-		}
-		$arr = array();
-		foreach ($data as $obj) {
-			array_push($arr, $obj);
-		}
-		$data1=array(
-			'data' => $arr
-			);
-		$this->load->library('parser');
-		$this->parser->parse("coba_top_recipe", $data1);
-	}
-
 	public function get($id){
 		$recipe = new Recipe_model();
 		$recipe->incrementViews($id);
@@ -336,10 +254,10 @@ class Recipe extends CI_Controller {
 		foreach ($arr as $obj) {
 			$temp = array(
 				'category_recipe_id' => $obj->id,
-				'category_recipe_author_name' => $user->getProfile($obj->author)->name,
+				'category_recipe_author_name' => htmlspecialchars($user->getProfile($obj->author)->name),
 				'category_recipe_author_id' => ($obj->author),
 				'category_recipe_photo' => $obj->photo,
-				'category_recipe_name' => $obj->name,
+				'category_recipe_name' => htmlspecialchars($obj->name),
 				'category_recipe_last_update' => $obj->last_update,
 				'category_recipe_rating' => $obj->rating,
 			);
