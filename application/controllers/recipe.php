@@ -30,9 +30,9 @@ class Recipe extends CI_Controller {
 			if (!empty($r->ingredients)){
 				foreach ($r->ingredients as $obj) {
 					$temp = array(
-							'edit_recipe_ingredient_subject' => $obj->name,
+							'edit_recipe_ingredient_subject' => htmlspecialchars($obj->name),
 							'edit_recipe_ingredient_quantity' => $obj->quantity,
-							'edit_recipe_ingredient_unit' => $obj->units,
+							'edit_recipe_ingredient_unit' => htmlspecialchars($obj->units),
 						);
 					array_push($ingre, $temp);
 				}
@@ -46,7 +46,7 @@ class Recipe extends CI_Controller {
 					$temp = array(
 							'edit_recipe_step_title' => $id+"-"+$i++,
 							'edit_recipe_step_no_step' => $obj->no_step,
-							'edit_recipe_step_description' => $obj->description,
+							'edit_recipe_step_description' => htmlspecialchars($obj->description),
 							'edit_recipe_step_photo' => $obj->photo,
 						);
 					array_push($steps, $temp);
@@ -55,9 +55,9 @@ class Recipe extends CI_Controller {
 			$data = array(
 						'edit_recipe_id' => $id,
 						'edit_recipe_photo' => $r->photo,
-						'edit_recipe_title' => $r->name,
+						'edit_recipe_title' => htmlspecialchars($r->name),
 						'edit_recipe_portion' => $r->portion,
-						'edit_recipe_description' => $r->description,
+						'edit_recipe_description' => htmlspecialchars($r->description),
 						'edit_recipe_duration' => $r->duration,
 						'edit_recipe_ingredient_entries' => $ingre,
 						'edit_recipe_step_entries' => $steps,
@@ -73,13 +73,13 @@ class Recipe extends CI_Controller {
 				}
 			}
 
-			$data = array_map("htmlspecialchars", $data);
+			//$data = array_map("htmlspecialchars", $data);
 			$content_website = $this->parser->parse('edit_recipe_view', $data, TRUE);
 			$data = array(
 						"menubar" => $menubar,
 						"content_website" => $content_website,
 					);
-			$data = array_map("htmlspecialchars", $data);
+			//$data = array_map("htmlspecialchars", $data);
 			$this->parser->parse('template_content', $data);
 		} else {
 			redirect(base_url()."index.php/recipe/get/$id");

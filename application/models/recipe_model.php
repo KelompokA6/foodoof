@@ -147,13 +147,15 @@ class Recipe_model extends DataMapper {
             if(is_array($ingredients)){
                 $this->db->delete('ingredients', array('recipe_id' => $id));
                 foreach ($ingredients as $ingredient) {
-                    $ingre = new Ingredient();
-                    $ingre->recipe_id = $id;
-                    $ingre->name = $ingredient["name"];
-                    $ingre->quantity = $ingredient["quantity"];
-                    $ingre->units = $ingredient["units"];
-                    if(!$ingre->skip_validation()->save()){
-                        return false;
+                    if(!empty($ingredient["name"])){
+                        $ingre = new Ingredient();
+                        $ingre->recipe_id = $id;
+                        $ingre->name = $ingredient["name"];
+                        $ingre->quantity = $ingredient["quantity"];
+                        $ingre->units = $ingredient["units"];
+                        if(!$ingre->skip_validation()->save()){
+                            return false;
+                        }
                     }
                 }
             }
@@ -170,62 +172,65 @@ class Recipe_model extends DataMapper {
             }
             if(is_array($steps)){
                 $xStep=0;
+                $countEmpty = 1;
                 $stp = new Step();
                 $countStep = $stp->where("recipe_id", $id)->count(); 
                 foreach ($steps as $step) {
-                    $xStep++;
-                    $stptmp = new Step();
-                    $stptmp->where('recipe_id', $id);
-                    $stptmp->where('no_step', $xStep);
-                    $stptmp->get();
-                    if(!$stptmp->exists()){
-                        $stp = new Step();
-                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
-                            $stp->photo = "images/step/".$id."-".$xStep.".jpg";
-                        }
-                        else{
-                            if(file_exists("./images/tmp/step/".$id."-".$xStep."-default.jpg")){
-                                $stp->photo = 'assets/img/step-default.jpg';
-                                unlink("./images/tmp/step/".$id."-".$no_step."-default.jpg");     
+                    if(!empty($step["description"]) || file_exists("/images/tmp/step/".$id."-".($xStep+$countEmpty).".jpg")){
+                        $xStep++;
+                        $stptmp = new Step();
+                        $stptmp->where('recipe_id', $id);
+                        $stptmp->where('no_step', $xStep);
+                        $stptmp->get();
+                        if(!$stptmp->exists()){
+                            $stp = new Step();
+                            if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
+                                $stp->photo = "images/step/".$id."-".$xStep.".jpg";
                             }
                             else{
-                                $stp->photo = $stptmp->photo;       
+                                if(file_exists("/images/tmp/step/".$id."-".$xStep."-default.jpg")){
+                                    $stp->photo = 'assets/img/step-default.jpg';
+                                    unlink("/images/tmp/step/".$id."-".$xStep."-default.jpg");     
+                                }
+                                else{
+                                    $stp->photo = $stptmp->photo;       
+                                }
                             }
-                        }
-                        $stp->recipe_id = $id;
-                        $stp->description = $step["description"];
-                        $stp->no_step = $xStep;
-                        if(!$stp->skip_validation()->save()){
-                            return false;
-                        }
-                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
-                            if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
+                            $stp->recipe_id = $id;
+                            $stp->description = $step["description"];
+                            $stp->no_step = $xStep;
+                            if(!$stp->skip_validation()->save()){
                                 return false;
                             }
-                        }
-                    }
-                    else{
-                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
-                            $photo = "images/step/".$id."-".$xStep.".jpg";
+                            if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
+                                if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
+                                    return false;
+                                }
+                            }
                         }
                         else{
-                            if(file_exists("./images/tmp/step/".$id."-".$xStep."-default.jpg")){
-                                $photo = 'assets/img/step-default.jpg'; 
-                                unlink("./images/tmp/step/".$id."-".$no_step."-default.jpg");   
+                            if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
+                                $photo = "images/step/".$id."-".$xStep.".jpg";
                             }
                             else{
-                                $photo = $stptmp->photo;       
+                                if(file_exists("./images/tmp/step/".$id."-".$xStep."-default.jpg")){
+                                    $photo = 'assets/img/step-default.jpg'; 
+                                    unlink("./images/tmp/step/".$id."-".$xStep."-default.jpg");   
+                                }
+                                else{
+                                    $photo = $stptmp->photo;       
+                                }
                             }
-                        }
-                        $dataUpdate = array(
-                                        'description' => $step["description"],
-                                        'photo' => $photo);
-                        if(!$stptmp->where('recipe_id', $id)->where('no_step', $xStep)->update($dataUpdate)){
-                            return false;
-                        }
-                        if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
-                            if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
+                            $dataUpdate = array(
+                                            'description' => $step["description"],
+                                            'photo' => $photo);
+                            if(!$stptmp->where('recipe_id', $id)->where('no_step', $xStep)->update($dataUpdate)){
                                 return false;
+                            }
+                            if(file_exists("./images/tmp/step/".$id."-".$xStep.".jpg")){
+                                if(!rename("./images/tmp/step/".$id."-".$xStep.".jpg", "./images/step/".$id."-".$xStep.".jpg")){
+                                    return false;
+                                }
                             }
                         }
                     }
