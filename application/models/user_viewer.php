@@ -208,12 +208,22 @@ class User_viewer extends CI_Model
 
   function getSidebar($profile)
   {
+    $u = new User_model();
+    $id = $this->session->userdata('user_id');
+    if($id!=''){
+        $status = $u->getProfile($id)->status;
+    }
+    else{
+        $status = "member";    
+    }
+    
     return $this->parser->parse(
         'sidebar_user_view',
         array(
             'sidebar_user_id' => $profile->id,
             'sidebar_user_photo' => $profile->photo,
-            'sidebar_user_status' => $profile->status,
+            'sidebar_user_status_profile' => $profile->status,
+            'sidebar_user_status_admin' => $status,
         ),
         TRUE
     );
