@@ -202,6 +202,7 @@ $(document).ready(function() {
 	$(".ingredient-item:first > div > input").each(function(i){
 		$(this).prop('required',true);
 	});
+	$(".ingredient-item > div > input[type='number']").prop('required',false);
 
 	/*
 	init step if create recipe
