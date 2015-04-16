@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2015 at 12:56 AM
+-- Generation Time: Apr 16, 2015 at 03:34 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -863,10 +863,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `name`, `password`, `gender`, `bdate`, `phone`, `status`, `photo`, `facebook`, `twitter`, `googleplus`, `path`, `last_access`) VALUES
-(1, 'je.fathanah@gmail.com', 'admin_jean', 'YsfsEXKSif6XmFKbyOPl87tWrcPzWcODN2MEgEf3Hg7sI9+plpnHKf0yday5HGdKYBanFf20nkSMhS5v1h3elg==', 'F', '1994-06-19', '085762112191', 'ADMIN', 'images/user/1.jpg', '', '', '', '', '2015-04-15 22:21:02'),
-(2, 'aagustinamora@gmail.com', 'admin_mora', 'im7fiUftv1nU1CYkaW7zOPzZ0ZBRwRnibtzpv1HuLbmV2zmn3CXa2HBslgVxPhYG3BQlrKpMNDhWSSgHhmaE4g==', 'F', '1994-08-05', '', 'ADMIN', 'assets/img/user-female.png', '', '', '', '', '2015-04-15 21:29:30'),
-(3, 'abidnurulhakim@gmail.com', 'admin_abid', 'GJrHN3jOqpxqKNa7IvYm45pWSQ6U8pb1FIEoJRrH8TMLsDDHV52ZXpOVBYHJf/JY/3XN5sTGhR9e6lqzaLPJng==', 'M', '1994-04-16', '', 'ADMIN', 'assets/img/user-male.png', '', '', '', '', '2015-04-15 21:26:34'),
-(4, 'alpancs@gmail.com', 'admin_alfan', 'hiaPR4oPdj/f3mayvd867Rgyoe21g/FomoZJ7MT/lQ67caJ5203zasrOTf40XzDTv6xA1x5jqWU4duDV3xhJsg==', 'M', '1994-07-28', '', 'ADMIN', 'assets/img/user-male.png', '', '', '', '', '2015-04-15 21:28:47'),
+(1, 'je.fathanah@gmail.com', 'jean', 'YsfsEXKSif6XmFKbyOPl87tWrcPzWcODN2MEgEf3Hg7sI9+plpnHKf0yday5HGdKYBanFf20nkSMhS5v1h3elg==', 'F', '1994-06-19', '085762112191', 'ADMIN', 'images/user/1.jpg', '', '', '', '', '2015-04-16 01:30:44'),
+(2, 'aagustinamora@gmail.com', 'mora', 'im7fiUftv1nU1CYkaW7zOPzZ0ZBRwRnibtzpv1HuLbmV2zmn3CXa2HBslgVxPhYG3BQlrKpMNDhWSSgHhmaE4g==', 'F', '1994-08-05', '', 'ADMIN', 'assets/img/user-female.png', '', '', '', '', '2015-04-16 01:29:56'),
+(3, 'abidnurulhakim@gmail.com', 'abid', 'GJrHN3jOqpxqKNa7IvYm45pWSQ6U8pb1FIEoJRrH8TMLsDDHV52ZXpOVBYHJf/JY/3XN5sTGhR9e6lqzaLPJng==', 'M', '1994-04-16', '', 'ADMIN', 'assets/img/user-male.png', '', '', '', '', '2015-04-16 01:32:19'),
+(4, 'alpancs@gmail.com', 'alfan', 'hiaPR4oPdj/f3mayvd867Rgyoe21g/FomoZJ7MT/lQ67caJ5203zasrOTf40XzDTv6xA1x5jqWU4duDV3xhJsg==', 'M', '1994-07-28', '', 'ADMIN', 'assets/img/user-male.png', '', '', '', '', '2015-04-16 01:31:41'),
 (5, 'ffahmii@gmail.com', 'admin_fahmi', '0xM2tXywIkE28tUINicuWXZw2Cu3dC07/+pJE0+ZGEiTRToLAmTJRf34rZ0/pYYXVBU1GHy+/fMb4KIed79cZw==', 'M', '1993-12-27', '', 'ADMIN', 'assets/img/user-male.png', '', '', '', '', '2015-04-15 21:27:49'),
 (6, 'admin@foodoof.com', 'admin', 'rHGyPwnjxf9m4V/xGFd8ATcH6MylOR2niUNXwgCLolDZcHONjcDl/Q+jFB47dCxysBF8vyAHlOSid8qhVBKBgA==', 'M', '1970-01-01', NULL, 'admin', 'assets/img/user-male.png', NULL, NULL, NULL, NULL, '2015-04-15 05:45:07'),
 (7, 'member@foodoof.com', 'member', 'woHCWU44fFIuaaA5WyDPHotAc7o/LqaGQGRDz0tl+Ooz/nf0wxqB8+ndr34Kn9iiO1ewt3FAsum30rxuH4aM6g==', 'F', '1970-01-01', NULL, 'MEMBER', 'assets/img/user-female.png', NULL, NULL, NULL, NULL, '2015-04-15 21:23:04');
