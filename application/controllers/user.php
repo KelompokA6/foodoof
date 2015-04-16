@@ -111,18 +111,21 @@ class User extends CI_Controller {
 			$data['confirm_password'] = $this->input->post("confirm_password");
 
 			if ($this->_validate_join($data) === TRUE) {
-				if(!$this->_send_email($data)) { }
-				if($this->user_model->createUser($data)) {
-					$profile_menubar = $this->user_model->login($data['email'], $data['password']);
-					foreach ($profile_menubar as $key => $value) {
-						$this->session->set_userdata($key, $value);
+				if($this->_send_email($data)) {
+					if($this->user_model->createUser($data)) {
+						$profile_menubar = $this->user_model->login($data['email'], $data['password']);
+						foreach ($profile_menubar as $key => $value) {
+							$this->session->set_userdata($key, $value);
+						}
+						$alert = "<div id='alert-notification' data-status='success' data-message='Welcome to Foodoof' class='hidden'></div>";
+						$this->session->set_flashdata('alert-notification', $alert);
+						redirect(base_url().'index.php/user');
+						die;
+					} else {
+						$data['join_alert'] = '<div class="alert alert-warning">Join Failed!</div>';
 					}
-					$alert = "<div id='alert-notification' data-status='success' data-message='Welcome to Foodoof' class='hidden'></div>";
-					$this->session->set_flashdata('alert-notification', $alert);
-					redirect(base_url().'index.php/user');
-					die;
 				} else {
-					$data['join_alert'] = '<div class="alert alert-warning">Join Failed!</div>';
+					$data['join_alert'] = '<div class="alert alert-warning">Sending Email Failed!</div>';
 				}
 			} else {
 				$data['join_alert'] = '<div class="alert alert-danger">'.$this->_validate_join($data).'</div>';
@@ -136,12 +139,22 @@ class User extends CI_Controller {
 	private function _send_email($profile)
 	{
 		extract($profile);
-		$this->load->library('email', array());
+		$tosend = array(
+			'email' => $email,
+			'password' => $password,
+			'from' => 'noreply@foodoof',
+			'to' => $email,
+			'subject' => 'Welcome to Foodoof',
+			'message' => "Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password.",
+			);
+		$respon = (file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend)));
+		return !empty($respon);
+		/*$this->load->library('email', array());
 		$this->email->from('noreply@foodoof');
 		$this->email->to($email);
 		$this->email->subject('Welcome to Foodoof');
-		$this->email->message("Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password");
-		return $this->email->send();
+		$this->email->message("Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password.");
+		return $this->email->send();*/
 	}
 
 	public function edit(){
@@ -198,9 +211,9 @@ class User extends CI_Controller {
 			$password = $this->user_model->getPasswordByEmail($email);
 			if($password !== FALSE) {
 				$sendreport = $this->_sendPassword($email, $password);
-				if ($sendreport === TRUE) {
+				if ($sendreport == TRUE) {
 					$data['forget_password_alert'] = "<div class=\"alert alert-success\">your password has been sent to ".htmlspecialchars($email).".</div>";
-				}else $data['forget_password_alert'] = '<div class="alert alert-warning">sending email failed: $sendreport</div>';
+				}else $data['forget_password_alert'] = '<div class="alert alert-warning">sending email failed</div>';
 			} else $data['forget_password_alert'] = "<div class=\"alert alert-danger\">".htmlspecialchars($email)." not registered</div>";
 		}
 		$this->user_viewer->showForgotPassword($data);
@@ -217,7 +230,7 @@ class User extends CI_Controller {
 	}
 
 	private function _sendPassword($email, $password){
-		/*$tosend = array(
+		$tosend = array(
 			'email' => $email,
 			'password' => $password,
 			'from' => 'noreply@foodoof',
@@ -225,27 +238,18 @@ class User extends CI_Controller {
 			'subject' => 'Your FoodooF Password',
 			'message' => "You said that you have forgotten your password. Here you are! Your password is $password.",
 			);
-		file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend));*/
-		/*$config = array(
-			'protocol' => 'smtp',
-  		'smtp_host' => 'ssl://smtp.googlemail.com',
-  		'smtp_port' => 465,
-			'smtp_user'	=> '',
-			'smtp_pass'	=> '',
-			'wordwrap' => TRUE,
-			'mailtype' => 'html',
-			'priority' => 1,
-		);*/
-		$config = Array(
-	  'protocol' => 'smtp',
-	  'smtp_host' => 'ssl://smtp.googlemail.com',
-	  'smtp_port' => 465,
-	  'smtp_user' => 'foodoofa6@gmail.com', // change it to yours
-	  'smtp_pass' => 'badakfoodoof', // change it to yours
-	  'mailtype' => 'html',
-	  'charset' => 'iso-8859-1',
-	  'wordwrap' => TRUE
-	);
+		$respon = (file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend)));
+		return !empty($respon);
+		/*$config = Array(
+		  'protocol' => 'smtp',
+		  'smtp_host' => 'ssl://smtp.googlemail.com',
+		  'smtp_port' => 465,
+		  'smtp_user' => 'foodoofa6@gmail.com', // change it to yours
+		  'smtp_pass' => 'badakfoodoof', // change it to yours
+		  'mailtype' => 'html',
+		  'charset' => 'iso-8859-1',
+		  'wordwrap' => TRUE
+		);
 		$this->load->library('email', $config);
 		$this->email->from('noreply@foodoof');
 		$this->email->to($email);
@@ -253,6 +257,6 @@ class User extends CI_Controller {
 		$this->email->message("You said that you have forgotten your password. Here you are! Your password is $password.");
 		if($this->email->send())
 			return TRUE;
-		return $this->email->print_debugger();
+		return $this->email->print_debugger();*/
 	}
 }
