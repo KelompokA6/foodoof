@@ -47,10 +47,16 @@
                   <li class='";
         if($search_by_account_page_size - $search_by_account_page_now == ($search_by_account_size-1)){
             echo "disabled";
+            echo "'><a aria-label='Previous'>
+            <span aria-hidden='true'>&laquo;</span>
+          </a></li>";
           }
+          else{
         echo "'><a href='".base_url()."index.php/search/?q=".$search_by_account_key."&searchby=account&page=".($search_by_account_page_now - 1)."' aria-label='Previous'>
             <span aria-hidden='true'>&laquo;</span>
           </a></li>";
+            
+          }
         for ($i=1; $i <= $search_by_account_page_size ; $i++) { 
           $active = "";
           if($i == $search_by_account_page_now){
@@ -66,11 +72,18 @@
         echo "<li class='";
         if($search_by_account_page_size == $search_by_account_page_now){
             echo "disabled";
+             echo "'><a aria-label='Next'>
+            <span aria-hidden='true'>&raquo;</span>
+          </a></li></ul></nav>
+        ";
           }
+          else{
         echo "'><a href='".base_url()."index.php/search/?q=".$search_by_account_key."&searchby=account&page=".($search_by_account_page_now + 1)."' aria-label='Next'>
             <span aria-hidden='true'>&raquo;</span>
           </a></li></ul></nav>
         ";
+            
+          }
       }
     ?>
   </div>

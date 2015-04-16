@@ -48,10 +48,16 @@
                   <li class='";
         if($category_recipe_page_size - $category_recipe_page_now == ($category_recipe_page_size-1)){
             echo "disabled";
-          }
-        echo "'><a href='".base_url()."index.php/recipe/category/".$category_recipe_name."&page=".($category_recipe_page_now - 1)."' aria-label='Previous'>
+            echo "'><a aria-label='Previous'>
             <span aria-hidden='true'>&laquo;</span>
           </a></li>";
+          }
+          else{
+            echo "'><a href='".base_url()."index.php/recipe/category/".$category_recipe_name."&page=".($category_recipe_page_now - 1)."' aria-label='Previous'>
+            <span aria-hidden='true'>&laquo;</span>
+          </a></li>";    
+          }
+        
         for ($i=1; $i <= $category_recipe_page_size ; $i++) { 
           $active = "";
           if($i == $category_recipe_page_now){
@@ -67,11 +73,18 @@
         echo "<li class='";
         if($category_recipe_page_size == $category_recipe_page_now){
             echo "disabled";
-          }
-        echo "'><a href='".base_url()."index.php/recipe/category/".$category_recipe_name."&page=".($category_recipe_page_now + 1)."' aria-label='Next'>
+            echo "'><a aria-label='Next'>
             <span aria-hidden='true'>&raquo;</span>
           </a></li></ul></nav>
         ";
+          }
+          else{
+            echo "'><a href='".base_url()."index.php/recipe/category/".$category_recipe_name."&page=".($category_recipe_page_now + 1)."' aria-label='Next'>
+            <span aria-hidden='true'>&raquo;</span>
+          </a></li></ul></nav>
+        ";
+          }
+        
       }
     ?>
   </div>
