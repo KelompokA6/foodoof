@@ -238,8 +238,8 @@ class User extends CI_Controller {
 			'subject' => 'Your FoodooF Password',
 			'message' => "You said that you have forgotten your password. Here you are! Your password is $password.",
 			);
-		/*$respon = (file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend)));
-		return !empty($respon);*/
+		$respon = (file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend)));
+		return !empty($respon);
 		extract($tosend);
 		$config = array(
       'useragent' => 'FoodooF Team',
@@ -255,9 +255,9 @@ class User extends CI_Controller {
     $this->email->message($message);
     if($this->email->send())
     {
-      echo "Email to $email has been sent successfully.\n";
+      /*echo "Email to $email has been sent successfully.\n";
       echo $this->email->print_debugger();
-      die();
+      die();*/
       return TRUE;
     }
     return FALSE;
