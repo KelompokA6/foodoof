@@ -181,4 +181,61 @@ class Tempview extends CI_Controller {
 			echo "<br>";
 		}
 	}
+
+	public function sendPassword() {
+		$email = $this->input->get('email');
+		$u = new User_model();
+		$password = $u->getPasswordByEmail($email);;
+
+		$tosend = array(
+			'email' => $email,
+			'password' => $password,
+			'from' => 'noreply@foodoof',
+			'to' => $email,
+			'subject' => 'Your FoodooF Password',
+			'message' => "You said that you have forgotten your password. Here you are! Your password is $password.",
+			);
+		$respon = (file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend)));
+		print_r($respon);
+		return !empty($respon);
+		extract($tosend);
+		$config = array(
+      'useragent' => 'FoodooF Team',
+      'wordwrap' => TRUE,
+      'mailtype' => 'html',
+      'priority' => 1
+    );
+    $this->load->library('email',$config);
+    $this->email->from($from);
+    $this->email->from($from);
+    $this->email->to($email);
+    $this->email->subject($subject);
+    $this->email->message($message);
+    if($this->email->send())
+    {
+      /*echo "Email to $email has been sent successfully.\n";
+      echo $this->email->print_debugger();
+      die();*/
+      return TRUE;
+    }
+    return FALSE;
+		/*$config = Array(
+		  'protocol' => 'smtp',
+		  'smtp_host' => 'ssl://smtp.googlemail.com',
+		  'smtp_port' => 465,
+		  'smtp_user' => 'foodoofa6@gmail.com', // change it to yours
+		  'smtp_pass' => 'badakfoodoof', // change it to yours
+		  'mailtype' => 'html',
+		  'charset' => 'iso-8859-1',
+		  'wordwrap' => TRUE
+		);
+		$this->load->library('email', $config);
+		$this->email->from('noreply@foodoof');
+		$this->email->to($email);
+		$this->email->subject('Your FoodooF Password');
+		$this->email->message("You said that you have forgotten your password. Here you are! Your password is $password.");
+		if($this->email->send())
+			return TRUE;
+		return $this->email->print_debugger();*/
+	}
 }
