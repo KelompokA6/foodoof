@@ -263,7 +263,7 @@ class Recipe extends CI_Controller {
 				foreach ($r->steps as $obj) {
 					$temp = array(
 							'steps_number' => $obj->no_step,
-							'steps_description' => $obj->description,
+							'steps_description' => htmlspecialchars($obj->description),
 							'steps_photo' => $obj->photo,
 						);
 					array_push($steps, $temp);
@@ -273,17 +273,17 @@ class Recipe extends CI_Controller {
 			if (!empty($r->category)){
 				foreach ($r->category as $obj) {
 					$temp = array(
-						'recipe_category' => $obj->name,
+						'recipe_category' => htmlspecialchars($obj->name),
 					);
 					array_push($category, $temp);
 				}
 			}
 			$data = array(
-						'recipe_name' => $r->name,
-						'recipe_description' => $r->description,
+						'recipe_name' => htmlspecialchars($r->name),
+						'recipe_description' => htmlspecialchars($r->description),
 						'recipe_portion' => $r->portion,
 						'recipe_duration' => $r->duration,
-						'recipe_author_name' => $user->getProfile($r->author)->name,
+						'recipe_author_name' => htmlspecialchars($user->getProfile($r->author)->name),
 						'recipe_last_update' => $r->last_update,
 						'recipe_author' => $r->author,
 						'recipe_id' => $id,
@@ -294,7 +294,8 @@ class Recipe extends CI_Controller {
 						'recipe_category_entries' => $category,
 						'recipe_author_id' => ($r->author),
 					);
-			$data = array_map("htmlspecialchars", $data);
+
+			//$data = array_map("htmlspecialchars", $data);
 			$content_website = $this->parser->parse('recipe_view', $data, TRUE);
 			$data = array(
 						"menubar" => $menubar,
