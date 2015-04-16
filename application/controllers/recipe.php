@@ -344,6 +344,7 @@ class Recipe extends CI_Controller {
 			);
 			array_push($entries, $temp);
 		}
+		$entries = array_map(function($row){return $row = array_map("htmlspecialchars", $row);}, $entries);
 
 		$data = array(
 			'category_name' =>$name,
@@ -352,7 +353,7 @@ class Recipe extends CI_Controller {
 			'category_recipe_page_now' => $page,
 			'category_recipe_page_size' =>  ceil($total/10),
 		);
-		$data = array_map("htmlspecialchars", $data);
+		// $data = array_map("htmlspecialchars", $data);
 		$content_page = $this->parser->parse('category_view', $data, TRUE);	
 		$category_home = $this->parser->parse('category_home', array(), TRUE);
 		$data = array(
@@ -360,13 +361,13 @@ class Recipe extends CI_Controller {
 			'category_home' => $category_home,
 		);
 
-		$data = array_map("htmlspecialchars", $data);
+		// $data = array_map("htmlspecialchars", $data);
 		$content_website = $this->parser->parse('content_page', $data, TRUE);
 		$data = array(
 					"menubar" => $menubar,
 					"content_website" => $content_website,
 				);
-		$data = array_map("htmlspecialchars", $data);
+		// $data = array_map("htmlspecialchars", $data);
 		$this->parser->parse('template_content', $data);
 
 		// var_dump($total);
