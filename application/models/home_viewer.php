@@ -158,7 +158,7 @@ class Home_viewer extends CI_Model
   function showLogin($data)
   {
     $data['menubar'] = $this->getMenubar();
-    $data = array_map("htmlspecialchars", $data);
+    // $data = array_map("htmlspecialchars", $data);
     $data['content_website'] = $this->parser->parse('login_view', $data, TRUE);
 
     // butuh menubar dan content_website
