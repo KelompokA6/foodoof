@@ -136,27 +136,6 @@ class User extends CI_Controller {
 		$this->user_viewer->showRegister($data);
 	}
 
-	private function _send_email($profile)
-	{
-		extract($profile);
-		$tosend = array(
-			'email' => $email,
-			'password' => $password,
-			'from' => 'noreply@foodoof',
-			'to' => $email,
-			'subject' => 'Welcome to Foodoof',
-			'message' => "Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password.",
-			);
-		$respon = (file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend)));
-		return !empty($respon);
-		/*$this->load->library('email', array());
-		$this->email->from('noreply@foodoof');
-		$this->email->to($email);
-		$this->email->subject('Welcome to Foodoof');
-		$this->email->message("Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password.");
-		return $this->email->send();*/
-	}
-
 	public function edit(){
 		$data['id'] = $this->user_model->wajiblogin();
 
@@ -229,7 +208,28 @@ class User extends CI_Controller {
 		return TRUE;
 	}
 
-	private function _sendPassword($email, $password){
+	private function _send_email($profile)
+	{
+		extract($profile);
+		$tosend = array(
+			'email' => $email,
+			'password' => $password,
+			'from' => 'noreply@foodoof',
+			'to' => $email,
+			'subject' => 'Welcome to Foodoof',
+			'message' => "Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password.",
+			);
+		$respon = (file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend)));
+		return !empty($respon);
+		/*$this->load->library('email', array());
+		$this->email->from('noreply@foodoof');
+		$this->email->to($email);
+		$this->email->subject('Welcome to Foodoof');
+		$this->email->message("Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password.");
+		return $this->email->send();*/
+	}
+
+	private function _sendPassword($email, $password) {
 		$tosend = array(
 			'email' => $email,
 			'password' => $password,
@@ -238,8 +238,29 @@ class User extends CI_Controller {
 			'subject' => 'Your FoodooF Password',
 			'message' => "You said that you have forgotten your password. Here you are! Your password is $password.",
 			);
-		$respon = (file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend)));
-		return !empty($respon);
+		/*$respon = (file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend)));
+		return !empty($respon);*/
+		extract($tosend);
+		$config = array(
+      'useragent' => 'FoodooF Team',
+      'wordwrap' => TRUE,
+      'mailtype' => 'html',
+      'priority' => 1
+    );
+    $this->load->library('email',$config);
+    $this->email->from($from);
+    $this->email->from($from);
+    $this->email->to($email);
+    $this->email->subject($subject);
+    $this->email->message($message);
+    if($this->email->send())
+    {
+      echo "Email to $email has been sent successfully.\n";
+      echo $this->email->print_debugger();
+      die();
+      return TRUE;
+    }
+    return FALSE;
 		/*$config = Array(
 		  'protocol' => 'smtp',
 		  'smtp_host' => 'ssl://smtp.googlemail.com',
