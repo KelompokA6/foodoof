@@ -42,7 +42,7 @@
 					Change Password
 			  	</a>
 		<?php endif; ?>
-		<?php if($this->session->userdata('user_id')!='' && strtolower($sidebar_user_status)==='admin'): ?>
+		<?php if($this->session->userdata('user_id')!='' && strtolower($sidebar_user_status_profile)==='admin' && strtolower($sidebar_user_status_admin)==='admin'): ?>
 	  		<a href='<?php echo base_url();?>index.php/admin' class='list-group-item' title='Admin Page'>
 			  		<span class='fa-stack fa-lg'>
 					  <i class='fa fa-square fa-stack-2x icon-default'></i>
