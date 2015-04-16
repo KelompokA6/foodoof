@@ -172,12 +172,12 @@ class Recipe_model extends DataMapper {
             }
             if(is_array($steps)){
                 $xStep=0;
-                $countEmpty = 1;
+                $countEmpty = 0;
                 $stp = new Step();
                 $countStep = $stp->where("recipe_id", $id)->count(); 
                 foreach ($steps as $step) {
-                    if(!empty($step["description"]) || file_exists("/images/tmp/step/".$id."-".($xStep+$countEmpty).".jpg")){
-                        $xStep++;
+                    $xStep++;
+                    if(!empty($step["description"]) || file_exists("./images/tmp/step/".$id."-".($xStep+$countEmpty).".jpg") || file_exists("./images/step/".$id."-".$xStep.".jpg")){
                         $stptmp = new Step();
                         $stptmp->where('recipe_id', $id);
                         $stptmp->where('no_step', $xStep);
@@ -188,9 +188,9 @@ class Recipe_model extends DataMapper {
                                 $stp->photo = "images/step/".$id."-".$xStep.".jpg";
                             }
                             else{
-                                if(file_exists("/images/tmp/step/".$id."-".$xStep."-default.jpg")){
+                                if(file_exists("./images/tmp/step/".$id."-".$xStep."-default.jpg")){
                                     $stp->photo = 'assets/img/step-default.jpg';
-                                    unlink("/images/tmp/step/".$id."-".$xStep."-default.jpg");     
+                                    unlink("./images/tmp/step/".$id."-".$xStep."-default.jpg");     
                                 }
                                 else{
                                     $stp->photo = $stptmp->photo;       
@@ -233,6 +233,13 @@ class Recipe_model extends DataMapper {
                                 }
                             }
                         }
+                    }
+                    else{
+                        if(file_exists("./images/tmp/step/".$id."-".($xStep+$countEmpty)."-default.jpg")){
+                            unlink("./images/tmp/step/".$id."-".($xStep+$countEmpty)."-default.jpg");     
+                        }
+                        $xStep--;
+                        $countEmpty++;
                     }
                 }
                 if( $xStep < $countStep ){
