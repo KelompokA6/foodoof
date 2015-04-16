@@ -82,16 +82,16 @@ class Search extends CI_Controller {
     foreach ($list_recipe as $row) {
       $row->search_by_ingredient_recipe_id = $row->id;
       $row->search_by_ingredient_recipe_photo = $row->photo;
-      $row->search_by_ingredient_recipe_name = $row->name;
+      $row->search_by_ingredient_recipe_name = htmlspecialchars($row->name);
       $row->search_by_ingredient_recipe_rating = $row->rating;
       $row->search_by_ingredient_recipe_author_id = $row->author;
       $u->get_by_id($row->author);
-      $row->search_by_ingredient_recipe_author_name = $u->name;
+      $row->search_by_ingredient_recipe_author_name = htmlspecialchars($u->name);
       $row->search_by_ingredient_recipe_views = $row->views;
       $row->search_by_ingredient_recipe_last_update = strftime("%c", strtotime($row->last_update));
-      $row->search_by_ingredient_recipe_found = implode(", ", $row->found_ingredient);
+      $row->search_by_ingredient_recipe_found = htmlspecialchars(implode(", ", $row->found_ingredient));
     }
-    $list_recipe = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $list_recipe);
+    //$list_recipe = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $list_recipe);
     $datalist['search_by_ingredient_recipe_entries'] = $list_recipe;
 
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
