@@ -63,7 +63,13 @@ class Search extends CI_Controller {
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
 
     $data_content_homepage['content_search'] = $this->parser->parse('search_by_title_view', $datalist, TRUE);
-    $data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
+    $r = new Recipe_model();
+    $countCat = $r->getCountEachCategory();
+    foreach ($countCat as $row) {
+      $str = "category_".str_replace(" ", "_", $row->name)."_count";
+      $dataCat[$str] = $row->count;
+    }
+    $data_content_homepage['category_home'] = $this->parser->parse('category_home', $dataCat, TRUE);
 
     // load content_website, isinya dari content_homepage
     $datacomplete['content_website'] = $this->parser->parse('content_search', $data_content_homepage, TRUE);
@@ -97,7 +103,13 @@ class Search extends CI_Controller {
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
 
     $data_content_homepage['content_search'] = $this->parser->parse('search_by_ingredient_view', $datalist, TRUE);
-    $data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
+    $r = new Recipe_model();
+    $countCat = $r->getCountEachCategory();
+    foreach ($countCat as $row) {
+      $str = "category_".str_replace(" ", "_", $row->name)."_count";
+      $dataCat[$str] = $row->count;
+    }
+    $data_content_homepage['category_home'] = $this->parser->parse('category_home', $dataCat, TRUE);
 
     // load content_website, isinya dari content_homepage
     $datacomplete['content_website'] = $this->parser->parse('content_search', $data_content_homepage, TRUE);
@@ -125,7 +137,13 @@ class Search extends CI_Controller {
     $datacomplete['menubar'] = $this->home_viewer->getMenubar();
 
     $data_content_homepage['content_search'] = $this->parser->parse('search_by_account_view', $datalist, TRUE);
-    $data_content_homepage['category_home'] = $this->parser->parse('category_home', array(), TRUE);
+    $r = new Recipe_model();
+    $countCat = $r->getCountEachCategory();
+    foreach ($countCat as $row) {
+      $str = "category_".str_replace(" ", "_", $row->name)."_count";
+      $dataCat[$str] = $row->count;
+    }
+    $data_content_homepage['category_home'] = $this->parser->parse('category_home', $dataCat, TRUE);
 
     // load content_website, isinya dari content_homepage
     $datacomplete['content_website'] = $this->parser->parse('content_search', $data_content_homepage, TRUE);

@@ -92,8 +92,8 @@ class ProcessAjax extends CI_Controller {
 				$configImage['source_image'] = './images/tmp/recipe/'.$id.'.jpg';
 				$configImage['create_thumb'] = TRUE;
 				$configImage['maintain_ratio'] = TRUE;
-				$configImage['width']	= 360;
-				$configImage['height']	= 360;
+				$configImage['width']	= 400;
+				$configImage['height']	= 400;
 				$configImage['image_library'] = 'gd2';
 				$this->load->library('image_lib', $configImage);
 				if ($this->image_lib->resize())

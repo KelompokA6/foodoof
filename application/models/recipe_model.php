@@ -646,10 +646,10 @@ class Recipe_model extends DataMapper {
             $thresholdCounter = floor(sizeof($search_key)*floatval($threshold));
             for ($i=0; $i < sizeof($search_key) ; $i++) { 
                 if($i == 0){
-                    $searchkey .= "LOWER(name) LIKE LOWER('%".$search_key[$i]."%')"; 
+                    $searchkey .= "LOWER(name) LIKE LOWER('% ".$search_key[$i]." %') OR LOWER(name) LIKE LOWER('% ".$search_key[$i]."') OR LOWER(name) LIKE LOWER('".$search_key[$i]." %') OR LOWER(name) LIKE LOWER('".$search_key[$i]."')"; 
                 }
                 else {
-                    $searchkey .= " OR LOWER(name) LIKE LOWER('%".$search_key[$i]."%')"; 
+                    $searchkey .= " OR LOWER(name) LIKE LOWER('% ".$search_key[$i]." %') OR LOWER(name) LIKE LOWER('% ".$search_key[$i]."') OR LOWER(name) LIKE LOWER('".$search_key[$i]." %') OR LOWER(name) LIKE LOWER('".$search_key[$i]."')"; 
                 }
             }
             $ingredient = new Ingredient();
@@ -786,6 +786,32 @@ class Recipe_model extends DataMapper {
             array_push($arrResult, $data);
         }
         return $arrResult;
+    }
+
+    function getCountEachCategory(){
+        $category = array();
+        array_push($category, 'rice');
+        array_push($category, 'noodle');
+        array_push($category, 'meat');
+        array_push($category, 'vegetarian');
+        array_push($category, 'seafood');
+        array_push($category, 'snack');
+        array_push($category, 'dessert');
+        array_push($category, 'beverage');
+        array_push($category, 'indonesian food');
+        array_push($category, 'chinese food');
+        array_push($category, 'western food');
+        array_push($category, 'middle-eastern food');
+        array_push($category, 'other');
+        $arrResult = array();
+        foreach ($category as $obj) {
+            $cat = new Category();
+            $data = new stdClass();
+            $data->name = $obj;
+            $data->count = $cat->where('name',$obj)->count();
+            array_push($arrResult, $data);
+        }
+        return $arrResult; 
     }
 
     /*

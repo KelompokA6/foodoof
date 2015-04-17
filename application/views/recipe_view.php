@@ -95,7 +95,7 @@
 							<tr>
 								<td class="text-capitalize"> {ingre_name}
 								</td>
-								<td class="text-capitalize"> {ingre_quantity} {ingre_units}
+								<td> {ingre_quantity} {ingre_units}
 								</td>
 							</tr>
 						{/recipe_ingredients}
@@ -111,10 +111,10 @@
 						<div class="col-md-1 col-xs-1 col-no-padding-right">
 							{steps_number}
 						</div>
-						<div class="col-md-9 col-xs-9 col-no-padding-right">
+						<div class="col-md-8 col-xs-8 col-no-padding-right">
 							{steps_description}
 						</div>
-						<div class="col-md-2 col-xs-2 col-no-padding-right">
+						<div class="col-md-3 col-xs-3 col-no-padding-right">
 							<img src="<?php echo base_url();?>{steps_photo}" class="img-rounded img-responsive">
 						</div>
 					</div>

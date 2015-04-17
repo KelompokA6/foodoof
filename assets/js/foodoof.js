@@ -299,6 +299,41 @@ $(document).ready(function() {
 		}
 	});
 
+	function getUrlParameter(sParam)
+	{
+	    var sPageURL = window.location.search.substring(1);
+	    var sURLVariables = sPageURL.split('&');
+	    for (var i = 0; i < sURLVariables.length; i++) 
+	    {
+	        var sParameterName = sURLVariables[i].split('=');
+	        if (sParameterName[0].toLowerCase() === sParam) 
+	        {
+	            return sParameterName[1];
+	        }
+	    }
+	}
+	$searchBy = getUrlParameter('searchby');
+	if($searchBy.toLowerCase() === "title"){
+		$("ul#listSearch > li > input[value='title']").prop('checked', true);
+		$("ul#listSearch > li > input[value='ingredient']").prop('checked', false);
+		$("ul#listSearch > li > input[value='account']").prop('checked', false);
+		$("button.dropdown-cat-search").html("Title <span class='caret'></span>");
+		$("#searchbar").attr("placeholder", "Search Recipe By Title");
+	}
+	if($searchBy.toLowerCase() === "ingredient"){
+		$("ul#listSearch > li > input[value='title']").prop('checked', false);
+		$("ul#listSearch > li > input[value='ingredient']").prop('checked', true);
+		$("ul#listSearch > li > input[value='account']").prop('checked', false);
+		$("button.dropdown-cat-search").html("Ingredient <span class='caret'></span>");
+		$("#searchbar").attr("placeholder", "Search Recipe By Ingredient");
+	}
+	if($searchBy.toLowerCase() === "account"){
+		$("ul#listSearch > li > input[value='title']").prop('checked', false);
+		$("ul#listSearch > li > input[value='ingredient']").prop('checked', false);
+		$("ul#listSearch > li > input[value='account']").prop('checked', true);
+		$("button.dropdown-cat-search").html("Account <span class='caret'></span>");
+		$("#searchbar").attr("placeholder", "Search Account");
+	}     
 	/*
 	event for add ingredient
 	*/
@@ -628,7 +663,7 @@ $(document).ready(function() {
 		$hasChanged = true;
 		$idHighlight = $(this).val();
 		if($(this).prop('checked')){
-			if($countHighlight < 10){
+			if($countHighlight < 5){
 				$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'>Recipes <span>"+$idHighlight+"</span></div>";
 				$("#listHightlight").append($addHighlightRecipe);
 				$countHighlight++;

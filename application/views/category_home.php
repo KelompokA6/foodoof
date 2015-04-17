@@ -9,7 +9,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/indonesian-food.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Indonesian Food
+          Indonesian Food ({category_indonesian_food_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
@@ -20,7 +20,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/rice.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Rice
+          Rice ({category_rice_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
@@ -31,7 +31,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/noodle.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Noodle
+          Noodle ({category_noodle_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
@@ -42,7 +42,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/meat.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Meat
+          Meat ({category_meat_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
@@ -53,7 +53,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/vegetarian.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Vegetarian
+          Vegetarian ({category_vegetarian_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
@@ -64,7 +64,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/seafood.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Seafood
+          Seafood ({category_seafood_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
@@ -75,7 +75,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/snack.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Snack
+          Snack ({category_snack_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
@@ -86,7 +86,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/dessert.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Dessert
+          Dessert ({category_dessert_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
@@ -97,7 +97,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/beverage.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Beverage
+          Beverage ({category_beverage_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
@@ -108,7 +108,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/chinese-food.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Chinese Food
+          Chinese Food ({category_chinese_food_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
@@ -119,7 +119,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/western-food.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Western Food
+          Western Food ({category_western_food_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
@@ -130,7 +130,7 @@
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/middle-eastern-food.jpg"/>
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
-          Middle-Eastern
+          Middle-Eastern ({category_middle-eastern_food_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>

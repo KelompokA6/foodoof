@@ -169,7 +169,7 @@ class Recipe extends CI_Controller {
 				foreach ($r->ingredients as $obj) {
 					$temp = array(
 							'ingre_name' => $obj->name,
-							'ingre_quantity' => ($obj->quantity > 0.00) ? $obj->quantity : "",
+							'ingre_quantity' => ($obj->quantity > 0.00) ? trim(number_format($obj->quantity,2,'.',','),'0'.'.') : "",
 							'ingre_units' => $obj->units,
 							'ingre_info' => $obj->info,
 						);
