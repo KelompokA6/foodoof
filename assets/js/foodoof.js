@@ -312,7 +312,7 @@ $(document).ready(function() {
 	        }
 	    }
 	}
-	$searchBy = getUrlParameter('searchby');
+	$searchBy = getUrlParameter('searchby')+"";
 	if($searchBy.toLowerCase() === "title"){
 		$("ul#listSearch > li > input[value='title']").prop('checked', true);
 		$("ul#listSearch > li > input[value='ingredient']").prop('checked', false);
