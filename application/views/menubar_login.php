@@ -10,6 +10,9 @@
   <a href="<?php echo base_url();?>index.php/user/timeline" class="col-xs-12 text-center" style="margin:20px 0; font-size:16px; color:#FFD76B;">
     {menubar_user_name}
   </a>
+  <a href="<?php echo base_url();?>index.php/home/logout" class="col-xs-12 text-center">
+    <button type="button" class="btn button-default">Logout</button>
+  </a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-top" style="background:#CC211F">
   <div class="container">

@@ -134,7 +134,7 @@ body{
   .detail-list{
     padding-left: 0px;
     padding-right: 0px;
-    text-align: center
+    text-align: left;
   }
   .category-menu-name{
     padding-left: 0;
@@ -163,6 +163,10 @@ body{
     max-height:96px;
     margin:auto;
   }
+   .details-recipe-home{
+    padding-left: 0;
+    text-align: center;
+  }
   button.navbar-toggle-foodoof:hover{
     background-color: #FFD76B !important; 
   }
@@ -183,6 +187,23 @@ body{
   }
   .img-profile-slide-menu{
     max-height: 100px;
+  }
+  .item-recipe-home{
+    padding-bottom: 9px;
+    margin: 10px 0 20px;
+    border-bottom: 1px dashed #FFD76B;
+  }
+  .img-list-recipe-home{
+    max-height: 82px;
+  }
+  .col-no-padding-left-mobile{
+    padding-left: 0;
+  }
+  .col-no-padding-right-mobile{
+    padding-right: 0;
+  }
+  .col-no-padding-mobile{
+    padding: 0;
   }
 }
 @media(min-width:768px){
@@ -281,7 +302,7 @@ body{
   .detail-list-img{
     height:87px;
     padding:5px 3px 5px 3px;
-    margin-right: 15px;
+    margin-right: 10px;
   }
   .icons{
     padding-top:4px;
@@ -687,4 +708,23 @@ p.text-capitalize {
   height:82px;
   margin:auto;
 }
+.item-recipe-home{
+  padding-bottom: 9px;
+  margin: 10px 0 20px;
+  border-bottom: 1px dashed #FFD76B;
+}
+.detail-list-recipe-home{
+  border: dashed 1px #FFD76B;
+  border-top:0px;
+  border-right:0px;
+  border-bottom:0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  min-height: 87px;
+}
 
+.detail-list-img-recipe-home{
+  height:87px;
+  padding:5px 3px 5px 3px;
+  margin-right: 10px;
+}

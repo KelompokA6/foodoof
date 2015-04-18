@@ -20,7 +20,7 @@
           <img class="img-responsive img-rounded details-img-account" style="margin:auto" src="<?php echo base_url();?>{search_by_account_photo}"/>
         </a>
     </div>
-    <div class="col-md-6 col-xs-12 detail-list">
+    <div class="col-md-8 col-xs-12 detail-list">
       <div class="col-md-12 col-xs-12 details">
           <div class="col-md-12 col-xs-12">
             <a href="<?php echo base_url();?>index.php/user/timeline/{search_by_account_id}">

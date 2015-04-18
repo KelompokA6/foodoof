@@ -881,4 +881,60 @@ $(document).ready(function() {
 	*/
 	$('.carousel').carousel();
     $('.btn-popover').popover();
+    $maxHeightItem = 0;
+    $maxHeightDetail = 0;
+    $(".item-recipe-home").each(function(){
+    	if($(this).height() > $maxHeightItem){
+    		$maxHeightItem = $(this).height();
+    	}
+    });
+    $(".item-recipe-home").each(function(){
+    	$(this).height($maxHeightItem);
+    });
+    $(".detail-list-recipe-home").each(function(){
+    	if($(this).height() > $maxHeightDetail){
+    		$maxHeightDetail = $(this).height();
+       	}
+    });
+    $(".detail-list-recipe-home").each(function(){
+    	$(this).height($maxHeightDetail);
+    });
+    $(".detail-list-recipe-home > .details-recipe-home").each(function(){
+    	$height = $(this).find('.col-md-10').height();
+    	$(this).find(".icons").css('padding-top', ($height/2)-($(this).find(".icons").height()/2));
+    });
+    $(".detail-list-img-recipe-home").each(function(){
+    	$heightImg = $maxHeightDetail - $(this).find("a").find("img").height();
+    	$(this).height($maxHeightDetail);
+    	$(this).css('padding-top', $heightImg/2);
+    });
+    $( window ).resize(function() {
+    	$maxHeightItemtmp = 0;
+	    $maxHeightDetailtmp = 0;
+	    $(".item-recipe-home").each(function(){
+	    	if($(this).height() > $maxHeightItemtmp){
+	    		$maxHeightItemtmp = $(this).height();
+	    	}
+	    });
+	    $(".item-recipe-home").each(function(){
+	    	$(this).height($maxHeightItem);
+	    });
+	    $(".detail-list-recipe-home").each(function(){
+	    	if($(this).height() > $maxHeightDetailtmp){
+	    		$maxHeightDetailtmp = $(this).height();
+	       	}
+	    });
+	    $(".detail-list-recipe-home").each(function(){
+	    	$(this).height($maxHeightDetailtmp);
+	    });
+	    $(".detail-list-recipe-home > .details-recipe-home").each(function(){
+	    	$heighttmp = $(this).find('.col-md-10').height();
+	    	$(this).find(".icons").css('padding-top', ($heighttmp/2)-($(this).find(".icons").height()/2));
+	    });
+	    $(".detail-list-img-recipe-home").each(function(){
+	    	$heightImgtmp = $maxHeightDetailtmp - $(".detail-list-img-recipe-home > a > img").height();
+	    	$(this).height($maxHeightDetailtmp);
+	    	$(this).css('padding-top', $heightImgtmp/2);
+	    });
+    });
 });

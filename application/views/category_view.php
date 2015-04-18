@@ -16,7 +16,7 @@
           <img class="img-responsive img-rounded details-img-recipe" src="<?php echo base_url();?>{category_recipe_photo}"/>
         </a>
     </div>
-    <div class="col-md-6 col-xs-12 detail-list">
+    <div class="col-md-8 col-xs-12 detail-list">
       <div class="col-md-12 col-xs-12 details">
           <div class="col-md-12 col-xs-12">
             <a href="<?php echo base_url();?>index.php/recipe/get/{category_recipe_id}">
