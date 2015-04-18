@@ -9,15 +9,15 @@
 	<div class="panel panel-default">
 	  	<div class="panel-body">
 	  		<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title text-capitalize hr-dashed"  style="line-height:33px; font-size:16px;">
-	  			<div class="col-md-9 col-xs-6"><h2 style="margin:0">{recipe_name}</h2></div>
-	  			<div class="col-md-3 col-xs-6 pull-right col-no-padding" style="bottom:0">
+	  			<div class="col-md-9 col-xs-12"><h2 style="margin:0">{recipe_name}</h2></div>
+	  			<div class="col-md-3 col-xs-12 pull-right col-no-padding text-center" style="bottom:0">
 	  				<i class="fa fa-users icon-default"></i> {recipe_portion} Persons   |      
 		  			<i class="fa fa-clock-o icon-default"></i> {recipe_duration} Minutes
 	  			</div>
 	  		</div>	
-			<div class="col-md-4 col-xs-12 col-no-padding-left" style="margin:10px 0 15px 0;">
+			<div class="col-md-4 col-xs-12 col-no-padding-left" style="margin:10px 0 15px 0; padding-bottom:20px; border-bottom: solid 1px #FFD76B">
 				<div class="col-md-12 col-xs-12 col-no-padding">
-					<img src="<?php echo base_url();?>{recipe_photo}" class="img-rounded img-responsive" style="margin:auto">
+					<img src="<?php echo base_url();?>{recipe_photo}" class="img-rounded img-responsive img-recipe" style="margin:auto">
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center">
 					<div class="col-md-11" title="Rating">
@@ -25,10 +25,10 @@
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-bottom:5px">
-					<div class="col-md-6 col-xs-6 text-right text-capitalize">
+					<div class="col-md-5 col-xs-6 text-right text-capitalize">
 						<a href="<?php echo base_url();?>index.php/user/timeline/{recipe_author_id}">{recipe_author_name}</a>
 					</div>
-					<div class="col-md-6 col-xs-6 text-left text-capitalize" style="border:dashed 1px; border-top:0; border-right:0; border-bottom:0">
+					<div class="col-md-7 col-xs-6 text-left text-capitalize" style="border:dashed 1px #FFD76B; border-top:0; border-right:0; border-bottom:0">
 						<i class="fa fa-calendar icon-default"></i>  {recipe_last_update}
 					</div>
 				</div>
@@ -75,15 +75,16 @@
 			<div class="col-md-8 col-xs-12" style="margin:10px 0 15px 0;">
 				<div class="col-md-12 col-xs-12 col-no-padding">
 					<div class="col-md-12 col-xs-12 col-no-padding">
-						<h3 style="margin-top:0" class="page-header">Ingredients</h3>
+						<h3 style="margin-top:0" class="page-header-title">Ingredients
 						<?php if ($this->session->userdata('user_id') == $recipe_author):?>
-							<a href='<?php echo base_url();?>index.php/recipe/edit/{recipe_id}' class='pull-right' style='margin-bottom:15px'>
+							<a href='<?php echo base_url();?>index.php/recipe/edit/{recipe_id}' class='pull-right'>
 								<button class='btn button-default'>
 									<i class='fa fa-pencil fa-lg'></i>
-									Edit Recipe
+									Edit
 								</button>
 							</a>
 						<?php endif;?>
+						</h3>
 					</div>
 					<div class="col-md-12 col-xs-12 col-no-padding-right">
 						<table class="table table-striped table-hover">
@@ -100,7 +101,7 @@
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding">
 					<div class="col-md-12 col-xs-12 col-no-padding">
-						<h3 style="margin-top:0" class="page-header">Steps</h3>
+						<h3 style="margin-top:0" class="page-header-title">Steps</h3>
 					</div>
 					{recipe_steps}
 					<div class="col-md-12 col-xs-12 col-no-padding-right page-header" style="margin:10px 0">

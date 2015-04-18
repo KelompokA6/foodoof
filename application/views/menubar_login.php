@@ -1,11 +1,24 @@
+<div class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation" style="background:rgb(178, 15, 13)">
+  <div class="col-xs-12 text-center page-header-title">
+    <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left">
+      <img class="img-circle img-brand-menubar" width="75px" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>
+    </a>  
+  </div>
+  <a href="<?php echo base_url();?>index.php/user/timeline" class="col-xs-12 text-center" style="margin:20px 0; font-size:16px; color:#FFD76B;">
+    <img class="img-rounded img-profile-slide-menu" src="<?php echo base_url();?>{menubar_user_photo}"/>
+  </a>
+  <a href="<?php echo base_url();?>index.php/user/timeline" class="col-xs-12 text-center" style="margin:20px 0; font-size:16px; color:#FFD76B;">
+    {menubar_user_name}
+  </a>
+</div>
 <nav class="navbar navbar-default navbar-fixed-top" style="background:#CC211F">
   <div class="container">
     <div class="navbar-header col-md-1 col-no-padding-right" style="padding-bottom:10px">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse" style="margin:21px 10px 21px 10px">
+      <button type="button" class="navbar-toggle navbar-toggle-foodoof" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body" data-placement='left' style="margin:21px 10px 21px 10px">
           <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          <span class="icon-bar icon-default"></span>
+          <span class="icon-bar icon-default"></span>
+          <span class="icon-bar icon-default"></span>
       </button>
       <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left">
         <img class="img-circle img-brand-menubar" width="75px" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>
@@ -47,18 +60,18 @@
           </div>
         </div>
       </form>
-      <div class="col-md-4 col-menu-user mobile-hidden" style="padding-left:30px">
+      <div class="col-md-5 col-menu-user mobile-hidden" style="padding-left:30px">
         <div class="col-md-3 link-by-icon text-right" >
           <a href="<?php echo base_url();?>index.php/recipe/create" title="New Recipe">
             <i class="fa fa-pencil-square-o fa-2x icon-default"></i>
           </a>
         </div>
-        <a href="<?php echo base_url();?>index.php/user/timeline" class="col-md-6">
+        <a href="<?php echo base_url();?>index.php/user/timeline" class="col-md-6 col-no-padding">
           <div class="col-md-12 hover-menubar text-left" title="Profile">
-            <div class="col-md-4 col-no-padding-left col-no-padding-right div-img-profile-menubar text-left">
+            <div class="col-md-4 col-no-padding-left col-no-padding-right div-img-profile-menubar text-right">
               <img class="img-circle img-profile-menubar" src="<?php echo base_url();?>{menubar_user_photo}"/>
             </div>
-            <div class="col-md-8 col-no-padding text-left" style="line-height:34px">
+            <div class="col-md-8 col-no-padding text-center" style="line-height:34px">
               {menubar_user_name}
             </div>
           </div>

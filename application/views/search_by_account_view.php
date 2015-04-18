@@ -17,7 +17,7 @@
   <div class="col-md-12 col-xs-12 col-no-padding-right page-header" style="margin-top:5px">
     <div class="col-md-2 col-xs-12 detail-list-img" style="margin-right:2px">
         <a href="<?php echo base_url();?>index.php/recipe/get/{search_by_account_id}">
-          <img class="img-responsive img-rounded img-list-account" style="margin:auto" src="<?php echo base_url();?>{search_by_account_photo}"/>
+          <img class="img-responsive img-rounded details-img-account" style="margin:auto" src="<?php echo base_url();?>{search_by_account_photo}"/>
         </a>
     </div>
     <div class="col-md-6 col-xs-12 detail-list">

@@ -1,11 +1,53 @@
-<nav class="navbar navbar-default navbar-fixed-top" style="background:#CC211F;">
+<div class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation" style="background:rgb(178, 15, 13)">
+  <div class="col-xs-12 text-center page-header-title">
+    <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left">
+      <img class="img-circle img-brand-menubar" width="75px" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>
+    </a>  
+  </div>
+  <div id="btn-group-slide-menu" class="col-xs-12 text-center col-no-padding">
+    <div class="col-xs-12">
+      <form id='loginform-slide-menu' class='form-horizontal hidden' role='form' method='post' action='<?php echo base_url();?>index.php/home/login'>      
+        <div class='input-group'>
+            <span class='input-group-addon button-default'><i class='fa fa-user'></i></span>
+            <input id='login-username' type='text' class='form-control' name='email' value='' placeholder='Email' required>                                        
+        </div><br>        
+        <div class='input-group'>
+                    <span class='input-group-addon button-default'><i class='fa fa-lock'></i></span>
+                    <input id='login-password' type='password' class='form-control' name='password' placeholder='Password' required>
+                </div>
+        <div style='margin-top:10px' class='form-group'>
+            <div class='col-sm-12 controls text-center'>
+              <button id='btn-signin' type='submit' class='btn btn-success'>Login</button>
+            </div>
+        </div>
+        <div class='form-group'>
+            <div class='col-md-12 control'>
+                <div style='border-top: 1px solid#888; padding-top:15px; font-size:85%; color:#FFD76B'>
+                    Forgot password? 
+                <a href='<?php echo base_url();?>index.php/user/forgotpassword'>
+                    Remember Here
+                </a>
+                </div>
+            </div>
+        </div>    
+      </form>
+    </div>
+    <div class="btn-group col-xs-12" role="group">
+      <button type="button" class="btn btn-success btn-cus" id="btn-login-slide-menu" style="width:120px">Login</button>
+      <a id="btn-join-slide-menu" href="<?php echo base_url();?>index.php/user/join" class="btn-group">
+        <button type="button" class="btn button-default" style="width:120px">Join</button>
+      </a>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-top" style="background:#CC211F">
   <div class="container">
     <div class="navbar-header col-md-1 col-no-padding-right" style="padding-bottom:10px">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse" style="margin:21px 10px 21px 10px">
+      <button type="button" class="navbar-toggle navbar-toggle-foodoof" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body" data-placement='left' style="margin:21px 10px 21px 10px">
           <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          <span class="icon-bar icon-default"></span>
+          <span class="icon-bar icon-default"></span>
+          <span class="icon-bar icon-default"></span>
       </button>
       <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left">
         <img class="img-circle img-brand-menubar" width="75px" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>

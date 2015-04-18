@@ -683,14 +683,14 @@ $(document).ready(function() {
 		$idHighlight = $(this).val();
 		if($(this).prop('checked')){
 			if($countHighlight < 5){
-				$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'>Recipes <span>"+$idHighlight+"</span></div>";
+				$addHighlightRecipe="<div class='col-md-12 list-group-item animated fadeInDown' data-id='"+$idHighlight+"'title='highlight setting'>Recipes <span>"+$idHighlight+"</span></div>";
 				$("#listHightlight").append($addHighlightRecipe);
 				$countHighlight++;
 			}
 			else{
 				$.notify({
 					// options
-					message: "You have selected 10 recipes" 
+					message: "You have selected 5 recipes" 
 				},{
 					// settings
 					mouse_over:'pause',
@@ -865,6 +865,16 @@ $(document).ready(function() {
 			},
 		});
 	}
+
+	/*
+	slide menubar
+	*/
+	$("#btn-login-slide-menu").click(function(){
+		$("#loginform-slide-menu").removeClass('hidden');
+		$("#loginform-slide-menu").addClass('animated fadeInDown');
+		$(this).addClass('hidden');
+		$("#btn-join-slide-menu").removeClass('btn-group');
+	});
 
 	/*
 	init javascript bootstrap;

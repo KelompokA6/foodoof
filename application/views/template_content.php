@@ -5,11 +5,12 @@
     <link href="<?php echo base_url();?>assets/plugin/bower-components/kartik-star-rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url();?>assets/plugin/bower-components/kartik-file-input/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url();?>assets/plugin/bower-components/enhancement/css/dropdowns-enhancement.min.css" media="all" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/t1/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/t1/bootstrap-theme.css">
+    <!-- <link rel="stylesheet" type="text/css" href="<?php //echo base_url();?>assets/css/t1/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?php //echo base_url();?>assets/css/t1/bootstrap-theme.css"> -->
     <link href="<?php echo base_url();?>assets/plugin/bower-components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>assets/plugin/bower-components/elusive-icons/css/elusive-icons.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof.css">
 </head>
   <body>
@@ -64,5 +65,6 @@
   <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap3-typeahead.js" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/enhancement/js/dropdowns-enhancement.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-notify/bootstrap-notify.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/jasny-bootstrap.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
 </html>

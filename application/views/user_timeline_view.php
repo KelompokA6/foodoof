@@ -18,7 +18,7 @@
     	<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title">
 			<div class="col-md-2 col-xs-6 col-md-offset-0 col-xs-offset-3 detail-list-img" style="margin-right:2px; margin-bottom:10px">
 		        <a href="<?php echo base_url();?>index.php/recipe/get/{user_timeline_recipe_id}">
-		        	<img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>{user_timeline_recipe_photo}"/>
+		        	<img class="img-responsive img-rounded details-img-recipe" src="<?php echo base_url();?>{user_timeline_recipe_photo}"/>
 		        </a>
 		    </div>
 		    <div class="col-md-5 col-xs-12 detail-list">
@@ -72,7 +72,7 @@
 		    </div>
 		</div>
 		{/user_timeline_recipe_entries}
-		<div class="col-md-12 text-center">
+		<div class="col-md-12 col-xs-12 text-center">
 		    <?php
 		      if($user_timeline_recipe_page_size > 0){
 		        echo "<nav>

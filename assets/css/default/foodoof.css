@@ -35,7 +35,7 @@ body{
     display: block;
     padding: 10px;
     margin-left:10px;
-    border:dashed 1px #eee;
+    border:dashed 1px #FFD76B;
     border-top: 0;
     border-left: 0;
     border-bottom: 0;
@@ -70,16 +70,25 @@ body{
   }
   .recipe-timeline-view{
     text-align: center;
-    padding: 10px;
+    padding: 16px 0 0 0;
   }
   .recipe-timeline-edit-btn{
     text-align: center;
-    padding: 6px;
+    padding: 11px;
+  }
+  .recipe-timeline-check-publish{
+    padding: 5px 0;
   }
   .recipe-timeline-check-publish > .checkbox{
     margin-top: 7px;
     margin-bottom: 7px;
     text-align: center;
+  }
+  .recipe-timeline-check-publish > .checkbox > label > input{
+    margin-top: 2px;
+  }
+  .recipe-timeline-check-publish > .checkbox > label{
+    padding-top: 5px;
   }
   .text-viewer{
     line-height: 34px;
@@ -127,9 +136,53 @@ body{
     padding-right: 0px;
     text-align: center
   }
-
   .category-menu-name{
     padding-left: 0;
+  }
+  /*
+  css details recipe view
+  */
+  .details{
+    padding-left: 0;
+    text-align: center;
+  }
+  .details-user-recipe{
+    padding: 3px 0;
+  }
+  .details-time-recipe{
+   padding: 3px 0;
+  }
+  .details-rating{
+    border-left: dashed 1px #FFD76B;
+  }
+  .details-img-recipe{
+    max-height:96px;
+    margin:auto;
+  }
+  .details-img-account{
+    max-height:96px;
+    margin:auto;
+  }
+  button.navbar-toggle-foodoof:hover{
+    background-color: #FFD76B !important; 
+  }
+  button.navbar-toggle-foodoof{
+    background-color: transparent !important;
+  }
+  button.navbar-toggle-foodoof:hover > .icon-default{
+    background-color: #f5f5f5 !important; 
+  }
+  .navbar-toggle-foodoof{
+    border-color: #FFD76B !important; 
+  }
+  .img-user{
+    max-height: 200px;
+  }
+  .img-recipe{
+    max-height: 200px;
+  }
+  .img-profile-slide-menu{
+    max-height: 100px;
   }
 }
 @media(min-width:768px){
@@ -306,18 +359,6 @@ body{
     color: #428bca;
     white-space: nowrap;  
   }
-
-  ul.dropdown-search > li > a:hover,
-  ul.dropdown-search > li > a:focus {
-    text-decoration: none;
-    border: solid 5px;
-    border-top: 0;
-    border-bottom: 0;
-    border-right: 0;
-    border-color: #428bca;
-    color: #eee;
-    background: #5bc0de;
-  }
   .hover-menubar{
     margin-top:-4px;
     padding:4px;
@@ -403,7 +444,10 @@ body{
   color: #eee;
 }
 .icon-default{
-  color:  #FFD76B;
+  color:  #FFD76B !important;
+}
+.navbar-toggle-foodoof > .icon-default{
+  background-color:  #FFD76B !important;
 }
 .header-title{
   margin-top:5px;
@@ -447,6 +491,9 @@ body{
   color:#eee;
   background-color: #FFD76B;
 }
+/*
+css dropdown
+*/
 ul.dropdown-search > li > a:hover,
 ul.dropdown-search > li > a:focus {
   text-decoration: none;
@@ -454,31 +501,44 @@ ul.dropdown-search > li > a:focus {
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-color: #f97b0c;
+  border-color: #CC211F;
   background-color: #FFD76B;
 }
-ul.dropdown-menu > li > label{
+ul.dropdown-menu > li > label, ul.dropdown-menu > li > a{
   color:#FFD76B;
 }
-ul.dropdown-search > li >label:hover,
-ul.dropdown-search > li >label:focus {
+ul.dropdown-search > li > input:checked + ul.dropdown-search > li > label{
   text-decoration: none;
   border: solid 5px;
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-color: #f97b0c;
-  color: #FFD76B;
+  border-color: #CC211F;
+  background-color: #FFD76B;
+  color:#f5f5f5;
 }
-/*.icon-default:hover{
-  color: #f97b0c;
+ul.dropdown-search > li > label:hover,
+ul.dropdown-search > li > label:focus {
+  text-decoration: none;
+  border: solid 5px;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+  border-color: #CC211F;
+  background-color: #FFD76B;
+  color:#f5f5f5;
 }
-.button-default:hover{
-  background-color: #fff;
-  color: rgba(56,150,211,0.9);
-  border-color: rgba(56,150,211,0.9);
-}*/
-
+ul.dropdown-search > li > a:hover,
+ul.dropdown-search > li > a:focus {
+  text-decoration: none;
+  border: solid 5px;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+  border-color: #CC211F;
+  color: #eee;
+  background: #FFD76B;
+}
 .form-control.input-group-dropdown:focus{
   border-color: #FFD76B;
   border-right: dashed 1px #FFD76B;
@@ -614,3 +674,17 @@ div.list-group > a{
 .category-menu-name:hover{
   color:  #FFD76B;
 }
+p.text-capitalize {
+  margin:5px 0;
+  text-transform: capitalize;
+}
+
+.details-img-recipe{
+  height:96px;
+  margin:auto;
+}
+.details-img-account{
+  height:82px;
+  margin:auto;
+}
+
