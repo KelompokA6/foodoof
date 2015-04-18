@@ -26,6 +26,6 @@
   </a>
 </div>
 <a href='<?php echo base_url();?>index.php/home/highlight' style="position:absolute; top:0px; left:30px;">
-  <h3>Highlight Recipe</h3>
+  <h3 style='color:#FFD76B'>Highlight Recipe</h3>
 </a>
 <?php endif;?>
