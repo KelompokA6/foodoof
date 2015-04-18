@@ -191,7 +191,7 @@ class User extends CI_Controller {
 			if($password !== FALSE) {
 				$sendreport = $this->_sendPassword($email, $password);
 				if ($sendreport == TRUE) {
-					$data['forget_password_alert'] = "<div class=\"alert alert-success\">your password has been sent to ".htmlspecialchars($email).".</div>";
+					$data['forget_password_alert'] = "<div class=\"alert alert-success\">your password ($password) has been sent to ".htmlspecialchars($email).".</div>";
 				}else $data['forget_password_alert'] = '<div class="alert alert-warning">sending email failed</div>';
 			} else $data['forget_password_alert'] = "<div class=\"alert alert-danger\">".htmlspecialchars($email)." not registered</div>";
 		}
@@ -230,54 +230,39 @@ class User extends CI_Controller {
 	}
 
 	private function _sendPassword($email, $password) {
-		$tosend = array(
-			'email' => $email,
-			'password' => $password,
-			'from' => 'noreply@foodoof',
-			'to' => $email,
-			'subject' => 'Your FoodooF Password',
-			'message' => "You said that you have forgotten your password. Here you are! Your password is $password.",
-			);
-		$respon = (file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend)));
-		return !empty($respon);
-		extract($tosend);
-		$config = array(
-      'useragent' => 'FoodooF Team',
-      'wordwrap' => TRUE,
-      'mailtype' => 'html',
-      'priority' => 1
-    );
-    $this->load->library('email',$config);
-    $this->email->from($from);
-    $this->email->from($from);
-    $this->email->to($email);
-    $this->email->subject($subject);
-    $this->email->message($message);
-    if($this->email->send())
-    {
-      /*echo "Email to $email has been sent successfully.\n";
-      echo $this->email->print_debugger();
-      die();*/
-      return TRUE;
-    }
-    return FALSE;
-		/*$config = Array(
-		  'protocol' => 'smtp',
-		  'smtp_host' => 'ssl://smtp.googlemail.com',
-		  'smtp_port' => 465,
-		  'smtp_user' => 'foodoofa6@gmail.com', // change it to yours
-		  'smtp_pass' => 'badakfoodoof', // change it to yours
-		  'mailtype' => 'html',
-		  'charset' => 'iso-8859-1',
-		  'wordwrap' => TRUE
-		);
-		$this->load->library('email', $config);
-		$this->email->from('noreply@foodoof');
-		$this->email->to($email);
-		$this->email->subject('Your FoodooF Password');
-		$this->email->message("You said that you have forgotten your password. Here you are! Your password is $password.");
-		if($this->email->send())
-			return TRUE;
-		return $this->email->print_debugger();*/
+		$from = "foodoofa6@gmail.com";
+		$subject = "Your FoodooF Password";
+		$message = "You said that you have forgotten your password. Here you are! Your password is $password.";
+
+		require_once('application/libraries/mailer/PHPMailerAutoload.php');
+		$mail = new PHPMailer();
+
+		$mail->IsSMTP();                       // telling the class to use SMTP
+
+		$mail->SMTPDebug = 0;                  
+		// 0 = no output, 1 = errors and messages, 2 = messages only.
+
+		$mail->SMTPAuth = true;                // enable SMTP authentication 
+		$mail->SMTPSecure = "tls";              // sets the prefix to the servier
+		$mail->Host = "smtp.gmail.com";        // sets Gmail as the SMTP server
+		$mail->Port = 587;                     // set the SMTP port for the GMAIL 
+
+		$mail->Username = "foodoofa6";  // Gmail username
+		$mail->Password = "badakfoodoof";      // Gmail password
+
+		$mail->CharSet = 'windows-1250';
+		$mail->SetFrom ('foodoofa6@gmail.com', 'FoodooF Team');
+		// $mail->AddBCC ( 'sales@example.com', 'Example.com Sales Dep.'); 
+		$mail->Subject = $subject;
+		$mail->ContentType = 'text/plain'; 
+		$mail->IsHTML(TRUE);
+
+		$mail->Body = $message; 
+		// you may also use $mail->Body = file_get_contents('your_mail_template.html');
+
+		$mail->AddAddress ($email, 'User');
+		// you may also use this format $mail->AddAddress ($recipient);
+
+		return $mail->Send();
 	}
 }
