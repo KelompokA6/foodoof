@@ -23,6 +23,9 @@ class Tempview extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function test(){
+		$this->load->view('test_closify');
+	}
 	public function getTopRecipe(){
 		$recipe = new Recipe_model();
 		$recipes = $recipe->getTopRecipe();
