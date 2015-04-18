@@ -55,7 +55,7 @@
 		    	<?php if ($this->session->userdata('user_id') == $user_timeline_id): ?>
 		    	<div class="col-md-12 col-xs-4 col-no-padding-right recipe-timeline-edit-btn">
 		    		<a href="<?php echo base_url()?>index.php/recipe/edit/{user_timeline_recipe_id}">
-      					<button class="btn btn-primary btn-xs" style="width:90px">
+      					<button class="btn button-default btn-xs" style="width:90px">
       						<i class="fa fa-pencil-square-o fa-lg"></i>
       						Edit
       					</button>

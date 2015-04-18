@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" style="/*background:rgb(56,150,211);*/">
+<nav class="navbar navbar-default navbar-fixed-top" style="background:#CC211F">
   <div class="container">
     <div class="navbar-header col-md-1 col-no-padding-right" style="padding-bottom:10px">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse" style="margin:21px 10px 21px 10px">

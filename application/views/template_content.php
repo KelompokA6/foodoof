@@ -21,20 +21,20 @@
 	  		</div>
 	  	</div>
 	</div>
-  <footer style="background-color:#eee">
+  <footer style="background:#CC211F">
     <div class="container">
       <div class="col-md-12 col-xs-12 col-no-padding page-header-title">
         <div class="col-md-12 col-xs-12  col-no-padding">
-          <div class="col-md-offset-1 col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(56,150,211)">
+          <div class="col-md-offset-1 col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(255, 215, 107)">
               <a href="">About</a>      
           </div>
-          <div class="col-md-2 col-xs-3 text-center" style="border-right:dashed 1px rgb(56,150,211)">
+          <div class="col-md-2 col-xs-3 text-center" style="border-right:dashed 1px rgb(255, 215, 107)">
               <a href="">Contact Us</a>      
           </div>
-          <div class="col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(56,150,211)">
+          <div class="col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(255, 215, 107)">
               <a href="">Our Team</a>      
           </div>
-          <div class="col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(56,150,211)">
+          <div class="col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(255, 215, 107)">
               <a href="">F.A.Q</a>     
           </div>
           <div class="col-md-2 col-xs-3 text-center">
@@ -42,7 +42,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12 col-xs-12 text-center" style="color:rgb(56,150,211)">
+      <div class="col-md-12 col-xs-12 text-center" style="color:rgb(255, 215, 107)">
         Copyright &copy 2015, FoodooF (PPL-A06)
       </div>
     </div>

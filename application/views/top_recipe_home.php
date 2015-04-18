@@ -1,4 +1,4 @@
-<div class="panel panel-info">
+<div class="panel">
   <div class="col-md-12 panel-home-title text-center">
     <a href="<?php echo base_url()?>index.php/home/toprecipe" style="color:#fff">Top Recipe</a>
   </div>

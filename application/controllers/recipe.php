@@ -273,8 +273,14 @@ class Recipe extends CI_Controller {
 			'category_recipe_page_size' =>  ceil($total/10),
 		);
 		// $data = array_map("htmlspecialchars", $data);
-		$content_page = $this->parser->parse('category_view', $data, TRUE);	
-		$category_home = $this->parser->parse('category_home', array(), TRUE);
+		$content_page = $this->parser->parse('category_view', $data, TRUE);
+		$r = new Recipe_model();
+	    $countCat = $r->getCountEachCategory();
+	    foreach ($countCat as $row) {
+	      $str = "category_".str_replace(" ", "_", $row->name)."_count";
+	      $dataCat[$str] = $row->count;
+	    }	
+		$category_home = $this->parser->parse('category_home', $dataCat, TRUE);
 		$data = array(
 			'content_page' => $content_page,
 			'category_home' => $category_home,

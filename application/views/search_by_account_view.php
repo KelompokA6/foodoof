@@ -14,25 +14,25 @@
     </h3>
   </div>
   {search_by_account_entries}
-  <div class="col-md-12 col-xs-12col-no-padding-right page-header" style="margin-top:5px">
-    <div class="col-md-2 col-xs-3 detail-list-img" style="margin-right:2px">
+  <div class="col-md-12 col-xs-12 col-no-padding-right page-header" style="margin-top:5px">
+    <div class="col-md-2 col-xs-12 detail-list-img" style="margin-right:2px">
         <a href="<?php echo base_url();?>index.php/recipe/get/{search_by_account_id}">
-          <img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>{search_by_account_photo}"/>
+          <img class="img-responsive img-rounded img-list-account" style="margin:auto" src="<?php echo base_url();?>{search_by_account_photo}"/>
         </a>
     </div>
-    <div class="col-md-6 col-xs-9 detail-list">
+    <div class="col-md-6 col-xs-12 detail-list">
       <div class="col-md-12 col-xs-12 details">
-          <div class="col-md-12 col-xs-9">
+          <div class="col-md-12 col-xs-12">
             <a href="<?php echo base_url();?>index.php/user/timeline/{search_by_account_id}">
               <h4><p class="text-capitalize">{search_by_account_name}</p></h4>
             </a>
           </div>
       </div>
       <div class="col-md-12 col-xs-12 details">
-          <div class="col-md-2 col-xs-3 col-no-padding-right">
+          <div class="col-md-2 col-xs-6 text-right">
             <p class="text-capitalize">{search_by_account_gender}, </p>
           </div>
-          <div class="col-md-10 col-xs-9">
+          <div class="col-md-10 col-xs-6 text-left">
             <p class="text-capitalize">{search_by_account_age} Years Old</p>
           </div>
       </div>  
