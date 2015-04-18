@@ -21,7 +21,7 @@
 					<div class="form-group">
 					    <label for="inputname" class="col-sm-2 control-label">Name</label>
 					    <div class="col-sm-10">
-					      	<input type="text" class="form-control form-profile" name="user_name" value="{edit_profile_name}" placeholder="Your Name" required>
+					      	<input type="text" class="form-control form-profile" maxlength="30" name="user_name" value="{edit_profile_name}" placeholder="Your Name" required>
 					    </div>
 					 </div>
 				</div>
@@ -42,7 +42,7 @@
 					<div class="form-group">
 					    <label for="inputphone" class="col-sm-2 control-label">Phone</label>
 					    <div class="col-sm-10">
-					      	<input type="text" class="form-control form-profile" name="user_phone" value="{edit_profile_phone}" placeholder="Your Phone Number">
+					      	<input type="text" class="form-control form-profile" minlength="8" name="user_phone" value="{edit_profile_phone}" placeholder="Your Phone Number">
 					    </div>
 					 </div>
 				</div>

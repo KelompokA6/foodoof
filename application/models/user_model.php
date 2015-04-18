@@ -113,10 +113,10 @@ class User_model extends DataMapper {
         for ($i=0; $i < sizeof($arrayKey); $i++) { 
             if(!empty($arrayKey)){
                 if($i == 0){
-                    $searchkey .= "LOWER(name) LIKE LOWER('%".$arrayKey[$i]."%')"; 
+                    $searchkey .= "LOWER(name) LIKE LOWER('".$arrayKey[$i]." %') OR LOWER(name) LIKE LOWER('% ".$arrayKey[$i]."') OR LOWER(name) LIKE LOWER('% ".$arrayKey[$i]." %') OR LOWER(name) LIKE LOWER('".$arrayKey[$i]."')"; 
                 }
                 else {
-                    $searchkey .= " OR LOWER(name) LIKE LOWER('%".$arrayKey[$i]."%')"; 
+                    $searchkey .= " OR LOWER(name) LIKE LOWER('".$arrayKey[$i]." %') OR LOWER(name) LIKE LOWER('% ".$arrayKey[$i]."') OR LOWER(name) LIKE LOWER('% ".$arrayKey[$i]." %') OR LOWER(name) LIKE LOWER('".$arrayKey[$i]."')"; 
                 }    
             }
         }
