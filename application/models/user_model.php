@@ -64,6 +64,13 @@ class User_model extends DataMapper {
         return $this->password;
     }
 
+    function getNameByEmail($email)
+    {
+        if($this->where('email', $email)->count() < 1) return FALSE;
+        $this->where('email', $email)->get();
+        return $this->name;
+    }
+
     function updatePassword($id, $password)
     {
         // encrypt the password

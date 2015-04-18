@@ -189,7 +189,7 @@ class User extends CI_Controller {
 			$data['email'] = $email;
 			$password = $this->user_model->getPasswordByEmail($email);
 			if($password !== FALSE) {
-				$sendreport = $this->_sendPassword($email, $password);
+				$sendreport = $this->_sendPassword($email, $this->user_model->getNameByEmail($email), $password);
 				if ($sendreport == TRUE) {
 					$data['forget_password_alert'] = "<div class=\"alert alert-success\">your password has been sent to ".htmlspecialchars($email).".</div>";
 				}else $data['forget_password_alert'] = '<div class="alert alert-warning">sending email failed</div>';
@@ -211,58 +211,52 @@ class User extends CI_Controller {
 	private function _send_email($profile)
 	{
 		extract($profile);
-		$tosend = array(
-			'email' => $email,
-			'password' => $password,
-			'from' => 'noreply@foodoof',
-			'to' => $email,
-			'subject' => 'Welcome to Foodoof',
-			'message' => "Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password.",
-			);
-		$respon = (file_get_contents('http://alfan.coderhutan.com/bejometer/numpang/ngemail?'.http_build_query($tosend)));
-		return !empty($respon);
-		/*$this->load->library('email', array());
-		$this->email->from('noreply@foodoof');
-		$this->email->to($email);
-		$this->email->subject('Welcome to Foodoof');
-		$this->email->message("Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password.");
-		return $this->email->send();*/
+		return $this->_send_smtp_email([
+			"sender" => "foodoofa6@gmail.com",
+			"sender_name" => "FoodooF Administrator",
+			"reciever" => $email,
+			"reciever_name" => $name,
+			"subject" => "Welcome to FoodooF",
+			"message" => "Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password.",
+			]);
 	}
 
-	private function _sendPassword($email, $password) {
-		$from = "foodoofa6@gmail.com";
-		$subject = "Your FoodooF Password";
-		$message = "You said that you have forgotten your password. Here you are! Your password is $password.";
+	private function _sendPassword($email, $name, $password) {
+		return $this->_send_smtp_email([
+			"sender" => "foodoofa6@gmail.com",
+			"sender_name" => "FoodooF Administrator",
+			"reciever" => $email,
+			"reciever_name" => $name,
+			"subject" => "Your FoodooF Password",
+			"message" => "You said that you have forgotten your password.\nHere you are! Your password is $password.",
+			]);
+	}
 
+	function _send_smtp_email($data)
+	{
+		// $data: sender, sender_name, reciever, reciever_name, subject, message
+		extract($data);
 		require_once('application/libraries/mailer/PHPMailerAutoload.php');
 		$mail = new PHPMailer();
-
 		$mail->IsSMTP();                       // telling the class to use SMTP
-
-		$mail->SMTPDebug = 0;                  
-		// 0 = no output, 1 = errors and messages, 2 = messages only.
-
+		$mail->SMTPDebug = 0;                  // 0 = no output, 1 = errors and messages, 2 = messages only.
 		$mail->SMTPAuth = true;                // enable SMTP authentication 
-		$mail->SMTPSecure = "tls";              // sets the prefix to the servier
+		$mail->SMTPSecure = "tls";             // sets the prefix to the servier
 		$mail->Host = "smtp.gmail.com";        // sets Gmail as the SMTP server
 		$mail->Port = 587;                     // set the SMTP port for the GMAIL 
 
-		$mail->Username = "foodoofa6";  // Gmail username
+		$mail->Username = "foodoofa6";         // Gmail username
 		$mail->Password = "badakfoodoof";      // Gmail password
 
-		$mail->CharSet = 'windows-1250';
-		$mail->SetFrom ('foodoofa6@gmail.com', 'FoodooF Team');
-		// $mail->AddBCC ( 'sales@example.com', 'Example.com Sales Dep.'); 
-		$mail->Subject = $subject;
-		$mail->ContentType = 'text/plain'; 
+		// $mail->CharSet = 'windows-1250';
+		$mail->SetFrom ($sender, @$sender_name);
+		$mail->Subject = @$subject;
+		$mail->ContentType = 'text/html';
 		$mail->IsHTML(TRUE);
-
-		$mail->Body = $message; 
+		$mail->Body = @$message; 
 		// you may also use $mail->Body = file_get_contents('your_mail_template.html');
-
-		$mail->AddAddress ($email, 'User');
+		$mail->AddAddress ($reciever, @$reciever_name);
 		// you may also use this format $mail->AddAddress ($recipient);
-
 		return $mail->Send();
 	}
 }
