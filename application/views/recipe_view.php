@@ -67,12 +67,8 @@
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding" style="margin-top:15px">
 	  				<h4 class="page-header-title">Description Recipe</h4>
-	  				<div clas="col-md-12 col-no-padding">
-	  					<div class="panel panel-info">
-	  						<div class="panel-body">
-							    {recipe_description}
-							</div>
-	  					</div>
+	  				<div clas="col-md-12 col-xs-12">
+						{recipe_description}
 	  				</div>
 	  			</div>
 			</div>
