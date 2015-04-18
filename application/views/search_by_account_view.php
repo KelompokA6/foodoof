@@ -39,7 +39,12 @@
     </div>
   </div>
   {/search_by_account_entries}
-  <div class="col-md-12 col-xs-12 text-center">
+  <div class="col-md-12 col-xs-12 text-center text-capitalize">
+    <?php
+    if($search_by_account_page_size == 0):?>
+    no account found
+    <?php
+    endif;?>
     <?php
       if($search_by_account_page_size > 0){
         echo "<nav>

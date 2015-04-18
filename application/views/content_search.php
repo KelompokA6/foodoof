@@ -1,4 +1,4 @@
-<div class="col-md-9 pull-right col-no-padding-right">
+<div class="col-md-9 col-xs-12 pull-right col-no-padding-right col-no-padding-left-mobile">
   	<div class="panel panel-default">
   		{content_search}
 	</div>
