@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	$validateDuplicate = true;	
+	$validateDuplicate = true;
+	$validatePassword = true;	
 	$recipeId = $("#image-recipe").data("id");
 	$lock = 0;
 	$submitStatus=false;
@@ -343,7 +344,7 @@ $(document).ready(function() {
 	}
 
 	$colAddRemoveBtnIngredient = $("#add-and-remove-btn-ingredient").clone();
-	$ingredientItem = 	"<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'>"+"<div class='col-sm-6 col-xs-6'>"+"<input type='text' value='' name='ingredient_subject[]' class='form-control input-ingredient' placeholder='Ingredient Name'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'>"+"</div>"+"</div>";
+	$ingredientItem = 	"<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item animated fadeInDown'>"+"<div class='col-sm-6 col-xs-6'>"+"<input type='text' value='' name='ingredient_subject[]' class='form-control input-ingredient' placeholder='Ingredient Name'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'>"+"</div>"+"</div>";
 	$(document).on('click',"#add-ingredient",function(){
 		$("#add-and-remove-btn-ingredient").remove();
 		$("#ingredient-entry").append($ingredientItem);
@@ -385,7 +386,7 @@ $(document).ready(function() {
 		  		console.log(data.message);
 		  	}
 		},"json");
-		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'>"+"<div class='col-sm-8 col-xs-7 col-no-padding-right'>"+"<textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'></textarea>"+"</div>"+"<div class='col-sm-4 col-xs-5'>"+"<input class='image-steps' name='photo-step' data-src='/foodoof/assets/img/step-default.jpg' index='"+$countStep+"' data-title='new step' type='file' accept='image/*'>"+"</div>"+"</div>";
+		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item animated fadeInDown'>"+"<div class='col-sm-8 col-xs-7 col-no-padding-right'>"+"<textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'></textarea>"+"</div>"+"<div class='col-sm-4 col-xs-5'>"+"<input class='image-steps' name='photo-step' data-src='/foodoof/assets/img/step-default.jpg' index='"+$countStep+"' data-title='new step' type='file' accept='image/*'>"+"</div>"+"</div>";
 		$("#add-and-remove-btn-step").remove();
 		$("#step-entry").append($stepItem);
 		$("#step-entry").append($colAddRemoveBtnStep);
@@ -609,7 +610,7 @@ $(document).ready(function() {
 			e.preventDefault();
 			$.notify({
 				// options
-				message: "There are duplicate in ingredient"
+				message: "There Are Duplicate Ingredient."
 			},{
 				// settings
 				mouse_over:'pause',
@@ -617,6 +618,24 @@ $(document).ready(function() {
 				allow_dismiss: false,
 				type: 'danger',
 				delay: 5000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
+		}
+		else if(!$validatePassword){
+			e.preventDefault();
+			$.notify({
+			// options
+				message: "Your Old and New Password is Same, Please Change." 
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 2000,
 				placement: {
 					from: 'top',
 					align: 'center'
@@ -741,6 +760,59 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	/*
+	validate old and new password
+	*/
+	$("input[type='password'][name='old_password']").change(function(e){
+		if($(this).val()==$("input[type='password'][name='new_password']").val()){
+			$validatePassword=false;
+			$.notify({
+			// options
+				message: "Your Old and New Password is Same, Please Change." 
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 2000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
+		}
+		else{
+			$validatePassword=true;
+		}
+	});
+	$("input[type='password'][name='new_password']").change(function(e){
+		if($(this).val()==$("input[type='password'][name='old_password']").val()){
+			$validatePassword=false;
+			$.notify({
+			// options
+				message: "Your Old and New Password is Same, Please Change." 
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 2000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
+		}
+		else{
+			$validatePassword=true;
+		}
+	});
+	/*
+	show alert
+	*/
 	if($("#alert-notification").data('status')=='success'){
 		$.notify({
 			// options
