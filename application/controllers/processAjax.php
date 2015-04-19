@@ -305,22 +305,38 @@ class ProcessAjax extends CI_Controller {
 			$recipe = new Recipe_model();
 			$tmp = $recipe->get_by_id($recipe_id);
 			if($recipe->publishRecipe($recipe_id, !($tmp->status))){
-				$result = array(
+				if($tmp->status){
+					$result = array(
 						"status" => 1,
-						"message" => "Set Publish Success",
+						"message" => "<div class='text-center'>Success To Published Your Recipe.</div>",
+						);	
+				}
+				else{
+					$result = array(
+						"status" => 1,
+						"message" => "<div class='text-center'>Success To Unpublished Your Recipe.</div>",
 						);
+				}
 			}
 			else{
-				$result = array(
+				if($tmp->status){
+					$result = array(
 						"status" => 0,
-						"message" => "Set Publish Failed",
+						"message" => "<div class='text-center'>Failed To Published Your Recipe.</div>",
+						);	
+				}
+				else{
+					$result = array(
+						"status" => 0,
+						"message" => "<div class='text-center'>Failed To Unpublished Your Recipe.</div>",
 						);
+				}
 			}
 		}
 		else{
 			$result = array(
 						"status" => 0,
-						"message" => "Please Login First",
+						"message" => "<div class='text-center'>Please Login First</div>",
 						);
 		}
 		echo json_encode($result);
