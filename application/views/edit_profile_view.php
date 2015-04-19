@@ -59,7 +59,7 @@
 				<h4>Social Media</h4>
 				<div class="col-md-12">
 					<div class="form-group">
-					    <label class="col-sm-2 control-label">
+					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
 								  <i class="fa fa-square fa-stack-2x icon-default"></i>
@@ -67,14 +67,14 @@
 								</span>
 	      					</div>
 	      				</label>
-					    <div class="col-sm-10">
+					    <div class="col-sm-10 col-xs-11">
 					      	<input type="text" class="form-control input-lg form-profile" name="user_twitter" value="{edit_profile_twitter}" placeholder="@ Your Twitter">
 					    </div>
 					 </div>
 				</div>
 				<div class="col-md-12">
 					<div class="form-group">
-					    <label class="col-sm-2 control-label">
+					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
 								  <i class="fa fa-square fa-stack-2x icon-default"></i>
@@ -82,14 +82,14 @@
 								</span>
 	      					</div>
 	      				</label>
-					    <div class="col-sm-10">
+					    <div class="col-sm-10 col-xs-11">
 					      	<input type="text" class="form-control input-lg form-profile" name="user_facebook" value="{edit_profile_facebook}" placeholder="Your Facebook">
 					    </div>
 					 </div>
 				</div>
 				<div class="col-md-12">
 					<div class="form-group">
-					    <label class="col-sm-2 control-label">
+					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
 								  <i class="fa fa-square fa-stack-2x icon-default"></i>
@@ -97,22 +97,22 @@
 								</span>
 	      					</div>
 	      				</label>
-					    <div class="col-sm-10">
+					    <div class="col-sm-10 col-xs-11">
 					      	<input type="text" class="form-control input-lg form-profile" name="user_gplus" value="{edit_profile_google_plus}" placeholder="Your g+">
 					    </div>
 					 </div>
 				</div>
 				<div class="col-md-12">
 					<div class="form-group">
-					    <label class="col-sm-2 control-label">
+					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
 								  <i class="fa fa-square fa-stack-2x icon-default"></i>
-								  <i class="el el-path fa-stack-1x fa-inverse"></i>
+								  <i class="el el-path fa-stack-1x fa-inverse" style="padding-top:25%"></i>
 								</span>
 	      					</div>
 	      				</label>
-					    <div class="col-sm-10">
+					    <div class="col-sm-10 col-xs-11">
 					      	<input type="text" class="form-control input-lg form-profile" name="user_path" value="{edit_profile_path}" placeholder="Your Path">
 					    </div>
 					 </div>
