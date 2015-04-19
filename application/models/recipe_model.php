@@ -56,7 +56,7 @@ class Recipe_model extends DataMapper {
         if(!empty($recipe_id) && !empty($user_id)){
             $r = new Recipe_model();
             $r->where('id', $recipe_id);
-            $r->where('author', $user_id);
+            $r->where('author', $this->db->escape_str($user_id));
             if($r->count()>0){
                 return TRUE;
             }
@@ -102,19 +102,19 @@ class Recipe_model extends DataMapper {
             $id = $this->id;
         }
         if($name ==  NULL){
-            $name = $this->$name;
+            $name = $this->name;
         }
         if($portion ==  NULL){
-            $portion = $this->$portion;
+            $portion = $this->portion;
         }
         if($duration ==  NULL){
-            $duration = $this->$duration;
+            $duration = $this->duration;
         }
         if($description ==  NULL){
-            $description = $this->$description;
+            $description = $this->description;
         }
         if($last_update ==  NULL){
-            $last_update = $this->$last_update;
+            $last_update = $this->last_update;
         }
         $rcpSave = new Recipe_model();
         $rcpSave->get_by_id($id);
@@ -127,10 +127,10 @@ class Recipe_model extends DataMapper {
             && !empty($steps) && !empty($ingredients)){
             $arrUpdate = array(
                         'author' => $this->session->userdata('user_id'),
-                        'name' => $name,
+                        'name' => $this->db->escape_str($name),
                         'portion' => $portion,
                         'duration' => $duration,
-                        'description' => $description,
+                        'description' => $this->db->escape_str($description),
                         'last_update' => $last_update,
                         'photo' => $photo,
                         'tmp_status' => false,
@@ -150,9 +150,9 @@ class Recipe_model extends DataMapper {
                     if(!empty($ingredient["name"])){
                         $ingre = new Ingredient();
                         $ingre->recipe_id = $id;
-                        $ingre->name = $ingredient["name"];
+                        $ingre->name = $this->db->escape_str($ingredient["name"]);
                         $ingre->quantity = $ingredient["quantity"];
-                        $ingre->units = $ingredient["units"];
+                        $ingre->units = $this->db->escape_str($ingredient["units"]);
                         if(!$ingre->skip_validation()->save()){
                             return false;
                         }
@@ -163,9 +163,9 @@ class Recipe_model extends DataMapper {
                 $this->db->delete('ingredients', array('recipe_id' => $id)); 
                 $ingre = new Ingredient();
                 $ingre->recipe_id = $id;
-                $ingre->name = $ingredients["name"];
+                $ingre->name = $this->db->escape_str($ingredients["name"]);
                 $ingre->quantity = $ingredients["quantity"];
-                $ingre->units = $ingredients["units"];
+                $ingre->units = $this->db->escape_str($ingredients["units"]);
                 if(!$ingre->skip_validation()->save()){
                     return false;
                 }
@@ -197,7 +197,7 @@ class Recipe_model extends DataMapper {
                                 }
                             }
                             $stp->recipe_id = $id;
-                            $stp->description = $step["description"];
+                            $stp->description = $this->db->escape_str($step["description"]);
                             $stp->no_step = $xStep;
                             if(!$stp->skip_validation()->save()){
                                 return false;
@@ -222,7 +222,7 @@ class Recipe_model extends DataMapper {
                                 }
                             }
                             $dataUpdate = array(
-                                            'description' => $step["description"],
+                                            'description' => $this->db->escape_str($step["description"]),
                                             'photo' => $photo);
                             if(!$stptmp->where('recipe_id', $id)->where('no_step', $xStep)->update($dataUpdate)){
                                 return false;
@@ -261,7 +261,7 @@ class Recipe_model extends DataMapper {
                         $stp->photo = $stptmp->photo;   
                     }
                     $stp->recipe_id = $id;
-                    $stp->description = $step["description"];
+                    $stp->description = $this->db->escape_str($step["description"]);
                     $stp->no_step = "1";
                     if(!$stp->skip_validation()->save()){
                         return false;
@@ -282,7 +282,7 @@ class Recipe_model extends DataMapper {
                         $photo = $stptmp->photo;   
                     }
                     $dataUpdate = array(
-                                    'description' => $step["description"],
+                                    'description' => $this->db->escape_str($step["description"]),
                                     'photo' => $photo);
                     if(!$stptmp->update($dataUpdate)){
                         return false;
