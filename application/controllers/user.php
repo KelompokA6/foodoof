@@ -214,8 +214,8 @@ class User extends CI_Controller {
 		return $this->_send_smtp_email([
 			"sender" => "foodoofa6@gmail.com",
 			"sender_name" => "FoodooF Administrator",
-			"reciever" => $email,
-			"reciever_name" => $name,
+			"receiver" => $email,
+			"receiver_name" => $name,
 			"subject" => "Welcome to FoodooF",
 			"message" => "Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in FoodooF page using this email and your password is $password.",
 			]);
@@ -225,8 +225,8 @@ class User extends CI_Controller {
 		return $this->_send_smtp_email([
 			"sender" => "foodoofa6@gmail.com",
 			"sender_name" => "FoodooF Administrator",
-			"reciever" => $email,
-			"reciever_name" => $name,
+			"receiver" => $email,
+			"receiver_name" => $name,
 			"subject" => "Your FoodooF Password",
 			"message" => "You said that you have forgotten your password.\nHere you are! Your password is $password.",
 			]);
@@ -234,7 +234,7 @@ class User extends CI_Controller {
 
 	function _send_smtp_email($data)
 	{
-		// $data: sender, sender_name, reciever, reciever_name, subject, message
+		// $data: sender, sender_name, receiver, receiver_name, subject, message
 		extract($data);
 		require_once('application/libraries/mailer/PHPMailerAutoload.php');
 		$mail = new PHPMailer();
@@ -255,7 +255,7 @@ class User extends CI_Controller {
 		$mail->IsHTML(TRUE);
 		$mail->Body = @$message; 
 		// you may also use $mail->Body = file_get_contents('your_mail_template.html');
-		$mail->AddAddress ($reciever, @$reciever_name);
+		$mail->AddAddress ($receiver, @$receiver_name);
 		// you may also use this format $mail->AddAddress ($recipient);
 		return $mail->Send();
 	}

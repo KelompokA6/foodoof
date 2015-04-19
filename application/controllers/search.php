@@ -12,7 +12,8 @@ class Search extends CI_Controller {
   public function index()
   {
     # ?q=&searchby=on
-    $q = $this->input->get('q');
+    $q = ($this->input->get('q'));
+    $q2 = $this->db->escape_str($q);
     $searchby = $this->input->get('searchby');
     if (@$q && @$searchby) {
       $q = urldecode($q);
@@ -23,15 +24,15 @@ class Search extends CI_Controller {
       $u = new User_model();
 
       if ($searchby == 'title') {
-        $result = $r->searchRecipeByTitle($q, $limit, $limit * $page - $limit);
+        $result = $r->searchRecipeByTitle($q2, $limit, $limit * $page - $limit);
         $this->show_search_by_title($q, $result['recipe_list'], ceil($result['total']/$limit), $page, $result['total']);
       } elseif ($searchby == 'ingredient') {
-        $qs = array_map(function($x){return trim($x);}, explode(",", $q));
+        $qs = array_map(function($x){return trim($x);}, explode(",", $q2));
         $result = $r->searchRecipeByIngredients($qs, 0.3, $limit, $limit * $page - $limit);
         // print_r($result); die();
         $this->show_search_by_ingredient($q, $result['recipe_list'], ceil($result['total']/$limit), $page, $result['total']);
       } else {
-        $temp = $u->searchAccountByName($q, $limit, $limit * $page - $limit);
+        $temp = $u->searchAccountByName($q2, $limit, $limit * $page - $limit);
         $result['account_list'] = $temp;
         $result['total'] = sizeof($u->searchAccountByName($q,1000000));
         $this->show_search_by_account($q, $result['account_list'], ceil($result['total']/$limit), $page, $result['total']);
@@ -42,7 +43,7 @@ class Search extends CI_Controller {
   private function show_search_by_title($key, $list_recipe, $total, $pagenow, $countall)
   {
     $datalist['search_by_title_recipe_result'] = $countall;
-    $datalist['search_by_title_recipe_key'] = $key;
+    $datalist['search_by_title_recipe_key'] = htmlspecialchars($key);
     $datalist['search_by_title_recipe_page_size'] = $total;
     $datalist['search_by_title_recipe_page_now'] = $pagenow;
     $u = new User_model();
@@ -81,7 +82,7 @@ class Search extends CI_Controller {
   private function show_search_by_ingredient($key, $list_recipe, $total, $pagenow, $countall)
   {
     $datalist['search_by_ingredient_recipe_result'] = $countall;
-    $datalist['search_by_ingredient_recipe_key'] = $key;
+    $datalist['search_by_ingredient_recipe_key'] = htmlspecialchars($key);
     $datalist['search_by_ingredient_recipe_page_size'] = $total;
     $datalist['search_by_ingredient_recipe_page_now'] = $pagenow;
     $u = new User_model();
@@ -121,7 +122,7 @@ class Search extends CI_Controller {
   private function show_search_by_account($key, $list_account, $total, $pagenow, $countall)
   {
     $datalist['search_by_account_result'] = $countall;
-    $datalist['search_by_account_key'] = $key;
+    $datalist['search_by_account_key'] = htmlspecialchars($key);
     $datalist['search_by_account_page_size'] = $total;
     $datalist['search_by_account_page_now'] = $pagenow;
     foreach ($list_account as $row) {

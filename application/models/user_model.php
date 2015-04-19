@@ -9,16 +9,13 @@ class User_model extends DataMapper {
     {
         if (strlen($email) < 1)
             $email = 'invalid';
-        if( $this->where('email', $email)->count() < 1 ) return FALSE;
-        $this->where('email', $email)->get();
+        if( $this->where('email', $this->db->escape_str($email))->count() < 1 ) return FALSE;
+        $this->where('email', $this->db->escape_str($email))->get();
         $ci =& get_instance();
         $ci->load->library('encrypt');
         $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
         $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
         $decrypted_password = $ci->encrypt->decode($this->password);
-        // hack
-        // $decrypted_password = $password;
-        // FOTONE ENDI?
         $this->photo = file_exists('images/user/'.$this->id.'.jpg') ? 'images/user/'.$this->id.'.jpg' : 'assets/img/'.($this->gender == 'M' ? 'user-male.png' : 'user-female.png');
         return ($decrypted_password == $password) ?
             array(
@@ -52,8 +49,8 @@ class User_model extends DataMapper {
 
     function getPasswordByEmail($email)
     {
-        if($this->where('email', $email)->count() < 1) return FALSE;
-        $this->where('email', $email)->get();
+        if($this->where('email', $this->db->escape_str($email))->count() < 1) return FALSE;
+        $this->where('email', $this->db->escape_str($email))->get();
         
         // decrypt the password
         $ci =& get_instance();
@@ -66,8 +63,8 @@ class User_model extends DataMapper {
 
     function getNameByEmail($email)
     {
-        if($this->where('email', $email)->count() < 1) return FALSE;
-        $this->where('email', $email)->get();
+        if($this->where('email',$this->db->escape_str($email))->count() < 1) return FALSE;
+        $this->where('email',$this->db->escape_str($email))->get();
         return $this->name;
     }
 
@@ -79,18 +76,22 @@ class User_model extends DataMapper {
         $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
         $ci->encrypt->set_mode(MCRYPT_MODE_CBC);
         $password = $ci->encrypt->encode($password);
-        return $this->where('id', $id)->update('password', $password);
+        return $this->where('id', $id)->update('password', $this->db->escape_str($password));
     }
 
     function updateProfile($id, $dataProfile)
     {
-        return $this->where('id', $id)->update($dataProfile);
+        return $this->where('id', $id)->update(array_map(function($x){return $this->db->escape_str($x);}, $dataProfile));
     }
 
     function createUser($profile)
     {
         // if( $this->where('email', $profile['email'])->count() > 0 ) return FALSE;
-        foreach ($profile as $key => $value) $this->$key = $value;
+        foreach ($profile as $key => $value)
+            if($key != 'password')
+                $this->$key = $this->db->escape_str($value);
+            else
+                $this->$key = $value;
         // encrypt the password
         $ci =& get_instance();
         $ci->load->library('encrypt');
