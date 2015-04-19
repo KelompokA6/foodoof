@@ -1,10 +1,9 @@
 <div id="loginbox" style="margin-top:20px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-    <div class="panel panel-info" >
-        <div class="panel-heading">
-            <div class="panel-title">Login</div>
-            <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="<?php echo base_url();?>index.php/user/forgotpassword">Forgot password?</a></div>
+    <div class="panel" >
+        <div class="panel-home-title panel-heading col-md-12 col-xs-12" style="margin-bottom:15px;">
+            <div class="panel-title col-md-2 col-xs-4">Login</div>
+            <div class="panel-title col-md-4 col-xs-8 pull-right text-right"><a href="<?php echo base_url();?>index.php/user/forgotpassword" style="color:#fff">Forgot password?</a></div>
         </div>     
-
         <div style="padding-top:30px" class="panel-body" >
                 {login_alert}
             <form id="loginform" class="form-horizontal" role="form" method="post" action="login">

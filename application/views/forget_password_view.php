@@ -1,7 +1,7 @@
 <div id="forgetbox" style="margin-top:20px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-    <div class="panel panel-info" >
-        <div class="panel-heading">
-            <div class="panel-title">Forgot Password</div>
+    <div class="panel" >
+        <div class="panel-home-title panel-heading col-md-12 col-xs-12" style="margin-bottom:15px;">
+            <div class="panel-title col-md-4 col-xs-6">Forgot Password</div>
         </div>     
 
         <div style="padding-top:30px" class="panel-body" >
