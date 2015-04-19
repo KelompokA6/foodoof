@@ -581,20 +581,21 @@ class Recipe_model extends DataMapper {
     function searchRecipeByTitle($search_key=NULL, $limit=10, $offset=0, $category=NULL){
         if(!empty($search_key)){
             $search_key = strtolower($search_key);
+            $search_key = str_replace("*", "", $search_key);
             $arrayKey = explode(" ", $search_key);
             $searchkey = "";
             for ($i=0; $i < sizeof($arrayKey); $i++) { 
                 if(!empty($arrayKey)){
                     if($i == 0){
-                        $searchkey .= "LOWER(name) LIKE LOWER('%".$arrayKey[$i]."%')"; 
+                        $searchkey .= "LOWER(name) LIKE LOWER('%".$this->db->escape_str($arrayKey[$i])."%')"; 
                     }
                     else {
-                        $searchkey .= " OR LOWER(name) LIKE LOWER('%".$arrayKey[$i]."%')"; 
+                        $searchkey .= " OR LOWER(name) LIKE LOWER('%".$this->db->escape_str($arrayKey[$i])."%')"; 
                     }    
                 }
             }
             $recipe = new Recipe_model();
-            $sql = "SELECT * FROM recipes WHERE (MATCH (name) AGAINST ('".$search_key."') OR ".$searchkey.") AND status=1 AND tmp_status=0 order by MATCH (name) AGAINST ('".$search_key."')";
+            $sql = "SELECT * FROM recipes WHERE (MATCH (name) AGAINST ('".htmlspecialchars($search_key)."') OR ".$searchkey.") AND status=1 AND tmp_status=0 order by MATCH (name) AGAINST ('".$search_key."')";
             $recipe->query($sql);
             $recipeList = array();
             $total = 0;
@@ -658,10 +659,10 @@ class Recipe_model extends DataMapper {
             $thresholdCounter = floor(sizeof($search_key)*floatval($threshold));
             for ($i=0; $i < sizeof($search_key) ; $i++) { 
                 if($i == 0){
-                    $searchkey .= "LOWER(name) LIKE LOWER('% ".$search_key[$i]." %') OR LOWER(name) LIKE LOWER('% ".$search_key[$i]."') OR LOWER(name) LIKE LOWER('".$search_key[$i]." %') OR LOWER(name) LIKE LOWER('".$search_key[$i]."')"; 
+                    $searchkey .= "LOWER(name) LIKE LOWER('% ".$this->db->escape_str($search_key[$i])." %') OR LOWER(name) LIKE LOWER('% ".$this->db->escape_str($search_key[$i])."') OR LOWER(name) LIKE LOWER('".$this->db->escape_str($search_key[$i])." %') OR LOWER(name) LIKE LOWER('".$this->db->escape_str($search_key[$i])."')"; 
                 }
                 else {
-                    $searchkey .= " OR LOWER(name) LIKE LOWER('% ".$search_key[$i]." %') OR LOWER(name) LIKE LOWER('% ".$search_key[$i]."') OR LOWER(name) LIKE LOWER('".$search_key[$i]." %') OR LOWER(name) LIKE LOWER('".$search_key[$i]."')"; 
+                    $searchkey .= " OR LOWER(name) LIKE LOWER('% ".$this->db->escape_str($search_key[$i])." %') OR LOWER(name) LIKE LOWER('% ".$this->db->escape_str($search_key[$i])."') OR LOWER(name) LIKE LOWER('".$this->db->escape_str($search_key[$i])." %') OR LOWER(name) LIKE LOWER('".$this->db->escape_str($search_key[$i])."')"; 
                 }
             }
             $ingredient = new Ingredient();

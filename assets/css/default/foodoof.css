@@ -1,23 +1,23 @@
 @font-face {
   font-family: 'Lilly';
-  src: url('Lilly-webfont.eot'); /* IE9 Compat Modes */
-  src: url('Lilly-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('Lilly-webfont.woff') format('woff'), /* Pretty Modern Browsers */
-       url('Lilly-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('Lilly-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+  src: url('../fonts/Lilly-webfont.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Lilly-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Lilly-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/Lilly-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Lilly-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
 @font-face {
   font-family: 'Expressway';
-  src: url('expressway_rg.otf'); /* IE9 Compat Modes */
+  src: url('../fonts/expressway_rg.otf'); /* IE9 Compat Modes */
 }
 
 @font-face {
   font-family: 'Roboto';
-  src: url('RobotoCondensed-Regular-webfont.eot'); /* IE9 Compat Modes */
-  src: url('RobotoCondensed-Regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('RobotoCondensed-Regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
-       url('RobotoCondensed-Regular-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('RobotoCondensed-Regular-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+  src: url('../fonts/RobotoCondensed-Regular-webfont.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/RobotoCondensed-Regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/RobotoCondensed-Regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/RobotoCondensed-Regular-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/RobotoCondensed-Regular-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
 
 body{
