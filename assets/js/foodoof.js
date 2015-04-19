@@ -932,7 +932,7 @@ $(document).ready(function() {
 	    	$(this).find(".icons").css('padding-top', ($heighttmp/2)-($(this).find(".icons").height()/2));
 	    });
 	    $(".detail-list-img-recipe-home").each(function(){
-	    	$heightImgtmp = $maxHeightDetailtmp - $(".detail-list-img-recipe-home > a > img").height();
+	    	$heightImgtmp = $maxHeightDetailtmp - $(this).find("a").find("img").height();
 	    	$(this).height($maxHeightDetailtmp);
 	    	$(this).css('padding-top', $heightImgtmp/2);
 	    });

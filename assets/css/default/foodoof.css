@@ -6,15 +6,32 @@
        url('Lilly-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
        url('Lilly-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
-
-body{
-  font-family: 'Lilly';
-  background-color: #eee;
+@font-face {
+  font-family: 'Expressway';
+  src: url('expressway_rg.otf'); /* IE9 Compat Modes */
 }
 
-@media(max-width:767px){
+@font-face {
+  font-family: 'Roboto';
+  src: url('RobotoCondensed-Regular-webfont.eot'); /* IE9 Compat Modes */
+  src: url('RobotoCondensed-Regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('RobotoCondensed-Regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('RobotoCondensed-Regular-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('RobotoCondensed-Regular-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+body{
+  font-family: 'Roboto';
+  background-color: #eee;
+  font-size: 15px;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Lilly';
+}
+
+@media screen and (max-width:767px){
   body, footer, header{
-    font-size: 11px;
+    font-size: 13px;
   }
   .collapse-navbar-search{
     padding-left: 10px;
@@ -205,8 +222,13 @@ body{
   .col-no-padding-mobile{
     padding: 0;
   }
+  p.text-capitalize {
+    margin:5px 0;
+    text-transform: capitalize;
+    font-size: 12px;
+  }
 }
-@media(min-width:768px){
+@media screen and (min-width:768px){
   .inline-search{
     padding:10px;
   }
@@ -235,7 +257,7 @@ body{
     border-bottom: 0;
   }
 }
-@media(min-width:992px){
+@media screen and (min-width:992px){
    .inline-search{
     padding:10px;
   }
@@ -261,7 +283,7 @@ body{
     border-bottom: 0;
   }
 }
-@media(min-width:1200px){
+@media screen and (min-width:1200px){
   .inline-search{
     padding:10px;
   }
@@ -698,6 +720,7 @@ div.list-group > a{
 p.text-capitalize {
   margin:5px 0;
   text-transform: capitalize;
+  font-size: 16px;
 }
 
 .details-img-recipe{

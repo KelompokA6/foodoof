@@ -25,10 +25,10 @@
           </div>
       </div>
       <div class="col-md-12 col-xs-6 details col-no-padding">
-          <div class="col-md-6 col-xs-6 col-no-padding-right details-user-recipe">
+          <div class="col-md-4 col-xs-6 col-no-padding-right details-user-recipe">
             <a href="<?php echo base_url();?>index.php/user/timeline/{category_recipe_author_id}"><p class="text-capitalize">{category_recipe_author_name}</p></a>
           </div>
-          <div class="col-md-6 col-xs-6 col-no-padding-right details-time-recipe" style="border-left:dashed 1px #FFD76B">
+          <div class="col-md-8 col-xs-6 col-no-padding-right details-time-recipe" style="border-left:dashed 1px #FFD76B">
             <p class="text-capitalize">{category_recipe_last_update}</p>
           </div>
       </div>
