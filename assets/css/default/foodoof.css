@@ -779,7 +779,9 @@ p.text-capitalize {
 .border-dashed{
   border: dashed 1px #FFD76B;
 }
-
+.bg-li-highlight{
+  background-color: #FFD76B !important;
+}
 .text-foodoof{
   color:  #FFD76B !important;
 }
@@ -792,7 +794,9 @@ p.text-capitalize {
 .border-solid-bottom{
   border-bottom: solid 1px #FFD76B;
 }
-
+.border-solid-top{
+  border-top: solid 1px #FFD76B;
+}
 .dropdown-menu>li>input:checked~label,
 .dropdown-menu>li>input:checked~label:hover,
 .dropdown-menu>li>input:checked~label:focus,

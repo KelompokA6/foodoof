@@ -22,7 +22,7 @@
         </div>
         <div class='form-group'>
             <div class='col-md-12 control'>
-                <div class="text-foodoof" style='border-top: 1px solid #888; padding-top:15px; font-size:85%;'>
+                <div class="border-solid-top" style='padding-top:15px; font-size:85%; color:#000'>
                     Forgot password? 
                 <a href='<?php echo base_url();?>index.php/user/forgotpassword'>
                     Remember Here
@@ -91,7 +91,7 @@
       <div class="col-md-4 navbar-collapse collapse col-menu-user col-no-padding-right" style="padding-left:20px; width: 380px;">
         <div class="col-md-3 link-by-icon text-right" >
           <a id="createRecipeMenubar" title="New Recipe">
-            <i class="fa fa-pencil-square-o fa-2x icon-default"></i>
+            <i class="fa fa-pencil-square-o fa-2x icon-default" style="cursor:pointer"></i>
           </a>
         </div>
         <div class="col-md-8 col-no-padding-right">

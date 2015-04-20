@@ -2,9 +2,9 @@
   <div class="col-md-12 panel-home-title text-center">
     <a href="<?php echo base_url();?>index.php/home/recently" style="color:#fff; font-size:15px">Recently Recipe</a>
   </div>
-  <div class="panel-body  col-no-padding">
+  <div class="panel-body">
     {recently_recipe_entries}
-    <div class="col-md-12 col-xs-12 item-recipe-home">
+    <div class="col-md-12 col-xs-12 item-recipe-home col-no-padding">
       <div class="col-md-3 col-xs-4 detail-list-img-recipe-home">
         <a href="<?php echo base_url();?>index.php/recipe/get/{recently_recipe_id}">
           <img class="img-responsive img-rounded img-list-recipe-home" style="margin:auto;" src="<?php echo base_url();?>{recently_recipe_photo}"/>

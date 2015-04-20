@@ -66,7 +66,7 @@
       <div class="col-md-5 col-menu-user mobile-hidden" style="padding-left:30px">
         <div class="col-md-3 link-by-icon text-right" >
           <a href="<?php echo base_url();?>index.php/recipe/create" title="New Recipe">
-            <i class="fa fa-pencil-square-o fa-2x icon-default"></i>
+            <i class="fa fa-pencil-square-o fa-2x icon-default" style="cursor:pointer"></i>
           </a>
         </div>
         <a href="<?php echo base_url();?>index.php/user/timeline" class="col-md-6 col-no-padding">
