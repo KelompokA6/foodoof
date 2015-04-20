@@ -1,6 +1,6 @@
 <div class="panel">
   <div class="col-md-12 panel-home-title text-center">
-    <a href="<?php echo base_url()?>index.php/home/toprecipe" style="color:#fff">Top Recipe</a>
+    <a href="<?php echo base_url()?>index.php/home/toprecipe" style="color:#fff; font-size:15px">Top Recipe</a>
   </div>
   <div class="panel-body col-no-padding">
     {top_recipe_entries}

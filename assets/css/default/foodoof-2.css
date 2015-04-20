@@ -783,12 +783,28 @@ p.text-capitalize {
 .text-foodoof{
   color:  #CC211F !important;
 }
+.bg-li-highlight{
+  background-color: #CC211F !important;
+}
 .bg-foodoof{
   background-color: #FFD76B !important;
 }
 .bg-sidemenu{
-  background-color: rgb(178, 15, 13);
+  background-color: #EBC255;
 }
 .border-solid-bottom{
   border-bottom: solid 1px #CC211F;
+}
+.border-solid-top{
+  border-top: solid 1px #CC211F;
+}
+.dropdown-menu>li>input:checked~label,
+.dropdown-menu>li>input:checked~label:hover,
+.dropdown-menu>li>input:checked~label:focus,
+.dropdown-menu>.active>label,.dropdown-menu>.active>label:hover,
+.dropdown-menu>.active>label:focus{
+  color:#fff;
+  text-decoration:none;
+  outline:0;
+  background-color:#CC211F
 }

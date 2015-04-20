@@ -1,6 +1,6 @@
 <div class="panel">
   <div class="col-md-12 panel-home-title text-center">
-    <a href="<?php echo base_url();?>index.php/home/recently" style="color:#fff">Recently Recipe</a>
+    <a href="<?php echo base_url();?>index.php/home/recently" style="color:#fff; font-size:15px">Recently Recipe</a>
   </div>
   <div class="panel-body  col-no-padding">
     {recently_recipe_entries}
