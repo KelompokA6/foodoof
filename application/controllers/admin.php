@@ -26,6 +26,7 @@ class Admin extends CI_Controller {
 			}
 			$temp = array(
 				'highlight_recipe_id' => $obj->id,
+				'highlight_recipe_photo' => $obj->photo,
 				'highlight_recipe_name' => $obj->name,
 				'highlight_status' => $obj->highlight,
 				'highlight_checked' => $check,

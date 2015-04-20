@@ -670,7 +670,7 @@ $(document).ready(function() {
 	$(".checkedHighlight").each(function(i){
 		if($(this).prop('checked')){
 			$idHighlight = $(this).val();
-			$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'>Recipes <span>"+$idHighlight+"</span></div>";
+			$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'><div class='col-md-3 col-xs-3 col-no-padding'><img class='img-responsive' src='../"+$(this).data('imgsrc')+"'/></div><div class='col-md-9 col-xs-9'>"+$(this).data('recipename')+"</div></div>";
 			$("#listHightlight").append($addHighlightRecipe);
 		}
 	});
@@ -881,6 +881,7 @@ $(document).ready(function() {
 	*/
 	$('.carousel').carousel();
     $('.btn-popover').popover();
+
     $maxHeightItem = 0;
     $maxHeightDetail = 0;
     $(".item-recipe-home").each(function(){

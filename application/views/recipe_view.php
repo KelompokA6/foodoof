@@ -112,7 +112,17 @@
 							{steps_description}
 						</div>
 						<div class="col-md-3 col-xs-3 col-no-padding-right">
-							<img src="<?php echo base_url();?>{steps_photo}" class="img-rounded img-responsive">
+							<a data-toggle="modal" data-toggle="modal" data-target="#step-{steps_number}"><img src="<?php echo base_url();?>{steps_photo}" class="img-rounded img-responsive"></a>
+							<div id="step-{steps_number}" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							    <div class='lightbox-dialog text-center' style="padding-top:10%;">
+							        <div class='lightbox-content'>
+							            <img src="<?php echo base_url();?>{steps_photo}">
+							            <div class='lightbox-caption'>
+							                {steps_description}
+							            </div>
+							        </div>
+							    </div>
+							</div>
 						</div>
 					</div>
 					{/recipe_steps}

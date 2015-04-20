@@ -15,7 +15,7 @@
 				    		<div class="checkbox" style="padding:0">
 				    			{highlighted_recipe_entries}
 		  					    <label class="form-control" style='padding-left:30px'>
-							      	<input type="checkbox" class="checkedHighlight" name= 'id_highlight[]' value='{highlight_recipe_id}' {highlight_checked}>{highlight_recipe_name}
+							      	<input type="checkbox" class="checkedHighlight" data-imgsrc="{highlight_recipe_photo}" data-recipename="{highlight_recipe_name}" name= 'id_highlight[]' value='{highlight_recipe_id}' {highlight_checked}>{highlight_recipe_name}
 							    </label>
 							   	{/highlighted_recipe_entries}
 							</div> 

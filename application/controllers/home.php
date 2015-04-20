@@ -47,7 +47,7 @@ class Home extends CI_Controller {
 				$this->session->set_flashdata('alert-notification', $alert);
 				$u->where('email', $this->input->post('email'))->get();
 				if(strtolower($u->status) === "admin"){
-					redirect(base_url()."/index.php/admin");
+					redirect(base_url()."index.php/admin");
 				}
 				redirect(base_url());
 			} else {
