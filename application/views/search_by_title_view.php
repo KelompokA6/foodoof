@@ -1,6 +1,6 @@
 <div class="panel-body">
   <div class="col-md-12 col-xs-12">
-    <h3 class="page-header" style="margin-top:5px">
+    <h3 class="page-header-title" style="margin-top:5px">
       {search_by_title_recipe_result}
       <?php
         if($search_by_title_recipe_result > 1){

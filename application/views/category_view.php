@@ -1,6 +1,6 @@
 <div class="panel-body">
   <div class="col-md-12 col-xs-12">
-    <h3 class="page-header text-capitalize" style="margin-top:5px">
+    <h3 class="page-header-title text-capitalize" style="margin-top:5px">
       '{category_name}' Recipe's
     </h3>
   </div>
