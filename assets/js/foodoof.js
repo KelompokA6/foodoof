@@ -683,7 +683,7 @@ $(document).ready(function() {
 		$idHighlight = $(this).val();
 		if($(this).prop('checked')){
 			if($countHighlight < 5){
-				$addHighlightRecipe="<div class='col-md-12 list-group-item animated fadeInDown' data-id='"+$idHighlight+"'title='highlight setting'>Recipes <span>"+$idHighlight+"</span></div>";
+				$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'><div class='col-md-3 col-xs-3 col-no-padding'><img class='img-responsive' src='../"+$(this).data('imgsrc')+"'/></div><div class='col-md-9 col-xs-9'>"+$(this).data('recipename')+"</div></div>";
 				$("#listHightlight").append($addHighlightRecipe);
 				$countHighlight++;
 			}

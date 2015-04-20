@@ -15,6 +15,17 @@
       </a>
     </div>
     <div class="col-md-12 col-xs-6 category-list">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Traditional%20Food">
+        <div class="col-md-3 col-xs-5 img-category">
+          <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/indonesian-food.jpg"/>
+        </div>
+        <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
+          Traditional Food ({category_traditional_food_count})
+        </div>
+        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
+      </a>
+    </div>
+    <div class="col-md-12 col-xs-6 category-list">
       <a href="<?php echo base_url();?>index.php/recipe/category/rice">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/rice.jpg"/>
@@ -131,6 +142,17 @@
         </div>
         <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
           Middle-Eastern ({category_middle-eastern_food_count})
+        </div>
+        <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
+      </a>
+    </div>
+    <div class="col-md-12 col-xs-6 category-list-last">
+      <a href="<?php echo base_url();?>index.php/recipe/category/Other">
+        <div class="col-md-3 col-xs-5 img-category">
+          <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/middle-eastern-food.jpg"/>
+        </div>
+        <div class="col-md-8 col-xs-6 col-no-padding-right category-menu-name">
+          Other ({category_other_count})
         </div>
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>

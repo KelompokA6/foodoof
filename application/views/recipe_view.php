@@ -15,7 +15,7 @@
 		  			<i class="fa fa-clock-o icon-default"></i> {recipe_duration} Minutes
 	  			</div>
 	  		</div>	
-			<div class="col-md-4 col-xs-12 col-no-padding-left" style="margin:10px 0 15px 0; padding-bottom:20px; border-bottom: solid 1px #FFD76B">
+			<div class="col-md-4 col-xs-12 col-no-padding-left border-solid-bottom" style="margin:10px 0 15px 0; padding-bottom:20px;">
 				<div class="col-md-12 col-xs-12 col-no-padding">
 					<img src="<?php echo base_url();?>{recipe_photo}" class="img-rounded img-responsive img-recipe" style="margin:auto">
 				</div>
@@ -28,7 +28,7 @@
 					<div class="col-md-5 col-xs-6 text-right text-capitalize">
 						<a href="<?php echo base_url();?>index.php/user/timeline/{recipe_author_id}">{recipe_author_name}</a>
 					</div>
-					<div class="col-md-7 col-xs-6 text-left text-capitalize" style="border:dashed 1px #FFD76B; border-top:0; border-right:0; border-bottom:0">
+					<div class="col-md-7 col-xs-6 text-left text-capitalize border-dashed-left"
 						<i class="fa fa-calendar icon-default"></i>  {recipe_last_update}
 					</div>
 				</div>

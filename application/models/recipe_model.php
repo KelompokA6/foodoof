@@ -815,6 +815,7 @@ class Recipe_model extends DataMapper {
         array_push($category, 'chinese food');
         array_push($category, 'western food');
         array_push($category, 'middle-eastern food');
+        array_push($category, 'traditional food');
         array_push($category, 'other');
         $arrResult = array();
         foreach ($category as $obj) {

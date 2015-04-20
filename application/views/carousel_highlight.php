@@ -2,7 +2,7 @@
 <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators" style="bottom:10px;">
     {list_recipes1}
-      <li data-target="#carousel-example-captions" data-slide-to="{num}" class="{isactive}" style="background-color:#FFD76B;"></li>
+      <li data-target="#carousel-example-captions" data-slide-to="{num}" class="{isactive} bg-foodoof"></li>
     {/list_recipes1}
   </ol>
   <div class="carousel-inner" role="listbox">
@@ -17,15 +17,15 @@
     {/list_recipes2}
   </div>
   <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="color:#FFD76B;"></span>
+    <span class="glyphicon glyphicon-chevron-left text-foodoof" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="color:#FFD76B;"></span>
+    <span class="glyphicon glyphicon-chevron-right text-foodoof" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
 <a href='<?php echo base_url();?>index.php/home/highlight' style="position:absolute; top:0px; left:30px;">
-  <h3 style='color:#FFD76B'>Highlight Recipe</h3>
+  <h3 class="text-foodoof">Highlight Recipe</h3>
 </a>
 <?php endif;?>

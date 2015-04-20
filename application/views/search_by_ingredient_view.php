@@ -32,7 +32,7 @@
           <div class="col-md-4 col-xs-6 col-no-padding-right details-user-recipe">
             <a href="<?php echo base_url();?>index.php/user/timeline/{search_by_ingredient_recipe_author_id}"><p class="text-capitalize">{search_by_ingredient_recipe_author_name}</p></a>
           </div>
-          <div class="col-md-8 col-xs-6 col-no-padding-right details-time-recipe" style="border-left:dashed 1px #FFD76B">
+          <div class="col-md-8 col-xs-6 col-no-padding-right details-time-recipe border-dashed-left">
             <p class="text-capitalize">{search_by_ingredient_recipe_last_update}</p>
           </div>
       </div>

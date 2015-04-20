@@ -28,20 +28,20 @@
 	  		</div>
 	  	</div>
 	</div>
-  <footer style="background:#CC211F">
+  <footer>
     <div class="container">
       <div class="col-md-12 col-xs-12 col-no-padding page-header-title">
         <div class="col-md-12 col-xs-12  col-no-padding">
-          <div class="col-md-offset-1 col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(255, 215, 107)">
+          <div class="col-md-offset-1 col-md-2 col-xs-2 text-center border-dashed-right">
               <a href="">About</a>      
           </div>
-          <div class="col-md-2 col-xs-3 text-center" style="border-right:dashed 1px rgb(255, 215, 107)">
+          <div class="col-md-2 col-xs-3 text-center border-dashed-right">
               <a href="">Contact Us</a>      
           </div>
-          <div class="col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(255, 215, 107)">
+          <div class="col-md-2 col-xs-2 text-center border-dashed-right">
               <a href="">Our Team</a>      
           </div>
-          <div class="col-md-2 col-xs-2 text-center" style="border-right:dashed 1px rgb(255, 215, 107)">
+          <div class="col-md-2 col-xs-2 text-center border-dashed-right">
               <a href="">F.A.Q</a>     
           </div>
           <div class="col-md-2 col-xs-3 text-center">
@@ -49,12 +49,12 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12 col-xs-12 text-center" style="color:rgb(255, 215, 107)">
+      <div class="col-md-12 col-xs-12 text-center text-foodoof">
         Copyright &copy 2015, FoodooF (PPL-A06)
       </div>
     </div>
   </footer>
-  <!-- <div class="modal fade modal-loading" id="modalWaiting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal fade modal-loading" id="modalWaiting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-sm modal-dialog-loading">
       <div class="modal-content">
         <div class="modal-body text-center">
@@ -62,7 +62,7 @@
         </div>
       </div>
     </div>
-  </div> -->    
+  </div>    
 	</body>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-2.1.3.min.js"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/kartik-star-rating/js/star-rating.min.js" type="text/javascript"></script>

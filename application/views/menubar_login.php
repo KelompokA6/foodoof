@@ -1,20 +1,20 @@
-<div class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation" style="background:rgb(178, 15, 13)">
+<div class="navmenu navmenu-default navmenu-fixed-left offcanvas bg-sidemenu" role="navigation">
   <div class="col-xs-12 text-center page-header-title">
     <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left">
       <img class="img-circle img-brand-menubar" width="75px" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>
     </a>  
   </div>
-  <a href="<?php echo base_url();?>index.php/user/timeline" class="col-xs-12 text-center" style="margin:20px 0; font-size:16px; color:#FFD76B;">
+  <a href="<?php echo base_url();?>index.php/user/timeline" class="col-xs-12 text-center text-foodoof" style="margin:20px 0; font-size:16px;">
     <img class="img-rounded img-profile-slide-menu" src="<?php echo base_url();?>{menubar_user_photo}"/>
   </a>
-  <a href="<?php echo base_url();?>index.php/user/timeline" class="col-xs-12 text-center" style="margin:20px 0; font-size:16px; color:#FFD76B;">
+  <a href="<?php echo base_url();?>index.php/user/timeline" class="col-xs-12 text-center text-foodoof" style="margin:20px 0; font-size:16px;">
     {menubar_user_name}
   </a>
   <a href="<?php echo base_url();?>index.php/home/logout" class="col-xs-12 text-center">
     <button type="button" class="btn button-default">Logout</button>
   </a>
 </div>
-<nav class="navbar navbar-default navbar-fixed-top" style="background:#CC211F">
+<nav class="navbar navbar-default navbar-fixed-top bg-foodoof">
   <div class="container">
     <div class="navbar-header col-md-1 col-no-padding-right" style="padding-bottom:10px">
       <button type="button" class="navbar-toggle navbar-toggle-foodoof" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body" data-placement='left' style="margin:21px 10px 21px 10px">

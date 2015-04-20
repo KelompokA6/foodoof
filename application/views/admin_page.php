@@ -11,7 +11,7 @@
 		  				<div class="list-group" id="listHightlight"></div>
 		  			</div>
 		  			<div class="col-md-7 col-xs-6 col-no-padding-right">
-		  				<div id='div1' style='overflow:scroll;max-height:411px;display:block; border:1px'>
+		  				<div style='overflow:scroll;max-height:411px;display:block; border:1px'>
 				    		<div class="checkbox" style="padding:0">
 				    			{highlighted_recipe_entries}
 		  					    <label class="form-control" style='padding-left:30px'>
