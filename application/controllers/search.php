@@ -32,9 +32,10 @@ class Search extends CI_Controller {
         // print_r($result); die();
         $this->show_search_by_ingredient($q, $result['recipe_list'], ceil($result['total']/$limit), $page, $result['total']);
       } else {
+        $q2 = str_replace("*", "", $q2);
         $temp = $u->searchAccountByName($q2, $limit, $limit * $page - $limit);
         $result['account_list'] = $temp;
-        $result['total'] = sizeof($u->searchAccountByName($q,1000000));
+        $result['total'] = sizeof($u->searchAccountByName($q2,1000000));
         $this->show_search_by_account($q, $result['account_list'], ceil($result['total']/$limit), $page, $result['total']);
       }
     }else redirect(base_url());
