@@ -23,7 +23,7 @@
 body{
   font-family: 'Roboto';
   background-color: #eee;
-  font-size: 15px;
+  font-size: 16px;
 }
 h1,h2,h3,h4,h5,h6{
   font-family: 'Lilly';
@@ -232,6 +232,31 @@ footer{
     text-transform: capitalize;
     font-size: 12px;
   }
+  .rating-xs{
+    font-size: 1.25em !important; 
+  }
+  .rating-recipe > div.rating-users{
+    font-size: 13px !important;
+    line-height: 22px !important;
+    color: #888;
+
+  }
+  .card{
+    margin: 6px 8px !important;
+    border-radius: 4px !important;
+    min-height: 245px !important;
+    background-color: #ffffff !important;
+    padding-bottom: 10px !important;
+    -webkit-box-shadow: 0px 4px 6px rgba(0,0,0,0.1) !important;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1) !important;
+  }
+  div.card  > a > img.details-img-recipe{
+    width:  100% !important;
+    min-height: 130px !important;
+    border-top-left-radius: 4px !important;
+    border-top-right-radius: 4px !important;
+    margin:auto !important;
+  }
 }
 @media screen and (min-width:768px){
   .inline-search{
@@ -321,13 +346,11 @@ footer{
     border-top:0px;
     border-right:0px;
     border-bottom:0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    min-height: 87px;
+    padding: 12px 0;
+    height: 135px;
   }
 
   .detail-list-img{
-    height:87px;
     padding:5px 3px 5px 3px;
     margin-right: 10px;
   }
@@ -602,27 +625,27 @@ ul.dropdown-search > li > a:focus {
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), -1px 1px 4px rgba(255, 215, 107, .6), -1px -1px 4px rgba(255, 215, 107, .6);
 }
 .form-control.input-group-dropdown:focus + .input-group-btn > .btn-group > button.dropdown-cat-search{
-  border-color: #FFD76B;
+  border-color: #111;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 1px 1px 4px rgba(255, 215, 107, .6), 1px -1px 4px rgba(255, 215, 107, .6);
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 1px 1px 4px rgba(255, 215, 107, .6), 1px -1px 4px rgba(255, 215, 107, .6);
 }
 .input-group-btn > .btn-group > button.dropdown-cat-search:hover, .input-group-btn > .btn-group > button.dropdown-cat-search{
   border-left: dashed 1px #FFD76B;
-  color: #FFD76B;
+  color: #111;
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .form-control::-moz-placeholder {
-  color: #FFD76B;
+  color: #111;
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: #FFD76B;
+  color: #111;
 }
 .form-control::-webkit-input-placeholder {
-  color: #FFD76B;
+  color: #111;
 }
 
 .dropdown-cat-search{
@@ -667,7 +690,7 @@ ul.dropdown-search > li > a:focus {
 }
 .panel-home-title{
   color: #fff;
-  background-color: #FFD76B;
+  background-color: #CC211F !important;
   padding: 10px 0 9px 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -718,7 +741,7 @@ div.list-group > a{
 .panel {
   margin-bottom: 20px;
   background-color: #fff;
-  border: 1px solid #FFD76B;
+  border: 1px solid #CC211F !important;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
@@ -736,7 +759,6 @@ p.text-capitalize {
 }
 
 .details-img-recipe{
-  height:96px;
   margin:auto;
 }
 .details-img-account{
@@ -806,4 +828,82 @@ p.text-capitalize {
   text-decoration:none;
   outline:0;
   background-color:#FFD76B
+}
+
+.top-recipe.card{
+  margin: 6px 4px;
+  border-radius: 4px;
+  min-height: 260px;
+  background-color: #fff;
+  padding-bottom: 10px;
+  -webkit-box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+          box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+.recently-recipe.card{
+  margin: 6px 4px;
+  border-radius: 4px;
+  min-height: 250px;
+  background-color: #fff;
+  padding-bottom: 10px;
+  -webkit-box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+          box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+.card > div > a > img.details-img-recipe{
+  width:  100%;
+  height: 135px;
+}
+ol.carousel-indicators > li.bg-li-highlight.active{
+  background-color: #CC211F !important;
+}
+
+div.card  > a > img.details-img-recipe{
+  width:  100%;
+  height: 135px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  margin:auto;
+}
+.title-recipe-home{
+  font-family: 'Lilly';
+  font-size: 16px;
+  border-bottom: dashed 1px #FFD76B;
+  padding:20px 15px 5px;
+  overflow:hidden; 
+  white-space: nowrap;
+}
+.title-recipe-home:after, .author-recipe-home:after{
+  content: "";
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 56%, rgba(255,255,255,1) 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(56%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1)));
+  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%,rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%,rgba(255,255,255,1) 100%);
+  background: -ms-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%,rgba(255,255,255,1) 100%);
+  background: linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%,rgba(255,255,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+}
+.author-recipe-home{
+  font-family: 'Roboto';
+  font-size: 16px;
+  text-overflow:ellipsis;overflow:hidden; 
+  white-space: nowrap;
+  margin:10px 0 0 0;
+}
+.rating-xs{
+  font-size: 1.25em;
+}
+.rating-recipe > div.rating-users{
+  font-size: 12px;
+  line-height: 28px;
+  color: #888
+}
+div.card > div.time-recipe-home{
+  padding:5px 15px;
+}
+div.card > div.time-recipe-home > div > .icon-default{
+  padding: 3px;
 }

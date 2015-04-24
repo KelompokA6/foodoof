@@ -1,12 +1,12 @@
-<div class="col-md-9 pull-right col-no-padding-left col-no-padding-right">
+<div class="col-md-9 pull-right col-no-padding">
 <?php echo $this->session->flashdata('alert-notification');?>
   <div class="col-md-12 col-xs-12 col-no-padding-right col-no-padding-left-mobile" style="margin-bottom:10px">
     {carousel_highlight}
   </div>
-  <div class="col-md-6 col-xs-12 col-no-padding-right col-no-padding-left-mobile" style="padding-right:2px">
+  <div class="col-md-12 col-xs-12 col-no-padding-right col-no-padding-left-mobile">
     {top_recipe_home}
   </div>
-  <div class="col-md-6 col-xs-12 col-no-padding-left col-no-padding-right" style="padding-left:2px">
+  <div class="col-md-12 col-xs-12 col-no-padding-right col-no-padding-left-mobile" style="margin-top:10px">
     {recently_recipe_home}
   </div>
 </div>

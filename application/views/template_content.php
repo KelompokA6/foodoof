@@ -17,7 +17,7 @@
     <link href="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-lightbox/bootstrap-lightbox.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/animate.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof-2.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof.css">
   </head>
   <body>
     {menubar}

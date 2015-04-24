@@ -11,9 +11,9 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$r = new Recipe_model();
-		$listTopRecipe = $r->getTopRecipe(5);
+		$listTopRecipe = $r->getTopRecipe(4);
 		$listHightlight = $r->getHightlight(5);
-		$listRecently = $r->getRecently(5);
+		$listRecently = $r->getRecently(4);
 		// print_r($listHightlight); die();
 		$u = new User_model();
 		foreach ($listTopRecipe as $row)

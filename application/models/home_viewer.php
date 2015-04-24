@@ -89,7 +89,7 @@ class Home_viewer extends CI_Model
 
     $datacomplete['menubar'] = $this->getMenubar();
 
-    $data_content_homepage['content_search'] = $this->parser->parse('highlight_view', $datalist, TRUE);
+    $data_content_homepage['content_page'] = $this->parser->parse('highlight_view', $datalist, TRUE);
     $r = new Recipe_model();
     $countCat = $r->getCountEachCategory();
     foreach ($countCat as $row) {
@@ -99,7 +99,7 @@ class Home_viewer extends CI_Model
     $data_content_homepage['category_home'] = $this->parser->parse('category_home', $dataCat, TRUE);
 
     // load content_website, isinya dari content_homepage
-    $datacomplete['content_website'] = $this->parser->parse('content_search', $data_content_homepage, TRUE);
+    $datacomplete['content_website'] = $this->parser->parse('content_page', $data_content_homepage, TRUE);
 
     // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);
@@ -126,7 +126,7 @@ class Home_viewer extends CI_Model
 
     $datacomplete['menubar'] = $this->getMenubar();
 
-    $data_content_homepage['content_search'] = $this->parser->parse('top_recipe_view', $datalist, TRUE);
+    $data_content_homepage['content_page'] = $this->parser->parse('top_recipe_view', $datalist, TRUE);
     $r = new Recipe_model();
     $countCat = $r->getCountEachCategory();
     foreach ($countCat as $row) {
@@ -136,7 +136,7 @@ class Home_viewer extends CI_Model
     $data_content_homepage['category_home'] = $this->parser->parse('category_home', $dataCat, TRUE);
 
     // load content_website, isinya dari content_homepage
-    $datacomplete['content_website'] = $this->parser->parse('content_search', $data_content_homepage, TRUE);
+    $datacomplete['content_website'] = $this->parser->parse('content_page', $data_content_homepage, TRUE);
 
     // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);
@@ -163,7 +163,7 @@ class Home_viewer extends CI_Model
 
     $datacomplete['menubar'] = $this->getMenubar();
 
-    $data_content_homepage['content_search'] = $this->parser->parse('recently_recipe_view', $datalist, TRUE);
+    $data_content_homepage['content_page'] = $this->parser->parse('recently_recipe_view', $datalist, TRUE);
     $r = new Recipe_model();
     $countCat = $r->getCountEachCategory();
     foreach ($countCat as $row) {
@@ -173,7 +173,7 @@ class Home_viewer extends CI_Model
     $data_content_homepage['category_home'] = $this->parser->parse('category_home', $dataCat, TRUE);
 
     // load content_website, isinya dari content_homepage
-    $datacomplete['content_website'] = $this->parser->parse('content_search', $data_content_homepage, TRUE);
+    $datacomplete['content_website'] = $this->parser->parse('content_page', $data_content_homepage, TRUE);
 
     // butuh menubar dan content_website
     $this->parser->parse('template_content', $datacomplete);

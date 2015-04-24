@@ -415,7 +415,7 @@ class ProcessAjax extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function addFavorite($recipe_id=null){
+	public function setFavorite($recipe_id=null){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){
 				$recipe_id = $this->input->get("id");
@@ -458,7 +458,7 @@ class ProcessAjax extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function addCookLater($recipe_id=null){
+	public function setCookLater($recipe_id=null){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){
 				$recipe_id = $this->input->get("id");
