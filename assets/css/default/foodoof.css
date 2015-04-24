@@ -28,6 +28,9 @@ body{
 h1,h2,h3,h4,h5,h6{
   font-family: 'Lilly';
 }
+h4{
+  font-size: 21px;
+}
 footer{
   font-family: 'Roboto';
   background-color: #D6D6D0;
@@ -35,11 +38,11 @@ footer{
   position: relative;
   bottom: 0;
   padding: 10px 0 0 0;
-  margin-top: -184px; /* negative value of footer height */
+  margin-top: -172px; /* negative value of footer height */
 }
 #wrapper {
   min-height: 100%;
-  padding-bottom:184px;
+  padding-bottom:194px;
 }
 @media screen and (max-width:767px){
   body, footer, header{

@@ -7,20 +7,20 @@
   <div class='col-md-3 col-xs-6 col-no-padding'>
     <div class="top-recipe card">
       <a class="col-md-12 col-xs-12 col-no-padding" href="<?php echo base_url();?>index.php/recipe/get/{top_recipe_id}">
-        <img class="img-responsive details-img-recipe" src="<?php echo base_url();?>{top_recipe_photo}"/>
+        <img class="img-responsive details-img-recipe" src="<?php echo base_url();?>{top_recipe_photo}" title="{top_recipe_name}"/>
       </a>
-      <a class="col-md-12 col-xs-12 text-capitalize title-recipe-home" href="<?php echo base_url();?>index.php/recipe/get/{top_recipe_id}">
+      <a class="col-md-12 col-xs-12 text-capitalize title-recipe-home" href="<?php echo base_url();?>index.php/recipe/get/{top_recipe_id}" title="{top_recipe_name}">
         {top_recipe_name}
       </a>
       <a class="col-md-12 col-xs-12 author-recipe-home" href="<?php echo base_url();?>index.php/user/timeline/{top_recipe_author}">
-        <img class="img-responsive img-circle img-recipe-author" src="<?php echo base_url();?>{top_recipe_author_photo}"/>
-        <span class="recipe-author-name">{top_recipe_author_name}</span>
+        <img class="img-responsive img-circle img-recipe-author" src="<?php echo base_url();?>{top_recipe_author_photo}" title="{top_recipe_author_name}"/>
+        <span class="recipe-author-name" title="{top_recipe_author_name}">{top_recipe_author_name}</span>
       </a>
       <div class="col-md-12 col-xs-12 rating-recipe col-no-padding-right" title="Rating">
         <div class="col-md-9 col-xs-9 col-no-padding">
           <input id="input-2b" class="rating" value="{top_recipe_rating}" data-readonly='true' data-min="0" data-max="5" data-step="0.1" data-stars=5 data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} " data-star-captions="{}" data-show-clear="false">
         </div>
-        <div class="col-md-3 col-xs-3 col-no-padding rating-users text-center">(<i class="fa fa-user"></i><!-- {top_recipe_total_user_rating} -->18)</div>
+        <div class="col-md-3 col-xs-3 col-no-padding rating-users text-center" title="Total User">(<i class="fa fa-user"></i><!-- {top_recipe_total_user_rating} -->18)</div>
       </div>
     </div>
   </div>

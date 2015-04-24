@@ -34,13 +34,13 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-xs-12">
-            <h3>Apa itu Foodoof?</h3>
+            <h4>Apa itu Foodoof ?</h4>
             <p class="text-justify">
               Website menyimpan resep makanan berbasis media sosial. Foodoof bertujuan sebagai wadah bagi kamu-kamu yang suka masak ataupun kalian yang ingin belajar masak
             </p>
           </div>
           <div class="col-md-3 col-xs-12">
-            <h3>About Us</h3>
+            <h4>About Us</h4>
             <ul class="nav-pills nav-stacked">
               <li><a href="">About</a></li>
               <li><a href="">Contact Us</a></li>
@@ -48,7 +48,7 @@
             </ul>
           </div>
           <div class="col-md-3 col-xs-12">
-            <h3>Guide</h3>
+            <h4>Guide</h4>
             <ul class="nav-pills nav-stacked">
               <li><a href="">Term of Services</a></li>
               <li><a href="">F.A.Q</a></li>
