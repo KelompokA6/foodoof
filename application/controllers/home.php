@@ -16,10 +16,14 @@ class Home extends CI_Controller {
 		$listRecently = $r->getRecently(4);
 		// print_r($listHightlight); die();
 		$u = new User_model();
-		foreach ($listTopRecipe as $row)
+		foreach ($listTopRecipe as $row){
 			$row->author_name = $u->getProfile($row->author)->name;
-		foreach ($listRecently as $row)
+			$row->author_photo = $u->getProfile($row->author)->photo;
+		}
+		foreach ($listRecently as $row){
 			$row->author_name = $u->getProfile($row->author)->name;
+			$row->author_photo = $u->getProfile($row->author)->photo;
+		}
 		foreach ($listHightlight as $row)
 			$row->author_name = $u->getProfile($row->author)->name;
 		

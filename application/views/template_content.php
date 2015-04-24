@@ -20,17 +20,45 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof.css">
   </head>
   <body>
-    {menubar}
-	<div class="container container-mobile">
-	  	<div class="row">
-	  		<div class="col-md-12">
-	  			{content_website}
-	  		</div>
-	  	</div>
-	</div>
-  <footer>
-    <div class="container">
-      <div class="col-md-12 col-xs-12 col-no-padding page-header-title">
+    <div id="wrapper">
+      {menubar}
+    	<div class="container container-mobile">
+    	  	<div class="row">
+    	  		<div class="col-md-12">
+    	  			{content_website}
+    	  		</div>
+    	  	</div>
+    	</div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-xs-12">
+            <h3>Apa itu Foodoof?</h3>
+            <p class="text-justify">
+              Website menyimpan resep makanan berbasis media sosial. Foodoof bertujuan sebagai wadah bagi kamu-kamu yang suka masak ataupun kalian yang ingin belajar masak
+            </p>
+          </div>
+          <div class="col-md-3 col-xs-12">
+            <h3>About Us</h3>
+            <ul class="nav-pills nav-stacked">
+              <li><a href="">About</a></li>
+              <li><a href="">Contact Us</a></li>
+              <li><a href="">Our Team</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 col-xs-12">
+            <h3>Guide</h3>
+            <ul class="nav-pills nav-stacked">
+              <li><a href="">Term of Services</a></li>
+              <li><a href="">F.A.Q</a></li>
+            </ul>
+          </div>
+          <div class="col-md-12 col-xs-12 text-center" style="margin:10px 0">
+            &copy 2015, FoodooF. All rights reserved.
+          </div>
+        </div>
+      <!-- <div class="col-md-12 col-xs-12 col-no-padding page-header-title">
         <div class="col-md-12 col-xs-12  col-no-padding">
           <div class="col-md-offset-1 col-md-2 col-xs-2 text-center border-dashed-right">
               <a href="">About</a>      
@@ -51,9 +79,9 @@
       </div>
       <div class="col-md-12 col-xs-12 text-center text-foodoof">
         Copyright &copy 2015, FoodooF (PPL-A06)
+      </div> -->
       </div>
-    </div>
-  </footer>
+    </footer>
   <div class="modal fade modal-loading" id="modalWaiting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-sm modal-dialog-loading">
       <div class="modal-content">

@@ -22,7 +22,7 @@
 
 body{
   font-family: 'Roboto';
-  background-color: #eee;
+  background-color: #F7F3E8;
   font-size: 16px;
 }
 h1,h2,h3,h4,h5,h6{
@@ -30,10 +30,17 @@ h1,h2,h3,h4,h5,h6{
 }
 footer{
   font-family: 'Roboto';
-  background-color: #CC211F;
+  background-color: #D6D6D0;
   font-size: 15px; 
+  position: relative;
+  bottom: 0;
+  padding: 10px 0 0 0;
+  margin-top: -184px; /* negative value of footer height */
 }
-
+#wrapper {
+  min-height: 100%;
+  padding-bottom:184px;
+}
 @media screen and (max-width:767px){
   body, footer, header{
     font-size: 13px;
@@ -233,29 +240,35 @@ footer{
     font-size: 12px;
   }
   .rating-xs{
-    font-size: 1.25em !important; 
+    font-size: 2em !important; 
   }
   .rating-recipe > div.rating-users{
     font-size: 13px !important;
     line-height: 22px !important;
     color: #888;
-
   }
-  .card{
+  .top-recipe.card, .recently-recipe.card{
     margin: 6px 8px !important;
     border-radius: 4px !important;
-    min-height: 245px !important;
+    min-height: 290px !important;
     background-color: #ffffff !important;
-    padding-bottom: 10px !important;
     -webkit-box-shadow: 0px 4px 6px rgba(0,0,0,0.1) !important;
             box-shadow: 0px 4px 6px rgba(0,0,0,0.1) !important;
   }
   div.card  > a > img.details-img-recipe{
     width:  100% !important;
-    min-height: 130px !important;
+    min-height: 150px !important;
     border-top-left-radius: 4px !important;
     border-top-right-radius: 4px !important;
     margin:auto !important;
+  }
+  .card > div.time-recipe-home{
+    font-size: 16px;
+  }
+  .rating-recipe > div.rating-users{
+    font-size: 12px;
+    line-height: 37px !important;
+    color: #888
   }
 }
 @media screen and (min-width:768px){
@@ -504,7 +517,6 @@ footer{
   .list-item-step{
     margin:10px 0 10px 0;
   }
-  
 }
 .button-default{
   background-color: #FFD76B;
@@ -833,7 +845,7 @@ p.text-capitalize {
 .top-recipe.card{
   margin: 6px 4px;
   border-radius: 4px;
-  min-height: 260px;
+  min-height: 265px;
   background-color: #fff;
   padding-bottom: 10px;
   -webkit-box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
@@ -842,7 +854,7 @@ p.text-capitalize {
 .recently-recipe.card{
   margin: 6px 4px;
   border-radius: 4px;
-  min-height: 250px;
+  min-height: 260px;
   background-color: #fff;
   padding-bottom: 10px;
   -webkit-box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
@@ -863,6 +875,18 @@ div.card  > a > img.details-img-recipe{
   border-top-right-radius: 4px;
   margin:auto;
 }
+div.card  > a > .img-recipe-author{
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+}
+div.card  > a.author-recipe-home:hover{
+  text-decoration: none;
+}
+div.card  > a.author-recipe-home:hover > .recipe-author-name{
+  text-decoration: underline;
+}
+
 .title-recipe-home{
   font-family: 'Lilly';
   font-size: 16px;
@@ -891,7 +915,11 @@ div.card  > a > img.details-img-recipe{
   font-size: 16px;
   text-overflow:ellipsis;overflow:hidden; 
   white-space: nowrap;
-  margin:10px 0 0 0;
+  margin:10px 0 5px 0;
+}
+.author-recipe-home > .recipe-author-name{
+  line-height: 30px;
+  margin-left: 10px
 }
 .rating-xs{
   font-size: 1.25em;
@@ -906,4 +934,35 @@ div.card > div.time-recipe-home{
 }
 div.card > div.time-recipe-home > div > .icon-default{
   padding: 3px;
+}
+.carousel-control.left{
+  background-image:  -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .0001) 100%); !important;
+  background-image:  -o-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .0001) 100%); !important;
+  background-image:  linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .0001) 100%); !important;
+}
+.carousel-control.right{
+  background-image:  -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .0001) 100%); !important;
+  background-image:  -o-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .0001) 100%); !important;
+  background-image:  linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .0001) 100%); !important;
+}
+.carousel-control{
+  opacity: .3 !important;
+  background: transparent;
+}
+.carousel-control:hover, .carousel-control:focus{
+  opacity: .7 !important;
+  background: transparent;
+}
+.carousel{
+  border-radius: 4px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+          box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+.recipe-author-name{
+  text-transform: capitalize;
+}
+ul.nav-pills.nav-stacked{
+  list-style-type: none;
+  padding: 0;
 }

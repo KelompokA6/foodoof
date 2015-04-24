@@ -4,7 +4,7 @@
 </div>
 <div class="col-md-12 col-xs-12 col-no-padding">
   {top_recipe_entries}
-  <div class='col-md-3 col-xs-4 col-no-padding'>
+  <div class='col-md-3 col-xs-6 col-no-padding'>
     <div class="top-recipe card">
       <a class="col-md-12 col-xs-12 col-no-padding" href="<?php echo base_url();?>index.php/recipe/get/{top_recipe_id}">
         <img class="img-responsive details-img-recipe" src="<?php echo base_url();?>{top_recipe_photo}"/>
@@ -13,7 +13,8 @@
         {top_recipe_name}
       </a>
       <a class="col-md-12 col-xs-12 author-recipe-home" href="<?php echo base_url();?>index.php/user/timeline/{top_recipe_author}">
-        {top_recipe_author_name}
+        <img class="img-responsive img-circle img-recipe-author" src="<?php echo base_url();?>{top_recipe_author_photo}"/>
+        <span class="recipe-author-name">{top_recipe_author_name}</span>
       </a>
       <div class="col-md-12 col-xs-12 rating-recipe col-no-padding-right" title="Rating">
         <div class="col-md-9 col-xs-9 col-no-padding">

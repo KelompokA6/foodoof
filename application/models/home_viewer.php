@@ -22,6 +22,7 @@ class Home_viewer extends CI_Model
       $row->top_recipe_name = $row->name;
       $row->top_recipe_author = $row->author;
       $row->top_recipe_author_name = $row->author_name;
+      $row->top_recipe_author_photo = $row->author_photo;
       $row->top_recipe_views = $row->views;
       $row->top_recipe_rating = $row->rating;
     }
@@ -32,6 +33,7 @@ class Home_viewer extends CI_Model
       $row->recently_recipe_name = $row->name;
       $row->recently_recipe_author = $row->author;
       $row->recently_recipe_author_name = $row->author_name;
+      $row->recently_recipe_author_photo = $row->author_photo;
       $row->recently_recipe_create_date = strftime("%c", strtotime($row->create_date));
     }
   	/*print_r($listTopRecipe);
