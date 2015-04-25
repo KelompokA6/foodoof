@@ -503,7 +503,7 @@ $(document).ready(function() {
 		$recipeIdFav = $recipeIdFav.split("/");
 		$length = $recipeId.length;
 		$recipeIdFav = $recipeIdFav[$length].split("?");
-		$.get( "/foodoof/processAjax/addFavorite/"+$recipeIdFav[0], function( data ) {
+		$.get( "/foodoof/processAjax/setFavorite/"+$recipeIdFav[0], function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
@@ -533,7 +533,7 @@ $(document).ready(function() {
 		$recipeIdCL = $recipeIdCL.split("/");
 		$length = $recipeId.length;
 		$recipeIdCL = $recipeIdCL[$length].split("?");
-		$.get( "/foodoof/processAjax/addCookLater/"+$recipeIdCL[0], function( data ) {
+		$.get( "/foodoof/processAjax/setCookLater/"+$recipeIdCL[0], function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options

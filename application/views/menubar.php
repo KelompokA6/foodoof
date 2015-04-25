@@ -89,14 +89,16 @@
         </div>
       </form>
       <div class="col-md-4 navbar-collapse collapse col-menu-user col-no-padding-right" style="padding-left:20px; width: 380px;">
-        <div class="col-md-3 link-by-icon text-right" >
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2 link-by-icon text-center" >
           <a id="createRecipeMenubar" title="New Recipe">
             <i class="fa fa-pencil-square-o fa-2x icon-default" style="cursor:pointer"></i>
           </a>
         </div>
         <div class="col-md-8 col-no-padding-right">
           <div class="btn-group" role="group" aria-label="" style="padding-left: 40px; ">
-            <button type="button" class="btn btn-success btn-cus btn-popover" data-container="body" data-toggle="popover" data-placement="bottom" 
+            <button type="button" class="btn btn-default-theme3 btn-cus btn-popover" data-container="body" data-toggle="popover" data-placement="bottom" 
             data-html="TRUE"
             data-content="
               <form id='loginform' class='form-horizontal' role='form' method='post' action='<?php echo base_url();?>index.php/home/login'>      

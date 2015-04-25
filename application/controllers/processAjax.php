@@ -308,13 +308,13 @@ class ProcessAjax extends CI_Controller {
 				if($tmp->status){
 					$result = array(
 						"status" => 1,
-						"message" => "<div class='text-center'>Success To Published Your Recipe.</div>",
+						"message" => "<div class='text-center'>Success To Unpublished Your Recipe.</div>",
 						);	
 				}
 				else{
 					$result = array(
 						"status" => 1,
-						"message" => "<div class='text-center'>Success To Unpublished Your Recipe.</div>",
+						"message" => "<div class='text-center'>Success To Published Your Recipe.</div>",
 						);
 				}
 			}
@@ -322,13 +322,13 @@ class ProcessAjax extends CI_Controller {
 				if($tmp->status){
 					$result = array(
 						"status" => 0,
-						"message" => "<div class='text-center'>Failed To Published Your Recipe.</div>",
+						"message" => "<div class='text-center'>Failed To Unpublished Your Recipe.</div>",
 						);	
 				}
 				else{
 					$result = array(
 						"status" => 0,
-						"message" => "<div class='text-center'>Failed To Unpublished Your Recipe.</div>",
+						"message" => "<div class='text-center'>Failed To Published Your Recipe.</div>",
 						);
 				}
 			}
