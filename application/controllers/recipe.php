@@ -92,11 +92,11 @@ class Recipe extends CI_Controller {
 		$recipe = new Recipe_model();
 		$user = new User_model();
 		$user_id = $user->wajiblogin();
-		$name = $this->input->post("recipe_title");
-		$description = $this->input->post("recipe_description");
-		$portion = $this->input->post("recipe_portion");
-		$duration = $this->input->post("recipe_duration");
-		$category = $this->input->post("recipe_category");
+		$name = htmlspecialchars($this->input->post("recipe_title"));
+		$description = htmlspecialchars($this->input->post("recipe_description"));
+		$portion = htmlspecialchars($this->input->post("recipe_portion"));
+		$duration = htmlspecialchars($this->input->post("recipe_duration"));
+		$category = htmlspecialchars($this->input->post("recipe_category"));
 		//print_r($category);
 		$subjek =  $this->input->post("ingredient_subject");
 		// print_r($subjek);
@@ -110,16 +110,16 @@ class Recipe extends CI_Controller {
 
 		$ingredients = array();
 		for ($i=0; $i < sizeof($subjek) ; $i++) { 
-			$temp['name'] = $subjek[$i];
-			$temp['quantity'] = $quantity[$i];
-			$temp['units'] = $unit[$i];
+			$temp['name'] = htmlspecialchars($subjek[$i]);
+			$temp['quantity'] = htmlspecialchars($quantity[$i]);
+			$temp['units'] = htmlspecialchars($unit[$i]);
 			array_push($ingredients, $temp);
 		}
 		$stdes =  $this->input->post("step-description");
 		$poto =  $this->input->post("photo-step");
 		$steps = array();
 		for ($i=0; $i < sizeof($stdes); $i++) { 
-			$temp['description'] = $stdes[$i];
+			$temp['description'] = htmlspecialchars($stdes[$i]);
 			array_push($steps, $temp);
 		}
 		// print_r($steps);
