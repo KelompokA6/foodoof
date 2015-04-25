@@ -57,6 +57,9 @@ footer > div > div > div > ul > li > a{
   body, footer, header{
     font-size: 13px;
   }
+  .img-brand-menubar{
+    max-width: 250px !important;
+  }
   .collapse-navbar-search{
     padding-left: 10px;
   }
