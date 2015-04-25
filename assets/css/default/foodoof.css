@@ -37,12 +37,17 @@ h4{
 }
 footer{
   font-family: 'Roboto';
-  background-color: #D6D6D0;
+  /*background-color: #D6D6D0;*/
+  background-color: #CC211F; 
+  color:  #fff;
   font-size: 15px; 
   position: relative;
   bottom: 0;
   padding: 10px 0 0 0;
   margin-top: -172px; /* negative value of footer height */
+}
+footer > div > div > div > ul > li > a{
+  color: #fff;
 }
 #wrapper {
   min-height: 100%;
