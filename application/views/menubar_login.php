@@ -19,15 +19,15 @@
     <div class="navbar-header col-md-2 col-no-padding-right" style="padding-bottom:10px">
       <button type="button" class="navbar-toggle navbar-toggle-foodoof" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body" data-placement='left' style="margin:21px 10px 21px 10px">
           <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar icon-default"></span>
-          <span class="icon-bar icon-default"></span>
-          <span class="icon-bar icon-default"></span>
+          <span class="icon-bar icons-default"></span>
+          <span class="icon-bar icons-default"></span>
+          <span class="icon-bar icons-default"></span>
       </button>
       <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left col-md-12 col-xs-9">
         <img class="img-responsive img-brand-menubar" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 12px;"/>
       </a>
       <a href="<?php echo base_url();?>index.php/recipe/create" class="btn-navbar-mobile pull-right text-center">
-        <i class="fa fa-pencil-square-o fa-2x icon-default">
+        <i class="fa fa-pencil-square-o fa-2x icons-default">
         </i><br>Write <br>A Recipe
       </a>
     </div>
@@ -74,7 +74,7 @@
         </div>
         <div class="col-md-2 link-by-icon text-right" >
           <a href="<?php echo base_url();?>index.php/recipe/create" title="New Recipe">
-            <i class="fa fa-pencil-square-o fa-2x icon-default" style="cursor:pointer"></i>
+            <i class="fa fa-pencil-square-o fa-2x icons-default" style="cursor:pointer"></i>
           </a>
         </div>
         <a href="<?php echo base_url();?>index.php/user/timeline" class="col-md-5 col-no-padding">

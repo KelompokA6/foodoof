@@ -17,11 +17,11 @@
     {/list_recipes2}
   </div>
   <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left text-foodoof" aria-hidden="true"></span>
+    <span class="fa fa-chevron-left fa-2x text-foodoof" aria-hidden="true" style="padding-top:150%"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right text-foodoof" aria-hidden="true"></span>
+    <span class="fa fa-chevron-right fa-2x text-foodoof" aria-hidden="true" style="padding-top:150%"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>

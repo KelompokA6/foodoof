@@ -45,15 +45,15 @@
     <div class="navbar-header col-md-2 col-no-padding-right" style="padding-bottom:10px">
       <button type="button" class="navbar-toggle navbar-toggle-foodoof" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body" data-placement='left' style="margin:21px 10px 21px 10px">
           <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar icon-default"></span>
-          <span class="icon-bar icon-default"></span>
-          <span class="icon-bar icon-default"></span>
+          <span class="icon-bar icons-default"></span>
+          <span class="icon-bar icons-default"></span>
+          <span class="icon-bar icons-default"></span>
       </button>
       <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left col-md-12 col-xs-9">
         <img class="img-responsive img-brand-menubar" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 12px;"/>
       </a>
       <a href="<?php echo base_url();?>index.php/recipe/create" class="btn-navbar-mobile pull-right text-center">
-        <i class="fa fa-pencil-square-o fa-2x icon-default"></i><br>Write <br>A Recipe
+        <i class="fa fa-pencil-square-o fa-2x icons-default"></i><br>Write <br>A Recipe
       </a>
     </div>
     <div id="navbar" class="col-md-10">
@@ -61,26 +61,27 @@
         <div class="input-group form-group search-bar-menu">
           <span class="input-group-btn"> 
             <div class="btn-group">
-              <button class="btn dropdown-toggle-search btn-default-theme2" data-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-cutlery"></i>
+              <button class="btn dropdown-cat-search btn-default-theme2" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-cutlery fa-lg"></i>
               </button>
               <ul id="listSearch" class="dropdown-menu dropdown-menu-search bullet pull-center">
                 <li>
                   <input type="radio" id="ex1_1" value='title' name="searchby" checked/>
                   <label for="search-title">
-                    <i class="fa fa-cutlery"></i><span style="margin-left:15px">Title </span>
+                    <i class="fa fa-cutlery fa-lg"></i><span style="margin-left:15px">Title </span>
                   </label>
                 </li>
                 <li>
                   <input type="radio" id="ex1_2" value='ingredient' name="searchby"/>
                   <label for="search-ingredient">
-                    <img class="img-icon" src="<?php echo base_url();?>assets/icon/theme2-ingredients.ico"/><span style="margin-left:15px">Ingredient </span>
+                    <i class="icon-basket" style="font-size:1.333em"></i><span style="margin-left:15px">Ingredient </span>
+                    <!-- <img class="img-icon" src="<?php echo base_url();?>assets/icon/theme2-ingredients.ico"/><span style="margin-left:15px">Ingredient </span> -->
                   </label>
                 </li>
                 <li>
                   <input type="radio" id="ex1_3" value='account' name="searchby"/>
                   <label for="search-account">
-                    <i class="fa fa-user"></i><span style="margin-left:15px">Account </span>
+                    <i class="fa fa-user fa-lg"></i><span style="margin-left:15px">Account </span>
                   </label>
                 </li>
               </ul>
@@ -99,7 +100,7 @@
         </div>
         <div class="col-md-2 link-by-icon text-center" >
           <a id="createRecipeMenubar" title="New Recipe">
-            <i class="fa fa-pencil-square-o fa-2x icon-default" style="cursor:pointer"></i>
+            <i class="fa fa-pencil-square-o fa-2x icons-default" style="cursor:pointer"></i>
           </a>
         </div>
         <div class="col-md-8 col-no-padding-right">

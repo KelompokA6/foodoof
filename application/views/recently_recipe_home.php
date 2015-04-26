@@ -23,7 +23,7 @@
         </a>
         <div class="col-md-12 col-xs-12 time-recipe-home col-no-padding-right" title="Create Update">
           <div class="col-md-1 col-xs-2 col-no-padding-left">
-            <i class="fa fa-calendar icon icon-default"></i>
+            <i class="fa fa-calendar icon icons-default"></i>
           </div>
           <div class="col-md-10 col-xs-10 col-no-padding-left-mobile col-no-padding-right">
             {recently_recipe_create_date}
@@ -40,7 +40,7 @@
       <div class="col-md-8 col-xs-7 detail-list-recipe-home">
         <div class="col-md-12 col-xs-12 details-recipe-home">
           <div class="col-md-2 col-xs-3 icons">
-            <i class="fa fa-cutlery pull-left icon-default"></i>
+            <i class="fa fa-cutlery pull-left icons-default"></i>
           </div>
           <div class="col-md-10 col-xs-9">
             <a href="<?php //echo base_url();?>index.php/recipe/get/{recently_recipe_id}">
@@ -50,7 +50,7 @@
         </div>
         <div class="col-md-12 col-xs-12 details-recipe-home">
           <div class="col-md-2 col-xs-3 icons">
-            <i class="fa fa-user pull-left icon-default"></i>
+            <i class="fa fa-user pull-left icons-default"></i>
           </div>
           <div class="col-md-10 col-xs-9">
             <a href="<?php //echo base_url();?>index.php/user/timeline/{recently_recipe_author}">
@@ -60,7 +60,7 @@
         </div>
         <div class="col-md-12 col-xs-12 details-recipe-home">
           <div class="col-md-2 col-xs-3 icons">
-            <i class="fa fa-calendar pull-left icon-default"></i>
+            <i class="fa fa-calendar pull-left icons-default"></i>
           </div>
           <div class="col-md-10 col-xs-9">
             <p class="text-capitalize">{recently_recipe_create_date}</p>

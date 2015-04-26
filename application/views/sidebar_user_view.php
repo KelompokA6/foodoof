@@ -5,21 +5,21 @@
 	<div class="list-group">
 	  	<a href="<?php echo base_url();?>index.php/user/profile/{sidebar_user_id}" class="list-group-item" title="Profile">
 		    <span class="fa-stack fa-lg">
-			  <i class="fa fa-square fa-stack-2x icon-default"></i>
+			  <i class="fa fa-square fa-stack-2x icons-default"></i>
 			  <i class="fa fa-user fa-stack-1x fa-inverse"></i>
 			</span>
 			Profile
 	  	</a>
 	  	<a href="<?php echo base_url();?>index.php/user/timeline/{sidebar_user_id}" class="list-group-item" title="My Recipe">
 		  	<span class="fa-stack fa-lg">
-			  <i class="fa fa-square fa-stack-2x icon-default"></i>
+			  <i class="fa fa-square fa-stack-2x icons-default"></i>
 			  <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
 			</span>
 			Recipes
 		</a>
 	  	<a class="list-group-item disabled" title="Favorite Recipe">
 	  		<span class="fa-stack fa-lg">
-			  <i class="fa fa-square fa-stack-2x icon-default"></i>
+			  <i class="fa fa-square fa-stack-2x icons-default"></i>
 			  <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
 			</span>
 			Favorite
@@ -27,7 +27,7 @@
 	  	<?php if($this->session->userdata('user_id') == $sidebar_user_id): ?>
 	  	<a class="list-group-item disabled" title="Cook Later">
 	  		<span class="fa-stack fa-lg">
-			  <i class="fa fa-square fa-stack-2x icon-default"></i>
+			  <i class="fa fa-square fa-stack-2x icons-default"></i>
 			  <i class="fa fa-list-alt fa-stack-1x fa-inverse"></i>
 			</span>
 			Cook Later
@@ -36,7 +36,7 @@
 	  	<?php if($this->session->userdata('user_id') == $sidebar_user_id): ?>
 	  		<a href='<?php echo base_url();?>index.php/user/changepassword' class='list-group-item' title='Change Password'>
 			  		<span class='fa-stack fa-lg'>
-					  <i class='fa fa-square fa-stack-2x icon-default'></i>
+					  <i class='fa fa-square fa-stack-2x icons-default'></i>
 					  <i class='fa fa-key fa-stack-1x fa-inverse'></i>
 					</span>
 					Change Password
@@ -45,7 +45,7 @@
 		<?php if($this->session->userdata('user_id')!='' && strtolower($sidebar_user_status_profile)==='admin' && strtolower($sidebar_user_status_admin)==='admin'): ?>
 	  		<a href='<?php echo base_url();?>index.php/admin' class='list-group-item' title='Admin Page'>
 			  		<span class='fa-stack fa-lg'>
-					  <i class='fa fa-square fa-stack-2x icon-default'></i>
+					  <i class='fa fa-square fa-stack-2x icons-default'></i>
 					  <i class='fa fa-gear fa-stack-1x fa-inverse'></i>
 					</span>
 					Admin Page

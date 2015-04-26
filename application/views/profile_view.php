@@ -20,7 +20,7 @@
 			<div class="col-md-12 col-xs-12 col-no-padding-left profile-info">
 				<div class="col-md-1 col-xs-2 col-no-padding-left">
 					<span class="fa-stack fa-lg">
-				  <i class="fa fa-square fa-stack-2x icon-default"></i>
+				  <i class="fa fa-square fa-stack-2x icons-default"></i>
 				  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
 				</span>
 				</div>
@@ -33,7 +33,7 @@
 			<div class="col-md-12 col-xs-12 col-no-padding-left profile-info">
 				<div class="col-md-1 col-xs-2 col-no-padding-left">
 					<span class="fa-stack fa-lg">
-				  <i class="fa fa-square fa-stack-2x icon-default"></i>
+				  <i class="fa fa-square fa-stack-2x icons-default"></i>
 				  <i class="fa fa-phone fa-stack-1x fa-inverse"></i>
 				</span>
 				</div>
@@ -44,7 +44,7 @@
 			<div class="col-md-12 col-xs-12 col-no-padding-left profile-info">
 				<div class="col-md-1 col-xs-2 col-no-padding-left">
 					<span class="fa-stack fa-lg">
-				  <i class="fa fa-square fa-stack-2x icon-default"></i>
+				  <i class="fa fa-square fa-stack-2x icons-default"></i>
 				  <i class="fa fa-birthday-cake fa-stack-1x fa-inverse"></i>
 				</span>
 				</div>
@@ -55,7 +55,7 @@
 			<div class="col-md-12 col-xs-12 col-no-padding-left profile-info">
 				<div class="col-md-1 col-xs-2 col-no-padding-left">
 					<span class="fa-stack fa-lg">
-					  	<i class="fa fa-square fa-stack-2x icon-default"></i>
+					  	<i class="fa fa-square fa-stack-2x icons-default"></i>
 					  	<i class="fa fa-clock-o fa-stack-1x fa-inverse"></i>
 					</span>
 				</div>
@@ -68,7 +68,7 @@
 			<div class="col-md-12 col-xs-12 col-no-padding-left profile-info">
 				<div class="col-md-1 col-xs-2 col-no-padding-left">
 					<span class="fa-stack fa-lg">
-				  <i class="fa fa-square fa-stack-2x icon-default"></i>
+				  <i class="fa fa-square fa-stack-2x icons-default"></i>
 				  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
 				</span>
 				</div>
@@ -81,7 +81,7 @@
 			<div class="col-md-12 col-xs-12 col-no-padding-left profile-info">
 				<div class="col-md-1 col-xs-2 col-no-padding-left">
 					<span class="fa-stack fa-lg">
-				  <i class="fa fa-square fa-stack-2x icon-default"></i>
+				  <i class="fa fa-square fa-stack-2x icons-default"></i>
 				  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
 				</span>
 				</div>
@@ -94,7 +94,7 @@
 			<div class="col-md-12 col-xs-12 col-no-padding-left profile-info">
 				<div class="col-md-1 col-xs-2 col-no-padding-left">
 					<span class="fa-stack fa-lg">
-				  <i class="fa fa-square fa-stack-2x icon-default"></i>
+				  <i class="fa fa-square fa-stack-2x icons-default"></i>
 				  <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
 				</span>
 				</div>
@@ -107,7 +107,7 @@
 			<div class="col-md-12 col-xs-12 col-no-padding-left profile-info">
 				<div class="col-md-1 col-xs-2 col-no-padding-left">
 					<span class="fa-stack fa-lg">
-				  <i class="fa fa-square fa-stack-2x icon-default"></i>
+				  <i class="fa fa-square fa-stack-2x icons-default"></i>
 				  <i class="el el-path fa-stack-1x fa-inverse" style="padding: 8px;"></i>
 				</span>
 				</div>

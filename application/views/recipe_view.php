@@ -11,8 +11,8 @@
 	  		<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title text-capitalize hr-dashed"  style="line-height:33px; font-size:16px;">
 	  			<div class="col-md-9 col-xs-12"><h2 style="margin:0">{recipe_name}</h2></div>
 	  			<div class="col-md-3 col-xs-12 pull-right col-no-padding text-center" style="bottom:0">
-	  				<i class="fa fa-users icon-default"></i> {recipe_portion} Persons   |      
-		  			<i class="fa fa-clock-o icon-default"></i> {recipe_duration} Minutes
+	  				<i class="fa fa-users fa-lg icons-default"></i> {recipe_portion} Persons   |      
+		  			<i class="fa fa-clock-o fa-lg icons-default"></i> {recipe_duration} Minutes
 	  			</div>
 	  		</div>	
 			<div class="col-md-4 col-xs-12 col-no-padding-left border-solid-bottom" style="margin:10px 0 15px 0; padding-bottom:20px;">
@@ -29,7 +29,7 @@
 						<a href="<?php echo base_url();?>index.php/user/timeline/{recipe_author_id}">{recipe_author_name}</a>
 					</div>
 					<div class="col-md-7 col-xs-6 text-left text-capitalize border-dashed-left"
-						<i class="fa fa-calendar icon-default"></i>  {recipe_last_update}
+						<i class="fa fa-calendar icons-default"></i>  {recipe_last_update}
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-top:5px;">

@@ -298,7 +298,7 @@ $(document).ready(function() {
 		}
 		else if(search==="ingredient"){	
 			$("#searchbar").attr("placeholder", "Search Recipe By Ingredient");
-			$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-ingredient']").find("img").clone().prop("src","/foodoof/assets/icon/white-ingredients.ico"));
+			$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-ingredient']").find("i").clone());
 			$("ul#listSearch > li > input[value='title']").prop('checked', false);
 			$("ul#listSearch > li > input[value='ingredient']").prop('checked', true);
 			$("ul#listSearch > li > input[value='account']").prop('checked', false);
@@ -337,7 +337,7 @@ $(document).ready(function() {
 		$("ul#listSearch > li > input[value='title']").prop('checked', false);
 		$("ul#listSearch > li > input[value='ingredient']").prop('checked', true);
 		$("ul#listSearch > li > input[value='account']").prop('checked', false);
-		$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-ingredient']").find("img").clone().prop("src","/foodoof/assets/icon/white-ingredients.ico"));
+		$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-ingredient']").find("i").clone());
 		$("#searchbar").attr("placeholder", "Search Recipe By Ingredient");
 	}
 	if($searchBy.toLowerCase() === "account"){

@@ -62,7 +62,7 @@
 					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
-								  <i class="fa fa-square fa-stack-2x icon-default"></i>
+								  <i class="fa fa-square fa-stack-2x icons-default"></i>
 								  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
 								</span>
 	      					</div>
@@ -77,7 +77,7 @@
 					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
-								  <i class="fa fa-square fa-stack-2x icon-default"></i>
+								  <i class="fa fa-square fa-stack-2x icons-default"></i>
 								  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
 								</span>
 	      					</div>
@@ -92,7 +92,7 @@
 					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
-								  <i class="fa fa-square fa-stack-2x icon-default"></i>
+								  <i class="fa fa-square fa-stack-2x icons-default"></i>
 								  <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
 								</span>
 	      					</div>
@@ -107,7 +107,7 @@
 					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
-								  <i class="fa fa-square fa-stack-2x icon-default"></i>
+								  <i class="fa fa-square fa-stack-2x icons-default"></i>
 								  <i class="el el-path fa-stack-1x fa-inverse" style="padding-top:25%"></i>
 								</span>
 	      					</div>

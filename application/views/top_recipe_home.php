@@ -33,7 +33,7 @@
     <div class="col-md-8 col-xs-7 detail-list-recipe-home col-no-padding">
       <div class="col-md-12 col-xs-12 details-recipe-home">
         <div class="col-md-2 col-xs-3 icons">
-          <i class="fa fa-cutlery pull-left icon-default"></i>
+          <i class="fa fa-cutlery pull-left icons-default"></i>
         </div>
         <div class="col-md-10 col-xs-9">
           <a href="<?php //echo base_url();?>index.php/recipe/get/{top_recipe_id}">
@@ -43,7 +43,7 @@
       </div>
       <div class="col-md-12 col-xs-12 details-recipe-home">
         <div class="col-md-2 col-xs-3 icons">
-          <i class="fa fa-user pull-left icon-default"></i>
+          <i class="fa fa-user pull-left icons-default"></i>
         </div>
         <div class="col-md-10 col-xs-9">
           <a href="<?php //echo base_url();?>index.php/user/timeline/{top_recipe_author}">
@@ -58,7 +58,7 @@
       </div>
       <!-- <div class="col-md-12 details">
         <div class="col-md-2 col-xs-3 icons">
-          <i class="fa fa-eye pull-left icon-default"></i>
+          <i class="fa fa-eye pull-left icons-default"></i>
         </div>
         <div class="col-md-10 col-xs-9">
           <p class="text-capitalize">{top_recipe_views} Views</p>

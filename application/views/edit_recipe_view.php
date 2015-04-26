@@ -126,13 +126,13 @@
 							    	{/edit_recipe_ingredient_entries}
 							    	<div id="add-and-remove-btn-ingredient" class="col-sm-2 col-xs-2 col-no-padding" style="padding:2.5px">
 							      		<div class="col-sm-6 col-xs-6">
-							      			<span id="add-ingredient" class="fa-stack fa-lg icon-default" title="Add Ingredient" style="cursor:pointer;">
+							      			<span id="add-ingredient" class="fa-stack fa-lg icons-default" title="Add Ingredient" style="cursor:pointer;">
 											  	<i class="fa fa-square fa-stack-2x"></i>
 											  	<i class="fa fa-plus fa-stack-1x fa-inverse"></i>
 											</span>
 							      		</div>
 							      		<div class="col-sm-6 col-xs-6">
-							      			<span id="remove-ingredient" class="fa-stack fa-lg icon-default" title="Remove Ingredient" style="cursor:pointer;">
+							      			<span id="remove-ingredient" class="fa-stack fa-lg icons-default" title="Remove Ingredient" style="cursor:pointer;">
 											  	<i class="fa fa-square fa-stack-2x"></i>
 											  	<i class="fa fa-minus fa-stack-1x fa-inverse"></i>
 											</span>
@@ -155,13 +155,13 @@
 							    	{/edit_recipe_step_entries}
 						    		<div id="add-and-remove-btn-step" class="col-sm-2 col-xs-2 col-no-padding" style="padding:2.5px">
 							      		<div class="col-sm-6 col-xs-6">
-							      			<span id="add-step" class="fa-stack fa-lg icon-default" title="Add Step" style="cursor:pointer;">
+							      			<span id="add-step" class="fa-stack fa-lg icons-default" title="Add Step" style="cursor:pointer;">
 											  	<i class="fa fa-square fa-stack-2x"></i>
 											  	<i class="fa fa-plus fa-stack-1x fa-inverse"></i>
 											</span>
 							      		</div>
 							      		<div class="col-sm-6 col-xs-6">
-							      			<span id="remove-step" class="fa-stack fa-lg icon-default" title="Remove Step" style="cursor:pointer;">
+							      			<span id="remove-step" class="fa-stack fa-lg icons-default" title="Remove Step" style="cursor:pointer;">
 											  	<i class="fa fa-square fa-stack-2x"></i>
 											  	<i class="fa fa-minus fa-stack-1x fa-inverse"></i>
 											</span>
