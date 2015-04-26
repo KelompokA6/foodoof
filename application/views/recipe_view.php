@@ -54,7 +54,21 @@
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-top:5px">
 					<div class="col-md-6 col-xs-6" style="padding-right:5px">
-						<button class="btn button-default col-md-12 col-xs-12"><i class="fa fa-share-alt pull-left fa-inverse icons"></i>  Share</button>
+						<div class="btn-group" style="width:100%">
+	  						<button type="button" class="btn button-default" style="width:80%">
+	  							<i class="fa fa-share-alt pull-left fa-inverse icons btn-add-to"></i>   Share
+	  						</button>
+							<button type="button" class="btn button-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="height:34px; width:20%">
+				              <span class="caret" style="color:#eee"></span>
+				              <span class="sr-only">Toggle Dropdown</span>
+				            </button>
+				            <ul class="dropdown-menu dropdown-search bullet pull-center" role="menu" aria-labelledby="dropdownMenu1">
+				              <li role="presentation" id="share-fb"><a role="menuitem" tabindex="-1"><i class="fa fa-facebook icons"></i> Facebook</a></li>
+				              <li role="presentation" id="share-twitter"><a role="menuitem" tabindex="-1"><i class="fa fa-twitter icons"></i> Twitter</a></li>
+				              <li role="presentation" id="share-gplus"><a role="menuitem" tabindex="-1"><i class="fa fa-google-plus icons"></i> Google+</a></li>
+				              <li role="presentation" id="share-path"><a role="menuitem" tabindex="-1"><i class="el el-path icons"></i> Path</a></li>
+				            </ul>
+						</div>
 					</div>
 					<div class="col-md-6 col-xs-6" style="padding-left:5px">
 						<button class="btn button-default col-md-12 col-xs-12"><i class="fa fa-flag pull-left fa-inverse icons"></i>  Report</button>
@@ -79,23 +93,23 @@
 	  				<div class="col-md-10 col-xs-10 col-no-padding related-recipe-entries">
 	  					<div class="col-md-12 col-xs-12 col-no-padding owl-carousel">
 	  						<!-- {related_recipe_entries} -->
-	  						<div class="col-md-12 col-xs-4 related-recipe-entry item">
+	  						<div class="col-md-12 col-xs-12 related-recipe-entry item">
 								<img src="<?php echo base_url();?>images/recipe/26.jpg" class="img-responsive col-md-12 col-xs-12 col-no-padding">
 								<a class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
 							</div>
-							<div class="col-md-12 col-xs-4 related-recipe-entry item">
+							<div class="col-md-12 col-xs-12 related-recipe-entry item">
 								<img src="<?php echo base_url();?>images/recipe/27.jpg" class="img-responsive col-md-12 col-xs-12 col-no-padding">
 								<a class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
 							</div>
-							<div class="col-md-12 col-xs-4 related-recipe-entry item">
+							<div class="col-md-12 col-xs-12 related-recipe-entry item">
 								<img src="<?php echo base_url();?>images/recipe/28.jpg" class="img-responsive col-md-12 col-xs-12 col-no-padding">
 								<a class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
 							</div>
-							<div class="col-md-12 col-xs-4 related-recipe-entry item">
+							<div class="col-md-12 col-xs-12 related-recipe-entry item">
 								<img src="<?php echo base_url();?>images/recipe/25.jpg" class="img-responsive col-md-12 col-xs-12 col-no-padding">
 								<a class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
 							</div>
-							<div class="col-md-12 col-xs-4 related-recipe-entry item">
+							<div class="col-md-12 col-xs-12 related-recipe-entry item">
 								<img src="<?php echo base_url();?>{recipe_photo}" class="img-responsive col-md-12 col-xs-12 col-no-padding">
 								<a class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
 							</div>
@@ -172,7 +186,7 @@
 					<div class="col-md-10 col-xs-10 bubble">
 						<form class="form-horizontal text-center" role="form" method="post" style="margin:0">
 							<div class="textareaKeeper col-md-12 col-xs-12 col-no-padding">
-							    <textarea class="form-control enter-comment" row="3" placeholder="Write Your Comment In Here ..."></textarea>
+							    <textarea class="form-control enter-comment" row="1" placeholder="Write Your Comment In Here ..."></textarea>
 							</div>
 							<button type="submit" class="btn btn-default-theme3" style="margin-top:5px">Send</button>
 						</form>

@@ -1267,7 +1267,7 @@ textarea.enter-comment.form-control:focus{
   border-left: 2px solid #469BF2;
   border-right: 2px solid #469BF2;
   border-bottom: 2px solid #469BF2;
-  height: 10;
+  height: 10px;
   margin-top:50px;
 }
 .comment-entry{
