@@ -1011,13 +1011,20 @@ $(document).ready(function() {
 	  	console.log("first : "+$carouselActiveFirst);
 	  	console.log("last : "+$carouselActiveLast);
 	}
-
+	/*
+	comment
+	*/
+	$("textarea.enter-comment").on('autosize:resized', function(){
+	    $height = $(this).height()+12;
+		$(this).parent().css("margin-top",$height);
+		$(this).css("margin-top", -($height-7));
+	});
 	/*
 	init javascript bootstrap;
 	*/
 	$('.carousel').carousel();
     $('.btn-popover').popover();
-
+    autosize($('textarea'));
     $maxHeightItem = 0;
     $maxHeightDetail = 0;
     $(".item-recipe-home").each(function(){

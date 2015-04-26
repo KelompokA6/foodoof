@@ -139,14 +139,14 @@
 						<h3 style="margin-top:0" class="page-header-title">Steps</h3>
 					</div>
 					{recipe_steps}
-					<div class="col-md-12 col-xs-12 col-no-padding-right page-header" style="margin:10px 0">
+					<div class="col-md-12 col-xs-12 col-no-padding-right page-header step-entry" style="margin:10px 0">
 						<div class="col-md-1 col-xs-1 col-no-padding-right">
 							{steps_number}
 						</div>
-						<div class="col-md-8 col-xs-8 col-no-padding-right">
+						<div class="col-md-9 col-xs-8 col-no-padding-right">
 							{steps_description}
 						</div>
-						<div class="col-md-3 col-xs-3 col-no-padding-right">
+						<div class="col-md-2 col-xs-3 col-no-padding-right">
 							<a data-toggle="modal" data-toggle="modal" data-target="#step-{steps_number}"><img src="<?php echo base_url();?>{steps_photo}" class="img-rounded img-responsive"></a>
 							<div id="step-{steps_number}" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 							    <div class='lightbox-dialog text-center' style="padding-top:10%;">
@@ -165,16 +165,43 @@
 			</div>
 			<div id="comment" class="col-md-12 col-xs-12 border-solid-top">
 				<h4 class="page-header-title">Comment's Recipe (2 Comments)</h4>
-				<div class="col-md-12 col-xs-12">
-					<div class="col-md-2 col-xs-2">
+				<div class="col-md-8 col-xs-12">
+					<div class="col-md-2 col-xs-2 col-no-padding-left">
 						<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
-
 					</div>
 					<div class="col-md-10 col-xs-10 bubble">
 						<form class="form-horizontal text-center" role="form" method="post" style="margin:0">
-							<textarea row="3" class="form-control" style="border:none; resize:vertical"></textarea>
+							<div class="textareaKeeper col-md-12 col-xs-12 col-no-padding">
+							    <textarea class="form-control enter-comment" row="3" placeholder="Write Your Comment In Here ..."></textarea>
+							</div>
 							<button type="submit" class="btn btn-default-theme3" style="margin-top:5px">Send</button>
 						</form>
+					</div>
+				</div>
+				<div class="col-md-8 col-xs-12 comment-entry">
+					<div class="col-md-2 col-xs-2 col-no-padding-left">
+						<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
+					</div>
+					<div class="col-md-10 col-xs-10 bubble">
+						<div class="col-md-12 col-xs-12 col-no-padding-left comment-value">
+							asjkhsjdfhkjsdafhdfgadjadsgfhjgsdaff;jsdajfkhsdfj
+						</div>
+						<div class="col-md-12 col-xs-12 col-no-padding-left comment-time border-dashed-top">
+							4 hours ago
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 col-xs-12 comment-entry">
+					<div class="col-md-2 col-xs-2 col-no-padding-left">
+						<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
+					</div>
+					<div class="col-md-10 col-xs-10 bubble">
+						<div class="col-md-12 col-xs-12 col-no-padding-left comment-value">
+							asjdkjhsfjdsj
+						</div>
+						<div class="col-md-12 col-xs-12 col-no-padding-left comment-time border-dashed-top">
+							5 hours ago
+						</div>
 					</div>
 				</div>
 			</div>
