@@ -20,7 +20,7 @@
 					<img src="<?php echo base_url();?>{recipe_photo}" class="img-rounded img-responsive img-recipe" style="margin:auto">
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center">
-					<div class="col-md-11" title="Rating">
+					<div class="col-md-11 rating-recipe-default" title="Rating">
 		          		<input id="rating-recipe" class="rating" data-recipeId="{recipe_id}" <?php if($this->session->userdata('user_id')==''){echo "data-readonly='true'";}?> data-min="0" data-max="5" value="{recipe_rating}" data-step="0.1" data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false">
 					</div>
 				</div>
@@ -34,49 +34,100 @@
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-top:5px;">
 					<div class="col-md-6 col-xs-6" style="padding-right:5px">
-						<div class="btn-group" style="width:100%">
-	  						<button type="button" class="btn button-default" style="width:80%">
-	  							<i class="fa fa-plus pull-left fa-inverse icons btn-add-to"></i>   Add To
-	  						</button>
-							<button type="button" class="btn button-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="height:34px; width:20%">
-				              <span class="caret" style="color:#eee"></span>
-				              <span class="sr-only">Toggle Dropdown</span>
-				            </button>
-				            <ul class="dropdown-menu dropdown-search bullet pull-center" role="menu" aria-labelledby="dropdownMenu1">
-				              <li role="presentation" id="add-favorite"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Favorite</a></li>
-				              <li role="presentation" id="add-cook-later"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Cook Later</a></li>
-				            </ul>
-						</div>
+						<button type="button" class="btn button-default-primary col-md-12 col-xs-12" data-toggle="dropdown" aria-expanded="false">
+  							<i class="fa fa-plus pull-left fa-inverse icons btn-add-to"></i>   Add To
+  							<i class="caret pull-right" style="color:#eee; margin-top:8px"></i>
+  						</button>
+			            <ul class="dropdown-menu dropdown-option bullet pull-center" role="menu" aria-labelledby="dropdownMenu1">
+			              <li role="presentation" id="add-favorite"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Favorite</a></li>
+			              <li role="presentation" id="add-cook-later"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Cook Later</a></li>
+			            </ul>
 					</div>
 					<div class="col-md-6 col-xs-6" style="padding-left:5px">
-						<button class="btn button-default col-md-12 col-xs-12"><i class="fa fa-print pull-left fa-inverse icons"></i>Print Recipe</button>
+						<button class="btn button-default-primary col-md-12 col-xs-12"><i class="fa fa-print pull-left fa-inverse icons"></i>Print Recipe</button>
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-top:5px">
 					<div class="col-md-6 col-xs-6" style="padding-right:5px">
-						<div class="btn-group" style="width:100%">
-	  						<button type="button" class="btn button-default" style="width:80%">
-	  							<i class="fa fa-share-alt pull-left fa-inverse icons btn-add-to"></i>   Share
-	  						</button>
-							<button type="button" class="btn button-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="height:34px; width:20%">
-				              <span class="caret" style="color:#eee"></span>
-				              <span class="sr-only">Toggle Dropdown</span>
-				            </button>
-				            <ul class="dropdown-menu dropdown-search bullet pull-center" role="menu" aria-labelledby="dropdownMenu1">
-				              <li role="presentation" id="share-fb"><a role="menuitem" tabindex="-1"><i class="fa fa-facebook icons"></i> Facebook</a></li>
-				              <li role="presentation" id="share-twitter"><a role="menuitem" tabindex="-1"><i class="fa fa-twitter icons"></i> Twitter</a></li>
-				              <li role="presentation" id="share-gplus"><a role="menuitem" tabindex="-1"><i class="fa fa-google-plus icons"></i> Google+</a></li>
-				              <li role="presentation" id="share-path"><a role="menuitem" tabindex="-1"><i class="el el-path icons"></i> Path</a></li>
-				            </ul>
-						</div>
+						<button type="button" class="btn button-default-primary col-md-12 col-xs-12" data-toggle="dropdown" aria-expanded="false">
+  							<i class="fa fa-share-alt pull-left fa-inverse icons btn-add-to"></i>   Share
+  							<i class="caret pull-right" style="color:#eee; margin-top:8px"></i>
+  						</button>
+						<ul class="dropdown-menu dropdown-option bullet pull-center" role="menu" aria-labelledby="dropdownMenu1">
+			              <li role="presentation" id="share-fb"><a role="menuitem" tabindex="-1"><i class="fa fa-facebook icons"></i> Facebook</a></li>
+			              <li role="presentation" id="share-twitter"><a role="menuitem" tabindex="-1"><i class="fa fa-twitter icons"></i> Twitter</a></li>
+			              <li role="presentation" id="share-gplus"><a role="menuitem" tabindex="-1"><i class="fa fa-google-plus icons"></i> Google+</a></li>
+			              <li role="presentation" id="share-path"><a role="menuitem" tabindex="-1"><i class="el el-path icons"></i> Path</a></li>
+			            </ul>
 					</div>
 					<div class="col-md-6 col-xs-6" style="padding-left:5px">
-						<button class="btn button-default col-md-12 col-xs-12"><i class="fa fa-flag pull-left fa-inverse icons"></i>  Report</button>
+						<button class="btn button-default-primary col-md-12 col-xs-12" data-toggle="modal" data-target="#form-report">
+							<i class="fa fa-flag pull-left fa-inverse icons"></i>  Report
+						</button>
+						<div id="form-report" class="modal fade">
+						  	<div class="modal-dialog">
+						  		<form class="form-horizontal" role="form">
+						    	<div class="modal-content">
+						      		<div class="modal-header">
+						        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						        		<h4 class="modal-title">Report</h4>
+						      		</div>
+							      	<div class="modal-body">
+							      		<div class="form-group">
+										    <label for="inputEmail3" class="col-sm-2 col-xs-2 control-label">Email</label>
+										    <div class="col-sm-10 col-xs-10">
+										      	<input type="email" class="form-control" name="email_report" placeholder="Your Email">
+										    </div>
+									  	</div>
+						        		<div class="form-group">
+										    <div class="col-sm-offset-2 col-sm-10 col-xs-12 text-left">
+										      	<div class="checkbox">
+										        	<label>
+										          		<input type="checkbox"> SPAM
+										        	</label>
+										      	</div>
+										    </div>
+										</div>
+										<div class="form-group">
+										    <div class="col-sm-offset-2 col-sm-10 col-xs-12 text-left">
+										      	<div class="checkbox">
+										        	<label>
+										          		<input type="checkbox"> Advertisement
+										        	</label>
+										      	</div>
+										    </div>
+										</div>
+										<div class="form-group">
+										    <div class="col-sm-offset-2 col-sm-10 col-xs-12 text-left">
+										      	<div class="checkbox">
+										        	<label>
+										          		<input type="checkbox"> Pornographic
+										        	</label>
+										      	</div>
+										    </div>
+										</div>
+										<div class="form-group">
+										    <div class="col-sm-offset-2 col-sm-10 col-xs-12 text-left">
+										      	<div class="inputKeeper col-md-12 col-xs-12 col-no-padding">
+												    <input type="text" class="form-control" placeholder="Other"/>
+												</div>
+										    </div>
+										</div>
+							      	</div>
+							      	<div class="modal-footer" style="text-align:center">
+							        	<button type="button" class="btn button-default-primary">Send Report</button>
+							      	</div>
+						    	</div><!-- /.modal-content -->
+						    	</form>
+						  	</div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-top:5px">
 					<div class="col-md-12 col-xs-12">
-						<button class="btn button-default col-md-12 col-xs-12"><i class="fa fa-money pull-left fa-inverse icons"></i> Generate Harga</button>
+						<button class="btn button-default-primary col-md-12 col-xs-12">
+							<i class="fa fa-money pull-left fa-inverse icons"></i> Generate Price
+						</button>
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding" style="margin-top:15px">
@@ -176,45 +227,49 @@
 					</div>
 					{/recipe_steps}
 				</div>
-			</div>
-			<div id="comment" class="col-md-12 col-xs-12 border-solid-top">
-				<h4 class="page-header-title">Comment's Recipe (2 Comments)</h4>
-				<div class="col-md-8 col-xs-12">
-					<div class="col-md-2 col-xs-2 col-no-padding-left">
-						<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
+				<div id="comment" class="col-md-12 col-xs-12 border-solid-top">
+					<h4 class="page-header-title">Share Your Thought! (2 Comments)</h4>
+					<div class="col-md-12 col-xs-12">
+						<div class="col-md-2 col-xs-2 col-no-padding-left">
+							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
+						</div>
+						<div class="col-md-10 col-xs-10 bubble">
+							<form class="form-horizontal text-" role="form" method="post" style="margin:0">
+								<div class="col-md-12 col-xs-12 col-no-padding-right form-group">
+									<div class="textareaKeeper col-md-10 col-xs-9 col-no-padding">
+									    <textarea class="form-control enter-comment" row="1" placeholder="Write Your Comment In Here ..."></textarea>
+									</div>
+									<div class="col-md-2 col-xs-3 col-no-padding-right" style="position:absolute; right:0; bottom:0">
+										<button type="submit" class="btn btn-default-theme3 col-md-12 col-xs-12">Send</button>
+									</div>
+								</div>
+							</form>
+						</div>
 					</div>
-					<div class="col-md-10 col-xs-10 bubble">
-						<form class="form-horizontal text-center" role="form" method="post" style="margin:0">
-							<div class="textareaKeeper col-md-12 col-xs-12 col-no-padding">
-							    <textarea class="form-control enter-comment" row="1" placeholder="Write Your Comment In Here ..."></textarea>
+					<div class="col-md-12 col-xs-12 comment-entry">
+						<div class="col-md-2 col-xs-2 col-no-padding-left">
+							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
+						</div>
+						<div class="col-md-10 col-xs-10 bubble">
+							<div class="col-md-12 col-xs-12 col-no-padding-left comment-value">
+								asjkhsjdfhkjsdafhdfgadjadsgfhjgsdaff;jsdajfkhsdfj
 							</div>
-							<button type="submit" class="btn btn-default-theme3" style="margin-top:5px">Send</button>
-						</form>
-					</div>
-				</div>
-				<div class="col-md-8 col-xs-12 comment-entry">
-					<div class="col-md-2 col-xs-2 col-no-padding-left">
-						<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
-					</div>
-					<div class="col-md-10 col-xs-10 bubble">
-						<div class="col-md-12 col-xs-12 col-no-padding-left comment-value">
-							asjkhsjdfhkjsdafhdfgadjadsgfhjgsdaff;jsdajfkhsdfj
-						</div>
-						<div class="col-md-12 col-xs-12 col-no-padding-left comment-time border-dashed-top">
-							4 hours ago
+							<div class="col-md-12 col-xs-12 col-no-padding-left comment-time border-dashed-top">
+								Alfan | 4 hours ago
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-8 col-xs-12 comment-entry">
-					<div class="col-md-2 col-xs-2 col-no-padding-left">
-						<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
-					</div>
-					<div class="col-md-10 col-xs-10 bubble">
-						<div class="col-md-12 col-xs-12 col-no-padding-left comment-value">
-							asjdkjhsfjdsj
+					<div class="col-md-12 col-xs-12 comment-entry">
+						<div class="col-md-2 col-xs-2 col-no-padding-left">
+							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
 						</div>
-						<div class="col-md-12 col-xs-12 col-no-padding-left comment-time border-dashed-top">
-							5 hours ago
+						<div class="col-md-10 col-xs-10 bubble">
+							<div class="col-md-12 col-xs-12 col-no-padding-left comment-value">
+								asjdkjhsfjdsj
+							</div>
+							<div class="col-md-12 col-xs-12 col-no-padding-left comment-time border-dashed-top">
+								Alfan | 5 hours ago
+							</div>
 						</div>
 					</div>
 				</div>

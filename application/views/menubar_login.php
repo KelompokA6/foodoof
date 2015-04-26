@@ -34,33 +34,39 @@
     <div id="navbar" class="col-md-10">
       <form id="form-search" class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>index.php/search">
         <div class="input-group form-group search-bar-menu">
-          <input type="search" id="searchbar" class="form-control input-group-dropdown" name="q" class="typeahead" autocomplete="off" data-provide="typeahead" placeholder="Search Recipe By Title">
-          <div class="input-group-btn">
+          <span class="input-group-btn"> 
             <div class="btn-group">
-              <button type="button" class="btn dropdown-cat-search dropdown-toggle" data-toggle="dropdown" style="border-radius:0">
-                Title <span class="caret"></span>
+              <button class="btn dropdown-toggle-search btn-default-theme2" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-cutlery"></i>
               </button>
-              <ul id="listSearch" class="dropdown-menu dropdown-search bullet pull-center">
+              <ul id="listSearch" class="dropdown-menu dropdown-menu-search bullet pull-center">
                 <li>
-                  <input type="radio" id="ex1_1" value='title' name="searchby" checked>
-                    <label for="ex1_1">Title </label>
+                  <input type="radio" id="ex1_1" value='title' name="searchby" checked/>
+                  <label for="search-title">
+                    <i class="fa fa-cutlery"></i><span style="margin-left:15px">Title </span>
+                  </label>
                 </li>
                 <li>
-                  <input type="radio" id="ex1_2" value='ingredient' name="searchby">
-                    <label for="ex1_2">Ingredient </label>
+                  <input type="radio" id="ex1_2" value='ingredient' name="searchby"/>
+                  <label for="search-ingredient">
+                    <img class="img-icon" src="<?php echo base_url();?>assets/icon/theme2-ingredients.ico"/><span style="margin-left:15px">Ingredient </span>
+                  </label>
                 </li>
                 <li>
-                  <input type="radio" id="ex1_3" value='account' name="searchby">
-                    <label for="ex1_3">Account </label>
+                  <input type="radio" id="ex1_3" value='account' name="searchby"/>
+                  <label for="search-account">
+                    <i class="fa fa-user"></i><span style="margin-left:15px">Account </span>
+                  </label>
                 </li>
               </ul>
             </div>
-            <span class="btn-group">
-              <button class="btn button-default button-group-normal" type="submit" >
-                 <i class="fa fa-search"></i>
-              </button>
-            </span>
-          </div>
+          </span>
+          <input type="search" id="searchbar" class="form-control" name="q" class="typeahead" autocomplete="off" data-provide="typeahead" placeholder="Search Recipe By Title">
+          <span class="input-group-btn">
+            <button type="submit" class="btn button-default button-group-normal">
+               <i class="fa fa-search"></i>
+            </button>
+          </span>
         </div>
       </form>
       <div class="col-md-5 col-menu-user mobile-hidden col-no-padding-right" style="padding-left:30px">
