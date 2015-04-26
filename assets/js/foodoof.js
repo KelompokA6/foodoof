@@ -876,6 +876,142 @@ $(document).ready(function() {
 		$("#btn-join-slide-menu").removeClass('btn-group');
 	});
 
+	// Floating label headings for the contact form
+	$(function() {
+	    $("body").on("input propertychange", ".floating-label-form-group", function(e) {
+	        $(this).toggleClass("floating-label-form-group-with-value", !! $(e.target).val());
+	    }).on("focus", ".floating-label-form-group", function() {
+	        $(this).addClass("floating-label-form-group-with-focus");
+	    }).on("blur", ".floating-label-form-group", function() {
+	        $(this).removeClass("floating-label-form-group-with-focus");
+	    });
+	});
+
+	/*
+	carousel related recipe
+	*/
+	$carouselActiveFirst=0;
+	$carouselActiveLast=2;
+	$sizeRelatedRecipe = $(".related-recipe-entry").length;
+	var owl = $('.owl-carousel');
+	owl.owlCarousel({
+	    nav:false,
+	    margin:4,
+	    dots:false,
+	    onTranslated : dragNxtPrev,
+	    responsive:{
+	        0:{
+	            items:1
+	        },
+	        600:{
+	            items:3
+	        },            
+	        960:{
+	            items:3
+	        },
+	        1200:{
+	            items:3
+	        }
+	    }
+	});
+	owl.on('mousewheel', '.owl-stage', function (e) {
+	    if (e.deltaY>0) {
+	        owl.trigger('next.owl');
+	        if($carouselActiveLast<($sizeRelatedRecipe-1)){
+	        	$carouselActiveLast++;
+				$carouselActiveFirst++;
+				if($carouselActiveLast==($sizeRelatedRecipe-1)){
+					$(".carousel-related-recipe.right").addClass("disabled");	
+				}
+				else{
+					$(".carousel-related-recipe.right").removeClass("disabled");	
+				}
+				$(".carousel-related-recipe.left").removeClass("disabled");
+	        }
+	    } else {
+	        owl.trigger('prev.owl');
+	        if($carouselActiveFirst>0){
+	        	$carouselActiveLast--;
+				$carouselActiveFirst--;
+				if($carouselActiveFirst==0){
+					$(".carousel-related-recipe.left").addClass("disabled");	
+				}
+				else{
+					$(".carousel-related-recipe.left").removeClass("disabled");	
+				}
+				$(".carousel-related-recipe.right").removeClass("disabled");
+	        }
+	    }
+	    e.preventDefault();
+	});
+	$(".carousel-related-recipe.left").click(function(e){
+		owl.trigger('prev.owl');
+		$carouselActiveLast--;
+		$carouselActiveFirst--;
+		if($carouselActiveFirst==0){
+			$(this).addClass("disabled");	
+		}
+		else{
+			$(this).removeClass("disabled");	
+		}
+		$(".carousel-related-recipe.right").removeClass("disabled");
+	});
+	$(".carousel-related-recipe.right").click(function(e){
+		owl.trigger('next.owl');
+		$carouselActiveLast++;
+		$carouselActiveFirst++;
+		if($carouselActiveLast==($sizeRelatedRecipe-1)){
+			$(this).addClass("disabled");	
+		}
+		else{
+			$(this).removeClass("disabled");	
+		}
+		$(".carousel-related-recipe.left").removeClass("disabled");
+	});
+	function dragNxtPrev(event) {
+	  	$tmp = $(".active");
+	    $firstActive = $( ".owl-item" ).index($tmp);
+	    $diff = Math.abs($firstActive-$carouselActiveFirst);
+	    if($carouselActiveFirst < $firstActive){
+	    	if($carouselActiveLast<($sizeRelatedRecipe-1)){
+				$carouselActiveLast += $diff; 
+				$carouselActiveFirst += $diff;
+				if($carouselActiveLast==($sizeRelatedRecipe-1)||$firstActive==($sizeRelatedRecipe-3)){
+					$(".carousel-related-recipe.right").addClass("disabled");	
+				}
+				else{
+					$(".carousel-related-recipe.right").removeClass("disabled");	
+				}
+				$(".carousel-related-recipe.left").removeClass("disabled");
+			}
+	  	}
+	  	else if($firstActive==0 || $firstActive==($sizeRelatedRecipe-3)){
+	  		if($firstActive==0){
+	  			$(".carousel-related-recipe.left").addClass("disabled");
+	  			$(".carousel-related-recipe.right").removeClass("disabled");
+	  		}
+	  		else{
+	  			$(".carousel-related-recipe.right").addClass("disabled");
+	  			$(".carousel-related-recipe.left").removeClass("disabled");
+	  		}
+	  	}
+	  	else{
+	  		if($carouselActiveFirst>0){
+		  		$carouselActiveLast -= $diff;
+				$carouselActiveFirst -= $diff;
+				if($carouselActiveFirst==0){
+					$(".carousel-related-recipe.left").addClass("disabled");	
+				}
+				else{
+					$(".carousel-related-recipe.left").removeClass("disabled");	
+				}
+				$(".carousel-related-recipe.right").removeClass("disabled");
+			}
+	  	}
+	  	console.log("first : "+$carouselActiveFirst);
+	  	console.log("last : "+$carouselActiveLast);
+	}
+
 	/*
 	init javascript bootstrap;
 	*/

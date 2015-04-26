@@ -71,6 +71,41 @@
 						{recipe_description}
 	  				</div>
 	  			</div>
+	  			<div class="col-md-12 col-xs-12 col-no-padding related-recipe" style="margin-top:15px">
+	  				<h4 class="page-header-title">Related Recipes</h4>
+	  				<div class="carousel-related-recipe left pull-left text-center owl-prev disabled">
+  						<i class="fa fa-chevron-left" style="line-height:92px"></i>
+  					</div>
+	  				<div class="col-md-10 col-xs-10 col-no-padding related-recipe-entries">
+	  					<div class="col-md-12 col-xs-12 col-no-padding owl-carousel">
+	  						<!-- {related_recipe_entries} -->
+	  						<div class="col-md-12 col-xs-4 related-recipe-entry item">
+								<img src="<?php echo base_url();?>images/recipe/26.jpg" class="img-responsive col-md-12 col-xs-12 col-no-padding">
+								<a class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
+							</div>
+							<div class="col-md-12 col-xs-4 related-recipe-entry item">
+								<img src="<?php echo base_url();?>images/recipe/27.jpg" class="img-responsive col-md-12 col-xs-12 col-no-padding">
+								<a class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
+							</div>
+							<div class="col-md-12 col-xs-4 related-recipe-entry item">
+								<img src="<?php echo base_url();?>images/recipe/28.jpg" class="img-responsive col-md-12 col-xs-12 col-no-padding">
+								<a class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
+							</div>
+							<div class="col-md-12 col-xs-4 related-recipe-entry item">
+								<img src="<?php echo base_url();?>images/recipe/25.jpg" class="img-responsive col-md-12 col-xs-12 col-no-padding">
+								<a class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
+							</div>
+							<div class="col-md-12 col-xs-4 related-recipe-entry item">
+								<img src="<?php echo base_url();?>{recipe_photo}" class="img-responsive col-md-12 col-xs-12 col-no-padding">
+								<a class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
+							</div>
+							<!-- {/related_recipe_entries} -->
+	  					</div>
+	  				</div>
+	  				<div class="carousel-related-recipe pull-right right text-center owl-next">
+						<i class="fa fa-chevron-right" style="line-height:92px;"></i>
+  					</div>
+	  			</div>
 			</div>
 			<div class="col-md-8 col-xs-12" style="margin:10px 0 15px 0;">
 				<div class="col-md-12 col-xs-12 col-no-padding">
@@ -126,6 +161,21 @@
 						</div>
 					</div>
 					{/recipe_steps}
+				</div>
+			</div>
+			<div id="comment" class="col-md-12 col-xs-12 border-solid-top">
+				<h4 class="page-header-title">Comment's Recipe (2 Comments)</h4>
+				<div class="col-md-12 col-xs-12">
+					<div class="col-md-2 col-xs-2">
+						<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
+
+					</div>
+					<div class="col-md-10 col-xs-10 bubble">
+						<form class="form-horizontal text-center" role="form" method="post" style="margin:0">
+							<textarea row="3" class="form-control" style="border:none; resize:vertical"></textarea>
+							<button type="submit" class="btn btn-default-theme3" style="margin-top:5px">Send</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

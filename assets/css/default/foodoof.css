@@ -1137,6 +1137,112 @@ div.details > div > div.rating-xs{
   width:  123.9px;
   margin: auto;
 }
+.img-user-comment{
+  width:60px;
+  height:60px;
+  margin: auto;
+}
 .recipe-timeline-view > i{
   line-height: 32px;
+}
+.related-recipe{
+  max-height: 150px;
+}
+.related-recipe-entries{
+  max-height: 100px;
+  margin: 0 8px;
+}
+.related-recipe-entry{
+  overflow: hidden;
+  padding: 0 3px;
+}
+.related-recipe-entry.hidden{
+  display: none;
+  -webkit-transition: display 1s ease;
+  -moz-transition: display .5s ease;
+  -o-transition: display .5s ease;
+  transition: display 1s ease;
+}
+.related-recipe-entry.active{
+  -webkit-transition: display 1s ease;
+  -moz-transition: display .5s ease;
+  -o-transition: display .5s ease;
+  transition: display 1s ease;
+}
+.related-recipe-entry > img{
+  max-height: 70px;
+  margin: auto;
+  border-radius: 6px;
+}
+.related-recipe-entry-name{
+  font-size: 13px;
+  padding: 5px 0 0;
+  overflow: hidden; 
+  white-space: nowrap;
+}
+.related-recipe-entry-name:after{
+  content: "";
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 56%, rgba(255,255,255,1) 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(56%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1)));
+  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%,rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%,rgba(255,255,255,1) 100%);
+  background: -ms-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%,rgba(255,255,255,1) 100%);
+  background: linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%,rgba(255,255,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+}
+.carousel-related-recipe{
+  height: 92px;
+  display: inline;
+  width: 22px;
+  background-color  :#CC211F;
+  color: #fff;
+  cursor: pointer;
+}
+.carousel-related-recipe.left{
+  left : 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.carousel-related-recipe.disabled{
+  opacity: 0.5;
+  pointer-events:none;
+}
+.carousel-related-recipe.left:hover, .carousel-related-recipe.right:hover{
+  background-color: #BD2220;
+  color:;
+}
+.carousel-related-recipe.right{
+  margin-left: -15px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.bubble 
+{
+  position: relative;
+  min-height: 50px;
+  padding: 5px 15px;
+  background: #eee;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+
+}
+
+.bubble:after {
+  content: '';
+  position: absolute;
+  border-style: dashed;
+  border-width: 15px 15px 15px 0;
+  border-color: transparent #eee;
+  display: block;
+  width: 0;
+  z-index: 1;
+  left: -15px;
+  top: 15px;
 }
