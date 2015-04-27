@@ -56,6 +56,7 @@ class Search extends CI_Controller {
       $row->search_by_title_recipe_author_id = $row->author;
       $u->get_by_id($row->author);
       $row->search_by_title_recipe_author_name = $u->name;
+      $row->search_by_title_recipe_author_photo = $u->name;
       $row->search_by_title_recipe_views = $row->views;
       $row->search_by_title_recipe_last_update = strftime("%c", strtotime($row->last_update));
     }
