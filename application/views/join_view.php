@@ -46,7 +46,7 @@
 
                 <div class="form-group">                                        
                     <div class="col-md-offset-3 col-md-6 text-center">
-                        <button id="btn-signup" type="submit" class="btn button-default"><i class="icon-hand-right"></i> &nbsp Join &nbsp</button> 
+                        <button id="btn-signup" type="submit" class="btn button-primary"><i class="icon-hand-right"></i> &nbsp Join &nbsp</button> 
                     </div>
                 </div>
             </form>

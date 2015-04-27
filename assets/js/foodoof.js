@@ -292,6 +292,7 @@ $(document).ready(function() {
 		if(search==="title"){	
 			$("#searchbar").attr("placeholder", "Search Recipe By Title");
 			$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-title']").find("i").clone());
+			$("button.dropdown-cat-search").prop('title','Search Recipe By Title');
 			$("ul#listSearch > li > input[value='title']").prop('checked', true);
 			$("ul#listSearch > li > input[value='ingredient']").prop('checked', false);
 			$("ul#listSearch > li > input[value='account']").prop('checked', false);
@@ -299,6 +300,7 @@ $(document).ready(function() {
 		else if(search==="ingredient"){	
 			$("#searchbar").attr("placeholder", "Search Recipe By Ingredient");
 			$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-ingredient']").find("i").clone());
+			$("button.dropdown-cat-search").prop('title','Search Recipe By Ingredient');
 			$("ul#listSearch > li > input[value='title']").prop('checked', false);
 			$("ul#listSearch > li > input[value='ingredient']").prop('checked', true);
 			$("ul#listSearch > li > input[value='account']").prop('checked', false);
@@ -306,6 +308,7 @@ $(document).ready(function() {
 		else if(search==="account"){	
 			$("#searchbar").attr("placeholder", "Search Account");
 			$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-account']").find("i").clone());
+			$("button.dropdown-cat-search").prop('title','Search Account');
 			$("ul#listSearch > li > input[value='title']").prop('checked', false);
 			$("ul#listSearch > li > input[value='ingredient']").prop('checked', false);
 			$("ul#listSearch > li > input[value='account']").prop('checked', true);
@@ -331,6 +334,7 @@ $(document).ready(function() {
 		$("ul#listSearch > li > input[value='ingredient']").prop('checked', false);
 		$("ul#listSearch > li > input[value='account']").prop('checked', false);
 		$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-title']").find("i").clone());
+		$("button.dropdown-cat-search").prop('title','Search Recipe By Title');
 		$("#searchbar").attr("placeholder", "Search Recipe By Title");
 	}
 	if($searchBy.toLowerCase() === "ingredient"){
@@ -338,6 +342,7 @@ $(document).ready(function() {
 		$("ul#listSearch > li > input[value='ingredient']").prop('checked', true);
 		$("ul#listSearch > li > input[value='account']").prop('checked', false);
 		$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-ingredient']").find("i").clone());
+		$("button.dropdown-cat-search").prop('title','Search Recipe By Ingredient');
 		$("#searchbar").attr("placeholder", "Search Recipe By Ingredient");
 	}
 	if($searchBy.toLowerCase() === "account"){
@@ -345,6 +350,7 @@ $(document).ready(function() {
 		$("ul#listSearch > li > input[value='ingredient']").prop('checked', false);
 		$("ul#listSearch > li > input[value='account']").prop('checked', true);
 		$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-account']").find("i").clone());
+		$("button.dropdown-cat-search").prop('title','Search Account');
 		$("#searchbar").attr("placeholder", "Search Account");
 	}
 	$('#searchbar').keydown(function (e) {
@@ -1043,61 +1049,5 @@ $(document).ready(function() {
 	*/
 	$('.carousel').carousel();
     $('.btn-popover').popover();
-    autosize($('textarea'));
-    $maxHeightItem = 0;
-    $maxHeightDetail = 0;
-    $(".item-recipe-home").each(function(){
-    	if($(this).height() > $maxHeightItem){
-    		$maxHeightItem = $(this).height();
-    	}
-    });
-    $(".item-recipe-home").each(function(){
-    	$(this).height($maxHeightItem);
-    });
-    $(".detail-list-recipe-home").each(function(){
-    	if($(this).height() > $maxHeightDetail){
-    		$maxHeightDetail = $(this).height();
-       	}
-    });
-    $(".detail-list-recipe-home").each(function(){
-    	$(this).height($maxHeightDetail);
-    });
-    $(".detail-list-recipe-home > .details-recipe-home").each(function(){
-    	$height = $(this).find('.col-md-10').height();
-    	$(this).find(".icons").css('padding-top', ($height/2)-($(this).find(".icons").height()/2));
-    });
-    $(".detail-list-img-recipe-home").each(function(){
-    	$heightImg = $maxHeightDetail - $(this).find("a").find("img").height();
-    	$(this).height($maxHeightDetail);
-    	$(this).css('padding-top', $heightImg/2);
-    });
-    $( window ).resize(function() {
-    	$maxHeightItemtmp = 0;
-	    $maxHeightDetailtmp = 0;
-	    $(".item-recipe-home").each(function(){
-	    	if($(this).height() > $maxHeightItemtmp){
-	    		$maxHeightItemtmp = $(this).height();
-	    	}
-	    });
-	    $(".item-recipe-home").each(function(){
-	    	$(this).height($maxHeightItem);
-	    });
-	    $(".detail-list-recipe-home").each(function(){
-	    	if($(this).height() > $maxHeightDetailtmp){
-	    		$maxHeightDetailtmp = $(this).height();
-	       	}
-	    });
-	    $(".detail-list-recipe-home").each(function(){
-	    	$(this).height($maxHeightDetailtmp);
-	    });
-	    $(".detail-list-recipe-home > .details-recipe-home").each(function(){
-	    	$heighttmp = $(this).find('.col-md-10').height();
-	    	$(this).find(".icons").css('padding-top', ($heighttmp/2)-($(this).find(".icons").height()/2));
-	    });
-	    $(".detail-list-img-recipe-home").each(function(){
-	    	$heightImgtmp = $maxHeightDetailtmp - $(this).find("a").find("img").height();
-	    	$(this).height($maxHeightDetailtmp);
-	    	$(this).css('padding-top', $heightImgtmp/2);
-	    });
-    });
+    autosize($('textarea')); 
 });

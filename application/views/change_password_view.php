@@ -32,7 +32,7 @@
 				</div>
 			</div>
 			<div class="col-md-12 text-center">
-				<button class="btn btn-success btn-lg" type="submit" style="width:150px">
+				<button class="btn button-primary btn-lg" type="submit" style="width:150px">
                 	Save
               	</button>
 			</div>

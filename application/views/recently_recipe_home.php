@@ -4,7 +4,7 @@
   </div> -->
   <div class="col-md-12 col-xs-12 page-header-title text-left">
     <h4 class="col-md-4 col-xs-6 col-no-padding"style="margin:5px; font-size:18px">Recently Recipe</h4>
-    <a href="<?php echo base_url()?>index.php/home/recently" class="text-right pull-right"><button class="btn button-default">See More</button></a>
+    <a href="<?php echo base_url()?>index.php/home/recently" class="text-right pull-right"><button class="btn button-secondary">See More</button></a>
   </div>
   <!-- <div class="panel-body"> -->
   <div class="col-md-12 col-xs-12 col-no-padding">
@@ -21,9 +21,9 @@
           <img class="img-responsive img-circle img-recipe-author" src="<?php echo base_url();?>{recently_recipe_author_photo}" title="{recently_recipe_author_name}"/>
           <span class="recipe-author-name" title="{recently_recipe_author_name}">{recently_recipe_author_name}</span>
         </a>
-        <div class="col-md-12 col-xs-12 time-recipe-home col-no-padding-right" title="Create Update">
+        <div class="col-md-12 col-xs-12 time-recipe-home col-no-padding-right" title="Create Date">
           <div class="col-md-1 col-xs-2 col-no-padding-left">
-            <i class="fa fa-calendar icon icons-default"></i>
+            <i class="fa fa-calendar icon icons-secondary"></i>
           </div>
           <div class="col-md-10 col-xs-10 col-no-padding-left-mobile col-no-padding-right">
             {recently_recipe_create_date}
@@ -40,7 +40,7 @@
       <div class="col-md-8 col-xs-7 detail-list-recipe-home">
         <div class="col-md-12 col-xs-12 details-recipe-home">
           <div class="col-md-2 col-xs-3 icons">
-            <i class="fa fa-cutlery pull-left icons-default"></i>
+            <i class="fa fa-cutlery pull-left icons-secondary"></i>
           </div>
           <div class="col-md-10 col-xs-9">
             <a href="<?php //echo base_url();?>index.php/recipe/get/{recently_recipe_id}">
@@ -50,7 +50,7 @@
         </div>
         <div class="col-md-12 col-xs-12 details-recipe-home">
           <div class="col-md-2 col-xs-3 icons">
-            <i class="fa fa-user pull-left icons-default"></i>
+            <i class="fa fa-user pull-left icons-secondary"></i>
           </div>
           <div class="col-md-10 col-xs-9">
             <a href="<?php //echo base_url();?>index.php/user/timeline/{recently_recipe_author}">
@@ -60,7 +60,7 @@
         </div>
         <div class="col-md-12 col-xs-12 details-recipe-home">
           <div class="col-md-2 col-xs-3 icons">
-            <i class="fa fa-calendar pull-left icons-default"></i>
+            <i class="fa fa-calendar pull-left icons-secondary"></i>
           </div>
           <div class="col-md-10 col-xs-9">
             <p class="text-capitalize">{recently_recipe_create_date}</p>

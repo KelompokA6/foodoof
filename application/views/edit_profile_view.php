@@ -62,13 +62,13 @@
 					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
-								  <i class="fa fa-square fa-stack-2x icons-default"></i>
+								  <i class="fa fa-square fa-stack-2x icons-secondary"></i>
 								  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
 								</span>
 	      					</div>
 	      				</label>
 					    <div class="col-sm-10 col-xs-11">
-					      	<input type="text" class="form-control input-lg form-profile" name="user_twitter" value="{edit_profile_twitter}" placeholder="@ Your Twitter">
+					      	<input type="text" class="form-control input-lg form-profile" name="user_twitter" value="{edit_profile_twitter}" placeholder="Your Twitter">
 					    </div>
 					 </div>
 				</div>
@@ -77,7 +77,7 @@
 					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
-								  <i class="fa fa-square fa-stack-2x icons-default"></i>
+								  <i class="fa fa-square fa-stack-2x icons-secondary"></i>
 								  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
 								</span>
 	      					</div>
@@ -92,7 +92,7 @@
 					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
-								  <i class="fa fa-square fa-stack-2x icons-default"></i>
+								  <i class="fa fa-square fa-stack-2x icons-secondary"></i>
 								  <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
 								</span>
 	      					</div>
@@ -107,7 +107,7 @@
 					    <label class="col-sm-2 col-xs-1 control-label">
 						    <div class="col-no-padding-left">
 	      						<span class="fa-stack fa-lg">
-								  <i class="fa fa-square fa-stack-2x icons-default"></i>
+								  <i class="fa fa-square fa-stack-2x icons-secondary"></i>
 								  <i class="el el-path fa-stack-1x fa-inverse" style="padding-top:25%"></i>
 								</span>
 	      					</div>
@@ -119,7 +119,7 @@
 				</div>
 			</div>
 			<div class="col-md-12 text-center">
-				<button class="btn button-default btn-lg" type="submit" style="width:150px">
+				<button class="btn button-primary btn-lg" type="submit" style="width:150px">
                 	Save
               	</button>
 			</div>

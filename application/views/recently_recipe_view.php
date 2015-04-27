@@ -19,7 +19,7 @@
     <div class="col-md-9 col-xs-12 detail-list">
       <div class="col-md-12 col-xs-12 details">
         <div class="col-md-12 col-xs-12 xs-text-center">
-          <a href="<?php echo base_url();?>recipe/get/{recently_recipe_id}" title="{recently_recipe_name}">
+          <a href="<?php echo base_url();?>recipe/get/{recently_recipe_id}" title="{recently_recipe_name}" title="{recently_recipe_name}">
             <h4><p class="text-capitalize title-recipe">{recently_recipe_name}</p></h4>
           </a>
         </div>
@@ -31,7 +31,7 @@
               <span class="recipe-author-name" title="{recently_recipe_author_name}">{recently_recipe_author_name}</span>
             </a>
           </div>
-          <div class="col-md-8 col-xs-6 col-no-padding-right details-time-recipe border-dashed-left">
+          <div class="col-md-8 col-xs-6 col-no-padding-right details-time-recipe border-dashed-left" title="Last Update">
             <p class="text-capitalize">{recently_recipe_last_update}</p>
           </div>
       </div>

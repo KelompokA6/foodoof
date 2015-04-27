@@ -1,4 +1,4 @@
-<html lang="en">
+<html id="html" lang="en">
   <head>
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -105,6 +105,7 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/owl-carousel/owl.carousel.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/owl-carousel/jquery.mousewheel.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/autosize/autosize.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/nicescroll/jquery.smoothwheel.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jasny-bootstrap.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
 </html>

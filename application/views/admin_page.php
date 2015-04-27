@@ -22,7 +22,7 @@
 		  				</div>
 		  			</div>
 		  			<div class="col-md-12 col-xs-12 text-center">
-						<button class="btn button-default btn-lg" type="submit" style="width:150px; margin:30px 0">
+						<button class="btn button-primary btn-lg" type="submit" style="width:150px; margin:30px 0">
 				          	Save
 				        </button>
 					</div>

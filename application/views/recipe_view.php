@@ -11,8 +11,8 @@
 	  		<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title text-capitalize hr-dashed"  style="line-height:33px; font-size:16px;">
 	  			<div class="col-md-9 col-xs-12"><h2 style="margin:0">{recipe_name}</h2></div>
 	  			<div class="col-md-3 col-xs-12 pull-right col-no-padding text-center" style="bottom:0">
-	  				<i class="fa fa-users fa-lg icons-default"></i> {recipe_portion} Persons   |      
-		  			<i class="fa fa-clock-o fa-lg icons-default"></i> {recipe_duration} Minutes
+	  				<i class="fa fa-users fa-lg icons-secondary" title="Portion"></i> <span title="Portion">{recipe_portion} Persons</span>   |      
+		  			<i class="fa fa-clock-o fa-lg icons-secondary" title="Duration"></i> <span title="Duration">{recipe_duration} Minutes </span>
 	  			</div>
 	  		</div>	
 			<div class="col-md-4 col-xs-12 col-no-padding-left border-solid-bottom" style="margin:10px 0 15px 0; padding-bottom:20px;">
@@ -26,15 +26,15 @@
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-bottom:5px">
 					<div class="col-md-5 col-xs-6 text-right text-capitalize">
-						<a href="<?php echo base_url();?>index.php/user/timeline/{recipe_author_id}">{recipe_author_name}</a>
+						<a href="<?php echo base_url();?>index.php/user/timeline/{recipe_author_id}" title="{recipe_author_name}">{recipe_author_name}</a>
 					</div>
-					<div class="col-md-7 col-xs-6 text-left text-capitalize border-dashed-left"
-						<i class="fa fa-calendar icons-default"></i>  {recipe_last_update}
+					<div class="col-md-7 col-xs-6 text-left text-capitalize border-dashed-left">
+						<i class="fa fa-calendar icons-secondary" title="Last Update"></i>  <span title="Last Update">{recipe_last_update}</span>
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-top:5px;">
-					<div class="col-md-6 col-xs-6" style="padding-right:5px">
-						<button type="button" class="btn button-default-primary col-md-12 col-xs-12" data-toggle="dropdown" aria-expanded="false">
+					<div class="col-md-6 col-xs-6" style="padding-right:5px" title="Add To">
+						<button type="button" class="btn button-primary col-md-12 col-xs-12" data-toggle="dropdown" aria-expanded="false">
   							<i class="fa fa-plus pull-left fa-inverse icons btn-add-to"></i>   Add To
   							<i class="caret pull-right" style="color:#eee; margin-top:8px"></i>
   						</button>
@@ -43,13 +43,13 @@
 			              <li role="presentation" id="add-cook-later"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Cook Later</a></li>
 			            </ul>
 					</div>
-					<div class="col-md-6 col-xs-6" style="padding-left:5px">
-						<button class="btn button-default-primary col-md-12 col-xs-12"><i class="fa fa-print pull-left fa-inverse icons"></i>Print Recipe</button>
+					<div class="col-md-6 col-xs-6" style="padding-left:5px" title="Print Recipe">
+						<button class="btn button-primary col-md-12 col-xs-12"><i class="fa fa-print pull-left fa-inverse icons"></i>Print Recipe</button>
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-top:5px">
-					<div class="col-md-6 col-xs-6" style="padding-right:5px">
-						<button type="button" class="btn button-default-primary col-md-12 col-xs-12" data-toggle="dropdown" aria-expanded="false">
+					<div class="col-md-6 col-xs-6" style="padding-right:5px" title="Share Recipe">
+						<button type="button" class="btn button-primary col-md-12 col-xs-12" data-toggle="dropdown" aria-expanded="false">
   							<i class="fa fa-share-alt pull-left fa-inverse icons btn-add-to"></i>   Share
   							<i class="caret pull-right" style="color:#eee; margin-top:8px"></i>
   						</button>
@@ -60,8 +60,8 @@
 			              <li role="presentation" id="share-path"><a role="menuitem" tabindex="-1"><i class="el el-path icons"></i> Path</a></li>
 			            </ul>
 					</div>
-					<div class="col-md-6 col-xs-6" style="padding-left:5px">
-						<button class="btn button-default-primary col-md-12 col-xs-12" data-toggle="modal" data-target="#form-report">
+					<div class="col-md-6 col-xs-6" style="padding-left:5px" title="Report Recipe">
+						<button class="btn button-primary col-md-12 col-xs-12" data-toggle="modal" data-target="#form-report">
 							<i class="fa fa-flag pull-left fa-inverse icons"></i>  Report
 						</button>
 						<div id="form-report" class="modal fade">
@@ -115,7 +115,7 @@
 										</div>
 							      	</div>
 							      	<div class="modal-footer" style="text-align:center">
-							        	<button type="button" class="btn button-default-primary">Send Report</button>
+							        	<button type="button" class="btn button-primary">Send Report</button>
 							      	</div>
 						    	</div><!-- /.modal-content -->
 						    	</form>
@@ -123,20 +123,18 @@
 						</div><!-- /.modal -->
 					</div>
 				</div>
-				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-top:5px">
-					<div class="col-md-12 col-xs-12">
-						<button class="btn button-default-primary col-md-12 col-xs-12">
-							<i class="fa fa-money pull-left fa-inverse icons"></i> Generate Price
-						</button>
-					</div>
+				<div class="col-md-12 col-xs-12 text-center" style="margin-top:5px" title="Generate Price">
+					<button class="btn button-primary col-md-12 col-xs-12">
+						<i class="fa fa-money pull-left fa-inverse icons"></i> Generate Price
+					</button>
 				</div>
-				<div class="col-md-12 col-xs-12 col-no-padding" style="margin-top:15px">
+				<div class="col-md-12 col-xs-12 col-no-padding" style="margin-top:15px" title="Description Recipe">
 	  				<h4 class="page-header-title">Description Recipe</h4>
 	  				<div clas="col-md-12 col-xs-12">
 						{recipe_description}
 	  				</div>
 	  			</div>
-	  			<div class="col-md-12 col-xs-12 col-no-padding related-recipe" style="margin-top:15px">
+	  			<div class="col-md-12 col-xs-12 col-no-padding related-recipe" style="margin-top:15px" title="Related Recipe">
 	  				<h4 class="page-header-title">Related Recipes</h4>
 	  				<div class="carousel-related-recipe left pull-left text-center owl-prev disabled">
   						<i class="fa fa-chevron-left" style="line-height:92px"></i>
@@ -144,7 +142,7 @@
 	  				<div class="col-md-10 col-xs-10 col-no-padding related-recipe-entries">
 	  					<div class="col-md-12 col-xs-12 col-no-padding owl-carousel">
 	  						<!-- {related_recipe_entries} -->
-	  						<div class="col-md-12 col-xs-12 related-recipe-entry item">
+	  						<div class="col-md-12 col-xs-12 related-recipe-entry item" title="{related_recipe_name}">
 								<img src="<?php echo base_url();?>images/recipe/26.jpg" class="img-responsive col-md-12 col-xs-12 col-no-padding">
 								<a class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
 							</div>
@@ -178,7 +176,7 @@
 						<h3 style="margin-top:0" class="page-header-title">Ingredients
 						<?php if ($this->session->userdata('user_id') == $recipe_author):?>
 							<a href='<?php echo base_url();?>index.php/recipe/edit/{recipe_id}' class='pull-right'>
-								<button class='btn button-default'>
+								<button class='btn button-primary'>
 									<i class='fa fa-pencil fa-lg'></i>
 									Edit
 								</button>
@@ -231,7 +229,7 @@
 					<h4 class="page-header-title">Share Your Thought! (2 Comments)</h4>
 					<div class="col-md-12 col-xs-12">
 						<div class="col-md-2 col-xs-2 col-no-padding-left">
-							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
+							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment" title="Your">
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
 							<form class="form-horizontal text-" role="form" method="post" style="margin:0">
@@ -240,7 +238,7 @@
 									    <textarea class="form-control enter-comment" row="1" placeholder="Write Your Comment In Here ..."></textarea>
 									</div>
 									<div class="col-md-2 col-xs-3 col-no-padding-right" style="position:absolute; right:0; bottom:0">
-										<button type="submit" class="btn btn-default-theme3 col-md-12 col-xs-12">Send</button>
+										<button type="submit" class="btn btn-secondary col-md-12 col-xs-12">Send</button>
 									</div>
 								</div>
 							</form>
@@ -248,7 +246,7 @@
 					</div>
 					<div class="col-md-12 col-xs-12 comment-entry">
 						<div class="col-md-2 col-xs-2 col-no-padding-left">
-							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
+							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment" title="Alfan">
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
 							<div class="col-md-12 col-xs-12 col-no-padding-left comment-value">
@@ -261,7 +259,7 @@
 					</div>
 					<div class="col-md-12 col-xs-12 comment-entry">
 						<div class="col-md-2 col-xs-2 col-no-padding-left">
-							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment">
+							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment" title="Alfan">
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
 							<div class="col-md-12 col-xs-12 col-no-padding-left comment-value">

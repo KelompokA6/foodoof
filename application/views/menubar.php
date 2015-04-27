@@ -1,23 +1,23 @@
 <div class="navmenu navmenu-default navmenu-fixed-left offcanvas bg-sidemenu" role="navigation">
   <div class="col-xs-12 text-center page-header-title">
     <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left">
-      <img class="img-circle img-brand-menubar" width="75px" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>
+     <img class="img-responsive img-brand-menubar" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>
     </a>  
   </div>
   <div id="btn-group-slide-menu" class="col-xs-12 text-center col-no-padding">
     <div class="col-xs-12">
       <form id='loginform-slide-menu' class='form-horizontal hidden' role='form' method='post' action='<?php echo base_url();?>index.php/home/login'>      
         <div class='input-group'>
-            <span class='input-group-addon button-default'><i class='fa fa-user'></i></span>
+            <span class='input-group-addon button-secondary'><i class='fa fa-user'></i></span>
             <input id='login-username' type='text' class='form-control' name='email' value='' placeholder='Email' required>                                        
         </div><br>        
         <div class='input-group'>
-                    <span class='input-group-addon button-default'><i class='fa fa-lock'></i></span>
+                    <span class='input-group-addon button-secondary'><i class='fa fa-lock'></i></span>
                     <input id='login-password' type='password' class='form-control' name='password' placeholder='Password' required>
                 </div>
         <div style='margin-top:10px' class='form-group'>
             <div class='col-sm-12 controls text-center'>
-              <button id='btn-signin' type='submit' class='btn btn-success'>Login</button>
+              <button id='btn-signin' type='submit' class='btn button-secondary'>Login</button>
             </div>
         </div>
         <div class='form-group'>
@@ -33,9 +33,9 @@
       </form>
     </div>
     <div class="btn-group col-xs-12" role="group">
-      <button type="button" class="btn btn-success btn-cus" id="btn-login-slide-menu" style="width:120px">Login</button>
+      <button type="button" class="btn button-secondary inverse btn-cus" id="btn-login-slide-menu" style="width:120px">Login</button>
       <a id="btn-join-slide-menu" href="<?php echo base_url();?>index.php/user/join" class="btn-group">
-        <button type="button" class="btn button-default" style="width:120px">Join</button>
+        <button type="button" class="btn button-secondary" style="width:120px">Join</button>
       </a>
     </div>
   </div>
@@ -45,15 +45,15 @@
     <div class="navbar-header col-md-2 col-no-padding-right" style="padding-bottom:10px">
       <button type="button" class="navbar-toggle navbar-toggle-foodoof" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body" data-placement='left' style="margin:21px 10px 21px 10px">
           <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar icons-default"></span>
-          <span class="icon-bar icons-default"></span>
-          <span class="icon-bar icons-default"></span>
+          <span class="icon-bar icons-secondary"></span>
+          <span class="icon-bar icons-secondary"></span>
+          <span class="icon-bar icons-secondary"></span>
       </button>
       <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left col-md-12 col-xs-9">
         <img class="img-responsive img-brand-menubar" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 12px;"/>
       </a>
       <a href="<?php echo base_url();?>index.php/recipe/create" class="btn-navbar-mobile pull-right text-center">
-        <i class="fa fa-pencil-square-o fa-2x icons-default"></i><br>Write <br>A Recipe
+        <i class="fa fa-pencil-square-o fa-2x icons-secondary"></i><br>Write <br>A Recipe
       </a>
     </div>
     <div id="navbar" class="col-md-10">
@@ -61,7 +61,7 @@
         <div class="input-group form-group search-bar-menu">
           <span class="input-group-btn"> 
             <div class="btn-group">
-              <button class="btn dropdown-cat-search btn-default-theme2" data-toggle="dropdown" aria-expanded="false">
+              <button class="btn dropdown-cat-search button-secondary" data-toggle="dropdown" aria-expanded="false" title="Search Recipe By Title">
                 <i class="fa fa-cutlery fa-lg"></i>
               </button>
               <ul id="listSearch" class="dropdown-menu dropdown-menu-search bullet pull-center">
@@ -75,7 +75,6 @@
                   <input type="radio" id="ex1_2" value='ingredient' name="searchby"/>
                   <label for="search-ingredient">
                     <i class="icon-basket" style="font-size:1.333em"></i><span style="margin-left:15px">Ingredient </span>
-                    <!-- <img class="img-icon" src="<?php echo base_url();?>assets/icon/theme2-ingredients.ico"/><span style="margin-left:15px">Ingredient </span> -->
                   </label>
                 </li>
                 <li>
@@ -89,7 +88,7 @@
           </span>
           <input type="search" id="searchbar" class="form-control" name="q" class="typeahead" autocomplete="off" data-provide="typeahead" placeholder="Search Recipe By Title">
           <span class="input-group-btn">
-            <button type="submit" class="btn button-default button-group-normal">
+            <button type="submit" class="btn button-secondary button-group-normal">
                <i class="fa fa-search"></i>
             </button>
           </span>
@@ -100,26 +99,26 @@
         </div>
         <div class="col-md-2 link-by-icon text-center" >
           <a id="createRecipeMenubar" title="New Recipe">
-            <i class="fa fa-pencil-square-o fa-2x icons-default" style="cursor:pointer"></i>
+            <i class="fa fa-pencil-square-o fa-2x icons-secondary" style="cursor:pointer"></i>
           </a>
         </div>
         <div class="col-md-8 col-no-padding-right">
           <div class="btn-group" role="group" aria-label="" style="padding-left: 40px; ">
-            <button type="button" class="btn btn-default-theme3 btn-cus btn-popover" data-container="body" data-toggle="popover" data-placement="bottom" 
+            <button type="button" class="btn btn-cus btn-popover nav-bar-btn button-secondary inverse" data-container="body" data-toggle="popover" data-placement="bottom" 
             data-html="TRUE"
             data-content="
               <form id='loginform' class='form-horizontal' role='form' method='post' action='<?php echo base_url();?>index.php/home/login'>      
                   <div class='input-group'>
-                      <span class='input-group-addon button-default'><i class='fa fa-user'></i></span>
+                      <span class='input-group-addon button-secondary'><i class='fa fa-user'></i></span>
                       <input id='login-username' type='text' class='form-control' name='email' value='' placeholder='Email' required>                                        
                   </div><br>        
                   <div class='input-group'>
-                              <span class='input-group-addon button-default'><i class='fa fa-lock'></i></span>
+                              <span class='input-group-addon button-secondary'><i class='fa fa-lock'></i></span>
                               <input id='login-password' type='password' class='form-control' name='password' placeholder='Password' required>
                           </div>
                   <div style='margin-top:10px' class='form-group'>
                       <div class='col-sm-12 controls text-center'>
-                        <button id='btn-signin' type='submit' class='btn btn-success'>Login</button>
+                        <button id='btn-signin' type='submit' class='btn button-secondary'>Login</button>
                       </div>
                   </div>
                   <div class='form-group'>
@@ -138,7 +137,7 @@
             Login    
             </button>
             <a href="<?php echo base_url();?>index.php/user/join"  class="btn-group">
-              <button type="button" class="btn button-default btn-cus">Join</button>
+              <button type="button" class="btn button-secondary btn-cus nav-bar-btn">Join</button>
             </a>
           </div>
         </div>
