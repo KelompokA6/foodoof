@@ -723,12 +723,13 @@ ul.dropdown-option > li > a:focus {
   border-bottom: 0;
   border-right: 0;
   border-color: #DD3124;
+  cursor: pointer !important;
 }
 ul.dropdown-menu-search > li > label{
-  color: #333;
+  color: #DD3124 !important;
 }
 ul.dropdown-menu-search > li > input:checked~label{
-  color: #F7C43A;
+  color: #F7C43A !important;
   border: solid 5px;
   border-top: 0;
   border-bottom: 0;
@@ -743,11 +744,13 @@ ul.dropdown-menu-search > li > input:checked~label:hover,
 ul.dropdown-menu-search > li > input:checked~label:focus{
   background-color: #f5f5f5;
   color:  #F7C43A;
+  cursor: pointer !important;
 }
 ul.dropdown-menu-search > li > input:checked~label:hover > span,
 ul.dropdown-menu-search > li > input:checked~label:focus > span{
   background-color: #f5f5f5;
   color:  #F7C43A;
+  cursor: pointer !important;
 }
 ul.dropdown-menu-search > li > label:hover,
 ul.dropdown-menu-search > li > label:focus{
@@ -757,7 +760,8 @@ ul.dropdown-menu-search > li > label:focus{
   border-bottom: 0;
   border-right: 0;
   border-color: #DD3124;
-  color: #F7C43A;
+  color: #F7C43A !important;
+  cursor: pointer !important;
 }
 .dropdown-cat-search{
   height: 34px;
@@ -1250,6 +1254,7 @@ ul.nav-pills.nav-stacked{
 .related-recipe-entry{
   overflow: hidden;
   padding: 0 3px;
+  cursor: pointer !important;
 }
 .related-recipe-entry > img{
   max-height: 70px;

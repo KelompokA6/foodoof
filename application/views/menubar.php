@@ -72,7 +72,7 @@
                   </label>
                 </li>
                 <li>
-                  <input type="radio" id="ex1_2" value='ingredient' name="searchby"/>
+                  <input type="radio" id="ex1_2" value='ingredient' name="searchby" required/>
                   <label for="search-ingredient">
                     <i class="icon-basket" style="font-size:1.333em"></i><span style="margin-left:15px">Ingredient </span>
                   </label>

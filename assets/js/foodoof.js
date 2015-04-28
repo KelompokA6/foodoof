@@ -511,7 +511,21 @@ $(document).ready(function() {
 		$recipeIdView = $("#rating-recipe").data("recipeid");
 		$.get( "/foodoof/processAjax/setRating/"+$recipeIdView+"/"+$valueRating, function( data ) {
 		  	if(data.status == '1'){
-		  		console.log(data.message);
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'success',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});  	
 		  	}
 		  	else{
 		  		console.log(data.message);
@@ -679,6 +693,10 @@ $(document).ready(function() {
 		else{
 			return ;
 		}
+	});
+	$("form#form-search").on("submit", function(e){
+		if( $("#searchbar").val().trim().length == 0 )
+			e.preventDefault();
 	});
 
 	/*
