@@ -500,4 +500,16 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($result);
 	}
+	public function getAllIngredient(){
+		$ingre = new Ingredient();
+		$ingre->group_by('name');
+		$ingre->get();
+		$data = array();
+		$x = 0;
+		foreach ($ingre as $obj) {
+			array_push($data, $obj->name);
+			$x++;
+		}
+		echo json_encode($data);
+	}
 }

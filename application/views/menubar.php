@@ -86,7 +86,7 @@
               </ul>
             </div>
           </span>
-          <input type="search" id="searchbar" class="form-control" name="q" class="typeahead" autocomplete="off" data-provide="typeahead" placeholder="Search Recipe By Title">
+          <input type="search" id="searchbar" class="form-control search-title" name="q" class="typeahead" autocomplete="off" placeholder="Search Recipe By Title">
           <span class="input-group-btn">
             <button type="submit" class="btn button-secondary button-group-normal">
                <i class="fa fa-search"></i>

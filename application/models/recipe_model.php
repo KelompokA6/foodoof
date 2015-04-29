@@ -693,16 +693,19 @@ class Recipe_model extends DataMapper {
                         $recipes = new Recipe_model();
                         $recipes->get_by_id($ingredients->recipe_id);
                         $foundIngredients = array();
-                        for ($i=0; $i < sizeof($search_key) ; $i++) { 
-                            $ingredient = new Ingredient();
-                            $ingredient->where('recipe_id', $recipes->id);
-                            $ingredient->ilike('name', $search_key[$i]);
-                            if($ingredient->count()>0){
+                        for ($i=0; $i < sizeof($search_key) ; $i++) {
+                            if(!empty($search_key[$i])){
+                                $ingredient = new Ingredient();
                                 $ingredient->where('recipe_id', $recipes->id);
                                 $ingredient->ilike('name', $search_key[$i]);
-                                $ingredient->get();
-                                array_push($foundIngredients, $ingredient->name);
-                            }
+                                if($ingredient->count()>0){
+                                    $ingredient->where('recipe_id', $recipes->id);
+                                    $ingredient->ilike('name', $search_key[$i]);
+                                    $ingredient->limit(1);
+                                    $ingredient->get();
+                                    array_push($foundIngredients, $ingredient->name);
+                                }
+                            } 
                         }
                         if($recipes->status=='1' && $recipes->tmp_status=='0'){
                             $data = new stdClass();

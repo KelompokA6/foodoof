@@ -287,27 +287,39 @@ $(document).ready(function() {
 		var search = $(this).find("input").val();
 		if(search==="title"){	
 			$("#searchbar").attr("placeholder", "Search Recipe By Title");
+			$("#searchbar").addClass("search-title");
+			$("#searchbar").removeClass("search-ingredient");
+			$("#searchbar").removeClass("search-account");
 			$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-title']").find("i").clone());
 			$("button.dropdown-cat-search").prop('title','Search Recipe By Title');
 			$("ul#listSearch > li > input[value='title']").prop('checked', true);
 			$("ul#listSearch > li > input[value='ingredient']").prop('checked', false);
 			$("ul#listSearch > li > input[value='account']").prop('checked', false);
+			initTypeahead("search-title");
 		}
 		else if(search==="ingredient"){	
 			$("#searchbar").attr("placeholder", "Search Recipe By Ingredient");
+			$("#searchbar").addClass("search-ingredient");
+			$("#searchbar").removeClass("search-title");
+			$("#searchbar").removeClass("search-account");
 			$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-ingredient']").find("i").clone());
 			$("button.dropdown-cat-search").prop('title','Search Recipe By Ingredient');
 			$("ul#listSearch > li > input[value='title']").prop('checked', false);
 			$("ul#listSearch > li > input[value='ingredient']").prop('checked', true);
 			$("ul#listSearch > li > input[value='account']").prop('checked', false);
+			initTypeahead("search-ingredient");
 		}
 		else if(search==="account"){	
 			$("#searchbar").attr("placeholder", "Search Account");
+			$("#searchbar").removeClass("search-title");
+			$("#searchbar").removeClass("search-ingredient");
+			$("#searchbar").addClass("search-account");
 			$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-account']").find("i").clone());
 			$("button.dropdown-cat-search").prop('title','Search Account');
 			$("ul#listSearch > li > input[value='title']").prop('checked', false);
 			$("ul#listSearch > li > input[value='ingredient']").prop('checked', false);
 			$("ul#listSearch > li > input[value='account']").prop('checked', true);
+			initTypeahead("search-account");
 		}
 	});
 
@@ -332,6 +344,10 @@ $(document).ready(function() {
 		$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-title']").find("i").clone());
 		$("button.dropdown-cat-search").prop('title','Search Recipe By Title');
 		$("#searchbar").attr("placeholder", "Search Recipe By Title");
+		$("#searchbar").addClass("search-title");
+		$("#searchbar").removeClass("search-ingredient");
+		$("#searchbar").removeClass("search-account");
+		initTypeahead("search-title");
 	}
 	if($searchBy.toLowerCase() === "ingredient"){
 		$("ul#listSearch > li > input[value='title']").prop('checked', false);
@@ -340,6 +356,10 @@ $(document).ready(function() {
 		$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-ingredient']").find("i").clone());
 		$("button.dropdown-cat-search").prop('title','Search Recipe By Ingredient');
 		$("#searchbar").attr("placeholder", "Search Recipe By Ingredient");
+		$("#searchbar").addClass("search-ingredient");
+		$("#searchbar").removeClass("search-title");
+		$("#searchbar").removeClass("search-account");
+		initTypeahead("search-ingredient");
 	}
 	if($searchBy.toLowerCase() === "account"){
 		$("ul#listSearch > li > input[value='title']").prop('checked', false);
@@ -348,6 +368,10 @@ $(document).ready(function() {
 		$("button.dropdown-cat-search").html($("ul#listSearch > li > label[for='search-account']").find("i").clone());
 		$("button.dropdown-cat-search").prop('title','Search Account');
 		$("#searchbar").attr("placeholder", "Search Account");
+		$("#searchbar").removeClass("search-title");
+		$("#searchbar").removeClass("search-ingredient");
+		$("#searchbar").addClass("search-account");
+		initTypeahead("search-account");
 	}
 	$('#searchbar').keydown(function (e) {
 	  if (e.which == 13) {
@@ -1081,11 +1105,42 @@ $(document).ready(function() {
 
 	// initialize the bloodhound suggestion engine
 	units.initialize();
+	function extractor(query) {
+        var result = /([^,]+)$/.exec(query);
+        if(result && result[1])
+            return result[1].trim();
+        return '';
+    }
 	$(".ingredient-unit").typeahead({
 	    source: units.ttAdapter(),
-	    items: 4,
+	    items: 4
 	});
 
+	function initTypeahead(classname){
+		if(classname=="search-ingredient"){
+			$.get('/foodoof/index.php/processAjax/getAllIngredient', function(data){
+			    $("."+classname).typeahead({
+				source: data,
+		        items: 4,
+			    updater: function(item) {
+		            return this.$element.val().replace(/[^,]*$/,'')+item+', ';
+		        },
+		        matcher: function (item) {
+		          var tquery = extractor(this.query);
+		          if(!tquery) return false;
+		          return ~item.toLowerCase().indexOf(tquery)
+		        },
+		        highlighter: function (item) {
+		          var query = extractor(this.query).replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
+		          return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+		            return '<strong>' + match + '</strong>'
+		          })
+		        }
+			});
+			},'json');
+		}
+	}
+	
 	/*
 	init javascript bootstrap;
 	*/

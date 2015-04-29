@@ -318,6 +318,9 @@ footer > div > div > div > ul > li > a{
     border-bottom: dashed 2px #F7C43A !important;
     padding-bottom: 10px;
   }
+  .detail-list-search-ingredient{
+    padding-top: 12px 0;
+  }
 }
 @media screen and (min-width:768px){
   .inline-search{
@@ -423,7 +426,6 @@ footer > div > div > div > ul > li > a{
     border-top:0px;
     border-right:0px;
     border-bottom:0px;
-    padding: 12px 0;
     height: 167px; 
   }
   .detail-list-img{
@@ -770,6 +772,17 @@ ul.dropdown-menu-search > li > label:focus{
 .dropdown-cat-search:focus{
   color:#fff;
 }
+ul.typeahead.dropdown-menu > li > a{
+  color: #F7C43A !important;
+}
+ul.typeahead.dropdown-menu > li.active > a{
+  background-color: #F7C43A !important;
+  color: #fff !important;
+}
+
+/*
+  form css
+*/
 .form-control:focus{
   border-color: #F7C43A;
   outline: 0;
