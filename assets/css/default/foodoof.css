@@ -1411,6 +1411,8 @@ textarea.enter-comment.form-control:focus{
 
 .popover{
   padding: 0;
+  min-width: 200px;
+  z-index: 100px
 }
 .popover > .popover-title{
   background-color: #F7C43A !important;
