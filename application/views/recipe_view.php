@@ -183,6 +183,9 @@
 						{recipe_ingredients}
 							<tr>
 								<td class="text-capitalize"> {ingre_name}
+									<?php if(!empty($ingredient_info)):?>
+										<i class="fa fa-info-circle icons-secondary fa-lg" role="button" data-toggle="popover" title="Info Ingredient" data-content="{ingre_name}" data-trigger="hover"></i>
+									<?php endif;?>
 								</td>
 								<td> {ingre_quantity} {ingre_units}
 								</td>

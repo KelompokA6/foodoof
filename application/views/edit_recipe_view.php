@@ -123,8 +123,8 @@
 								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_unit}" name="ingredient_unit[]" class="form-control" placeholder="Unit">
 								    	</div>
 								    	<div class="col-sm-1 col-xs-1 col-no-padding-left" style="padding:10px 0">
-								    		<input type="text" class="infomation-ingredient hidden" value="{edit_recipe_ingredient_subject}">
-								      		<i class="fa fa-info-circle icons-secondary fa-lg" role="button" data-toggle="popover" title="Add Information Ingredient" data-trigger="click"></i>
+								    		<input type="text" class="infomation-ingredient hidden" value="{edit_recipe_ingredient_subject}" name="ingredient_info[]">
+								      		<i class="fa fa-info-circle icons-secondary fa-lg" role="button" data-toggle="popover" title="Info Ingredient" data-trigger="click"></i>
 								    	</div>
 							    	</div>
 							    	{/edit_recipe_ingredient_entries}
