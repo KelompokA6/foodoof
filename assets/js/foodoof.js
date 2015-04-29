@@ -379,7 +379,7 @@ $(document).ready(function() {
 		$("#remove-ingredient").show();
 		$countIngredient++;
 		$hasChanged = true;
-		$(".ingredient-item:last-child > div > .fa.fa-info-circle.icons-secondary.fa-lg").popover({
+		$(".fa.fa-info-circle.icons-secondary.fa-lg").last().popover({
 			html: true, 
 			content:function(){
     			return "<textarea class='info-ingredient form-control' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'></textarea>"
@@ -387,7 +387,7 @@ $(document).ready(function() {
     	}).parent().on('keypress', "textarea.info-ingredient", function(){
     		$(this).parent().parent().prev().prev().attr('value',$(this).val());;
     	});
-    	$(".ingredient-item:last-child > div > .fa.fa-info-circle.icons-secondary.fa-lg").data('bs.popover').options.content = "<textarea class='info-ingredient form-control' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'>"+$(this).prev().val();+"</textarea>";
+    	$(".fa.fa-info-circle.icons-secondary.fa-lg").data('bs.popover').options.content = "<textarea class='info-ingredient form-control' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'>"+$(this).prev().val();+"</textarea>";
 		$(".ingredient-item > div > .input-ingredient").last().focus();
 	});
 	$(document).on('click',"#remove-ingredient",function(){
@@ -1080,21 +1080,23 @@ $(document).ready(function() {
 	$('.carousel').carousel();
     $('.btn-popover').popover();
     $('.fa.fa-info-circle.icons-secondary.fa-lg').each(function(i){
-    	$(this).popover();
-    });
-    $('body').on('click', function (e) {
-	    $('.fa.fa-info-circle.icons-secondary.fa-lg').each(function(i){
-	    	$(this).prev().prop('required',false);
-	    	var tmp = $(this).prev().val();
-	    	$(this).popover({
-	    		html: true, 
+    	if($(this).prev().hasClass('hidden')){
+    		var tmp = $(this).prev().val();
+    		$(this).popover({
+    			html: true, 
 	    		content:function(){
 	    			return "<textarea class='info-ingredient form-control' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'>"+tmp+"</textarea>"
 	    		}
 	    	}).parent().on('keypress', "textarea.info-ingredient", function(){
 	    		$(this).parent().parent().prev().prev().attr('value',$(this).val());;
 	    	});
-	    	$(this).data('bs.popover').options.content = "<textarea class='info-ingredient form-control' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'>"+$(this).prev().val();+"</textarea>";
+    	}else{
+    		$(this).popover();	
+    	}
+    	$(this).data('bs.popover').options.content = "<textarea class='info-ingredient form-control' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'>"+$(this).prev().val();+"</textarea>";
+    });
+    $('body').on('click', function (e) {
+	    $('.fa.fa-info-circle.icons-secondary.fa-lg').each(function(i){
 	    	if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
 	            $(this).popover('hide');
 	        }
