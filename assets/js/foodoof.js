@@ -1056,16 +1056,33 @@ $(document).ready(function() {
 	/*
 	comment
 	*/
-	$("textarea.enter-comment").on('autosize:resized', function(){
-	    $height = $(this).height()+12;
-	    console.log($height);
+	$("textarea").on('autosize:resized', function(){
+	    $height = $(this).height()+7;
 		$(this).parent().css("margin-top",$height);
 		$(this).css("margin-top", -($height-7));
 	});
+	
 	/*
 	init javascript bootstrap;
 	*/
 	$('.carousel').carousel();
     $('.btn-popover').popover();
+    $('body').on('click', function (e) {
+	    $('.fa.fa-info-circle.icons-secondary.fa-lg').each(function(i){
+	    	$(this).prev().attr('id-ingredient',i);
+	    	$(this).prev().prop('required',false);
+	    	var tmp = $(this).prev().val();
+	    	$(this).popover({html: true, content:function(){
+	    		return "<textarea class='info-ingredient form-control' id-ingredient='"+i+"' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'>"+tmp+"</textarea>"
+	    	}}).parent().on('keypress', "textarea.info-ingredient", function(){
+	    		$(this).parent().parent().prev().prev().attr('value',$(this).val());;
+	    	});
+	    	$(this).data('bs.popover').options.content = "<textarea class='info-ingredient form-control' id-ingredient='"+i+"' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'>"+$(this).prev().val();+"</textarea>";
+	    	if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+	            $(this).popover('hide');
+	        }
+	    });
+	});
     autosize($('textarea')); 
+    $("textarea").trigger("autosize:resized");
 });

@@ -13,7 +13,7 @@
 			  			<div class="col-md-12 col-no-padding" style="margin-top:15px">
 			  				<h4 class="page-header-title">Description Recipe</h4>
 			  				<div clas="col-md-12 col-no-padding">
-			  					<textarea class="form-control" rows="6" placeholder="Description of your recipe" name="recipe_description">{edit_recipe_description}</textarea>
+			  					<textarea class="form-control" rows="4" placeholder="Description of your recipe" name="recipe_description">{edit_recipe_description}</textarea>
 			  				</div>
 			  			</div>
 			  			<div class="col-md-12 col-xs-12 col-no-padding" style="margin-top:15px">
@@ -113,7 +113,7 @@
 						    	<div id="ingredient-entry" class="col-sm-10 col-xs-12 col-no-padding">
 						    		{edit_recipe_ingredient_entries}
 							    	<div class="col-sm-10 col-xs-10 col-no-padding ingredient-item">
-							    		<div class="col-sm-6 col-xs-6">
+							    		<div class="col-sm-5 col-xs-5">
 								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_subject}" name="ingredient_subject[]" class="form-control input-ingredient" placeholder="Ingredient Name">
 								    	</div>
 								    	<div class="col-sm-3 col-xs-3 col-no-padding-left">
@@ -121,6 +121,10 @@
 								    	</div>
 								    	<div class="col-sm-3 col-xs-3 col-no-padding-left">
 								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_unit}" name="ingredient_unit[]" class="form-control" placeholder="Unit">
+								    	</div>
+								    	<div class="col-sm-1 col-xs-1 col-no-padding-left" style="padding:10px 0">
+								    		<input type="text" class="infomation-ingredient hidden" value="{edit_recipe_ingredient_subject}">
+								      		<i class="fa fa-info-circle icons-secondary fa-lg" role="button" data-toggle="popover" title="Add Information Ingredient" data-trigger="click"></i>
 								    	</div>
 							    	</div>
 							    	{/edit_recipe_ingredient_entries}
