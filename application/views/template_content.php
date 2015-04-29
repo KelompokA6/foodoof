@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/animate.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
     <link href="<?php echo base_url();?>assets/plugin/bower-components/enhancement/css/dropdowns-enhancement.min.css" media="all" rel="stylesheet" type="text/css" />
+    <!-- <link href="<?php //echo base_url();?>assets/plugin/bower-components/typeahead/jquery.typeahead.css" media="all" rel="stylesheet" type="text/css" /> -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof.css">
   </head>
   <body>
@@ -98,7 +99,8 @@
   <script src="<?php echo base_url();?>assets/plugin/bower-components/kartik-star-rating/js/star-rating.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/kartik-file-input/js/fileinput.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-  <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap3-typeahead.js" type="text/javascript"></script>
+  <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap3-typeahead.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bloodhound.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/enhancement/js/dropdowns-enhancement.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-notify/bootstrap-notify.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-lightbox/bootstrap-lightbox.min.js"></script>

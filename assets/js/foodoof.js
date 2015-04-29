@@ -279,13 +279,6 @@ $(document).ready(function() {
 	    });
 	}
 	$(".step-item:first > div > textarea").prop('required',true);
-
-	$('.typeahead').typeahead({ 
-		source : function(query, process) {
-                return ["Deluxe Bicycle", "Super Deluxe Trampoline", "Super Duper Scooter"];
-            },
-		autoSelect :true, 
-	});
 	
 	/*
 	event handler for search bar
@@ -1074,6 +1067,25 @@ $(document).ready(function() {
 		$(this).css("margin-top", -($height-7));
 	});
 	
+	/*
+	typehead
+	*/
+	// instantiate the bloodhound suggestion engine
+	var units = new Bloodhound({
+	datumTokenizer: Bloodhound.tokenizers.whitespace,
+	queryTokenizer: Bloodhound.tokenizers.whitespace,
+	local:  [
+	            "batang", "buah", "biji", "cc", "gram", "helai", "kg", "liter", "ml", "ons", "sdm", "secukupnya", "kilogram", "botol", "bungkus"   
+	        ]
+	});
+
+	// initialize the bloodhound suggestion engine
+	units.initialize();
+	$(".ingredient-unit").typeahead({
+	    source: units.ttAdapter(),
+	    items: 4,
+	});
+
 	/*
 	init javascript bootstrap;
 	*/

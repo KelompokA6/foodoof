@@ -93,7 +93,7 @@
 						  	<div class="form-group">
 						    	<label for="inputEmail3" class="col-sm-2 control-label">Title</label>
 						    	<div class="col-sm-10">
-						      		<input type="text" value="{edit_recipe_title}" name="recipe_title" class="form-control" placeholder="Title Recipe" required>
+						      		<input type="text" value="{edit_recipe_title}" maxlength="254" name="recipe_title" class="form-control" placeholder="Title Recipe" required>
 						    	</div>
 							</div>
 							<div class="form-group">
@@ -120,7 +120,7 @@
 								      		<input type="number" min="0" step="0.01" value="{edit_recipe_ingredient_quantity}" name="ingredient_quantity[]" class="form-control" placeholder="Quantity">
 								    	</div>
 								    	<div class="col-sm-3 col-xs-3 col-no-padding-left">
-								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_unit}" name="ingredient_unit[]" class="form-control" placeholder="Unit">
+								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_unit}" name="ingredient_unit[]" class="form-control ingredient-unit" placeholder="Unit" autocomplete="off">
 								    	</div>
 								    	<div class="col-sm-1 col-xs-1 col-no-padding-left" style="padding:10px 0">
 								    		<input type="text" class="infomation-ingredient hidden" value="{edit_recipe_ingredient_subject}" name="ingredient_info[]">
