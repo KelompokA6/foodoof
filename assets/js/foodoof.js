@@ -1172,6 +1172,18 @@ $(document).ready(function() {
 	 	$(this).parent().parent().removeClass("fadeInDown");
 	});
 	$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message").data("countmessage") });
+	$("#toggle-online-user").iosbadge({ theme: 'ios', size: 28, content: 4 });
+	$("#toggle-online-user").on("click", function(e){
+		if($("#panel-users").css("display")=="none"){
+			$("#toggle-online-user > div > i.fa-chevron-up").removeClass("fa-chevron-up");
+			$("#toggle-online-user > div.col-md-2 > i").addClass("fa-chevron-down");
+		}
+		else{
+			$("#toggle-online-user > div > i.fa-chevron-down").removeClass("fa-chevron-down");
+			$("#toggle-online-user > div.col-md-2 > i").addClass("fa-chevron-up");	
+		}
+		$("#panel-users").slideToggle("slow");
+	});
     autosize($('textarea')); 
     $("textarea").trigger("autosize:resized");
 });

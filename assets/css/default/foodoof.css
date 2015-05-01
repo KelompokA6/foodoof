@@ -655,6 +655,9 @@ footer > div > div > div > ul > li > a{
 .input-group-addon.button-secondary{
   border:none;
 }
+#toggle-online-user{
+  padding: 10px 5px;
+}
 
 /*
   icon-css
@@ -911,6 +914,16 @@ div.list-group > a{
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
+#panel-users{
+  display:none; 
+  margin:0; 
+}
+#panel-users > .panel-body{
+  padding: 10px;
+  max-height:300px; 
+  overflow-y:auto;
+}
+
 .category-menu-name{
   color:  #111111;
 }
@@ -923,6 +936,9 @@ p.text-capitalize {
   font-size: 16px;
 }
 
+/*
+  list item css
+*/
 .details-img-recipe{
   margin:auto;
 }
@@ -939,7 +955,6 @@ p.text-capitalize {
   padding-right: 0px;
   min-height: 87px;
 }
-
 .detail-list-img-recipe-home{
   height:87px;
   padding:5px 3px 5px 3px;
@@ -949,6 +964,11 @@ p.text-capitalize {
   padding-bottom: 9px;
   margin: 10px 0 20px;
   border-bottom: 1px dashed #F7C43A;
+}
+.list-user-online{
+  height: 34px;
+  line-height: 34px;
+  margin:5px 0;
 }
 
 /*
@@ -1073,7 +1093,7 @@ ol.carousel-indicators > li.bg-li-highlight.active{
 }
 
 /*
-  author recipe
+  author & user recipe
 */
 a > .img-recipe-author{
   height: 30px;
@@ -1098,13 +1118,20 @@ a.author-recipe-home:hover > .recipe-author-name{
 .author-recipe-home{
   font-family: 'Roboto';
   font-size: 16px;
-  text-overflow:ellipsis;overflow:hidden; 
+  text-overflow:ellipsis;
+  overflow:hidden; 
   white-space: nowrap;
   margin:10px 0 5px 0;
 }
 .author-recipe-home > .recipe-author-name{
   line-height: 30px;
   margin-left: 10px
+}
+.name-user-online{
+  text-overflow:ellipsis;
+  overflow:hidden; 
+  white-space: nowrap;
+  font-size: 18px;
 }
 
 /*
@@ -1252,6 +1279,11 @@ ul.nav-pills.nav-stacked{
 .img-icon{
   width: 18px;
   height: 19px;
+}
+.img-user-online{
+  width: 34px;
+  height: 34px;
+  margin: auto
 }
 
 /*
