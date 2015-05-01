@@ -432,6 +432,7 @@ class Migration_Initialize_database extends CI_Migration {
 		$this->db->query("CREATE TRIGGER `add_recipe_default` BEFORE INSERT ON `recipes` FOR EACH ROW if (NEW.photo is null ) then set NEW.photo = 'assets/img/recipe-default.jpg'; end if;");
 		$this->db->query("CREATE TRIGGER `add_step_default` BEFORE INSERT ON `steps` FOR EACH ROW if (NEW.photo is null ) then set NEW.photo = 'assets/img/step-default.jpg'; end if;");
 		$this->db->query("CREATE TRIGGER `add_user_default` BEFORE INSERT ON `users` FOR EACH ROW if (LOWER(NEW.gender) = 'f' ) then set NEW.photo = 'assets/img/user-female.png'; elseif (LOWER(NEW.gender) = 'm' ) then set NEW.photo = 'assets/img/user-male.png'; end if;");
+		$this->db->query("CREATE DEFINER=`root`@`localhost` EVENT `auto_logout` ON SCHEDULE EVERY 15 MINUTE STARTS '2015-04-30 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO UPDATE users SET status_login='0', last_access=NOW() WHERE TIMESTAMPDIFF(MINUTE,last_access,now())>15");
 		$this->db->query("ALTER TABLE users ADD FULLTEXT (name)");
 		$this->db->query("ALTER TABLE recipes ADD FULLTEXT (name)");
 	}

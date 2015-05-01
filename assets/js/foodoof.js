@@ -388,7 +388,7 @@ $(document).ready(function() {
 	}
 
 	$colAddRemoveBtnIngredient = $("#add-and-remove-btn-ingredient").clone();
-	$ingredientItem = 	"<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'>"+"<div class='col-sm-5 col-xs-5'>"+"<input type='text' value='' name='ingredient_subject[]' class='form-control input-ingredient' placeholder='Ingredient Name'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'>"+"</div>"+"<div class='col-sm-1 col-xs-1 col-no-padding-left' style='padding:10px 0'><input type='text' class='infomation-ingredient hidden' value='' name='ingredient_info[]'><i class='fa fa-info-circle icons-secondary fa-lg' role='button' data-placement='right' data-toggle='popover' title='Info Ingredient' data-trigger='click'></i></div></div>";
+	$ingredientItem = 	"<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item animated fadeInDown'>"+"<div class='col-sm-5 col-xs-5'>"+"<input type='text' value='' name='ingredient_subject[]' class='form-control input-ingredient' placeholder='Ingredient Name'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'>"+"</div>"+"<div class='col-sm-1 col-xs-1 col-no-padding-left' style='padding:10px 0'><input type='text' class='infomation-ingredient hidden' value='' name='ingredient_info[]'><i class='fa fa-info-circle icons-secondary fa-lg' role='button' data-placement='right' data-toggle='popover' title='Info Ingredient' data-trigger='click'></i></div></div>";
 	$(document).on('click',"#add-ingredient",function(){
 		$("#add-and-remove-btn-ingredient").remove();
 		$("#ingredient-entry").append($ingredientItem);
@@ -433,10 +433,10 @@ $(document).ready(function() {
 		$countStep++;
 		$.get("/foodoof/processAjax/addStepImage/"+$recipeId+"/"+$countStep, function( data ) {
 			if(data.status == '1'){
-		  		console.log(data.message);  		
+		  		/*console.log(data.message);  */		
 		  	}
 		  	else{
-		  		console.log(data.message);
+		  		/*console.log(data.message);*/
 		  	}
 		},"json");
 		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item animated fadeInDown'>"+"<div class='col-sm-8 col-xs-7 col-no-padding-right'>"+"<textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'></textarea>"+"</div>"+"<div class='col-sm-4 col-xs-5'>"+"<input class='image-steps' name='photo-step' data-src='/foodoof/assets/img/step-default.jpg' index='"+$countStep+"' data-title='new step' type='file' accept='image/*'>"+"</div>"+"</div>";
@@ -516,10 +516,10 @@ $(document).ready(function() {
 		$("#step-entry").append($colAddRemoveBtnStep);
 		$.get("/foodoof/processAjax/removeStepImage/"+$recipeId+"/"+$countStep, function( data ) {
 			if(data.status == '1'){
-		  		console.log(data.message);  		
+		  		/*console.log(data.message); */ 		
 		  	}
 		  	else{
-		  		console.log(data.message);
+		  		/*console.log(data.message);*/
 		  	}
 		},"json");
 		$countStep--;
@@ -557,7 +557,7 @@ $(document).ready(function() {
 				});  	
 		  	}
 		  	else{
-		  		console.log(data.message);
+		  		/*console.log(data.message);*/
 		  	}
 		},"json");
 	});
@@ -1079,8 +1079,6 @@ $(document).ready(function() {
 				$(".carousel-related-recipe.right").removeClass("disabled");
 			}
 	  	}
-	  	console.log("first : "+$carouselActiveFirst);
-	  	console.log("last : "+$carouselActiveLast);
 	}
 	/*
 	comment
@@ -1099,7 +1097,7 @@ $(document).ready(function() {
 	datumTokenizer: Bloodhound.tokenizers.whitespace,
 	queryTokenizer: Bloodhound.tokenizers.whitespace,
 	local:  [
-	            "batang", "buah", "biji", "cc", "gram", "helai", "kg", "liter", "ml", "ons", "sdm", "secukupnya", "kilogram", "botol", "bungkus"   
+	            "batang", "buah", "biji", "cc", "gram", "helai", "kg", "liter", "ml", "ons", "sdm", "sdt", "secukupnya", "kilogram", "botol", "bungkus"   
 	        ]
 	});
 
@@ -1169,6 +1167,11 @@ $(document).ready(function() {
 	        }
 	    });
 	});
+	$(document).on('shown.bs.popover', ".fa.fa-info-circle.icons-secondary.fa-lg", function () {
+	 	$(this).parent().parent().removeClass("animated");
+	 	$(this).parent().parent().removeClass("fadeInDown");
+	});
+	$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message").data("countmessage") });
     autosize($('textarea')); 
     $("textarea").trigger("autosize:resized");
 });

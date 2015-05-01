@@ -70,17 +70,20 @@
         </div>
       </form>
       <div class="col-md-5 col-menu-user mobile-hidden col-no-padding-right" style="padding-left:30px">
-        <div class="col-md-2">
-        </div>
         <div class="col-md-2 link-by-icon text-right" >
           <a href="<?php echo base_url();?>index.php/recipe/create" title="New Recipe">
             <i class="fa fa-pencil-square-o fa-2x icons-secondary" style="cursor:pointer"></i>
           </a>
         </div>
+        <div id="icon-message" class="col-md-2 link-by-icon text-right" style="padding:0 6px" data-countmessage="5">
+          <a href="<?php echo base_url();?>index.php/recipe/create" title="New Recipe">
+            <i class="fa fa-comment fa-2x icons-secondary" style="cursor:pointer"></i>
+          </a>
+        </div>
         <a href="<?php echo base_url();?>index.php/user/timeline" class="col-md-5 col-no-padding">
           <div class="col-md-12 hover-menubar text-left" title="My Profile">
             <div class="col-md-4 col-no-padding-left col-no-padding-right div-img-profile-menubar text-right">
-              <img class="img-circle img-profile-menubar" src="<?php echo base_url();?>{menubar_user_photo}"/>
+              <img class="img-rounded img-profile-menubar" src="<?php echo base_url();?>{menubar_user_photo}"/>
             </div>
             <div class="col-md-8 col-no-padding text-center" style="line-height:34px">
               {menubar_user_name}
