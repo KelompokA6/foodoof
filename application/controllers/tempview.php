@@ -241,4 +241,38 @@ class Tempview extends CI_Controller {
 			return TRUE;
 		return $this->email->print_debugger();*/
 	}
+	public function newconversationview(){
+		$this->load->library('parser');
+		$data = array();
+		$menubar = $this->parser->parse('menubar', $data, TRUE);
+		$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
+		$content_conversation = $this->parser->parse("new_conversation_view", $data, true);
+		$data = array(
+				"content_conversation" => $content_conversation,
+				"content_sidebar_conversation" => $content_sidebar_conversation
+			);
+		$content_website = $this->parser->parse('template_conversation', $data, TRUE);
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
+	}
+	public function conversationview(){
+		$this->load->library('parser');
+		$data = array();
+		$menubar = $this->parser->parse('menubar', $data, TRUE);
+		$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
+		$content_conversation = $this->parser->parse("conversation_view", $data, true);
+		$data = array(
+				"content_conversation" => $content_conversation,
+				"content_sidebar_conversation" => $content_sidebar_conversation
+			);
+		$content_website = $this->parser->parse('template_conversation', $data, TRUE);
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
+	}
 }

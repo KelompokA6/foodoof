@@ -229,7 +229,7 @@
 							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment" title="Your">
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
-							<form class="form-horizontal text-" role="form" method="post" style="margin:0">
+							<form class="form-horizontal" role="form" method="post" style="margin:0">
 								<div class="col-md-12 col-xs-12 col-no-padding-right form-group">
 									<div class="textareaKeeper col-md-10 col-xs-9 col-no-padding">
 									    <textarea class="form-control enter-comment" row="1" placeholder="Write Your Comment In Here ..."></textarea>
