@@ -1172,7 +1172,6 @@ $(document).ready(function() {
 	 	$(this).parent().parent().removeClass("fadeInDown");
 	});
 	$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message").data("countmessage") });
-	$("#toggle-online-user").iosbadge({ theme: 'ios', size: 28, content: 4 });
 	$("#toggle-online-user").on("click", function(e){
 		if($("#panel-users").css("display")=="none"){
 			$("#toggle-online-user > div > i.fa-chevron-up").removeClass("fa-chevron-up");
