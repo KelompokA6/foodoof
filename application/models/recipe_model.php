@@ -135,6 +135,7 @@ class Recipe_model extends DataMapper {
                         'photo' => $photo,
                         'tmp_status' => false,
                         );
+            $this->trans_begin();
             if(!$rcpSave->where('id', $id)->update($arrUpdate)){
                 return FALSE;
             }
@@ -143,7 +144,6 @@ class Recipe_model extends DataMapper {
                     return false;
                 }
             }
-            $this->trans_begin();
             if(is_array($ingredients)){
                 $this->db->delete('ingredients', array('recipe_id' => $id));
                 foreach ($ingredients as $ingredient) {
@@ -595,7 +595,7 @@ class Recipe_model extends DataMapper {
                 }
             }
             $recipe = new Recipe_model();
-            $sql = "SELECT * FROM recipes WHERE (MATCH (name) AGAINST ('".htmlspecialchars($search_key)."') OR ".$searchkey.") AND status=1 AND tmp_status=0 order by MATCH (name) AGAINST ('".$search_key."')";
+            $sql = "SELECT * FROM recipes WHERE (MATCH (name) AGAINST ('".$search_key."') OR ".$searchkey.") AND status=1 AND tmp_status=0 order by MATCH (name) AGAINST ('".$search_key."')";
             $recipe->query($sql);
             $recipeList = array();
             $total = 0;
@@ -802,6 +802,92 @@ class Recipe_model extends DataMapper {
             array_push($arrResult, $data);
         }
         return $arrResult;
+    }
+
+    /*
+        Digunakan untuk memperoleh resep-resep yang berhubungan(similar) dengan input id resep, limit digunakan jumlah similar yang diinginkan
+    */
+    function getRelatedRecipe($id=NULL, $limit=7){
+        if($id == NULL){
+            $id = $this->id;
+        }
+        $rcp = new Recipe_model();
+        $rcp = $rcp->getRecipeProfile($id);
+        $author = $rcp->author;
+        $category = $rcp->category;
+        $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$rcp->name."') AND status=1 AND tmp_status=0  AND id != ".$id." order by MATCH (name) AGAINST ('".$rcp->name."') limit ".$limit."";
+        $rcp = new Recipe_model();
+        $rcp->query($sql);
+        $relateRecipeList = array();
+        $relateRecipeidList = array();
+        $rcptmp = new Recipe_model();
+        foreach ($rcp as $recipe) {
+            array_push($relateRecipeidList, $recipe->id);
+            $limit--;
+            $rcptmp->clear();
+        }
+        if($limit>0){
+            $rcptmp->where("author", $author)->where("id !=", $id)->where_not_in('id', $relateRecipeidList)->where("status", "1")->order_by("rating", "desc")->order_by("views", "desc")->get(ceil($limit/2));
+            foreach ($rcptmp as $recipe) {
+                array_push($relateRecipeidList, $recipe->id);
+                $limit--;
+            }
+        }
+        $rcptmp->clear();
+        if($limit>0){
+            $categoriesRecipe = new Category();
+            $x = 0;
+            foreach ($category as $obj) {
+                if($x==0){
+                    $categoriesRecipe->where("name", $obj->name);
+                }
+                else{
+                    $categoriesRecipe->or_where("name", $obj->name);
+                }
+                $x++;
+            }
+            $categoriesRecipe->group_by("recipe_id")->get();
+            foreach ($categoriesRecipe as $catRcp) {
+                $r = $rcptmp->getRecipeProfile($catRcp->recipe_id);
+                if($r && ($r->id != $id) && ($r->author != $author) && !in_array($r->id, $relateRecipeidList)){
+                    $listtmp[$catRcp->recipe_id] = $r->rating;
+                    $rcptmp->clear();    
+                }
+            }
+            arsort($listtmp);
+            foreach ($listtmp as $idRcp=>$rateRcp) {
+                if($limit>0){
+                    array_push($relateRecipeidList, $idRcp);
+                    $limit--;
+                    $rcptmp->clear();
+                }
+            }
+            $rcptmp->clear();
+            foreach ($relateRecipeidList as $recipe) {
+                array_push($relateRecipeList, $rcptmp->getRecipeProfile($recipe));
+                $rcptmp->clear();
+            }
+            usort($relateRecipeList, function($a, $b){
+                if($a->rating < $b->rating){
+                    return 1;
+                }
+                else if($a->rating > $b->rating){
+                    return -1;
+                }
+                else{
+                    if($a->views < $b->views){
+                        return 1;
+                    }
+                    else if($a->views > $b->views){
+                        return -1;
+                    }
+                    else{
+                        return 0;
+                    }
+                }
+            });
+        }
+        return $relateRecipeList;
     }
 
     function getCountEachCategory(){

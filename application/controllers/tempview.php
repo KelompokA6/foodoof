@@ -2,6 +2,12 @@
 
 class Tempview extends CI_Controller {
 	
+	function __construct()
+    {
+    	parent::__construct();
+        $this->load->library('session');
+        $this->load->helper('cookie');
+    }
 	public function recipe()
 	{	
 		$this->load->library('parser');
@@ -279,11 +285,31 @@ class Tempview extends CI_Controller {
 		$this->load->library('parser');
 		$data = array();
 		$menubar = $this->parser->parse('menubar', $data, TRUE);
-		
+
 		$data = array(
 					"menubar" => $menubar,
 					"content_website" => $content_website,
 				);
 		$this->parser->parse('template_content', $data);
+	}
+	public function suggestion(){
+		$s = new Suggestion();
+		/*delete_cookie("cookie_id");*/
+		$data = $s->getRecipeSuggestion(get_cookie("cookie_id", true), 21);
+		if(is_numeric($data)){
+			$cookie = array(
+                'name'   => 'cookie_id',
+                'value'  => $data,
+                'expire' => 86500,
+            );
+            $this->input->set_cookie($cookie);
+		}
+		else{
+			print_r($data);
+		}
+	}
+	public function relatedRecipe($id){
+		$r = new Recipe_model();
+		print_r($r->getRelatedRecipe($id));
 	}
 }
