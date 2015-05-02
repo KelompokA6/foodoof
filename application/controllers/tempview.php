@@ -275,4 +275,15 @@ class Tempview extends CI_Controller {
 				);
 		$this->parser->parse('template_content', $data);
 	}
+	public function favoriteview(){
+		$this->load->library('parser');
+		$data = array();
+		$menubar = $this->parser->parse('menubar', $data, TRUE);
+		
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
+	}
 }

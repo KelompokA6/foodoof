@@ -18,7 +18,7 @@
     	<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title">
 			<div class="col-md-2 col-xs-6 col-md-offset-0 col-xs-offset-3 detail-list-img" style="margin-right:2px; margin-bottom:10px">
 		        <a href="<?php echo base_url();?>index.php/recipe/get/{user_timeline_recipe_id}" title="{user_timeline_recipe_name}">
-		        	<img class="img-responsive img-rounded img-list-usertimeline" src="<?php echo base_url();?>{user_timeline_recipe_photo}"/>
+		        	<img class="img-responsive img-rounded img-list-usertimeline details-img-recipe" src="<?php echo base_url();?>{user_timeline_recipe_photo}"/>
 		        </a>
 		    </div>
 		    <div class="col-md-5 col-xs-12 detail-list">
@@ -55,7 +55,7 @@
 		    	<?php if ($this->session->userdata('user_id') == $user_timeline_id): ?>
 		    	<div class="col-md-12 col-xs-4 col-no-padding-right recipe-timeline-edit-btn">
 		    		<a href="<?php echo base_url()?>index.php/recipe/edit/{user_timeline_recipe_id}">
-      					<button class="btn button-default btn-xs" style="width:90px">
+      					<button class="btn button-secondary btn-xs" style="width:90px">
       						<i class="fa fa-pencil-square-o fa-lg"></i>
       						Edit
       					</button>

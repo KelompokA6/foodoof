@@ -44,9 +44,22 @@ class User extends CI_Controller {
 			$id = $this->user_model->wajiblogin();
 		}
 		$profile = $this->user_model->getProfile($id);
-		$r = new Recipe_model();
-		$listRecipe = $r->getFavoriteRecipe($id);
-		$this->user_viewer->showUserTimeline($profile, $listRecipe);
+		$page = $this->input->get('page');
+		if($page === FALSE) $page = 1;
+		$limit = 5;
+		$rcp = new Recipe_model();
+		$r = new Favorite();
+		$listrecipeid = $r->getFavoriteRecipeByUser($id, $limit, $limit * $page - $limit);
+		$listRecipe = array();
+		print_r($listrecipeid);
+		foreach ($listrecipeid as $obj) {
+			$x = $rcp->getRecipeProfile($obj, $id);
+			if($x){
+				array_push($listRecipe,$x);
+			}
+		}
+		$totalpage = ceil(sizeof( $r->getFavoriteRecipeByUser($id, 1000111) )/$limit);
+		$this->user_viewer->showFavorite($profile, $listRecipe, $page, $totalpage);
 	}
 
 	public function cooklater(){

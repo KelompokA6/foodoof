@@ -113,6 +113,47 @@ class User_viewer extends CI_Model
     $this->parser->parse('template_content', $datacomplete);
   }
 
+  public function showFavorite($profile, $listRecipes, $pagenow, $totalpage)
+  {
+    $profile = (object)array_map("htmlspecialchars", (array)$profile);
+    // menubar
+    $datacomplete['menubar'] = $this->home_viewer->getMenubar();
+    // DONE
+
+    // content_website
+    // template_content diambil dari template_user_view: butuh sidebar_user dan content_user
+    // ambil sidebar
+    $data_user_view['sidebar_user'] = $this->getSidebar($profile);
+    // ambil content_user dari user_timeline_view
+    foreach ($listRecipes as $row) {
+        $row->favorite_recipe_id = $row->id;
+        $row->favorite_recipe_photo = $row->photo;
+        $row->favorite_recipe_name = $row->name;
+        $row->favorite_recipe_rating = $row->rating;
+        $row->favorite_recipe_last_update = $row->last_update;
+        $row->favorite_recipe_view = $row->views;
+        $row->checked_status = $row->status ? "checked" : "";
+    }
+
+    $data_user_view['content_user'] = $this->parser->parse(
+        'favorite_view',
+        array(
+            'favorite_recipe_entries' => $listRecipes,
+            'favorite_user_name' => $profile->name,
+            'favorite_user_id' => $profile->id,
+            'favorite_recipe_page_size' => $totalpage,
+            'favorite_recipe_page_now' => $pagenow,
+        ),
+        TRUE
+    );
+
+    // load template_content
+    $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
+
+    // butuh menubar dan content_website
+    $this->parser->parse('template_content', $datacomplete);
+  }
+
   public function showChangePassword($profile, $data = array())
   {
     $profile = (object)array_map("htmlspecialchars", (array)$profile);
