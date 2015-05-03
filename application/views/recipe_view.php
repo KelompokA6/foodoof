@@ -21,7 +21,7 @@
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center">
 					<div class="col-md-11 rating-recipe-default" title="Rating">
-		          		<input id="rating-recipe" class="rating" data-recipeId="{recipe_id}" <?php if($this->session->userdata('user_id')==''){echo "data-readonly='true'";}?> data-min="0" data-max="5" value="{recipe_rating}" data-step="0.1" data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false">
+		          		<input id="rating-recipe" class="rating" data-recipeid="{recipe_id}" <?php if($this->session->userdata('user_id')==''){echo "data-readonly='true'";}?> data-min="0" data-max="5" value="{recipe_rating}" data-step="0.1" data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false">
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-bottom:5px">
@@ -39,8 +39,8 @@
   							<i class="caret pull-right" style="color:#eee; margin-top:8px"></i>
   						</button>
 			            <ul class="dropdown-menu dropdown-option bullet pull-center" role="menu" aria-labelledby="dropdownMenu1">
-			              <li role="presentation" id="add-favorite"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Favorite</a></li>
-			              <li role="presentation" id="add-cook-later"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Cook Later</a></li>
+			              <li role="presentation" id="add-favorite" data-recipeid="{recipe_id}"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Favorite</a></li>
+			              <li role="presentation" id="add-cook-later" data-recipeid="{recipe_id}"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Cook Later</a></li>
 			            </ul>
 					</div>
 					<div class="col-md-6 col-xs-6" style="padding-left:5px" title="Print Recipe">

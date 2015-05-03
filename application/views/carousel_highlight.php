@@ -9,7 +9,7 @@
     {list_recipes2}
       <div class="item {isactive}">
         <img data-src="holder.js/900x500/auto/#777:#777" alt="{name}" src="{photo}" class="img-responsive center-block " data-holder-rendered="true" style="height:400px">
-        <div class="carousel-caption" style="bottom:0">
+        <div class="carousel-caption bg-warning" style="bottom:0">
           <a href="<?php echo base_url();?>index.php/recipe/get/{id}"><h3>{name}<a class="anchorjs-link" href="#first-slide-label"><span class="anchorjs-icon"></span></a></h3></a>
           <p style="color:black;">{description}</p>
         </div>

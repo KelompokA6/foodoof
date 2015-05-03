@@ -1,12 +1,13 @@
 $(document).ready(function() {
-	$.get( "/foodoof/processAjax/schedulercleantmp", function( data ) {
-	},"json");
 	$validateDuplicate = true;
 	$validatePassword = true;	
 	$recipeId = $("#image-recipe").data("id");
 	$lock = 0;
 	$submitStatus=false;
 	$hasChanged = false;
+	$baseurl = "http://localhost/foodoof";
+	$.get( $baseurl+"/processAjax/schedulercleantmp", function( data ) {
+	},"json");
 	/*
 	script for init fileinput of user's photo
 	*/
@@ -18,7 +19,7 @@ $(document).ready(function() {
 		showCaption: false,
 		showRemove: false,
 		showUpload: false,
-		uploadUrl: "http://localhost/foodoof/processAjax/uploadProfileUser/"+$("#photo-profile").data("id"), // server upload action
+		uploadUrl: $baseurl+"/processAjax/uploadProfileUser/"+$("#photo-profile").data("id"), // server upload action
 		uploadAsync: false,
 		previewTemplates: {
 	    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -76,7 +77,7 @@ $(document).ready(function() {
 		showRemove: false,
 		showUpload: false,
 		maxFileCount: 1,
-		uploadUrl: "http://localhost/foodoof/processAjax/uploadProfileRecipe/"+$recipeId, // server upload action
+		uploadUrl: $baseurl+"/processAjax/uploadProfileRecipe/"+$recipeId, // server upload action
 		uploadAsync: false,
 		previewTemplates: {
 	    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -138,7 +139,7 @@ $(document).ready(function() {
 			showCaption: false,
 			showRemove: false,
 			showUpload: false,
-			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
+			uploadUrl: $baseurl+"/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
 			uploadAsync: false,	
 			previewTemplates: {
 		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -229,7 +230,7 @@ $(document).ready(function() {
 			showCaption: false,
 			showRemove: false,
 			showUpload: false,
-			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
+			uploadUrl: $baseurl+"/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
 			uploadAsync: false,	
 			previewTemplates: {
 		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -289,6 +290,7 @@ $(document).ready(function() {
 		var search = $(this).find("input").val();
 		if(search==="title"){	
 			$("#searchbar").attr("placeholder", "Search Recipe By Title");
+			$(".search-ingredient").typeahead('destroy');
 			$("#searchbar").addClass("search-title");
 			$("#searchbar").removeClass("search-ingredient");
 			$("#searchbar").removeClass("search-account");
@@ -313,6 +315,7 @@ $(document).ready(function() {
 		}
 		else if(search==="account"){	
 			$("#searchbar").attr("placeholder", "Search Account");
+			$(".search-ingredient").typeahead('destroy');
 			$("#searchbar").removeClass("search-title");
 			$("#searchbar").removeClass("search-ingredient");
 			$("#searchbar").addClass("search-account");
@@ -433,7 +436,7 @@ $(document).ready(function() {
 	$colAddRemoveBtnStep = $("#add-and-remove-btn-step").clone();
 	$(document).on('click',"#add-step",function(){
 		$countStep++;
-		$.get("/foodoof/processAjax/addStepImage/"+$recipeId+"/"+$countStep, function( data ) {
+		$.get($baseurl+"/processAjax/addStepImage/"+$recipeId+"/"+$countStep, function( data ) {
 			if(data.status == '1'){
 		  		/*console.log(data.message);  */		
 		  	}
@@ -459,7 +462,7 @@ $(document).ready(function() {
 			showCaption: false,
 			showRemove: false,
 			showUpload: false,
-			uploadUrl: "http://localhost/foodoof/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
+			uploadUrl: $baseurl+"/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
 			uploadAsync: false,	
 			previewTemplates: {
 		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -516,7 +519,7 @@ $(document).ready(function() {
 		$("#add-and-remove-btn-step").remove();
 		$(".step-item:last").remove();
 		$("#step-entry").append($colAddRemoveBtnStep);
-		$.get("/foodoof/processAjax/removeStepImage/"+$recipeId+"/"+$countStep, function( data ) {
+		$.get($baseurl+"/processAjax/removeStepImage/"+$recipeId+"/"+$countStep, function( data ) {
 			if(data.status == '1'){
 		  		/*console.log(data.message); */ 		
 		  	}
@@ -540,7 +543,7 @@ $(document).ready(function() {
 	$(document).on("click", ".rating-container", function(){
 		$valueRating = $("#rating-recipe").val();
 		$recipeIdView = $("#rating-recipe").data("recipeid");
-		$.get( "/foodoof/processAjax/setRating/"+$recipeIdView+"/"+$valueRating, function( data ) {
+		$.get( $baseurl+"/processAjax/setRating/"+$recipeIdView+"/"+$valueRating, function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
@@ -568,18 +571,22 @@ $(document).ready(function() {
 	handler event click add favorite recipe
 	*/
 	$(document).on("click", "#add-favorite", function(){
-		$recipeIdFav = window.location.href;
-		$recipeIdFav = $recipeIdFav.split("/");
-		$length = $recipeId.length;
-		$recipeIdFav = $recipeIdFav[$length].split("?");
-		$.get( "/foodoof/processAjax/setFavorite/"+$recipeIdFav[0], function( data ) {
+		$.get( $baseurl+"/processAjax/setFavorite/"+$(this).data("recipeid"), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
 					message: data.message
 				},{
 					// settings
-					type: 'success'
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'success',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
 				});  		
 		  	}
 		  	else{
@@ -588,7 +595,15 @@ $(document).ready(function() {
 					message: data.message 
 				},{
 					// settings
-					type: 'warning'
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'warning',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
 				});  	
 		  	}
 		},"json");
@@ -598,18 +613,22 @@ $(document).ready(function() {
 	handler event click add cook-later recipe
 	*/
 	$(document).on("click", "#add-cook-later", function(){
-		$recipeIdCL = window.location.href;
-		$recipeIdCL = $recipeIdCL.split("/");
-		$length = $recipeId.length;
-		$recipeIdCL = $recipeIdCL[$length].split("?");
-		$.get( "/foodoof/processAjax/setCookLater/"+$recipeIdCL[0], function( data ) {
+		$.get( $baseurl+"/processAjax/setCookLater/"+$(this).data("recipeid"), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
 					message: data.message 
 				},{
 					// settings
-					type: 'success'
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'success',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
 				});  		
 		  	}
 		  	else{
@@ -618,7 +637,15 @@ $(document).ready(function() {
 					message: data.message 
 				},{
 					// settings
-					type: 'warning'
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'warning',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
 				});  	
 		  	}
 		},"json");
@@ -629,7 +656,7 @@ $(document).ready(function() {
 	*/
 	$(document).on("change", ".checkedPublish", function(){
 		var check = $(this).prop('checked');
-		$.get( "/foodoof/processAjax/setPublish/"+$(this).val(), function( data ) {
+		$.get( $baseurl+"/processAjax/setPublish/"+$(this).val(), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
@@ -1131,6 +1158,8 @@ $(document).ready(function() {
 		          return ~item.toLowerCase().indexOf(tquery)
 		        },
 		        highlighter: function (item) {
+		          $("ul.typeahead.dropdown-menu").addClass("bullet");
+		          $("ul.typeahead.dropdown-menu").addClass("pull-center");
 		          var query = extractor(this.query).replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
 		          return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
 		            return '<strong>' + match + '</strong>'
@@ -1138,6 +1167,9 @@ $(document).ready(function() {
 		        }
 			});
 			},'json');
+		}
+		else{
+
 		}
 	}
 	

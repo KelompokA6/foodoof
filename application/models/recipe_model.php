@@ -967,10 +967,10 @@ class Recipe_model extends DataMapper {
             $recipe_id = $this->id;
         }
         if(!empty($recipe_id) && !empty($user_id)){
-            $favorite = new Fovorite();
+            $favorite = new Favorite();
             $favorite->recipe_id = $recipe_id;
             $favorite->user_id = $user_id;
-            $favoritetmp = new Fovorite();
+            $favoritetmp = new Favorite();
             $favoritetmp->where('recipe_id', $recipe_id);
             $favoritetmp->where('user_id', $user_id);
             if($favoritetmp->count() > 0){
@@ -1005,10 +1005,10 @@ class Recipe_model extends DataMapper {
             $recipe_id = $this->id;
         }
         if(!empty($recipe_id) && !empty($user_id)){
-            $CL = new cooklater();
+            $CL = new Cooklater();
             $CL->recipe_id = $recipe_id;
             $CL->user_id = $user_id;
-            $CLtmp = new cooklater();
+            $CLtmp = new Cooklater();
             $CLtmp->where('recipe_id', $recipe_id);
             $CLtmp->where('user_id', $user_id);
             if($CLtmp->count() > 0){

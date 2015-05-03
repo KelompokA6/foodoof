@@ -17,6 +17,7 @@
     <link href="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-lightbox/bootstrap-lightbox.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>assets/plugin/bower-components/owl-carousel/assets/owl.carousel.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>assets/plugin/bower-components/badges/iosbadge.css" media="all" rel="stylesheet" type="text/css" />
+     <link href="<?php echo base_url();?>assets/plugin/bower-components/enhancement/css/dropdowns-enhancement.min.css" media="all" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/animate.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof.css">
