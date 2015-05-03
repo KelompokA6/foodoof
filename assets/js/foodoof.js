@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	$.get( "/foodoof/processAjax/schedulercleantmp", function( data ) {
+	},"json");
 	$validateDuplicate = true;
 	$validatePassword = true;	
 	$recipeId = $("#image-recipe").data("id");

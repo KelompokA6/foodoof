@@ -512,4 +512,44 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($data);
 	}
+	public function schedulercleantmp(){
+		$now = date("Y-m-d H:i:s");
+		$now = new DateTime($now);
+		$filesuser = scandir("./images/tmp/user");
+		$filesstep = scandir("./images/tmp/step");
+		$filesrecipe = scandir("./images/tmp/recipe");
+		for ($i=2; $i < sizeof($filesuser) ; $i++) { 
+			if($filesuser[$i]!=="index.html"){
+				$filetime = date("Y-m-d H:i:s", filemtime("./images/tmp/user/".$filesuser[$i]));
+				$filetime = new DateTime($filetime);
+				$diff = date_diff($filetime, $now);
+				$diff = $diff->format("%a"); 
+				if($diff>2){
+					unlink("./images/tmp/user/".$filesuser[$i]);
+				}
+			}
+		}
+		for ($i=2; $i < sizeof($filesstep) ; $i++) { 
+			if($filesuser[$i]!=="index.html"){
+				$filetime = date("Y-m-d H:i:s", filemtime("./images/tmp/step/".$filesstep[$i]));
+				$filetime = new DateTime($filetime);
+				$diff = date_diff($filetime, $now);
+				$diff = $diff->format("%a"); 
+				if($diff>2){
+					unlink("./images/tmp/step/".$filesstep[$i]);
+				}
+			}
+		}
+		for ($i=2; $i < sizeof($filesrecipe) ; $i++) { 
+			if($filesrecipe[$i]!=="index.html"){
+				$filetime = date("Y-m-d H:i:s", filemtime("./images/tmp/recipe/".$filesrecipe[$i]));
+				$filetime = new DateTime($filetime);
+				$diff = date_diff($filetime, $now);
+				$diff = $diff->format("%a"); 
+				if($diff>2){
+					unlink("./images/tmp/recipe/".$filesuser[$i]);
+				}
+			}
+		}
+	}
 }
