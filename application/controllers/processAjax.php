@@ -530,7 +530,7 @@ class ProcessAjax extends CI_Controller {
 			}
 		}
 		for ($i=2; $i < sizeof($filesstep) ; $i++) { 
-			if($filesuser[$i]!=="index.html"){
+			if($filesstep[$i]!=="index.html"){
 				$filetime = date("Y-m-d H:i:s", filemtime("./images/tmp/step/".$filesstep[$i]));
 				$filetime = new DateTime($filetime);
 				$diff = date_diff($filetime, $now);
@@ -547,7 +547,7 @@ class ProcessAjax extends CI_Controller {
 				$diff = date_diff($filetime, $now);
 				$diff = $diff->format("%a"); 
 				if($diff>2){
-					unlink("./images/tmp/recipe/".$filesuser[$i]);
+					unlink("./images/tmp/recipe/".$filesrecipe[$i]);
 				}
 			}
 		}
