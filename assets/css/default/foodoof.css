@@ -720,6 +720,9 @@ footer > div > div > div > ul > li > a{
 /*
 css dropdown
 */
+.dropdown-menu{
+  min-width: 100% !important;
+}
 ul.dropdown-option > li > a:hover,
 ul.dropdown-option > li > a:focus {
   text-decoration: none;
@@ -1510,6 +1513,7 @@ ul.conversation-list-group{
   list-style: none;
   max-height: 436px;
   overflow: auto;
+  overflow-x: hidden; 
   padding: 5px;
 } 
 li.conversation-list-item{
@@ -1597,4 +1601,22 @@ textarea[readonly], textarea[readonly]:focus, textarea[readonly]:hover{
 ::-webkit-scrollbar-thumb:hover{
   border-radius:10px;
   background-color: rgba(247,196,58,0.9);
+}
+
+/*
+  Reported css
+*/
+.img-report{
+  width: 34px;
+  height: 34px;
+  margin: auto;
+}
+.user-report{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  line-height: 34px;
+}
+.checkboxuser{
+  margin: 10px 0 0 !important;
+  line-height: 34px !important;
 }

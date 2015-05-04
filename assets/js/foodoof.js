@@ -1123,26 +1123,25 @@ $(document).ready(function() {
 	*/
 	// instantiate the bloodhound suggestion engine
 	var units = new Bloodhound({
-	datumTokenizer: Bloodhound.tokenizers.whitespace,
-	queryTokenizer: Bloodhound.tokenizers.whitespace,
-	local:  [
-	            "batang", "buah", "biji", "cc", "gram", "helai", "kg", "liter", "ml", "ons", "sdm", "sdt", "secukupnya", "kilogram", "botol", "bungkus"   
-	        ]
+		datumTokenizer: Bloodhound.tokenizers.whitespace,
+		queryTokenizer: Bloodhound.tokenizers.whitespace,
+		local:  [
+		            "batang", "buah", "biji", "cc", "gram", "helai", "kg", "liter", "ml", "ons", "sdm", "sdt", "secukupnya", "kilogram", "botol", "bungkus"   
+		        ]
 	});
 
 	// initialize the bloodhound suggestion engine
 	units.initialize();
+	$(".ingredient-unit").typeahead({
+	    source: units.ttAdapter(),
+	    items: 4
+	});
 	function extractor(query) {
         var result = /([^,]+)$/.exec(query);
         if(result && result[1])
             return result[1].trim();
         return '';
     }
-	$(".ingredient-unit").typeahead({
-	    source: units.ttAdapter(),
-	    items: 4
-	});
-
 	function initTypeahead(classname){
 		if(classname=="search-ingredient"){
 			$.get('/foodoof/index.php/processAjax/getAllIngredient', function(data){
@@ -1172,6 +1171,32 @@ $(document).ready(function() {
 
 		}
 	}
+
+	var users = new Bloodhound({
+	  	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+	  	queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  	/*local: [
+	  		{ "value": 1 , "text": "Jean"},
+	  		{ "value": 2 , "text": "Mora"},
+	  		{ "value": 3 , "text": "Abid"},
+	  		{ "value": 4 , "text": "Alfan"},
+	  		{ "value": 5 , "text": "Fahmi"},
+	  		{ "value": 6 , "text": "Admin"}
+	  	]*/
+	  	prefetch: $baseurl+'/assets/cities.json'
+	});
+	users.initialize();
+
+	$("#users-conversation").tagsinput({
+	  	itemValue: 'value',
+	  	itemText: 'text',
+	  	typeahead: {
+	    	source: function(query){
+	    		return $.get($baseurl+'/assets/cities.json');
+	    	}
+
+	  	}
+	});
 	
 	/*
 	init javascript bootstrap;
