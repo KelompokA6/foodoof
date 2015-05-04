@@ -153,7 +153,16 @@ class Admin extends CI_Controller {
 
     $catalog = new Catalog();
     foreach ($all_data as $name => $price) {
-      $catalog->ins($name, "Rp/Kg", $price);
+    	$units = "Rp/Kg";
+    	if($name == "Garam Dapur") $units = "Rp/200 gram";
+    	if($name == "Kelapa Kupas") $units = "Rp/butir";
+    	if($name == "Susu Bubuk Bendera 400gr") $units = "Rp/kardus";
+    	if($name == "Susu Bubuk Dancow 400gr") $units = "Rp/kardus";
+    	if($name == "Susu Kental Bendera 200gr") $units = "Rp/kaleng";
+    	if($name == "Susu Kental Enak 200gr") $units = "Rp/kaleng";
+    	if($name == "Margarin Blueband Cup") $units = "Rp/kemasan";
+    	if($name == "Margarin Blueband Sachet") $units = "Rp/kemasan";
+      $catalog->ins($name, $units, $price);
     }
 
     print_r(sizeof($all_data));
