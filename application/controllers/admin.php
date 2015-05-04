@@ -116,4 +116,47 @@ class Admin extends CI_Controller {
 				);
 		$this->parser->parse('template_content', $data);	
 	}
+
+	public function updateharga()
+  {
+    $now = (new DateTime());
+    $m = (int)$now->format("m");
+    $y = $now->format("Y");
+    # UPDATE DARI 2010 COBA -_-
+
+    $all_data = [];
+    foreach (range(1,13) as $i) {
+      $sumber = "http://infopangan.jakarta.go.id/api/price/series_by_location?type=market&lid=$i&m=$m&y=$y";
+      $data = json_decode(file_get_contents($sumber))->data;
+      // ambil name sama average aja
+      $data = array_map(function($x){
+        return (object)["name"=>$x->name, "price"=>$x->average];
+      }, $data);
+      foreach ($data as $d) {
+        $all_data[$d->name] = $d->price;
+      }
+      echo "$sumber -- OK\n";
+    }
+
+    foreach (range(1,5) as $i) {
+      $sumber = "http://infopangan.jakarta.go.id/api/price/series_by_location?type=city&lid=$i&m=$m&y=$y";
+      $data = json_decode(file_get_contents($sumber))->data;
+      // ambil name sama average aja
+      $data = array_map(function($x){
+        return (object)["name"=>$x->name, "price"=>$x->average];
+      }, $data);
+      foreach ($data as $d) {
+        $all_data[$d->name] = $d->price;
+      }
+      echo "$sumber -- OK\n";
+    }
+
+    $catalog = new Catalog();
+    foreach ($all_data as $name => $price) {
+      $catalog->ins($name, "Rp/Kg", $price);
+    }
+
+    print_r(sizeof($all_data));
+  }
+
 }

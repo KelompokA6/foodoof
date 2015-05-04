@@ -30,7 +30,7 @@ class Badak extends CI_Controller {
     $y = $now->format("Y");
     # UPDATE DARI 2010 COBA -_-
 
-    $all = [];
+    $all_data = [];
     foreach (range(1,13) as $i) {
       $sumber = "http://infopangan.jakarta.go.id/api/price/series_by_location?type=market&lid=$i&m=$m&y=$y";
       $data = json_decode(file_get_contents($sumber))->data;
@@ -39,12 +39,11 @@ class Badak extends CI_Controller {
         return (object)["name"=>$x->name, "price"=>$x->average];
       }, $data);
       foreach ($data as $d) {
-        $all[$d->name] = $d->price;
+        $all_data[$d->name] = $d->price;
       }
       echo "$sumber -- OK\n";
     }
 
-    $all = [];
     foreach (range(1,5) as $i) {
       $sumber = "http://infopangan.jakarta.go.id/api/price/series_by_location?type=city&lid=$i&m=$m&y=$y";
       $data = json_decode(file_get_contents($sumber))->data;
@@ -53,16 +52,16 @@ class Badak extends CI_Controller {
         return (object)["name"=>$x->name, "price"=>$x->average];
       }, $data);
       foreach ($data as $d) {
-        $all[$d->name] = $d->price;
+        $all_data[$d->name] = $d->price;
       }
       echo "$sumber -- OK\n";
     }
 
     $catalog = new Catalog();
-    foreach ($all as $name => $price) {
+    foreach ($all_data as $name => $price) {
       $catalog->ins($name, "Rp/Kg", $price);
     }
 
-    print_r(sizeof($all));
+    print_r(sizeof($all_data));
   }
 }
