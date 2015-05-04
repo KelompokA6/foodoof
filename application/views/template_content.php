@@ -17,7 +17,9 @@
     <link href="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-lightbox/bootstrap-lightbox.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>assets/plugin/bower-components/owl-carousel/assets/owl.carousel.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>assets/plugin/bower-components/badges/iosbadge.css" media="all" rel="stylesheet" type="text/css" />
-     <link href="<?php echo base_url();?>assets/plugin/bower-components/enhancement/css/dropdowns-enhancement.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap-tagsinput.css" media="all" rel="stylesheet" type="text/css" />
+    <!-- <link href="<?php echo base_url();?>assets/plugin/bower-components/typeahead/typeahead.jquery.css" media="all" rel="stylesheet" type="text/css" /> -->
+    <link href="<?php echo base_url();?>assets/plugin/bower-components/enhancement/css/dropdowns-enhancement.min.css" media="all" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/animate.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof.css">
@@ -158,6 +160,7 @@
   <script src="<?php echo base_url();?>assets/plugin/bower-components/kartik-file-input/js/fileinput.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap3-typeahead.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap-tagsinput.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bloodhound.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/enhancement/js/dropdowns-enhancement.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-notify/bootstrap-notify.min.js"></script>
@@ -165,7 +168,6 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/owl-carousel/owl.carousel.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/owl-carousel/jquery.mousewheel.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/autosize/autosize.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/nicescroll/jquery.smoothwheel.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/badges/iosbadge.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jasny-bootstrap.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
