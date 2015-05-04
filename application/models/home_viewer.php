@@ -34,7 +34,7 @@ class Home_viewer extends CI_Model
       $row->recently_recipe_author = $row->author;
       $row->recently_recipe_author_name = $row->author_name;
       $row->recently_recipe_author_photo = $row->author_photo;
-      $row->recently_recipe_create_date = strftime("%c", strtotime($row->create_date));
+      $row->recently_recipe_create_date = strftime("%b %d, %Y", strtotime($row->create_date));
     }
   	/*print_r($listTopRecipe);
   	print_r($listHightlight);
@@ -83,8 +83,9 @@ class Home_viewer extends CI_Model
       $row->highlight_recipe_rating = $row->rating;
       $row->highlight_recipe_author_id = $row->author;
       $row->highlight_recipe_author_name = $row->author_name;
+      $row->highlight_recipe_author_photo = $row->author_photo;
       $row->highlight_recipe_views = $row->views;
-      $row->highlight_recipe_last_update = strftime("%c", strtotime($row->last_update));
+      $row->highlight_recipe_last_update = strftime("%b %d, %Y", strtotime($row->last_update));
     }
     $listHightlight = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $listHightlight);
     $datalist['highlight_recipe_entries'] = $listHightlight;
@@ -120,8 +121,9 @@ class Home_viewer extends CI_Model
       $row->top_recipe_rating = $row->rating;
       $row->top_recipe_author_id = $row->author;
       $row->top_recipe_author_name = $row->author_name;
+      $row->top_recipe_author_photo = $row->author_photo;
       $row->top_recipe_views = $row->views;
-      $row->top_recipe_last_update = strftime("%c", strtotime($row->last_update));
+      $row->top_recipe_last_update = strftime("%b %d, %Y", strtotime($row->last_update));
     }
     $listTopRecipe = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $listTopRecipe);
     $datalist['top_recipe_entries'] = $listTopRecipe;
@@ -157,8 +159,9 @@ class Home_viewer extends CI_Model
       $row->recently_recipe_rating = $row->rating;
       $row->recently_recipe_author_id = $row->author;
       $row->recently_recipe_author_name = $row->author_name;
+      $row->recently_recipe_author_photo = $row->author_photo;
       $row->recently_recipe_views = $row->views;
-      $row->recently_recipe_last_update = strftime("%c", strtotime($row->last_update));
+      $row->recently_recipe_last_update = strftime("%b %d, %Y", strtotime($row->last_update));
     }
     $listRecently = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $listRecently);
     $datalist['recently_recipe_entries'] = $listRecently;

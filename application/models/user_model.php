@@ -107,7 +107,7 @@ class User_model extends DataMapper {
         $ci->load->library('session');
         $id = $ci->session->userdata('user_id');
         if ($id < 1) {
-            header('Location: '.base_url().'home/login');
+            header('Location: '.base_url().'index.php/home/login');
             die();
         }
         return $id;

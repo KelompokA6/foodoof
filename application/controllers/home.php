@@ -77,8 +77,11 @@ class Home extends CI_Controller {
 		$r = new Recipe_model();
 		$listHightlight = $r->getHightlight(11);
 		$u = new User_model();
-		foreach ($listHightlight as $row)
-			$row->author_name = $u->getProfile($row->author)->name;
+		foreach ($listHightlight as $row) {
+			$a = $u->getProfile($row->author);
+			$row->author_name = $a->name;
+			$row->author_photo = $a->photo;
+		}
 		
 		$this->home_viewer->showHighlight($listHightlight);
 	}
@@ -88,8 +91,11 @@ class Home extends CI_Controller {
 		$r = new Recipe_model();
 		$listTopRecipe = $r->getTopRecipe(11);
 		$u = new User_model();
-		foreach ($listTopRecipe as $row)
-			$row->author_name = $u->getProfile($row->author)->name;
+		foreach ($listTopRecipe as $row) {
+			$a = $u->getProfile($row->author);
+			$row->author_name = $a->name;
+			$row->author_photo = $a->photo;
+		}
 		
 		$this->home_viewer->showTop($listTopRecipe);
 	}
@@ -99,8 +105,11 @@ class Home extends CI_Controller {
 		$r = new Recipe_model();
 		$listRecently = $r->getRecently(11);
 		$u = new User_model();
-		foreach ($listRecently as $row)
-			$row->author_name = $u->getProfile($row->author)->name;
+		foreach ($listRecently as $row) {
+			$a = $u->getProfile($row->author);
+			$row->author_name = $a->name;
+			$row->author_photo = $a->photo;
+		}
 		
 		$this->home_viewer->showRecently($listRecently);
 	}
