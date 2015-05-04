@@ -1620,3 +1620,6 @@ textarea[readonly], textarea[readonly]:focus, textarea[readonly]:hover{
   margin: 10px 0 0 !important;
   line-height: 34px !important;
 }
+.details-reported{
+  display: none;
+}

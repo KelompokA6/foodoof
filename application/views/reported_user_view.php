@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="<?php echo base_url();?>index.php/admin/save" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
 	<div class="col-md-12 col-xs-12 col-no-padding-right">
 		<div class="panel panel-default">
 			<div class="panel-body">
@@ -17,8 +17,10 @@
   						</div>
 				    </label>
   					<div class="col-md-3 col-xs-3 col-sm-3" style="padding-top:7px">
-  						<button class="btn button-secondary details-reported">Details <i class="fa fa-chevron-right"></i></button>
+  						<div class="btn button-secondary details-button">Details <i class="fa fa-chevron-right"></i></div>
   					</div>
+  					<div class='col-md-offset-1 col-md-11 col-xs-11 col-sm-11 details-reported' style='padding:5px 0 5px 44px'>
+  						Anda memiliki no report</div>
   				</div>
   				<div class="col-md-12 col-xs-12 col-sm-12 border-solid-bottom" style="padding:5px 0">
   					<label class=" col-md-9 col-xs-9 col-sm-3 control-label text-left">
@@ -30,9 +32,11 @@
   							Fahmi Rahmat K
   						</div>
 				    </label>
-  					<div class="col-md-3 col-xs-3 col-sm-3" style="padding-top:7px">
-  						<button class="btn button-secondary">Details <i class="fa fa-chevron-right"></i></button>
+  					<<div class="col-md-3 col-xs-3 col-sm-3" style="padding-top:7px">
+  						<div class="btn button-secondary details-button">Details <i class="fa fa-chevron-right"></i></div>
   					</div>
+  					<div class='col-md-offset-1 col-md-11 col-xs-11 col-sm-11 details-reported' style='padding:5px 0 5px 44px'>
+  						Anda memiliki no report</div>
   				</div>
   				<div class="col-md-12 col-xs-12 col-sm-12 border-solid-bottom" style="padding:5px 0">
   					<label class=" col-md-9 col-xs-9 col-sm-3 control-label text-left">
@@ -45,8 +49,10 @@
   						</div>
 				    </label>
   					<div class="col-md-3 col-xs-3 col-sm-3" style="padding-top:7px">
-  						<button class="btn button-secondary">Details <i class="fa fa-chevron-right"></i></button>
+  						<div class="btn button-secondary details-button">Details <i class="fa fa-chevron-right"></i></div>
   					</div>
+  					<div class='col-md-offset-1 col-md-11 col-xs-11 col-sm-11 details-reported' style='padding:5px 0 5px 44px'>
+  						Anda memiliki no report</div>
   				</div>
   				<div class="col-md-12 col-xs-12 col-sm-12 border-solid-bottom" style="padding:5px 0">
   					<label class=" col-md-9 col-xs-9 col-sm-3 control-label text-left">
@@ -59,8 +65,10 @@
   						</div>
 				    </label>
   					<div class="col-md-3 col-xs-3 col-sm-3" style="padding-top:7px">
-  						<button class="btn button-secondary">Details <i class="fa fa-chevron-right"></i></button>
+  						<div class="btn button-secondary details-button">Details <i class="fa fa-chevron-right"></i></div>
   					</div>
+  					<div class='col-md-offset-1 col-md-11 col-xs-11 col-sm-11 details-reported' style='padding:5px 0 5px 44px'>
+  						Anda memiliki no report</div>
   				</div>
   				<div class="col-md-12 col-xs-12 col-sm-12 border-solid-bottom" style="padding:5px 0">
   					<label class=" col-md-9 col-xs-9 col-sm-3 control-label text-left">
@@ -73,8 +81,10 @@
   						</div>
 				    </label>
   					<div class="col-md-3 col-xs-3 col-sm-3" style="padding-top:7px">
-  						<button class="btn button-secondary">Details <i class="fa fa-chevron-right"></i></button>
+  						<div class="btn button-secondary details-button">Details <i class="fa fa-chevron-right"></i></div>
   					</div>
+  					<div class='col-md-offset-1 col-md-11 col-xs-11 col-sm-11 details-reported' style='padding:5px 0 5px 44px'>
+  						Anda memiliki no report</div>
   				</div>
   				<div class="col-md-12 col-xs-12 col-sm-12 border-solid-bottom" style="padding:5px 0">
   					<label class=" col-md-9 col-xs-9 col-sm-3 control-label text-left">
@@ -87,8 +97,10 @@
   						</div>
 				    </label>
   					<div class="col-md-3 col-xs-3 col-sm-3" style="padding-top:7px">
-  						<button class="btn button-secondary">Details <i class="fa fa-chevron-right"></i></button>
+  						<div class="btn button-secondary details-button">Details <i class="fa fa-chevron-right"></i></div>
   					</div>
+  					<div class='col-md-offset-1 col-md-11 col-xs-11 col-sm-11 details-reported' style='padding:5px 0 5px 44px'>
+  						Anda memiliki no report</div>
   				</div>
 			</div>
 		</div>

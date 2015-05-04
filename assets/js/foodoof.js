@@ -1201,9 +1201,10 @@ $(document).ready(function() {
 	/*
 	detail report
 	*/
-	$(document).on("click", ".detail-report", function(e){
-		var listReport = "<div class='col-md-12 col-xs-12 col-sm-12 animated fadeInDown'>Anda memiliki no report</div>";
+	$(".details-button").on("click", function(e){
+		$(this).parent().next().slideToggle("slow");;
 	});
+	
 	
 	/*
 	init javascript bootstrap;
