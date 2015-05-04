@@ -17,7 +17,7 @@
   						</div>
 				    </label>
   					<div class="col-md-3 col-xs-3 col-sm-3" style="padding-top:7px">
-  						<button class="btn button-secondary">Details <i class="fa fa-chevron-right"></i></button>
+  						<button class="btn button-secondary details-reported">Details <i class="fa fa-chevron-right"></i></button>
   					</div>
   				</div>
   				<div class="col-md-12 col-xs-12 col-sm-12 border-solid-bottom" style="padding:5px 0">
