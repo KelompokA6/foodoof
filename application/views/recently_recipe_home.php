@@ -17,7 +17,7 @@
         <a class="col-md-12 col-xs-12 text-capitalize title-recipe-home" href="<?php echo base_url();?>index.php/recipe/get/{recently_recipe_id}" title="{recently_recipe_name}">
           {recently_recipe_name}
         </a>
-        <a class="col-md-12 col-xs-12 author-recipe-home" href="<?php echo base_url();?>index.php/user/timeline/{top_recipe_author}">
+        <a class="col-md-12 col-xs-12 author-recipe-home" href="<?php echo base_url();?>index.php/user/timeline/{recently_recipe_author}">
           <img class="img-responsive img-circle img-recipe-author" src="<?php echo base_url();?>{recently_recipe_author_photo}" title="{recently_recipe_author_name}"/>
           <span class="recipe-author-name" title="{recently_recipe_author_name}">{recently_recipe_author_name}</span>
         </a>
