@@ -1268,4 +1268,5 @@ $(document).ready(function() {
 	});
     autosize($('textarea')); 
     $("textarea").trigger("autosize:resized");
+    tinymce.init({selector:'.textarea'});
 });

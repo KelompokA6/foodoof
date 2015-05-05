@@ -121,28 +121,6 @@
             &copy 2015, FoodooF. All rights reserved.
           </div>
         </div>
-      <!-- <div class="col-md-12 col-xs-12 col-no-padding page-header-title">
-        <div class="col-md-12 col-xs-12  col-no-padding">
-          <div class="col-md-offset-1 col-md-2 col-xs-2 text-center border-dashed-right">
-              <a href="">About</a>      
-          </div>
-          <div class="col-md-2 col-xs-3 text-center border-dashed-right">
-              <a href="">Contact Us</a>      
-          </div>
-          <div class="col-md-2 col-xs-2 text-center border-dashed-right">
-              <a href="">Our Team</a>      
-          </div>
-          <div class="col-md-2 col-xs-2 text-center border-dashed-right">
-              <a href="">F.A.Q</a>     
-          </div>
-          <div class="col-md-2 col-xs-3 text-center">
-              <a href="">Term of Services</a>     
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12 col-xs-12 text-center text-foodoof">
-        Copyright &copy 2015, FoodooF (PPL-A06)
-      </div> -->
       </div>
     </footer>
   <div class="modal fade modal-loading" id="modalWaiting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
@@ -169,6 +147,7 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/owl-carousel/jquery.mousewheel.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/autosize/autosize.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/badges/iosbadge.min.js"></script>
+   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/tinymce/tinymce.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jasny-bootstrap.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
 </html>
