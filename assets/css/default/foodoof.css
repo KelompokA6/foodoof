@@ -658,6 +658,18 @@ footer > div > div > div > ul > li > a{
 #toggle-online-user{
   padding: 10px 5px;
 }
+.button-category{
+  background: #fff;
+  border-color:#f5f5f5;
+  color:#F7C43A;
+}
+.button-category:focus,
+.button-category:hover{
+  background: #fff;
+  border-color:#F7C43A;
+  color:#000;
+}
+
 
 /*
   icon-css
@@ -1622,4 +1634,11 @@ textarea[readonly], textarea[readonly]:focus, textarea[readonly]:hover{
 }
 .details-reported{
   display: none;
+}
+
+/*
+  catalog css
+*/
+#add-entry-catalog{
+  margin: 5px 0 10px 0;
 }

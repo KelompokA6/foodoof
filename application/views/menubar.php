@@ -60,7 +60,7 @@
       <form id="form-search" class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>index.php/search">
         <div class="input-group form-group search-bar-menu">
           <span class="input-group-btn"> 
-            <div class="btn-group">
+            <div class="btn-group dropdown">
               <button class="btn dropdown-cat-search button-secondary" data-toggle="dropdown" aria-expanded="false" title="Search Recipe By Title">
                 <i class="fa fa-cutlery fa-lg"></i>
               </button>

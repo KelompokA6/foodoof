@@ -13,6 +13,74 @@
       of '{search_by_title_recipe_key}'
     </h3>
   </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+    <div class="pull-right dropdown">
+      <button data-toggle="dropdown" class="btn button-category dropdown-toggle">
+        All Category    <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu bullet pull-center">
+        <li>
+          <input type="checkbox" id="ex2_1" name="ex2" value="Indonesian Food">
+          <label for="ex2_1">Indonesian Food</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_2" name="ex2" value="Traditional Food">
+          <label for="ex2_2">Traditional Food</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_3" name="ex2" value="Rice">
+          <label for="ex2_3">Rice</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_4" name="ex2" value="Noodle">
+          <label for="ex2_4">Noodle</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_5" name="ex2" value="Meat">
+          <label for="ex2_5">Meat</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_6" name="ex2" value="Vegetarian">
+          <label for="ex2_6">Vegetarian</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_7" name="ex2" value="Seafood">
+          <label for="ex2_7">Seafood</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_8" name="ex2" value="Snack">
+          <label for="ex2_8">Snack</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_9" name="ex2" value="Dessert">
+          <label for="ex2_9">Dessert</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_10" name="ex2" value="Beverage">
+          <label for="ex2_10">Beverage</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_11" name="ex2" value="Chinese Food">
+          <label for="ex2_11">Chinese Food</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_12" name="ex2" value="Western Food">
+          <label for="ex2_12">Western Food</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_13" name="ex2" value="Middle-Eastern Food">
+          <label for="ex2_13">Middle-Eastern Food</label>
+        </li>
+        <li>
+          <input type="checkbox" id="ex2_14" name="ex2" value="Other">
+          <label for="ex2_14">Other</label>
+        </li>
+      </ul>
+      <a href="">
+        <button class="btn button-secondary"> Filter</button>
+      </a>
+    </div>
+  </div>
   {search_by_title_recipe_entries}
   <div class="col-md-12 col-xs-12 col-no-padding-right page-header" style="margin-top:5px">
       <div class="col-md-2 col-xs-12 detail-list-img" style="margin-right:2px">

@@ -1204,6 +1204,19 @@ $(document).ready(function() {
 	$(".details-button").on("click", function(e){
 		$(this).parent().next().slideToggle("slow");;
 	});
+	$("#add-entry-catalog").on("click", function(e){
+		if($(this).parent().next().css("display")=="none"){
+			$(this).find("i").removeClass("fa-plus");
+			$(this).find("i").addClass("fa-times");
+			$(this).find("span").html("Cancel");
+		}
+		else{
+			$(this).find("i").addClass("fa-plus");
+			$(this).find("i").removeClass("fa-times");
+			$(this).find("span").html("Add Entry");	
+		}
+		$(this).parent().next().slideToggle("slow");;
+	});
 	
 	
 	/*
