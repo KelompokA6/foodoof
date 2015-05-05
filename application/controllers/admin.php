@@ -105,6 +105,32 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('alert-admin', $highlight_alert);
 		redirect(base_url()."index.php/admin");
 	}
+	public function catalog(){
+		$this->load->model('home_viewer');
+		$this->load->library('session');
+		if($this->session->userdata('user_id')==''){
+			redirect(base_url()."index.php/home/login", "refresh");
+		}
+		$u = new User_model();
+		$u->get_by_id($this->session->userdata('user_id'));
+		if(strtolower($u->status)!='admin'){
+			return $this->pageNotFound();	
+		}
+		$this->load->library('parser');
+		$menubar = $this->home_viewer->getMenubar();
+		$content_admin = $this->parser->parse('catalog_view', array(), TRUE);	
+		$sidebar_admin = $this->parser->parse('sidebar_admin', array(), TRUE);	
+		$data1 = array(
+			'content_admin' => $content_admin,
+			'sidebar_admin' => $sidebar_admin
+			);
+		$content_website = $this->parser->parse('template_admin', $data1, TRUE);	
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
+	}
 	function pageNotFound(){
 		$this->load->library('parser');
 		$this->load->model('home_viewer');
