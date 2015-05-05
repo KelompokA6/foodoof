@@ -34,7 +34,7 @@ class Home_viewer extends CI_Model
       $row->recently_recipe_author = $row->author;
       $row->recently_recipe_author_name = $row->author_name;
       $row->recently_recipe_author_photo = $row->author_photo;
-      $row->recently_recipe_create_date = strftime("%b %d, %Y", strtotime($row->create_date));
+      $row->recently_recipe_create_date = strtotime($row->create_date);
     }
   	/*print_r($listTopRecipe);
   	print_r($listHightlight);
@@ -161,7 +161,7 @@ class Home_viewer extends CI_Model
       $row->recently_recipe_author_name = $row->author_name;
       $row->recently_recipe_author_photo = $row->author_photo;
       $row->recently_recipe_views = $row->views;
-      $row->recently_recipe_last_update = strftime("%b %d, %Y", strtotime($row->last_update));
+      $row->recently_recipe_last_update = strtotime($row->last_update);
     }
     $listRecently = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $listRecently);
     $datalist['recently_recipe_entries'] = $listRecently;

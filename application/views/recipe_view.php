@@ -54,10 +54,38 @@
   							<i class="caret pull-right" style="color:#eee; margin-top:8px"></i>
   						</button>
 						<ul class="dropdown-menu dropdown-option bullet pull-center" role="menu" aria-labelledby="dropdownMenu1">
-			              <li role="presentation" id="share-fb"><a role="menuitem" tabindex="-1"><i class="fa fa-facebook icons"></i> Facebook</a></li>
-			              <li role="presentation" id="share-twitter"><a role="menuitem" tabindex="-1"><i class="fa fa-twitter icons"></i> Twitter</a></li>
-			              <li role="presentation" id="share-gplus"><a role="menuitem" tabindex="-1"><i class="fa fa-google-plus icons"></i> Google+</a></li>
-			              <li role="presentation" id="share-path"><a role="menuitem" tabindex="-1"><i class="el el-path icons"></i> Path</a></li>
+			              <li role="presentation" id="share-fb">
+			              	<a role="menuitem" class="fb-share" tabindex="-1">
+			              		<span class="fa-stack fa-lg fa-stack-lg">
+								  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
+								  <i class="fa fa-facebook fa-stack-1x fa-inverse fa-xs"></i>
+								</span> Facebook
+			              	</a>
+			              </li>
+			              <li role="presentation" id="share-twitter">
+			              	<a role="menuitem" class="twitter-share" tabindex="-1">
+			              		<span class="fa-stack fa-lg fa-stack-lg">
+								  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
+								  <i class="fa fa-twitter fa-stack-1x fa-inverse fa-xs"></i>
+								</span> Twitter
+			              	</a>
+			              </li>
+			              <li role="presentation" id="share-gplus">
+			              	<a role="menuitem" class="gplus-share" tabindex="-1">
+			              		<span class="fa-stack fa-lg fa-stack-lg">
+								  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
+								  <i class="fa fa-google-plus fa-stack-1x fa-inverse fa-xs"></i>
+								</span> Google+
+			              	</a>
+			              </li>
+			              <li role="presentation" id="share-path">
+			              	<a role="menuitem" class="path-share" tabindex="-1">
+			              		<span class="fa-stack fa-lg fa-stack-lg">
+								  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
+								  <i class="el el-path fa-stack-1x fa-inverse fa-xs" style="padding: 6px;"></i>
+								</span> Path
+			              	</a>
+			              </li>
 			            </ul>
 					</div>
 					<div class="col-md-6 col-xs-6" style="padding-left:5px" title="Report Recipe">

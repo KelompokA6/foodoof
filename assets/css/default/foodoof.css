@@ -683,6 +683,17 @@ footer > div > div > div > ul > li > a{
 .icons-default{
   color:  #F7C43A !important;
 }
+.fa-stack-lg{
+  position: relative;
+  display: inline-block;
+  width: 1.33em;
+  height: 1.33em;
+  line-height: 1.33em;
+  vertical-align: middle;
+}
+.fa-xs{
+  font-size: 0.67em;
+}
 
 .navbar-toggle-foodoof > .icons-default{
   background-color:  #F7C43A !important;
@@ -745,6 +756,65 @@ ul.dropdown-option > li > a:focus {
   border-color: #DD3124;
   cursor: pointer !important;
 }
+a.fb-share:hover, a.fb-share:focus{
+  text-decoration: none;
+  border: solid 5px;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+  border-color: #DD3124;
+  cursor: pointer !important;
+  color: #48649F !important;
+}
+a.fb-share:hover > span > i.icons-secondary{
+ color: #48649F !important; 
+}
+a.twitter-share:hover, a.twitter-share:focus{
+  text-decoration: none;
+  border: solid 5px;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+  border-color: #DD3124;
+  cursor: pointer !important;
+  color: #55ACEE !important;
+}
+a.twitter-share:hover > span > i.icons-secondary{
+ color: #55ACEE !important; 
+}
+a.gplus-share:hover, a.gplus-share:focus{
+  text-decoration: none;
+  border: solid 5px;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+  border-color: #DD3124;
+  cursor: pointer !important;
+  color: #D73D32 !important;
+}
+a.gplus-share:hover > span > i.icons-secondary{
+ color: #D73D32 !important; 
+}
+a.path-share:hover, a.path-share:focus{
+  text-decoration: none;
+  border: solid 5px;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+  border-color: #DD3124;
+  cursor: pointer !important;
+  color: #FF442C !important;
+}
+a.path-share:hover > span > i.icons-secondary{
+ color: #FF442C !important; 
+}
+
+ul.dropdown-option > li > a{
+  padding-left: 5px;
+  text-decoration: none;
+  color: #F7C43A !important;
+  cursor: pointer !important;
+}
 ul.dropdown-menu-search > li > label{
   color: #DD3124 !important;
 }
@@ -758,7 +828,7 @@ ul.dropdown-menu-search > li > input:checked~label{
   background-color: #fff;
 }
 ul.dropdown-menu-search > li > input:checked~label>span{
-  color: #000;
+  color: #DD3124;
 }
 ul.dropdown-menu-search > li > input:checked~label:hover,
 ul.dropdown-menu-search > li > input:checked~label:focus{
@@ -1072,7 +1142,7 @@ div.card  > a > img.details-img-recipe{
 div.card > div.time-recipe-home{
   padding:5px 15px;
 }
-div.card > div.time-recipe-home > div > .icons-default{
+div.card > div.time-recipe-home > div > .icons-secondary{
   padding: 3px;
 }
 
@@ -1551,6 +1621,7 @@ li.conversation-list-item:hover{
   height: 55px;
   padding: 5px 0;
 }
+
 /*
   message css
 */
@@ -1597,21 +1668,18 @@ textarea[readonly], textarea[readonly]:focus, textarea[readonly]:hover{
   scrollbar css
 */  
 ::-webkit-scrollbar{
-  width:8px;
+  width:6px;
 }
 ::-webkit-scrollbar:hover{
-  width:10px;
+  width:8px;
 }
 ::-webkit-scrollbar-track{
   background-color:#ddd;
-  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb{
-  border-radius:10px;
   background-color: rgba(247,196,58,0.6);
 }
 ::-webkit-scrollbar-thumb:hover{
-  border-radius:10px;
   background-color: rgba(247,196,58,0.9);
 }
 
@@ -1641,4 +1709,11 @@ textarea[readonly], textarea[readonly]:focus, textarea[readonly]:hover{
 */
 #add-entry-catalog{
   margin: 5px 0 10px 0;
+}
+
+/*
+  img css
+*/
+.img-recipe{
+  max-height: 355px;
 }

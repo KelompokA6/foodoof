@@ -147,7 +147,9 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/owl-carousel/jquery.mousewheel.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/autosize/autosize.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/badges/iosbadge.min.js"></script>
-   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/tinymce/tinymce.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/tinymce/tinymce.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/moment/moment.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/livestamp/livestamp.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jasny-bootstrap.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
 </html>

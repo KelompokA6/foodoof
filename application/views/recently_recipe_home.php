@@ -26,7 +26,7 @@
             <i class="fa fa-calendar icon icons-secondary"></i>
           </div>
           <div class="col-md-10 col-xs-10 col-no-padding-left-mobile col-no-padding-right">
-            {recently_recipe_create_date}
+            <span data-livestamp="{recently_recipe_create_date}"></span>
           </div>
         </div>
       </div>

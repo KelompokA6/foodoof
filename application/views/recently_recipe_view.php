@@ -32,7 +32,7 @@
             </a>
           </div>
           <div class="col-md-8 col-xs-6 col-no-padding-right details-time-recipe border-dashed-left" title="Last Update">
-            <p class="text-capitalize">{recently_recipe_last_update}</p>
+            <p class="text-capitalize"><span data-livestamp="{recently_recipe_last_update}"></span></p>
           </div>
       </div>
       <div class="col-md-12 col-xs-6 details details-rating">
