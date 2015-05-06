@@ -132,7 +132,7 @@ class Admin extends CI_Controller {
 				'catalog_price' => $obj->price,
 			);
 			array_push($entries, $temp);
-
+		}
 		$data1 = array(
 			'catalog_entries' => $entries,
 			);
@@ -149,7 +149,6 @@ class Admin extends CI_Controller {
 					"content_website" => $content_website,
 				);
 		$this->parser->parse('template_content', $data);
-		}
 	}
 		
 	public function sendemail(){
