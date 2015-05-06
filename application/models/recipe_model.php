@@ -827,7 +827,13 @@ class Recipe_model extends DataMapper {
             $rcptmp->clear();
         }
         if($limit>0){
-            $rcptmp->where("author", $author)->where("id !=", $id)->where_not_in('id', $relateRecipeidList)->where("status", "1")->order_by("rating", "desc")->order_by("views", "desc")->get(ceil($limit/2));
+            if(empty($relateRecipeidList)){
+                $rcptmp->where("author", $author)->where("id !=", $id)->where("status", "1")->order_by("rating", "desc")->order_by("views", "desc")->get(ceil($limit/2));
+            }
+            else{
+                $rcptmp->where("author", $author)->where("id !=", $id)->where_not_in('id', $relateRecipeidList)->where("status", "1")->order_by("rating", "desc")->order_by("views", "desc")->get(ceil($limit/2));    
+            }
+            
             foreach ($rcptmp as $recipe) {
                 array_push($relateRecipeidList, $recipe->id);
                 $limit--;
