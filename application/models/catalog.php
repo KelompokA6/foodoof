@@ -32,8 +32,10 @@ class Catalog extends DataMapper {
     //print_r(ca)
     foreach ($catalog as $catalogs){
       $data = new StdClass();
+      $data->id = $catalogs->id;
       $data->name = $catalogs->name;
       $data->units = $catalogs->units;
+      $data->quantity = $catalogs->quantity;
       $data->price = $catalogs->price;
       array_push($arrResult, $data);
     }

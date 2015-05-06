@@ -125,8 +125,10 @@ class Admin extends CI_Controller {
 		$entries = array();
 		foreach ($list as $obj) {
 			$temp = array(
+				'catalog_id' => $obj->id,
 				'catalog_name' => $obj->name,
 				'catalog_unit' => $obj->units,
+				'catalog_quantity' => $obj->quantity,
 				'catalog_price' => $obj->price,
 			);
 			array_push($entries, $temp);
