@@ -63,6 +63,10 @@ class Home extends CI_Controller {
 
 	public function logout()
 	{
+		// hilangkan jejak online
+		$user_id = $this->session->userdata('user_id');
+		if($user_id)
+			(new User_model())->where('id', $user_id)->update('last_access', (new DateTime())->modify("-30 second")->format("Y-m-d H:i:s"));
 		$this->session->unset_userdata('user_id');
 		$this->session->unset_userdata('user_name');
 		$this->session->unset_userdata('user_photo');
