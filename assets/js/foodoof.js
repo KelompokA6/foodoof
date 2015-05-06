@@ -608,6 +608,45 @@ $(document).ready(function() {
 		  	}
 		},"json");
 	});
+	$(document).on("click", "#remove-favorite", function(){
+		$.get( $baseurl+"/processAjax/setFavorite/"+$(this).data("recipeid"), function( data ) {
+		  	if(data.status == '1'){
+		  		$.notify({
+					// options
+					message: data.message
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'success',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});
+				$("#remove-favorite").parent().parent().parent().slideToggle();  		
+		  	}
+		  	else{
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'warning',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});  	
+		  	}
+		},"json");
+	});
 
 	/*
 	handler event click add cook-later recipe
