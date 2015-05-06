@@ -211,4 +211,9 @@ class Home_viewer extends CI_Model
         );
     } else return $this->parser->parse('menubar', array(), TRUE);
   }
+
+  function getOnlineUser()
+  {
+    return '';
+  }
 }

@@ -34,58 +34,39 @@
     	  		</div>
     	  	</div>
     	</div>
+      <?php
+        $user_id = $this->session->userdata('user_id');
+        $u = new User_model();
+        date_default_timezone_set("Asia/Jakarta");
+        $one_minute_ago = (new DateTime())->modify("-1 minute")->format("Y-m-d H:i:s");
+        $res = $u->where('last_access >', $one_minute_ago)->get();
+        $online_users = [];
+        foreach ($res as $obj)
+          if($obj->id != $user_id)
+            $online_users[] = (object)["id" => $obj->id, "name" => $obj->name, "photo" => $obj->photo];
+      ?>
       <div id="users-online" class="btn btn-default col-md-2 col-xs-4 col-no-padding text-left" style="position:fixed; left:0; bottom:0; z-index:100">
         <div id="panel-users" class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">10 Users Online</h3>
+            <h3 class="panel-title"><?php echo sizeof($online_users);?> Users Online</h3>
           </div>
           <div class="panel-body">
+            <?php foreach ($online_users as $user): ?>
             <div class="col-md-12 list-user-online col-no-padding-right">
               <div class="col-md-3 col-no-padding">
-                <img class="img-responsive img-rounded img-user-online" src="http://localhost/foodoof/assets/img/user-male.png">
+                <img class="img-responsive img-rounded img-user-online" src="/foodoof/<?php echo $user->photo;?>">
               </div>
               <div class="col-md-9 text-left col-no-padding-right name-user-online">
-                <a href="">Abid Nurul Hakim sajkasjfkajkl</a>
+                <a href="/foodoof/index.php/user/timeline/<?php echo $user->id;?>"><?php echo $user->name;?></a>
               </div>
             </div>
-            <div class="col-md-12 list-user-online col-no-padding-right">
-              <div class="col-md-3 col-no-padding">
-                <img class="img-responsive img-rounded img-user-online" src="http://localhost/foodoof/assets/img/user-male.png">
-              </div>
-              <div class="col-md-9 text-left col-no-padding-right name-user-online">
-                <a href="">Abid Nurul Hakim sajkasjfkajkl</a>
-              </div>
-            </div>
-            <div class="col-md-12 list-user-online col-no-padding-right">
-              <div class="col-md-3 col-no-padding">
-                <img class="img-responsive img-rounded img-user-online" src="http://localhost/foodoof/assets/img/user-male.png">
-              </div>
-              <div class="col-md-9 text-left col-no-padding-right name-user-online">
-                <a href="">Abid Nurul Hakim sajkasjfkajkl</a>
-              </div>
-            </div>
-            <div class="col-md-12 list-user-online col-no-padding-right">
-              <div class="col-md-3 col-no-padding">
-                <img class="img-responsive img-rounded img-user-online" src="http://localhost/foodoof/assets/img/user-male.png">
-              </div>
-              <div class="col-md-9 text-left col-no-padding-right name-user-online">
-                <a href="">Abid Nurul Hakim sajkasjfkajkl</a>
-              </div>
-            </div>
-            <div class="col-md-12 list-user-online col-no-padding-right">
-              <div class="col-md-3 col-no-padding">
-                <img class="img-responsive img-rounded img-user-online" src="http://localhost/foodoof/assets/img/user-male.png">
-              </div>
-              <div class="col-md-9 text-left col-no-padding-right name-user-online">
-                <a href="">Abid Nurul Hakim sajkasjfkajkl</a>
-              </div>
-            </div>
+            <?php endforeach;?>
           </div>
         </div>
         <div class="col-md-12 col-xs-12 col-no-padding" id="toggle-online-user">
           <div class="col-md-9 col-xs-8 text-left">
             <i class="fa fa-user fa-2x"></i>
-            <span style="padding-left:15px;font-size:18px"> 10 Online</span>
+            <span style="padding-left:15px;font-size:18px"><?php echo sizeof($online_users);?> Online</span>
           </div>
           <div class="col-md-2 col-xs-4">
             <i class="fa fa-chevron-up fa-2x"></i>
