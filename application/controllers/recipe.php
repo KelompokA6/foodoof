@@ -107,7 +107,11 @@ class Recipe extends CI_Controller {
 		// for ($i=0; $i < sizeof($category) ; $i++) { 
 		// 	$recipe->addCategory($id, $category[$i]);
 		// }
-
+		if (ctype_space($name)){
+			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
+			$this->session->set_flashdata('alert-notification', $alert);
+			redirect(base_url()."index.php/recipe/edit/$id");
+		}
 		$ingredients = array();
 		for ($i=0; $i < sizeof($subjek) ; $i++) { 
 			$temp['name'] = htmlspecialchars($subjek[$i]);
