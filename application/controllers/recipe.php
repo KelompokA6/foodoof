@@ -103,6 +103,7 @@ class Recipe extends CI_Controller {
 		// die;
 		$quantity =  $this->input->post("ingredient_quantity");
 		$unit =  $this->input->post("ingredient_unit");
+		$info =  $this->input->post("ingredient_info");
 		// print_r($category);
 		// for ($i=0; $i < sizeof($category) ; $i++) { 
 		// 	$recipe->addCategory($id, $category[$i]);
@@ -122,6 +123,7 @@ class Recipe extends CI_Controller {
 			$temp['name'] = htmlspecialchars($subjek[$i]);
 			$temp['quantity'] = htmlspecialchars($quantity[$i]);
 			$temp['units'] = htmlspecialchars($unit[$i]);
+			$temp['info'] = htmlspecialchars($info[$i]);
 			if (ctype_space($temp['name']) || ctype_space($temp['units'])){
 				$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
 				$this->session->set_flashdata('alert-notification', $alert);
@@ -229,6 +231,16 @@ class Recipe extends CI_Controller {
 					array_push($category, $temp);
 				}
 			}
+			$related = array();
+			if (!empty($recipe->getRelatedRecipe($id))){
+				foreach ($recipe->getRelatedRecipe($id) as $obj) {
+					$temp = array(
+							'related_recipe_name' => $obj->name,
+							'related_recipe_photo' => $obj->photo,
+						);
+					array_push($related, $temp);
+				}
+			}
 			$data = array(
 						'recipe_name' => htmlspecialchars($r->name),
 						'recipe_description' => htmlspecialchars($r->description),
@@ -244,6 +256,7 @@ class Recipe extends CI_Controller {
 						'recipe_photo' => $r->photo,
 						'recipe_category_entries' => $category,
 						'recipe_author_id' => ($r->author),
+						'related_recipe_entries' => $related,
 					);
 
 			//$data = array_map("htmlspecialchars", $data);
@@ -329,5 +342,13 @@ class Recipe extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 
 		// var_dump($total);
+	}
+
+	public function related($id){
+		$recipe = new Recipe_model();
+		foreach ($recipe->getRelatedRecipe($id) as $obj ) {
+			echo $obj->name;
+			echo "<br>";
+		}
 	}
 }
