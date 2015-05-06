@@ -17,7 +17,7 @@
 			</span>
 			Recipes
 		</a>
-	  	<a class="list-group-item" title="Favorite Recipe">
+	  	<a href="<?php echo base_url();?>index.php/user/favorite/{sidebar_user_id}" class="list-group-item" title="Favorite Recipe">
 	  		<span class="fa-stack fa-lg">
 			  <i class="fa fa-square fa-stack-2x icons-default"></i>
 			  <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
