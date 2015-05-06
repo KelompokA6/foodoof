@@ -237,6 +237,7 @@ class Recipe extends CI_Controller {
 					$temp = array(
 							'related_recipe_name' => $obj->name,
 							'related_recipe_photo' => $obj->photo,
+							'related_recipe_id' => $obj->id,
 						);
 					array_push($related, $temp);
 				}
