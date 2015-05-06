@@ -24,4 +24,17 @@ class Catalog extends DataMapper {
       $this->save();
     }
   }
+
+  function getCatalog(){
+    $catalog = new Catalog();
+    $arrResult = array();
+    foreach ($catalog as $catalogs->get()){
+      $data = new StdClass();
+      $data->name = $catalogs->name,
+      $data->units = $catalogs->units,
+      $data->price = $catalogs->price,
+      array_push($arrResult, $data);
+    }
+    return $arrResult;
+  }
 }
