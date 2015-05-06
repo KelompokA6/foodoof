@@ -70,7 +70,7 @@ class Home extends CI_Controller {
 		$this->session->unset_userdata('user_id');
 		$this->session->unset_userdata('user_name');
 		$this->session->unset_userdata('user_photo');
-		$alert = "<div id='alert-notification' data-status='success' data-message='You have logout' class='hidden'></div>";
+		$alert = "<div id='alert-notification' data-status='success' data-message='You just logged out' class='hidden'></div>";
 		$this->session->set_flashdata('alert-notification', $alert);
 		redirect(base_url());
 		die;

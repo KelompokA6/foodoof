@@ -260,7 +260,7 @@
 							<form class="form-horizontal" role="form" method="post" style="margin:0">
 								<div class="col-md-12 col-xs-12 col-no-padding-right form-group">
 									<div class="textareaKeeper col-md-10 col-xs-9 col-no-padding">
-									    <textarea class="form-control enter-comment" row="1" placeholder="Write Your Comment In Here ..."></textarea>
+									    <textarea class="form-control enter-comment" row="1" placeholder="Write your comment here..."></textarea>
 									</div>
 									<div class="col-md-2 col-xs-3 col-no-padding-right" style="position:absolute; right:0; bottom:0">
 										<button type="submit" class="btn button-secondary col-md-12 col-xs-12">Send</button>

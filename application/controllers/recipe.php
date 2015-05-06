@@ -131,7 +131,7 @@ class Recipe extends CI_Controller {
 		date_default_timezone_set ('Asia/Jakarta');
 		$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d %H:%M:%S"), $ingredients, $steps);
 		if($isSuccess === false){
-			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
+			$alert = "<div id='alert-notification' data-message='Edit Recipe Failed' data-status='failed' class='hidden'></div>";
 			$this->session->set_flashdata('alert-notification', $alert);
 		} else{
 			if (!empty($category)){
@@ -140,7 +140,7 @@ class Recipe extends CI_Controller {
 					$res = $recipe->addCategory($id, $selected);
 				}
 			}
-			$alert = "<div id='alert-notification' data-status='success' data-message='Success Edit Recipe' class='hidden'></div>";
+			$alert = "<div id='alert-notification' data-status='success' data-message='Successfully Edit Recipe' class='hidden'></div>";
 			$this->session->set_flashdata('alert-notification', $alert);
 		}
 		redirect(base_url()."index.php/recipe/edit/$id");
