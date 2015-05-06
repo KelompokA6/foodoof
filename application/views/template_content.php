@@ -18,7 +18,7 @@
     <link href="<?php echo base_url();?>assets/plugin/bower-components/owl-carousel/assets/owl.carousel.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>assets/plugin/bower-components/badges/iosbadge.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap-tagsinput.css" media="all" rel="stylesheet" type="text/css" />
-    <!-- <link href="<?php echo base_url();?>assets/plugin/bower-components/typeahead/typeahead.jquery.css" media="all" rel="stylesheet" type="text/css" /> -->
+    <link src="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-popover-x/bootstrap-popover-x.css" type="text/javascript"/>
     <link href="<?php echo base_url();?>assets/plugin/bower-components/enhancement/css/dropdowns-enhancement.min.css" media="all" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/animate.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
@@ -45,7 +45,8 @@
           if($obj->id != $user_id)
             $online_users[] = (object)["id" => $obj->id, "name" => $obj->name, "photo" => $obj->photo];
       ?>
-      <div id="users-online" class="btn btn-default col-md-2 col-xs-4 col-no-padding text-left" style="position:fixed; left:0; bottom:0; z-index:100">
+      <div id="users-online" class="btn btn-default col-md-2 col-xs-4 col-no-padding text-left" 
+      style="position:fixed; left:0; bottom:0; z-index:100; border-bottom-right-radius:0">
         <div id="panel-users" class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title"><?php echo sizeof($online_users);?> Users Online</h3>
@@ -65,11 +66,11 @@
         </div>
         <div class="col-md-12 col-xs-12 col-no-padding" id="toggle-online-user">
           <div class="col-md-9 col-xs-8 text-left">
-            <i class="fa fa-user fa-2x"></i>
-            <span style="padding-left:15px;font-size:18px"><?php echo sizeof($online_users);?> Online</span>
+            <i class="fa fa-user fa-lg"></i>
+            <span style="padding-left:15px;font-size:14px"><?php echo sizeof($online_users);?> Online</span>
           </div>
-          <div class="col-md-2 col-xs-4">
-            <i class="fa fa-chevron-up fa-2x"></i>
+          <div class="col-md-2 col-xs-4"style="padding:3.5px;">
+            <i class="fa fa-chevron-up fa-lg"></i>
           </div>
         </div>
       </div>
@@ -118,6 +119,7 @@
   <script src="<?php echo base_url();?>assets/plugin/bower-components/kartik-star-rating/js/star-rating.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/kartik-file-input/js/fileinput.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+  <script src="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-popover-x/bootstrap-popover-x.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap3-typeahead.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap-tagsinput.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bloodhound.min.js" type="text/javascript"></script>

@@ -123,8 +123,15 @@
 								      		<input type="text" maxlength="254" value="{edit_recipe_ingredient_unit}" name="ingredient_unit[]" class="form-control ingredient-unit" placeholder="Unit" autocomplete="off">
 								    	</div>
 								    	<div class="col-sm-1 col-xs-1 col-no-padding-left" style="padding:10px 0">
-								    		<input type="text" class="infomation-ingredient hidden" value="{edit_recipe_ingredient_subject}" name="ingredient_info[]">
-								      		<i class="fa fa-info-circle icons-secondary fa-lg" role="button" data-toggle="popover" title="Info Ingredient" data-trigger="click"></i>
+								    		<!-- <input type="text" class="infomation-ingredient hidden" value="{edit_recipe_ingredient_subject}" name="ingredient_info[]"> -->
+								      		<i class="fa fa-info-circle icons-secondary fa-lg" role="button" title='Info Ingredient' data-toggle="popover-x" data-target="" data-placement="right"></i>
+								      		<div class="popover popover-default">
+											    <div class="arrow"></div>
+											    <div class="popover-title"><span class="close" data-dismiss="popover-x">&times;</span>Information Ingredient</div>
+											    <div class="popover-content">
+											       <textarea class="form-control" name="ingredient_info[]">{edit_recipe_ingredient_subject}</textarea>
+											    </div>
+											</div>
 								    	</div>
 							    	</div>
 							    	{/edit_recipe_ingredient_entries}

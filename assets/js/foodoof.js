@@ -198,10 +198,11 @@ $(document).ready(function() {
 	$countIngredient = $(".ingredient-item").length;
 	if($countIngredient<1){
 		$colAddRemoveBtnIngredient = $("#add-and-remove-btn-ingredient").clone();
-		$ingredientItemFirst = "<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'><div class='col-sm-6 col-xs-6'><input type='text' maxlength='254' value='' name='ingredient_subject[]' class='form-control  input-ingredient' placeholder='Ingredient Name'></div><div class='col-sm-3 col-xs-3 col-no-padding-left'><input type='number' min='0' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'></div><div class='col-sm-3 col-xs-3 col-no-padding-left'><input type='text' maxlength='254' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'></div></div>";
+		$ingredientItemFirst = "<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'>"+"<div class='col-sm-5 col-xs-5'>"+"<input type='text' value='' name='ingredient_subject[]' class='form-control input-ingredient' placeholder='Ingredient Name'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'>"+"</div>"+"<div class='col-sm-1 col-xs-1 col-no-padding-left' style='padding:10px 0'><i class='fa fa-info-circle icons-secondary fa-lg' role='button' title='Info Ingrdient' data-toggle='popover-x' data-target='#ingredient-1' data-placement='right'></i><div id='ingredient-1' class='popover popover-default'><div class='arrow'></div><div class='popover-title'><span class='close' data-dismiss='popover-x'>&times;</span>Information Ingredient</div><div class='popover-content'><textarea class='form-control' name='ingredient_info[]'></textarea></div></div></div></div>";
 		$("#add-and-remove-btn-ingredient").remove();
 		$("#ingredient-entry").append($ingredientItemFirst);
 		$("#ingredient-entry").append($colAddRemoveBtnIngredient);
+		$("fa.fa-info-circle.icons-secondary.fa-lg[data-target='#ingredient-1']").popoverX();
 	}
 	$(".ingredient-item:first > div > input").each(function(i){
 		$(this).prop('required',true);
@@ -393,24 +394,23 @@ $(document).ready(function() {
 	}
 
 	$colAddRemoveBtnIngredient = $("#add-and-remove-btn-ingredient").clone();
-	$ingredientItem = 	"<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item animated fadeInDown'>"+"<div class='col-sm-5 col-xs-5'>"+"<input type='text' value='' name='ingredient_subject[]' class='form-control input-ingredient' placeholder='Ingredient Name'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_unit[]'' class='form-control' placeholder='Unit'>"+"</div>"+"<div class='col-sm-1 col-xs-1 col-no-padding-left' style='padding:10px 0'><input type='text' class='infomation-ingredient hidden' value='' name='ingredient_info[]'><i class='fa fa-info-circle icons-secondary fa-lg' role='button' data-placement='right' data-toggle='popover' title='Info Ingredient' data-trigger='click'></i></div></div>";
 	$(document).on('click',"#add-ingredient",function(){
+		$countIngredient++;
+		$ingredientItem = 	"<div class='col-sm-10 col-xs-10 col-no-padding ingredient-item'>"+"<div class='col-sm-5 col-xs-5'>"+"<input type='text' value='' name='ingredient_subject[]' class='form-control input-ingredient' placeholder='Ingredient Name'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' step='0.01' value='' name='ingredient_quantity[]' class='form-control' placeholder='Quantity'>"+"</div>"+"<div class='col-sm-3 col-xs-3 col-no-padding-left'>"+"<input type='text' value='' name='ingredient_unit[]'' class='form-control ingredient-unit' autocomplete='off' placeholder='Unit'>"+"</div>"+"<div class='col-sm-1 col-xs-1 col-no-padding-left' style='padding:10px 0'><i class='fa fa-info-circle icons-secondary fa-lg' role='button' title='Info Ingredient' data-toggle='popover-x' data-target='#ingredient-"+$countIngredient+"' data-placement='right'></i><div id='ingredient-"+$countIngredient+"' class='popover popover-default'><div class='arrow'></div><div class='popover-title'><span class='close' data-dismiss='popover-x'>&times;</span>Information Ingredient</div><div class='popover-content'><textarea class='form-control' name='ingredient_info[]'></textarea></div></div></div></div>";
 		$("#add-and-remove-btn-ingredient").remove();
 		$("#ingredient-entry").append($ingredientItem);
 		$("#ingredient-entry").append($colAddRemoveBtnIngredient);
 		$("#remove-ingredient").show();
-		$countIngredient++;
+		$(".fa.fa-info-circle.icons-secondary.fa-lg").popoverX({
+			target : "#ingredient-"+$countIngredient,
+			placement : "right",
+		});
 		$hasChanged = true;
-		$(".fa.fa-info-circle.icons-secondary.fa-lg").last().popover({
-			html: true, 
-			content:function(){
-    			return "<textarea class='info-ingredient form-control' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'></textarea>"
-    		}
-    	}).parent().on('keypress', "textarea.info-ingredient", function(){
-    		$(this).parent().parent().prev().prev().attr('value',$(this).val());;
-    	});
-    	$(".fa.fa-info-circle.icons-secondary.fa-lg").data('bs.popover').options.content = "<textarea class='info-ingredient form-control' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'>"+$(this).prev().val();+"</textarea>";
 		$(".ingredient-item > div > .input-ingredient").last().focus();
+		$(".ingredient-unit").typeahead({
+		    source: units.ttAdapter(),
+		    items: 4
+		});
 	});
 	$(document).on('click',"#remove-ingredient",function(){
 		$("#add-and-remove-btn-ingredient").remove();
@@ -1263,32 +1263,13 @@ $(document).ready(function() {
 	*/
 	$('.carousel').carousel();
     $('.btn-popover').popover();
-    $('.fa.fa-info-circle.icons-secondary.fa-lg').each(function(i){
-    	if($(this).prev().hasClass('hidden')){
-    		var tmp = $(this).prev().val();
-    		$(this).popover({
-    			html: true, 
-	    		content:function(){
-	    			return "<textarea class='info-ingredient form-control' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'>"+tmp+"</textarea>"
-	    		}
-	    	}).parent().on('keypress', "textarea.info-ingredient", function(){
-	    		$(this).parent().parent().prev().prev().attr('value',$(this).val());;
-	    	});
-    	}else{
-    		$(this).popover();	
-    	}
-    	$(this).data('bs.popover').options.content = "<textarea class='info-ingredient form-control' rows='4' placeholder='Information Ingredient' name='recipe_info_ingredient[]'>"+$(this).prev().val();+"</textarea>";
-    });
-    $('body').on('click', function (e) {
-	    $('.fa.fa-info-circle.icons-secondary.fa-lg').each(function(i){
-	    	if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-	            $(this).popover('hide');
-	        }
-	    });
+	$(".fa.fa-info-circle.icons-secondary.fa-lg").each(function(i){
+		$(this).attr("data-target", "#ingredient-"+(i+1));
+		$(this).next().attr("id", "ingredient-"+(i+1));
 	});
-	$(document).on('shown.bs.popover', ".fa.fa-info-circle.icons-secondary.fa-lg", function () {
-	 	$(this).parent().parent().removeClass("animated");
-	 	$(this).parent().parent().removeClass("fadeInDown");
+	$(document).on("click",".fa.fa-info-circle.icons-secondary.fa-lg", function(){
+		$tar = $(this).attr("data-target");
+		$($tar).popoverX("show");
 	});
 	$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message").data("countmessage") });
 	$(".conversation-list-item[data-id='1']").iosbadge({ theme: 'ios', size: 28, content: $("#icon-message").data("countmessage") });
