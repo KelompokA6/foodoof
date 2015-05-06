@@ -321,6 +321,18 @@ footer > div > div > div > ul > li > a{
   .detail-list-search-ingredient{
     padding-top: 12px 0;
   }
+  .checked-cook-later{
+    margin: 7px -20px !important;
+    height: 20px !important;
+    width: 20px !important;
+  }
+  .col-edit-recipe-timeline > div >div.checkbox{
+    font-size: 16px !important;
+    line-height: 34px !important;
+  }
+   .col-edit-recipe-timeline > div >div.checkbox>label>span{
+    margin-left: 10px;
+  }
 }
 @media screen and (min-width:768px){
   .inline-search{
@@ -930,9 +942,35 @@ ul.typeahead.dropdown-menu > li.active > a{
 .category-list{
   margin:10px 0 0 0;
   line-height: 48px;
-  border-bottom: dashed 1px #F7C43A;
+  /*border-bottom: dashed 1px #F7C43A;*/
   padding:10px;
   height: 68px;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+.category-list::after{
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  content: "";
+  height: 2px;
+  width: 0px;
+  background-color:#F7C43A;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; 
+}
+.category-list:hover::after{
+  width: 100%;
+}
+.category-list > a:hover > .category-menu-name{
+  color:#F7C43A;
 }
 .category-list-last{
   margin:10px 0 0 0;
@@ -940,7 +978,12 @@ ul.typeahead.dropdown-menu > li.active > a{
   padding:10px;
   height: 68px;
 }
-
+.category-menu-name{
+  color:  #111111;
+}
+.category-menu-name:hover{
+  color:  #F7C43A;
+}
 .hr-dashed{
   border-bottom: dashed 2px #F7C43A;
 }
@@ -960,6 +1003,7 @@ div.list-group > a:hover{
 div.list-group > a{
   color:  #000;
 }
+
 
 .navbar-foodoof{
   background-color: #DD3124;
@@ -1009,12 +1053,7 @@ div.list-group > a{
   overflow-y:auto;
 }
 
-.category-menu-name{
-  color:  #111111;
-}
-.category-menu-name:hover{
-  color:  #F7C43A;
-}
+
 p.text-capitalize {
   margin:5px 0;
   text-transform: capitalize;
@@ -1716,4 +1755,12 @@ textarea[readonly], textarea[readonly]:focus, textarea[readonly]:hover{
 */
 .img-recipe{
   max-height: 355px;
+}
+
+/*
+  Cook Later css
+*/
+input.checked-cook-later{
+  width: 16px;
+  height: 16px;
 }

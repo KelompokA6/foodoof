@@ -24,6 +24,25 @@ class Tempview extends CI_Controller {
 				);
 		$this->parser->parse('template_content', $data);
 
+	}
+	public function cooklater()
+	{	
+		$this->load->library('parser');
+		$data = array("recipe_author_id"=> 1);
+		$menubar = $this->parser->parse('menubar', $data, TRUE);
+		$content_user = $this->parser->parse('cook_later_view', array(), TRUE);
+		$sidebar_user = $this->parser->parse('sidebar_user_view', array(), TRUE);
+		$data1= array(
+				"content_user" => $content_user,
+				"sidebar_user" => $sidebar_user
+				);
+		$content_website = $this->parser->parse('template_user_view', $data1, TRUE);
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
+
 	}	
 	public function footer(){
 		$this->load->view('footer');
