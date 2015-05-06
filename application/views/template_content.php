@@ -152,4 +152,5 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/livestamp/livestamp.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jasny-bootstrap.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/online-user.js"></script>
 </html>
