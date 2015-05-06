@@ -4,8 +4,8 @@ $(function() {
   {
     // update ke database, last_access-nya, loop
     function update(){
-      $.get("user/setonline/"+id, function(response){console.log(response);});
-      setTimeout(update, 30000);
+      $.get("/foodoof/index.php/user/setonline/"+id, function(response){console.log(response);});
+      setTimeout(update, 5000);
     }
     update();
   }
