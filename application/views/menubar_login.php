@@ -7,6 +7,7 @@
   <a href="<?php echo base_url();?>index.php/user/timeline" class="col-xs-12 text-center text-foodoof" style="margin:20px 0; font-size:16px;">
     <img class="img-rounded img-profile-slide-menu" src="<?php echo base_url();?>{menubar_user_photo}"/>
   </a>
+  <input id="user_id" hidden value="<?php echo @$user_id;?>">
   <a href="<?php echo base_url();?>index.php/user/timeline" class="col-xs-12 text-center text-foodoof" style="margin:20px 0; font-size:16px;">
     {menubar_user_name}
   </a>

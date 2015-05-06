@@ -203,6 +203,7 @@ class Home_viewer extends CI_Model
         return $this->parser->parse(
             'menubar_login',
             array(
+                'user_id' => $this->session->userdata('user_id'),
                 'menubar_user_name' =>  htmlspecialchars($oneword),
                 'menubar_user_photo' => $this->session->userdata('user_photo'),
             ),

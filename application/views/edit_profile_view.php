@@ -21,7 +21,7 @@
 					<div class="form-group">
 					    <label for="inputname" class="col-sm-2 control-label">Name</label>
 					    <div class="col-sm-10">
-					      	<input type="text" class="form-control form-profile" maxlength="30" name="user_name" value="{edit_profile_name}" placeholder="Your Name" required>
+					      	<input type="text" class="form-control form-profile" maxlength="51" name="user_name" value="{edit_profile_name}" placeholder="Your Name" required>
 					    </div>
 					 </div>
 				</div>

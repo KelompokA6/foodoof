@@ -204,9 +204,7 @@ class User_viewer extends CI_Model
     // ambil sidebar
     $data_user_view['sidebar_user'] = $this->getSidebar($profile);
     // ambil content_user dari profile_view
-    $data_user_view['content_user'] = $this->parser->parse(
-        'edit_profile_view',
-        array_map("htmlspecialchars", array(
+    $arr = array_map("htmlspecialchars", array(
             'edit_profile_id' => $profile->id,
             'edit_profile_name' => $profile->name,
             'edit_profile_photo' => $profile->photo,
@@ -221,10 +219,9 @@ class User_viewer extends CI_Model
             'edit_profile_facebook' => $profile->facebook,
             'edit_profile_google_plus' => $profile->googleplus,
             'edit_profile_path' => $profile->path,
-            'edit_profile_alert' => $profile->edit_profile_alert,
-        )),
-        TRUE
-    );
+        ));
+    $arr['edit_profile_alert'] = $profile->edit_profile_alert;
+    $data_user_view['content_user'] = $this->parser->parse('edit_profile_view', $arr, TRUE);
     // load template_content
     $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
 

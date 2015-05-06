@@ -189,11 +189,13 @@ class User extends CI_Controller {
 
 	private function _validate_edit_profile($profile)
 	{
+		// trim all
+		$profile = array_map("trim", $profile);
 		// cek bdate
-		if ( !preg_match("/^[a-zA-Z '-]{1,51}$/", trim($profile['name'])) ) return 'invalid name';
+		if ( !preg_match("/^[a-zA-Z '-]{1,51}$/", $profile['name']) ) return 'invalid name';
 		if( (new DateTime($profile['bdate'])) > (new DateTime) ) return 'invalid birth date';
 		# 083...10-12 length
-		if( !preg_match('/^08\\d{8,10}$/', $profile['phone']) ) return 'invalid phone number';
+		if( strlen($profile['phone']) > 0 && !preg_match('/^08\\d{8,10}$/', $profile['phone']) ) return 'invalid phone number';
 		return TRUE;
 	}
 

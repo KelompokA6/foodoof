@@ -81,7 +81,7 @@ class User_model extends DataMapper {
 
     function updateProfile($id, $dataProfile)
     {
-        return $this->where('id', $id)->update(array_map(function($x){return $this->db->escape_str($x);}, $dataProfile));
+        return $this->where('id', $id)->update(array_map(function($x){return ($x);}, $dataProfile));
     }
 
     function createUser($profile)
