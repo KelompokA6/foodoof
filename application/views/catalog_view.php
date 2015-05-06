@@ -29,9 +29,9 @@
 			    	</div>
 				</form>
 			</div>
-			<form class="form-horizontal col-md-12 col-xs-12 col-sm-12  border-solid-bottom" role="form" method="post" enctype="multipart/form-data" style="padding:15px">
+			<form class="form-horizontal col-md-12 col-xs-12 col-sm-12 border-solid-bottom catalog-list" role="form" method="post" enctype="multipart/form-data" style="padding:15px">
 				{catalog_entries}
-				<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding">
+				<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding" style="margin:2px 0;">
 					<div class="col-md-3 col-sm-3 col-xs-3">
 						<input type="text" maxlength="254" value="{catalog_id}" name="catalog_id[]" class="form-control input-ingredient hidden" placeholder="Ingredient Name">
 			      		<input type="text" maxlength="254" value="{catalog_name}" name="catalog_name[]" class="form-control input-ingredient" placeholder="Ingredient Name">

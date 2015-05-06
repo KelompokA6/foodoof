@@ -1749,6 +1749,11 @@ textarea[readonly], textarea[readonly]:focus, textarea[readonly]:hover{
 #add-entry-catalog{
   margin: 5px 0 10px 0;
 }
+.catalog-list{
+  max-height: 450px;
+  overflow-x: auto;
+
+}
 
 /*
   img css
