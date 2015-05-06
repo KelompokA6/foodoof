@@ -276,4 +276,11 @@ class User extends CI_Controller {
 		// you may also use this format $mail->AddAddress ($recipient);
 		return $mail->Send();
 	}
+
+	public function setonline($id)
+	{
+		$u = new User_model();
+		date_default_timezone_set("Asia/Jakarta");
+		echo $u->where('id', $id)->update('last_access', date("Y-m-d H:i:s"));
+	}
 }
