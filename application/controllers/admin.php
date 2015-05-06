@@ -116,10 +116,27 @@ class Admin extends CI_Controller {
 		if(strtolower($u->status)!='admin'){
 			return $this->pageNotFound();	
 		}
+
 		$this->load->library('parser');
 		$menubar = $this->home_viewer->getMenubar();
-		$content_admin = $this->parser->parse('catalog_view', array(), TRUE);	
+		
+		$cat = new Catalog();
+		$list = $cat->getCatalog();
+		$entries = array();
+		foreach ($list as $obj) {
+			$temp = array(
+				'catalog_name' => $obj->name,
+				'catalog_units' => $obj->units,
+				'catalog_price' => $obj->price,
+			);
+			array_push($entries, $temp);
+
+		$data1 = array(
+			'catalog_entries' => $entries,
+			);
+		$content_admin = $this->parser->parse('catalog_view', $data1, TRUE);	
 		$sidebar_admin = $this->parser->parse('sidebar_admin', array(), TRUE);	
+					
 		$data1 = array(
 			'content_admin' => $content_admin,
 			'sidebar_admin' => $sidebar_admin
@@ -130,7 +147,9 @@ class Admin extends CI_Controller {
 					"content_website" => $content_website,
 				);
 		$this->parser->parse('template_content', $data);
+		}
 	}
+		
 	public function sendemail(){
 		$this->load->model('home_viewer');
 		$this->load->library('session');

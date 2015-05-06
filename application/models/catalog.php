@@ -28,7 +28,9 @@ class Catalog extends DataMapper {
   function getCatalog(){
     $catalog = new Catalog();
     $arrResult = array();
-    foreach ($catalog as $catalogs->get()){
+    $catalog->get();
+    //print_r(ca)
+    foreach ($catalog as $catalogs){
       $data = new StdClass();
       $data->name = $catalogs->name,
       $data->units = $catalogs->units,
