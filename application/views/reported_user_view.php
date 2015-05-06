@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="<?php echo base_url();?>index.php/admin/banneduser" method="post" enctype="multipart/form-data">
 	<div class="col-md-12 col-xs-12 col-no-padding">
 		<div class="panel panel-default">
 			<div class="panel-body">

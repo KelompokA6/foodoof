@@ -219,5 +219,14 @@ class Admin extends CI_Controller {
 
     print_r(sizeof($all_data));
   }
-
+  public function banneduser(){
+  	$user = new User_model();
+  	$ban = $this->input->post("id_reported");
+  	foreach ($ban as $userid) {
+  		$user->where('id', $userid)->update('status', "BANNED");
+  	}
+  	$alert = "<div id='alert-notification' data-message='Banned User Success' data-status='success' class='hidden'></div>";
+	$this->session->set_flashdata('alert-admin', $alert);
+	redirect(base_url()."index.php/admin/report");
+  }
 }
