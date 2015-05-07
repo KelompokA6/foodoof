@@ -1180,6 +1180,67 @@ class Recipe_model extends DataMapper {
         }
         return -1;
     }
+
+    /*
+        mengembalikan list recipe-recipe yang dilaporkan berdasarkan id user
+    */
+    function getListReportByRecipeId($recipe_id=null){
+        if(empty($recipe_id)){
+            $recipe_id = $this->id;
+        }
+        if(!empty($recipe_id)){
+            $report = new Report();
+            $report->get_by_recipe_id($recipe_id);
+            $list_reported_recipe = array();
+            foreach ($report as $reports) {
+                $data = new stdClass();
+                $data->user_id = $reports->user_id;
+                array_push($list_reported_recipe, $data);
+            }
+            return $list_reported_recipe;
+        }
+        return array();
+    }
+    function getDetailsReportByRecipeId($recipe_id=null){
+        if(empty($recipe_id)){
+            $recipe_id = $this->id;
+        }
+        if(!empty($recipe_id)){
+            $report = new Report();
+            $report->where("recipe_id", $recipe_id);
+            $report->where("advertisement", "1");
+            $cads = $report->count();
+            $report->clear();
+            $report->where("recipe_id", $recipe_id);
+            $report->where("spam", "1");
+            $cspam = $report->count();
+            $report->clear();
+            $report->where("recipe_id", $recipe_id);
+            $report->where("pornographic", "1");
+            $cporn = $report->count();
+            $report->clear();
+            $report->where("recipe_id", $recipe_id);
+            $report->where("other !=", "");
+            $report->get();
+            $x = 0;
+            $list_details_report = array();
+            foreach ($report as $reports) {
+                $data = new stdClass();
+                $data->detail = $reports->other;
+                array_push($list_details_report, $data)
+                $x++;
+            }
+            $cother = $x;
+            $data = new stdClass();
+            $data->count_advertisement = $cads;
+            $data->count_spam = $cspam;
+            $data->count_pornographic = $cporn;
+            $data->count_other = $cother;
+            $data->count_other_details = $list_details_report;
+            return $data;
+        }
+        return null;
+    }
 }
 
 /* End of file recipe.php */

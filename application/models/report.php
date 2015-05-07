@@ -35,6 +35,40 @@ class Report extends DataMapper {
             return false;
         }
     }
+    /*
+        mengembalikan list user-user yang telah dilaporkan
+    */
+    function getListReportUser(){
+        $report = new Report();
+        $report->get();
+        $list_reported_user = array();
+        foreach ($report as $reports) {
+            $data = new stdClass();
+            $data->id = $reports->user_id;
+            array_push($list_reported_user, $data);
+        }
+        return $list_reported_user;
+    }
+    /*
+        mengembalikan list recipe-recipe yang dilaporkan berdasarkan id user
+    */
+    function getListReportByUserId($user_id=null){
+        if(empty($user_id)){
+            $user_id = $this->id;
+        }
+        if(!empty($user_id)){
+            $report = new Report();
+            $report->get_by_user_id($user_id);
+            $list_reported_user = array();
+            foreach ($report as $reports) {
+                $data = new stdClass();
+                $data->recipe_id = $reports->recipe_id;
+                array_push($list_reported_user, $data);
+            }
+            return $list_reported_user;
+        }
+        return array();
+    }
 }
 
 /* End of file recipe.php */

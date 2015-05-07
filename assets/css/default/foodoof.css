@@ -1750,6 +1750,10 @@ textarea[readonly], textarea[readonly]:focus, textarea[readonly]:hover{
 .details-reported{
   display: none;
 }
+.details-other{
+  max-height: 270px;
+  overflow-x: auto;
+}
 
 /*
   catalog css
