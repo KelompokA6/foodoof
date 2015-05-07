@@ -153,6 +153,7 @@ class Recipe_model extends DataMapper {
                         $ingre->name = $this->db->escape_str($ingredient["name"]);
                         $ingre->quantity = $ingredient["quantity"];
                         $ingre->units = $this->db->escape_str($ingredient["units"]);
+                        $ingre->info = $this->db->escape_str($ingredient["info"]);
                         if(!$ingre->skip_validation()->save()){
                             return false;
                         }
