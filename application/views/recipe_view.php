@@ -8,6 +8,7 @@
 <div class="col-md-12 col-xs-12 col-no-padding">
 	<div class="panel panel-default">
 	  	<div class="panel-body">
+	  		<?php echo $this->session->flashdata('alert-notification');?>
 	  		<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title text-capitalize hr-dashed"  style="line-height:33px; font-size:16px;">
 	  			<div class="col-md-9 col-xs-12"><h2 style="margin:0">{recipe_name}</h2></div>
 	  			<div class="col-md-3 col-xs-12 pull-right col-no-padding text-center" style="bottom:0">
@@ -158,7 +159,7 @@
 	  			</div>
 	  			<div class="col-md-12 col-xs-12 col-no-padding related-recipe" style="margin-top:15px" title="Related Recipe">
 	  				<h4 class="page-header-title">Related Recipes</h4>
-	  				<div class="carousel-related-recipe left pull-left text-center owl-prev disabled">
+	  				<div class="carousel-related-recipe left pull-left text-center owl-prev disabled hide">
   						<i class="fa fa-chevron-left" style="line-height:92px"></i>
   					</div>
 	  				<div class="col-md-10 col-xs-10 col-no-padding related-recipe-entries">
@@ -236,15 +237,16 @@
 				</div>
 				<div id="comment" class="col-md-12 col-xs-12 border-solid-top">
 					<h4 class="page-header-title">Share Your Thought! (2 Comments)</h4>
+					<?php if($this->session->userdata('user_id') != ""):?>
 					<div class="col-md-12 col-xs-12">
 						<div class="col-md-2 col-xs-2 col-no-padding-left">
 							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment" title="Your">
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
-							<form class="form-horizontal" role="form" method="post" style="margin:0">
+							<form class="form-horizontal" action="<?php echo base_url();?>index.php/recipe/addComment/{recipe_id}" role="form" method="post" style="margin:0">
 								<div class="col-md-12 col-xs-12 col-no-padding-right form-group">
 									<div class="textareaKeeper col-md-10 col-xs-9 col-no-padding">
-									    <textarea class="form-control enter-comment" row="1" placeholder="Write your comment here..."></textarea>
+									    <textarea class="form-control enter-comment" row="1" name="comment" placeholder="Write your comment here..."></textarea>
 									</div>
 									<div class="col-md-2 col-xs-3 col-no-padding-right" style="position:absolute; right:0; bottom:0">
 										<button type="submit" class="btn button-secondary col-md-12 col-xs-12">Send</button>
@@ -253,32 +255,22 @@
 							</form>
 						</div>
 					</div>
+					<?php endif;?>
+					{comments_recipe_entries}
 					<div class="col-md-12 col-xs-12 comment-entry">
 						<div class="col-md-2 col-xs-2 col-no-padding-left">
-							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment" title="Alfan">
+							<img src="<?php echo base_url();?>{comment_user_photo}" class="img-responsive img-circle img-user-comment" title="{comment_user_name}">
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
 							<div class="col-md-12 col-xs-12 col-no-padding-left comment-value">
-								asjkhsjdfhkjsdafhdfgadjadsgfhjgsdaff;jsdajfkhsdfj
+								{comment_description}
 							</div>
 							<div class="col-md-12 col-xs-12 col-no-padding-left comment-time border-dashed-top">
-								Alfan | 4 hours ago
+								<a href="<?php echo base_url();?>index.php/user/{comment_user_id}">{comment_user_name}</a> | <span data-livestamp="{comment_submit}"></span>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12 col-xs-12 comment-entry">
-						<div class="col-md-2 col-xs-2 col-no-padding-left">
-							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment" title="Alfan">
-						</div>
-						<div class="col-md-10 col-xs-10 bubble">
-							<div class="col-md-12 col-xs-12 col-no-padding-left comment-value">
-								asjdkjhsfjdsj
-							</div>
-							<div class="col-md-12 col-xs-12 col-no-padding-left comment-time border-dashed-top">
-								Alfan | 5 hours ago
-							</div>
-						</div>
-					</div>
+					{/comments_recipe_entries}
 				</div>
 			</div>
 		</div>

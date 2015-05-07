@@ -242,6 +242,19 @@ class Recipe extends CI_Controller {
 					array_push($related, $temp);
 				}
 			}
+			$comments = array();
+			if (!empty($r->comments)){
+				foreach ($r->comments as $obj) {
+					$temp = array(
+							'comment_user_id' => $obj->user_id,
+							'comment_description' => nl2br($obj->description),
+							'comment_submit' => strtotime($obj->submit),
+							'comment_user_name' => $user->getProfile($obj->id)->name,
+							'comment_user_photo' => $user->getProfile($obj->id)->photo,
+						);
+					array_push($comments, $temp);
+				}
+			}
 			$data = array(
 						'recipe_name' => htmlspecialchars($r->name),
 						'recipe_description' => htmlspecialchars($r->description),
@@ -258,6 +271,7 @@ class Recipe extends CI_Controller {
 						'recipe_category_entries' => $category,
 						'recipe_author_id' => ($r->author),
 						'related_recipe_entries' => $related,
+						'comments_recipe_entries' => $comments,
 					);
 
 			//$data = array_map("htmlspecialchars", $data);
@@ -351,5 +365,18 @@ class Recipe extends CI_Controller {
 			echo $obj->name;
 			echo "<br>";
 		}
+	}
+	public function addComment($recipe_id){
+		$comment = $this->input->post("comment");
+		$r = new Recipe_model();
+		if($r->addComment($this->session->userdata("user_id"), $recipe_id, $comment)){
+			$alert = "<div id='alert-notification' data-status='success' data-message='Successfully Add Comment' class='hidden'></div>";
+			$this->session->set_flashdata('alert-notification', $alert);
+		}
+		else{
+			$alert = "<div id='alert-notification' data-status='failed' data-message='Failed Add Comment' class='hidden'></div>";
+			$this->session->set_flashdata('alert-notification', $alert);
+		}
+		redirect(base_url()."index.php/recipe/get/$recipe_id");
 	}
 }

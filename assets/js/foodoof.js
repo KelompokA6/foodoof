@@ -1056,12 +1056,12 @@ $(document).ready(function() {
 	        	$carouselActiveLast++;
 				$carouselActiveFirst++;
 				if($carouselActiveLast==($sizeRelatedRecipe-1)){
-					$(".carousel-related-recipe.right").addClass("disabled");	
+					$(".carousel-related-recipe.right").addClass("disabled hide");	
 				}
 				else{
-					$(".carousel-related-recipe.right").removeClass("disabled");	
+					$(".carousel-related-recipe.right").removeClass("disabled hide");	
 				}
-				$(".carousel-related-recipe.left").removeClass("disabled");
+				$(".carousel-related-recipe.left").removeClass("disabled hide");
 	        }
 	    } else {
 	        owl.trigger('prev.owl');
@@ -1069,12 +1069,12 @@ $(document).ready(function() {
 	        	$carouselActiveLast--;
 				$carouselActiveFirst--;
 				if($carouselActiveFirst==0){
-					$(".carousel-related-recipe.left").addClass("disabled");	
+					$(".carousel-related-recipe.left").addClass("disabled hide");	
 				}
 				else{
-					$(".carousel-related-recipe.left").removeClass("disabled");	
+					$(".carousel-related-recipe.left").removeClass("disabled hide");	
 				}
-				$(".carousel-related-recipe.right").removeClass("disabled");
+				$(".carousel-related-recipe.right").removeClass("disabled hide");
 	        }
 	    }
 	    e.preventDefault();
@@ -1084,24 +1084,24 @@ $(document).ready(function() {
 		$carouselActiveLast--;
 		$carouselActiveFirst--;
 		if($carouselActiveFirst==0){
-			$(this).addClass("disabled");	
+			$(this).addClass("disabled hide");	
 		}
 		else{
-			$(this).removeClass("disabled");	
+			$(this).removeClass("disabled hide");	
 		}
-		$(".carousel-related-recipe.right").removeClass("disabled");
+		$(".carousel-related-recipe.right").removeClass("disabled hide");
 	});
 	$(".carousel-related-recipe.right").click(function(e){
 		owl.trigger('next.owl');
 		$carouselActiveLast++;
 		$carouselActiveFirst++;
 		if($carouselActiveLast==($sizeRelatedRecipe-1)){
-			$(this).addClass("disabled");	
+			$(this).addClass("disabled hide");	
 		}
 		else{
-			$(this).removeClass("disabled");	
+			$(this).removeClass("disabled hide");	
 		}
-		$(".carousel-related-recipe.left").removeClass("disabled");
+		$(".carousel-related-recipe.left").removeClass("disabled hide");
 	});
 	function dragNxtPrev(event) {
 	  	$tmp = $(".active");
@@ -1112,22 +1112,22 @@ $(document).ready(function() {
 				$carouselActiveLast += $diff; 
 				$carouselActiveFirst += $diff;
 				if($carouselActiveLast==($sizeRelatedRecipe-1)||$firstActive==($sizeRelatedRecipe-3)){
-					$(".carousel-related-recipe.right").addClass("disabled");	
+					$(".carousel-related-recipe.right").addClass("disabled hide");	
 				}
 				else{
-					$(".carousel-related-recipe.right").removeClass("disabled");	
+					$(".carousel-related-recipe.right").removeClass("disabled hide");	
 				}
-				$(".carousel-related-recipe.left").removeClass("disabled");
+				$(".carousel-related-recipe.left").removeClass("disabled hide");
 			}
 	  	}
 	  	else if($firstActive==0 || $firstActive==($sizeRelatedRecipe-3)){
 	  		if($firstActive==0){
-	  			$(".carousel-related-recipe.left").addClass("disabled");
-	  			$(".carousel-related-recipe.right").removeClass("disabled");
+	  			$(".carousel-related-recipe.left").addClass("disabled hide");
+	  			$(".carousel-related-recipe.right").removeClass("disabled hide");
 	  		}
 	  		else{
-	  			$(".carousel-related-recipe.right").addClass("disabled");
-	  			$(".carousel-related-recipe.left").removeClass("disabled");
+	  			$(".carousel-related-recipe.right").addClass("disabled hide");
+	  			$(".carousel-related-recipe.left").removeClass("disabled hide");
 	  		}
 	  	}
 	  	else{
@@ -1135,12 +1135,12 @@ $(document).ready(function() {
 		  		$carouselActiveLast -= $diff;
 				$carouselActiveFirst -= $diff;
 				if($carouselActiveFirst==0){
-					$(".carousel-related-recipe.left").addClass("disabled");	
+					$(".carousel-related-recipe.left").addClass("disabled hide");	
 				}
 				else{
-					$(".carousel-related-recipe.left").removeClass("disabled");	
+					$(".carousel-related-recipe.left").removeClass("disabled hide");	
 				}
-				$(".carousel-related-recipe.right").removeClass("disabled");
+				$(".carousel-related-recipe.right").removeClass("disabled hide");
 			}
 	  	}
 	}

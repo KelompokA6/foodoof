@@ -548,6 +548,7 @@ class Recipe_model extends DataMapper {
             $data->category = $recipes->getCategories($recipes->id);
             $data->ingredients = $recipes->getIngredients($recipes->id);
             $data->steps = $recipes->getSteps($recipes->id);
+            $data->comments = $recipes->getCommentsRecipe($id);
             return $data;
         }
         else{
@@ -569,6 +570,7 @@ class Recipe_model extends DataMapper {
                 $data->category = $recipes->getCategories($recipes->id);
                 $data->ingredients = $recipes->getIngredients($recipes->id);
                 $data->steps = $recipes->getSteps($recipes->id);
+                $data->comments = $recipes->getCommentsRecipe($id);
                 return $data;
             }
             return FALSE;
@@ -1109,6 +1111,48 @@ class Recipe_model extends DataMapper {
         }
         else{
             return false;
+        }
+    }
+    /*
+        digunakan untuk memperoleh semua comment pada sebuah resep
+    */
+    function getCommentsRecipe($recipe_id){
+        if(empty($recipe_id)){
+            $recipe_id = $this->id;
+        }
+        if(!empty($recipe_id)){
+            $result_comments = array();
+            $comments = new Comment();
+            $comments->where("recipe_id", $recipe_id)->get();
+            foreach ($comments as $comment) {
+                $data = new stdClass();
+                $data->id = $comment->id;
+                $data->user_id = $comment->user_id;
+                $data->description = $comment->description;
+                $data->submit = $comment->submit;
+                array_push($result_comments, $data);
+            }
+            return $result_comments;
+        }
+        return array();
+    }
+    function addComment($user_id=null, $recipe_id=null, $description=""){
+        if(empty($user_id)){
+            return false;
+        }
+        if(empty($recipe_id)){
+            $recipe_id = $this->recipe_id;
+        }
+        if(empty($recipe_id)){
+            return false;
+        }
+        if(!empty($description)){
+            $comment = new Comment();
+            $comment->user_id = $user_id;
+            $comment->recipe_id = $recipe_id;
+            $comment->description = $description;
+            $comment->submit = date("Y-m-d H:i:s");
+            return $comment->skip_validation()->save();
         }
     }
 }
