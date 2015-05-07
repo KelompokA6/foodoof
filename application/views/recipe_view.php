@@ -90,60 +90,54 @@
 			            </ul>
 					</div>
 					<div class="col-md-6 col-xs-6" style="padding-left:5px" title="Report Recipe">
-						<button class="btn button-primary col-md-12 col-xs-12" data-toggle="modal" data-target="#form-report">
+						<button id="report-btn" class="btn button-primary col-md-12 col-xs-12" role="button" title='Report' data-toggle="popover-x" data-target="#form-report" data-placement="bottom">
 							<i class="fa fa-flag pull-left fa-inverse icons"></i>  Report
 						</button>
-						<div id="form-report" class="modal fade">
-						  	<div class="modal-dialog">
-						  		<form class="form-horizontal" role="form">
-						    	<div class="modal-content">
-						      		<div class="modal-header">
-						        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						        		<h4 class="modal-title">Report</h4>
-						      		</div>
-							      	<div class="modal-body">
-						        		<div class="form-group">
-										    <div class="col-sm-offset-2 col-sm-10 col-xs-12 text-left">
-										      	<div class="checkbox">
-										        	<label>
-										          		<input type="checkbox"> SPAM
-										        	</label>
-										      	</div>
-										    </div>
-										</div>
-										<div class="form-group">
-										    <div class="col-sm-offset-2 col-sm-10 col-xs-12 text-left">
-										      	<div class="checkbox">
-										        	<label>
-										          		<input type="checkbox"> Advertisement
-										        	</label>
-										      	</div>
-										    </div>
-										</div>
-										<div class="form-group">
-										    <div class="col-sm-offset-2 col-sm-10 col-xs-12 text-left">
-										      	<div class="checkbox">
-										        	<label>
-										          		<input type="checkbox"> Pornographic
-										        	</label>
-										      	</div>
-										    </div>
-										</div>
-										<div class="form-group">
-										    <div class="col-sm-offset-2 col-sm-10 col-xs-12 text-left">
-										      	<div class="inputKeeper col-md-12 col-xs-12 col-no-padding">
-												    <input type="text" class="form-control" placeholder="Other"/>
-												</div>
-										    </div>
-										</div>
+						<div id="form-report" class="popover popover-default">
+						    <div class="arrow"></div>
+						    <div class="popover-title popover-primary"><span class="close" data-dismiss="popover-x">&times;</span>Report</div>
+						    <div class="popover-content">
+						    	<form role="form" action="<?php echo base_url();?>index.php/home/report" class="form-horizontal" method="post" enctype="multipart/form-data">
+							       	<div class="form-group">
+									    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
+									      	<div class="checkbox">
+									        	<label>
+									          		<input type="checkbox" name="report_category[]" value="spam"> SPAM
+									        	</label>
+									      	</div>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
+									      	<div class="checkbox">
+									        	<label>
+									          		<input type="checkbox" name="report_category[]" value="advertisement"> Advertisement
+									        	</label>
+									      	</div>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
+									      	<div class="checkbox">
+									        	<label>
+									          		<input type="checkbox" name="report_category[]" value="pornographic"> Pornographic
+									        	</label>
+									      	</div>
+									    </div>
+									</div>
+									<div class="form-group">
+									    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
+									      	<div class="inputKeeper col-md-12 col-xs-12 col-no-padding">
+											    <input type="text" class="form-control" maxlength="254" name="report_category[]" placeholder="Other">
+											</div>
+									    </div>
+									</div>
+							      	<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding text-center border-solid-top" style="padding:10px 0;">
+							        	<button type="submit" class="btn button-primary">Send Report</button>
 							      	</div>
-							      	<div class="modal-footer" style="text-align:center">
-							        	<button type="button" class="btn button-primary">Send Report</button>
-							      	</div>
-						    	</div><!-- /.modal-content -->
-						    	</form>
-						  	</div><!-- /.modal-dialog -->
-						</div><!-- /.modal -->
+						      	</form>
+						    </div>
+						</div>
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 text-center" style="margin-top:5px" title="Generate Price">

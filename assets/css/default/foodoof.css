@@ -1603,7 +1603,11 @@ textarea.enter-comment.form-control:focus{
   color: #fff;
   padding: 4px 14px;
 }
-
+.popover > .popover-title.popover-primary{
+  background-color: #D73D32 !important;
+  color: #fff;
+  text-align: center;
+}
 /*
   conversation css
 */
