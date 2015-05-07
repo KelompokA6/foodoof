@@ -353,6 +353,7 @@ class Recipe_model extends DataMapper {
             $data->views = $recipes->views;
             $data->photo = $recipes->photo;
             $data->highlight = $recipes->highlight;
+            $data->counterrating = $recipe->getCounterRating($recipes->id);
             array_push($arrResult, $data);
         }
         return $arrResult;
@@ -383,6 +384,7 @@ class Recipe_model extends DataMapper {
             $data->views = $recipes->views;
             $data->photo = $recipes->photo;
             $data->highlight = $recipes->highlight;
+            $data->counterrating = $recipe->getCounterRating($recipes->id);
             array_push($arrResult, $data);
         }
         return $arrResult;
@@ -412,6 +414,7 @@ class Recipe_model extends DataMapper {
             $data->views = $recipes->views;
             $data->photo = $recipes->photo;
             $data->highlight = $recipes->highlight;
+            $data->counterrating = $recipe->getCounterRating($recipes->id);
             array_push($arrResult, $data);
         }
         return $arrResult;
@@ -441,6 +444,7 @@ class Recipe_model extends DataMapper {
             $data->views = $recipes->views;
             $data->photo = $recipes->photo;
             $data->highlight = $recipes->highlight;
+            $data->counterrating = $recipe->getCounterRating($recipes->id);
             array_push($arrResult, $data);
         }
         return $arrResult;
@@ -456,6 +460,7 @@ class Recipe_model extends DataMapper {
         $sql = "SELECT * FROM categories JOIN recipes ON categories.recipe_id=recipes.id WHERE categories.name = LOWER('".$category1."') ORDER BY recipes.rating desc, recipes.views desc";
         $category->query($sql);
         $x = 0;
+        $recipe = new Recipe_model();
         foreach ($category as $recipes) {
             if($x >= $offset && $limit > 0){
                 if($recipes->status=='1' && $recipes->tmp_status=='0'){
@@ -473,6 +478,7 @@ class Recipe_model extends DataMapper {
                     $data->views = $recipes->views;
                     $data->photo = $recipes->photo;
                     $data->highlight = $recipes->highlight;
+                    $data->counterrating = $recipe->getCounterRating($recipes->id);
                     array_push($arrResult, $data);
                     $limit--;
                 }
@@ -512,6 +518,7 @@ class Recipe_model extends DataMapper {
                 $data->views = $recipes->views;
                 $data->photo = $recipes->photo;
                 $data->highlight = $recipes->highlight;
+                $data->counterrating = $recipe->getCounterRating($recipes->id);
                 array_push($arrResult, $data);
                 $limit--;
             }
@@ -549,6 +556,7 @@ class Recipe_model extends DataMapper {
             $data->ingredients = $recipes->getIngredients($recipes->id);
             $data->steps = $recipes->getSteps($recipes->id);
             $data->comments = $recipes->getCommentsRecipe($id);
+            $data->counterrating = $recipes->getCounterRating($id);
             return $data;
         }
         else{
@@ -571,6 +579,7 @@ class Recipe_model extends DataMapper {
                 $data->ingredients = $recipes->getIngredients($recipes->id);
                 $data->steps = $recipes->getSteps($recipes->id);
                 $data->comments = $recipes->getCommentsRecipe($id);
+                $data->counterrating = $recipes->getCounterRating($id);
                 return $data;
             }
             return FALSE;
@@ -1123,7 +1132,7 @@ class Recipe_model extends DataMapper {
         if(!empty($recipe_id)){
             $result_comments = array();
             $comments = new Comment();
-            $comments->where("recipe_id", $recipe_id)->get();
+            $comments->where("recipe_id", $recipe_id)->order_by("submit","desc")->get();
             foreach ($comments as $comment) {
                 $data = new stdClass();
                 $data->id = $comment->id;
@@ -1136,6 +1145,9 @@ class Recipe_model extends DataMapper {
         }
         return array();
     }
+    /*
+        digunakan untuk menambah sebuah comment pada resep
+    */
     function addComment($user_id=null, $recipe_id=null, $description=""){
         if(empty($user_id)){
             return false;
@@ -1154,6 +1166,19 @@ class Recipe_model extends DataMapper {
             $comment->submit = date("Y-m-d H:i:s");
             return $comment->skip_validation()->save();
         }
+    }
+    /*
+        digunakan untuk memperoleh jumlah pemberi rating pada sebuah resep, return -1 bila tidak ada id resep
+    */
+    function getCounterRating($recipe_id){
+        if(empty($recipe_id)){
+            $recipe_id = $this->recipe_id;
+        }
+        if(!empty($recipe_id)){
+            $rating = new Rating();
+            return $rating->where("recipe_id",$recipe_id)->count();
+        }
+        return -1;
     }
 }
 

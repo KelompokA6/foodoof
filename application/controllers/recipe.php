@@ -249,8 +249,8 @@ class Recipe extends CI_Controller {
 							'comment_user_id' => $obj->user_id,
 							'comment_description' => nl2br($obj->description),
 							'comment_submit' => strtotime($obj->submit),
-							'comment_user_name' => $user->getProfile($obj->id)->name,
-							'comment_user_photo' => $user->getProfile($obj->id)->photo,
+							'comment_user_name' => $user->getProfile($obj->user_id)->name,
+							'comment_user_photo' => $user->getProfile($obj->user_id)->photo,
 						);
 					array_push($comments, $temp);
 				}

@@ -25,6 +25,7 @@ class Home_viewer extends CI_Model
       $row->top_recipe_author_photo = $row->author_photo;
       $row->top_recipe_views = $row->views;
       $row->top_recipe_rating = $row->rating;
+      $row->top_recipe_total_user_rating = $row->counterrating;
     }
 
     foreach ($listRecently as $row) {

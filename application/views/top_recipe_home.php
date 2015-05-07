@@ -20,7 +20,7 @@
         <div class="col-md-9 col-xs-9 col-no-padding">
           <input id="input-2b" class="rating" value="{top_recipe_rating}" data-readonly='true' data-min="0" data-max="5" data-step="0.1" data-stars=5 data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} " data-star-captions="{}" data-show-clear="false">
         </div>
-        <div class="col-md-3 col-xs-3 col-no-padding rating-users text-center" title="Total User">(<i class="fa fa-user"></i><!-- {top_recipe_total_user_rating} -->18)</div>
+        <div class="col-md-3 col-xs-3 col-no-padding rating-users text-center" title="Total User">(<i class="fa fa-user"></i>{top_recipe_total_user_rating})</div>
       </div>
     </div>
   </div>
