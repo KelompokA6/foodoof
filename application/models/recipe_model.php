@@ -1208,26 +1208,28 @@ class Recipe_model extends DataMapper {
         if(!empty($recipe_id)){
             $report = new Report();
             $report->where("recipe_id", $recipe_id);
-            $report->where("advertisement", "1");
+            $report->where("reason", "advertisement");
             $cads = $report->count();
             $report->clear();
             $report->where("recipe_id", $recipe_id);
-            $report->where("spam", "1");
+            $report->where("reason", "spam");
             $cspam = $report->count();
             $report->clear();
             $report->where("recipe_id", $recipe_id);
-            $report->where("pornographic", "1");
+            $report->where("reason", "pornographic");
             $cporn = $report->count();
             $report->clear();
             $report->where("recipe_id", $recipe_id);
-            $report->where("other !=", "");
+            $report->not_ilike("reason", "pornographic");
+            $report->not_ilike("reason", "advertisement");
+            $report->not_ilike("reason", "spam");
             $report->get();
             $x = 0;
             $list_details_report = array();
             foreach ($report as $reports) {
                 $data = new stdClass();
                 $data->detail = $reports->other;
-                array_push($list_details_report, $data)
+                array_push($list_details_report, $data);
                 $x++;
             }
             $cother = $x;

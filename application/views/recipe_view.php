@@ -40,8 +40,18 @@
   							<i class="caret pull-right" style="color:#eee; margin-top:8px"></i>
   						</button>
 			            <ul class="dropdown-menu dropdown-option bullet pull-center" role="menu" aria-labelledby="dropdownMenu1">
-			              <li role="presentation" id="add-favorite" data-recipeid="{recipe_id}"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Favorite</a></li>
-			              <li role="presentation" id="add-cook-later" data-recipeid="{recipe_id}"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Cook Later</a></li>
+			            	<?php if(!empty($this->session->userdata("user_id"))):?>
+			              	<li role="presentation" id="add-favorite" data-recipeid="{recipe_id}"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Favorite</a></li>
+			              	<li role="presentation" id="add-cook-later" data-recipeid="{recipe_id}"><a role="menuitem" tabindex="-1"><i class="fa fa-plus icons"></i> Cook Later</a></li>
+			              	<?php endif;
+					      	if(empty($this->session->userdata("user_id"))):?>
+					      	<div class="text-center">
+					      		Please Login First
+					      	</div>
+					      	<div class="text-center" style="padding:10px 15px">
+					      		<a href="<?php echo base_url();?>index.php/home/login"><button class="btn button-secondary">Login</button></a>
+					      	</div>
+					  		<?php endif;?>
 			            </ul>
 					</div>
 					<div class="col-md-6 col-xs-6" style="padding-left:5px" title="Print Recipe">
@@ -97,7 +107,8 @@
 						    <div class="arrow"></div>
 						    <div class="popover-title popover-primary"><span class="close" data-dismiss="popover-x">&times;</span>Report</div>
 						    <div class="popover-content">
-						    	<form role="form" action="<?php echo base_url();?>index.php/home/report" class="form-horizontal" method="post" enctype="multipart/form-data">
+						    	<?php if(!empty($this->session->userdata("user_id"))):?>
+						    	<form role="form" action="<?php echo base_url();?>index.php/home/addReport" class="form-horizontal" method="post" enctype="multipart/form-data">
 							       	<div class="form-group">
 									    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
 									      	<div class="checkbox">
@@ -136,6 +147,15 @@
 							        	<button type="submit" class="btn button-primary">Send Report</button>
 							      	</div>
 						      	</form>
+						      	<?php endif;
+						      	if(empty($this->session->userdata("user_id"))):?>
+						      	<div class="text-center">
+						      		Please Login First
+						      	</div>
+						      	<div class="text-center" style="padding:10px 15px">
+						      		<a href="<?php echo base_url();?>index.php/home/login"><button class="btn button-secondary">Login</button></a>
+						      	</div>
+						  		<?php endif;?>
 						    </div>
 						</div>
 					</div>

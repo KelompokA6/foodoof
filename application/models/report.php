@@ -58,14 +58,20 @@ class Report extends DataMapper {
         }
         if(!empty($user_id)){
             $report = new Report();
-            $report->get_by_user_id($user_id);
-            $list_reported_user = array();
+            $recipe = new Recipe_model();
+            $listRecipe = array();
+            $recipe->get_by_author($user_id);
+            foreach ($recipe as $rcp) {
+                array_push($listRecipe, $rcp->id);
+            }
+            $report->where_in("recipe_id", $listRecipe);
+            $list_reported_recipe = array();
             foreach ($report as $reports) {
                 $data = new stdClass();
                 $data->recipe_id = $reports->recipe_id;
-                array_push($list_reported_user, $data);
+                array_push($list_reported_recipe, $data);
             }
-            return $list_reported_user;
+            return $list_reported_recipe;
         }
         return array();
     }
