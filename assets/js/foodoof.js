@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$lock = 0;
 	$submitStatus=false;
 	$hasChanged = false;
-	$baseurl = "http://localhost/foodoof";
+	$baseurl = "http://localhost/foodoof/index.php";
 	$.get( $baseurl+"/processAjax/schedulercleantmp", function( data ) {
 	},"json");
 	/*
@@ -1253,7 +1253,51 @@ $(document).ready(function() {
 		$(this).parent().next().slideToggle("slow");;
 	});
 	
-	
+	/*
+		init table catalog
+	*/
+	$("#catalog-table").dataTable();
+	$('.edit').editable({
+	    mode: "inline",
+	    url: $baseurl+"/tempview/updateCatalogAjax",
+	    success: function(response, newValue) {
+	    	response = $.parseJSON(response);
+		    if(response.status==="success"){
+		    	$.notify({
+					// options
+					message: response.message 
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'success',
+					delay: 2000,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});
+		    }
+		    else{
+		    	$.notify({
+					// options
+					message: response.message 
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'warnig',
+					delay: 2000,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});		
+		    }
+		}
+	});
 	/*
 	init javascript bootstrap;
 	*/
@@ -1267,7 +1311,7 @@ $(document).ready(function() {
 		$(this).parent().parent().removeClass("animated");
 		$(this).parent().parent().removeClass("fadeInDown");
 	});
-	
+
 	$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message").data("countmessage") });
 	$(".conversation-list-item[data-id='1']").iosbadge({ theme: 'ios', size: 28, content: $("#icon-message").data("countmessage") });
 	$(".conversation-list-item[data-id='2']").iosbadge({ theme: 'ios', size: 28, content: $("#icon-message").data("countmessage") });

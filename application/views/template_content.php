@@ -11,6 +11,7 @@
     <link href="<?php echo base_url();?>assets/plugin/bower-components/kartik-star-rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url();?>assets/plugin/bower-components/kartik-file-input/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugin/bower-components/bootstrap/dist/css/bootstrap.min.css">
     <link href="<?php echo base_url();?>assets/plugin/bower-components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>assets/plugin/bower-components/font-awesome/css/iconFont.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>assets/plugin/bower-components/elusive-icons/css/elusive-icons.min.css" rel="stylesheet" type="text/css">
@@ -18,8 +19,11 @@
     <link href="<?php echo base_url();?>assets/plugin/bower-components/owl-carousel/assets/owl.carousel.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url();?>assets/plugin/bower-components/badges/iosbadge.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap-tagsinput.css" media="all" rel="stylesheet" type="text/css" />
-    <link src="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-popover-x/bootstrap-popover-x.css" type="text/javascript"/>
+    <link href="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-popover-x/bootstrap-popover-x.css" rel="stylesheet"/>
     <link href="<?php echo base_url();?>assets/plugin/bower-components/enhancement/css/dropdowns-enhancement.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url();?>assets/plugin/bower-components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>assets/plugin/bower-components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/plugin/bower-components/bootstrap3-editable/css/bootstrap-editable.css" media="all" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/animate.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof.css">
@@ -133,6 +137,9 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/tinymce/tinymce.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/moment/moment.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/livestamp/livestamp.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/datatables/media/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/bootstrap3-editable/js/bootstrap-editable.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jasny-bootstrap.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/online-user.js"></script>

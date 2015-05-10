@@ -331,4 +331,69 @@ class Tempview extends CI_Controller {
 		$r = new Recipe_model();
 		print_r($r->getRelatedRecipe($id));
 	}
+	public function catalog(){
+		$this->load->model('home_viewer');
+		$this->load->library('session');
+		if($this->session->userdata('user_id')==''){
+			redirect(base_url()."index.php/home/login", "refresh");
+		}
+		$u = new User_model();
+		$u->get_by_id($this->session->userdata('user_id'));
+		if(strtolower($u->status)!='admin'){
+			return $this->pageNotFound();	
+		}
+
+		$this->load->library('parser');
+		$menubar = $this->home_viewer->getMenubar();
+		
+		$cat = new Catalog();
+		$list = $cat->getCatalog();
+		$entries = array();
+		foreach ($list as $obj) {
+			$temp = array(
+				'catalog_id' => $obj->id,
+				'catalog_name' => $obj->name,
+				'catalog_unit' => $obj->units,
+				'catalog_quantity' => $obj->quantity,
+				'catalog_price' => $obj->price,
+			);
+			array_push($entries, $temp);
+		}
+		$data1 = array(
+			'catalog_entries' => $entries,
+			);
+		$content_admin = $this->parser->parse('catalog_view_v2', $data1, TRUE);	
+		$sidebar_admin = $this->parser->parse('sidebar_admin', array(), TRUE);	
+					
+		$data1 = array(
+			'content_admin' => $content_admin,
+			'sidebar_admin' => $sidebar_admin
+			);
+		$content_website = $this->parser->parse('template_admin', $data1, TRUE);	
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
+	}
+	public function updateCatalogAjax(){
+		$id = $this->input->post("pk");
+		$attr = $this->input->post("name");
+		$value = $this->input->post("value");
+		$catalog = new Catalog();
+		$catalog->where("id", $id);
+		if($catalog->update($attr, $value)){
+			$data = array(
+				"status"	=>	"success",
+				"message"	=>	"Successfully Edit ".$attr." Catalog With ID ".$id,
+			);	
+		}
+		else{
+			$data = array(
+				"status"	=>	"failed",
+				"message"	=>	"Failed Edit ".$attr." Catalog With ID ".$id,
+			);	
+		}
+		echo json_encode($data);
+	}
 }

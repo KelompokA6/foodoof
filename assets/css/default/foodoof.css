@@ -1764,7 +1764,11 @@ textarea[readonly], textarea[readonly]:focus, textarea[readonly]:hover{
 .catalog-list{
   max-height: 450px;
   overflow-x: auto;
-
+}
+#catalog-table > tbody > tr > td.edit{
+  text-decoration: underline;
+  text-decoration-color: #F7C43A;
+  -moz-text-decoration-color: #F7C43A;
 }
 
 /*
