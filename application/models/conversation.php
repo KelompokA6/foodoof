@@ -55,7 +55,7 @@ class Conversation extends DataMapper {
         return false;
     }
     /*
-        Memperoleh member dari conversation tersebut
+        Memperoleh list id user dari conversation tersebut
     */
     function getMembers($conversation_id=null, $user_id=null){
         if(empty($conversation_id)){
