@@ -3,25 +3,48 @@
 class Catalog extends DataMapper {
   var $table = "catalogs";
 
-  /*function __construct($data)
+  function __construct()
   {
     parent::__construct();
-    $this->name = $data->name;
-    $this->units = $data->units;
-    $this->price = $data->price;
-  }*/
+  }
 
-  function ins($name, $units, $price)
+  function addCatalog($name="", $units="", $quantity="", $price=0)
   {
-    $this->where("name", $name)->where("units", $units);
-    if($this->count() > 0)
-    {
-      $this->where("name", $name)->where("units", $units)->update("price", $price);
-    } else {
-      $this->name = $name;
-      $this->units = $units;
-      $this->price = $price;
-      $this->save();
+    $this->name = $name;
+    $this->units = $units;
+    $this->price = $price;
+    if($this->skip_validation->save()){
+      $this->clear();
+      return true;
+    }
+    else{
+      $this->clear();
+      return false;
+    }  
+  }
+
+  function updateCatalog($id=null, $name="", $units="", $quantity="", $price=0){
+    if(empty($id)){
+      $id=$this->$id;
+    }
+    if(!empty($id)){
+      $this->where("id", $id);
+      $data = array('name' => strtolower($name),
+                    'units' => strtolower($units),
+                    'quantity' => strtolower($quantity),
+                    'price' => $price
+              );
+      if($this->update($data)){
+        $this->clear();
+        return true;
+      }
+      else{
+       $this->clear();
+        return false; 
+      }
+    }
+    else{
+      return false;
     }
   }
 
