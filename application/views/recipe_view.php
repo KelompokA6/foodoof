@@ -180,7 +180,7 @@
 	  					<div class="col-md-12 col-xs-12 col-no-padding owl-carousel">
 	  						{related_recipe_entries}
 	  						<div class="col-md-12 col-xs-12 related-recipe-entry item" title="{related_recipe_name}">
-								<img src="<?php echo base_url();?>{related_recipe_photo}" class="img-responsive col-md-12 col-xs-12 col-no-padding">
+								<img href='<?php echo base_url();?>index.php/recipe/get/{related_recipe_id}' src="<?php echo base_url();?>{related_recipe_photo}" class="img-responsive col-md-12 col-xs-12 col-no-padding">
 								<a href='<?php echo base_url();?>index.php/recipe/get/{related_recipe_id}' class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
 							</div>
 							{/related_recipe_entries}
