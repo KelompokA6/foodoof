@@ -66,12 +66,11 @@
   						</button>
 						<ul class="dropdown-menu dropdown-option bullet pull-center" role="menu" aria-labelledby="dropdownMenu1">
 			              <li role="presentation" id="share-fb">
-			              	<a role="menuitem" class="fb-share" tabindex="-1">
+			              	<a role="menuitem" class="fb-share" tabindex="-1" onclick='window.open("https://www.facebook.com/sharer/sharer.php?app_id=718024521543205&sdk=joey&u="+encodeURIComponent(window.location.toString())+"&display=popup", "", "width=600, height=300")'>
 			              		<span class="fa-stack fa-lg fa-stack-lg">
 								  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
 								  <i class="fa fa-facebook fa-stack-1x fa-inverse fa-xs"></i>
-								</span> Facebook
-			              	</a>
+								</span> Facebook</a>
 			              </li>
 			              <li role="presentation" id="share-twitter">
 			              	<a role="menuitem" class="twitter-share" tabindex="-1">
