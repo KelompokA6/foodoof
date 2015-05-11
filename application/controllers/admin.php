@@ -151,28 +151,25 @@ class Admin extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 	}
 
-	public function update(){
-		$this->load->library('session');
-		if($this->session->userdata('user_id')==''){
-			redirect(base_url()."index.php/home/login", "refresh");
+	public function updateCatalogAjax(){
+		$id = $this->input->post("pk");
+		$attr = $this->input->post("name");
+		$value = $this->input->post("value");
+		$catalog = new Catalog();
+		$catalog->where("id", $id);
+		if($catalog->update($attr, $value)){
+			$data = array(
+				"status"	=>	"success",
+				"message"	=>	"Successfully Edit ".$attr." Catalog With ID ".$id,
+			);	
 		}
-		$u = new User_model();
-		$u->get_by_id($this->session->userdata('user_id'));
-		if(strtolower($u->status)!='admin'){
-			$this->pageNotFound();	
+		else{
+			$data = array(
+				"status"	=>	"failed",
+				"message"	=>	"Failed Edit ".$attr." Catalog With ID ".$id,
+			);	
 		}
-		$cat = new Catalog();
-		$list = $cat->getCatalog();
-		foreach ($list as $obj) {
-			$name = $this->input->post("catalog_name");
-			$description = $this->input->post("catalog_unit");
-			$portion = $this->input->post("catalog_quantity");
-			$duration = $this->input->post("catalog_price");
-			$cat->updateCatalog($obj->id, $name, $units, $quantity, $price);
-		}
-		$highlight_alert = $success ? "<div class=\"alert alert-success text-center\">catalog updated</div>" : "<div class=\"alert alert-danger\">update catalog failed</div>";
-		$this->session->set_flashdata('alert-admin', $highlight_alert);
-		redirect(base_url()."index.php/admin");
+		echo json_encode($data);
 	}
 
 	public function sendemail(){
