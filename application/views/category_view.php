@@ -12,14 +12,14 @@
   {category_recipe_entries}
   <div class="col-md-12 col-xs-12 col-no-padding-right page-header" style="margin-top:5px">
     <div class="col-md-2 col-xs-12 detail-list-img" style="margin-right:2px">
-        <a href="<?php echo base_url();?>recipe/get/{category_recipe_id}">
+        <a href="<?php echo base_url();?>index.php/recipe/get/{category_recipe_id}">
           <img class="img-responsive img-rounded img-list-category" src="<?php echo base_url();?>{category_recipe_photo}"/>
         </a>
     </div>
     <div class="col-md-9 col-xs-12 detail-list">
       <div class="col-md-12 col-xs-12 details">
         <div class="col-md-12 col-xs-12 xs-text-center">
-          <a href="<?php echo base_url();?>recipe/get/{category_recipe_id}">
+          <a href="<?php echo base_url();?>index.php/recipe/get/{category_recipe_id}">
             <h4><p class="text-capitalize title-recipe">{category_recipe_name}</p></h4>
           </a>
         </div>
@@ -49,7 +49,7 @@
         if($category_recipe_page_size - $category_recipe_page_now == ($category_recipe_page_size-1)){
             echo "disabled";
           }
-        echo "'><a href='".base_url()."recipe/category/".$category_name."?page=".($category_recipe_page_now - 1)."' aria-label='Previous'>
+        echo "'><a href='".base_url()."index.php/recipe/category/".$category_name."?page=".($category_recipe_page_now - 1)."' aria-label='Previous'>
             <span aria-hidden='true'>&laquo;</span>
           </a></li>";
         for ($i=1; $i <= $category_recipe_page_size ; $i++) { 
@@ -59,7 +59,7 @@
           }
           echo "
             <li class=".$active.">
-              <a href='".base_url()."recipe/category/".$category_name."?page=".$i."'>".$i."</a>
+              <a href='".base_url()."index.php/recipe/category/".$category_name."?page=".$i."'>".$i."</a>
             </li>
           ";
         }
@@ -68,7 +68,7 @@
         if($category_recipe_page_size == $category_recipe_page_now){
             echo "disabled";
           }
-        echo "'><a href='".base_url()."recipe/category/".$category_name."?page=".($category_recipe_page_now + 1)."' aria-label='Next'>
+        echo "'><a href='".base_url()."index.php/recipe/category/".$category_name."?page=".($category_recipe_page_now + 1)."' aria-label='Next'>
             <span aria-hidden='true'>&raquo;</span>
           </a></li></ul></nav>
         ";
