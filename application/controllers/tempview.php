@@ -410,17 +410,20 @@ class Tempview extends CI_Controller {
 		$details = array();
 		foreach ($detil as $obj) {
 		 	# code...
-		 	$temp = array("reported_recipe_entries"=> array(
+		 	$temp = array(
 		 		'reported_recipe_name' => $obj->recipe_id, 
 		 		'reported_recipe_count_ads' => $obj->cads,
 		 		'reported_recipe_count_porn' => $obj->cporn,
 		 		'reported_recipe_count_spam' => $obj->cspam,
 		 		'reported_recipe_count_other' => $obj->cother,
-		 		'reported_recipe_other_entries' => $obj->list_details_report)
+		 		'reported_recipe_other_entries' => $obj->list_details_report
 		 	);
 		 	array_push($details, $temp);
 		} 
 	}
-
+	$data1 = array(
+		'reported_recipe_entries' => $details,
+		);
+	$reported_user_view = $this->parser->parse('reported_user_view', $data1, TRUE);	
   }
 }
