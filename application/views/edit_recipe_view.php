@@ -128,7 +128,7 @@
 											    <div class="arrow"></div>
 											    <div class="popover-title"><span class="close" data-dismiss="popover-x">&times;</span>Information Ingredient</div>
 											    <div class="popover-content">
-											       <textarea class="form-control" name="ingredient_info[]">{edit_recipe_ingredient_subject}</textarea>
+											       <textarea class="form-control" name="ingredient_info[]">{edit_recipe_ingredient_info}</textarea>
 											    </div>
 											</div>
 								    	</div>

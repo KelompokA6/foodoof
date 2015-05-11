@@ -33,6 +33,7 @@ class Recipe extends CI_Controller {
 							'edit_recipe_ingredient_subject' => htmlspecialchars($obj->name),
 							'edit_recipe_ingredient_quantity' => $obj->quantity,
 							'edit_recipe_ingredient_unit' => htmlspecialchars($obj->units),
+							'edit_recipe_ingredient_info' => htmlspecialchars($obj->info),
 						);
 					array_push($ingre, $temp);
 				}
@@ -124,18 +125,6 @@ class Recipe extends CI_Controller {
 			$temp['quantity'] = htmlspecialchars($quantity[$i]);
 			$temp['units'] = htmlspecialchars($unit[$i]);
 			$temp['info'] = htmlspecialchars($info[$i]);
-			if (ctype_space($temp['name']) || ctype_space($temp['units'])){
-				$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
-				$this->session->set_flashdata('alert-notification', $alert);
-				redirect(base_url()."index.php/recipe/edit/$id");
-				return;
-			}
-			if (!preg_match("/^[a-zA-Z0-9$%@\\*()\& '-]{1,100}$/", trim($temp['name'])) || !preg_match("/^[a-zA-Z0-9$%@\\*()\& '-]{1,100}$/", trim($temp['units']))){
-				$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
-				$this->session->set_flashdata('alert-notification', $alert);
-				redirect(base_url()."index.php/recipe/edit/$id");
-				return;
-			}
 			array_push($ingredients, $temp);
 		}
 		$stdes =  $this->input->post("step-description");
@@ -143,18 +132,6 @@ class Recipe extends CI_Controller {
 		$steps = array();
 		for ($i=0; $i < sizeof($stdes); $i++) { 
 			$temp['description'] = htmlspecialchars($stdes[$i]);
-			if (ctype_space($temp['description'])){
-				$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
-				$this->session->set_flashdata('alert-notification', $alert);
-				redirect(base_url()."index.php/recipe/edit/$id");
-				return;
-			}
-			if (!preg_match("/^[a-zA-Z0-9$%@\\*()\& '-]{1,100}$/", trim($temp['description']))){
-				$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
-				$this->session->set_flashdata('alert-notification', $alert);
-				redirect(base_url()."index.php/recipe/edit/$id");
-				return;
-			}
 			array_push($steps, $temp);
 		}
 		// print_r($steps);
