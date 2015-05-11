@@ -401,10 +401,11 @@ class Tempview extends CI_Controller {
   	/*
 		ambil resep2 user yg dilaporin, ambil detailnya di recipe_model
   	*/
-	$user = new User_model();
+	$user = new Report();
 	$listRepo = $user -> getListReportUser();
-	foreach ($listRepo as $objRepo => $value) {
-		$recipe = new report();
+	print_r($listRepo);
+	foreach ($listRepo as $objRepo) {
+		$recipe = new Report();
 		$list = $recipe -> getListReportByUserId($objRepo->id);
 		$namauser = array();
 		foreach ($list as $obj) {
@@ -425,7 +426,7 @@ class Tempview extends CI_Controller {
 			 	);
 			 	array_push($details, $temp);
 			}
-			array_push($namauser, $temp1) 
+			array_push($namauser, $temp1); 
 		}
 		$data1 = array(
 			'reported_recipe_entries' => $details,
