@@ -39,12 +39,13 @@ class Report extends DataMapper {
         mengembalikan list user-user yang telah dilaporkan
     */
     function getListReportUser(){
-        $report = new Report();
-        $report->get();
+        $user = new User_model();
+        $user->ilike("status","reported");
+        $user->get();
         $list_reported_user = array();
-        foreach ($report as $reports) {
+        foreach ($user as $reports) {
             $data = new stdClass();
-            $data->id = $reports->user_id;
+            $data->id = $reports->id;
             array_push($list_reported_user, $data);
         }
         return $list_reported_user;
@@ -65,6 +66,7 @@ class Report extends DataMapper {
                 array_push($listRecipe, $rcp->id);
             }
             $report->where_in("recipe_id", $listRecipe);
+            $report->get();
             $list_reported_recipe = array();
             foreach ($report as $reports) {
                 $data = new stdClass();

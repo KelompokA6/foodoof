@@ -1231,12 +1231,14 @@ class Recipe_model extends DataMapper {
             $list_details_report = array();
             foreach ($report as $reports) {
                 $data = new stdClass();
-                $data->detail = $reports->other;
+                $data->detail = $reports->reason;
                 array_push($list_details_report, $data);
                 $x++;
             }
             $cother = $x;
             $data = new stdClass();
+            $r=new Recipe_model();
+            $data->name = $r->getRecipeProfile($recipe_id)->name;
             $data->count_advertisement = $cads;
             $data->count_spam = $cspam;
             $data->count_pornographic = $cporn;

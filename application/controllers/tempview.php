@@ -401,6 +401,7 @@ class Tempview extends CI_Controller {
   	/*
 		ambil resep2 user yg dilaporin, ambil detailnya di recipe_model
   	*/
+	$this->load->library('parser');
 	$user = new Report();
 	$listRepo = $user -> getListReportUser();
 	print_r($listRepo);
@@ -408,24 +409,24 @@ class Tempview extends CI_Controller {
 		$recipe = new Report();
 		$list = $recipe -> getListReportByUserId($objRepo->id);
 		$namauser = array();
-		foreach ($list as $obj) {
+		print_r($list);
+		$s = new User_model();
+		$details = array();
+		foreach ($list as $obj1) {
 			# code...
-			$temp1 = array('reported_user_name' => $obj->name);
+			$temp1 = array('reported_user_name' => $s->getProfile($objRepo->id)->name);
 			$detilres = new Recipe_model();
-			$detil = $detilres ->  getDetailsReportByRecipeId($obj->id);
-			$details = array();
-			foreach ($detil as $obj) {
-			 	# code...
-			 	$temp = array(
-			 		'reported_recipe_name' => $obj->recipe_id, 
-			 		'reported_recipe_count_ads' => $obj->cads,
-			 		'reported_recipe_count_porn' => $obj->cporn,
-			 		'reported_recipe_count_spam' => $obj->cspam,
-			 		'reported_recipe_count_other' => $obj->cother,
-			 		'reported_recipe_other_entries' => $obj->list_details_report
+			$obj = $detilres ->  getDetailsReportByRecipeId($obj1->recipe_id);
+			print_r($obj);
+			$temp = array(
+			 		'reported_recipe_name' => $obj->name, 
+			 		'reported_recipe_count_ads' => $obj->count_advertisement,
+			 		'reported_recipe_count_porn' => $obj->count_pornographic,
+			 		'reported_recipe_count_spam' => $obj->count_spam,
+			 		'reported_recipe_count_other' => $obj->count_other,
+			 		'reported_recipe_other_entries' => $obj->count_other_details
 			 	);
-			 	array_push($details, $temp);
-			}
+			array_push($details, $temp);
 			array_push($namauser, $temp1); 
 		}
 		$data1 = array(
