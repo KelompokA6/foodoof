@@ -1201,6 +1201,9 @@ class Recipe_model extends DataMapper {
         }
         return array();
     }
+    /*
+        mengembalikan detil report dari sebuah recipe
+    */
     function getDetailsReportByRecipeId($recipe_id=null){
         if(empty($recipe_id)){
             $recipe_id = $this->id;

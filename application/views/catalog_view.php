@@ -47,10 +47,10 @@
 			    	</div>
 				</div>
 				{/catalog_entries}
+				<div class="col-md-12 col-sm-12 col-xs-12 text-center">
+		    		<button type="submit" class="btn button-primary">Update</button>
+		    	</div>
 			</form>
-			<div class="col-md-12 col-sm-12 col-xs-12 text-center">
-	    		<button type="submit" class="btn button-primary">Update</button>
-	    	</div>
 		</div>
 	</div>
 </div>	
