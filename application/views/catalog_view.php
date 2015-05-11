@@ -11,7 +11,7 @@
 						<i class="fa fa-plus"></i> <span>Add Entry</span>
 					</div>
 				</div>
-				<form class="form-horizontal col-md-12 col-xs-12 col-sm-12" role="form" method="post" enctype="multipart/form-data" style="display:none">
+				<form class="form-horizontal col-md-12 col-xs-12 col-sm-12" action="<?php echo base_url();?>index.php/admin/saveNewCatalog" role="form" method="post" enctype="multipart/form-data" style="display:none">
 					<div class="col-md-3 col-sm-3 col-xs-3">
 			      		<input type="text" maxlength="254" name="entry_subject" class="form-control input-ingredient" placeholder="Ingredient Name">
 			    	</div>
