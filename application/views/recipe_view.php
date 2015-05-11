@@ -231,7 +231,7 @@
 							<tr>
 								<td class="text-capitalize"> <?php echo $obj['ingre_name'];?>
 									<?php if(!empty($obj['ingre_info'])):?>
-										<i class="fa fa-info-circle icons-secondary fa-lg info-ingredients-popover" role="button" data-toggle="popover" title="Info Ingredient" data-content="<?php $obj['ingre_name'];?>" data-trigger="hover"></i>
+										<i class="fa fa-info-circle icons-secondary fa-lg info-ingredients-popover" role="button" data-toggle="popover" title="Info Ingredient" data-content=	"<?php echo $obj['ingre_info'];?>" data-trigger="hover"></i>
 									<?php endif;?>
 								</td>
 								<td> <?php echo $obj['ingre_quantity'];?> <?php echo $obj['ingre_units'];?> <?php echo ($obj['ingre_info']);?>
