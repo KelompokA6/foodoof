@@ -6,6 +6,7 @@ $(document).ready(function() {
 	$submitStatus=false;
 	$hasChanged = false;
 	$baseurl = "http://localhost/foodoof/index.php";
+	$baseurlnoConflict = "http://localhost/foodoof/";
 	$.get( $baseurl+"/processAjax/schedulercleantmp", function( data ) {
 	},"json");
 	/*
@@ -805,7 +806,7 @@ $(document).ready(function() {
 	$(".checkedHighlight").each(function(i){
 		if($(this).prop('checked')){
 			$idHighlight = $(this).val();
-			$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'><div class='col-md-3 col-xs-3 col-no-padding'><img class='img-responsive' src='../"+$(this).data('imgsrc')+"'/></div><div class='col-md-9 col-xs-9'>"+$(this).data('recipename')+"</div></div>";
+			$addHighlightRecipe="<div class='col-md-12 list-group-item' data-id='"+$idHighlight+"'title='highlight setting'><div class='col-md-3 col-xs-3 col-no-padding'><img class='img-responsive' src='"+$baseurlnoConflict+$(this).data('imgsrc')+"'/></div><div class='col-md-9 col-xs-9'>"+$(this).data('recipename')+"</div></div>";
 			$("#listHightlight").append($addHighlightRecipe);
 		}
 	});

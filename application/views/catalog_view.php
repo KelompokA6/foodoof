@@ -61,7 +61,7 @@
 	                <td class="edit" data-type="text" data-name="quantity" data-pk="{catalog_id}" data-title="Enter Quantity Catalog">
 	                	{catalog_quantity}
 	                </td>
-	                <td class="edit" data-type="text" data-name="price" data-pk="{catalog_id}" data-title="Enter Price Catalog">
+	                <td class="edit" data-type="number" data-name="price" data-pk="{catalog_id}" data-title="Enter Price Catalog">
 	                	{catalog_price}
 	                </td>
 	            </tr>

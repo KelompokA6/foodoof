@@ -2,6 +2,9 @@
 
 class Admin extends CI_Controller {
 	public function index(){
+		$this->highlight();
+	}
+	public function highlight(){
 		$this->load->model('home_viewer');
 		$this->load->library('session');
 		if($this->session->userdata('user_id')==''){
