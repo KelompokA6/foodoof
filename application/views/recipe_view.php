@@ -206,14 +206,15 @@
 					</div>
 					<div class="col-md-12 col-xs-12 col-no-padding-right">
 						<table class="table table-striped table-hover">
+						<?php $i = 0; ?>
 						{recipe_ingredients}
 							<tr>
 								<td class="text-capitalize"> {ingre_name}
-									<?php if(!empty($ingre_info)):?>
+									<?php if(!empty($recipe_ingredients[$i++]['ingre_info'])):?>
 										<i class="fa fa-info-circle icons-secondary fa-lg" role="button" data-toggle="popover" title="Info Ingredient" data-content="{ingre_info}" data-trigger="hover"></i>
 									<?php endif;?>
 								</td>
-								<td> {ingre_quantity} {ingre_units}
+								<td> {ingre_quantity} {ingre_units} <?php print_r($recipe_ingredients[$i]['ingre_info']); echo $i;?>
 								</td>
 							</tr>
 						{/recipe_ingredients}
