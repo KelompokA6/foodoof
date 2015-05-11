@@ -164,7 +164,7 @@ class Recipe extends CI_Controller {
 		}
 	}
 
-	public function get($id){
+	public function get($id, $cetak=FALSE){
 		$recipe = new Recipe_model();
 		$recipe->incrementViews($id);
 		$user = new User_model();
@@ -253,12 +253,21 @@ class Recipe extends CI_Controller {
 
 			//$data = array_map("htmlspecialchars", $data);
 			$content_website = $this->parser->parse('recipe_view', $data, TRUE);
-			$data = array(
+			
+			// $data = array_map("htmlspecialchars", $data);
+			if ($cetak){
+				$data = array(
+						"content_website" => $content_website,
+					);
+				return $this->parser->parse('template_content', $data, TRUE);
+			} else {
+				$data = array(
 						"menubar" => $menubar,
 						"content_website" => $content_website,
 					);
-			// $data = array_map("htmlspecialchars", $data);
-			$this->parser->parse('template_content', $data);
+				$this->parser->parse('template_content', $data);
+			}
+			
 		} else {
 			$this->pageNotFound();
 		}	
@@ -355,5 +364,25 @@ class Recipe extends CI_Controller {
 			$this->session->set_flashdata('alert-notification', $alert);
 		}
 		redirect(base_url()."index.php/recipe/get/$recipe_id");
+	}
+
+	public function cetak($id){
+		// As PDF creation takes a bit of memory, we're saving the created file in /downloads/reports/
+		$pdfFilePath = "./assets/recipe$id.pdf";
+		$data['page_title'] = 'Hello world'; // pass data to the view
+		 
+		if (file_exists($pdfFilePath) == FALSE)
+		{
+		    ini_set('memory_limit','32M'); // boost the memory limit if it's low <img src="https://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley">
+		    $html = $this->get($id, TRUE); // render the view into HTML
+		    echo "$html";
+		    $this->load->library('pdf');
+		    $pdf = $this->pdf->load();
+		    $pdf->SetFooter($_SERVER['HTTP_HOST'].'|{PAGENO}|'.date(DATE_RFC822)); // Add a footer for good measure <img src="https://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley">
+		    $pdf->WriteHTML($html); // write the HTML into the PDF
+		    $pdf->Output($pdfFilePath, 'F'); // save to file because we can
+		}
+		 
+		//redirect(base_url()."/assets/recipe$id.pdf");
 	}
 }
