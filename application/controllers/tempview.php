@@ -396,4 +396,31 @@ class Tempview extends CI_Controller {
 		}
 		echo json_encode($data);
 	}
+
+	public function detilReport(){
+  	/*
+		ambil resep2 user yg dilaporin, ambil detailnya di recipe_model
+  	*/
+	$recipe = new report();
+	$list = $recipe -> getListReportByUserId();
+	foreach ($list as $obj) {
+		# code...
+		$detilres = new Recipe_model();
+		$detil = $detilres ->  getDetailsReportByRecipeId($obj->id);
+		$details = array();
+		foreach ($detil as $obj) {
+		 	# code...
+		 	$temp = array("reported_recipe_entries"=> array(
+		 		'reported_recipe_name' => $obj->recipe_id, 
+		 		'reported_recipe_count_ads' => $obj->cads,
+		 		'reported_recipe_count_porn' => $obj->cporn,
+		 		'reported_recipe_count_spam' => $obj->cspam,
+		 		'reported_recipe_count_other' => $obj->cother,
+		 		'reported_recipe_other_entries' => $obj->list_details_report)
+		 	);
+		 	array_push($details, $temp);
+		} 
+	}
+
+  }
 }
