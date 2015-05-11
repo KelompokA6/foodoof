@@ -396,45 +396,4 @@ class Tempview extends CI_Controller {
 		}
 		echo json_encode($data);
 	}
-
-	public function detilReport(){
-  	/*
-		ambil resep2 user yg dilaporin, ambil detailnya di recipe_model
-  	*/
-	$this->load->library('parser');
-	$user = new Report();
-	$listRepo = $user -> getListReportUser();
-	print_r($listRepo);
-	foreach ($listRepo as $objRepo) {
-		$recipe = new Report();
-		$list = $recipe -> getListReportByUserId($objRepo->id);
-		$namauser = array();
-		print_r($list);
-		$s = new User_model();
-		$details = array();
-		foreach ($list as $obj1) {
-			# code...
-			$temp1 = array('reported_user_name' => $s->getProfile($objRepo->id)->name);
-			$detilres = new Recipe_model();
-			$obj = $detilres ->  getDetailsReportByRecipeId($obj1->recipe_id);
-			print_r($obj);
-			$temp = array(
-			 		'reported_recipe_name' => $obj->name, 
-			 		'reported_recipe_count_ads' => $obj->count_advertisement,
-			 		'reported_recipe_count_porn' => $obj->count_pornographic,
-			 		'reported_recipe_count_spam' => $obj->count_spam,
-			 		'reported_recipe_count_other' => $obj->count_other,
-			 		'reported_recipe_other_entries' => $obj->count_other_details
-			 	);
-			array_push($details, $temp);
-			array_push($namauser, $temp1); 
-		}
-		$data1 = array(
-			'reported_recipe_entries' => $details,
-			'reported_user_entries' => $namauser
-			);
-		$reported_user_view = $this->parser->parse('reported_user_view', $data1, TRUE);	
-	}
-	
-  }
 }
