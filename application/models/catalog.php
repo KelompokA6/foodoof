@@ -13,7 +13,7 @@ class Catalog extends DataMapper {
     $this->name = $name;
     $this->units = $units;
     $this->price = $price;
-    if($this->skip_validation->save()){
+    if($this->skip_validation()->save()){
       $this->clear();
       return true;
     }
