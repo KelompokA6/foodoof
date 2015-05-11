@@ -110,12 +110,12 @@ class Recipe extends CI_Controller {
 		// 	$recipe->addCategory($id, $category[$i]);
 		// }
 		if (ctype_space($name)){
-			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe5' data-status='failed' class='hidden'></div>";
+			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
 			$this->session->set_flashdata('alert-notification', $alert);
 			redirect(base_url()."index.php/recipe/edit/$id");
 		}
 		if (! preg_match("/^[a-zA-Z0-9$%@\\*()\& '-]{1,100}$/", trim($name))){
-			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe4' data-status='failed' class='hidden'></div>";
+			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
 			$this->session->set_flashdata('alert-notification', $alert);
 			redirect(base_url()."index.php/recipe/edit/$id");
 		}
@@ -139,7 +139,7 @@ class Recipe extends CI_Controller {
 		date_default_timezone_set ('Asia/Jakarta');
 		$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d %H:%M:%S"), $ingredients, $steps);
 		if($isSuccess === false){
-			$alert = "<div id='alert-notification' data-message='Edit Recipe Failed1' data-status='failed' class='hidden'></div>";
+			$alert = "<div id='alert-notification' data-message='Edit Recipe Failed' data-status='failed' class='hidden'></div>";
 			$this->session->set_flashdata('alert-notification', $alert);
 		} else{
 			if (!empty($category)){
