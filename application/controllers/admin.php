@@ -150,7 +150,31 @@ class Admin extends CI_Controller {
 				);
 		$this->parser->parse('template_content', $data);
 	}
-		
+
+	public function update(){
+		$this->load->library('session');
+		if($this->session->userdata('user_id')==''){
+			redirect(base_url()."index.php/home/login", "refresh");
+		}
+		$u = new User_model();
+		$u->get_by_id($this->session->userdata('user_id'));
+		if(strtolower($u->status)!='admin'){
+			$this->pageNotFound();	
+		}
+		$cat = new Catalog();
+		$list = $cat->getCatalog();
+		foreach ($list as $obj) {
+			$name = $this->input->post("catalog_name");
+			$description = $this->input->post("catalog_unit");
+			$portion = $this->input->post("catalog_quantity");
+			$duration = $this->input->post("catalog_price");
+			$cat->updateCatalog($obj->id, $name, $units, $quantity, $price);
+		}
+		$highlight_alert = $success ? "<div class=\"alert alert-success text-center\">catalog updated</div>" : "<div class=\"alert alert-danger\">update catalog failed</div>";
+		$this->session->set_flashdata('alert-admin', $highlight_alert);
+		redirect(base_url()."index.php/admin");
+	}
+
 	public function sendemail(){
 		$this->load->model('home_viewer');
 		$this->load->library('session');
