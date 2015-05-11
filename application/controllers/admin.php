@@ -265,6 +265,21 @@ class Admin extends CI_Controller {
 				);
 		$this->parser->parse('template_content', $data);
 	}
+
+	public function sendmail(){
+		$this->load->library('session');
+		if($this->session->userdata('user_id')==''){
+			redirect(base_url()."index.php/home/login", "refresh");
+		}
+		$u = new User_model();
+		$u->get_by_id($this->session->userdata('user_id'));
+		if(strtolower($u->status)!='admin'){
+			return $this->pageNotFound();	
+		}
+		$users = $this->input->post("email_users");
+		$subject = $this->input->post("subject");
+		$message = $this->input->post("message");
+	}
 	function pageNotFound(){
 		$this->load->library('parser');
 		$this->load->model('home_viewer');

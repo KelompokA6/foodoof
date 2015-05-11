@@ -1207,30 +1207,24 @@ $(document).ready(function() {
 
 		}
 	}
-
-	var users = new Bloodhound({
-	  	datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-	  	queryTokenizer: Bloodhound.tokenizers.whitespace,
-	  	/*local: [
-	  		{ "value": 1 , "text": "Jean"},
-	  		{ "value": 2 , "text": "Mora"},
-	  		{ "value": 3 , "text": "Abid"},
-	  		{ "value": 4 , "text": "Alfan"},
-	  		{ "value": 5 , "text": "Fahmi"},
-	  		{ "value": 6 , "text": "Admin"}
-	  	]*/
-	  	prefetch: $baseurl+'/assets/cities.json'
-	});
-	users.initialize();
-
+	$.get($baseurl+'/processAjax/getAllUsers');
+	$.get($baseurl+'/processAjax/getAllUsers/true');
 	$("#users-conversation").tagsinput({
 	  	itemValue: 'value',
 	  	itemText: 'text',
 	  	typeahead: {
 	    	source: function(query){
-	    		return $.get($baseurl+'/assets/cities.json');
+	    		return $.get($baseurlnoConflict+'/assets/users.json');
 	    	}
-
+	  	}
+	});
+	$("#users-email").tagsinput({
+	  	itemValue: 'value',
+	  	itemText: 'text',
+	  	typeahead: {
+	    	source: function(query){
+	    		return $.get($baseurlnoConflict+'/assets/users-email.json');
+	    	}
 	  	}
 	});
 

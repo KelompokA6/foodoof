@@ -501,7 +501,7 @@ class ProcessAjax extends CI_Controller {
 		echo json_encode($result);
 	}
 	public function getAllIngredient(){
-		$ingre = new Ingredient();
+		$ingre = new Catalog();
 		$ingre->group_by('name');
 		$ingre->get();
 		$data = array();
@@ -511,6 +511,41 @@ class ProcessAjax extends CI_Controller {
 			$x++;
 		}
 		echo json_encode($data);
+	}
+	public function getAllUsers($flag_email=false){
+		$users = new User_model();
+		$users->get();
+		$listUser = array();
+		if($flag_email){
+			$data = array(
+					"value" => "all",
+					"text" => "All",
+				);
+			array_push($listUser, $data);
+		}
+		foreach ($users as $user) {
+			if($flag_email){
+				$data = array(
+					"value" =>$user->email,
+					"text" => $user->name." (".$user->email.")",
+				);
+			}
+			else{
+				$data = array(
+					"value" =>$user->id,
+					"text" => $user->name." (".$user->email.")",
+				);
+			}
+			array_push($listUser, $data);
+		}
+		if($flag_email){
+			$fp = fopen('./assets/users-email.json', 'w');
+		}
+		else{
+			$fp = fopen('./assets/users.json', 'w');
+		}
+		fwrite($fp, json_encode($listUser, JSON_PRETTY_PRINT));
+		fclose($fp);
 	}
 	public function schedulercleantmp(){
 		$now = date("Y-m-d H:i:s");
