@@ -128,7 +128,7 @@
 						    <div class="popover-title popover-primary"><span class="close" data-dismiss="popover-x">&times;</span>Report</div>
 						    <div class="popover-content">
 						    	<?php if(!empty($this->session->userdata("user_id"))):?>
-						    	<form role="form" action="<?php echo base_url();?>index.php/home/addReport" class="form-horizontal" method="post" enctype="multipart/form-data">
+						    	<form role="form" action="<?php echo base_url();?>index.php/home/addReport/{recipe_id}" class="form-horizontal" method="post" enctype="multipart/form-data">
 							       	<div class="form-group">
 									    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
 									      	<div class="checkbox">

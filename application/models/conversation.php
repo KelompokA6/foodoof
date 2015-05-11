@@ -14,7 +14,7 @@ class Conversation extends DataMapper {
     /*
         Memperoleh semua pesan pada sebuah conversation, $read jika true maka $user_id yang mengakses akan ditambahkan kedalam daftar read dari message
     */
-    function getAllMessages($conversation_id=null, $user_id=null, $limit=10, $offset=0, $read=false){
+    function getAllMessages($conversation_id=null, $user_id=null, $limit=10, $offset=0){
         if(empty($conversation_id)){
             $conversation_id = $this->conversation_id;
         }
@@ -34,26 +34,34 @@ class Conversation extends DataMapper {
                     $data->submit = $message->submit;
                     array_push($listMessages, $data);
                 }    
-                if($read){
-                    $messages->clear();
-                    $messages->where("conversation_id",$conversation_id);
-                    $messages->not_ilike("read",$user_id);
-                    $messages->get();
-                    $msg = new Message();
-                    foreach ($messages as $message) {
-                        $msg->where("message_id", $message->message_id);
-                        if(!$msg->update("read",$message->read."|".$user_id."|")){
-                            return false;
-                        }
-                        $msg->clear();
-                    }
-                }
                 return $listMessages;
             }
             return false;
         }
         return false;
     }
+
+    /*
+        Memperoleh jumlah message yang belum terbaca dari sebuah conversation
+    */
+    function getCountUnreadMessage($conversation_id=null, $user_id=null, $limit=10, $offset=0){
+        if(empty($conversation_id)){
+            $conversation_id = $this->conversation_id;
+        }
+        if(!empty($conversation_id) && !empty($user_id)){
+            $this->where("conversation_id", $conversation_id);
+            $this->where("user_id", $user_id);
+            if($this->count() > 0){
+                $messages = new Message();
+                $users = new User_model();
+                $messages->where("conversation_id", $conversation_id);
+                $messages->where("submit <=", $users->getProfile($user_id)->last_access);
+                return $messages->count();
+            }
+        }
+        return false;
+    }
+
     /*
         Memperoleh list id user dari conversation tersebut
     */
@@ -80,9 +88,38 @@ class Conversation extends DataMapper {
         return false;
     }
     /*
-        Menabahkan conversation user_id dapat berupa array
+        Memperoleh semua conversation dari seorang user dan message+pengirim pesan tersebut terakhir pada conversation tersebut
     */
-    function addConversation($subject="", $user_id=null){
+    function getAllConversationUser($user_id=null, $limit=100){
+        if(empty($user_id)){
+            $user_id=$this->user_id;
+        }
+        if(!empty($user_id)){
+            $listConversation = array();
+            $conversations = new Conversation();
+            $conversations->where("user_id", $user_id);
+            $conversations->get();
+            foreach ($conversations as $conversation) {
+                $messages = new Message();
+                $messages->where("conversation_id", $conversation->id);
+                $messages->order_by("submit", "desc");
+                $messages->limit(1);
+                $messages->get();
+                $data = new stdClass();
+                $data->id = $conversation->id;
+                $data->sender_id = $messages->sender_id;
+                $data->last_message = $messages->description;
+                $data->time_last_message = $messages->submit;
+                array_push($listConversation, $data);
+            }
+            return $listConversation;
+        }
+        return array()
+    }
+    /*
+        Menambahkan conversation user_id dapat berupa array, jika user_id tidak berupa array maka conversation_id harus ada
+    */
+    function addConversation($subject="", $user_id=null, $conversation_id=null){
         if(!empty($user_id)){
             if(is_array($user_id)){
                 if(empty($subject)){
@@ -108,13 +145,16 @@ class Conversation extends DataMapper {
                 return true;
             }
             else{
-                if(empty($subject)){
-                    $subject += $u->getProfile($user_id)->name;
-                } 
-                $this->clear();
-                $this->subject = $subject;
-                $this->user_id = $user_id;
-                return $this->skip_validation()->save();
+                if(!empty($conversation_id)){
+                    if(empty($subject)){
+                        $subject += $u->getProfile($user_id)->name;
+                    } 
+                    $this->clear();
+                    $this->id = $conversation_id;
+                    $this->subject = $subject;
+                    $this->user_id = $user_id;
+                    return $this->skip_validation()->save();    
+                }
             }
         }
         return false

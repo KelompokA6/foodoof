@@ -1608,6 +1608,9 @@ textarea.enter-comment.form-control:focus{
   color: #fff;
   text-align: center;
 }
+.popover-title{
+  font-family: "Roboto";
+}
 /*
   conversation css
 */

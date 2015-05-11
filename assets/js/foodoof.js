@@ -1315,9 +1315,9 @@ $(document).ready(function() {
 	$(".info-ingredients-popover").popover();
 
 	$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message").data("countmessage") });
-	$(".conversation-list-item[data-id='1']").iosbadge({ theme: 'ios', size: 28, content: $("#icon-message").data("countmessage") });
-	$(".conversation-list-item[data-id='2']").iosbadge({ theme: 'ios', size: 28, content: $("#icon-message").data("countmessage") });
-	$(".conversation-list-item[data-id='3']").iosbadge({ theme: 'ios', size: 28, content: $("#icon-message").data("countmessage") });
+	$(".conversation-list-item").each(function(i){
+		$(this).iosbadge({ theme: 'ios', size: 28, content: $(this).data("countmessage") });
+	});
 	$("#toggle-online-user").on("click", function(e){
 		if($("#panel-users").css("display")=="none"){
 			$("#toggle-online-user > div > i.fa-chevron-up").removeClass("fa-chevron-up");
