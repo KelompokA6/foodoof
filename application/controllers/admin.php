@@ -63,7 +63,44 @@ class Admin extends CI_Controller {
 		}
 		$this->load->library('parser');
 		$menubar = $this->home_viewer->getMenubar();
-		$content_admin = $this->parser->parse('reported_user_view', array(), TRUE);	
+		$reported_user_entries = array();
+		$user = new Report();
+		$listRepo = $user -> getListReportUser();
+		foreach ($listRepo as $objRepo) {
+			$recipe = new Report();
+			$list = $recipe -> getListReportByUserId($objRepo->id);
+			$s = new User_model();
+			$user_name = $s->getProfile($objRepo->id)->name;
+			$user_photo = $s->getProfile($objRepo->id)->photo;
+			$details = array();
+			foreach ($list as $obj1) {
+				$detilres = new Recipe_model();
+				$obj = $detilres->getDetailsReportByRecipeId($obj1->recipe_id);
+				$other_detil = array();
+				foreach ($obj->count_other_details as $other_details) {
+					array_push($other_detil, array("reported_recipe_other_detail"=>$other_details->detail));
+				}
+				$temp = array(
+				 		'reported_recipe_name' => $obj->name, 
+				 		'reported_recipe_count_ads' => $obj->count_advertisement,
+				 		'reported_recipe_count_porn' => $obj->count_pornographic,
+				 		'reported_recipe_count_spam' => $obj->count_spam,
+				 		'reported_recipe_count_other' => $obj->count_other,
+				 		'reported_recipe_other_entries' => $other_detil,
+				 	);
+				array_push($details, $temp);
+			}
+			$data1 = array(
+				'reported_recipe_entries' => $details,
+				'reported_user_name' => $user_name,
+				'reported_user_photo' => $user_photo,
+				);
+			array_push($reported_user_entries, $data1);
+		}
+		$data = array(
+			"reported_user_entries" => $reported_user_entries
+			);
+		$content_admin = $this->parser->parse('reported_user_view', $data, TRUE);	
 		$sidebar_admin = $this->parser->parse('sidebar_admin', array(), TRUE);	
 		$data1 = array(
 			'content_admin' => $content_admin,
@@ -75,41 +112,6 @@ class Admin extends CI_Controller {
 					"content_website" => $content_website,
 				);
 		$this->parser->parse('template_content', $data);
-
-		$this->load->library('parser');
-		$user = new Report();
-		$listRepo = $user -> getListReportUser();
-		print_r($listRepo);
-		foreach ($listRepo as $objRepo) {
-		$recipe = new Report();
-		$list = $recipe -> getListReportByUserId($objRepo->id);
-		$namauser = array();
-		print_r($list);
-		$s = new User_model();
-		$details = array();
-		foreach ($list as $obj1) {
-			# code...
-			$temp1 = array('reported_user_name' => $s->getProfile($objRepo->id)->name);
-			$detilres = new Recipe_model();
-			$obj = $detilres ->  getDetailsReportByRecipeId($obj1->recipe_id);
-			print_r($obj);
-			$temp = array(
-			 		'reported_recipe_name' => $obj->name, 
-			 		'reported_recipe_count_ads' => $obj->count_advertisement,
-			 		'reported_recipe_count_porn' => $obj->count_pornographic,
-			 		'reported_recipe_count_spam' => $obj->count_spam,
-			 		'reported_recipe_count_other' => $obj->count_other,
-			 		'reported_recipe_other_entries' => $obj->count_other_details
-			 	);
-			array_push($details, $temp);
-			array_push($namauser, $temp1); 
-		}
-		$data1 = array(
-			'reported_recipe_entries' => $details,
-			'reported_user_entries' => $namauser
-			);
-		$reported_user_view = $this->parser->parse('reported_user_view', $data1, TRUE);	
-	}
 	}
 
 	public function save(){
@@ -327,6 +329,7 @@ class Admin extends CI_Controller {
   	$ban = $this->input->post("id_reported");
   	foreach ($ban as $userid) {
   		$user->where('id', $userid)->update('status', "BANNED");
+  		$user->clear();
   	}
   	$alert = "<div id='alert-notification' data-message='Banned User Success' data-status='success' class='hidden'></div>";
 	$this->session->set_flashdata('alert-admin', $alert);
