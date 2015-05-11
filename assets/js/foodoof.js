@@ -1311,6 +1311,7 @@ $(document).ready(function() {
 		$(this).parent().parent().removeClass("animated");
 		$(this).parent().parent().removeClass("fadeInDown");
 	});
+	$(".fa.fa-info-circle.icons-secondary.fa-lg.info-ingredient-popover").popover();
 
 	$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message").data("countmessage") });
 	$(".conversation-list-item[data-id='1']").iosbadge({ theme: 'ios', size: 28, content: $("#icon-message").data("countmessage") });
