@@ -53,9 +53,9 @@
       style="position:fixed; left:0; bottom:0; z-index:100; border-bottom-right-radius:0">
         <div id="panel-users" class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><?php echo sizeof($online_users);?> Users Online</h3>
+            <h3 class="panel-title" id="online-count-1"><?php echo sizeof($online_users);?> Users Online</h3>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" id="online-panel">
             <?php foreach ($online_users as $user): ?>
             <div class="col-md-12 list-user-online col-no-padding-right">
               <div class="col-md-3 col-no-padding">
@@ -71,7 +71,7 @@
         <div class="col-md-12 col-xs-12 col-no-padding" id="toggle-online-user">
           <div class="col-md-9 col-xs-8 text-left">
             <i class="fa fa-user fa-lg"></i>
-            <span style="padding-left:15px;font-size:14px"><?php echo sizeof($online_users);?> Online</span>
+            <span style="padding-left:15px;font-size:14px" id="online-count-2"><?php echo sizeof($online_users);?> Users Online</span>
           </div>
           <div class="col-md-2 col-xs-4"style="padding:3.5px;">
             <i class="fa fa-chevron-up fa-lg"></i>
