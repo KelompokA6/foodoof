@@ -404,4 +404,8 @@ class Tempview extends CI_Controller {
 				"price"=> $x);
 		echo json_encode($data);
 	}
+	public function filter($name,$category){
+		$r = new Recipe_model();
+		print_r($r->searchRecipeByTitle($name, 10, 0, array("other","noodle")));
+	}
 }

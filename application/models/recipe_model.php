@@ -618,12 +618,14 @@ class Recipe_model extends DataMapper {
                         $categories = new Category();
                         $categories->where('recipe_id', $recipes->id);
                         if(is_array($category)){
-                            for ($i=0; $i <$category ; $i++) { 
+                            $categories->group_start();
+                            for ($i=0; $i < sizeof($category) ; $i++) { 
                                 $categories->or_ilike('name', $category[$i]);
                             }
+                            $categories->group_end();
                         }
                         else{
-                            $categories->or_ilike('name', $category);
+                            $categories->ilike('name', $category);
                         }
                         if($categories->count()==0){
                             $validRecipe = false;
@@ -689,12 +691,14 @@ class Recipe_model extends DataMapper {
                         $categories = new Category();
                         $categories->where('recipe_id', $recipes->id);
                         if(is_array($category)){
-                            for ($i=0; $i <$category ; $i++) { 
+                            $categories->group_start();
+                            for ($i=0; $i < sizeof($category) ; $i++) { 
                                 $categories->or_ilike('name', $category[$i]);
                             }
+                            $categories->group_end();
                         }
                         else{
-                            $categories->or_ilike('name', $category);
+                            $categories->ilike('name', $category);
                         }
                         if($categories->count()==0){
                             $validRecipe = false;
