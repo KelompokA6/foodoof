@@ -276,9 +276,62 @@ class Admin extends CI_Controller {
 		if(strtolower($u->status)!='admin'){
 			return $this->pageNotFound();	
 		}
-		$users = $this->input->post("email_users");
-		$subject = $this->input->post("subject");
-		$message = $this->input->post("message");
+		$users_email = $this->input->post("email_users");
+		$success = true;
+		$data["subject"] = $this->input->post("subject");
+		$data["message"] = $this->input->post("message");
+		foreach ($users_email as $email) {
+			$data["email"] = $this->input->post("email_users");
+			$user = new User_model();
+			$user->where("email", $data["email"]);
+			$user->get();
+			$data["name"] = $user->name;
+			if(!$this->_send_email($data)){
+				$success = false;
+			}	
+		}
+		$send_email_alert = $success ? "<div id='alert-notification' data-message='Send Email Success' data-status='success' class='hidden'></div>" : "<div id='alert-notification' data-message='Send Email Failed' data-status='failed' class='hidden'></div>";;
+		$this->session->set_flashdata('alert-admin', $send_email_alert);
+		redirect(base_url()."index.php/admin/sendemail");
+	}
+	private function _send_email($profile)
+	{
+		extract($profile);
+		return $this->_send_smtp_email([
+			"sender" => "foodoofa6@gmail.com",
+			"sender_name" => "FoodooF Administrator",
+			"receiver" => $email,
+			"receiver_name" => $name,
+			"subject" => $subject,
+			"message" => $message,
+			]);
+	}
+	function _send_smtp_email($data)
+	{
+		// $data: sender, sender_name, receiver, receiver_name, subject, message
+		extract($data);
+		require_once('application/libraries/mailer/PHPMailerAutoload.php');
+		$mail = new PHPMailer();
+		$mail->IsSMTP();                       // telling the class to use SMTP
+		$mail->SMTPDebug = 0;                  // 0 = no output, 1 = errors and messages, 2 = messages only.
+		$mail->SMTPAuth = true;                // enable SMTP authentication 
+		$mail->SMTPSecure = "tls";             // sets the prefix to the servier
+		$mail->Host = "smtp.gmail.com";        // sets Gmail as the SMTP server
+		$mail->Port = 587;                     // set the SMTP port for the GMAIL 
+
+		$mail->Username = "foodoofa6";         // Gmail username
+		$mail->Password = "badakfoodoof";      // Gmail password
+
+		// $mail->CharSet = 'windows-1250';
+		$mail->SetFrom ($sender, @$sender_name);
+		$mail->Subject = @$subject;
+		$mail->ContentType = 'text/html';
+		$mail->IsHTML(TRUE);
+		$mail->Body = @$message; 
+		// you may also use $mail->Body = file_get_contents('your_mail_template.html');
+		$mail->AddAddress ($receiver, @$receiver_name);
+		// you may also use this format $mail->AddAddress ($recipient);
+		return $mail->Send();
 	}
 	function pageNotFound(){
 		$this->load->library('parser');
