@@ -14,6 +14,7 @@
     </h3>
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+    <form id="filterRecipe" action="<?php echo base_url();?>search?searchby=title&q={search_by_title_recipe_key}">
     <div class="pull-right dropdown">
       <button data-toggle="dropdown" class="btn button-category dropdown-toggle">
         All Category    <span class="caret"></span>
@@ -76,7 +77,8 @@
           <label for="ex2_14">Other</label>
         </li>
       </ul>
-      <a href="">
+      </form>
+      <a href="javascript: submitform()">
         <button class="btn button-secondary"> Filter</button>
       </a>
     </div>
@@ -168,3 +170,10 @@
     ?>
   </div>
 </div>
+
+<script type="text/javascript">
+function submitform()
+{
+  document.filterRecipe.submit();
+}
+</script>

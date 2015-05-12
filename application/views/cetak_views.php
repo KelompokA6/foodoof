@@ -5,8 +5,8 @@
 	<li>{recipe_category}</li>
 {/recipe_category_entries}
 </ul>
-<span>{recipe_portion} Persons</span>   |      
-<span>{recipe_duration} Minutes</span><br>
+<i class="fa fa-users fa-lg icons-secondary" title="Portion"></i> <span>{recipe_portion} Persons</span>   |      
+<i class="fa fa-clock-o fa-lg icons-secondary" title="Duration"><span>{recipe_duration} Minutes</span><br>
 <img src="<?php echo base_url();?>{recipe_photo}" class="img-rounded img-responsive img-recipe" style="margin:auto"><br>
 Oleh : <a>{recipe_author_name}</a><br>
 Dibuat pada : <span>{recipe_last_update}</span>

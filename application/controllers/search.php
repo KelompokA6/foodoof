@@ -15,6 +15,14 @@ class Search extends CI_Controller {
     $q = ($this->input->get('q'));
     $q2 = $this->db->escape_str($q);
     $searchby = $this->input->get('searchby');
+    if(!empty(($this->input->get('ex2')))){
+      $cat = ($this->input->get('ex2'));
+    } else {
+      $cat = NULL;
+    }
+    // $cat = ($this->input->get('ex2'));
+    // echo "$cat";
+    // die();
     if (@$q && @$searchby) {
       $q = urldecode($q);
       $page = $this->input->get('page');
@@ -24,7 +32,7 @@ class Search extends CI_Controller {
       $u = new User_model();
 
       if ($searchby == 'title') {
-        $result = $r->searchRecipeByTitle($q2, $limit, $limit * $page - $limit);
+        $result = $r->searchRecipeByTitle($q2, $limit, $limit * $page - $limit, $cat);
         $this->show_search_by_title($q, $result['recipe_list'], ceil($result['total']/$limit), $page, $result['total']);
       } elseif ($searchby == 'ingredient') {
         $qs = array_map(function($x){return trim($x);}, explode(",", $q2));
