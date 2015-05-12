@@ -65,59 +65,38 @@
   							<i class="caret pull-right" style="color:#eee; margin-top:8px"></i>
   						</button>
 						<ul class="dropdown-menu dropdown-option bullet pull-center" role="menu" aria-labelledby="dropdownMenu1">
-			              <li role="presentation" id="share-fb">
-			              <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=620889414677632";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-			              <div class="fb-share-button" data-href="<?php echo current_url();?>" data-layout="button_count"></div>
-			              	<!-- <a role="menuitem" class="fb-share" tabindex="-1" onclick='window.open("https://www.facebook.com/sharer/sharer.php?app_id=718024521543205&sdk=joey&u="+encodeURIComponent(window.location.toString())+"&display=popup", "", "width=600, height=300")'>
-			              		<span class="fa-stack fa-lg fa-stack-lg">
-								  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
-								  <i class="fa fa-facebook fa-stack-1x fa-inverse fa-xs"></i>
-								</span> Facebook</a> -->
-			              </li>
-			              <li role="presentation" id="share-twitter">
-			              <a href="https://twitter.com/share" class="twitter-share-button" data-size="">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-			              	<!-- <a role="menuitem" class="twitter-share" tabindex="-1">
-			              		<span class="fa-stack fa-lg fa-stack-lg">
-								  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
-								  <i class="fa fa-twitter fa-stack-1x fa-inverse fa-xs"></i>
-								</span> Twitter
-			              	</a> -->
-			              </li>
-			              <li role="presentation" id="share-gplus">
-<!-- Place this tag where you want the share button to render. -->
-<div class="g-plus" data-action="share" data-annotation="bubble"></div>
-<!-- Place this tag after the last share tag. -->
-<script type="text/javascript">
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/platform.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
-			              	<!-- <a role="menuitem" class="gplus-share" tabindex="-1">
-			              		<span class="fa-stack fa-lg fa-stack-lg">
-								  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
-								  <i class="fa fa-google-plus fa-stack-1x fa-inverse fa-xs"></i>
-								</span> Google+
-			              	</a> -->
-			              </li>
-			              <li role="presentation" id="share-path">
-			              	<a role="menuitem" class="path-share" tabindex="-1">
-			              		<span class="fa-stack fa-lg fa-stack-lg">
-								  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
-								  <i class="el el-path fa-stack-1x fa-inverse fa-xs" style="padding: 6px;"></i>
-								</span> Path
-			              	</a>
-			              </li>
-			            </ul>
+
+	            <li role="presentation" id="share-fb">
+	              <a role="menuitem" class="fb-share" tabindex="-1" href="https://www.facebook.com/sharer/sharer.php?u={URL}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+	                <span class="fa-stack fa-lg fa-stack-lg">
+	                  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
+	                  <i class="fa fa-facebook fa-stack-1x fa-inverse fa-xs"></i>
+	                </span>
+	                Facebook
+	              </a>
+	            </li>
+
+	            <li role="presentation" id="share-twitter">
+	              <a role="menuitem" class="twitter-share" tabindex="-1" href="https://twitter.com/intent/tweet?text=FoodooF%20-%20Infinite%20Cooking%20Idea&url={URL}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+	                <span class="fa-stack fa-lg fa-stack-lg">
+	                  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
+	                  <i class="fa fa-twitter fa-stack-1x fa-inverse fa-xs"></i>
+	                </span>
+	                Twitter
+	              </a>
+	            </li>
+
+	            <li role="presentation" id="share-gplus">
+	              <a role="menuitem" class="gplus-share" tabindex="-1" href="https://plus.google.com/share?url={URL}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+	                <span class="fa-stack fa-lg fa-stack-lg">
+	                  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
+	                  <i class="fa fa-google-plus fa-stack-1x fa-inverse fa-xs"></i>
+	                </span>
+	                Google+
+	              </a>
+	            </li>
+
+			      </ul>
 					</div>
 					<div class="col-md-6 col-xs-6" style="padding-left:5px" title="Report Recipe">
 						<button id="report-btn" class="btn button-primary col-md-12 col-xs-12" role="button" title='Report' data-toggle="popover-x" data-target="#form-report" data-placement="bottom">

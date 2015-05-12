@@ -252,6 +252,7 @@ class Recipe extends CI_Controller {
 					);
 
 			//$data = array_map("htmlspecialchars", $data);
+			$data['URL'] = rawurlencode(current_url());
 			$content_website = $this->parser->parse('recipe_view', $data, TRUE);
 			
 			// $data = array_map("htmlspecialchars", $data);
