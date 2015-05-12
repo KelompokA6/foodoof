@@ -8,11 +8,11 @@ class Catalog extends DataMapper {
     parent::__construct();
   }
 
-  function addCatalog($name="", $units="", $quantity="", $price=0)
+  function addCatalog($name="", $quantity="", $units="", $price=0)
   {
     $this->name = $name;
-    $this->units = $units;
     $this->quantity = $quantity;
+    $this->units = $units;
     $this->price = $price;
     if($this->skip_validation()->save()){
       $this->clear();
@@ -24,7 +24,7 @@ class Catalog extends DataMapper {
     }  
   }
 
-  function updateCatalog($id=null, $name="", $units="", $quantity="", $price=0){
+  function updateCatalog($id=null, $name="", $quantity="", $units="", $price=0){
     if(empty($id)){
       $id=$this->$id;
     }
@@ -32,9 +32,9 @@ class Catalog extends DataMapper {
       $this->where("id", $id);
       $data = array('name' => strtolower($name),
                     'units' => strtolower($units),
-                    'quantity' => strtolower($quantity),
-                    'price' => $price
-              );
+                    'price' => $price,
+                    'quantity' => strtolower($quantity)
+               );
       if($this->update($data)){
         $this->clear();
         return true;
@@ -57,8 +57,8 @@ class Catalog extends DataMapper {
       $data = new StdClass();
       $data->id = $catalogs->id;
       $data->name = $catalogs->name;
-      $data->units = $catalogs->units;
       $data->quantity = $catalogs->quantity;
+      $data->units = $catalogs->units;
       $data->price = $catalogs->price;
       array_push($arrResult, $data);
     }

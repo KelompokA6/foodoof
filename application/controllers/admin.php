@@ -167,8 +167,8 @@ class Admin extends CI_Controller {
 			$temp = array(
 				'catalog_id' => $obj->id,
 				'catalog_name' => $obj->name,
-				'catalog_unit' => $obj->units,
 				'catalog_quantity' => $obj->quantity,
+				'catalog_unit' => $obj->units,
 				'catalog_price' => $obj->price,
 			);
 			array_push($entries, $temp);
@@ -226,11 +226,11 @@ class Admin extends CI_Controller {
 		$success = TRUE;
 		
 		$name = $this->input->post("entry_subject");
-		$units = $this->input->post("entry_unit");
 		$quantity = $this->input->post("entry_quantity");
+		$units = $this->input->post("entry_unit");
 		$price = $this->input->post("entry_price");
 		
-		if(!$cat->addCatalog($name, $units, $quantity, $price)){
+		if(!$cat->addCatalog($name, $quantity, $units, $price)){
 			$success = FALSE;
 		}
 		
