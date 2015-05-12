@@ -257,10 +257,7 @@ class Recipe extends CI_Controller {
 			
 			// $data = array_map("htmlspecialchars", $data);
 			if ($cetak){
-				$data = array(
-						"content_website" => $content_website,
-					);
-				return $this->parser->parse('template_content', $data, TRUE);
+				return $this->parser->parse('cetak_views', $data, TRUE);
 			} else {
 				$data = array(
 						"menubar" => $menubar,
@@ -384,6 +381,6 @@ class Recipe extends CI_Controller {
 		    $pdf->Output($pdfFilePath, 'F'); // save to file because we can
 		}
 		 
-		//redirect(base_url()."/assets/recipe$id.pdf");
+		redirect(base_url()."/assets/recipe$id.pdf");
 	}
 }
