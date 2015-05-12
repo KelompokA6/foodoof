@@ -276,14 +276,18 @@ class Admin extends CI_Controller {
 		if(strtolower($u->status)!='admin'){
 			return $this->pageNotFound();	
 		}
-		$users_email = $this->input->post("email_users");
+		$users_email = explode(",", $this->input->post("email_users"));
 		$success = true;
-		$data["subject"] = $this->input->post("subject");
-		$data["message"] = $this->input->post("message");
+		$data = array();
+		$subject = $this->input->post("subject");
+		$message = $this->input->post("message");
 		foreach ($users_email as $email) {
-			$data["email"] = $this->input->post("email_users");
+			$data = array();
+			$data["email"] = $email;
+			$data["subject"] = $subject;
+			$data["message"] = $message;
 			$user = new User_model();
-			$user->where("email", $data["email"]);
+			$user->where("email", $email);
 			$user->get();
 			$data["name"] = $user->name;
 			if(!$this->_send_email($data)){
@@ -294,6 +298,7 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('alert-admin', $send_email_alert);
 		redirect(base_url()."index.php/admin/sendemail");
 	}
+
 	private function _send_email($profile)
 	{
 		extract($profile);
