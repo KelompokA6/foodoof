@@ -1162,7 +1162,9 @@ $(document).ready(function() {
 		datumTokenizer: Bloodhound.tokenizers.whitespace,
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
 		local:  [
-		            "batang", "buah", "biji", "cc", "gram", "helai", "kg", "liter", "ml", "ons", "sdm", "sdt", "secukupnya", "kilogram", "botol", "bungkus"   
+		            "batang", "buah", "biji", "botol", "bungkus", 
+		            "cc", "gram", "helai", "kg", "kilogram", "liter", "ml", 
+		            "ons", "sdm", "sdt", "secukupnya", "siung"
 		        ]
 	});
 
@@ -1207,26 +1209,28 @@ $(document).ready(function() {
 
 		}
 	}
-	$.get($baseurl+'/processAjax/getAllUsers');
-	$.get($baseurl+'/processAjax/getAllUsers/true');
-	$("#users-conversation").tagsinput({
-	  	itemValue: 'value',
-	  	itemText: 'text',
-	  	typeahead: {
-	    	source: function(query){
-	    		return $.get($baseurlnoConflict+'/assets/users.json');
-	    	}
-	  	}
-	});
-	$("#users-email").tagsinput({
-	  	itemValue: 'value',
-	  	itemText: 'text',
-	  	typeahead: {
-	    	source: function(query){
-	    		return $.get($baseurlnoConflict+'/assets/users-email.json');
-	    	}
-	  	}
-	});
+
+	/*
+		init tag input
+	*/
+	$.get($baseurl+'/processAjax/getAllUsers', function(data){
+		$("#users-conversation").tagsinput({
+		  	itemValue: 'value',
+		  	itemText: 'text',
+		  	typeahead: {
+		    	source: data,
+		  	}
+		});
+	},"json");
+	$.get($baseurl+'/processAjax/getAllUsers/true', function(data){
+		$("#users-email").tagsinput({
+		  	itemValue: 'value',
+		  	itemText: 'text',
+		  	typeahead: {
+		    	source: data,
+		  	}
+		});
+	},"json");
 
 	/*
 	detail report

@@ -538,14 +538,7 @@ class ProcessAjax extends CI_Controller {
 			}
 			array_push($listUser, $data);
 		}
-		if($flag_email){
-			$fp = fopen('./assets/users-email.json', 'w');
-		}
-		else{
-			$fp = fopen('./assets/users.json', 'w');
-		}
-		fwrite($fp, json_encode($listUser, JSON_PRETTY_PRINT));
-		fclose($fp);
+		echo json_encode($listUser, JSON_PRETTY_PRINT);
 	}
 	public function schedulercleantmp(){
 		$now = date("Y-m-d H:i:s");
