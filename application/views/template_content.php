@@ -39,7 +39,8 @@
     	  	</div>
     	</div>
       <?php
-        $online_users = json_decode(file_get_contents(base_url('index.php/user/getonline')));
+        $user_id = $this->session->userdata("user_id");
+        $online_users = json_decode(file_get_contents(base_url('index.php/user/getonline/'.$user_id)));
       ?>
       <div id="users-online" class="btn btn-default col-md-2 col-xs-4 col-no-padding text-left" 
       style="position:fixed; left:0; bottom:0; z-index:100; border-bottom-right-radius:0">
@@ -48,6 +49,14 @@
             <h3 class="panel-title" id="online-count-1"><?php echo sizeof($online_users);?> Users Online</h3>
           </div>
           <div class="panel-body" id="online-panel">
+            <div id="sample-online-user" hidden class="col-md-12 list-user-online col-no-padding-right">
+              <div class="col-md-3 col-no-padding">
+                <img id="imge" class="img-responsive img-rounded img-user-online" src="/foodoof/userphoto">
+              </div>
+              <div class="col-md-9 text-left col-no-padding-right name-user-online">
+                <a id="ling" href="/foodoof/index.php/user/timeline/userid">username</a>
+              </div>
+            </div>
             <?php foreach ($online_users as $user): ?>
             <div class="col-md-12 list-user-online col-no-padding-right">
               <div class="col-md-3 col-no-padding">

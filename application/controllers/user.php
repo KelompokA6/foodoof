@@ -284,9 +284,8 @@ class User extends CI_Controller {
 		echo $u->where('id', $id)->update('last_access', date("Y-m-d H:i:s"));
 	}
 
-	public function getonline()
+	public function getonline($user_id = FALSE)
 	{
-		$user_id = $this->session->userdata('user_id');
     $u = new User_model();
     date_default_timezone_set("Asia/Jakarta");
     $one_minute_ago = (new DateTime())->modify("-20 second")->format("Y-m-d H:i:s");
