@@ -49,7 +49,8 @@
             <h3 class="panel-title" id="online-count-1"><?php echo sizeof($online_users);?> Users Online</h3>
           </div>
           <div class="panel-body" id="online-panel">
-            <div id="sample-online-user" hidden class="col-md-12 list-user-online col-no-padding-right">
+            
+            <div hidden id="sample-online-user" class="col-md-12 list-user-online col-no-padding-right">
               <div class="col-md-3 col-no-padding">
                 <img id="imge" class="img-responsive img-rounded img-user-online" src="/foodoof/userphoto">
               </div>
@@ -57,16 +58,7 @@
                 <a id="ling" href="/foodoof/index.php/user/timeline/userid">username</a>
               </div>
             </div>
-            <?php foreach ($online_users as $user): ?>
-            <div class="col-md-12 list-user-online col-no-padding-right">
-              <div class="col-md-3 col-no-padding">
-                <img class="img-responsive img-rounded img-user-online" src="/foodoof/<?php echo $user->photo;?>">
-              </div>
-              <div class="col-md-9 text-left col-no-padding-right name-user-online">
-                <a href="/foodoof/index.php/user/timeline/<?php echo $user->id;?>"><?php echo $user->name;?></a>
-              </div>
-            </div>
-            <?php endforeach;?>
+
           </div>
         </div>
         <div class="col-md-12 col-xs-12 col-no-padding" id="toggle-online-user">
