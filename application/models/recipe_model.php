@@ -908,6 +908,34 @@ class Recipe_model extends DataMapper {
         return $relateRecipeList;
     }
 
+    function generatePrice($recipe_id){
+        if(empty($recipe_id)){
+            $recipe_id=$this->id;
+        }
+        if(!empty($recipe_id)){
+            $result = 0;
+            $r = new Recipe_model();
+            $ingredients = $r->getIngredients($recipe_id);
+            foreach ($ingredients as $obj) {
+                $catalog = new Catalog();
+                $catalog->ilike("name",$obj->name);
+                $catalog->ilike("units",$obj->units);
+                if($catalog->count()>0){
+                    $catalog->clear();
+                    $catalog->ilike("name",$obj->name);
+                    $catalog->ilike("units",$obj->units);
+                    $catalog->get();
+                    $result += (($obj->quantity)/($catalog->quantity))*$catalog->price;    
+                }
+            }
+            return $result;
+        }
+        return 0;
+    }
+
+    /*
+        mengembalikan jumlah setiap category dari resep
+    */
     function getCountEachCategory(){
         $category = array();
         array_push($category, 'rice');

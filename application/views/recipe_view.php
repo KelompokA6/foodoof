@@ -160,9 +160,12 @@
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 text-center" style="margin-top:5px" title="Generate Price">
-					<button class="btn button-primary col-md-12 col-xs-12">
+					<button id="generate-price" data-recipeid="{recipe_id}" data-status="0" class="btn button-primary col-md-12 col-xs-12">
 						<i class="fa fa-money pull-left fa-inverse icons"></i> Generate Price
 					</button>
+					<div id="panel-price" class="col-md-12 col-sm-12 col-xs-12" style="display:none; padding:15px 0;">
+						<i class="fa fa-spinner fa-pulse"></i>
+					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding" style="margin-top:15px" title="Description Recipe">
 	  				<h4 class="page-header-title">Description Recipe</h4>

@@ -1788,3 +1788,10 @@ input.checked-cook-later{
   width: 16px;
   height: 16px;
 }
+/*
+  panel generate price
+*/
+#panel-price{
+  font-size: 20px;
+  color : #DD3124;
+}

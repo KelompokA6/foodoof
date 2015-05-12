@@ -396,4 +396,12 @@ class Tempview extends CI_Controller {
 		}
 		echo json_encode($data);
 	}
+	public function generatePrice($recipe_id){
+		$r = new Recipe_model();
+		$x = $r->generatePrice($recipe_id);
+		$data = array(
+				"status"=>1,
+				"price"=> $x);
+		echo json_encode($data);
+	}
 }

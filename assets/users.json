@@ -1,23 +1,23 @@
 [
     {
         "value": 1,
-        "text": "admin_jean (je.fathanah@gmail.com)"
+        "text": "jean (je.fathanah@gmail.com)"
     },
     {
         "value": 2,
-        "text": "admin_mora (aagustinamora@gmail.com)"
+        "text": "mora (aagustinamora@gmail.com)"
     },
     {
         "value": 3,
-        "text": "admin_abid (abidnurulhakim@gmail.com)"
+        "text": "Abid Nurul Hakim (abidnurulhakim@gmail.com)"
     },
     {
         "value": 4,
-        "text": "admin_alfan (alpancs@gmail.com)"
+        "text": "alfan (alpancs@gmail.com)"
     },
     {
         "value": 5,
-        "text": "admin_fahmi (ffahmii@gmail.com)"
+        "text": "FAHMI (ffahmii@gmail.com)"
     },
     {
         "value": 6,
@@ -29,6 +29,18 @@
     },
     {
         "value": 8,
-        "text": "** (ffahmii1@gmail.com)"
+        "text": "  (hadaiq@hadaiq.com)"
+    },
+    {
+        "value": 9,
+        "text": "~!@#$%^&*()<\/?.'; (hasda@sa.c)"
+    },
+    {
+        "value": 10,
+        "text": "hadaiq (hadaiq@cs.ui.ac.id)"
+    },
+    {
+        "value": 11,
+        "text": "rizqi (bebrul.rizqi@gmail.com)"
     }
 ]
