@@ -16,10 +16,10 @@
 			      		<input type="text" maxlength="254" name="entry_subject" class="form-control input-ingredient" placeholder="Ingredient Name">
 			    	</div>
 			    	<div class="col-md-3 col-sm-3 col-xs-3 col-no-padding-left">
-			      		<input type="text" maxlength="254" name="entry_unit" class="form-control ingredient-unit" placeholder="Unit" autocomplete="off">
+			      		<input type="number" min="0" step="0.01" name="entry_quantity" class="form-control" placeholder="Quantity">
 			    	</div>
 			    	<div class="col-md-3 col-sm-3 col-xs-3 col-no-padding-left">
-			      		<input type="number" min="0" step="0.01" name="entry_quantity" class="form-control" placeholder="Quantity">
+			      		<input type="text" maxlength="254" name="entry_unit" class="form-control ingredient-unit" placeholder="Unit" autocomplete="off">
 			    	</div>
 			    	<div class="col-md-3 col-sm-3 col-xs-3 col-no-padding-left">
 			      		<input type="number" min="0" step="1" name="entry_price" class="form-control" placeholder="Price">
@@ -35,8 +35,8 @@
 		            <tr>
 		                <th>ID</th>
 		                <th>Name</th>
-		                <th>Unit</th>
 		                <th>Quantity</th>
+		                <th>Unit</th>
 		                <th>Price</th>
 		            </tr>
 		        </thead>
@@ -44,8 +44,8 @@
 		            <tr>
 		                <th>ID</th>
 		                <th>Name</th>
-		                <th>Unit</th>
 		                <th>Quantity</th>
+		                <th>Unit</th>
 		                <th>Price</th>
 		            </tr>
 		        </tfoot>
@@ -55,11 +55,11 @@
 	                <td class="edit" data-type="text" data-name="name" data-pk="{catalog_id}" data-title="Enter Name Catalog">
 	                	{catalog_name}
 	                </td>
-	                <td class="edit" data-type="text" data-name="units" data-pk="{catalog_id}" data-title="Enter Unit Catalog">
-	                	{catalog_unit}
-	                </td>
 	                <td class="edit" data-type="text" data-name="quantity" data-pk="{catalog_id}" data-title="Enter Quantity Catalog">
 	                	{catalog_quantity}
+	                </td>
+	                <td class="edit" data-type="text" data-name="units" data-pk="{catalog_id}" data-title="Enter Unit Catalog">
+	                	{catalog_unit}
 	                </td>
 	                <td class="edit" data-type="number" data-name="price" data-pk="{catalog_id}" data-title="Enter Price Catalog">
 	                	{catalog_price}
