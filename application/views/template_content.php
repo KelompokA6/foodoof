@@ -39,15 +39,7 @@
     	  	</div>
     	</div>
       <?php
-        $user_id = $this->session->userdata('user_id');
-        $u = new User_model();
-        date_default_timezone_set("Asia/Jakarta");
-        $one_minute_ago = (new DateTime())->modify("-20 second")->format("Y-m-d H:i:s");
-        $res = $u->where('last_access >', $one_minute_ago)->get();
-        $online_users = [];
-        foreach ($res as $obj)
-          if($obj->id != $user_id)
-            $online_users[] = (object)["id" => $obj->id, "name" => $obj->name, "photo" => $obj->photo];
+        $online_users = json_decode(file_get_contents(base_url('index.php/user/getonline')));
       ?>
       <div id="users-online" class="btn btn-default col-md-2 col-xs-4 col-no-padding text-left" 
       style="position:fixed; left:0; bottom:0; z-index:100; border-bottom-right-radius:0">
