@@ -1,6 +1,6 @@
 <div class="panel col-no-padding">
 	<div class="panel-body">
-        <h3 class="page-header-title text-capitalize"> Send Email </h3>
+        <h3 class="page-header-title text-capitalize"> Broadcast Message </h3>
         <?php
         echo $this->session->flashdata('alert-admin');
         ?>
