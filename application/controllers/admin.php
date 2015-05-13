@@ -1,6 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
+	function __construct(){
+		parent::__construct();
+		$this->load->library('session');
+	}
 	public function index(){
 		$this->highlight();
 	}
@@ -95,6 +99,7 @@ class Admin extends CI_Controller {
 			}
 			$data1 = array(
 				'reported_recipe_entries' => $details,
+				'reported_user_id' => $objRepo->id,
 				'reported_user_name' => $user_name,
 				'reported_user_photo' => $user_photo,
 				);
@@ -267,7 +272,6 @@ class Admin extends CI_Controller {
 	}
 
 	public function sendmail(){
-		$this->load->library('session');
 		if($this->session->userdata('user_id')==''){
 			redirect(base_url()."index.php/home/login", "refresh");
 		}
@@ -404,7 +408,9 @@ class Admin extends CI_Controller {
   	$user = new User_model();
   	$ban = $this->input->post("id_reported");
   	foreach ($ban as $userid) {
-  		$user->where('id', $userid)->update('status', "BANNED");
+  		if(!$user->where('id', $userid)->update('status', "BANNED")){
+  			echo "gagal";
+  		}
   		$user->clear();
   	}
   	$alert = "<div id='alert-notification' data-message='Banned User Success' data-status='success' class='hidden'></div>";
