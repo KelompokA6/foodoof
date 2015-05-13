@@ -12,7 +12,7 @@ class Conversation extends DataMapper {
     }
 
     /*
-        Memperoleh semua pesan pada sebuah conversation, $read jika true maka $user_id yang mengakses akan ditambahkan kedalam daftar read dari message
+        Memperoleh semua pesan pada sebuah conversation
     */
     function getAllMessages($conversation_id=null, $user_id=null, $limit=10, $offset=0){
         if(empty($conversation_id)){
@@ -32,6 +32,7 @@ class Conversation extends DataMapper {
                     $data->id = $message->id;
                     $data->description = $message->description;
                     $data->submit = $message->submit;
+                    $data->sender_id = $message->sender_id;
                     array_push($listMessages, $data);
                 }    
                 return $listMessages;
