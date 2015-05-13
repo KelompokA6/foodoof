@@ -160,6 +160,35 @@ class User_model extends DataMapper {
 
         
     }
+    /*
+        Memperoleh semua conversation dari seorang user dan message+pengirim pesan tersebut terakhir pada conversation tersebut
+    */
+    function getAllConversationUser($user_id=null, $limit=100){
+        if(empty($user_id)){
+            $user_id=$this->user_id;
+        }
+        if(!empty($user_id)){
+            $listConversation = array();
+            $conversations = new Conversation();
+            $conversations->where("user_id", $user_id);
+            $conversations->get();
+            foreach ($conversations as $conversation) {
+                $messages = new Message();
+                $messages->where("conversation_id", $conversation->id);
+                $messages->order_by("submit", "desc");
+                $messages->limit(1);
+                $messages->get();
+                $data = new stdClass();
+                $data->id = $conversation->id;
+                $data->sender_id = $messages->sender_id;
+                $data->last_message = $messages->description;
+                $data->time_last_message = $messages->submit;
+                array_push($listConversation, $data);
+            }
+            return $listConversation;
+        }
+        return array();
+    }
 }
 
 /* End of file user.php */
