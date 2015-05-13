@@ -296,8 +296,15 @@ class User extends CI_Controller {
 	        $online_users[] = (object)["id" => $obj->id, "name" => $obj->name, "photo" => $obj->photo];
 	    echo json_encode($online_users);
 	}
-	public function conversation($conversation_id=null){
+	
+	public function createconversation()
+	{
+		$this->load->model("user_model");
 		$id = $this->user_model->wajiblogin();
-		
+		if($id)
+		{
+			$this->load->model("conversation");
+			echo "sek sek";
+		}else redirect(base_url('index.php/home/login'));
 	}
 }
