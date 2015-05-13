@@ -2,7 +2,7 @@
 	<div class="panel-body">
         <?php echo $this->session->flashdata('alert-notification');?>
     	<h4 class="page-header-title text-capitalize text-center"> 
-            <span style="line-height:34px">Conversation</span>
+            <span style="line-height:34px">{conversation_subject}</span>
             <a href='<?php echo base_url();?>index.php/user/newConversation' class='pull-right'>
                 <button class='btn button-primary'>
                     <i class='fa fa-plus fa-lg'></i>
