@@ -119,7 +119,8 @@ class Home extends CI_Controller {
 	}
 
 	public function addReport($recipe_id){
-		$user_id = $this->session->userdata('user_id');		
+		$r = new Recipe_model();
+		$user_id = $r->getRecipeProfile($recipe_id)->author;		
 		$cat_report = $this->input->post("report_category");
 		$report = new Report();
 		$user = new User_model();
