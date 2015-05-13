@@ -297,7 +297,7 @@ class User extends CI_Controller {
 	    echo json_encode($online_users);
 	}
 
-	public function messages()
+	public function message()
 	{
 		$id = $this->user_model->wajiblogin();
 		if($id)

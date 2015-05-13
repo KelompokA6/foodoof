@@ -77,7 +77,7 @@
           </a>
         </div>
         <div id="icon-message" class="col-md-2 link-by-icon text-right" style="padding:0 6px" data-countmessage="5">
-          <a href="<?php echo base_url();?>index.php/user/messages" title="Messages">
+          <a href="<?php echo base_url();?>index.php/user/message" title="Messages">
             <i class="fa fa-comment fa-2x icons-secondary" style="cursor:pointer"></i>
           </a>
         </div>
