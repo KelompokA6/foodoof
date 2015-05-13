@@ -171,6 +171,7 @@ class User_model extends DataMapper {
             $listConversation = array();
             $conversations = new Conversation();
             $conversations->where("user_id", $user_id);
+            $conversations->order_by("submit", "desc");
             $conversations->get();
             foreach ($conversations as $conversation) {
                 $messages = new Message();
