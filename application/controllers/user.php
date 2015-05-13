@@ -296,4 +296,8 @@ class User extends CI_Controller {
 	        $online_users[] = (object)["id" => $obj->id, "name" => $obj->name, "photo" => $obj->photo];
 	    echo json_encode($online_users);
 	}
+	public function conversation($conversation_id=null){
+		$id = $this->user_model->wajiblogin();
+		
+	}
 }
