@@ -11,10 +11,17 @@
         }
       ?>
       of '{search_by_title_recipe_key}'
+      <?php 
+        if (!empty($search_by_title_recipe_category)){
+          echo " with category $search_by_title_recipe_category";
+        }
+      ?>
     </h3>
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 text-right">
-    <form id="filterRecipe" action="<?php echo base_url();?>search?searchby=title&q={search_by_title_recipe_key}">
+    <form id="filterRecipe" action="<?php echo base_url();?>search?">
+    <input type="hidden" name="searchby" value="title">
+    <input type="hidden" name="q" value="{search_by_title_recipe_key}">
     <div class="pull-right dropdown">
       <button data-toggle="dropdown" class="btn button-category dropdown-toggle">
         All Category    <span class="caret"></span>

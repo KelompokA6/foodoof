@@ -406,6 +406,6 @@ class Tempview extends CI_Controller {
 	}
 	public function filter($name,$category){
 		$r = new Recipe_model();
-		print_r($r->searchRecipeByTitle($name, 10, 0, array("other","noodle")));
+		print_r($r->searchRecipeByIngredients($name, 10, 0,0,$category));
 	}
 }

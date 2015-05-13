@@ -21,7 +21,9 @@ class Search extends CI_Controller {
       $cat = NULL;
     }
     // $cat = ($this->input->get('ex2'));
+    // echo "$searchby";
     // echo "$cat";
+    // echo "$q";
     // die();
     if (@$q && @$searchby) {
       $q = urldecode($q);
@@ -33,12 +35,12 @@ class Search extends CI_Controller {
 
       if ($searchby == 'title') {
         $result = $r->searchRecipeByTitle($q2, $limit, $limit * $page - $limit, $cat);
-        $this->show_search_by_title($q, $result['recipe_list'], ceil($result['total']/$limit), $page, $result['total']);
+        $this->show_search_by_title($q, $result['recipe_list'], ceil($result['total']/$limit), $page, $result['total'], $cat);
       } elseif ($searchby == 'ingredient') {
         $qs = array_map(function($x){return trim($x);}, explode(",", $q2));
-        $result = $r->searchRecipeByIngredients($qs, 0.3, $limit, $limit * $page - $limit);
+        $result = $r->searchRecipeByIngredients($qs, 0.3, $limit, $limit * $page - $limit,$cat);
         // print_r($result); die();
-        $this->show_search_by_ingredient($q, $result['recipe_list'], ceil($result['total']/$limit), $page, $result['total']);
+        $this->show_search_by_ingredient($q, $result['recipe_list'], ceil($result['total']/$limit), $page, $result['total'], $cat);
       } else {
         $q2 = str_replace("*", "", $q2);
         $temp = $u->searchAccountByName($q2, $limit, $limit * $page - $limit);
@@ -49,12 +51,13 @@ class Search extends CI_Controller {
     }else redirect(base_url());
   }
 
-  private function show_search_by_title($key, $list_recipe, $total, $pagenow, $countall)
+  private function show_search_by_title($key, $list_recipe, $total, $pagenow, $countall, $cat)
   {
     $datalist['search_by_title_recipe_result'] = $countall;
     $datalist['search_by_title_recipe_key'] = htmlspecialchars($key);
     $datalist['search_by_title_recipe_page_size'] = $total;
     $datalist['search_by_title_recipe_page_now'] = $pagenow;
+    $datalist['search_by_title_recipe_category'] = $cat;
     $u = new User_model();
     foreach ($list_recipe as $row) {
       $row->search_by_title_recipe_id = $row->id;
@@ -89,12 +92,13 @@ class Search extends CI_Controller {
     $this->parser->parse('template_content', $datacomplete);
   }
 
-  private function show_search_by_ingredient($key, $list_recipe, $total, $pagenow, $countall)
+  private function show_search_by_ingredient($key, $list_recipe, $total, $pagenow, $countall, $cat)
   {
     $datalist['search_by_ingredient_recipe_result'] = $countall;
     $datalist['search_by_ingredient_recipe_key'] = htmlspecialchars($key);
     $datalist['search_by_ingredient_recipe_page_size'] = $total;
     $datalist['search_by_ingredient_recipe_page_now'] = $pagenow;
+    $datalist['search_by_title_recipe_category'] = $cat;
     $u = new User_model();
     foreach ($list_recipe as $row) {
       $row->search_by_ingredient_recipe_id = $row->id;

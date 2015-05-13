@@ -590,7 +590,7 @@ class Recipe_model extends DataMapper {
     kembalian aray dengan dua element element total merupakan total pencarian dan element resep_list merupakan list resep yang sesuai dengan title.
     bila tidak ada yang memenuhi maka mengembalikan array dengan sebuah element total yang bernilai nol.
     */
-    function searchRecipeByTitle($search_key=NULL, $limit=10, $offset=0, $category="Other"){
+    function searchRecipeByTitle($search_key=NULL, $limit=10, $offset=0, $category){
         if(!empty($search_key)){
             $search_key = strtolower($search_key);
             $search_key = str_replace("*", "", $search_key);
