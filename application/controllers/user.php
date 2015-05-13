@@ -302,7 +302,7 @@ class User extends CI_Controller {
 		$id = $this->user_model->wajiblogin();
 		if($id)
 		{
-			$this->load->model("conversation");
+			$conv = new Conversation($id);
 			echo "sek sek";
 		}else redirect(base_url('index.php/home/login'));
 	}

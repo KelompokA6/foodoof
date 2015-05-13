@@ -6,9 +6,9 @@ class Conversation extends DataMapper {
     var $has_many = array('message');
     var $has_one = array('user');
 
-    function __construct($recipe_id = NULL)
+    function __construct($id = NULL)
     {
-        parent::__construct($recipe_id);
+        parent::__construct($id);
     }
 
     /*
