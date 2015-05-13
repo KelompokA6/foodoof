@@ -1370,9 +1370,13 @@ $(document).ready(function() {
 	});
 	$(".info-ingredients-popover").popover();
 
-	$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message").data("countmessage") });
+	if($("#icon-message").data("countmessage")>0){
+		$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message").data("countmessage") });	
+	}
 	$(".conversation-list-item").each(function(i){
-		$(this).iosbadge({ theme: 'ios', size: 28, content: $(this).data("countmessage") });
+		if($(this).data("countmessage")>0){
+			$(this).iosbadge({ theme: 'ios', size: 28, content: $(this).data("countmessage") });	
+		}
 	});
 	$("#toggle-online-user").on("click", function(e){
 		if($("#panel-users").css("display")=="none"){
