@@ -1795,3 +1795,9 @@ input.checked-cook-later{
   font-size: 20px;
   color : #DD3124;
 }
+
+.subject-conversation{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}

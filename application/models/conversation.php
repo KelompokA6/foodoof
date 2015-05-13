@@ -19,17 +19,17 @@ class Conversation extends DataMapper {
             $conversation_id = $this->conversation_id;
         }
         if(!empty($conversation_id) && !empty($user_id)){
-            $this->where("conversation_id", $conversation_id);
+            $this->where("id", $conversation_id);
             $this->where("user_id", $user_id);
             if($this->count() > 0){
                 $messages = new Message();  
-                $messages->order_by("submit","desc");
+                $messages->order_by("submit","asc");
                 $messages->limit($limit);
                 $messages->get_where(array("conversation_id"=>$conversation_id), $limit, $offset);
                 $listMessages = array();
                 foreach ($messages as $message) {
                     $data = new stdClass();
-                    $data->id = $message->id;
+                    $data->id = $message->message_id;
                     $data->description = $message->description;
                     $data->submit = $message->submit;
                     $data->sender_id = $message->sender_id;
@@ -76,7 +76,7 @@ class Conversation extends DataMapper {
             $conversation->where("user_id", $user_id);
             if($conversation->count() > 0){
                 $conversation->clear();
-                $conversation->where("conversation_id", $conversation_id);
+                $conversation->where("id", $conversation_id);
                 $conversation->get();
                 $listUser = array();
                 foreach ($conversation as $conv) {

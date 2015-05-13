@@ -1,23 +1,25 @@
 <div class="panel col-no-padding">
 	<div class="panel-body">
         <?php echo $this->session->flashdata('alert-notification');?>
-    	<h4 class="page-header-title text-capitalize text-center"> 
-            <span style="line-height:34px">{conversation_subject}</span>
-            <a href='<?php echo base_url();?>index.php/user/newConversation' class='pull-right'>
+        <div class="col-md-12 col-sm-12 col-xs-12 page-header-title">
+            <h4 class="subject-conversation text-capitalize text-center col-md-9 col-sm-9 col-xs-9 col-no-padding" style="line-height:34px;"> 
+                <span>{conversation_subject}</span>
+            </h4>
+            <a href='<?php echo base_url();?>index.php/user/newConversation' class='col-md-3 col-sm-3 col-xs-3 col-no-padding pull-right'>
                 <button class='btn button-primary'>
                     <i class='fa fa-plus fa-lg'></i>
                     New Conversation
                 </button>
             </a>
-        </h4>
-        <h5 class="page-header-title text-capitalize border-solid-bottom">
+        </div>
+        <h5 class="page-header-title text-capitalize border-solid-bottom" style="padding:5px 15px;">
             {conversation_member_entries}
-            <a href="<?php echo base_url();?>index.php/user/timeline/{conversation_member_id}">{conversation_member_name}</a>
+            <a href="<?php echo base_url();?>index.php/user/timeline/{conversation_member_id}">{conversation_member_name}, </a>
             {/conversation_member_entries}
         </h5>
         <ul class="message-list-group">
             {conversation_message_entries}
-            <li class="clearfix col-md-12 col-xs-12 col-sm-12 message-list-item">
+            <li class="clearfix conversation_message_entriescol-md-12 col-xs-12 col-sm-12 message-list-item">
                 <div class="col-md-1 col-sm-1 col-xs-1 col-no-padding">
                     <img class="img-responsive img-rounded img-message" src="<?php echo base_url();?>{conversation_message_user_photo}">
                 </div>

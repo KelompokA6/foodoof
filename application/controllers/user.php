@@ -318,6 +318,37 @@ class User extends CI_Controller {
 			$data = [];
 			$menubar = $this->parser->parse('menubar', $data, TRUE);
 			$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
+			$conversations = new Conversation();
+			$listMessages = $conversations->getAllMessages("1", "3");
+			$u = new User_model();
+			$datamessage = array();
+			foreach ($listMessages as $obj) {
+				$dataTmp=array(
+					"conversation_message_user_photo"=> $u->getProfile($obj->sender_id)->photo,
+					"conversation_message_user_id" =>$obj->sender_id,
+					"conversation_message_user_name" => $u->getProfile($obj->sender_id)->name,
+					"conversation_message_submit" => strtotime($obj->submit),
+					"conversation_message_description" => nl2br($obj->description),
+					);
+				array_push($datamessage, $dataTmp);
+			}
+			$con = new Conversation();
+			$con->where("id", 1);
+			$con->get();
+			$listMember = $con->getMembers(1,3);
+			$dataMember = array();
+			foreach ($listMember as $obj) {
+				$dataTmp = array(
+					"conversation_member_name" => $u->getProfile($obj)->name,
+					);
+				array_push($dataMember, $dataTmp);
+			}
+			$data = array(
+				"conversation_member_entries" => $dataMember,
+				"conversation_subject" => $con->subject,
+				"conversation_message_entries"=>$datamessage,
+				);
+
 			$content_conversation = $this->parser->parse("conversation_view", $data, true);
 			$data = array(
 					"content_conversation" => $content_conversation,
@@ -329,8 +360,6 @@ class User extends CI_Controller {
 						"content_website" => $content_website,
 					);
 			$this->parser->parse('template_content', $data);
-
-
 
 		}else redirect(base_url('index.php/home/login'));
 	}
