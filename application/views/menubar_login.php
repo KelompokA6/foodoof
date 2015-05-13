@@ -1,6 +1,6 @@
 <div class="navmenu navmenu-default navmenu-fixed-left offcanvas bg-sidemenu" role="navigation">
   <div class="col-xs-12 text-center page-header-title">
-    <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left">
+    <a href="<?php echo base_url();?>" class="brand-menubar col-no-padding-left">
       <img class="img-responsive img-brand-menubar" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>
     </a>  
   </div>
