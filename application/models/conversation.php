@@ -129,7 +129,7 @@ class Conversation extends DataMapper {
                 }
             }
         }
-        return false
+        return false;
     }
 }
 

@@ -303,7 +303,26 @@ class User extends CI_Controller {
 		if($id)
 		{
 			$conv = new Conversation($id);
-			echo "sek sek";
+
+
+
+			$data = [];
+			$menubar = $this->parser->parse('menubar', $data, TRUE);
+			$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
+			$content_conversation = $this->parser->parse("conversation_view", $data, true);
+			$data = array(
+					"content_conversation" => $content_conversation,
+					"content_sidebar_conversation" => $content_sidebar_conversation
+				);
+			$content_website = $this->parser->parse('template_conversation', $data, TRUE);
+			$data = array(
+						"menubar" => $menubar,
+						"content_website" => $content_website,
+					);
+			$this->parser->parse('template_content', $data);
+
+
+
 		}else redirect(base_url('index.php/home/login'));
 	}
 	
