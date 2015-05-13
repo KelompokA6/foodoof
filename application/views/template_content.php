@@ -51,11 +51,11 @@
           <div class="panel-body" id="online-panel">
             
             <div hidden id="sample-online-user" class="col-md-12 list-user-online col-no-padding-right">
-              <a id="ling" href="/foodoof/index.php/user/timeline/userid">
+              <a id="ling" href="">
                 <div class="col-md-3 col-no-padding">
-                  <img id="imge" class="img-responsive img-rounded img-user-online" src="/foodoof/userphoto">
+                  <img id="imge" class="img-responsive img-rounded img-user-online" src="">
                 </div>
-                <div id="uname" class="col-md-9 text-left col-no-padding-right name-user-online">username</div>
+                <div id="uname" class="col-md-9 text-left col-no-padding-right name-user-online"></div>
               </a>
             </div>
 

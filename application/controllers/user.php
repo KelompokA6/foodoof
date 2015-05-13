@@ -302,6 +302,15 @@ class User extends CI_Controller {
 		$id = $this->user_model->wajiblogin();
 		if($id)
 		{
+			$u = new User_model();
+			$data['sidebar_conversation_entries'] = $u->getAllConversationUser($id);
+			/*foreach ($data['sidebar_conversation_entries'] as $conversation) {
+				$conversation->$conversation->id
+        $conversation->sender_id
+        $conversation->last_message
+        $conversation->time_last_message
+			}*/
+			// print_r($data['sidebar_conversation_entries']); die();
 			$conv = new Conversation($id);
 
 
