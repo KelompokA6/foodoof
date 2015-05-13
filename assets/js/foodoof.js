@@ -1315,6 +1315,47 @@ $(document).ready(function() {
 	});
 
 	/*
+		filter resep
+	*/
+	function getUrlParameterArray(sParam)
+	{
+	    var sPageURL = window.location.search.substring(1);
+	    var sURLVariables = sPageURL.split('&');
+	    $data = new Array();
+	    for (var i = 0; i < sURLVariables.length; i++) 
+	    {
+	        var sParameterName = sURLVariables[i].split('=');
+	        if (sParameterName[0].toLowerCase() === sParam) 
+	        {
+	        	sParameterName[1] = sParameterName[1].replace("+"," ");
+	     		$data.push(sParameterName[1]);
+	        }
+	    }
+	    return $data;
+	}
+	if($searchBy.toLowerCase()=="title" || $searchBy.toLowerCase()=="ingredient"){
+		$catFilter = getUrlParameterArray("ex2").sort();
+		$selectedfilter = "";
+		for(var i=0; i < $catFilter.length; i++){
+			$("ul#filterCategory > li").each(function(z){
+				if(($(this).find("label").html().toLowerCase()) == ($catFilter[i].toLowerCase())){
+					$(this).find("input").prop("checked", true);
+					if(i==0){
+						$selectedfilter += $(this).find("label").html();
+					}
+					else{
+						$selectedfilter += ", "+ $(this).find("label").html();
+					}
+				}
+			});
+		}
+		if($selectedfilter==""){
+			$selectedfilter = "All Category";
+		}
+		$("ul#filterCategory").prev().html($selectedfilter+"      <span class='caret'></span>");
+	}
+
+	/*
 	init javascript bootstrap;
 	*/
 	$('.carousel').carousel();

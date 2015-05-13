@@ -689,7 +689,7 @@ class Recipe_model extends DataMapper {
                 if($total >= $offset && $limit > 0){
                     if(!empty($category)){
                         $categories = new Category();
-                        $categories->where('recipe_id', $recipes->id);
+                        $categories->where('recipe_id', $ingredients->recipe_id);
                         if(is_array($category)){
                             $categories->group_start();
                             for ($i=0; $i < sizeof($category) ; $i++) { 

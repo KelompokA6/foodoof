@@ -21,7 +21,7 @@
       <button data-toggle="dropdown" class="btn button-category dropdown-toggle">
         All Category    <span class="caret"></span>
       </button>
-      <ul class="dropdown-menu bullet pull-center">
+      <ul id="filterCategory" class="dropdown-menu bullet pull-center">
         <li>
           <input type="checkbox" id="ex2_1" name="ex2" value="Indonesian Food">
           <label for="ex2_1">Indonesian Food</label>
