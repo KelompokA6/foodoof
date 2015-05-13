@@ -24,7 +24,7 @@
           <span class="icon-bar icons-secondary"></span>
           <span class="icon-bar icons-secondary"></span>
       </button>
-      <a href="<?php echo base_url();?>index.php" class="brand-menubar col-no-padding-left col-md-12 col-xs-9">
+      <a href="<?php echo base_url();?>" class="brand-menubar col-no-padding-left col-md-12 col-xs-9">
         <img class="img-responsive img-brand-menubar" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 12px;"/>
       </a>
       <a href="<?php echo base_url();?>index.php/recipe/create" class="btn-navbar-mobile pull-right text-center">
