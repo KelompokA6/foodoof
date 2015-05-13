@@ -97,6 +97,7 @@ class Conversation extends DataMapper {
                 if(empty($subject)){
                     $u = new User_model();
                     $x=0;
+                    $subject="Conversation of ";
                     foreach ($user_id as $user) {
                         if($x==0){
                             $subject += $u->getProfile($user)->name;
