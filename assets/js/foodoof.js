@@ -1366,8 +1366,55 @@ $(document).ready(function() {
 			$(this).iosbadge({ theme: 'ios', size: 28, content: $(this).data("countmessage") });	
 		}
 	});
-	$("ul.message-list-group").animate({ scrollTop: $("ul.message-list-group").height() });
-
+	$("ul.message-list-group").animate({ scrollTop: $("ul.message-list-group").height()});
+	function checkUnreadConversation(){
+		$countUnreadAll = 0;
+		$(".conversation-list-item").each(function(i){
+			if(i!=0){
+				$.get($baseurl+"/processAjax/checkConversation/"+$(this).data("idconversation"), function(data){
+					if(data.status="success"){
+						if(data.countunread > 0){
+							$conversation.data("countmessage", data.countunread);
+							$conversation.iosbadge({ theme: 'ios', size: 28, content: data.countunread});
+							$conversation.find("div.conversation-details").find("div > div.time-conversation").find("span").livestamp(data.submit_str);
+							$conversation.find("div > img").attr("src", $baseurlnoConflict+data.messages[0].user_photo);
+							$conversation.find("div.conversation-details").find("div.conversation-last-message").html(data.messages[0].description);	
+						}
+					}
+				}, "json");
+			}
+		});
+		setTimeout(checkUnreadConversation, 4500);
+	}
+	function checkConversation(){
+		$idconversation = $("#conversation-summary").data("idconversation");
+		$.get($baseurl+"/processAjax/checkConversation/"+$idconversation+"/true", function(data){
+			if(data.status="success"){
+				if(data.messages.length > 0){
+					$messages = data.messages;
+					for (var i = ($messages.length-1); i >= 0; i--){
+						$message = "<li class='clearfix animated fadeInLeftBig conversation_message_entries col-md-12 col-xs-12 col-sm-12 message-list-item'><div class='col-md-1 col-sm-1 col-xs-1 col-no-padding'><img class='img-responsive img-rounded img-message' src='"+$baseurlnoConflict+"/"+$messages[i].user_photo+"'></div><div class='col-md-11 col-sm-11 col-xs-11 col-no-padding message-details'><div class='col-md-12 col-xs-12 col-sm-12 col-no-padding'><div class='col-md-9 col-xs-9 col-sm-9 users-message col-no-padding-right'><a href='"+$baseurl+"/index.php/user/timeline/"+$messages[i].sender_id+"'>"+$messages[i].user_name+"</a></div><div class='col-md-3 col-xs-3 col-sm-3 time-message col-no-padding text-right'><span data-livestamp='"+$messages[i].submit_str+"'></span></div></div><div class='col-md-12 col-xs-12 col-sm-12 col-no-padding-right message-value'>"+$messages[i].description+"</div></div></li>";
+						$("ul.message-list-group").append($message);
+					};
+				}
+			}
+		}, "json");
+		$("ul.message-list-group").animate({ scrollTop: $(document).height()});
+		setTimeout(checkConversation, 8000);
+	}
+	function checkUnreadAllConversation(){
+		$.get($baseurl+"/processAjax/checkAllConversation", function(data){
+			if(data.status=="success"){
+				if(data.countunread > 0){
+					$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: data.countunread});	
+				}
+			}
+		},"json");
+		setTimeout(checkUnreadAllConversation, 3000);
+	}
+	checkUnreadConversation();
+	checkUnreadAllConversation();
+	checkConversation();
 	/*
 	init javascript bootstrap;
 	*/

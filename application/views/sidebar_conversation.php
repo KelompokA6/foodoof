@@ -15,7 +15,7 @@
 		<ul class="conversation-list-group">
 			{sidebar_conversation_entries}
 			<a href="<?php echo base_url();?>index.php/user/message/{sidebar_conversation_id}">
-				<li class="conversation-list-item col-md-12 col-sm-12 col-xs-12" data-countmessage="{sidebar_conversation_unread}">
+				<li class="conversation-list-item col-md-12 col-sm-12 col-xs-12" data-idconversation="{sidebar_conversation_id}" data-countmessage="{sidebar_conversation_unread}">
 					<div class="col-md-3 col-sm-3 col-xs-3 col-no-padding">
 						<img class="img-responsive img-rounded img-conversation" src="<?php echo base_url();?>{sidebar_conversation_sender_photo}">
 					</div>

@@ -304,7 +304,6 @@ class User extends CI_Controller {
 		{
 			$u = new User_model();
 			$this->load->model('home_viewer');
-			$menubar = $this->home_viewer->getMenubar();
 			$listConversation = $u->getAllConversationUser($id);
 			$conversations = new Conversation();
 			$dataConversation = array();
@@ -312,15 +311,6 @@ class User extends CI_Controller {
 				if($conversation_id<0){
 					redirect(base_url()."index.php/user/message/$conversation_item->id");
 				}
-				$tmp = array(
-					"sidebar_conversation_id" => $conversation_item->id,
-					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id,"3"),
-					"sidebar_conversation_sender_photo" => $u->getProfile($conversation_item->sender_id)->photo,
-					"sidebar_conversation_subject" => $conversation_item->subject,
-					"sidebar_conversation_submit" => $conversation_item->time_last_message,
-					"sidebar_conversation_last_message" => $conversation_item->last_message,
-				);
-				array_push($dataConversation, $tmp);
 			}
 			$data = array("sidebar_conversation_entries" => $dataConversation);
 			$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
@@ -368,11 +358,29 @@ class User extends CI_Controller {
 				);
 
 			$content_conversation = $this->parser->parse("conversation_view", $data, true);
+			$dataConversation = array();
+			foreach ($listConversation as $conversation_item) {
+				if($conversation_id<0){
+					redirect(base_url()."index.php/user/message/$conversation_item->id");
+				}
+				$tmp = array(
+					"sidebar_conversation_id" => $conversation_item->id,
+					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id,"3"),
+					"sidebar_conversation_sender_photo" => $u->getProfile($conversation_item->sender_id)->photo,
+					"sidebar_conversation_subject" => $conversation_item->subject,
+					"sidebar_conversation_submit" => $conversation_item->time_last_message,
+					"sidebar_conversation_last_message" => $conversation_item->last_message,
+				);
+				array_push($dataConversation, $tmp);
+			}
+			$data = array("sidebar_conversation_entries" => $dataConversation);
+			$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
 			$data = array(
 					"content_conversation" => $content_conversation,
 					"content_sidebar_conversation" => $content_sidebar_conversation
 				);
 			$content_website = $this->parser->parse('template_conversation', $data, TRUE);
+			$menubar = $this->home_viewer->getMenubar();
 			$data = array(
 						"menubar" => $menubar,
 						"content_website" => $content_website,

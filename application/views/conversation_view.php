@@ -1,7 +1,7 @@
 <div class="panel col-no-padding">
 	<div class="panel-body">
         <?php echo $this->session->flashdata('alert-notification');?>
-        <div class="col-md-12 col-sm-12 col-xs-12 page-header-title">
+        <div id="conversation-summary" data-idconversation="{conversation_id}" class="col-md-12 col-sm-12 col-xs-12 page-header-title">
             <h5 class="subject-conversation text-capitalize text-center col-md-9 col-sm-9 col-xs-9 col-no-padding" style="line-height:34px;"> 
                 <span>{conversation_subject}</span>
                 <?php if(sizeof($conversation_member_entries) > 2):?>

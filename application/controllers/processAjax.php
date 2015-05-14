@@ -580,4 +580,57 @@ class ProcessAjax extends CI_Controller {
 			}
 		}
 	}
+	public function checkConversation($conversation_id=null, $flag_read=false){
+		$user_id = $this->session->userdata("user_id");
+		if(!empty($conversation_id) && !empty($user_id)){
+			$u = new User_model();
+			$conversations = new Conversation();
+			$unread = $conversations->getCountUnreadMessage($conversation_id, $user_id);
+			$listMessage = array();
+			if(!empty($unread)){
+				$listMessage = $conversations->getAllMessages($conversation_id, $user_id, $flag_read, $unread);
+				foreach ($listMessage as $message) {
+					$message->user_name = $u->getProfile($message->sender_id)->name;
+					$message->user_photo = $u->getProfile($message->sender_id)->photo;
+					$message->submit_str = strtotime($message->submit);
+					$message->sender_id = strtotime($message->sender_id);
+				}
+			}
+			if($flag_read){
+				$unread = 0;
+			}
+			$data = array(
+				"status" =>"success",
+				"countunread" => $unread,
+				"messages" => $listMessage,
+				);
+		}
+		else{
+			$data = array(
+				"status" =>"failed",
+				);	
+		}
+		echo json_encode($data, JSON_PRETTY_PRINT);
+	}
+	public function checkAllConversation(){
+		$user_id = $this->session->userdata("user_id");
+		if(!empty($user_id)){
+			$conversation = new Conversation();
+	        $u = new User_model();
+	        $listConversation = $u->getAllConversationUser($this->session->userdata('user_id'));
+	        $countUnreadMessage = 0;
+	        foreach ($listConversation as $conversations) {
+	          $countUnreadMessage += $conversation->getCountUnreadMessage($conversations->id, $this->session->userdata('user_id'));
+	        }
+			$data = array(
+				"status" =>"success",
+				"countunread" => $countUnreadMessage,);
+		}
+		else{
+			$data = array(
+				"status" =>"failed",
+				);	
+		}
+		echo json_encode($data, JSON_PRETTY_PRINT);
+	}
 }
