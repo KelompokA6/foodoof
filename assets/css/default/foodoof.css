@@ -1671,7 +1671,32 @@ li.conversation-list-item:hover{
   height: 55px;
   padding: 5px 0;
 }
-
+.conversation-submit{
+  font-size:10px;
+}
+.conversation-last-message{
+  overflow: hidden; 
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.other-user-photo{
+  width: 20px;
+  height: 20px;
+}
+.other-user-name{
+  font-size: 12px;
+}
+.other-user-list-group-item {
+  line-height: 24px;
+  overflow: hidden; 
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.other-user-list-group{
+  max-height: 100px;
+  margin-bottom: 0;
+  overflow: auto;
+}
 /*
   message css
 */
@@ -1794,10 +1819,4 @@ input.checked-cook-later{
 #panel-price{
   font-size: 20px;
   color : #DD3124;
-}
-
-.subject-conversation{
-  overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
 }

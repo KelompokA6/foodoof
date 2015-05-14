@@ -297,56 +297,74 @@ class User extends CI_Controller {
 	    echo json_encode($online_users);
 	}
 
-	public function message()
+	public function message($conversation_id=-1)
 	{
 		$id = $this->user_model->wajiblogin();
 		if($id)
 		{
+			$data = array();
+			$menubar = $this->parser->parse('menubar', $data, TRUE); 
 			$u = new User_model();
-			$data['sidebar_conversation_entries'] = $u->getAllConversationUser($id);
-			/*foreach ($data['sidebar_conversation_entries'] as $conversation) {
-				$conversation->$conversation->id
-        $conversation->sender_id
-        $conversation->last_message
-        $conversation->time_last_message
-			}*/
-			// print_r($data['sidebar_conversation_entries']); die();
-			$conv = new Conversation($id);
-
-
-
-			$data = [];
-			$menubar = $this->parser->parse('menubar', $data, TRUE);
-			$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
+			$listConversation = $u->getAllConversationUser($id);
 			$conversations = new Conversation();
-			$listMessages = $conversations->getAllMessages("1", "3");
+			$dataConversation = array();
+			foreach ($listConversation as $conversation_item) {
+				if($conversation_id<0){
+					$conversation_id = $conversation_item->id;
+				}
+				$tmp = array(
+					"sidebar_conversation_id" => $conversation_item->id,
+					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id,"3"),
+					"sidebar_conversation_sender_photo" => $u->getProfile($conversation_item->sender_id)->photo,
+					"sidebar_conversation_subject" => $conversation_item->subject,
+					"sidebar_conversation_submit" => $conversation_item->time_last_message,
+					"sidebar_conversation_last_message" => $conversation_item->last_message,
+				);
+				array_push($dataConversation, $tmp);
+			}
+			$data = array("sidebar_conversation_entries" => $dataConversation);
+			$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
+			$listMessages = $conversations->getAllMessages($conversation_id, $id, true);
 			$u = new User_model();
 			$datamessage = array();
-			foreach ($listMessages as $obj) {
+			for ($i=sizeof($listMessages)-1; $i >=0 ; $i--) { 
 				$dataTmp=array(
-					"conversation_message_user_photo"=> $u->getProfile($obj->sender_id)->photo,
-					"conversation_message_user_id" =>$obj->sender_id,
-					"conversation_message_user_name" => $u->getProfile($obj->sender_id)->name,
-					"conversation_message_submit" => strtotime($obj->submit),
-					"conversation_message_description" => nl2br($obj->description),
+					"conversation_message_user_photo"=> $u->getProfile($listMessages[$i]->sender_id)->photo,
+					"conversation_message_user_id" =>$listMessages[$i]->sender_id,
+					"conversation_message_user_name" => $u->getProfile($listMessages[$i]->sender_id)->name,
+					"conversation_message_submit" => strtotime($listMessages[$i]->submit),
+					"conversation_message_description" => nl2br($listMessages[$i]->description),
 					);
 				array_push($datamessage, $dataTmp);
 			}
 			$con = new Conversation();
-			$con->where("id", 1);
-			$con->get();
-			$listMember = $con->getMembers(1,3);
+			$listMember = $con->getMembers($conversation_id, $id);
 			$dataMember = array();
 			foreach ($listMember as $obj) {
 				$dataTmp = array(
 					"conversation_member_name" => $u->getProfile($obj)->name,
+					"conversation_member_photo" => $u->getProfile($obj)->photo,
+					"conversation_member_id" => $u->getProfile($obj)->id,
 					);
 				array_push($dataMember, $dataTmp);
 			}
+			$subject = $con->subject;
+			if(empty($subject)){
+				$subject .="You";
+				$i = 0;
+				while($i<2 && $i<(sizeof($listMember))) {
+					$subject .=", ".$u->getProfile($listMember[$i])->name;
+					$i++;
+				}
+				if(sizeof($listMember)>2){
+					$subject .= " and ";
+				}
+			}
 			$data = array(
 				"conversation_member_entries" => $dataMember,
-				"conversation_subject" => $con->subject,
+				"conversation_subject" => $subject,
 				"conversation_message_entries"=>$datamessage,
+				"conversation_id" => 1,
 				);
 
 			$content_conversation = $this->parser->parse("conversation_view", $data, true);
@@ -360,7 +378,6 @@ class User extends CI_Controller {
 						"content_website" => $content_website,
 					);
 			$this->parser->parse('template_content', $data);
-
 		}else redirect(base_url('index.php/home/login'));
 	}
 	
@@ -372,5 +389,17 @@ class User extends CI_Controller {
 			$this->load->model("conversation");
 			echo "sek sek";
 		}else redirect(base_url('index.php/home/login'));
+	}
+	public function addMessage($conversation_id){
+		$message = $this->input->post("message");
+		$messages = new Message();
+		if($messages->addMessage($conversation_id, $message, $this->session->userdata("user_id"))){
+			$alert = "<div id='alert-notification' data-message='Success Send Message' data-status='success' class='hidden'></div>";	
+		}
+		else{
+			$alert = "<div id='alert-notification' data-message='Failed Send Message' data-status='failed' class='hidden'></div>";
+		}
+		$this->session->set_flashdata('alert-notification', $alert);
+		redirect(base_url()."index.php/user/message");
 	}
 }

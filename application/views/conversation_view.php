@@ -2,21 +2,34 @@
 	<div class="panel-body">
         <?php echo $this->session->flashdata('alert-notification');?>
         <div class="col-md-12 col-sm-12 col-xs-12 page-header-title">
-            <h4 class="subject-conversation text-capitalize text-center col-md-9 col-sm-9 col-xs-9 col-no-padding" style="line-height:34px;"> 
+            <h5 class="subject-conversation text-capitalize text-center col-md-9 col-sm-9 col-xs-9 col-no-padding" style="line-height:34px;"> 
                 <span>{conversation_subject}</span>
-            </h4>
-            <a href='<?php echo base_url();?>index.php/user/newConversation' class='col-md-3 col-sm-3 col-xs-3 col-no-padding pull-right'>
+                <?php if(sizeof($conversation_member_entries) > 2):?>
+                <span role="button" title='Others' data-toggle="popover-x" data-target="#other_user" data-placement="bottom"><?php echo sizeof($conversation_member_entries)-2;?> Others</span>
+                <div id="other_user" class="popover popover-default">
+                    <div class="arrow"></div>
+                    <div class="popover-content">
+                        <ul class="list-group other-user-list-group">
+                            <?php foreach ($conversation_member_entries as $conversation_member_entry) {?>                          
+                            <li class="other-user-list-group-item col-md-12 col-xs-12 col-sm-12">
+                                <a href="<?php echo base_url();?>index.php/user/timeline/<?php echo $conversation_member_entry["conversation_member_id"];?>">
+                                    <img src="<?php echo base_url().$conversation_member_entry["conversation_member_photo"];?>" class="other-user-photo">
+                                    <span class="other-user-name"><?php echo $conversation_member_entry["conversation_member_name"];?></span>
+                                </a>
+                            </li>
+                            <?php }?>
+                        </ul>  
+                    </div>
+                </div>
+                <?php endif;?>
+            </h5>
+            <a href='<?php echo base_url();?>index.php/user/newConversation' class='col-md-3 col-sm-3 col-xs-3 col-no-padding text-right'>
                 <button class='btn button-primary'>
                     <i class='fa fa-plus fa-lg'></i>
                     New Conversation
                 </button>
             </a>
         </div>
-        <h5 class="page-header-title text-capitalize border-solid-bottom" style="padding:5px 15px;">
-            {conversation_member_entries}
-            <a href="<?php echo base_url();?>index.php/user/timeline/{conversation_member_id}">{conversation_member_name}, </a>
-            {/conversation_member_entries}
-        </h5>
         <ul class="message-list-group">
             {conversation_message_entries}
             <li class="clearfix conversation_message_entriescol-md-12 col-xs-12 col-sm-12 message-list-item">
@@ -39,7 +52,7 @@
             </li>
             {/conversation_message_entries}
         </ul>
-           <form class="form-horizontal" action="<?php echo base_url();?>index.php/user/addMessage" role="form" method="post" enctype="multipart/form-data">
+           <form class="form-horizontal" action="<?php echo base_url();?>index.php/user/addMessage/{conversation_id}" role="form" method="post" enctype="multipart/form-data">
             <div class="col-md-12 col-xs-12 col-no-padding-right form-group">
                 <div class="col-md-10 col-xs-9 col-no-padding">
                     <textarea class="form-control" name="message" placeholder="Write Your Message In Here ..."></textarea>

@@ -14,7 +14,7 @@ class Conversation extends DataMapper {
     /*
         Memperoleh semua pesan pada sebuah conversation
     */
-    function getAllMessages($conversation_id=null, $user_id=null, $limit=10, $offset=0){
+    function getAllMessages($conversation_id=null, $user_id=null, $flag_read=false, $limit=20, $offset=0){
         if(empty($conversation_id)){
             $conversation_id = $this->conversation_id;
         }
@@ -23,7 +23,7 @@ class Conversation extends DataMapper {
             $this->where("user_id", $user_id);
             if($this->count() > 0){
                 $messages = new Message();  
-                $messages->order_by("submit","asc");
+                $messages->order_by("submit","desc");
                 $messages->limit($limit);
                 $messages->get_where(array("conversation_id"=>$conversation_id), $limit, $offset);
                 $listMessages = array();
@@ -34,7 +34,16 @@ class Conversation extends DataMapper {
                     $data->submit = $message->submit;
                     $data->sender_id = $message->sender_id;
                     array_push($listMessages, $data);
-                }    
+                }
+                $messages->clear();
+                if($flag_read){
+                    $messages->where("conversation_id", $conversation_id)->not_ilike("read","|".$user_id."|")->get();
+                    $msg = new Message();
+                    foreach ($messages as $message) {
+                        $msg->where("message_id", $message->message_id);
+                        $msg->update("read", $message->read."|".$user_id."|");
+                    }        
+                }
                 return $listMessages;
             }
             return false;
@@ -45,18 +54,16 @@ class Conversation extends DataMapper {
     /*
         Memperoleh jumlah message yang belum terbaca dari sebuah conversation
     */
-    function getCountUnreadMessage($conversation_id=null, $user_id=null, $limit=10, $offset=0){
+    function getCountUnreadMessage($conversation_id=null, $user_id=null){
         if(empty($conversation_id)){
             $conversation_id = $this->conversation_id;
         }
         if(!empty($conversation_id) && !empty($user_id)){
-            $this->where("conversation_id", $conversation_id);
+            $this->where("id", $conversation_id);
             $this->where("user_id", $user_id);
             if($this->count() > 0){
                 $messages = new Message();
-                $users = new User_model();
-                $messages->where("conversation_id", $conversation_id);
-                $messages->where("submit <=", $users->getProfile($user_id)->last_access);
+                $messages->where("conversation_id", $conversation_id)->not_ilike("read", "|".$user_id."|");
                 return $messages->count();
             }
         }
@@ -77,6 +84,7 @@ class Conversation extends DataMapper {
             if($conversation->count() > 0){
                 $conversation->clear();
                 $conversation->where("id", $conversation_id);
+                $conversation->where("user_id !=", $user_id);
                 $conversation->get();
                 $listUser = array();
                 foreach ($conversation as $conv) {
@@ -94,34 +102,47 @@ class Conversation extends DataMapper {
     function addConversation($subject="", $user_id=null, $conversation_id=null){
         if(!empty($user_id)){
             if(is_array($user_id)){
-                if(empty($subject)){
-                    $u = new User_model();
+                if(empty($conversation_id)){
                     $x=0;
-                    $subject="Conversation of ";
+                    $conv_id = 0;
                     foreach ($user_id as $user) {
+                        $this->clear();
                         if($x==0){
-                            $subject += $u->getProfile($user)->name;
+                            $this->subject = $subject;
+                            $this->user_id = $user;
+                            if(!$this->skip_validation()->save()){
+                                return false;
+                            }
+                            $conv_id = $this->db->insert_id();
+                            die();
                         }
                         else{
-                            $subject += ", ".$u->getProfile($user)->name;
+                            $this->id = $conv_id; 
+                            $this->subject = $subject;
+                            $this->user_id = $user;    
+                            if(!$this->skip_validation()->save()){
+                                return false;
+                            }
+                        }
+                        $x++;    
+                    }
+                    return true;
+                }
+                else{
+                    foreach ($user_id as $user) {
+                        $this->clear();
+                        $this->id = $conversation_id;
+                        $this->subject = $subject;
+                        $this->user_id = $user;
+                        if(!$this->skip_validation()->save()){
+                            return false;
                         }
                     }
                 }
-                foreach ($user_id as $user) {
-                    $this->clear();
-                    $this->subject = $subject;
-                    $this->user_id = $user;
-                    if(!$this->skip_validation()->save()){
-                        return false;
-                    }         
-                }
-                return true;
+                return true;  
             }
             else{
                 if(!empty($conversation_id)){
-                    if(empty($subject)){
-                        $subject += $u->getProfile($user_id)->name;
-                    } 
                     $this->clear();
                     $this->id = $conversation_id;
                     $this->subject = $subject;

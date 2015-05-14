@@ -12,12 +12,14 @@ class Message extends DataMapper {
 
     function addMessage($conversation_id=null, $description="", $sender=null){
     	if(!empty($conversation_id) && !empty($sender)){
+            date_default_timezone_set ('Asia/Jakarta');
             $now = date("Y-m-d H:i:s");
     		$this->conversation_id = $conversation_id;
     		$this->description = $description;
     		$this->submit = $now;
             $this->sender_id = $sender;
-    		if($this->skip_validation->save()){
+            $this->read = "|".$sender."|";
+    		if($this->skip_validation()->save()){
     			$this->clear();
                 $conversation = new Conversation();
                 $conversation->where("id", $conversation_id)->update("submit", $now);
