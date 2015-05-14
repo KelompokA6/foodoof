@@ -310,7 +310,7 @@ class User extends CI_Controller {
 			$dataConversation = array();
 			foreach ($listConversation as $conversation_item) {
 				if($conversation_id<0){
-					$conversation_id = $conversation_item->id;
+					redirect(base_url()."index.php/user/message/$conversation_item->id");
 				}
 				$tmp = array(
 					"sidebar_conversation_id" => $conversation_item->id,
@@ -364,7 +364,7 @@ class User extends CI_Controller {
 				"conversation_member_entries" => $dataMember,
 				"conversation_subject" => $subject,
 				"conversation_message_entries"=>$datamessage,
-				"conversation_id" => 1,
+				"conversation_id" => $conversation_id,
 				);
 
 			$content_conversation = $this->parser->parse("conversation_view", $data, true);

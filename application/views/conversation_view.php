@@ -10,13 +10,13 @@
                     <div class="arrow"></div>
                     <div class="popover-content">
                         <ul class="list-group other-user-list-group">
-                            <?php foreach ($conversation_member_entries as $conversation_member_entry) {?>                          
-                            <li class="other-user-list-group-item col-md-12 col-xs-12 col-sm-12">
-                                <a href="<?php echo base_url();?>index.php/user/timeline/<?php echo $conversation_member_entry["conversation_member_id"];?>">
+                            <?php foreach ($conversation_member_entries as $conversation_member_entry) {?>  
+                            <a href="<?php echo base_url();?>index.php/user/timeline/<?php echo $conversation_member_entry["conversation_member_id"];?>">                        
+                                <li class="other-user-list-group-item col-md-12 col-xs-12 col-sm-12 border-solid-bottom">
                                     <img src="<?php echo base_url().$conversation_member_entry["conversation_member_photo"];?>" class="other-user-photo">
                                     <span class="other-user-name"><?php echo $conversation_member_entry["conversation_member_name"];?></span>
-                                </a>
-                            </li>
+                                </li>
+                            </a>
                             <?php }?>
                         </ul>  
                     </div>
@@ -32,7 +32,7 @@
         </div>
         <ul class="message-list-group">
             {conversation_message_entries}
-            <li class="clearfix conversation_message_entriescol-md-12 col-xs-12 col-sm-12 message-list-item">
+            <li class="clearfix conversation_message_entries col-md-12 col-xs-12 col-sm-12 message-list-item">
                 <div class="col-md-1 col-sm-1 col-xs-1 col-no-padding">
                     <img class="img-responsive img-rounded img-message" src="<?php echo base_url();?>{conversation_message_user_photo}">
                 </div>
