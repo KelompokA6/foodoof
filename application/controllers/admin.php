@@ -315,7 +315,10 @@ class Admin extends CI_Controller {
 			"message" => $message,
 			]);
 	}
-	function _send_smtp_email($data)
+
+	
+	/* KALO MAU KIRIM KE SEMUA USER, PANGGIL FUNGSI INI DENGAN PARAMETER KEDUA TRUE */
+	function _send_smtp_email($data, $toall = FALSE)
 	{
 		// $data: sender, sender_name, receiver, receiver_name, subject, message
 		extract($data);
@@ -332,12 +335,21 @@ class Admin extends CI_Controller {
 		$mail->Password = "badakfoodoof";      // Gmail password
 
 		// $mail->CharSet = 'windows-1250';
-		$mail->SetFrom ($sender, @$sender_name);
+		$mail->SetFrom (@$sender, @$sender_name);
 		$mail->Subject = @$subject;
 		$mail->ContentType = 'text/html';
 		$mail->IsHTML(TRUE);
 		$mail->Body = @$message; 
 		// you may also use $mail->Body = file_get_contents('your_mail_template.html');
+
+		if($toall) {
+			foreach ((new User_model())->get() as $user) {
+				$mail->clearAddresses();
+				$mail->AddAddress ($user->email, $user->name);
+				$mail->Send();
+			}
+			return "OK";
+		}
 		$mail->AddAddress ($receiver, @$receiver_name);
 		// you may also use this format $mail->AddAddress ($recipient);
 		return $mail->Send();
