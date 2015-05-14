@@ -201,12 +201,20 @@ class Home_viewer extends CI_Model
     if($this->session->userdata('user_id') > 0) {
         $oneword = explode(" ", $this->session->userdata('user_name'))[0];
         if (strlen($oneword) > 7) $oneword = ellipsize($oneword, 8, 1);
+        $conversation = new Conversation();
+        $u = new User_model();
+        $listConversation = $u->getAllConversationUser($this->session->userdata('user_id'));
+        $countUnreadMessage = 0;
+        foreach ($listConversation as $conversations) {
+          $countUnreadMessage += $conversation->getCountUnreadMessage($conversations->id, $this->session->userdata('user_id'));
+        }
         return $this->parser->parse(
             'menubar_login',
             array(
                 'user_id' => $this->session->userdata('user_id'),
                 'menubar_user_name' =>  htmlspecialchars($oneword),
                 'menubar_user_photo' => $this->session->userdata('user_photo'),
+                "menubar_count_unread_message" =>$countUnreadMessage,
             ),
             TRUE
         );

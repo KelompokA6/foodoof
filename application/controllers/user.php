@@ -302,9 +302,9 @@ class User extends CI_Controller {
 		$id = $this->user_model->wajiblogin();
 		if($id)
 		{
-			$data = array();
-			$menubar = $this->parser->parse('menubar', $data, TRUE); 
 			$u = new User_model();
+			$this->load->model('home_viewer');
+			$menubar = $this->home_viewer->getMenubar();
 			$listConversation = $u->getAllConversationUser($id);
 			$conversations = new Conversation();
 			$dataConversation = array();
