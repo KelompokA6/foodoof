@@ -137,3 +137,4 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/online-user.js"></script>
 </html>
+<!-- finish -->
