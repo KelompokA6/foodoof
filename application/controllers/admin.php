@@ -378,13 +378,14 @@ class Admin extends CI_Controller {
 	}
 
 	public function updateharga() {
-  	$now = (new DateTime());
+  	/*$now = (new DateTime());
     $m = (int)$now->format("m");
     $y = $now->format("Y");
 
     $all_data = [];
     foreach (range(1,13) as $i) {
       $sumber = "http://infopangan.jakarta.go.id/api/price/series_by_location?type=market&lid=$i&m=$m&y=$y";
+      die(file_get_contents($sumber));
       $data = json_decode(file_get_contents($sumber))->data;
       // ambil name sama average aja
       $data = array_map(function($x){
@@ -405,7 +406,15 @@ class Admin extends CI_Controller {
       foreach ($data as $d) {
         $all_data[$d->name] = $d->price;
       }
-    }
+    }*/
+
+    # AMPAS!
+    include('webParser.php');
+		$wp = new webParser();
+		$wp->set_url('http://pasarjaya.co.id/komoditas');
+    // die(file_get_contents("http://pasarjaya.co.id/komoditas"));
+		$json = $wp->element_to_json('#detil');
+		die($json);
 
     foreach ($all_data as $name => $price) {
     	$units = "Kg";
