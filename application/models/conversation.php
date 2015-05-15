@@ -31,7 +31,7 @@ class Conversation extends DataMapper {
                     $data = new stdClass();
                     $data->id = $message->message_id;
                     $data->description = $message->description;
-                    $data->submit = strtotime($message->submit);
+                    $data->submit = $message->submit;
                     $data->sender_id = $message->sender_id;
                     array_push($listMessages, $data);
                 }
