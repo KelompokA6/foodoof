@@ -10,7 +10,7 @@
 			</span>
 			Profile
 	  	</a>
-	  	<a href="<?php echo base_url();?>index.php/user/timeline/{sidebar_user_id}" class="list-group-item" title="My Recipe">
+	  	<a href="<?php echo base_url();?>index.php/user/timeline/{sidebar_user_id}" class="list-group-item" title="Recipe List">
 		  	<span class="fa-stack fa-lg">
 			  <i class="fa fa-square fa-stack-2x icons-default"></i>
 			  <i class="fa fa-cutlery fa-stack-1x fa-inverse"></i>
