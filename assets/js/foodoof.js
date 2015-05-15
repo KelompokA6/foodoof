@@ -1454,7 +1454,7 @@ $(document).ready(function() {
 	function checkUnreadConversation(){
 		$countUnreadAll = 0;
 		$(".conversation-list-item").each(function(i){
-			if(i!=0){
+			/*if(i!=0){*/
 				$.get($baseurl+"/processAjax/checkConversation/"+$(this).data("idconversation"), function(data){
 					if(data.status="success"){
 						if(data.countunread > 0){
@@ -1466,7 +1466,7 @@ $(document).ready(function() {
 						}
 					}
 				}, "json");
-			}
+			/*}*/
 		});
 		setTimeout(checkUnreadConversation, 4500);
 	}

@@ -329,8 +329,6 @@ class User extends CI_Controller {
 					redirect(base_url()."index.php/user/message/$conversation_item->id");
 				}
 			}
-			$data = array("sidebar_conversation_entries" => $dataConversation);
-			$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
 			$listMessages = $conversations->getAllMessages($conversation_id, $id, true);
 			$u = new User_model();
 			$datamessage = array();
@@ -379,7 +377,7 @@ class User extends CI_Controller {
 			foreach ($listConversation as $conversation_item) {
 				$tmp = array(
 					"sidebar_conversation_id" => $conversation_item->id,
-					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id,"3"),
+					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id, $id),
 					"sidebar_conversation_sender_photo" => $u->getProfile($conversation_item->sender_id)->photo,
 					"sidebar_conversation_subject" => $conversation_item->subject,
 					"sidebar_conversation_submit" => $conversation_item->time_last_message,
@@ -416,7 +414,7 @@ class User extends CI_Controller {
 			foreach ($listConversation as $conversation_item) {
 				$tmp = array(
 					"sidebar_conversation_id" => $conversation_item->id,
-					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id,"3"),
+					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id, $id),
 					"sidebar_conversation_sender_photo" => $u->getProfile($conversation_item->sender_id)->photo,
 					"sidebar_conversation_subject" => $conversation_item->subject,
 					"sidebar_conversation_submit" => $conversation_item->time_last_message,
