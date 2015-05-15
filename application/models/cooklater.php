@@ -19,9 +19,15 @@ class Cooklater extends DataMapper {
         if(!empty($user_id)){
             $CL = new Cooklater();
             $CL->where('user_id', $user_id)->order_by("recipe_id","asc")->get($limit, $offset);
+            $id = array();
+            $flag = array();
+            $data = array();
             foreach ($CL as $obj) {
-               array_push($recipeIdList, $obj->recipe_id);
-            }  
+                $data = array(
+                            'id' => $obj->recipe_id,
+                            'flag' =>  $obj->flag,);
+                array_push($recipeIdList, $data);
+            } 
         }
         return $recipeIdList;
     }

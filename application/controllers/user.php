@@ -71,18 +71,17 @@ class User extends CI_Controller {
 		$r = new Recipe_model();
 		$c = new Cooklater();
 		$listrecipeid = $c->getCookLaterRecipeByUser($id, $limit, $limit * $page - $limit);
-		// print_r($listRecipe);
+		// print_r($listrecipeid);
 		// die();
 		$listRecipe = array();
 		// print_r($listrecipeid);
 		foreach ($listrecipeid as $obj) {
-			$x = $r->getRecipeProfile($obj, $id);
+			$x = $r->getRecipeProfile($obj['id'], $id);
 			if($x){
+				$x->status = $obj['flag'];
 				array_push($listRecipe,$x);
 			}
 		}
-		// print_r($listRecipe);
-		// die();
 		$totalpage = ceil(sizeof( $c->getCookLaterRecipeByUser($id, 1000111) )/$limit);
 		$this->user_viewer->showCookLater($profile, $listRecipe, $page, $totalpage);
 	}

@@ -166,6 +166,8 @@ class User_viewer extends CI_Model
     // ambil sidebar
     $data_user_view['sidebar_user'] = $this->getSidebar($profile);
     // ambil content_user dari user_timeline_view
+    // print_r($listRecipes);
+    // die();
     foreach ($listRecipes as $row) {
         $row->cook_later_recipe_id = $row->id;
         $row->cook_later_recipe_photo = $row->photo;
@@ -175,18 +177,16 @@ class User_viewer extends CI_Model
         $row->cook_later_recipe_view = $row->views;
         $row->checked_status = $row->status ? "checked" : "";
     }
-
-    $data_user_view['content_user'] = $this->parser->parse(
-        'cook_later_view',
-        array(
+    // print_r($listRecipes);
+    // die();
+    $data = array(
             'cook_later_recipe_entries' => $listRecipes,
             'cook_later_user_name' => $profile->name,
             'cook_later_user_id' => $profile->id,
             'cook_later_recipe_page_size' => $totalpage,
             'cook_later_recipe_page_now' => $pagenow,
-        ),
-        TRUE
-    );
+        );
+    $data_user_view['content_user'] = $this->parser->parse('cook_later_view', $data, TRUE );
 
     // load template_content
     $datacomplete['content_website'] = $this->parser->parse('template_user_view', $data_user_view, TRUE);
