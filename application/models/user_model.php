@@ -9,8 +9,9 @@ class User_model extends DataMapper {
     {
         if (strlen($email) < 1)
             $email = 'invalid';
-        if( $this->where('email', $this->db->escape_str($email))->count() < 1 ) return FALSE;
+        if( $this->where('email', $this->db->escape_str($email))->count() < 1 ) return 'email is not registered';
         $this->where('email', $this->db->escape_str($email))->get();
+        if(strtolower($this->status) == 'banned') return "account is banned";
         $ci =& get_instance();
         $ci->load->library('encrypt');
         $ci->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
@@ -22,7 +23,7 @@ class User_model extends DataMapper {
                 'user_id' => $this->id,
                 'user_name' => $this->name,
                 'user_photo' => $this->photo,
-            ) : FALSE;
+            ) : "password doesn't match";
     }
 
     function getProfile($id)

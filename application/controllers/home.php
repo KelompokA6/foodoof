@@ -42,7 +42,7 @@ class Home extends CI_Controller {
 			$data['password'] = $password = $this->input->post('password');
 			$u = new User_model();
 			$profile = $u->login($email, $password);
-			if($profile !== FALSE) {
+			if(is_array($profile)) {
 				// print_r($profile); die;
 				foreach ($profile as $key => $value) {
 					$this->session->set_userdata($key, $value);
@@ -55,7 +55,7 @@ class Home extends CI_Controller {
 				}
 				redirect(base_url());
 			} else {
-				$data['login_alert'] = '<div class="alert alert-danger">email not registered or password doesn\'t match</div>';
+				$data['login_alert'] = '<div class="alert alert-danger">'.$profile.'</div>';
 			}
 		}
 		$this->home_viewer->showLogin($data);
