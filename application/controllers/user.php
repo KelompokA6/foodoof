@@ -322,106 +322,130 @@ class User extends CI_Controller {
 			$u = new User_model();
 			$this->load->model('home_viewer');
 			$listConversation = $u->getAllConversationUser($id);
-			$conversations = new Conversation();
-			$dataConversation = array();
-			foreach ($listConversation as $conversation_item) {
-				if($conversation_id<0){
-					redirect(base_url()."index.php/user/message/$conversation_item->id");
-				}
-			}
-			$listMessages = $conversations->getAllMessages($conversation_id, $id, true);
-			$u = new User_model();
-			$datamessage = array();
-			for ($i=sizeof($listMessages)-1; $i >=0 ; $i--) { 
-				$dataTmp=array(
-					"conversation_message_user_photo"=> $u->getProfile($listMessages[$i]->sender_id)->photo,
-					"conversation_message_user_id" =>$listMessages[$i]->sender_id,
-					"conversation_message_user_name" => $u->getProfile($listMessages[$i]->sender_id)->name,
-					"conversation_message_submit" => $listMessages[$i]->submit,
-					"conversation_message_description" => nl2br($listMessages[$i]->description),
-					);
-				array_push($datamessage, $dataTmp);
-			}
-			$con = new Conversation();
-			$listMember = $con->getMembers($conversation_id, $id);
-			$dataMember = array();
-			foreach ($listMember as $obj) {
-				$dataTmp = array(
-					"conversation_member_name" => $u->getProfile($obj)->name,
-					"conversation_member_photo" => $u->getProfile($obj)->photo,
-					"conversation_member_id" => $u->getProfile($obj)->id,
-					);
-				array_push($dataMember, $dataTmp);
-			}
-			$subject = $con->subject;
-			if(empty($subject)){
-				$subject .="You";
-				$i = 0;
-				while($i<2 && $i<(sizeof($listMember))) {
-					$subject .=", "."<a href='".base_url()."index.php/user/timeline/".$listMember[$i]."'>".$u->getProfile($listMember[$i])->name."</a>";
-					$i++;
-				}
-				if(sizeof($listMember)>2){
-					$subject .= " and ";
-				}
-			}
-			$data = array(
-				"conversation_member_entries" => $dataMember,
-				"conversation_subject" => $subject,
-				"conversation_message_entries"=>$datamessage,
-				"conversation_id" => $conversation_id,
-				);
-			$content_conversation = $this->parser->parse("conversation_view", $data, true);
-			$dataConversation = array();
-			foreach ($listConversation as $conversation_item) {
-				$subject_sidebar_conversation = $conversation_item->subject;
-				$sender_photo = $u->getProfile($conversation_item->sender_id)->photo;
-				if(empty($subject_sidebar_conversation)){
-					$members = $conversations->getMembers($conversation_item->id, $id);
-					if(sizeof($members)==1){
-						$subject_sidebar_conversation = $u->getProfile($members[0])->name;
-						$sender_photo = $u->getProfile($members[0])->photo;
-					}
-					else{
-						$x = 0;
-						foreach ($members as $member) {
-							if($x==(sizeof($members)-1)){
-								$subject_sidebar_conversation .= $u->getProfile($member)->name;
-							}
-							else if($x<2){
-								$subject_sidebar_conversation .= $u->getProfile($member)->name.", ";	
-							}
-							$x++;
-						}
-						if(sizeof($members)>2){
-							$subject_sidebar_conversation .= " and ".(sizeof($members)-2)." others";
-						}
+			if(sizeof($listConversation)>0){
+				$conversations = new Conversation();
+				$dataConversation = array();
+				foreach ($listConversation as $conversation_item) {
+					if($conversation_id<0){
+						redirect(base_url()."index.php/user/message/$conversation_item->id");
 					}
 				}
-				$tmp = array(
-					"sidebar_conversation_id" => $conversation_item->id,
-					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id, $id),
-					"sidebar_conversation_sender_photo" => $sender_photo,
-					"sidebar_conversation_subject" => $subject_sidebar_conversation,
-					"sidebar_conversation_submit" => $conversation_item->time_last_message,
-					"sidebar_conversation_participants" => "( ".(sizeof($conversations->getMembers($conversation_item->id, $id))+1)." Participants)",
-					"sidebar_conversation_last_message" => $conversation_item->last_message,
-				);
-				array_push($dataConversation, $tmp);
-			}
-			$data = array("sidebar_conversation_entries" => $dataConversation);
-			$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
-			$data = array(
-					"content_conversation" => $content_conversation,
-					"content_sidebar_conversation" => $content_sidebar_conversation
-				);
-			$content_website = $this->parser->parse('template_conversation', $data, TRUE);
-			$menubar = $this->home_viewer->getMenubar();
-			$data = array(
-						"menubar" => $menubar,
-						"content_website" => $content_website,
+				$listMessages = $conversations->getAllMessages($conversation_id, $id, true);
+				$u = new User_model();
+				$datamessage = array();
+				for ($i=(sizeof($listMessages)-1); $i >=0 ; $i--) { 
+					$dataTmp=array(
+						"conversation_message_user_photo"=> $u->getProfile($listMessages[$i]->sender_id)->photo,
+						"conversation_message_user_id" =>$listMessages[$i]->sender_id,
+						"conversation_message_user_name" => $u->getProfile($listMessages[$i]->sender_id)->name,
+						"conversation_message_submit" => $listMessages[$i]->submit,
+						"conversation_message_description" => nl2br($listMessages[$i]->description),
+						);
+					array_push($datamessage, $dataTmp);
+				}
+				$con = new Conversation();
+				$listMember = $con->getMembers($conversation_id, $id);
+				$dataMember = array();
+				foreach ($listMember as $obj) {
+					$dataTmp = array(
+						"conversation_member_name" => $u->getProfile($obj)->name,
+						"conversation_member_photo" => $u->getProfile($obj)->photo,
+						"conversation_member_id" => $u->getProfile($obj)->id,
+						);
+					array_push($dataMember, $dataTmp);
+				}
+				$subject = $con->subject;
+				if(empty($subject)){
+					$subject .="You";
+					$i = 0;
+					while($i<2 && $i<(sizeof($listMember))) {
+						$subject .=", "."<a href='".base_url()."index.php/user/timeline/".$listMember[$i]."'>".$u->getProfile($listMember[$i])->name."</a>";
+						$i++;
+					}
+					if(sizeof($listMember)>2){
+						$subject .= " and ";
+					}
+				}
+				$data = array(
+					"conversation_member_entries" => $dataMember,
+					"conversation_subject" => $subject,
+					"conversation_message_entries"=>$datamessage,
+					"conversation_id" => $conversation_id,
 					);
-			$this->parser->parse('template_content', $data);
+				$content_conversation = $this->parser->parse("conversation_view", $data, true);
+				$dataConversation = array();
+				foreach ($listConversation as $conversation_item) {
+					$subject_sidebar_conversation = $conversation_item->subject;
+					$sender_photo = $u->getProfile($conversation_item->sender_id)->photo;
+					if(empty($subject_sidebar_conversation)){
+						$members = $conversations->getMembers($conversation_item->id, $id);
+						if(sizeof($members)==1){
+							$subject_sidebar_conversation = $u->getProfile($members[0])->name;
+							$sender_photo = $u->getProfile($members[0])->photo;
+						}
+						else{
+							$x = 0;
+							foreach ($members as $member) {
+								if($x==(sizeof($members)-1)){
+									$subject_sidebar_conversation .= $u->getProfile($member)->name;
+								}
+								else if($x<2){
+									$subject_sidebar_conversation .= $u->getProfile($member)->name.", ";	
+								}
+								$x++;
+							}
+							if(sizeof($members)>2){
+								$subject_sidebar_conversation .= " and ".(sizeof($members)-2)." others";
+							}
+						}
+					}
+					$tmp = array(
+						"sidebar_conversation_id" => $conversation_item->id,
+						"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id, $id),
+						"sidebar_conversation_sender_photo" => $sender_photo,
+						"sidebar_conversation_subject" => $subject_sidebar_conversation,
+						"sidebar_conversation_submit" => $conversation_item->time_last_message,
+						"sidebar_conversation_participants" => "( ".(sizeof($conversations->getMembers($conversation_item->id, $id))+1)." Participants)",
+						"sidebar_conversation_last_message" => $conversation_item->last_message,
+					);
+					array_push($dataConversation, $tmp);
+				}
+				$data = array("sidebar_conversation_entries" => $dataConversation);
+				$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
+				$data = array(
+						"content_conversation" => $content_conversation,
+						"content_sidebar_conversation" => $content_sidebar_conversation
+					);
+				$content_website = $this->parser->parse('template_conversation', $data, TRUE);
+				$menubar = $this->home_viewer->getMenubar();
+				$data = array(
+							"menubar" => $menubar,
+							"content_website" => $content_website,
+						);
+				$this->parser->parse('template_content', $data);
+			}
+			else{
+				$data = array(
+					"conversation_member_entries" => array(),
+					"conversation_subject" => "",
+					"conversation_message_entries"=> array(),
+					);
+				$content_conversation = $this->parser->parse("conversation_view", $data, true);
+				$data = array("sidebar_conversation_entries" => array());
+				$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
+				$data = array(
+						"content_conversation" => $content_conversation,
+						"content_sidebar_conversation" => $content_sidebar_conversation
+					);
+				$content_website = $this->parser->parse('template_conversation', $data, TRUE);
+				$menubar = $this->home_viewer->getMenubar();
+				$data = array(
+							"menubar" => $menubar,
+							"content_website" => $content_website,
+						);
+				$this->parser->parse('template_content', $data);
+			}
+			
 		}else redirect(base_url('index.php/home/login'));
 	}
 	

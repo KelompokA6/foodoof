@@ -5,14 +5,17 @@
 		  <li id="conversation-group" role="presentation" class="col-md-6 col-no-padding"><a href="#">Group <span class="badge">{sidebar_conversation_unread_group}</span></a></li>
 		</ul>
 	</div>
-	<div class="col-md-12 col-xs-12 col-sm-12 input-group" style="padding:5px;">
+	<!-- <div class="col-md-12 col-xs-12 col-sm-12 input-group" style="padding:5px;">
 		<input type="search" class="form-control" aria-label="...">
 		<div class="input-group-btn">
 			<button class="btn button-secondary button-group-normal"><i class="fa fa-search"></i></button>
 		</div>
-	</div>
+	</div> -->
 	<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding">
 		<ul class="conversation-list-group">
+			<?php if(empty($sidebar_conversation_entries)):?>
+				<div class="col-md-12 col-xs-12 col-sm-12 text-center"> No Conversation</div>
+			<?php endif;?>
 			{sidebar_conversation_entries}
 			<a href="<?php echo base_url();?>index.php/user/message/{sidebar_conversation_id}">
 				<li class="conversation-list-item col-md-12 col-sm-12 col-xs-12" data-idconversation="{sidebar_conversation_id}" data-countmessage="{sidebar_conversation_unread}">

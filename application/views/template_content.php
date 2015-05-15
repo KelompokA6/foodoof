@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof<?php echo $this->input->cookie('theme');?>.css">
     <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof-2.css"> -->
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/plugin/bower-components/toggle/bootstrap-toggle.min.css" media="all" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id="wrapper">
@@ -145,7 +145,7 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jasny-bootstrap.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/online-user.js"></script>
-  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/toggle/bootstrap-toggle.min.js"></script>
   <script>
     $(function() {
       $('#tema').change(function() {

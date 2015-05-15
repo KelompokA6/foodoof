@@ -4,7 +4,7 @@
         <div id="conversation-summary" data-idconversation="{conversation_id}" class="col-md-12 col-sm-12 col-xs-12 page-header-title">
             <h5 class="subject-conversation text-capitalize text-center col-md-9 col-sm-9 col-xs-9 col-no-padding" style="line-height:34px;"> 
                 <span>{conversation_subject}</span>
-                <?php if(sizeof($conversation_member_entries) > 2):?>
+                <?php if((sizeof($conversation_member_entries) > 2)):?>
                 <span role="button" title='Others' data-toggle="popover-x" data-target="#other_user" data-placement="bottom"><?php echo sizeof($conversation_member_entries)-2;?> Others</span>
                 <div id="other_user" class="popover popover-default">
                     <div class="arrow"></div>
@@ -31,6 +31,9 @@
             </a>
         </div>
         <ul class="message-list-group">
+            <?php if(empty($conversation_message_entries)):?>
+                <div class="col-md-12 col-xs-12 col-sm-12 text-center"> No Messages</div>
+            <?php endif;?>
             {conversation_message_entries}
             <li class="clearfix conversation_message_entries col-md-12 col-xs-12 col-sm-12 message-list-item">
                 <div class="col-md-1 col-sm-1 col-xs-1 col-no-padding">
@@ -52,15 +55,17 @@
             </li>
             {/conversation_message_entries}
         </ul>
-           <form class="form-horizontal" action="<?php echo base_url();?>index.php/user/addmessage/{conversation_id}" role="form" method="post" enctype="multipart/form-data">
-            <div class="col-md-12 col-xs-12 col-no-padding-right form-group">
-                <div class="col-md-10 col-xs-9 col-no-padding">
-                    <textarea class="form-control" name="message" placeholder="Write Your Message In Here ..."></textarea>
+        <?php if(!empty($conversation_message_entries)):?>
+            <form class="form-horizontal" action="<?php echo base_url();?>index.php/user/addmessage/{conversation_id}" role="form" method="post" enctype="multipart/form-data">
+                <div class="col-md-12 col-xs-12 col-no-padding-right form-group">
+                    <div class="col-md-10 col-xs-9 col-no-padding">
+                        <textarea class="form-control" name="message" placeholder="Write Your Message In Here ..."></textarea>
+                    </div>
+                    <div class="col-md-2 col-xs-3 col-no-padding-right" style="position:absolute; right:0; bottom:0">
+                        <button type="submit" class="btn button-primary col-md-12 col-xs-12">Send</button>
+                    </div>
                 </div>
-                <div class="col-md-2 col-xs-3 col-no-padding-right" style="position:absolute; right:0; bottom:0">
-                    <button type="submit" class="btn button-primary col-md-12 col-xs-12">Send</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        <?php endif;?>
 	</div>
 </div>
