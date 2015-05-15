@@ -147,10 +147,12 @@ class Home extends CI_Controller {
 	{
 		$url = $this->input->get('url');
 		if($url === FALSE) $url = base_url();
-		if($this->input->cookie('theme')) // ini tema 2
-			$this->input->set_cookie(['name'   => 'theme', 'value'  => '', 'expire' => 86500]);
-		else // nah, ini baru tema 1
-			$this->input->set_cookie(['name'   => 'theme', 'value'  => '2', 'expire' => 86500]);
+		$themenow = $this->input->cookie('theme');
+		if($themenow === FALSE) $themenow = '';
+		if($themenow) // $themenow != FALSE, berarti ini tema 2
+			$this->input->set_cookie(['name'   => 'theme', 'value'  => '', 'expire' => 86500000]);
+		else // nah, ini baru tema 2
+			$this->input->set_cookie(['name'   => 'theme', 'value'  => '2', 'expire' => 86500000]);
 		redirect($url);
 	}
 }

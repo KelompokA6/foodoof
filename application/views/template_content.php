@@ -79,7 +79,7 @@
         .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
         .toggle.ios .toggle-handle { border-radius: 20px; }
       </style>
-        <input <?php echo $this->input->cookie('theme') ? 'checked="checked"' : '';?> id="tema" type="checkbox" data-toggle="toggle" data-style="ios" data-on="Theme 1" data-off="Theme 2" data-onstyle="danger" data-offstyle="success">
+        <input <?php echo $this->input->cookie('theme') ? '' : 'checked="checked"';?> id="tema" type="checkbox" data-toggle="toggle" data-style="ios" data-on="Theme 1" data-off="Theme 2" data-onstyle="danger" data-offstyle="success">
       </div>
     <footer>
       <div class="container">
