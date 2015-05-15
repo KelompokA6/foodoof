@@ -280,7 +280,7 @@ class Admin extends CI_Controller {
 		if(strtolower($u->status)!='admin'){
 			return $this->pageNotFound();	
 		}
-		$users_email = explode(",", $this->input->post("email_users"));
+		if(!$toall) $users_email = explode(",", $this->input->post("email_users"));
 		$success = true;
 		$data = array();
 		$subject = $this->input->post("subject");
@@ -290,7 +290,7 @@ class Admin extends CI_Controller {
 			$data = array();
 			$data["subject"] = $subject;
 			$data["message"] = $message;
-			if(!$this->_send_email($data)){
+			if(!$this->_send_email($data, $toall)){
 				$success = false;
 			}
 		} else {
@@ -303,7 +303,7 @@ class Admin extends CI_Controller {
 				$user->where("email", $email);
 				$user->get();
 				$data["name"] = $user->name;
-				if(!$this->_send_email($data)){
+				if(!$this->_send_email($data, $toall)){
 					$success = false;
 				}
 			}
@@ -377,12 +377,10 @@ class Admin extends CI_Controller {
 		$this->parser->parse('template_content', $data);	
 	}
 
-	public function updateharga()
-  {
-    $now = (new DateTime());
+	public function updateharga() {
+  	$now = (new DateTime());
     $m = (int)$now->format("m");
     $y = $now->format("Y");
-    # UPDATE DARI 2010 COBA -_-
 
     $all_data = [];
     foreach (range(1,13) as $i) {
@@ -395,7 +393,6 @@ class Admin extends CI_Controller {
       foreach ($data as $d) {
         $all_data[$d->name] = $d->price;
       }
-      echo "$sumber -- OK\n";
     }
 
     foreach (range(1,5) as $i) {
@@ -408,10 +405,8 @@ class Admin extends CI_Controller {
       foreach ($data as $d) {
         $all_data[$d->name] = $d->price;
       }
-      echo "$sumber -- OK\n";
     }
 
-    $catalog = new Catalog();
     foreach ($all_data as $name => $price) {
     	$units = "Kg";
     	if($name == "Garam Dapur") { $units = "gram"; $price *= 5; }
@@ -422,10 +417,11 @@ class Admin extends CI_Controller {
     	if($name == "Susu Kental Enak 200gr") $units = "kaleng";
     	if($name == "Margarin Blueband Cup") $units = "kemasan";
     	if($name == "Margarin Blueband Sachet") $units = "kemasan";
-      $catalog->ins($name, $units, 1, $price);
+      (new Catalog())->addCatalog($name, 1, $units, $price);
     }
     redirect(base_url('index.php/admin/catalog'));
   }
+
   public function banneduser(){
   	$user = new User_model();
   	$ban = $this->input->post("id_reported");

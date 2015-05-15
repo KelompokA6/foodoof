@@ -8,7 +8,7 @@ class Catalog extends DataMapper {
     parent::__construct();
   }
 
-  function addCatalog($name="", $quantity="", $units="", $price=0)
+  function addCatalog($name, $quantity, $units, $price)
   {
     $this->name = $name;
     $this->quantity = $quantity;
