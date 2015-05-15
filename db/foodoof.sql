@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2015 at 04:22 AM
+-- Generation Time: May 15, 2015 at 09:29 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -27,11 +27,25 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `catalogs` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
+  `quantity` int(10) NOT NULL,
   `units` varchar(30) NOT NULL DEFAULT '',
   `price` int(11) DEFAULT '0',
-  PRIMARY KEY (`name`,`units`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `catalogs`
+--
+
+INSERT INTO `catalogs` (`id`, `name`, `quantity`, `units`, `price`) VALUES
+(1, 'telur', 1, 'butir', 1000),
+(2, 'air', 500, 'ml', 3000),
+(3, 'bawang merah', 1, 'kilogram', 35000),
+(4, 'susu kental', 1, 'kaleng', 10000),
+(5, 'bawang putih', 1, 'kilogram', 23000),
+(6, 'garam', 200, 'gram', 4300);
 
 -- --------------------------------------------------------
 
@@ -145,6 +159,7 @@ CREATE TABLE IF NOT EXISTS `conversations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
   `submit` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `subject` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`,`user_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -175,6 +190,13 @@ CREATE TABLE IF NOT EXISTS `favorites` (
   PRIMARY KEY (`recipe_id`,`user_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `favorites`
+--
+
+INSERT INTO `favorites` (`recipe_id`, `user_id`) VALUES
+(15, 1);
 
 -- --------------------------------------------------------
 
@@ -486,11 +508,13 @@ INSERT INTO `ingredients` (`recipe_id`, `name`, `quantity`, `units`, `info`) VAL
 CREATE TABLE IF NOT EXISTS `messages` (
   `message_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `conversation_id` int(10) unsigned NOT NULL,
+  `sender_id` int(10) NOT NULL,
   `description` mediumtext,
   `submit` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `read` text,
   PRIMARY KEY (`message_id`,`conversation_id`),
   KEY `conversation_id` (`conversation_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -532,7 +556,7 @@ INSERT INTO `rating` (`recipe_id`, `user_id`, `value`) VALUES
 (4, 1, '3.1'),
 (15, 1, '4.3'),
 (15, 6, '1.9'),
-(29, 1, '4.8');
+(29, 1, '5.0');
 
 --
 -- Triggers `rating`
@@ -580,7 +604,7 @@ CREATE TABLE IF NOT EXISTS `recipes` (
   PRIMARY KEY (`id`),
   KEY `author` (`author`),
   FULLTEXT KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `recipes`
@@ -591,32 +615,32 @@ INSERT INTO `recipes` (`id`, `name`, `description`, `portion`, `duration`, `auth
 (2, 'Oreo Pudding', 'Pudding yang satu ini memang selalu menjadi juara dessert dirumah, apalagi bila di dukung dengan cuaca yg panas ^_^ \r\nby Iien Soegie', 20, 60, 1, '2015-04-15 21:14:29', '2015-04-15 21:14:29', '0.0', 1, 0, 3, 'images/recipe/2.jpg', 0),
 (3, 'ES CREAM UBI UNGU', 'warnanya bagus dan tentunya lebih sehat tanpa bahan pewarna \r\nby MEMEY\r\n', 5, 240, 1, '2015-04-15 21:11:48', '2015-04-15 21:11:48', '0.0', 1, 0, 1, 'images/recipe/3.jpg', 0),
 (4, 'spaghetti panggang', 'resep pasta yang mudah dan cepat, rasanya lebih mantap daripada spagheti biasa \r\nby Mega Fitri', 3, 30, 1, '2015-04-15 21:10:54', '2015-04-15 21:10:54', '3.1', 1, 0, 3, 'images/recipe/4.jpg', 0),
-(5, 'Fuyunghai Authentic Chinese Style', 'fuyunghai #homemade \r\nby Riska', 3, 60, 1, '2015-04-15 21:46:50', '2015-04-15 21:46:50', '0.0', 1, 0, 4, 'images/recipe/5.jpg', 1),
+(5, 'Fuyunghai Authentic Chinese Style', 'fuyunghai #homemade \r\nby Riska', 3, 60, 1, '2015-04-15 21:46:50', '2015-04-15 21:46:50', '3.1', 1, 0, 11, 'images/recipe/5.jpg', 0),
 (6, 'Mini Kebab Veggie', 'by ameLicious~', 10, 20, 1, '2015-04-15 21:18:12', '2015-04-15 21:18:12', '0.0', 1, 0, 2, 'images/recipe/6.jpg', 0),
 (7, 'broccoli tofu saus tiram', 'Menu sayur super gampang :D \r\nby Titie Aisyiah Nugraha', 4, 20, 1, '2015-04-15 21:12:30', '2015-04-15 21:12:30', '0.0', 1, 0, 1, 'images/recipe/7.jpg', 0),
-(8, 'Pempek Adaan', 'Membuatnya mudah dan cepat, adonannya langsung digoreng tanpa harus melewati proses perebusan lagi\r\nby Nova Rilandari', 5, 60, 1, '2015-04-15 21:12:48', '2015-04-15 21:12:48', '0.0', 1, 0, 5, 'images/recipe/8.jpg', 0),
+(8, 'Pempek Adaan', 'Membuatnya mudah dan cepat, adonannya langsung digoreng tanpa harus melewati proses perebusan lagi\r\nby Nova Rilandari', 5, 60, 1, '2015-04-15 21:12:48', '2015-04-15 21:12:48', '0.9', 1, 0, 6, 'images/recipe/8.jpg', 0),
 (9, 'Dadar Vegeroni (Vegeroni Omelette)', 'Cepat, praktis, dan sehat. Cocok untuk menu sarapan, lauk makan siang, atau camilan =)\r\n_Papao', 2, 20, 1, '2015-04-15 22:12:43', '2015-04-15 22:12:43', '0.0', 0, 0, 2, 'images/recipe/9.jpg', 0),
 (10, 'Gurame Pedas Manis Yummy', 'by Wattini Yudo', 3, 20, 1, '2015-04-15 21:16:43', '2015-04-15 21:16:43', '0.0', 1, 0, 1, 'images/recipe/10.jpg', 0),
 (11, 'Yakulty-fresh', 'Yakulty-fresh siap mjd temen #minumansegar mu di weekend ceria :)\r\nby Andra Tersiana', 1, 2, 2, '2015-04-15 05:07:32', '2015-04-15 05:07:32', '0.0', 1, 0, 2, 'images/recipe/11.jpg', 0),
 (12, 'LASAGNA GULUNG PRAKTIS', 'Resep praktis dan kilatnya pasta nih!\r\nby nining wahyoe\r\n', 2, 10, 2, '2015-04-15 05:16:25', '2015-04-15 05:16:25', '0.0', 1, 0, 1, 'images/recipe/12.jpg', 0),
-(13, 'Pie brownies', 'Sip banget buat pecinta cemilan manis N gurih ^_^\r\nby Nita selpa', 6, 60, 2, '2015-04-15 05:40:03', '2015-04-15 05:40:03', '0.0', 1, 0, 0, 'images/recipe/13.jpg', 0),
+(13, 'Pie brownies', 'Sip banget buat pecinta cemilan manis N gurih ^_^\r\nby Nita selpa', 6, 60, 2, '2015-04-15 05:40:03', '2015-04-15 05:40:03', '0.0', 1, 0, 1, 'images/recipe/13.jpg', 0),
 (14, 'Cheese Bread', 'by Any S. Soetrisno', 12, 180, 2, '2015-04-15 05:40:06', '2015-04-15 05:40:06', '0.0', 1, 0, 0, 'images/recipe/14.jpg', 0),
-(15, 'Simple Japanese Curry Rice', 'Japanese curry rice yang gampang dan enak tapi ngga kalah sama rasa restoran\r\nby Riska', 4, 60, 2, '2015-04-15 21:20:53', '2015-04-15 21:20:53', '3.1', 1, 0, 8, 'images/recipe/15.jpg', 1),
+(15, 'Simple Japanese Curry Rice', 'Japanese curry rice yang gampang dan enak tapi ngga kalah sama rasa restoran\r\nby Riska', 4, 60, 2, '2015-04-15 21:20:53', '2015-04-15 21:20:53', '3.1', 1, 0, 9, 'images/recipe/15.jpg', 0),
 (16, 'Bika Ambon Andalan', 'by gita setyani', 5, 240, 5, '2015-04-15 19:49:56', '2015-04-15 19:49:56', '0.0', 1, 0, 1, 'images/recipe/16.jpg', 0),
 (17, 'Roti Isi Vla Keju', 'Alternatif bekal atau sarapan :)\r\nby Mutia Sari Putri', 5, 20, 5, '2015-04-15 19:49:55', '2015-04-15 19:49:55', '0.0', 1, 0, 0, 'images/recipe/17.jpg', 0),
-(18, 'Japanese Cheesecake', 'Japanese cheesecake lembut membelai lidah,, rasanya enak bgt, sajikan dalam keadaan dingin dari kulkas\r\nby Dapur Ibu MaLKa', 6, 120, 5, '2015-04-15 21:20:53', '2015-04-15 21:20:53', '0.0', 1, 0, 3, 'images/recipe/18.jpg', 1),
-(19, 'Soto Ambengan ala Ibu Malka', 'Bumbu koyanya gurih dan bikin nagih!\r\nby Dapur Ibu MaLKa', 5, 60, 5, '2015-04-15 20:57:36', '2015-04-15 20:57:36', '0.0', 1, 0, 0, 'images/recipe/19.jpg', 0),
+(18, 'Japanese Cheesecake', 'Japanese cheesecake lembut membelai lidah,, rasanya enak bgt, sajikan dalam keadaan dingin dari kulkas\r\nby Dapur Ibu MaLKa', 6, 120, 5, '2015-04-15 21:20:53', '2015-04-15 21:20:53', '0.0', 1, 0, 4, 'images/recipe/18.jpg', 0),
+(19, 'Soto Ambengan ala Ibu Malka', 'Bumbu koyanya gurih dan bikin nagih!\r\nby Dapur Ibu MaLKa', 5, 60, 5, '2015-04-15 20:57:36', '2015-04-15 20:57:36', '0.0', 1, 0, 1, 'images/recipe/19.jpg', 0),
 (20, 'Lady Pink Juice', 'Yuk dicoba, healthy juice nya.\r\nby Iien Soegie', 4, 15, 5, '2015-04-15 19:49:49', '2015-04-15 19:49:49', '0.0', 1, 0, 0, 'images/recipe/20.jpg', 0),
 (21, 'Ikan Cakalang Endesss (Enak & Pedesss)', 'by Labita Kitchen', 4, 20, 3, '2015-04-15 20:17:15', '2015-04-15 20:17:15', '0.0', 1, 0, 0, 'images/recipe/21.jpg', 0),
 (22, 'Healthy and Simple Spiral Makaroni', 'by Christiana Jeslyn', 4, 20, 3, '2015-04-15 20:17:12', '2015-04-15 20:17:12', '0.0', 1, 0, 1, 'images/recipe/22.jpg', 0),
 (23, 'Tiramisu Instan', 'Camilan ini cocok banget buat yg pengen makan enak tapi nggak mau ribet, instan dan super cepat buatnya hehe^^\r\nby Nurul Hikmah', 2, 15, 3, '2015-04-15 20:17:09', '2015-04-15 20:17:09', '0.0', 1, 0, 1, 'images/recipe/23.jpg', 0),
 (24, 'Fresh Pasta', 'We love Homemade Food.\r\nby Nikmatul Rosidah', 6, 50, 3, '2015-04-15 20:17:06', '2015-04-15 20:17:06', '0.0', 1, 0, 0, 'images/recipe/24.jpg', 0),
 (25, 'Kailan cah jamur kuping', 'Teman pendamping kailan: Jamur kuping.\r\nby E-kitchen', 4, 20, 3, '2015-04-15 20:17:05', '2015-04-15 20:17:05', '0.0', 1, 0, 1, 'images/recipe/25.jpg', 0),
-(26, 'Cap cay', 'Cocok untuk anak-anak yang kurang menyukai sayuran. \r\nby Iris May', 6, 30, 4, '2015-04-15 20:55:07', '2015-04-15 20:55:07', '0.0', 1, 0, 0, 'images/recipe/26.jpg', 0),
+(26, 'Cap cay', 'Cocok untuk anak-anak yang kurang menyukai sayuran. \r\nby Iris May', 6, 30, 4, '2015-04-15 20:55:07', '2015-04-15 20:55:07', '2.0', 1, 0, 1, 'images/recipe/26.jpg', 0),
 (27, 'Fruity squash', 'Slruupp... segeerrr... \r\nby Andra Tersiana', 4, 20, 4, '2015-04-15 20:55:05', '2015-04-15 20:55:05', '0.0', 1, 0, 0, 'images/recipe/27.jpg', 0),
-(28, 'sandwich pang', 'by ibu Rafa bektim', 4, 10, 4, '2015-04-15 21:31:03', '2015-04-15 21:31:03', '0.0', 1, 0, 1, 'images/recipe/28.jpg', 1),
-(29, 'Chicken Teriyaki saus Honey Lemon', 'Resep sederhana cocok untuk menemani santap makan malam. \r\nby Akari Papa', 2, 20, 4, '2015-04-15 21:01:48', '2015-04-15 21:01:48', '4.8', 1, 0, 3, 'images/recipe/29.jpg', 0),
-(30, 'Gyoza isi ayam sayur (dumpling)', 'Resep ini saya ambil dr NHK world dan JTT selebihnya saya modifikasi sendiri^^ \r\nby Nova Paramita', 5, 60, 4, '2015-04-15 21:20:53', '2015-04-15 21:20:53', '0.0', 1, 0, 1, 'images/recipe/30.jpg', 1);
+(28, 'sandwich pang', 'by ibu Rafa bektim', 4, 10, 4, '2015-04-15 21:31:03', '2015-04-15 21:31:03', '0.0', 1, 0, 1, 'images/recipe/28.jpg', 0),
+(29, 'Chicken Teriyaki saus Honey Lemon', 'Resep sederhana cocok untuk menemani santap makan malam. \r\nby Akari Papa', 2, 20, 4, '2015-04-15 21:01:48', '2015-04-15 21:01:48', '5.0', 1, 0, 15, 'images/recipe/29.jpg', 1),
+(30, 'Gyoza isi ayam sayur (dumpling)', 'Resep ini saya ambil dr NHK world dan JTT selebihnya saya modifikasi sendiri^^ \r\nby Nova Paramita', 5, 60, 4, '2015-04-15 21:20:53', '2015-04-15 21:20:53', '0.0', 1, 0, 4, 'images/recipe/30.jpg', 1);
 
 --
 -- Triggers `recipes`
@@ -640,7 +664,7 @@ CREATE TABLE IF NOT EXISTS `reports` (
   `reason` text,
   `submit` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -863,8 +887,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `name`, `password`, `gender`, `bdate`, `phone`, `status`, `photo`, `facebook`, `twitter`, `googleplus`, `path`, `last_access`) VALUES
-(1, 'je.fathanah@gmail.com', 'jean', 'YsfsEXKSif6XmFKbyOPl87tWrcPzWcODN2MEgEf3Hg7sI9+plpnHKf0yday5HGdKYBanFf20nkSMhS5v1h3elg==', 'F', '1994-06-19', '085762112191', 'ADMIN', 'images/user/1.jpg', '', '', '', '', '2015-04-16 01:30:44'),
-(2, 'aagustinamora@gmail.com', 'mora', 'im7fiUftv1nU1CYkaW7zOPzZ0ZBRwRnibtzpv1HuLbmV2zmn3CXa2HBslgVxPhYG3BQlrKpMNDhWSSgHhmaE4g==', 'F', '1994-08-05', '', 'ADMIN', 'assets/img/user-female.png', '', '', '', '', '2015-04-16 01:29:56'),
+(1, 'je.fathanah@gmail.com', 'jean', 'YsfsEXKSif6XmFKbyOPl87tWrcPzWcODN2MEgEf3Hg7sI9+plpnHKf0yday5HGdKYBanFf20nkSMhS5v1h3elg==', 'F', '1994-06-19', '085762112191', 'ADMIN', 'images/user/1.jpg', '', '', '', '', '2015-05-15 07:20:53'),
+(2, 'aagustinamora@gmail.com', 'mora', 'im7fiUftv1nU1CYkaW7zOPzZ0ZBRwRnibtzpv1HuLbmV2zmn3CXa2HBslgVxPhYG3BQlrKpMNDhWSSgHhmaE4g==', 'F', '1994-08-05', '', 'ADMIN', 'assets/img/user-female.png', '', '', '', '', '2015-05-13 03:29:13'),
 (3, 'abidnurulhakim@gmail.com', 'abid', 'GJrHN3jOqpxqKNa7IvYm45pWSQ6U8pb1FIEoJRrH8TMLsDDHV52ZXpOVBYHJf/JY/3XN5sTGhR9e6lqzaLPJng==', 'M', '1994-04-16', '', 'ADMIN', 'assets/img/user-male.png', '', '', '', '', '2015-04-16 01:32:19'),
 (4, 'alpancs@gmail.com', 'alfan', 'hiaPR4oPdj/f3mayvd867Rgyoe21g/FomoZJ7MT/lQ67caJ5203zasrOTf40XzDTv6xA1x5jqWU4duDV3xhJsg==', 'M', '1994-07-28', '', 'ADMIN', 'assets/img/user-male.png', '', '', '', '', '2015-04-16 01:31:41'),
 (5, 'ffahmii@gmail.com', 'FAHMI', '0xM2tXywIkE28tUINicuWXZw2Cu3dC07/+pJE0+ZGEiTRToLAmTJRf34rZ0/pYYXVBU1GHy+/fMb4KIed79cZw==', 'M', '1993-12-27', '', 'ADMIN', 'assets/img/user-male.png', '', '', '', '', '2015-04-16 01:36:15'),
