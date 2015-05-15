@@ -377,6 +377,7 @@ class Admin extends CI_Controller {
 		$this->parser->parse('template_content', $data);	
 	}
 
+	/*  INI SAMA SEKALI BELUM JADI -_-  */
 	public function updateharga() {
   	/*$now = (new DateTime());
     $m = (int)$now->format("m");
