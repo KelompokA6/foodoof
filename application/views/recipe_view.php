@@ -252,11 +252,11 @@
 					{/recipe_steps}
 				</div>
 				<div id="comment" class="col-md-12 col-xs-12 border-solid-top">
-					<h4 class="page-header-title">Share Your Thought! (2 Comments)</h4>
+					<h4 class="page-header-title">Share Your Thought! <?php if(empty($comments_recipe_entries)){ echo "(".sizeof($comments_recipe_entries)."Comments)";}?></h4>
 					<?php if($this->session->userdata('user_id') != ""):?>
 					<div class="col-md-12 col-xs-12">
 						<div class="col-md-2 col-xs-2 col-no-padding-left">
-							<img src="http://localhost/foodoof/assets/img/user-male.png" class="img-responsive img-circle img-user-comment" title="Your">
+							<img src="<?php echo base_url();?>images/user/<?php echo $this->session->userdata('user_id')?>.jpg" class="img-responsive img-circle img-user-comment" title="Your">
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
 							<form class="form-horizontal" action="<?php echo base_url();?>index.php/recipe/addComment/{recipe_id}" role="form" method="post" style="margin:0">
