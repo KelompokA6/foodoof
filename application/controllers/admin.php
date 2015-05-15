@@ -402,19 +402,17 @@ class Admin extends CI_Controller {
 
     $catalog = new Catalog();
     foreach ($all_data as $name => $price) {
-    	$units = "Rp/Kg";
-    	if($name == "Garam Dapur") $units = "Rp/200 gram";
-    	if($name == "Kelapa Kupas") $units = "Rp/butir";
-    	if($name == "Susu Bubuk Bendera 400gr") $units = "Rp/kardus";
-    	if($name == "Susu Bubuk Dancow 400gr") $units = "Rp/kardus";
-    	if($name == "Susu Kental Bendera 200gr") $units = "Rp/kaleng";
-    	if($name == "Susu Kental Enak 200gr") $units = "Rp/kaleng";
-    	if($name == "Margarin Blueband Cup") $units = "Rp/kemasan";
-    	if($name == "Margarin Blueband Sachet") $units = "Rp/kemasan";
-      $catalog->ins($name, $units, $price);
+    	$units = "Kg";
+    	if($name == "Garam Dapur") { $units = "gram"; $price *= 5; }
+    	if($name == "Kelapa Kupas") $units = "butir";
+    	if($name == "Susu Bubuk Bendera 400gr") $units = "kardus";
+    	if($name == "Susu Bubuk Dancow 400gr") $units = "kardus";
+    	if($name == "Susu Kental Bendera 200gr") $units = "kaleng";
+    	if($name == "Susu Kental Enak 200gr") $units = "kaleng";
+    	if($name == "Margarin Blueband Cup") $units = "kemasan";
+    	if($name == "Margarin Blueband Sachet") $units = "kemasan";
+      $catalog->ins($name, $units, 1, $price);
     }
-
-    print_r(sizeof($all_data));
   }
   public function banneduser(){
   	$user = new User_model();
