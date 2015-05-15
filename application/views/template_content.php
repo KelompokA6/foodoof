@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/animate.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
   </head>
   <body>
     <div id="wrapper">
@@ -72,6 +73,13 @@
         </div>
       </div>
     </div>
+    <div class="col-md-2 col-xs-4 col-no-padding text-right" style="position:fixed; right:0; bottom:0; z-index:100; border-bottom-left-radius:0">
+      <style>
+        .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
+        .toggle.ios .toggle-handle { border-radius: 20px; }
+      </style>
+        <input type="checkbox" data-toggle="toggle" data-style="ios" data-on="Theme 1" data-off="Theme 2" data-onstyle="success" data-offstyle="danger">
+      </div>
     <footer>
       <div class="container">
         <div class="row">
@@ -136,5 +144,14 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jasny-bootstrap.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/online-user.js"></script>
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+  <script>
+    $(function() {
+      $('#toggle-two').bootstrapToggle({
+        on: 'Theme 1',
+        off: 'Theme 2'
+      });
+    })
+  </script>
 </html>
 <!-- finish -->
