@@ -26,7 +26,7 @@
     <link href="<?php echo base_url();?>assets/plugin/bower-components/bootstrap3-editable/css/bootstrap-editable.css" media="all" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/animate.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof-2.css">
     <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof-2.css"> -->
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
   </head>
@@ -85,9 +85,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-xs-12">
-            <h4>What is Foodoof ?</h4>
+            <h4>Apa itu Foodoof ?</h4>
             <p class="text-justify">
-              Recipes storage website based on social media. Foodoof is a website for you who love cooking or want to learn cooking.
+              Website menyimpan resep makanan berbasis media sosial. Foodoof bertujuan sebagai wadah bagi kamu-kamu yang suka masak ataupun kalian yang ingin belajar masak
             </p>
           </div>
           <div class="col-md-3 col-xs-6">
