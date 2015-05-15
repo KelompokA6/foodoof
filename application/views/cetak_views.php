@@ -1,3 +1,7 @@
+<head>
+
+</head>
+<body>
 <center><h2>{recipe_name}</h2></center>
 <h4>Categories : </h4>
 <ul>
@@ -5,8 +9,8 @@
 	<li>{recipe_category}</li>
 {/recipe_category_entries}
 </ul>
-<i class="fa fa-users fa-lg icons-secondary" title="Portion"></i> <span>{recipe_portion} Persons</span>   |      
-<i class="fa fa-clock-o fa-lg icons-secondary" title="Duration"><span>{recipe_duration} Minutes</span><br>
+<i class="fa fa-users fa-lg icons-secondary" title="Portion"></i> Recipe for : <span>{recipe_portion} Persons</span>   |      
+<i class="fa fa-clock-o fa-lg icons-secondary" title="Duration"><span>Times to cook : {recipe_duration} Minutes</span><br>
 <img src="<?php echo base_url();?>{recipe_photo}" class="img-rounded img-responsive img-recipe" style="margin:auto"><br>
 Oleh : <a>{recipe_author_name}</a><br>
 Dibuat pada : <span>{recipe_last_update}</span>
@@ -35,3 +39,4 @@ Dibuat pada : <span>{recipe_last_update}</span>
 	</tr>
 {/recipe_steps}
 </table>
+</body>
