@@ -641,8 +641,13 @@ class ProcessAjax extends CI_Controller {
 			if(!empty($unread)){
 				$listMessage = $conversations->getAllMessages($conversation_id, $user_id, $flag_read, $unread);
 				foreach ($listMessage as $message) {
+					$user_photo = $u->getProfile($message->sender_id)->photo;
+					$member = $conversations->getMembers($conversation_id, $user_id);
+					if(sizeof($member)==1){
+						$user_photo = $u->getProfile($member)->photo;
+					}
 					$message->user_name = $u->getProfile($message->sender_id)->name;
-					$message->user_photo = $u->getProfile($message->sender_id)->photo;
+					$message->user_photo = $user_photo;
 					$message->submit_str = strtotime($message->submit);
 					$message->sender_id = ($message->sender_id);
 				}
@@ -687,9 +692,50 @@ class ProcessAjax extends CI_Controller {
 		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
 	public function checkNewConversation(){
+		date_default_timezone_set("Asia/Jakarta");
 		$user_id = $this->session->userdata("user_id");
 		if(!empty($user_id)){
-			$conversation = new Conversation();
+			$conversations = new Conversation();
+			$conversations->where("user_id", $user_id);
+			$conversations->where("submit >=", (new DateTime())->modify("-180 second")->format("Y-m-d H:i:s"));
+			$conversations->get();
+			$dataconversation = array();
+			$u = new User_model();
+			foreach ($conversations as $conversation) {
+				$tmp = new stdClass();
+				$tmp->conversation_id = $conversation->id;
+				$tmp->submit = $conversation->submit;
+				$msg = $conversations->getAllMessages($conversation->id, $user_id)[0];
+				$tmp->last_message = $msg->description;
+				$subject = $conversation->subject;
+				$user_photo = $u->getProfile($msg->sender_id)->photo;
+				$members = $conversations->getMembers($conversation->id, $user_id);
+				if(empty($subject)){
+					$x = 0;
+					foreach ($members as $member) {
+						if($x==(sizeof($member)-1)){
+							$subject_sidebar_conversation .= $u->getProfile($member)->name;
+						}
+						else if($x<2){
+							$subject_sidebar_conversation .= $u->getProfile($member)->name.", ";	
+						}
+						$x++;
+					}
+					if(sizeof($members)>2){
+						$subject_sidebar_conversation .= "and ".(sizeof($members)-2)." others";
+					}	
+				}
+				if(sizeof($members==1)){
+					$user_photo = $u->getProfile($members[0])->photo;	
+				}
+				$tmp->user_photo = $user_photo;
+				array_push($dataconversation, $tmp);
+			}
+			$data = array(
+				"status" =>"success",
+				"countconversation" => sizeof($dataconversation),
+				"messages" => $dataconversation,
+				);
 		}
 		else{
 			$data = array(

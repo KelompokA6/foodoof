@@ -16,15 +16,20 @@
 			{sidebar_conversation_entries}
 			<a href="<?php echo base_url();?>index.php/user/message/{sidebar_conversation_id}">
 				<li class="conversation-list-item col-md-12 col-sm-12 col-xs-12" data-idconversation="{sidebar_conversation_id}" data-countmessage="{sidebar_conversation_unread}">
-					<div class="col-md-3 col-sm-3 col-xs-3 col-no-padding">
+					<div class="col-md-2 col-sm-2 col-xs-2 col-no-padding">
 						<img class="img-responsive img-rounded img-conversation" src="<?php echo base_url();?>{sidebar_conversation_sender_photo}">
 					</div>
-					<div class="col-md-9 col-sm-9 col-xs-9 col-no-padding conversation-details">
+					<div class="col-md-10 col-sm-10 col-xs-10 col-no-padding conversation-details">
 						<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding">
-							<div class="col-md-7 col-xs-7 col-sm-7 users-conversation col-no-padding-right" style="font-weight:bold">
-								{sidebar_conversation_subject}
+							<div class="col-md-8 col-xs-8 col-sm-8 users-conversation col-no-padding-right" style="font-weight:bold">
+								<div class="col-md-7 col-xs-7 col-sm-7 subject_conversation col-no-padding" title="{sidebar_conversation_subject}">
+									{sidebar_conversation_subject}
+								</div>
+								<div class="col-md-5 col-xs-5 col-sm-5 col-no-padding" style="font-size:11px">
+									{sidebar_conversation_participants}
+								</div>
 							</div>
-							<div class="conversation-submit col-md-5 col-xs-5 col-sm-5 time-conversation col-no-padding text-right">
+							<div class="conversation-submit col-md-4 col-xs-4 col-sm-4 time-conversation col-no-padding text-right">
 								<span data-livestamp="{sidebar_conversation_submit}"></span>
 							</div>
 						</div>
