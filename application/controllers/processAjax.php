@@ -342,6 +342,57 @@ class ProcessAjax extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	public function setFinished($recipe_id=null){
+		if(empty($recipe_id)){
+			if(!empty($this->input->get("id"))){
+				$recipe_id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$recipe_id = $this->input->post("id");
+			}
+		}
+		$user_id = $this->session->userdata('user_id');
+		if(!empty($user_id) && !empty($recipe_id)){
+			$recipe = new Recipe_model();
+			$tmp = $recipe->get_by_id($recipe_id);
+			if($recipe->publishRecipe($recipe_id, !($tmp->status))){
+				if($tmp->status){
+					$result = array(
+						"status" => 1,
+						"message" => "<div class='text-center'>Success To Unpublished Your Recipe.</div>",
+						);	
+				}
+				else{
+					$result = array(
+						"status" => 1,
+						"message" => "<div class='text-center'>Success To Published Your Recipe.</div>",
+						);
+				}
+			}
+			else{
+				if($tmp->status){
+					$result = array(
+						"status" => 0,
+						"message" => "<div class='text-center'>Failed To Unpublished Your Recipe.</div>",
+						);	
+				}
+				else{
+					$result = array(
+						"status" => 0,
+						"message" => "<div class='text-center'>Failed To Published Your Recipe.</div>",
+						);
+				}
+			}
+		}
+		else{
+			$result = array(
+						"status" => 0,
+						"message" => "<div class='text-center'>Please Login First</div>",
+						);
+		}
+		echo json_encode($result);
+	}
+
 	public function setHighlight($recipe_id=null){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){

@@ -51,7 +51,7 @@ class User extends CI_Controller {
 		$r = new Favorite();
 		$listrecipeid = $r->getFavoriteRecipeByUser($id, $limit, $limit * $page - $limit);
 		$listRecipe = array();
-		print_r($listrecipeid);
+		// print_r($listrecipeid);
 		foreach ($listrecipeid as $obj) {
 			$x = $rcp->getRecipeProfile($obj, $id);
 			if($x){
@@ -65,9 +65,26 @@ class User extends CI_Controller {
 	public function cooklater(){
 		$id = $this->user_model->wajiblogin();
 		$profile = $this->user_model->getProfile($id);
+		$page = $this->input->get('page');
+		if($page === FALSE) $page = 1;
+		$limit = 5;
 		$r = new Recipe_model();
-		$listRecipe = $r->getCooklaterRecipe($id);
-		$this->user_viewer->showUserTimeline($profile, $listRecipe);
+		$c = new Cooklater();
+		$listrecipeid = $c->getCookLaterRecipeByUser($id, $limit, $limit * $page - $limit);
+		// print_r($listRecipe);
+		// die();
+		$listRecipe = array();
+		// print_r($listrecipeid);
+		foreach ($listrecipeid as $obj) {
+			$x = $r->getRecipeProfile($obj, $id);
+			if($x){
+				array_push($listRecipe,$x);
+			}
+		}
+		// print_r($listRecipe);
+		// die();
+		$totalpage = ceil(sizeof( $c->getCookLaterRecipeByUser($id, 1000111) )/$limit);
+		$this->user_viewer->showCookLater($profile, $listRecipe, $page, $totalpage);
 	}
 
 	public function changepassword(){
@@ -312,8 +329,6 @@ class User extends CI_Controller {
 					redirect(base_url()."index.php/user/message/$conversation_item->id");
 				}
 			}
-			$data = array("sidebar_conversation_entries" => $dataConversation);
-			$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
 			$listMessages = $conversations->getAllMessages($conversation_id, $id, true);
 			$u = new User_model();
 			$datamessage = array();
@@ -362,7 +377,7 @@ class User extends CI_Controller {
 			foreach ($listConversation as $conversation_item) {
 				$tmp = array(
 					"sidebar_conversation_id" => $conversation_item->id,
-					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id,"3"),
+					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id, $id),
 					"sidebar_conversation_sender_photo" => $u->getProfile($conversation_item->sender_id)->photo,
 					"sidebar_conversation_subject" => $conversation_item->subject,
 					"sidebar_conversation_submit" => $conversation_item->time_last_message,
@@ -399,7 +414,7 @@ class User extends CI_Controller {
 			foreach ($listConversation as $conversation_item) {
 				$tmp = array(
 					"sidebar_conversation_id" => $conversation_item->id,
-					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id,"3"),
+					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id, $id),
 					"sidebar_conversation_sender_photo" => $u->getProfile($conversation_item->sender_id)->photo,
 					"sidebar_conversation_subject" => $conversation_item->subject,
 					"sidebar_conversation_submit" => $conversation_item->time_last_message,
