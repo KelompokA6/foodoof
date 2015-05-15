@@ -593,7 +593,7 @@ class ProcessAjax extends CI_Controller {
 					$message->user_name = $u->getProfile($message->sender_id)->name;
 					$message->user_photo = $u->getProfile($message->sender_id)->photo;
 					$message->submit_str = strtotime($message->submit);
-					$message->sender_id = strtotime($message->sender_id);
+					$message->sender_id = ($message->sender_id);
 				}
 			}
 			if($flag_read){
@@ -612,7 +612,7 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
-	public function checkAllConversation(){
+	public function checkAllConversation($conversation_id = -1){
 		$user_id = $this->session->userdata("user_id");
 		if(!empty($user_id)){
 			$conversation = new Conversation();
@@ -620,7 +620,9 @@ class ProcessAjax extends CI_Controller {
 	        $listConversation = $u->getAllConversationUser($this->session->userdata('user_id'));
 	        $countUnreadMessage = 0;
 	        foreach ($listConversation as $conversations) {
-	          $countUnreadMessage += $conversation->getCountUnreadMessage($conversations->id, $this->session->userdata('user_id'));
+	          if($conversation_id!=$conversations->id){
+	          	$countUnreadMessage += $conversation->getCountUnreadMessage($conversations->id, $this->session->userdata('user_id'));
+	          }
 	        }
 			$data = array(
 				"status" =>"success",
@@ -633,4 +635,5 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
+
 }

@@ -1403,7 +1403,7 @@ $(document).ready(function() {
 		setTimeout(checkConversation, 8000);
 	}
 	function checkUnreadAllConversation(){
-		$.get($baseurl+"/processAjax/checkAllConversation", function(data){
+		$.get($baseurl+"/processAjax/checkAllConversation/"+$("#conversation-summary").data("idconversation"), function(data){
 			if(data.status=="success"){
 				if(data.countunread > 0){
 					$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: data.countunread});	
