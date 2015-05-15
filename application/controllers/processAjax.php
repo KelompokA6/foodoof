@@ -686,14 +686,17 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
-	public function changetheme(){
-		if(get_cookie("cookie_id", true)){
-			$cookie = array(
-	            'name'   => 'cookie_id',
-	            'value'  => $data,
-	            'expire' => 7*86500,
-	        );
-	        $this->input->set_cookie($cookie);	
+	public function checkNewConversation(){
+		$user_id = $this->session->userdata("user_id");
+		if(!empty($user_id)){
+			$conversation = new Conversation();
 		}
+		else{
+			$data = array(
+				"status" =>"failed",
+				"message" =>"please login first",
+				);	
+		}
+		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
 }

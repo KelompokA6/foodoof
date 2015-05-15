@@ -337,7 +337,7 @@ class User extends CI_Controller {
 					"conversation_message_user_photo"=> $u->getProfile($listMessages[$i]->sender_id)->photo,
 					"conversation_message_user_id" =>$listMessages[$i]->sender_id,
 					"conversation_message_user_name" => $u->getProfile($listMessages[$i]->sender_id)->name,
-					"conversation_message_submit" => strtotime($listMessages[$i]->submit),
+					"conversation_message_submit" => $listMessages[$i]->submit,
 					"conversation_message_description" => nl2br($listMessages[$i]->description),
 					);
 				array_push($datamessage, $dataTmp);
