@@ -25,6 +25,12 @@ class Cooklater extends DataMapper {
         }
         return $recipeIdList;
     }
+
+    function setFinishedCookLater($user_id=NULL, $recipe_id=NULL, $value){
+        $CL = new Cooklater();
+        print_r($recipe_id);
+        return $CL->where('user_id', $user_id)->where('recipe_id', $recipe_id)->update('flag', $value);
+    }
 }
 
 /* End of file recipe.php */

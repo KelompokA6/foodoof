@@ -275,4 +275,10 @@ class Tempfahmi extends CI_Controller {
 					);
 			$this->parser->parse('template_content', $data);
 	}
+
+	public function setCookLater($recipe_id=NULL, $user_id=NULL, $value)
+	{
+		$c = new Cooklater();
+		print_r($c->setFinishedCookLater($user_id, $recipe_id, $value));
+	}
 }
