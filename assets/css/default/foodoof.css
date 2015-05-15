@@ -1698,6 +1698,12 @@ li.conversation-list-item:hover{
   margin-bottom: 0;
   overflow: auto;
 }
+.subject_conversation{
+  overflow: hidden; 
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  font-size:11px;
+}
 /*
   message css
 */

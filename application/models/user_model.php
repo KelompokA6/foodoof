@@ -180,7 +180,7 @@ class User_model extends DataMapper {
                 $messages->order_by("submit", "desc");
                 $messages->limit(1);
                 $messages->get();
-                $subject = $conversation->subject;
+                /*$subject = $conversation->subject;
                 $u = new User_model();
                 if(empty($subject)){
                     $tmpConv = new Conversation();
@@ -189,10 +189,10 @@ class User_model extends DataMapper {
                     foreach ($tmp as $id_user) {
                         $subject .= ", ".$u->getProfile($id_user)->name;                    
                     }
-                }
+                }*/
                 $data = new stdClass();
                 $data->id = $conversation->id;
-                $data->subject = $subject;
+                $data->subject = $conversation->subject;
                 $data->sender_id = $messages->sender_id;
                 $data->last_message = $messages->description;
                 $data->time_last_message = $messages->submit;

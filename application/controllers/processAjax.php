@@ -648,7 +648,6 @@ class ProcessAjax extends CI_Controller {
 					}
 					$message->user_name = $u->getProfile($message->sender_id)->name;
 					$message->user_photo = $user_photo;
-					$message->submit_str = strtotime($message->submit);
 					$message->sender_id = ($message->sender_id);
 				}
 			}
@@ -691,13 +690,14 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
-	public function checkNewConversation(){
+	public function checknewconversation(){
 		date_default_timezone_set("Asia/Jakarta");
 		$user_id = $this->session->userdata("user_id");
 		if(!empty($user_id)){
 			$conversations = new Conversation();
 			$conversations->where("user_id", $user_id);
-			$conversations->where("submit >=", (new DateTime())->modify("-180 second")->format("Y-m-d H:i:s"));
+			$conversations->where("submit >=", (new DateTime())->modify("-3 second")->format("Y-m-d H:i:s"));
+			$conversations->order_by("submit", "desc");
 			$conversations->get();
 			$dataconversation = array();
 			$u = new User_model();
@@ -714,27 +714,30 @@ class ProcessAjax extends CI_Controller {
 					$x = 0;
 					foreach ($members as $member) {
 						if($x==(sizeof($member)-1)){
-							$subject_sidebar_conversation .= $u->getProfile($member)->name;
+							$subject .= $u->getProfile($member)->name;
 						}
 						else if($x<2){
-							$subject_sidebar_conversation .= $u->getProfile($member)->name.", ";	
+							$subject .= $u->getProfile($member)->name.", ";	
 						}
 						$x++;
 					}
 					if(sizeof($members)>2){
-						$subject_sidebar_conversation .= "and ".(sizeof($members)-2)." others";
+						$subject .= "and ".(sizeof($members)-2)." others";
 					}	
 				}
 				if(sizeof($members==1)){
 					$user_photo = $u->getProfile($members[0])->photo;	
 				}
+				$tmp->subject = $subject;
+				$tmp->participant = sizeof($members)+1;
 				$tmp->user_photo = $user_photo;
+				$tmp->count_unread = $conversations->getCountUnreadMessage($conversation->id, $user_id);
 				array_push($dataconversation, $tmp);
 			}
 			$data = array(
 				"status" =>"success",
 				"countconversation" => sizeof($dataconversation),
-				"messages" => $dataconversation,
+				"conversations" => $dataconversation,
 				);
 		}
 		else{

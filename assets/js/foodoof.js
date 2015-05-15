@@ -1454,17 +1454,20 @@ $(document).ready(function() {
 
 	function checkAllConversation(){
 		checkConversation();
+		checkNewConversation()
 		checkUnreadConversation();
 		checkUnreadAllConversation();
-		setTimeout(checkAllConversation, 2700);
+		setTimeout(checkAllConversation, 2900);
 	}
 	function checkUnreadConversation(){
 		$countUnreadAll = 0;
-		$(".conversation-list-item").each(function(i){
+		$(".conversation-list-item").each(function(i, element){
+			$conv_id = $(this).data("idconversation");
+			$conversation = $(".conversation-list-item [data-idconversation='"+$conv_id+"']");
 			$.get($baseurl+"/processAjax/checkConversation/"+$(this).data("idconversation"), function(data){
 				if(data.status="success"){
 					if(data.countunread > 0){
-						$conversation.data("countmessage", data.countunread);
+						/*$conversation.attr("data-countmessage", data.countunread);*/
 						$conversation.iosbadge({ theme: 'ios', size: 28, content: data.countunread});
 						$conversation.find("div.conversation-details").find("div > div.time-conversation").find("span").livestamp(data.submit_str);
 						$conversation.find("div > img").attr("src", $baseurlnoConflict+data.messages[0].user_photo);
@@ -1481,7 +1484,7 @@ $(document).ready(function() {
 				if(data.messages.length > 0){
 					$messages = data.messages;
 					for (var i = ($messages.length-1); i >= 0; i--){
-						$message = "<li class='clearfix animated fadeInLeftBig conversation_message_entries col-md-12 col-xs-12 col-sm-12 message-list-item'><div class='col-md-1 col-sm-1 col-xs-1 col-no-padding'><img class='img-responsive img-rounded img-message' src='"+$baseurlnoConflict+"/"+$messages[i].user_photo+"'></div><div class='col-md-11 col-sm-11 col-xs-11 col-no-padding message-details'><div class='col-md-12 col-xs-12 col-sm-12 col-no-padding'><div class='col-md-9 col-xs-9 col-sm-9 users-message col-no-padding-right'><a href='"+$baseurl+"/index.php/user/timeline/"+$messages[i].sender_id+"'>"+$messages[i].user_name+"</a></div><div class='col-md-3 col-xs-3 col-sm-3 time-message col-no-padding text-right'><span data-livestamp='"+$messages[i].submit_str+"'></span></div></div><div class='col-md-12 col-xs-12 col-sm-12 col-no-padding-right message-value'>"+$messages[i].description+"</div></div></li>";
+						$message = "<li class='clearfix animated fadeInLeftBig conversation_message_entries col-md-12 col-xs-12 col-sm-12 message-list-item'><div class='col-md-1 col-sm-1 col-xs-1 col-no-padding'><img class='img-responsive img-rounded img-message' src='"+$baseurlnoConflict+"/"+$messages[i].user_photo+"'></div><div class='col-md-11 col-sm-11 col-xs-11 col-no-padding message-details'><div class='col-md-12 col-xs-12 col-sm-12 col-no-padding'><div class='col-md-9 col-xs-9 col-sm-9 users-message col-no-padding-right'><a href='"+$baseurl+"/index.php/user/timeline/"+$messages[i].sender_id+"'>"+$messages[i].user_name+"</a></div><div class='col-md-3 col-xs-3 col-sm-3 time-message col-no-padding text-right'><span data-livestamp='"+$messages[i].submit+"'></span></div></div><div class='col-md-12 col-xs-12 col-sm-12 col-no-padding-right message-value'>"+$messages[i].description+"</div></div></li>";
 						$("ul.message-list-group").append($message);
 					};
 					$("ul.message-list-group").animate({ scrollTop: $(document).height()});
@@ -1497,6 +1500,44 @@ $(document).ready(function() {
 				}
 			}
 		},"json");
+	}
+	function checkNewConversation(){
+		$.get($baseurl+"/processAjax/checknewconversation", function(data){
+			if(data.status="success"){
+				if(data.countconversation > 0){
+					$conversations = data.conversations;
+					for (var i = ($conversations.length-1); i >= 0; i--){
+						$conversation = "<a href='"+$baseurl+"/user/message/"+$conversations[i].conversation_id+"' class='animated fadeInLeftBig'>";
+						$conversation += "<li class='conversation-list-item col-md-12 col-sm-12 col-xs-12' data-idconversation='"+$conversations[i].conversation_id+"' data-countmessage='"+$conversations[i].count_unread+"'>";
+						$conversation += "<div class='col-md-2 col-sm-2 col-xs-2 col-no-padding'>";
+						$conversation += "<img class='img-responsive img-rounded img-conversation' src='"+$baseurlnoConflict+$conversations[i].user_photo+"'>";
+						$conversation += "</div>";
+						$conversation += "<div class='col-md-10 col-sm-10 col-xs-10 col-no-padding conversation-details'>";
+						$conversation += "<div class='col-md-12 col-xs-12 col-sm-12 col-no-padding'>";
+						$conversation += "<div class='col-md-8 col-xs-8 col-sm-8 users-conversation col-no-padding-right' style='font-weight:bold'>";
+						$conversation += "<div class='col-md-7 col-xs-7 col-sm-7 subject_conversation col-no-padding' title='"+$conversations[i].subject+"'>";
+						$conversation += $conversations[i].subject;
+						$conversation += "</div>";
+						$conversation += "<div class='col-md-5 col-xs-5 col-sm-5 col-no-padding' style='font-size:11px'>";
+						$conversation += "("+$conversations[i].participant+" Participants)";
+						$conversation += "</div>";
+						$conversation += "</div>";
+						$conversation += "<div class='conversation-submit col-md-4 col-xs-4 col-sm-4 time-conversation col-no-padding text-right'>";
+						$conversation += "<span data-livestamp='"+$conversations[i].submit+"'></span>";
+						$conversation += "</div>";
+						$conversation += "</div>";
+						$conversation += "<div class='conversation-last-message col-md-12 col-xs-12 col-sm-12 col-no-padding-right title-conversation'>";
+						$conversation += $conversations[0].last_message;
+						$conversation += "</div>";
+						$conversation += "</div>";
+						$conversation += "</li>";
+						$conversation += "</a>";
+						$("ul.conversation-list-group").prepend($conversation);
+					};
+					$("ul.conversation-list-group").animate({ scrollTop: 0});
+				}
+			}
+		}, "json");
 	}
 	checkAllConversation();
 	/*

@@ -358,7 +358,7 @@ class User extends CI_Controller {
 				$subject .="You";
 				$i = 0;
 				while($i<2 && $i<(sizeof($listMember))) {
-					$subject .=", ".$u->getProfile($listMember[$i])->name;
+					$subject .=", "."<a href='".base_url()."index.php/user/timeline/".$listMember[$i]."'>".$u->getProfile($listMember[$i])->name."</a>";
 					$i++;
 				}
 				if(sizeof($listMember)>2){
@@ -371,16 +371,40 @@ class User extends CI_Controller {
 				"conversation_message_entries"=>$datamessage,
 				"conversation_id" => $conversation_id,
 				);
-
 			$content_conversation = $this->parser->parse("conversation_view", $data, true);
 			$dataConversation = array();
 			foreach ($listConversation as $conversation_item) {
+				$subject_sidebar_conversation = $conversation_item->subject;
+				$sender_photo = $u->getProfile($conversation_item->sender_id)->photo;
+				if(empty($subject_sidebar_conversation)){
+					$members = $conversations->getMembers($conversation_item->id, $id);
+					if(sizeof($members)==1){
+						$subject_sidebar_conversation = $u->getProfile($members[0])->name;
+						$sender_photo = $u->getProfile($members[0])->photo;
+					}
+					else{
+						$x = 0;
+						foreach ($members as $member) {
+							if($x==(sizeof($members)-1)){
+								$subject_sidebar_conversation .= $u->getProfile($member)->name;
+							}
+							else if($x<2){
+								$subject_sidebar_conversation .= $u->getProfile($member)->name.", ";	
+							}
+							$x++;
+						}
+						if(sizeof($members)>2){
+							$subject_sidebar_conversation .= " and ".(sizeof($members)-2)." others";
+						}
+					}
+				}
 				$tmp = array(
 					"sidebar_conversation_id" => $conversation_item->id,
 					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id, $id),
-					"sidebar_conversation_sender_photo" => $u->getProfile($conversation_item->sender_id)->photo,
-					"sidebar_conversation_subject" => $conversation_item->subject,
+					"sidebar_conversation_sender_photo" => $sender_photo,
+					"sidebar_conversation_subject" => $subject_sidebar_conversation,
 					"sidebar_conversation_submit" => $conversation_item->time_last_message,
+					"sidebar_conversation_participants" => "( ".(sizeof($conversations->getMembers($conversation_item->id, $id))+1)." Participants)",
 					"sidebar_conversation_last_message" => $conversation_item->last_message,
 				);
 				array_push($dataConversation, $tmp);
@@ -412,12 +436,37 @@ class User extends CI_Controller {
 			$listConversation = $u->getAllConversationUser($id);
 			$dataConversation = array();
 			foreach ($listConversation as $conversation_item) {
+				$subject_sidebar_conversation = $conversation_item->subject;
+				$sender_photo = $u->getProfile($conversation_item->sender_id)->photo;
+				if(empty($subject_sidebar_conversation)){
+					$members = $conversations->getMembers($conversation_item->id, $id);
+					if(sizeof($members)==1){
+						$subject_sidebar_conversation = $u->getProfile($members[0])->name;
+						$sender_photo = $u->getProfile($members[0])->photo;
+					}
+					else{
+						$x = 0;
+						foreach ($members as $member) {
+							if($x==(sizeof($members)-1)){
+								$subject_sidebar_conversation .= $u->getProfile($member)->name;
+							}
+							else if($x<2){
+								$subject_sidebar_conversation .= $u->getProfile($member)->name.", ";	
+							}
+							$x++;
+						}
+						if(sizeof($members)>2){
+							$subject_sidebar_conversation .= "and ".(sizeof($members)-2)." others";
+						}
+					}
+				}
 				$tmp = array(
 					"sidebar_conversation_id" => $conversation_item->id,
 					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id, $id),
-					"sidebar_conversation_sender_photo" => $u->getProfile($conversation_item->sender_id)->photo,
-					"sidebar_conversation_subject" => $conversation_item->subject,
+					"sidebar_conversation_sender_photo" => $sender_photo,
+					"sidebar_conversation_subject" => $subject_sidebar_conversation,
 					"sidebar_conversation_submit" => $conversation_item->time_last_message,
+					"sidebar_conversation_participants" => "( ".(sizeof($conversations->getMembers($conversation_item->id, $id))+1)." Participants)",
 					"sidebar_conversation_last_message" => $conversation_item->last_message,
 				);
 				array_push($dataConversation, $tmp);
