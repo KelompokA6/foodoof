@@ -76,9 +76,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-xs-12">
-            <h4>Apa itu Foodoof ?</h4>
+            <h4>What is Foodoof ?</h4>
             <p class="text-justify">
-              Website menyimpan resep makanan berbasis media sosial. Foodoof bertujuan sebagai wadah bagi kamu-kamu yang suka masak ataupun kalian yang ingin belajar masak
+              Recipes storage website based on social media. Foodoof is a website for you who love cooking or want to learn cooking.
             </p>
           </div>
           <div class="col-md-3 col-xs-6">
