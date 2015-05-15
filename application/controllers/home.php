@@ -143,13 +143,14 @@ class Home extends CI_Controller {
 		redirect(base_url()."index.php/recipe/get/$recipe_id");
 	}
 
-	public function changeTheme($url = base_url())
+	public function changeTheme($url = FALSE)
 	{
-		$this->load->helper('cookie');
-		if(get_cookie() == FALSE) // ini tema 1
-			$set_cookie('theme', '2');
+		if($url === FALSE) $url = base_url();
+		if($this->input->cookie('theme') == FALSE) // ini tema 1 lho
+			$this->input->set_cookie('theme', '2');
 		else
-			$set_cookie('theme', '');
+			$this->input->set_cookie('theme', '');
+		die($this->input->cookie('theme'));
 		redirect($url);
 	}
 }
