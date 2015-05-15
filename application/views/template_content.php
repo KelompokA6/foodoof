@@ -78,7 +78,7 @@
         .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
         .toggle.ios .toggle-handle { border-radius: 20px; }
       </style>
-        <input type="checkbox" data-toggle="toggle" data-style="ios" data-on="Theme 1" data-off="Theme 2" data-onstyle="success" data-offstyle="danger">
+        <input type="checkbox" data-toggle="toggle" data-style="ios" data-on="Theme 1" data-off="Theme 2" data-onstyle="danger" data-offstyle="success">
       </div>
     <footer>
       <div class="container">
