@@ -252,7 +252,7 @@
 					{/recipe_steps}
 				</div>
 				<div id="comment" class="col-md-12 col-xs-12 border-solid-top">
-					<h4 class="page-header-title">Share Your Thought! <?php if(empty($comments_recipe_entries)){ echo "(".sizeof($comments_recipe_entries)."Comments)";}?></h4>
+					<h4 class="page-header-title">Share Your Thought! <?php if(!empty($comments_recipe_entries)){ echo "(".sizeof($comments_recipe_entries)."Comments)";}?></h4>
 					<?php if($this->session->userdata('user_id') != ""):?>
 					<div class="col-md-12 col-xs-12">
 						<div class="col-md-2 col-xs-2 col-no-padding-left">
