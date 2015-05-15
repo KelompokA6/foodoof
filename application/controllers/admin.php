@@ -271,7 +271,7 @@ class Admin extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 	}
 
-	public function sendmail(){
+	public function sendmail($toall = FALSE){
 		if($this->session->userdata('user_id')==''){
 			redirect(base_url()."index.php/home/login", "refresh");
 		}
@@ -285,35 +285,46 @@ class Admin extends CI_Controller {
 		$data = array();
 		$subject = $this->input->post("subject");
 		$message = $this->input->post("message");
-		foreach ($users_email as $email) {
+		if($toall)
+		{
 			$data = array();
-			$data["email"] = $email;
 			$data["subject"] = $subject;
 			$data["message"] = $message;
-			$user = new User_model();
-			$user->where("email", $email);
-			$user->get();
-			$data["name"] = $user->name;
 			if(!$this->_send_email($data)){
 				$success = false;
-			}	
+			}
+		} else {
+			foreach ($users_email as $email) {
+				$data = array();
+				$data["email"] = $email;
+				$data["subject"] = $subject;
+				$data["message"] = $message;
+				$user = new User_model();
+				$user->where("email", $email);
+				$user->get();
+				$data["name"] = $user->name;
+				if(!$this->_send_email($data)){
+					$success = false;
+				}
+			}
 		}
+
 		$send_email_alert = $success ? "<div id='alert-notification' data-message='Send Email Success' data-status='success' class='hidden'></div>" : "<div id='alert-notification' data-message='Send Email Failed' data-status='failed' class='hidden'></div>";;
 		$this->session->set_flashdata('alert-admin', $send_email_alert);
 		redirect(base_url()."index.php/admin/sendemail");
 	}
 
-	private function _send_email($profile)
+	private function _send_email($profile, $toall = FALSE)
 	{
 		extract($profile);
 		return $this->_send_smtp_email([
 			"sender" => "foodoofa6@gmail.com",
 			"sender_name" => "FoodooF Administrator",
-			"receiver" => $email,
-			"receiver_name" => $name,
+			"receiver" => @$email,
+			"receiver_name" => @$name,
 			"subject" => $subject,
 			"message" => $message,
-			]);
+			], $toall);
 	}
 
 	
@@ -348,7 +359,7 @@ class Admin extends CI_Controller {
 				$mail->AddAddress ($user->email, $user->name);
 				$mail->Send();
 			}
-			return "OK";
+			return TRUE;
 		}
 		$mail->AddAddress ($receiver, @$receiver_name);
 		// you may also use this format $mail->AddAddress ($recipient);
@@ -413,6 +424,7 @@ class Admin extends CI_Controller {
     	if($name == "Margarin Blueband Sachet") $units = "kemasan";
       $catalog->ins($name, $units, 1, $price);
     }
+    redirect(base_url('index.php/admin/catalog'));
   }
   public function banneduser(){
   	$user = new User_model();
@@ -427,4 +439,31 @@ class Admin extends CI_Controller {
 	$this->session->set_flashdata('alert-admin', $alert);
 	redirect(base_url()."index.php/admin/report");
   }
+
+  public function broadcast(){
+		$this->load->model('home_viewer');
+		$this->load->library('session');
+		if($this->session->userdata('user_id')==''){
+			redirect(base_url()."index.php/home/login", "refresh");
+		}
+		$u = new User_model();
+		$u->get_by_id($this->session->userdata('user_id'));
+		if(strtolower($u->status)!='admin'){
+			return $this->pageNotFound();	
+		}
+		$this->load->library('parser');
+		$menubar = $this->home_viewer->getMenubar();
+		$content_admin = $this->parser->parse('broadcast_view', array(), TRUE);
+		$sidebar_admin = $this->parser->parse('sidebar_admin', array(), TRUE);
+		$data1 = array(
+			'content_admin' => $content_admin,
+			'sidebar_admin' => $sidebar_admin
+			);
+		$content_website = $this->parser->parse('template_admin', $data1, TRUE);	
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		$this->parser->parse('template_content', $data);
+	}
 }

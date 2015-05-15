@@ -4,7 +4,7 @@
         <?php
         echo $this->session->flashdata('alert-admin');
         ?>
-        <form id="send-email-form" class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="<?php echo base_url();?>index.php/admin/sendmail"> 
+        <form id="send-email-form" class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="<?php echo base_url();?>index.php/admin/sendmail/1"> 
             <div class="form-group">
                 <label for="subject" class="col-md-2 col-xs-2 col-md-2 control-label">Subject</label>
                 <div class="col-md-10 col-xs-10 col-md-10">
