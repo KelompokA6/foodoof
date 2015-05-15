@@ -23,7 +23,7 @@
                 </div>
                 <?php endif;?>
             </h5>
-            <a href='<?php echo base_url();?>index.php/user/newConversation' class='col-md-3 col-sm-3 col-xs-3 col-no-padding text-right'>
+            <a href='<?php echo base_url();?>index.php/user/createconversation' class='col-md-3 col-sm-3 col-xs-3 col-no-padding text-right'>
                 <button class='btn button-primary'>
                     <i class='fa fa-plus fa-lg'></i>
                     New Conversation
@@ -52,7 +52,7 @@
             </li>
             {/conversation_message_entries}
         </ul>
-           <form class="form-horizontal" action="<?php echo base_url();?>index.php/user/addMessage/{conversation_id}" role="form" method="post" enctype="multipart/form-data">
+           <form class="form-horizontal" action="<?php echo base_url();?>index.php/user/addmessage/{conversation_id}" role="form" method="post" enctype="multipart/form-data">
             <div class="col-md-12 col-xs-12 col-no-padding-right form-group">
                 <div class="col-md-10 col-xs-9 col-no-padding">
                     <textarea class="form-control" name="message" placeholder="Write Your Message In Here ..."></textarea>

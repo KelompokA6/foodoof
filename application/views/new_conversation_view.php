@@ -1,7 +1,7 @@
 <div class="panel col-no-padding">
 	<div class="panel-body">
 	  <h3 class="page-header-title text-capitalize"> Create New Conversation </h3>
-	  <form id="create-conv-form" class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>index.php/user/join">
+	  <form id="create-conv-form" class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>index.php/user/addconversation">
         <div class="form-group">
             <label for="to" class="col-md-2 col-xs-2 col-md-2 control-label">To</label>
             <div class="col-md-10 col-xs-10 col-md-10">
@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="subject" class="col-md-2 col-xs-2 col-md-2 control-label">Subject</label>
             <div class="col-md-10 col-xs-10 col-md-10">
-                <input type="text" class="form-control" name="name" placeholder="Subject Conversation" required>
+                <input type="text" class="form-control" name="subject" placeholder="Subject Conversation" required>
             </div>
         </div>
         <div class="form-group">

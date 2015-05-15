@@ -360,9 +360,6 @@ class User extends CI_Controller {
 			$content_conversation = $this->parser->parse("conversation_view", $data, true);
 			$dataConversation = array();
 			foreach ($listConversation as $conversation_item) {
-				if($conversation_id<0){
-					redirect(base_url()."index.php/user/message/$conversation_item->id");
-				}
 				$tmp = array(
 					"sidebar_conversation_id" => $conversation_item->id,
 					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id,"3"),
@@ -394,11 +391,89 @@ class User extends CI_Controller {
 		$id = $this->user_model->wajiblogin();
 		if($id)
 		{
-			$this->load->model("conversation");
-			echo "sek sek";
+			$u = new User_model();
+			$conversations = new Conversation();
+			$content_conversation = $this->parser->parse("new_conversation_view", array(), true);
+			$listConversation = $u->getAllConversationUser($id);
+			$dataConversation = array();
+			foreach ($listConversation as $conversation_item) {
+				$tmp = array(
+					"sidebar_conversation_id" => $conversation_item->id,
+					"sidebar_conversation_unread" => $conversations->getCountUnreadMessage($conversation_item->id,"3"),
+					"sidebar_conversation_sender_photo" => $u->getProfile($conversation_item->sender_id)->photo,
+					"sidebar_conversation_subject" => $conversation_item->subject,
+					"sidebar_conversation_submit" => $conversation_item->time_last_message,
+					"sidebar_conversation_last_message" => $conversation_item->last_message,
+				);
+				array_push($dataConversation, $tmp);
+			}
+			$data = array("sidebar_conversation_entries" => $dataConversation);
+			$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
+			$data = array(
+					"content_conversation" => $content_conversation,
+					"content_sidebar_conversation" => $content_sidebar_conversation
+				);
+			$content_website = $this->parser->parse('template_conversation', $data, TRUE);
+			$menubar = $this->home_viewer->getMenubar();
+			$data = array(
+						"menubar" => $menubar,
+						"content_website" => $content_website,
+					);
+			$this->parser->parse('template_content', $data);
 		}else redirect(base_url('index.php/home/login'));
 	}
-	public function addMessage($conversation_id){
+	public function addconversation(){
+		$users = explode(",", $this->input->post("users"));
+		$subject = $this->input->post("subject");
+		$message = $this->input->post("message");
+		$user_id = $this->session->userdata("user_id");
+		$u = new User_model();
+		$conversations = new Conversation();
+		$listConversation = $u->getAllConversationUser($user_id);
+		$find_conversation = null;
+		$success = true;
+		foreach ($listConversation as $conversation) {
+			$listMember = $conversations->getMembers($conversation->id, $user_id);
+			$all_member_found = true;
+			if(sizeof($users)==sizeof($listMember)){
+				foreach ($users as $member) {
+					if(!in_array($member, $listMember)){
+						$all_member_found = false;
+					}
+				}
+				if($all_member_found){
+					$find_conversation = $conversation->id;
+				}
+			}
+		}
+		if(!empty($find_conversation)){
+			$this->addmessage($find_conversation);
+		}
+		else{
+			$conversation_id = $conversations->addConversation($subject, $user_id);
+			foreach ($users as $user) {
+				if(!$conversations->addConversation($subject, $user, $conversation_id)){
+					$success = false;
+				}
+			}
+			$messages = new Message();
+			if($messages->addMessage($conversation_id, $message, $user_id)){
+				$success = true;
+			}
+			else{
+				$success = false;
+			}
+		}
+		if($success){
+			$alert = "<div id='alert-notification' data-message='Success Create New Conversation' data-status='success' class='hidden'></div>";	
+		}
+		else{
+			$alert = "<div id='alert-notification' data-message='Failed Create New Conversation' data-status='failed' class='hidden'></div>";
+		}
+		$this->session->set_flashdata('alert-notification', $alert);
+		redirect(base_url()."index.php/user/message");
+	}
+	public function addmessage($conversation_id){
 		$message = $this->input->post("message");
 		$messages = new Message();
 		if($messages->addMessage($conversation_id, $message, $this->session->userdata("user_id"))){

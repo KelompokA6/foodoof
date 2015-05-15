@@ -101,57 +101,22 @@ class Conversation extends DataMapper {
     */
     function addConversation($subject="", $user_id=null, $conversation_id=null){
         if(!empty($user_id)){
-            if(is_array($user_id)){
-                if(empty($conversation_id)){
-                    $x=0;
-                    $conv_id = 0;
-                    foreach ($user_id as $user) {
-                        $this->clear();
-                        if($x==0){
-                            $this->subject = $subject;
-                            $this->user_id = $user;
-                            if(!$this->skip_validation()->save()){
-                                return false;
-                            }
-                            $conv_id = $this->db->insert_id();
-                            die();
-                        }
-                        else{
-                            $this->id = $conv_id; 
-                            $this->subject = $subject;
-                            $this->user_id = $user;    
-                            if(!$this->skip_validation()->save()){
-                                return false;
-                            }
-                        }
-                        $x++;    
-                    }
-                    return true;
+            if(empty($conversation_id)){
+                $this->subject = $subject;
+                $this->user_id = $user_id;
+                if($this->skip_validation()->save()){
+                    return $this->db->insert_id();
                 }
                 else{
-                    foreach ($user_id as $user) {
-                        $this->clear();
-                        $this->id = $conversation_id;
-                        $this->subject = $subject;
-                        $this->user_id = $user;
-                        if(!$this->skip_validation()->save()){
-                            return false;
-                        }
-                    }
+                    return false;
                 }
-                return true;  
             }
             else{
-                if(!empty($conversation_id)){
-                    $this->clear();
-                    $this->id = $conversation_id;
-                    $this->subject = $subject;
-                    $this->user_id = $user_id;
-                    return $this->skip_validation()->save();    
-                }
+                $sql = "INSERT INTO `foodoof`.`conversations` (`id`, `user_id`, `submit`, `subject`) VALUES ('".$conversation_id."', '".$user_id."', CURRENT_TIMESTAMP, '".$subject."')";
+                return $this->db->query($sql);
             }
         }
-        return false;
+        return false;      
     }
 }
 
