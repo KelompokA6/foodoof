@@ -142,6 +142,16 @@ class Home extends CI_Controller {
 		$this->session->set_flashdata('alert-notification', $alert);
 		redirect(base_url()."index.php/recipe/get/$recipe_id");
 	}
+
+	public function changeTheme($url = base_url())
+	{
+		$this->load->helper('cookie');
+		if(get_cookie() == FALSE) // ini tema 1
+			$set_cookie('theme', '2');
+		else
+			$set_cookie('theme', '');
+		redirect($url);
+	}
 }
 
 /* End of file welcome.php */

@@ -411,10 +411,11 @@ class Admin extends CI_Controller {
     # AMPAS!
     include('webParser.php');
 		$wp = new webParser();
-		$wp->set_url('http://pasarjaya.co.id/komoditas');
+		$wp->set_source(file_get_contents('http://pasarjaya.co.id/komoditas'));
     // die(file_get_contents("http://pasarjaya.co.id/komoditas"));
-		$json = $wp->element_to_json('#detil');
-		die($json);
+		// $json = $wp->element_to_json('#detail');
+		$html = $wp->scrape_snippet('#detail');
+		die($html);
 
     foreach ($all_data as $name => $price) {
     	$units = "Kg";
