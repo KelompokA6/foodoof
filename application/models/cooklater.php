@@ -11,14 +11,14 @@ class Cooklater extends DataMapper {
         $this->user_id = $user_id;
     }*/
 
-    function getCookLaterRecipeByUser($user_id=NULL){
+    function getCookLaterRecipeByUser($user_id=NULL, $limit=10, $offset=0){
         if(empty($user_id)){
             $user_id = $this->user_id;
         }
         $recipeIdList = array();
         if(!empty($user_id)){
             $CL = new Cooklater();
-            $CL->where('user_id', $user_id)->order_by("asc")->get();
+            $CL->where('user_id', $user_id)->order_by("recipe_id","asc")->get($limit, $offset);
             foreach ($CL as $obj) {
                array_push($recipeIdList, $obj->recipe_id);
             }  

@@ -645,6 +645,46 @@ $(document).ready(function() {
 		},"json");
 	});
 
+	$(document).on("click", "#remove-cooklater", function(){
+		$.get( $baseurl+"/processAjax/setCookLater/"+$(this).data("recipeid"), function( data ) {
+		  	if(data.status == '1'){
+		  		$.notify({
+					// options
+					message: data.message
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'success',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});
+				$("#remove-cooklater").parent().parent().parent().parent().slideToggle();  		
+		  	}
+		  	else{
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'warning',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});  	
+		  	}
+		},"json");
+	});
+
 	/*
 	handler event click add cook-later recipe
 	*/
@@ -691,6 +731,50 @@ $(document).ready(function() {
 	handler event click publish recipe
 	*/
 	$(document).on("change", ".checkedPublish", function(){
+		var check = $(this).prop('checked');
+		$.get( $baseurl+"/processAjax/setPublish/"+$(this).val(), function( data ) {
+		  	if(data.status == '1'){
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'success',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});  		
+		  	}
+		  	else{
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'warning',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});  	
+		  	}
+		},"json");
+	});
+
+	/*
+	handler buat finished cook later
+	*/
+
+	$(document).on("change", ".checked-cook-later", function(){
 		var check = $(this).prop('checked');
 		$.get( $baseurl+"/processAjax/setPublish/"+$(this).val(), function( data ) {
 		  	if(data.status == '1'){
