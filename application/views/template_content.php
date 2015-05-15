@@ -79,7 +79,7 @@
         .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
         .toggle.ios .toggle-handle { border-radius: 20px; }
       </style>
-        <input type="checkbox" data-toggle="toggle" data-style="ios" data-on="Theme 1" data-off="Theme 2" data-onstyle="danger" data-offstyle="success">
+        <input <?php echo $this->input->cookie('theme') ? 'checked="checked"' : '';?> id="tema" type="checkbox" data-toggle="toggle" data-style="ios" data-on="Theme 1" data-off="Theme 2" data-onstyle="danger" data-offstyle="success">
       </div>
     <footer>
       <div class="container">
@@ -148,9 +148,10 @@
   <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
   <script>
     $(function() {
-      $('#toggle-two').bootstrapToggle({
-        on: 'Theme 1',
-        off: 'Theme 2'
+      $('#tema').change(function() {
+        setTimeout(function(){
+          window.location = '/foodoof/index.php/home/changeTheme?url='+encodeURI(window.location.toString());
+        }, 500);
       });
     })
   </script>
