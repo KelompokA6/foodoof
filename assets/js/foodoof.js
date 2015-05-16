@@ -1455,11 +1455,11 @@ $(document).ready(function() {
 	function checkAllConversation(){
 		checkConversation();
 		checkNewConversation()
-		checkUnreadConversation();
+		/*checkUnreadConversation();*/
 		checkUnreadAllConversation();
-		setTimeout(checkAllConversation, 2900);
+		setTimeout(checkAllConversation, 2950);
 	}
-	function checkUnreadConversation(){
+	/*function checkUnreadConversation(){
 		$countUnreadAll = 0;
 		$(".conversation-list-item").each(function(i, element){
 			$conv_id = $(this).data("idconversation");
@@ -1467,16 +1467,19 @@ $(document).ready(function() {
 			$.get($baseurl+"/processAjax/checkConversation/"+$(this).data("idconversation"), function(data){
 				if(data.status="success"){
 					if(data.countunread > 0){
-						/*$conversation.attr("data-countmessage", data.countunread);*/
-						$conversation.iosbadge({ theme: 'ios', size: 28, content: data.countunread});
-						$conversation.find("div.conversation-details").find("div > div.time-conversation").find("span").livestamp(data.submit_str);
-						$conversation.find("div > img").attr("src", $baseurlnoConflict+data.messages[0].user_photo);
-						$conversation.find("div.conversation-details").find("div.conversation-last-message").html(data.messages[0].description);	
+						$clone = $conversation.clone();
+						$conversation.remove();
+						$clone.attr("data-countmessage", data.countunread);
+						$clone.iosbadge({ theme: 'ios', size: 28, content: data.countunread});
+						$clone.find("div.conversation-details").find("div > div.time-conversation").find("span").livestamp(data.submit_str);
+						$clone.find("div > img").attr("src", $baseurlnoConflict+data.messages[0].user_photo);
+						$clone.find("div.conversation-details").find("div.conversation-last-message").html(data.messages[0].description);	
+						$("ul.conversation-list-group").prepend($clone);
 					}
 				}
 			}, "json");
 		});
-	}
+	}*/
 	function checkConversation(){
 		$idconversation = $("#conversation-summary").data("idconversation");
 		$.get($baseurl+"/processAjax/checkConversation/"+$idconversation+"/true", function(data){
@@ -1507,38 +1510,52 @@ $(document).ready(function() {
 				if(data.countconversation > 0){
 					$conversations = data.conversations;
 					for (var i = ($conversations.length-1); i >= 0; i--){
-						$conversation = "<a href='"+$baseurl+"/user/message/"+$conversations[i].conversation_id+"' class='animated fadeInLeftBig'>";
-						$conversation += "<li class='conversation-list-item col-md-12 col-sm-12 col-xs-12' data-idconversation='"+$conversations[i].conversation_id+"' data-countmessage='"+$conversations[i].count_unread+"'>";
-						$conversation += "<div class='col-md-2 col-sm-2 col-xs-2 col-no-padding'>";
-						$conversation += "<img class='img-responsive img-rounded img-conversation' src='"+$baseurlnoConflict+$conversations[i].user_photo+"'>";
-						$conversation += "</div>";
-						$conversation += "<div class='col-md-10 col-sm-10 col-xs-10 col-no-padding conversation-details'>";
-						$conversation += "<div class='col-md-12 col-xs-12 col-sm-12 col-no-padding'>";
-						$conversation += "<div class='col-md-8 col-xs-8 col-sm-8 users-conversation col-no-padding-right' style='font-weight:bold'>";
-						$conversation += "<div class='col-md-7 col-xs-7 col-sm-7 subject_conversation col-no-padding' title='"+$conversations[i].subject+"'>";
-						$conversation += $conversations[i].subject;
-						$conversation += "</div>";
-						$conversation += "<div class='col-md-5 col-xs-5 col-sm-5 col-no-padding' style='font-size:11px'>";
-						$conversation += "("+$conversations[i].participant+" Participants)";
-						$conversation += "</div>";
-						$conversation += "</div>";
-						$conversation += "<div class='conversation-submit col-md-4 col-xs-4 col-sm-4 time-conversation col-no-padding text-right'>";
-						$conversation += "<span data-livestamp='"+$conversations[i].submit+"'></span>";
-						$conversation += "</div>";
-						$conversation += "</div>";
-						$conversation += "<div class='conversation-last-message col-md-12 col-xs-12 col-sm-12 col-no-padding-right title-conversation'>";
-						$conversation += $conversations[0].last_message;
-						$conversation += "</div>";
-						$conversation += "</div>";
-						$conversation += "</li>";
-						$conversation += "</a>";
-						$("ul.conversation-list-group").prepend($conversation);
+						if(($.inArray($conversations[i].conversation_id, $dataConversationId) > -1) && ($conversations[i].conversation_id!=$("#conversation-summary").data("idconversation"))){
+							$(".conversation-list-item[data-idconversation='"+$conversations[i].conversation_id+"']").remove();
+						}
+						if($conversations[i].conversation_id!=$("#conversation-summary").data("idconversation")){
+							$conversation = "<a href='"+$baseurl+"/user/message/"+$conversations[i].conversation_id+"' class='animated fadeInLeftBig'>";
+							$conversation += "<li class='conversation-list-item col-md-12 col-sm-12 col-xs-12' data-idconversation='"+$conversations[i].conversation_id+"' data-countmessage='"+$conversations[i].count_unread+"'>";
+							$conversation += "<div class='col-md-2 col-sm-2 col-xs-2 col-no-padding'>";
+							$conversation += "<img class='img-responsive img-rounded img-conversation' src='"+$baseurlnoConflict+$conversations[i].user_photo+"'>";
+							$conversation += "</div>";
+							$conversation += "<div class='col-md-10 col-sm-10 col-xs-10 col-no-padding conversation-details'>";
+							$conversation += "<div class='col-md-12 col-xs-12 col-sm-12 col-no-padding'>";
+							$conversation += "<div class='col-md-8 col-xs-8 col-sm-8 users-conversation col-no-padding-right' style='font-weight:bold'>";
+							$conversation += "<div class='col-md-7 col-xs-7 col-sm-7 subject_conversation col-no-padding' title='"+$conversations[i].subject+"'>";
+							$conversation += $conversations[i].subject;
+							$conversation += "</div>";
+							$conversation += "<div class='col-md-5 col-xs-5 col-sm-5 col-no-padding' style='font-size:11px'>";
+							$conversation += "("+$conversations[i].participant+" Participants)";
+							$conversation += "</div>";
+							$conversation += "</div>";
+							$conversation += "<div class='conversation-submit col-md-4 col-xs-4 col-sm-4 time-conversation col-no-padding text-right'>";
+							$conversation += "<span data-livestamp='"+$conversations[i].submit+"'></span>";
+							$conversation += "</div>";
+							$conversation += "</div>";
+							$conversation += "<div class='conversation-last-message col-md-12 col-xs-12 col-sm-12 col-no-padding-right title-conversation'>";
+							$conversation += $conversations[0].last_message;
+							$conversation += "</div>";
+							$conversation += "</div>";
+							$conversation += "</li>";
+							$conversation += "</a>";
+							$("ul.conversation-list-group").prepend($conversation);	
+							$(".conversation-list-item").first().iosbadge({ theme: 'ios', size: 28, content: $conversations[i].count_unread});
+						}
+						if($.inArray($conversations[i].conversation_id, $dataConversationId) < 0){
+							$dataConversationId.push($conversations[i].conversation_id);
+						}	
 					};
 					$("ul.conversation-list-group").animate({ scrollTop: 0});
 				}
 			}
 		}, "json");
 	}
+	$dataConversationId = Array();
+	$(".conversation-list-item").each(function(i){
+		$dataConversationId.push($(this).data("idconversation"));
+	});
+	$(".conversation-list-item[data-idconversation='"+$("#conversation-summary").data("idconversation")+"']").addClass("active");
 	checkAllConversation();
 	/*
 	init javascript bootstrap;
