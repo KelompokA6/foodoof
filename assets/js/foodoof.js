@@ -1445,6 +1445,9 @@ $(document).ready(function() {
 	if($("#icon-message").data("countmessage")>0){
 		$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message").data("countmessage") });	
 	}
+	if($("#icon-message-sidebar").data("countmessage")>0){
+		$("#icon-message-sidebar").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message-sidebar").data("countmessage") });	
+	}
 	$(".conversation-list-item").each(function(i){
 		if($(this).data("countmessage")>0){
 			$(this).iosbadge({ theme: 'ios', size: 28, content: $(this).data("countmessage") });	
@@ -1499,7 +1502,8 @@ $(document).ready(function() {
 		$.get($baseurl+"/processAjax/checkAllConversation/"+$("#conversation-summary").data("idconversation"), function(data){
 			if(data.status=="success"){
 				if(data.countunread > 0){
-					$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: data.countunread});	
+					$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: data.countunread});
+					$("#icon-message-sidebar").iosbadge({ theme: 'ios', size: 22, content: data.countunread});	
 				}
 			}
 		},"json");
@@ -1557,6 +1561,7 @@ $(document).ready(function() {
 	});
 	$(".conversation-list-item[data-idconversation='"+$("#conversation-summary").data("idconversation")+"']").addClass("active");
 	checkAllConversation();
+
 	/*
 	init javascript bootstrap;
 	*/

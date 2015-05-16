@@ -42,7 +42,7 @@
 </div>
 <nav class="navbar navbar-default navbar-fixed-top bg-foodoof">
   <div class="container">
-    <div class="navbar-header col-md-2 col-no-padding-right" style="padding-bottom:10px">
+    <div class="navbar-header col-md-2 col-no-padding-right mobile-hidden" style="padding-bottom:10px">
       <button type="button" class="navbar-toggle navbar-toggle-foodoof" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body" data-placement='left' style="margin:21px 10px 21px 10px">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar icons-secondary"></span>
@@ -53,8 +53,24 @@
         <img class="img-responsive img-brand-menubar" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 12px;"/>
       </a>
       <a href="<?php echo base_url();?>index.php/recipe/create" class="btn-navbar-mobile pull-right text-center">
-        <i class="fa fa-pencil-square-o fa-2x icons-secondary"></i><br>Write <br>A Recipe
+        <i class="fa fa-pencil-square-o fa-2x icons-secondary">
+        </i><br>Write <br>A Recipe
       </a>
+    </div>
+    <div class="navbar-header col-md-2 mobile-visible" style="padding-bottom:10px">
+      <a href="<?php echo base_url();?>index.php/recipe/create" class="btn-navbar-mobile pull-right text-center">
+        <i class="fa fa-pencil-square-o fa-2x icons-secondary">
+        </i><br>Write <br>A Recipe
+      </a>
+      <a href="<?php echo base_url();?>" class="brand-menubar col-md-12 col-xs-9 pull-right text-center">
+        <img class="img-responsive img-brand-menubar" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 12px; margin:auto"/>
+      </a>
+      <button type="button" class="navbar-toggle navbar-toggle-foodoof pull-left" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body" data-placement='left' style="margin:21px 10px 21px 10px">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar icons-secondary"></span>
+          <span class="icon-bar icons-secondary"></span>
+          <span class="icon-bar icons-secondary"></span>
+      </button>
     </div>
     <div id="navbar" class="col-md-10">
       <form id="form-search" class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>index.php/search">

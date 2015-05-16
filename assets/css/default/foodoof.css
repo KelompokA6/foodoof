@@ -84,6 +84,15 @@ footer > div > div > div > ul > li > a{
     border-left: 0;
     border-bottom: 0;
   }
+  .mobile-visible > .btn-navbar-mobile {
+    display: block;
+    padding: 10px;
+    margin-left:10px;
+    border:dashed 1px #F7C43A;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0; 
+  }
   .btn-navbar-not-collapse{
     display: none;
   }
@@ -232,7 +241,8 @@ footer > div > div > div > ul > li > a{
     max-height: 200px;
   }
   .img-profile-slide-menu{
-    max-height: 100px;
+    height: 50px;
+    width: 50px;
   }
   .item-recipe-home{
     padding-bottom: 9px;
@@ -332,6 +342,12 @@ footer > div > div > div > ul > li > a{
   }
    .col-edit-recipe-timeline > div >div.checkbox>label>span{
     margin-left: 10px;
+  }
+  .mobile-hidden{
+    display: none !important; 
+  }
+  .mobile-visible{
+    display: block !important;
   }
 }
 @media screen and (min-width:768px){
@@ -1833,4 +1849,7 @@ input.checked-cook-later{
 #panel-price{
   font-size: 20px;
   color : #DD3124;
+}
+.mobile-visible{
+  display: none;
 }

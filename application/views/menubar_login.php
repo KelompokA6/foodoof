@@ -4,20 +4,70 @@
       <img class="img-responsive img-brand-menubar" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 5px;"/>
     </a>  
   </div>
-  <a href="<?php echo base_url();?>index.php/user/timeline" class="col-xs-12 text-center text-foodoof" style="margin:20px 0; font-size:16px;">
-    <img class="img-rounded img-profile-slide-menu" src="<?php echo base_url();?>{menubar_user_photo}"/>
-  </a>
-  <input id="user_id" hidden value="<?php echo @$user_id;?>">
-  <a href="<?php echo base_url();?>index.php/user/timeline" class="col-xs-12 text-center text-foodoof" style="margin:20px 0; font-size:16px;">
-    {menubar_user_name}
-  </a>
+  <ul class="list-group text-foodoof">
+    <a href="<?php echo base_url();?>index.php/user/timeline">
+      <li class="col-xs-12 border-solid-bottom" style="padding:10px 15px; margin:0 0 10px; font-size:18px;">
+        <div class="col-xs-4 text-center">
+          <img class="img-circle img-profile-slide-menu" src="<?php echo base_url();?>{menubar_user_photo}"/>
+        </div>
+        <div class="col-xs-8" style="line-height:50px;">
+          {menubar_user_name}
+        </div>  
+      </li>
+    </a>
+    <a href="<?php echo base_url();?>index.php/user/messages">
+      <li class="col-xs-12 border-solid-bottom" style="padding:10px 15px; margin:0 0 10px; font-size:18px;">
+        <span class="fa-stack fa-lg" id="icon-message-sidebar" data-countmessage="{menubar_count_unread_message}">
+          <i class="fa fa-square fa-stack-2x icons-default"></i>
+          <i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+        </span>
+        Messages
+      </li>
+    </a>
+    <a href="<?php echo base_url();?>index.php/user/profile">
+      <li class="col-xs-12 border-solid-bottom" style="padding:10px 15px; margin:0 0 10px; font-size:18px;">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-square fa-stack-2x icons-default"></i>
+          <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+        </span>
+        Profile
+      </li>
+    </a>
+    <a href="<?php echo base_url();?>index.php/user/favorite">
+      <li class="col-xs-12 border-solid-bottom" style="padding:10px 15px; margin:0 0 10px; font-size:18px;">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-square fa-stack-2x icons-default"></i>
+          <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
+        </span>
+        Favorite
+      </li>
+    </a>
+    <a href="<?php echo base_url();?>index.php/user/cooklater">
+      <li class="col-xs-12 border-solid-bottom" style="padding:10px 15px; margin:0 0 10px; font-size:18px;">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-square fa-stack-2x icons-default"></i>
+          <i class="fa fa-list-alt fa-stack-1x fa-inverse"></i>
+        </span>
+        Cook Later
+      </li>
+    </a>
+    <a href="<?php echo base_url();?>index.php/user/changepassword">
+      <li class="col-xs-12 border-solid-bottom" style="padding:10px 15px; margin:0 0 10px; font-size:18px;">
+        <span class='fa-stack fa-lg'>
+          <i class='fa fa-square fa-stack-2x icons-default'></i>
+          <i class='fa fa-key fa-stack-1x fa-inverse'></i>
+        </span>
+        Change Password
+      </li>
+    </a>
+  </ul>
   <a href="<?php echo base_url();?>index.php/home/logout" class="col-xs-12 text-center">
     <button type="button" class="btn button-default">Logout</button>
   </a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-top bg-foodoof">
   <div class="container">
-    <div class="navbar-header col-md-2 col-no-padding-right" style="padding-bottom:10px">
+    <div class="navbar-header col-md-2 col-no-padding-right mobile-hidden" style="padding-bottom:10px">
       <button type="button" class="navbar-toggle navbar-toggle-foodoof" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body" data-placement='left' style="margin:21px 10px 21px 10px">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar icons-secondary"></span>
@@ -31,6 +81,21 @@
         <i class="fa fa-pencil-square-o fa-2x icons-secondary">
         </i><br>Write <br>A Recipe
       </a>
+    </div>
+    <div class="navbar-header col-md-2 mobile-visible" style="padding-bottom:10px">
+      <a href="<?php echo base_url();?>index.php/recipe/create" class="btn-navbar-mobile pull-right text-center">
+        <i class="fa fa-pencil-square-o fa-2x icons-secondary">
+        </i><br>Write <br>A Recipe
+      </a>
+      <a href="<?php echo base_url();?>" class="brand-menubar col-md-12 col-xs-9 pull-right text-center">
+        <img class="img-responsive img-brand-menubar" src="<?php echo base_url();?>assets/img/foodoof.png" style="padding-top: 12px; margin:auto"/>
+      </a>
+      <button type="button" class="navbar-toggle navbar-toggle-foodoof pull-left" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body" data-placement='left' style="margin:21px 10px 21px 10px">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar icons-secondary"></span>
+          <span class="icon-bar icons-secondary"></span>
+          <span class="icon-bar icons-secondary"></span>
+      </button>
     </div>
     <div id="navbar" class="col-md-10">
       <form id="form-search" class="collapse-navbar-search col-md-7 col-no-padding-right" method="get" action="<?php echo base_url();?>index.php/search">
