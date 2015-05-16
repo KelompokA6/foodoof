@@ -170,21 +170,46 @@ footer > div > div > div > ul > li > a{
   .h4-mobile{
     font-size: 26px;
   }
-  .category-list:nth-child(even){
+  .category-list:nth-child(odd){
     margin:10px 0 0 0;
-    line-height: 48px;
+    line-height: 58px;
     border-left: dashed 1px #F7C43A;
     border-bottom: dashed 1px #F7C43A;
     padding:10px;
-    height: 68px;
+    height: 78px;
+  }
+  .category-list:nth-child(even){
+    margin:10px 0 0 0;
+    line-height: 58px;
+    border-left: dashed 1px #F7C43A;
+    border-bottom: dashed 1px #F7C43A;
+    padding:10px;
+    height: 78px;
+  }
+  .category-list{
+  }
+  .category-list::after{
+    display: none !important;
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    content: "";
+    height: 2px;
+    width: 0px;
+    background-color:#F7C43A;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease; 
   }
   .category-list-last{
     margin:10px 0 0 0;
-    line-height: 48px;
+    line-height: 58px;
     border-left: dashed 1px #F7C43A;
     border-bottom: dashed 1px #F7C43A;
     padding:10px;
-    height: 68px;
+    height: 78px;
   }
   .detail-list{
     padding-left: 0px;

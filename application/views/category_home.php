@@ -146,7 +146,7 @@
         <i class="fa fa-chevron-right pull-right chevron-menu" style="line-height:inherit"></i>
       </a>
     </div>
-    <div class="col-md-12 col-xs-6 category-list-last">
+    <div class="col-md-12 col-xs-6 category-list">
       <a href="<?php echo base_url();?>index.php/recipe/category/Other">
         <div class="col-md-3 col-xs-5 img-category">
           <img class="img-responsive img-rounded" src="<?php echo base_url();?>assets/img/category/middle-eastern-food.jpg"/>
