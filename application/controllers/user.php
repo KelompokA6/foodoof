@@ -122,7 +122,7 @@ class User extends CI_Controller {
 					if (strlen($data['newPass']) >= 5) return TRUE;
 					return "new password is too short. minimum 5 characters.";
 				}
-				return "new password and confirm new password doesn't match"
+				return "new password and confirm new password doesn't match";
 			}
 			return "old password doesn't match";
 		}
