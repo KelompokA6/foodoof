@@ -1655,7 +1655,7 @@ textarea.enter-comment.form-control:focus{
 /*
   conversation css
 */
-.nav-tabs > li{
+/*.nav-tabs > li{
   background-color: #BD2220;
 }
 .nav-tabs > li > a{
@@ -1677,7 +1677,7 @@ textarea.enter-comment.form-control:focus{
 }
 .nav-tabs > li.active > a:hover{
   color: #fff;
-}
+}*/
 span.badge{
   background-color: #F7C43A;
   color:#fff; 
