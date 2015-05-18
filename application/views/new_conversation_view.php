@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="subject" class="col-md-2 col-xs-2 col-md-2 control-label">Subject</label>
             <div class="col-md-10 col-xs-10 col-md-10">
-                <input type="text" class="form-control" name="subject" placeholder="Subject Conversation" required>
+                <input type="text" class="form-control" name="subject" placeholder="Subject Conversation">
             </div>
         </div>
         <div class="form-group">

@@ -1488,9 +1488,9 @@ $(document).ready(function() {
 	if($("#icon-message-sidebar").data("countmessage")>0){
 		$("#icon-message-sidebar").iosbadge({ theme: 'ios', size: 22, content: $("#icon-message-sidebar").data("countmessage") });	
 	}
-	$(".conversation-list-item").each(function(i){
-		if($(this).data("countmessage")>0){
-			$(this).iosbadge({ theme: 'ios', size: 28, content: $(this).data("countmessage") });	
+	$(".conversation-list-item > div > .img-conversation").each(function(i){
+		if($(this).parent().parent().data("countmessage")>0){
+			$(this).parent().iosbadge({ theme: 'ios', size: 22, content: $(this).parent().parent().data("countmessage") });	
 		}
 	});
 	$("ul.message-list-group").animate({ scrollTop: $("ul.message-list-group").height()});
@@ -1584,7 +1584,7 @@ $(document).ready(function() {
 							$conversation += "</li>";
 							$conversation += "</a>";
 							$("ul.conversation-list-group").prepend($conversation);	
-							$(".conversation-list-item").first().iosbadge({ theme: 'ios', size: 28, content: $conversations[i].count_unread});
+							$(".conversation-list-item > div > .img-conversation").first().parent().iosbadge({ theme: 'ios', size: 22, content: $conversations[i].count_unread});
 						}
 						if($.inArray($conversations[i].conversation_id, $dataConversationId) < 0){
 							$dataConversationId.push($conversations[i].conversation_id);

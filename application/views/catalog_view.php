@@ -46,7 +46,7 @@
 	                <td class="edit" data-type="text" data-name="name" data-pk="{catalog_id}" data-title="Enter Name Catalog">
 	                	{catalog_name}
 	                </td>
-	                <td class="edit" data-type="text" data-name="quantity" data-pk="{catalog_id}" data-title="Enter Quantity Catalog">
+	                <td class="edit" data-type="number" data-name="quantity" data-pk="{catalog_id}" data-title="Enter Quantity Catalog">
 	                	{catalog_quantity}
 	                </td>
 	                <td class="edit" data-type="text" data-name="units" data-pk="{catalog_id}" data-title="Enter Unit Catalog">
