@@ -1440,6 +1440,35 @@ $(document).ready(function() {
 	}
 
 	/*
+	init javascript bootstrap;
+	*/
+	$('.carousel').carousel();
+    $('.btn-popover').popover();
+	$(".fa.fa-info-circle.icons-secondary.fa-lg").each(function(i){
+		$(this).attr("data-target", "#ingredient-"+(i+1));
+		$(this).next().attr("id", "ingredient-"+(i+1));
+	});
+	$(document).on("show.bs.modal", ".popover", function(){
+		$(this).parent().parent().removeClass("animated");
+		$(this).parent().parent().removeClass("fadeInDown");
+	});
+	$(".info-ingredients-popover").popover();
+	$("#toggle-online-user").on("click", function(e){
+		if($("#panel-users").css("display")=="none"){
+			$("#toggle-online-user > div > i.fa-chevron-up").removeClass("fa-chevron-up");
+			$("#toggle-online-user > div.col-md-2 > i").addClass("fa-chevron-down");
+		}
+		else{
+			$("#toggle-online-user > div > i.fa-chevron-down").removeClass("fa-chevron-down");
+			$("#toggle-online-user > div.col-md-2 > i").addClass("fa-chevron-up");	
+		}
+		$("#panel-users").slideToggle("slow");
+	});
+    autosize($('textarea')); 
+    $("textarea").trigger("autosize:resized");
+    tinymce.init({selector:'.textarea'});
+    $("#message-email").css("margin-top","10px");
+    /*
 		Conversation
 	*/
 	if($("#icon-message").data("countmessage")>0){
@@ -1561,34 +1590,4 @@ $(document).ready(function() {
 	});
 	$(".conversation-list-item[data-idconversation='"+$("#conversation-summary").data("idconversation")+"']").addClass("active");
 	checkAllConversation();
-
-	/*
-	init javascript bootstrap;
-	*/
-	$('.carousel').carousel();
-    $('.btn-popover').popover();
-	$(".fa.fa-info-circle.icons-secondary.fa-lg").each(function(i){
-		$(this).attr("data-target", "#ingredient-"+(i+1));
-		$(this).next().attr("id", "ingredient-"+(i+1));
-	});
-	$(document).on("show.bs.modal", ".popover", function(){
-		$(this).parent().parent().removeClass("animated");
-		$(this).parent().parent().removeClass("fadeInDown");
-	});
-	$(".info-ingredients-popover").popover();
-	$("#toggle-online-user").on("click", function(e){
-		if($("#panel-users").css("display")=="none"){
-			$("#toggle-online-user > div > i.fa-chevron-up").removeClass("fa-chevron-up");
-			$("#toggle-online-user > div.col-md-2 > i").addClass("fa-chevron-down");
-		}
-		else{
-			$("#toggle-online-user > div > i.fa-chevron-down").removeClass("fa-chevron-down");
-			$("#toggle-online-user > div.col-md-2 > i").addClass("fa-chevron-up");	
-		}
-		$("#panel-users").slideToggle("slow");
-	});
-    autosize($('textarea')); 
-    $("textarea").trigger("autosize:resized");
-    tinymce.init({selector:'.textarea'});
-    $("#message-email").css("margin-top","10px");
 });

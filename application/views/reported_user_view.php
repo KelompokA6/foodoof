@@ -6,8 +6,11 @@
 					echo $this->session->flashdata('alert-admin');
 				?>
 				<h3 class="page-header-title"> Reported User </h3>
+				<?php if(empty($reported_user_entries)){?>
+					<div class="col-md-12 col-xs-12 col-sm-12 text-center"> There are 0 Report</div>
+				<?php }?>
 				<?php foreach ($reported_user_entries as $reported_user_entry) {?>
-				<div class="col-md-12 col-xs-12 col-sm-12 border-solid-bottom" style="padding:5px 0">
+				<div class="col-md-12 col-xs-12 col-sm-12 border-solid-bottom list-reported" style="padding:5px 0">
 					<label class=" col-md-9 col-xs-9 col-sm-3 control-label text-left">
 			      		<input type="checkbox" class="col-md-1 col-xs-1 col-sm-1 checkboxuser" name= 'id_reported[]' value='<?php echo $reported_user_entry["reported_user_id"];?>'>
 				      	<div class="col-md-1 col-xs-2 col-sm-1 col-no-padding">
@@ -64,9 +67,11 @@
 			      	</div>
 			    </div>
 			    <?php } ?>
-			    <div class="col-md-12 col-xs-12 col-sm-12 border-solid-top text-center" style="padding-top:20px">
-			    	<button type="submit" class="btn button-primary btn-lg">Save</button>
-			    </div>
+			    <?php if(!empty($reported_user_entries)){?>
+				    <div class="col-md-12 col-xs-12 col-sm-12 border-solid-top text-center" style="padding-top:20px">
+				    	<button type="submit" class="btn button-primary btn-lg">Save</button>
+				    </div>
+			    <?php }?>
 			</div>
 		</div>
 	</div>	
