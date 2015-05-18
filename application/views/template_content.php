@@ -147,8 +147,8 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/bootstrap3-editable/js/bootstrap-editable.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/jasny-bootstrap.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/online-user.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/toggle/bootstrap-toggle.min.js"></script>
   <script>
     $(function() {
