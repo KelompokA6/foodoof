@@ -28,7 +28,7 @@
           <div class="col-md-4 col-xs-6 col-no-padding-right details-user-recipe">
             <a href="<?php echo base_url();?>index.php/user/timeline/{recently_recipe_author_id}" class="author-recipe">
               <img class="img-responsive img-circle img-recipe-author" src="<?php echo base_url();?>{recently_recipe_author_photo}" title="{recently_recipe_author_name}"/>
-              <span class="recipe-author-name" title="{recently_recipe_author_name}">{recently_recipe_author_name}</span>
+              <span class="recipe-author-name user-name" title="{recently_recipe_author_name}">{recently_recipe_author_name}</span>
             </a>
           </div>
           <div class="col-md-8 col-xs-6 col-no-padding-right details-time-recipe border-dashed-left" title="Last Update">

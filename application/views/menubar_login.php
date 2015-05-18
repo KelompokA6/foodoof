@@ -151,7 +151,7 @@
             <div class="col-md-4 col-no-padding-left col-no-padding-right div-img-profile-menubar text-right">
               <img class="img-rounded img-profile-menubar" src="<?php echo base_url();?>{menubar_user_photo}"/>
             </div>
-            <div class="col-md-8 col-no-padding text-center" style="line-height:34px">
+            <div class="col-md-8 col-no-padding text-center user-name" style="line-height:34px">
               {menubar_user_name}
             </div>
           </div>

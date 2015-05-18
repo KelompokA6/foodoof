@@ -1301,6 +1301,11 @@ a.author-recipe-home:hover > .recipe-author-name{
   white-space: nowrap;
   font-size: 18px;
 }
+.user-name{
+  text-overflow:ellipsis;
+  overflow:hidden; 
+  white-space: nowrap;
+}
 
 /*
   list recipe & recipe view css

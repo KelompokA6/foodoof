@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-md-11 col-sm-11 col-xs-11 col-no-padding message-details">
                     <div class="col-md-12 col-xs-12 col-sm-12 col-no-padding">
-                        <div class="col-md-9 col-xs-9 col-sm-9 users-message col-no-padding-right">
+                        <div class="col-md-9 col-xs-9 col-sm-9 users-message col-no-padding-right user-name">
                             <a href="<?php echo base_url();?>index.php/user/timeline/{conversation_message_user_id}">{conversation_message_user_name}</a>
                         </div>
                         <div class="col-md-3 col-xs-3 col-sm-3 time-message col-no-padding text-right">

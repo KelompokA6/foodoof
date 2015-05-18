@@ -1322,19 +1322,6 @@ $(document).ready(function() {
 	$(".details-button").on("click", function(e){
 		$(this).parent().next().slideToggle("slow");;
 	});
-	$("#add-entry-catalog").on("click", function(e){
-		if($(this).parent().next().css("display")=="none"){
-			$(this).find("i").removeClass("fa-plus");
-			$(this).find("i").addClass("fa-times");
-			$(this).find("span").html("Cancel");
-		}
-		else{
-			$(this).find("i").addClass("fa-plus");
-			$(this).find("i").removeClass("fa-times");
-			$(this).find("span").html("Add Entry");	
-		}
-		$(this).parent().next().slideToggle("slow");;
-	});
 	
 	/*
 		init table catalog
@@ -1380,6 +1367,25 @@ $(document).ready(function() {
 				});		
 		    }
 		}
+	});
+	$("#add-entry-catalog").on("click", function(e){
+		if($(this).parent().next().css("display")=="none"){
+			$(this).find("i").removeClass("fa-plus");
+			$(this).find("i").addClass("fa-times");
+			$(this).find("span").html("Cancel");
+		}
+		else{
+			$(this).find("i").addClass("fa-plus");
+			$(this).find("i").removeClass("fa-times");
+			$(this).find("span").html("Add Entry");	
+		}
+		$(this).parent().next().slideToggle("slow");;
+	});
+	$('.edit').on('shown', function(e, editable) {
+	    $input = $("span.editable-container>div>form>div>div>div>input");
+	    if($input.attr("type")==="number"){
+	    	$input.attr("min", "0");
+	    }
 	});
 	/*
 		generate harga
