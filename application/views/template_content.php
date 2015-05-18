@@ -74,13 +74,15 @@
         </div>
       </div>
     </div>
-    <div class="col-md-2 col-xs-4 col-no-padding text-right" style="position:fixed; right:0; bottom:0; z-index:100; border-bottom-left-radius:0">
-      <style>
-        .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
-        .toggle.ios .toggle-handle { border-radius: 20px; }
-      </style>
-        <input <?php echo $this->input->cookie('theme') ? '' : 'checked="checked"';?> id="tema" type="checkbox" data-toggle="toggle" data-style="ios" data-on="Theme 1" data-off="Theme 2" data-onstyle="danger" data-offstyle="success">
+    <?php if($this->session->userdata('user_id') != ''): ?>
+      <div class="col-md-2 col-xs-4 col-no-padding text-right" style="position:fixed; right:0; bottom:0; z-index:100; border-bottom-left-radius:0">
+        <style>
+          .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
+          .toggle.ios .toggle-handle { border-radius: 20px; }
+        </style>
+          <input <?php echo $this->input->cookie('theme') ? '' : 'checked="checked"';?> id="tema" type="checkbox" data-toggle="toggle" data-style="ios" data-on="Theme 1" data-off="Theme 2" data-onstyle="danger" data-offstyle="success">
       </div>
+    <?php endif; ?>
     <footer>
       <div class="container">
         <div class="row">
