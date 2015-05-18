@@ -1,7 +1,3 @@
-<!-- <div class="panel">
-  <div class="col-md-12 panel-home-title text-center">
-    <a href="<?php //echo base_url();?>index.php/home/recently" style="color:#fff; font-size:15px">Recently Recipe</a>
-  </div> -->
   <div class="col-md-12 col-xs-12 page-header-title text-left">
     <h4 class="col-md-4 col-xs-6 col-no-padding"style="margin:5px; font-size:18px">Recently Recipe</h4>
     <a href="<?php echo base_url()?>index.php/home/recently" class="text-right pull-right"><button class="btn button-secondary">See More</button></a>

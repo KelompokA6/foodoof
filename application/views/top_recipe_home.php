@@ -1,6 +1,6 @@
 <div class="col-md-12 col-xs-12 page-header-title text-left">
   <h4 class="col-md-4 col-xs-6 col-no-padding"style="margin:5px; font-size:18px">Top Recipe</h4>
-  <a href="<?php echo base_url()?>index.php/home/toprecipe" class="text-right pull-right"><button class="btn button-default">See More</button></a>
+  <a href="<?php echo base_url()?>index.php/home/toprecipe" class="text-right pull-right"><button class="btn button-secondary">See More</button></a>
 </div>
 <div class="col-md-12 col-xs-12 col-no-padding">
   {top_recipe_entries}

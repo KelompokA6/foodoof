@@ -374,6 +374,9 @@ footer > div > div > div > ul > li > a{
   .mobile-visible{
     display: block !important;
   }
+  div.img-category > img{
+    height: 58px !important;
+  }
 }
 @media screen and (min-width:768px){
   .inline-search{
@@ -402,6 +405,9 @@ footer > div > div > div > ul > li > a{
     border-top: 0;
     border-left: 0;
     border-bottom: 0;
+  }
+  div.img-category > img{
+    height: 58px !important;
   }
 }
 @media screen and (min-width:992px){
