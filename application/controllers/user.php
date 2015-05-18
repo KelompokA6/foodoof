@@ -94,12 +94,13 @@ class User extends CI_Controller {
 			$data['newPass'] = $this->input->post("new_password");
 			$data['confirmPass'] = $this->input->post("confirm_new_password");
 
-			if($this->_is_valid_changepassword($data)){
+			$cp = $this->_is_valid_changepassword($data);
+			if($cp === TRUE){
 				$success = $this->user_model->updatePassword($data['id'], $data['newPass']);
 				$data['change_password_alert'] = $success ? "<div class=\"alert alert-success\">password has been changed successfully</div>" : "<div class=\"alert alert-danger\">change password failed</div>";
 			}
 			else{
-				$data['change_password_alert'] = "<div class=\"alert alert-danger\">old password or confirm password doesn't match</div>";
+				$data['change_password_alert'] = "<div class=\"alert alert-danger\">$cp</div>";
 			}
 		}
 
@@ -115,12 +116,17 @@ class User extends CI_Controller {
 		{
 			$u->where('id', $data['id'])->get();
 			$email = $u->email;
-			if($u->login($email, $data['oldPass']) !== FALSE)
+			if(is_array($u->login($email, $data['oldPass'])))
 			{
-				return $data['newPass'] == $data['confirmPass'] && strlen($data['newPass']) >= 5;
+				if ($data['newPass'] == $data['confirmPass']) {
+					if (strlen($data['newPass']) >= 5) return TRUE;
+					return "new password is too short. minimum 5 characters.";
+				}
+				return "new password and confirm new password doesn't match"
 			}
+			return "old password doesn't match";
 		}
-		return FALSE;
+		return "user doesn't exists";
 	}
 
 	public function join(){
