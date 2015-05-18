@@ -72,10 +72,10 @@ class Admin extends CI_Controller {
 		$menubar = $this->home_viewer->getMenubar();
 		$reported_user_entries = array();
 		$user = new Report();
-		$listRepo = $user -> getListReportUser();
+		$listRepo = $user->getListReportUser();
 		foreach ($listRepo as $objRepo) {
-			$recipe = new Report();
-			$list = $recipe -> getListReportByUserId($objRepo->id);
+			$report = new Report();
+			$list = $report->getListReportByUserId($objRepo->id);
 			$s = new User_model();
 			$user_name = $s->getProfile($objRepo->id)->name;
 			$user_photo = $s->getProfile($objRepo->id)->photo;

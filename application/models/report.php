@@ -66,6 +66,7 @@ class Report extends DataMapper {
                 array_push($listRecipe, $rcp->id);
             }
             $report->where_in("recipe_id", $listRecipe);
+            $report->group_by("recipe_id");
             $report->get();
             $list_reported_recipe = array();
             foreach ($report as $reports) {
