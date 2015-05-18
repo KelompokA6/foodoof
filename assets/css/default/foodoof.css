@@ -1883,3 +1883,12 @@ input.checked-cook-later{
 .mobile-visible{
   display: none;
 }
+/*
+  change theme toggle
+*/
+.toggle-on{
+  background-color: #DD3124 !important;
+}
+.toggle-off{
+  background-color: #469BF2 !important;
+}
