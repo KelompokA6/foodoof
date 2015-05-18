@@ -1,9 +1,13 @@
 <div class="panel col-md-12 col-xs-12 col-sm-12 col-no-padding">
-	<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding">
-		<ul class="nav nav-tabs" role="tablist">
-		  <li id="conversation-personal" role="presentation" class="active col-md-6 col-no-padding"><a href="#">Personal <span class="badge">{sidebar_conversation_unread_personal}</span></a></li>
-		  <li id="conversation-group" role="presentation" class="col-md-6 col-no-padding"><a href="#">Group <span class="badge">{sidebar_conversation_unread_group}</span></a></li>
-		</ul>
+	<div class="col-md-12 col-xs-12 col-sm-12 panel-title-side-conversation text-center">
+		Your Conversations <?php if($sidebar_conversation_total>0):?>
+			<span id="total-unread-sidebar" class="badge"><?php echo $sidebar_conversation_total;?></span>
+		<?php endif;?>
+		<a href='<?php echo base_url();?>index.php/user/createconversation' class='pull-right' title="New Conversation">
+            <button class='btn button-secondary'>
+                <i class='fa fa-plus fa-lg'></i>
+            </button>
+        </a>
 	</div>
 	<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding">
 		<ul class="conversation-list-group">

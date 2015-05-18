@@ -1493,7 +1493,7 @@ $(document).ready(function() {
 			$(this).parent().iosbadge({ theme: 'ios', size: 22, content: $(this).parent().parent().data("countmessage") });	
 		}
 	});
-	$("ul.message-list-group").animate({ scrollTop: $("ul.message-list-group").height()});
+	$("ul.message-list-group").animate({ scrollTop: $(document).height()});
 
 	function checkAllConversation(){
 		checkConversation();
@@ -1544,6 +1544,12 @@ $(document).ready(function() {
 				if(data.countunread > 0){
 					$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: data.countunread});
 					$("#icon-message-sidebar").iosbadge({ theme: 'ios', size: 22, content: data.countunread});	
+					if($("#total-unread-sidebar").length==0){
+						$(".panel-title-side-conversation").html("Your conversations "+"<span id='total-unread-sidebar' class='badge'>"+data.countunread+"</span>");
+					}
+					else{
+						$("#total-unread-sidebar").html(data.countunread);	
+					}
 				}
 			}
 		},"json");

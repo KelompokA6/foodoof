@@ -415,7 +415,17 @@ class User extends CI_Controller {
 					);
 					array_push($dataConversation, $tmp);
 				}
-				$data = array("sidebar_conversation_entries" => $dataConversation);
+				$conversation = new Conversation();
+		        $u = new User_model();
+		        $listConversation = $u->getAllConversationUser($this->session->userdata('user_id'));
+		        $countUnreadMessage = 0;
+		        foreach ($listConversation as $conversations) {
+		          $countUnreadMessage += $conversation->getCountUnreadMessage($conversations->id, $this->session->userdata('user_id'));
+		        }
+				$data = array(
+					"sidebar_conversation_entries" => $dataConversation,
+					"sidebar_conversation_total" => $countUnreadMessage,
+					);
 				$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
 				$data = array(
 						"content_conversation" => $content_conversation,
@@ -500,7 +510,17 @@ class User extends CI_Controller {
 				);
 				array_push($dataConversation, $tmp);
 			}
-			$data = array("sidebar_conversation_entries" => $dataConversation);
+			$conversation = new Conversation();
+	        $u = new User_model();
+	        $listConversation = $u->getAllConversationUser($this->session->userdata('user_id'));
+	        $countUnreadMessage = 0;
+	        foreach ($listConversation as $conversations) {
+	          $countUnreadMessage += $conversation->getCountUnreadMessage($conversations->id, $this->session->userdata('user_id'));
+	        }
+			$data = array(
+				"sidebar_conversation_entries" => $dataConversation,
+				"sidebar_conversation_total" => $countUnreadMessage,
+				);
 			$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
 			$data = array(
 					"content_conversation" => $content_conversation,

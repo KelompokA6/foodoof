@@ -2,7 +2,7 @@
 	<div class="panel-body">
         <?php echo $this->session->flashdata('alert-notification');?>
         <div id="conversation-summary" data-idconversation="{conversation_id}" class="col-md-12 col-sm-12 col-xs-12 page-header-title">
-            <h5 class="subject-conversation text-capitalize text-center col-md-9 col-sm-9 col-xs-9 col-no-padding" style="line-height:34px;"> 
+            <h5 class="subject-conversation text-capitalize text-center col-md-12 col-sm-12 col-xs-12" style="line-height:34px;"> 
                 <span>{conversation_subject}</span>
                 <?php if((sizeof($conversation_member_entries) > 2)):?>
                 <span role="button" title='Others' data-toggle="popover-x" data-target="#other_user" data-placement="bottom"><?php echo sizeof($conversation_member_entries)-2;?> Others</span>
@@ -23,12 +23,6 @@
                 </div>
                 <?php endif;?>
             </h5>
-            <a href='<?php echo base_url();?>index.php/user/createconversation' class='col-md-3 col-sm-3 col-xs-3 col-no-padding text-right'>
-                <button class='btn button-primary'>
-                    <i class='fa fa-plus fa-lg'></i>
-                    New Conversation
-                </button>
-            </a>
         </div>
         <ul class="message-list-group">
             <?php if(empty($conversation_message_entries)):?>
