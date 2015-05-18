@@ -125,7 +125,7 @@
   <div class="col-md-12 col-xs-12 text-center text-capitalize">
     <?php
     if($search_by_ingredient_recipe_page_size == 0):?>
-    no recipes found
+    no ingredients found
     <?php
     endif;?>
     <?php
