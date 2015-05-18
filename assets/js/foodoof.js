@@ -5,8 +5,8 @@ $(document).ready(function() {
 	$lock = 0;
 	$submitStatus=false;
 	$hasChanged = false;
-	$baseurl = "http://foodoof.hol.es/index.php";
-	$baseurlnoConflict = "http://foodoof.hol.es/";
+	$baseurl = "http://localhost/foodoof/index.php";
+	$baseurlnoConflict = "http://localhost/foodoof/";
 	$.get( $baseurl+"/processAjax/schedulercleantmp", function( data ) {
 	},"json");
 	/*
