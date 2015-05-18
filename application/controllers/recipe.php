@@ -373,7 +373,6 @@ class Recipe extends CI_Controller {
 		{
 		    ini_set('memory_limit','32M'); // boost the memory limit if it's low <img src="https://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley">
 		    $html = $this->get($id, TRUE); // render the view into HTML
-		    echo "$html";
 		    $this->load->library('pdf');
 		    $pdf = $this->pdf->load();
 		    $pdf->SetFooter($_SERVER['HTTP_HOST'].'|{PAGENO}|'.date(DATE_RFC822)); // Add a footer for good measure <img src="https://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley">
