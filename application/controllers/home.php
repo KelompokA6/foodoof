@@ -124,8 +124,11 @@ class Home extends CI_Controller {
 		$cat_report = $this->input->post("report_category");
 		$report = new Report();
 		$user = new User_model();
-		$user->where("id", $user_id);
-		$user->update("status","REPORTED");
+		if($user->where("id", $user_id)->where("status","BANNED")->count()==0){
+			$user->clear();
+			$user->where("id", $user_id);
+			$user->update("status","REPORTED");
+		}
 		foreach ($cat_report as $obj) {
 			if(!empty($obj)){
 				$report->recipe_id = $recipe_id;
