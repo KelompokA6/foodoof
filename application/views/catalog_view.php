@@ -40,15 +40,6 @@
 		                <th>Price</th>
 		            </tr>
 		        </thead>
-		        <tfoot>
-		            <tr>
-		                <th>ID</th>
-		                <th>Name</th>
-		                <th>Quantity</th>
-		                <th>Unit</th>
-		                <th>Price</th>
-		            </tr>
-		        </tfoot>
 		        {catalog_entries}
 		        <tr>
 	                <td>{catalog_id}</td>
