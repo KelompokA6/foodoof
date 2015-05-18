@@ -1389,7 +1389,12 @@ $(document).ready(function() {
 		if($(this).data("status")==0){
 			$.get($baseurl+"/tempview/generatePrice/"+$(this).data("recipeid"), function( data ) {
 				if(data.status == '1'){
-					$("#panel-price").html("Rp."+data.price+";-");
+					if(data.price>0){
+						$("#panel-price").html("Rp."+data.price+";-");	
+					}
+					else{
+						$("#panel-price").html("Price not available in our database.");
+					}
 			  	}
 			  	else{
 			  		
