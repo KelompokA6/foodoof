@@ -599,10 +599,10 @@ class Recipe_model extends DataMapper {
             for ($i=0; $i < sizeof($arrayKey); $i++) { 
                 if(!empty($arrayKey)){
                     if($i == 0){
-                        $searchkey .= "LOWER(name) LIKE LOWER('%".$this->db->escape_str($arrayKey[$i])."%')"; 
+                        $searchkey .= "LOWER(name) LIKE LOWER('% ".$this->db->escape_str($search_key[$i])." %') OR LOWER(name) LIKE LOWER('% ".$this->db->escape_str($search_key[$i])."') OR LOWER(name) LIKE LOWER('".$this->db->escape_str($search_key[$i])." %') OR LOWER(name) LIKE LOWER('".$this->db->escape_str($search_key[$i])."')"; 
                     }
                     else {
-                        $searchkey .= " OR LOWER(name) LIKE LOWER('%".$this->db->escape_str($arrayKey[$i])."%')"; 
+                        $searchkey .= " OR LOWER(name) LIKE LOWER('% ".$this->db->escape_str($search_key[$i])." %') OR LOWER(name) LIKE LOWER('% ".$this->db->escape_str($search_key[$i])."') OR LOWER(name) LIKE LOWER('".$this->db->escape_str($search_key[$i])." %') OR LOWER(name) LIKE LOWER('".$this->db->escape_str($search_key[$i])."')"; 
                     }    
                 }
             }
