@@ -20,6 +20,7 @@
     <link href="<?php echo base_url();?>assets/plugin/bower-components/badges/iosbadge.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap-tagsinput.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-popover-x/bootstrap-popover-x.css" rel="stylesheet"/>
+    <link href="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-tabs-x/bootstrap-tabs-x.min.css" rel="stylesheet"/>
     <link href="<?php echo base_url();?>assets/plugin/bower-components/enhancement/css/dropdowns-enhancement.min.css" media="all" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url();?>assets/plugin/bower-components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet"/>
     <link href="<?php echo base_url();?>assets/plugin/bower-components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
@@ -128,6 +129,7 @@
   <script src="<?php echo base_url();?>assets/plugin/bower-components/kartik-file-input/js/fileinput.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-popover-x/bootstrap-popover-x.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url();?>assets/plugin/bower-components/bootstrap-tabs-x/bootstrap-tabs-x.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap3-typeahead.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bootstrap-tagsinput.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/plugin/bower-components/typeahead/bloodhound.min.js" type="text/javascript"></script>
