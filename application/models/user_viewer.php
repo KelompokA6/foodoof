@@ -168,6 +168,8 @@ class User_viewer extends CI_Model
     // ambil content_user dari user_timeline_view
     // print_r($listRecipes);
     // die();
+    $listRecipesFinished=array();
+    $listRecipesUnfinished=array();
     foreach ($listRecipes as $row) {
         $row->cook_later_recipe_id = $row->id;
         $row->cook_later_recipe_photo = $row->photo;
@@ -176,11 +178,17 @@ class User_viewer extends CI_Model
         $row->cook_later_recipe_last_update = $row->last_update;
         $row->cook_later_recipe_view = $row->views;
         $row->checked_status = $row->status ? "checked" : "";
+        if($row->status === '1'){
+            array_push($listRecipesFinished, $row);
+        } else{
+            array_push($listRecipesUnfinished, $row);
+        }
     }
     // print_r($listRecipes);
     // die();
     $data = array(
-            'cook_later_recipe_entries' => $listRecipes,
+            'cook_later_recipe_entries_unfinished' => $listRecipesUnfinished,
+            'cook_later_recipe_entries_finished' => $listRecipesFinished,
             'cook_later_user_name' => $profile->name,
             'cook_later_user_id' => $profile->id,
             'cook_later_recipe_page_size' => $totalpage,

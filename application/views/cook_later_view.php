@@ -12,8 +12,8 @@
 		    </ul>
 		    <div id="myTabContent-5" class="tab-content">
 		        <div class="tab-pane fade in active" id="unfinished">
-		        	<?php foreach ($cook_later_recipe_entries as $obj){?>
-			    		<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title" id='<?php echo $obj->cook_later_recipe_id; ?>'>
+		        	<?php foreach ($cook_later_recipe_entries_unfinished as $obj){?>
+			    		<div class="page-header-title" style="height: 143px;">
 							<div class="col-md-2 col-xs-6 col-md-offset-0 col-xs-offset-3 detail-list-img" style="margin-right:2px; margin-bottom:10px">
 						        <a href="<?php echo base_url();?>index.php/recipe/get/<?php echo $obj->cook_later_recipe_id;?>" title="<?php echo $obj->cook_later_recipe_name;?>">
 						        	<img class="img-responsive img-rounded img-list-usertimeline details-img-recipe" src="<?php echo base_url();?><?php echo ($obj->cook_later_recipe_photo); ?>"/>
@@ -62,9 +62,9 @@
 			    	<?php }?>
 		        </div>
 		        <div class="tab-pane fade" id="finished">
-		        	<?php foreach ($cook_later_recipe_entries as $obj){?>
-			    		<div class="col-md-12 col-xs-12 col-no-padding-right page-header-title" id='<?php echo $obj->cook_later_recipe_id; ?>'>
-							<div class="col-md-2 col-xs-6 col-md-offset-0 col-xs-offset-3 detail-list-img" style="margin-right:2px; margin-bottom:10px">
+		        	<?php foreach ($cook_later_recipe_entries_finished as $obj){?>
+			    		<div class="page-header-title" style="height: 143px;background-color:#dedede">
+							<div class="col-md-2 col-xs-6 col-md-offset-0 col-xs-offset-3 detail-list-img" style="margin-right:2px; margin-bottom:10px;">
 						        <a href="<?php echo base_url();?>index.php/recipe/get/<?php echo $obj->cook_later_recipe_id;?>" title="<?php echo $obj->cook_later_recipe_name;?>">
 						        	<img class="img-responsive img-rounded img-list-usertimeline details-img-recipe" src="<?php echo base_url();?><?php echo ($obj->cook_later_recipe_photo); ?>"/>
 						        </a>
