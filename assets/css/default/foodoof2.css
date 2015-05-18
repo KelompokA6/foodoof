@@ -20,9 +20,9 @@
        url('../fonts/RobotoCondensed-Regular-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
 /* 
-  color-theme-1: #469BF2
-  color-theme-2: #f97b0c
-  color-theme-3: #469BF2
+  color-theme-1: #3498db
+  color-theme-2: #e67e22
+  color-theme-3: #3498db
 */
 body{
   font-family: 'Roboto';
@@ -38,7 +38,7 @@ h4{
 footer{
   font-family: 'Roboto';
   /*background-color: #D6D6D0;*/
-  background-color: #469BF2; 
+  background-color: #3498db; 
   color:  #fff;
   font-size: 15px; 
   position: relative;
@@ -79,7 +79,7 @@ footer > div > div > div > ul > li > a{
     display: block;
     padding: 10px;
     margin-left:10px;
-    border:dashed 1px #f97b0c;
+    border:dashed 1px #e67e22;
     border-top: 0;
     border-left: 0;
     border-bottom: 0;
@@ -88,7 +88,7 @@ footer > div > div > div > ul > li > a{
     display: block;
     padding: 10px;
     margin-left:10px;
-    border:dashed 1px #f97b0c;
+    border:dashed 1px #e67e22;
     border-top: 0;
     border-right: 0;
     border-bottom: 0; 
@@ -173,16 +173,16 @@ footer > div > div > div > ul > li > a{
   .category-list:nth-child(odd){
     margin:10px 0 0 0;
     line-height: 58px;
-    border-left: dashed 1px #f97b0c;
-    border-bottom: dashed 1px #f97b0c;
+    border-left: dashed 1px #e67e22;
+    border-bottom: dashed 1px #e67e22;
     padding:10px;
     height: 78px;
   }
   .category-list:nth-child(even){
     margin:10px 0 0 0;
     line-height: 58px;
-    border-left: dashed 1px #f97b0c;
-    border-bottom: dashed 1px #f97b0c;
+    border-left: dashed 1px #e67e22;
+    border-bottom: dashed 1px #e67e22;
     padding:10px;
     height: 78px;
   }
@@ -196,7 +196,7 @@ footer > div > div > div > ul > li > a{
     content: "";
     height: 2px;
     width: 0px;
-    background-color:#f97b0c;
+    background-color:#e67e22;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -206,8 +206,8 @@ footer > div > div > div > ul > li > a{
   .category-list-last{
     margin:10px 0 0 0;
     line-height: 58px;
-    border-left: dashed 1px #f97b0c;
-    border-bottom: dashed 1px #f97b0c;
+    border-left: dashed 1px #e67e22;
+    border-bottom: dashed 1px #e67e22;
     padding:10px;
     height: 78px;
   }
@@ -233,7 +233,7 @@ footer > div > div > div > ul > li > a{
    padding: 3px 0;
   }
   .details-rating{
-    border-left: dashed 1px #f97b0c;
+    border-left: dashed 1px #e67e22;
   }
   .details-img-recipe{
     max-height:220px;
@@ -248,7 +248,7 @@ footer > div > div > div > ul > li > a{
     text-align: center;
   }
   button.navbar-toggle-foodoof:hover{
-    background-color: #f97b0c !important; 
+    background-color: #e67e22 !important; 
   }
   button.navbar-toggle-foodoof{
     background-color: transparent !important;
@@ -257,7 +257,7 @@ footer > div > div > div > ul > li > a{
     background-color: #f5f5f5 !important; 
   }
   .navbar-toggle-foodoof{
-    border-color: #f97b0c !important; 
+    border-color: #e67e22 !important; 
   }
   .img-user{
     max-height: 200px;
@@ -272,7 +272,7 @@ footer > div > div > div > ul > li > a{
   .item-recipe-home{
     padding-bottom: 9px;
     margin: 10px 0 20px;
-    border-bottom: 1px dashed #f97b0c;
+    border-bottom: 1px dashed #e67e22;
   }
   .img-list-recipe-home{
     max-height: 82px;
@@ -332,13 +332,13 @@ footer > div > div > div > ul > li > a{
   }
   .detail-rating-recipe{
     line-height: 37px;
-    border-left:dashed 1px #f97b0c !important;
+    border-left:dashed 1px #e67e22 !important;
   }
   .title-recipe{
     padding-bottom: 5px;
     overflow: hidden; 
     text-overflow:ellipsis;
-    border-bottom:dashed 2px #f97b0c !important;
+    border-bottom:dashed 2px #e67e22 !important;
   }
   .title-recipe:after{
     content: "" !important;
@@ -350,7 +350,7 @@ footer > div > div > div > ul > li > a{
     margin: auto !important;
   }
   .account-name{
-    border-bottom: dashed 2px #f97b0c !important;
+    border-bottom: dashed 2px #e67e22 !important;
     padding-bottom: 10px;
   }
   .detail-list-search-ingredient{
@@ -390,7 +390,7 @@ footer > div > div > div > ul > li > a{
   }
   .panel-category{
     line-height: inherit;
-    border: 1px solid #f97b0c;
+    border: 1px solid #e67e22;
     border-radius: 4px;
   }
   .btn-navbar-mobile{
@@ -416,7 +416,7 @@ footer > div > div > div > ul > li > a{
   }
   .panel-category{
     padding:0;
-    border: 1px solid #f97b0c;
+    border: 1px solid #e67e22;
     border-radius: 4px;
   }
   .btn-navbar-mobile{
@@ -442,7 +442,7 @@ footer > div > div > div > ul > li > a{
   }
   .panel-category{
     padding:0;
-    border: 1px solid #f97b0c;
+    border: 1px solid #e67e22;
     border-radius: 4px;
   }
   .btn-navbar-mobile{
@@ -459,7 +459,7 @@ footer > div > div > div > ul > li > a{
     margin:10px 0 10px 0;
   }
   .detail-list{
-    border: dashed 1px #f97b0c;
+    border: dashed 1px #e67e22;
     border-top:0px;
     border-right:0px;
     border-bottom:0px;
@@ -467,7 +467,7 @@ footer > div > div > div > ul > li > a{
     height: 135px;
   }
   .detail-list-account{
-    border: dashed 1px #f97b0c;
+    border: dashed 1px #e67e22;
     border-top:0px;
     border-right:0px;
     border-bottom:0px;
@@ -475,7 +475,7 @@ footer > div > div > div > ul > li > a{
     height: 135px;
   }
   .detail-list-search-ingredient{
-    border: dashed 1px #f97b0c;
+    border: dashed 1px #e67e22;
     border-top:0px;
     border-right:0px;
     border-bottom:0px;
@@ -566,10 +566,10 @@ footer > div > div > div > ul > li > a{
     margin-top:-4px;
     padding:4px;
     text-align: center;
-    color: #f97b0c;
+    color: #e67e22;
   }
   .hover-menubar:hover{
-    background: #f97b0c; 
+    background: #e67e22; 
     color: #fff;
     border-radius: 8px;
   }
@@ -598,7 +598,7 @@ footer > div > div > div > ul > li > a{
     height: 40px;
   }
   .link-by-icon:hover{
-    background-color: #3B80C7;
+    background-color: #2980b9;
     border-radius: 6px;
     padding: 4px;
   }
@@ -649,8 +649,8 @@ footer > div > div > div > ul > li > a{
   button css
 */
 .button-default{
- /* background-color: #f97b0c;*/
- background-color: #f97b0c;
+ /* background-color: #e67e22;*/
+ background-color: #e67e22;
   color: #fff;
 }
 .button-default:hover{
@@ -659,45 +659,45 @@ footer > div > div > div > ul > li > a{
 }
 
 .button-primary{
-  background-color: #469BF2;
+  background-color: #3498db;
   color: #fff;
 }
 .button-primary:hover,
 .button-primary:focus{
-  background-color: #3B80C7;
+  background-color: #2980b9;
   color: #fff;
 }
 .button-primary.inverse{
   background-color: #f2f2f2;
-  color: #469BF2;
+  color: #3498db;
   border: solid 0.15em #f2f2f2;
   max-height: 34px;
 }
 .button-primary.inverse:hover,
 .button-primary.inverse:focus{
   background-color: #fff;
-  color: #469BF2;
+  color: #3498db;
   border: solid 0.15em #FFF;
 }
 .button-secondary{
-  background-color: #f97b0c;
+  background-color: #e67e22;
   color: #fff;
 }
 .button-secondary:hover,
 .button-secondary:focus{
-  background-color: #E67613;
+  background-color: #d35400;
   color: #fff;
 }
 .button-secondary.inverse{
   background-color: #f2f2f2;
-  color: #f97b0c;
+  color: #e67e22;
   border: solid 0.15em #f2f2f2;
   max-height: 34px;
 }
 .button-secondary.inverse:hover,
 .button-secondary.inverse:focus{
   background-color: #FFF;
-  color: #f97b0c;
+  color: #e67e22;
   border: solid 0.15em #FFF;
 }
 .nav-bar-btn{
@@ -714,12 +714,12 @@ footer > div > div > div > ul > li > a{
 .button-category{
   background: #fff;
   border-color:#f5f5f5;
-  color:#f97b0c;
+  color:#e67e22;
 }
 .button-category:focus,
 .button-category:hover{
   background: #fff;
-  border-color:#f97b0c;
+  border-color:#e67e22;
   color:#000;
 }
 
@@ -728,13 +728,13 @@ footer > div > div > div > ul > li > a{
   icon-css
 */
 .icons-primary{
-  color:  #469BF2 !important;
+  color:  #3498db !important;
 }
 .icons-secondary{
-  color:  #f97b0c !important;
+  color:  #e67e22 !important;
 }
 .icons-default{
-  color:  #f97b0c !important;
+  color:  #e67e22 !important;
 }
 .fa-stack-lg{
   position: relative;
@@ -749,7 +749,7 @@ footer > div > div > div > ul > li > a{
 }
 
 .navbar-toggle-foodoof > .icons-default{
-  background-color:  #f97b0c !important;
+  background-color:  #e67e22 !important;
 }
 .header-title{
   margin-top:5px;
@@ -757,10 +757,10 @@ footer > div > div > div > ul > li > a{
 .page-header-title{
   padding-bottom: 9px;
   margin: 10px 0 20px;
-  border-bottom: 2px dashed #f97b0c;
+  border-bottom: 2px dashed #e67e22;
 }
 .border-right{
-  border:2px dashed #f97b0c; 
+  border:2px dashed #e67e22; 
   border-left:0; 
   border-top:0; 
   border-bottom:0;
@@ -787,11 +787,11 @@ footer > div > div > div > ul > li > a{
 }
 .pager > li > a:hover{
   color:#eee;
-  background-color: #f97b0c;
+  background-color: #e67e22;
 }
 .pager li.active > a{
   color:#eee;
-  background-color: #f97b0c;
+  background-color: #e67e22;
 }
 /*
 css dropdown
@@ -806,7 +806,7 @@ ul.dropdown-option > li > a:focus {
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-color: #469BF2;
+  border-color: #3498db;
   cursor: pointer !important;
 }
 a.fb-share:hover, a.fb-share:focus{
@@ -815,7 +815,7 @@ a.fb-share:hover, a.fb-share:focus{
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-color: #469BF2;
+  border-color: #3498db;
   cursor: pointer !important;
   color: #48649F !important;
 }
@@ -828,7 +828,7 @@ a.twitter-share:hover, a.twitter-share:focus{
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-color: #469BF2;
+  border-color: #3498db;
   cursor: pointer !important;
   color: #55ACEE !important;
 }
@@ -841,7 +841,7 @@ a.gplus-share:hover, a.gplus-share:focus{
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-color: #469BF2;
+  border-color: #3498db;
   cursor: pointer !important;
   color: #D73D32 !important;
 }
@@ -854,7 +854,7 @@ a.path-share:hover, a.path-share:focus{
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-color: #469BF2;
+  border-color: #3498db;
   cursor: pointer !important;
   color: #FF442C !important;
 }
@@ -865,34 +865,34 @@ a.path-share:hover > span > i.icons-secondary{
 ul.dropdown-option > li > a{
   padding-left: 5px;
   text-decoration: none;
-  color: #f97b0c !important;
+  color: #e67e22 !important;
   cursor: pointer !important;
 }
 ul.dropdown-menu-search > li > label{
-  color: #469BF2 !important;
+  color: #3498db !important;
 }
 ul.dropdown-menu-search > li > input:checked~label{
-  color: #f97b0c !important;
+  color: #e67e22 !important;
   border: solid 5px;
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-color: #469BF2;
+  border-color: #3498db;
   background-color: #fff;
 }
 ul.dropdown-menu-search > li > input:checked~label>span{
-  color: #469BF2;
+  color: #3498db;
 }
 ul.dropdown-menu-search > li > input:checked~label:hover,
 ul.dropdown-menu-search > li > input:checked~label:focus{
   background-color: #f5f5f5;
-  color:  #f97b0c;
+  color:  #e67e22;
   cursor: pointer !important;
 }
 ul.dropdown-menu-search > li > input:checked~label:hover > span,
 ul.dropdown-menu-search > li > input:checked~label:focus > span{
   background-color: #f5f5f5;
-  color:  #f97b0c;
+  color:  #e67e22;
   cursor: pointer !important;
 }
 ul.dropdown-menu-search > li > label:hover,
@@ -902,8 +902,8 @@ ul.dropdown-menu-search > li > label:focus{
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-color: #469BF2;
-  color: #f97b0c !important;
+  border-color: #3498db;
+  color: #e67e22 !important;
   cursor: pointer !important;
 }
 .dropdown-cat-search{
@@ -914,10 +914,10 @@ ul.dropdown-menu-search > li > label:focus{
   color:#fff;
 }
 ul.typeahead.dropdown-menu > li > a{
-  color: #f97b0c !important;
+  color: #e67e22 !important;
 }
 ul.typeahead.dropdown-menu > li.active > a{
-  background-color: #f97b0c !important;
+  background-color: #e67e22 !important;
   color: #fff !important;
 }
 
@@ -925,7 +925,7 @@ ul.typeahead.dropdown-menu > li.active > a{
   form css
 */
 .form-control:focus{
-  border-color: #f97b0c;
+  border-color: #e67e22;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), -1px 1px 4px rgba(255, 215, 107, .6), -1px -1px 4px rgba(255, 215, 107, .6);
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), -1px 1px 4px rgba(255, 215, 107, .6), -1px -1px 4px rgba(255, 215, 107, .6);
@@ -942,7 +942,7 @@ ul.typeahead.dropdown-menu > li.active > a{
 }
 
 .input-group-dropdown{
-  border-right: dashed 1px #f97b0c;
+  border-right: dashed 1px #e67e22;
 }
 
 .modal-backdrop {
@@ -971,7 +971,7 @@ ul.typeahead.dropdown-menu > li.active > a{
 }
 
 .hr-list-item{
-  border-bottom: 1px solid #f97b0c;
+  border-bottom: 1px solid #e67e22;
 }
 
 .category-recipe-list{
@@ -983,7 +983,7 @@ ul.typeahead.dropdown-menu > li.active > a{
 .category-list{
   margin:10px 0 0 0;
   line-height: 48px;
-  /*border-bottom: dashed 1px #f97b0c;*/
+  /*border-bottom: dashed 1px #e67e22;*/
   padding:10px;
   height: 68px;
   -webkit-transition: 0.5s ease;
@@ -1000,7 +1000,7 @@ ul.typeahead.dropdown-menu > li.active > a{
   content: "";
   height: 2px;
   width: 0px;
-  background-color:#f97b0c;
+  background-color:#e67e22;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
@@ -1011,7 +1011,7 @@ ul.typeahead.dropdown-menu > li.active > a{
   width: 100%;
 }
 .category-list > a:hover > .category-menu-name{
-  color:#f97b0c;
+  color:#e67e22;
 }
 .category-list-last{
   margin:10px 0 0 0;
@@ -1023,10 +1023,10 @@ ul.typeahead.dropdown-menu > li.active > a{
   color:  #111111;
 }
 .category-menu-name:hover{
-  color:  #f97b0c;
+  color:  #e67e22;
 }
 .hr-dashed{
-  border-bottom: dashed 2px #f97b0c;
+  border-bottom: dashed 2px #e67e22;
 }
 
 /*
@@ -1036,10 +1036,10 @@ a{
   color:  #111111;
 }
 a:hover, a:focus{
-  color: #f97b0c;
+  color: #e67e22;
 }
 div.list-group > a:hover{
-  color: #f97b0c;
+  color: #e67e22;
 }
 div.list-group > a{
   color:  #000;
@@ -1047,12 +1047,12 @@ div.list-group > a{
 
 
 .navbar-foodoof{
-  background-color: #469BF2;
+  background-color: #3498db;
 }
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #f97b0c;
+  border-bottom: 1px solid #e67e22;
 }
 /*
   panel css
@@ -1060,7 +1060,7 @@ div.list-group > a{
 .panel {
   margin-bottom: 20px;
   background-color: #fff;
-  border: 0px solid #469BF2 !important;
+  border: 0px solid #3498db !important;
   border-radius: 4px;
   -webkit-box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
           box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
@@ -1068,18 +1068,18 @@ div.list-group > a{
 .panel-category {
   margin-bottom: 20px;
   background-color: #fff;
-  border: 1px solid #469BF2 !important;
+  border: 1px solid #3498db !important;
   border-radius: 4px;
   -webkit-box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
           box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
 }
 .panel-home > .panel-heading{
   color: #fff;
-  background-color: #f97b0c;
+  background-color: #e67e22;
 }
 .panel-home-title{
   color: #fff;
-  background-color: #469BF2 !important;
+  background-color: #3498db !important;
   padding: 10px 0 9px 0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -1113,7 +1113,7 @@ p.text-capitalize {
   margin:auto;
 }
 .detail-list-recipe-home{
-  border: dashed 1px #f97b0c;
+  border: dashed 1px #e67e22;
   border-top:0px;
   border-right:0px;
   border-bottom:0px;
@@ -1129,7 +1129,7 @@ p.text-capitalize {
 .item-recipe-home{
   padding-bottom: 9px;
   margin: 10px 0 20px;
-  border-bottom: 1px dashed #f97b0c;
+  border-bottom: 1px dashed #e67e22;
 }
 .list-user-online{
   height: 34px;
@@ -1141,50 +1141,50 @@ p.text-capitalize {
   border-css
 */
 .border-dashed-right{
-  border-right: dashed 1px #f97b0c;
+  border-right: dashed 1px #e67e22;
 }
 .border-dashed-left{
-  border-left: dashed 1px #f97b0c;
+  border-left: dashed 1px #e67e22;
 }
 .border-dashed-top{
-  border-top: dashed 1px #f97b0c;
+  border-top: dashed 1px #e67e22;
 }
 .border-dashed-bottom{
-  border-bottom: dashed 1px #f97b0c;
+  border-bottom: dashed 1px #e67e22;
 }
 .border-dashed{
-  border: dashed 1px #f97b0c;
+  border: dashed 1px #e67e22;
 }
 .border-solid-bottom{
-  border-bottom: solid 1px #f97b0c;
+  border-bottom: solid 1px #e67e22;
 }
 .border-solid-top{
-  border-top: solid 1px #f97b0c;
+  border-top: solid 1px #e67e22;
 }
 .border-solid-right{
-  border-right: solid 1px #f97b0c;
+  border-right: solid 1px #e67e22;
 }
 .border-solid-left{
-  border-left: solid 1px #f97b0c;
+  border-left: solid 1px #e67e22;
 }
 .border-dashed{
-  border: solid 1px #f97b0c;
+  border: solid 1px #e67e22;
 }
 
 /*
   background css
 */
 .bg-li-highlight{
-  background-color: #f97b0c !important;
+  background-color: #e67e22 !important;
 }
 .text-foodoof{
-  color:  #f97b0c !important;
+  color:  #e67e22 !important;
 }
 .bg-foodoof{
-  background-color: #469BF2 !important;
+  background-color: #3498db !important;
 }
 .bg-sidemenu{
-  background-color: #3B80C7;
+  background-color: #2980b9;
 }
 
 /*
@@ -1231,7 +1231,7 @@ div.card > div.time-recipe-home > div > .icons-secondary{
   carousel css
 */
 ol.carousel-indicators > li.bg-li-highlight.active{
-  background-color: #469BF2 !important;
+  background-color: #3498db !important;
 }
 .carousel-control{
   opacity: .3 !important;
@@ -1353,7 +1353,7 @@ a.author-recipe-home:hover > .recipe-author-name{
 .title-recipe-home{
   font-family: 'Lilly';
   font-size: 16px;
-  border-bottom: dashed 1px #f97b0c;
+  border-bottom: dashed 1px #e67e22;
   padding:20px 15px 5px;
   overflow:hidden; 
   white-space: nowrap;
@@ -1402,19 +1402,19 @@ ul.nav-pills.nav-stacked{
 }
 
 .btn-default-theme1{
-  background-color: #469BF2;
+  background-color: #3498db;
   color: #fff;
 }
 .btn-default-theme2{
-  background-color: #f97b0c;
+  background-color: #e67e22;
   color: #fff;
 }
 .btn-default-theme3{
-  background-color: #469BF2;
+  background-color: #3498db;
   color: #fff;
 }
 .btn-default-theme1:hover{
-  background-color: #3B80C7;
+  background-color: #2980b9;
   color: #fff;
 }
 .btn-default-theme2:hover{
@@ -1511,7 +1511,7 @@ ul.nav-pills.nav-stacked{
   height: 92px;
   display: inline;
   width: 22px;
-  background-color  :#469BF2;
+  background-color  :#3498db;
   color: #fff;
   cursor: pointer;
 }
@@ -1525,7 +1525,7 @@ ul.nav-pills.nav-stacked{
   pointer-events:none;
 }
 .carousel-related-recipe.left:hover, .carousel-related-recipe.right:hover{
-  background-color: #3B80C7;
+  background-color: #2980b9;
   color:;
 }
 .carousel-related-recipe.right{
@@ -1573,7 +1573,7 @@ ul.nav-pills.nav-stacked{
   margin-top:-45px;
 }
 textarea.enter-comment.form-control:focus{
-  border-color: #f97b0c;
+  border-color: #e67e22;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), -1px 1px 4px rgba(255, 215, 107, .6), 1px -1px 4px rgba(255, 215, 107, .6);
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), -1px 1px 4px rgba(255, 215, 107, .6), 1px -1px 4px rgba(255, 215, 107, .6);
@@ -1595,9 +1595,9 @@ textarea.enter-comment.form-control:focus{
   dynamic input css
 */
 .textareaKeeper{
-  border-left: 2px solid #f97b0c;
-  border-right: 2px solid #f97b0c;
-  border-bottom: 2px solid #f97b0c;
+  border-left: 2px solid #e67e22;
+  border-right: 2px solid #e67e22;
+  border-bottom: 2px solid #e67e22;
   height: 15px;
   margin-top:50px;
 }
@@ -1608,7 +1608,7 @@ textarea.enter-comment.form-control:focus{
   margin-top:-40px;
 }
 .textareaKeeper > textarea.form-control:focus{
-  border-color: #f97b0c;
+  border-color: #e67e22;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), -1px 1px 4px rgba(255, 215, 107, .6), 1px -1px 4px rgba(255, 215, 107, .6);
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), -1px 1px 4px rgba(255, 215, 107, .6), 1px -1px 4px rgba(255, 215, 107, .6);
@@ -1631,7 +1631,7 @@ textarea.enter-comment.form-control:focus{
   text-align: center
 }
 .inputKeeper > input.form-control:focus{
-  border-color: #f97b0c;
+  border-color: #e67e22;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), -1px 1px 4px rgba(255, 215, 107, .6), 1px -1px 4px rgba(255, 215, 107, .6);
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), -1px 1px 4px rgba(255, 215, 107, .6), 1px -1px 4px rgba(255, 215, 107, .6);
@@ -1645,7 +1645,7 @@ textarea.enter-comment.form-control:focus{
   z-index: 100px
 }
 .popover > .popover-title{
-  background-color: #f97b0c !important;
+  background-color: #e67e22 !important;
   color: #fff;
   padding: 4px 14px;
 }
@@ -1661,7 +1661,7 @@ textarea.enter-comment.form-control:focus{
   conversation css
 */
 /*.nav-tabs > li{
-  background-color: #3B80C7;
+  background-color: #2980b9;
 }
 .nav-tabs > li > a{
   color:  #fff;
@@ -1669,22 +1669,22 @@ textarea.enter-comment.form-control:focus{
   text-align: center;
 }
 .nav-tabs > li > a:hover{
-  background-color: #469BF2 !important;
+  background-color: #3498db !important;
   color:#fff;
-  border-color: #469BF2 !important;
+  border-color: #3498db !important;
 }
 .nav-tabs > li.active > a{
-  background-color: #469BF2 !important;
-  border-top: solid 1px #3B80C7;
-  border-right: solid 1px #3B80C7;
-  border-left: solid 1px #3B80C7;
+  background-color: #3498db !important;
+  border-top: solid 1px #2980b9;
+  border-right: solid 1px #2980b9;
+  border-left: solid 1px #2980b9;
   color: #fff;
 }
 .nav-tabs > li.active > a:hover{
   color: #fff;
 }*/
 span.badge{
-  background-color: #f97b0c;
+  background-color: #e67e22;
   color:#fff; 
 }
 ul.conversation-list-group{
@@ -1696,13 +1696,13 @@ ul.conversation-list-group{
 } 
 li.conversation-list-item{
   padding: 4px 10px 2px;
-  border-bottom:  solid 1px #f97b0c;
+  border-bottom:  solid 1px #e67e22;
 }
 li.conversation-list-item:hover{
   background-color: #eee;
 }
 li.conversation-list-item.active{
-  color: #f97b0c !important;
+  color: #e67e22 !important;
   background-color: #eee !important;
 }
 .users-conversation, .title-conversation{
@@ -1765,7 +1765,7 @@ ul.message-list-group{
 li.message-list-item{
   padding: 4px 10px 2px;
   margin-bottom: 5px;
-  border-bottom:  solid 1px #f97b0c;
+  border-bottom:  solid 1px #e67e22;
 }
 li.message-list-item:hover{
   background-color: #eee;
@@ -1855,8 +1855,8 @@ textarea[readonly], textarea[readonly]:focus, textarea[readonly]:hover{
 }
 #catalog-table > tbody > tr > td.edit{
   text-decoration: underline;
-  text-decoration-color: #f97b0c;
-  -moz-text-decoration-color: #f97b0c;
+  text-decoration-color: #e67e22;
+  -moz-text-decoration-color: #e67e22;
 }
 
 /*
@@ -1878,7 +1878,7 @@ input.checked-cook-later{
 */
 #panel-price{
   font-size: 20px;
-  color : #469BF2;
+  color : #3498db;
 }
 .mobile-visible{
   display: none;
@@ -1890,5 +1890,5 @@ input.checked-cook-later{
   background-color: #DD3124 !important;
 }
 .toggle-off{
-  background-color: #469BF2 !important;
+  background-color: #3498db !important;
 }
