@@ -25,7 +25,7 @@
 			Favorite
 	  	</a>
 	  	<?php if($this->session->userdata('user_id') == $sidebar_user_id): ?>
-	  	<a href="<?php echo base_url();?>index.php/user/cook_later_view/{sidebar_user_id}" class="list-group-item" title="Cook Later">
+	  	<a href="<?php echo base_url();?>index.php/user/cooklater/{sidebar_user_id}" class="list-group-item" title="Cook Later">
 	  		<span class="fa-stack fa-lg">
 			  <i class="fa fa-square fa-stack-2x icons-default"></i>
 			  <i class="fa fa-list-alt fa-stack-1x fa-inverse"></i>
