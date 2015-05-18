@@ -47,7 +47,7 @@ class Home extends CI_Controller {
 				foreach ($profile as $key => $value) {
 					$this->session->set_userdata($key, $value);
 				}
-				$alert = "<div id='alert-notification' data-status='success' data-message='Success Login' class='hidden'></div>";
+				$alert = "<div id='alert-notification' data-status='success' data-message='Login Success' class='hidden'></div>";
 				$this->session->set_flashdata('alert-notification', $alert);
 				$u->where('email', $this->input->post('email'))->get();
 				if(strtolower($u->status) === "admin"){
