@@ -45,6 +45,7 @@
         $user_id = $this->session->userdata("user_id");
         $online_users = json_decode(file_get_contents(base_url('index.php/user/getonline/'.$user_id)));
       ?>
+      <input hidden id="user_id" value="<?php echo $this->session->userdata('user_id');?>">
       <div id="users-online" class="btn btn-default col-md-2 col-xs-4 col-no-padding text-left" 
       style="position:fixed; left:0; bottom:0; z-index:100; border-bottom-right-radius:0">
         <div id="panel-users" class="panel panel-default">
