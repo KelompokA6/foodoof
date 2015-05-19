@@ -151,14 +151,6 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/online-user.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/toggle/bootstrap-toggle.min.js"></script>
-  <script>
-    $(function() {
-      $('#tema').change(function() {
-        setTimeout(function(){
-          window.location = '/foodoof/index.php/home/changeTheme?url='+encodeURI(window.location.toString());
-        }, 500);
-      });
-    })
-  </script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/changetheme.js"></script>
 </html>
 <!-- finish -->
