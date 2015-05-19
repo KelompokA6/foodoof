@@ -21,7 +21,7 @@
 		        	<img class="img-responsive img-rounded img-list-usertimeline details-img-recipe" src="<?php echo base_url();?>{user_timeline_recipe_photo}"/>
 		        </a>
 		    </div>
-		    <div class="col-md-5 col-xs-12 detail-list">
+		    <div class="col-md-7 col-xs-12 detail-list">
 		    	<div class="col-md-12 col-xs-12 details xs-text-center">
 		          	<div class="col-md-12 col-xs-12 col-no-padding-right">
 		            	<a href="<?php echo base_url();?>index.php/recipe/get/{user_timeline_recipe_id}" title="{user_timeline_recipe_name}">
@@ -43,12 +43,12 @@
 					</div>
 		        </div>  
 		    </div>
-		    <div class="col-md-3 col-xs-12 col-no-padding col-edit-recipe-timeline">
+		    <div class="col-md-2 col-xs-12 col-no-padding col-edit-recipe-timeline">
 		    	<div class="col-md-12 col-xs-4 col-no-padding-right text-right" title="Viewer">
-		    		<div class="col-md-4 col-xs-4 col-no-padding-right recipe-timeline-view">
+		    		<div class="col-md-4 col-xs-4 col-no-padding recipe-timeline-view">
 			            <i class="fa fa-eye icons-default"></i>
 			        </div>
-			        <div class="col-md-7 col-xs-8 text-viewer">
+			        <div class="col-md-7 col-xs-8 text-viewer col-no-padding">
 			            <p class="text-capitalize">{user_timeline_recipe_view} views</p>
 			        </div>
 		    	</div>

@@ -5,7 +5,7 @@
     		<h3 class="page-header" style="margin-top:5px;"> <?php echo $cook_later_user_name;?>'s Cook Later</h3>
     	</div>
     	<!-- Tabs Above -->
-		<div class='tabs-x tabs-above tab-bordered'>
+		<div class='tabs-x tabs-above '>
 		    <ul id="myTab-5" class="nav nav-tabs" role="tablist">
 		        <li class="active col-md-6 col-xs-6 col-sm-6 col-no-padding"><a href="#unfinished" role="tab" data-toggle="tab">Unfinish</a></li>
 		        <li class="col-md-6 col-xs-6 col-sm-6 col-no-padding"><a href="#finished" role="tab-kv" data-toggle="tab">Finished</a></li>
@@ -19,7 +19,7 @@
 						        	<img class="img-responsive img-rounded img-list-usertimeline details-img-recipe" src="<?php echo base_url();?><?php echo ($obj->cook_later_recipe_photo); ?>"/>
 						        </a>
 						    </div>
-						    <div class="col-md-5 col-xs-12 detail-list">
+						    <div class="col-md-7 col-xs-12 detail-list">
 						    	<div class="col-md-12 col-xs-12 details xs-text-center">
 						          	<div class="col-md-12 col-xs-12 col-no-padding-right">
 						            	<a href="<?php echo base_url();?>index.php/recipe/get/<?php echo $obj->cook_later_recipe_id; ?>" title="<?php echo $obj->cook_later_recipe_name;?>">
@@ -41,16 +41,16 @@
 									</div>
 						        </div>  
 						    </div>
-						    <div class="col-md-3 col-xs-12 col-no-padding col-edit-recipe-timeline">
+						    <div class="col-md-2 col-xs-12 col-no-padding col-edit-recipe-cooklater">
 						    	<div class="col-md-12 col-xs-offset-3 col-xs-3 col-no-padding-left text-center xs-text-right">
 						    		<div class="checkbox">
 									    <label>
-									      	<input type="checkbox" class="checked-cook-later" value="<?php echo $obj->checked_status; ?>"><span> Finished</span>
+									      	<input type="checkbox" class="checked-cook-later" value="<?php echo $obj->cook_later_recipe_id;?>"><span> Finished</span>
 									    </label>
 									 </div>
 						    	</div>
-						    	<div class="col-md-12 col-xs-3 col-no-padding-right recipe-timeline-edit-btn text-center xs-text-left">
-							    	<div class="col-md-12 col-xs-offset-4 col-xs-4 col-no-padding-right recipe-timeline-edit-btn">
+						    	<div class="col-md-12 col-xs-3 col-no-padding-right recipe-cooklater-remove-btn text-center xs-text-left">
+							    	<div class="col-md-12 col-md-offset-0 col-xs-offset-4 col-xs-4 col-no-padding-right recipe-cooklater-remove-btn">
 					  					<button id="remove-cooklater" class="btn button-secondary" data-recipeid="<?php echo $obj->cook_later_recipe_id; ?>" style="width:90px">
 					  						<i class="fa fa-trash fa-lg"></i>
 					  						Remove 
@@ -69,7 +69,7 @@
 						        	<img class="img-responsive img-rounded img-list-usertimeline details-img-recipe" src="<?php echo base_url();?><?php echo ($obj->cook_later_recipe_photo); ?>"/>
 						        </a>
 						    </div>
-						    <div class="col-md-5 col-xs-12 detail-list">
+						    <div class="col-md-7 col-xs-12 detail-list">
 						    	<div class="col-md-12 col-xs-12 details xs-text-center">
 						          	<div class="col-md-12 col-xs-12 col-no-padding-right">
 						            	<a href="<?php echo base_url();?>index.php/recipe/get/<?php echo $obj->cook_later_recipe_id; ?>" title="<?php echo $obj->cook_later_recipe_name;?>">
@@ -91,16 +91,9 @@
 									</div>
 						        </div>  
 						    </div>
-						    <div class="col-md-3 col-xs-12 col-no-padding col-edit-recipe-timeline">
-						    	<div class="col-md-12 col-xs-offset-3 col-xs-3 col-no-padding-left text-center xs-text-right">
-						    		<div class="checkbox">
-									    <label>
-									      	<input type="checkbox" class="checked-cook-later" value="<?php echo $obj->checked_status; ?>"><span> Finished</span>
-									    </label>
-									 </div>
-						    	</div>
-						    	<div class="col-md-12 col-xs-3 col-no-padding-right recipe-timeline-edit-btn text-center xs-text-left">
-							    	<div class="col-md-12 col-xs-offset-4 col-xs-4 col-no-padding-right recipe-timeline-edit-btn">
+						    <div class="col-md-2 col-xs-12 col-no-padding col-edit-recipe-cooklater">
+						    	<div class="col-md-12 col-xs-12 col-no-padding-right recipe-cooklater-remove-btn text-center">
+							    	<div class="col-md-12 col-xs-12 col-no-padding-right recipe-cooklater-remove-btn">
 					  					<button id="remove-cooklater" class="btn button-secondary" data-recipeid="<?php echo $obj->cook_later_recipe_id; ?>" style="width:90px">
 					  						<i class="fa fa-trash fa-lg"></i>
 					  						Remove 

@@ -11,7 +11,7 @@
 		        	<img class="img-responsive img-rounded img-list-usertimeline details-img-recipe" src="<?php echo base_url();?>{favorite_recipe_photo}"/>
 		        </a>
 		    </div>
-		    <div class="col-md-5 col-xs-12 detail-list">
+		    <div class="col-md-7 col-xs-12 detail-list">
 		    	<div class="col-md-12 col-xs-12 details xs-text-center">
 		          	<div class="col-md-12 col-xs-12 col-no-padding-right">
 		            	<a href="<?php echo base_url();?>index.php/recipe/get/{favorite_recipe_id}" title="{favorite_recipe_name}">
@@ -33,7 +33,7 @@
 					</div>
 		        </div>  
 		    </div>
-		    <div class="col-md-3 col-xs-12 col-no-padding col-edit-recipe-timeline">
+		    <div class="col-md-2 col-xs-12 col-no-padding col-edit-recipe-timeline">
 		    	<?php if ($this->session->userdata('user_id') == $favorite_user_id): ?>
 		    	<div class="col-md-12 col-xs-offset-4 col-xs-4 col-no-padding-right recipe-timeline-edit-btn">
   					<button id="remove-favorite" class="btn button-secondary" data-recipeid="{favorite_recipe_id}" style="width:90px">

@@ -34,8 +34,8 @@ class Cooklater extends DataMapper {
 
     function setFinishedCookLater($user_id=NULL, $recipe_id=NULL, $value){
         $CL = new Cooklater();
-        print_r($recipe_id);
-        return $CL->where('user_id', $user_id)->where('recipe_id', $recipe_id)->update('flag', $value);
+       /* print_r($recipe_id);*/
+        return $CL->where('user_id', $user_id)->where('recipe_id', $recipe_id)->update('status_finish', $value);
     }
 }
 

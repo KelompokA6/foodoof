@@ -353,35 +353,19 @@ class ProcessAjax extends CI_Controller {
 		}
 		$user_id = $this->session->userdata('user_id');
 		if(!empty($user_id) && !empty($recipe_id)){
-			$recipe = new Recipe_model();
-			$tmp = $recipe->get_by_id($recipe_id);
-			if($recipe->publishRecipe($recipe_id, !($tmp->status))){
-				if($tmp->status){
-					$result = array(
-						"status" => 1,
-						"message" => "<div class='text-center'>Success To Unpublished Your Recipe.</div>",
-						);	
-				}
-				else{
-					$result = array(
-						"status" => 1,
-						"message" => "<div class='text-center'>Success To Published Your Recipe.</div>",
-						);
-				}
+			$cl = new Cooklater();
+			$cl->where("user_id", $user_id)->where("recipe_id", $recipe_id)->get();
+			if($cl->setFinishedCookLater($user_id, $recipe_id, !($cl->status_finish))){
+				$result = array(
+					"status" => 1,
+					"message" => "<div class='text-center'>Success To Finished Recipe.</div>",
+					);
 			}
 			else{
-				if($tmp->status){
-					$result = array(
-						"status" => 0,
-						"message" => "<div class='text-center'>Failed To Unpublished Your Recipe.</div>",
-						);	
-				}
-				else{
-					$result = array(
-						"status" => 0,
-						"message" => "<div class='text-center'>Failed To Published Your Recipe.</div>",
-						);
-				}
+				$result = array(
+					"status" => 0,
+					"message" => "<div class='text-center'>Failed To Finished Recipe.</div>",
+					);
 			}
 		}
 		else{

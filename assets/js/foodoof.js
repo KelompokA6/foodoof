@@ -775,8 +775,9 @@ $(document).ready(function() {
 	*/
 
 	$(document).on("change", ".checked-cook-later", function(){
-		var check = $(this).prop('checked');
-		$.get( $baseurl+"/processAjax/setPublish/"+$(this).val(), function( data ) {
+		$moveCooklater = $(this).parent().parent().parent().parent().parent();
+		$cooklaterclone = $moveCooklater.clone();
+		$.get($baseurl+"/processAjax/setFinished/"+$(this).val(), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
@@ -792,7 +793,11 @@ $(document).ready(function() {
 						from: 'top',
 						align: 'center'
 					},
-				});  		
+				});
+		  		$moveCooklater.slideToggle("slow");
+		  		$cooklaterclone.children("div.col-edit-recipe-cooklater").find("div").first().remove();
+		  		$cooklaterclone.children("div.col-edit-recipe-cooklater").find("div").first().removeClass("xs-text-left").removeClass("col-no-padding-right").removeClass("col-xs-3").addClass("col-xs-12 col-sm-12");
+		  		$("#finished.tab-pane").prepend($cooklaterclone);
 		  	}
 		  	else{
 		  		$.notify({
