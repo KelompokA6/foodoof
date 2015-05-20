@@ -16,7 +16,7 @@
   {search_by_account_entries}
   <div class="col-md-12 col-xs-12 col-no-padding-right page-header" style="margin-top:5px">
     <div class="col-md-2 col-xs-12 detail-list-img" style="margin-right:2px">
-        <a href="<?php echo base_url();?>index.php/recipe/get/{search_by_account_id}" title="{search_by_account_name}">
+        <a href="<?php echo base_url();?>index.php/user/timeline/{search_by_account_id}" title="{search_by_account_name}">
           <img class="img-responsive img-rounded img-list-account" src="<?php echo base_url();?>{search_by_account_photo}"/>
         </a>
     </div>
