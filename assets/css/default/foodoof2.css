@@ -1480,7 +1480,7 @@ ul.nav-pills.nav-stacked{
   padding: 0 3px;
   cursor: pointer !important;
 }
-.related-recipe-entry > img{
+.related-recipe-entry > a > img{
   max-height: 70px;
   height: 70px;
   margin: auto;

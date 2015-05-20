@@ -1392,6 +1392,7 @@ $(document).ready(function() {
 	    	$input.attr("min", "0");
 	    }
 	});
+	
 	/*
 		generate harga
 	*/

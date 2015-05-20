@@ -921,6 +921,47 @@ class Recipe_model extends DataMapper {
             $r = new Recipe_model();
             $ingredients = $r->getIngredients($recipe_id);
             foreach ($ingredients as $obj) {
+                $obj->name = str_replace("(", "/", $obj->name);
+                $obj->name = str_replace(")", "", $obj->name);
+                $key_or_ingredient = explode("/", $obj->name);
+                if(sizeof($key_or_ingredient)>1){
+                    $minPrice = 10000000;
+                    foreach ($key_or_ingredient as $ingre) {
+                        $catalog = new Catalog();
+                        $catalog->ilike("name", trim($ingre));
+                        $catalog->ilike("units",$obj->units);
+                        if($catalog->count()>0){
+                            $catalog->clear();
+                            $catalog->ilike("name", trim($ingre));
+                            $catalog->ilike("units",$obj->units);
+                            $catalog->get();
+                            if( ( ( ($obj->quantity)/($catalog->quantity) ) * $catalog->price) < $minPrice){
+                                $minPrice = ( ( ($obj->quantity)/($catalog->quantity) ) * $catalog->price);
+                            }    
+                        }
+                        $catalog->clear();
+                    }
+                    if($minPrice < 10000000){
+                        $result += $minPrice;        
+                    }
+                }
+                $key_and_ingredient = str_replace(" and ", " dan ", $obj->name);
+                $key_and_ingredient = explode(" dan ", $key_and_ingredient);
+                if(sizeof($key_and_ingredient)>1){
+                    foreach ($key_and_ingredient as $ingre) {
+                        $catalog = new Catalog();
+                        $catalog->ilike("name", trim($ingre));
+                        $catalog->ilike("units",$obj->units);
+                        if($catalog->count()>0){
+                            $catalog->clear();
+                            $catalog->ilike("name", trim($ingre));
+                            $catalog->ilike("units",$obj->units);
+                            $catalog->get();
+                            $result += (($obj->quantity)/($catalog->quantity))*$catalog->price;
+                        }
+                        $catalog->clear();
+                    }
+                }
                 $catalog = new Catalog();
                 $catalog->ilike("name",$obj->name);
                 $catalog->ilike("units",$obj->units);

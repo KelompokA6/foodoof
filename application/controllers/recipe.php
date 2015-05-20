@@ -179,9 +179,21 @@ class Recipe extends CI_Controller {
 			$ingre = array();
 			if (!empty($r->ingredients)){
 				foreach ($r->ingredients as $obj) {
+					$quantity = ($obj->quantity > 0.00) ? $obj->quantity : "";
+					if(!empty($quantity)){
+						if($quantity-(round($quantity,2)) >= 0.00){
+							$quantity=(round($quantity,2));
+							if(abs((round($quantity,1)-$quantity)) == 0.0){
+								$quantity = round($obj->quantity,1);
+								if($quantity == round($obj->quantity,0)){
+									$quantity = round($obj->quantity,0);
+								}
+							}
+						}	
+					}
 					$temp = array(
 							'ingre_name' => $obj->name,
-							'ingre_quantity' => ($obj->quantity > 0.00) ? trim(number_format($obj->quantity,2,'.',','),'0'.'.') : "",
+							'ingre_quantity' => $quantity,
 							'ingre_units' => $obj->units,
 							'ingre_info' => $obj->info,
 						);
