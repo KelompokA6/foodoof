@@ -27,7 +27,7 @@
     <link href="<?php echo base_url();?>assets/plugin/bower-components/bootstrap3-editable/css/bootstrap-editable.css" media="all" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/animate.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof<?php echo $this->input->cookie('theme');?>.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof<?php if($this->session->userdata('user_id')) echo $this->input->cookie('theme');?>.css">
     <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof-2.css"> -->
     <link href="<?php echo base_url();?>assets/plugin/bower-components/toggle/bootstrap-toggle.min.css" media="all" rel="stylesheet" type="text/css" />
   </head>
