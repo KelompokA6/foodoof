@@ -354,7 +354,6 @@ class ProcessAjax extends CI_Controller {
 		$user_id = $this->session->userdata('user_id');
 		if(!empty($user_id) && !empty($recipe_id)){
 			$c = new Cooklater();
-			echo "Recipe id = $recipe_id, User id = $user_id";
 			if($c->setFinishedCookLater($user_id, $recipe_id, '1')){
 				$result = array(
 						"status" => 1,

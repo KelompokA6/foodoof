@@ -775,15 +775,9 @@ $(document).ready(function() {
 	*/
 
 	$(document).on("change", ".checked-cook-later", function(){
-<<<<<<< HEAD
-		var check = $(this).prop('checked');
-		print($(this).val());
-		$.get( $baseurl+"/processAjax/setFinished/"+$(this).val(), function( data ) {
-=======
 		$moveCooklater = $(this).parent().parent().parent().parent().parent();
 		$cooklaterclone = $moveCooklater.clone();
 		$.get($baseurl+"/processAjax/setFinished/"+$(this).val(), function( data ) {
->>>>>>> origin/master
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
