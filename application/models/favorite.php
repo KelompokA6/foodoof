@@ -2,7 +2,7 @@
 
 class Favorite extends DataMapper {
 
-    var $table = "Favorites"; 
+    var $table = "favorites"; 
     var $has_one = array('user','recipe');
 
     /*function __construct($recipe_id = NULL, $user_id=NULL)
