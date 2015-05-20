@@ -310,6 +310,7 @@ class User_viewer extends CI_Model
             'sidebar_user_photo' => $profile->photo,
             'sidebar_user_status_profile' => $profile->status,
             'sidebar_user_status_admin' => $status,
+            'sidebar_showadmin' => $id == $profile->id && strtolower($profile->status) == 'admin',
         ),
         TRUE
     );
