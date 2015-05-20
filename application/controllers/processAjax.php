@@ -353,7 +353,6 @@ class ProcessAjax extends CI_Controller {
 		}
 		$user_id = $this->session->userdata('user_id');
 		if(!empty($user_id) && !empty($recipe_id)){
-<<<<<<< HEAD
 			$c = new Cooklater();
 			echo "Recipe id = $recipe_id, User id = $user_id";
 			if($c->setFinishedCookLater($user_id, $recipe_id, '1')){
@@ -367,21 +366,6 @@ class ProcessAjax extends CI_Controller {
 						"status" => 0,
 						"message" => "<div class='text-center'>Failed To Unpublished Your Recipe.</div>",
 						);	
-=======
-			$cl = new Cooklater();
-			$cl->where("user_id", $user_id)->where("recipe_id", $recipe_id)->get();
-			if($cl->setFinishedCookLater($user_id, $recipe_id, !($cl->status_finish))){
-				$result = array(
-					"status" => 1,
-					"message" => "<div class='text-center'>Success To Finished Recipe.</div>",
-					);
-			}
-			else{
-				$result = array(
-					"status" => 0,
-					"message" => "<div class='text-center'>Failed To Finished Recipe.</div>",
-					);
->>>>>>> origin/master
 			}
 		}
 		else{
