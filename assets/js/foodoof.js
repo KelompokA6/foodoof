@@ -5,8 +5,8 @@ $(document).ready(function() {
 	$lock = 0;
 	$submitStatus=false;
 	$hasChanged = false;
-	$baseurl = "http://localhost/foodoof/index.php";
-	$baseurlnoConflict = "http://localhost/foodoof/";
+	$baseurl = window.location.hostname+"/index.php";
+	$baseurlnoConflict = window.location.hostname;
 	$.get( $baseurl+"/processAjax/schedulercleantmp", function( data ) {
 	},"json");
 	/*
