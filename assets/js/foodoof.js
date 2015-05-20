@@ -776,7 +776,8 @@ $(document).ready(function() {
 
 	$(document).on("change", ".checked-cook-later", function(){
 		var check = $(this).prop('checked');
-		$.get( $baseurl+"/processAjax/setPublish/"+$(this).val(), function( data ) {
+		print($(this).val());
+		$.get( $baseurl+"/processAjax/setFinished/"+$(this).val(), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options

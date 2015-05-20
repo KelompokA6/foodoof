@@ -353,35 +353,19 @@ class ProcessAjax extends CI_Controller {
 		}
 		$user_id = $this->session->userdata('user_id');
 		if(!empty($user_id) && !empty($recipe_id)){
-			$recipe = new Recipe_model();
-			$tmp = $recipe->get_by_id($recipe_id);
-			if($recipe->publishRecipe($recipe_id, !($tmp->status))){
-				if($tmp->status){
-					$result = array(
+			$c = new Cooklater();
+			echo "Recipe id = $recipe_id, User id = $user_id";
+			if($c->setFinishedCookLater($user_id, $recipe_id, '1')){
+				$result = array(
 						"status" => 1,
-						"message" => "<div class='text-center'>Success To Unpublished Your Recipe.</div>",
+						"message" => "<div class='text-center'>Your recipe has been moved to finished recipe.</div>",
 						);	
-				}
-				else{
-					$result = array(
-						"status" => 1,
-						"message" => "<div class='text-center'>Success To Published Your Recipe.</div>",
-						);
-				}
 			}
 			else{
-				if($tmp->status){
-					$result = array(
+				$result = array(
 						"status" => 0,
 						"message" => "<div class='text-center'>Failed To Unpublished Your Recipe.</div>",
 						);	
-				}
-				else{
-					$result = array(
-						"status" => 0,
-						"message" => "<div class='text-center'>Failed To Published Your Recipe.</div>",
-						);
-				}
 			}
 		}
 		else{
