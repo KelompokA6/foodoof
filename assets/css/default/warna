@@ -1,5 +1,5 @@
 warna
 primary : #DD3124 | #469BF2
 primary hover : #BD2220 | #3B80C7 !important
-secondary : rgb(230,126,34); 
+secondary : #F7C43A | rgb(230,126,34); 
 secondary hover

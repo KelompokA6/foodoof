@@ -633,18 +633,17 @@ footer > div > div > div > ul > li > a{
     margin-right: 30px;
   }
   .col-edit-recipe-timeline{
-    margin-left:62px; 
+    /*margin-left:62px;*/ 
     margin-top:10px;
   }
   .recipe-timeline-view{
     margin-left:5px;
-    margin-right:-15px
   }
   .recipe-timeline-edit-btn{
-    padding-left:67px;
+    padding-left:40px;
   }
   .recipe-timeline-check-publish{
-    padding-left:79px;
+    padding-left:55px;
   }
   .list-item-step{
     margin:10px 0 10px 0;
@@ -1904,4 +1903,11 @@ input.checked-cook-later{
 }
 .toggle-off{
   background-color: #469BF2 !important;
+}
+
+/*
+  css cooklater
+*/
+.recipe-cooklater-remove-btn{
+  padding-left: 27px;
 }

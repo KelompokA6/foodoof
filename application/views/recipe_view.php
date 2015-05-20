@@ -182,8 +182,10 @@
 	  					<div class="col-md-12 col-xs-12 col-no-padding owl-carousel">
 	  						{related_recipe_entries}
 	  						<div class="col-md-12 col-xs-12 related-recipe-entry item" title="{related_recipe_name}">
-								<img href='<?php echo base_url();?>index.php/recipe/get/{related_recipe_id}' src="<?php echo base_url();?>{related_recipe_photo}" class="img-responsive col-md-12 col-xs-12 col-no-padding">
-								<a href='<?php echo base_url();?>index.php/recipe/get/{related_recipe_id}' class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</a>
+								<a href='<?php echo base_url();?>index.php/recipe/get/{related_recipe_id}'>
+									<img href='<?php echo base_url();?>index.php/recipe/get/{related_recipe_id}' src="<?php echo base_url();?>{related_recipe_photo}" class="img-responsive col-md-12 col-xs-12 col-no-padding">
+									<div class="text-capitalize col-md-12 col-xs-12 col-no-padding related-recipe-entry-name">{related_recipe_name}</div>
+								</a>
 							</div>
 							{/related_recipe_entries}
 	  					</div>
@@ -236,7 +238,7 @@
 							{steps_description}
 						</div>
 						<div class="col-md-2 col-xs-3 col-no-padding-right">
-							<a data-toggle="modal" data-toggle="modal" data-target="#step-{steps_number}"><img src="<?php echo base_url();?>{steps_photo}" class="img-rounded img-responsive"></a>
+							<a data-toggle="modal" data-target="#step-{steps_number}" style="cursor:pointer;"><img src="<?php echo base_url();?>{steps_photo}" class="img-rounded img-responsive"></a>
 							<div id="step-{steps_number}" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 							    <div class='lightbox-dialog text-center' style="padding-top:10%;">
 							        <div class='lightbox-content'>
@@ -256,7 +258,7 @@
 					<h4 class="page-header-title">Share Your Thought! <?php if(!empty($comments_recipe_entries)){ echo "(".sizeof($comments_recipe_entries)." Comments)";}?></h4>
 					<div class="col-md-12 col-xs-12">
 						<div class="col-md-2 col-xs-2 col-no-padding-left">
-							<img src="<?php echo base_url();?>images/user/<?php echo $this->session->userdata('user_id')?>.jpg" class="img-responsive img-circle img-user-comment" title="Your">
+							<img src="<?php echo base_url();?>assets/images/user/<?php echo $this->session->userdata('user_id')?>.jpg" class="img-responsive img-circle img-user-comment" title="Your">
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
 							<form class="form-horizontal" action="<?php echo base_url();?>index.php/recipe/addComment/{recipe_id}" role="form" method="post" style="margin:0">

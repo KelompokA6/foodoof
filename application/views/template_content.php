@@ -27,7 +27,7 @@
     <link href="<?php echo base_url();?>assets/plugin/bower-components/bootstrap3-editable/css/bootstrap-editable.css" media="all" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/animate.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/jasny-bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof<?php echo $this->input->cookie('theme');?>.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof<?php if($this->session->userdata('user_id')) echo $this->input->cookie('theme');?>.css">
     <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/default/foodoof-2.css"> -->
     <link href="<?php echo base_url();?>assets/plugin/bower-components/toggle/bootstrap-toggle.min.css" media="all" rel="stylesheet" type="text/css" />
   </head>
@@ -45,6 +45,7 @@
         $user_id = $this->session->userdata("user_id");
         $online_users = json_decode(file_get_contents(base_url('index.php/user/getonline/'.$user_id)));
       ?>
+      <input hidden id="user_id" value="<?php echo $this->session->userdata('user_id');?>">
       <div id="users-online" class="btn btn-default col-md-2 col-xs-4 col-no-padding text-left" 
       style="position:fixed; left:0; bottom:0; z-index:100; border-bottom-right-radius:0">
         <div id="panel-users" class="panel panel-default">
@@ -150,14 +151,6 @@
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/online-user.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/foodoof.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>assets/plugin/bower-components/toggle/bootstrap-toggle.min.js"></script>
-  <script>
-    $(function() {
-      $('#tema').change(function() {
-        setTimeout(function(){
-          window.location = '/foodoof/index.php/home/changeTheme?url='+encodeURI(window.location.toString());
-        }, 500);
-      });
-    })
-  </script>
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/changetheme.js"></script>
 </html>
 <!-- finish -->
