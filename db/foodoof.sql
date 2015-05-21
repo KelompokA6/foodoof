@@ -660,7 +660,7 @@ DELIMITER ;
 
 CREATE TABLE IF NOT EXISTS `reports` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) unsigned NOT NULL,
+  `recipe_id` int(10) unsigned NOT NULL,
   `reason` text,
   `submit` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
