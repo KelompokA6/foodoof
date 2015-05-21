@@ -25,7 +25,7 @@ class Cooklater extends DataMapper {
             foreach ($CL as $obj) {
                 $data = array(
                             'id' => $obj->recipe_id,
-                            'flag' =>  $obj->flag,);
+                            'flag' =>  $obj->status_finish,);
                 array_push($recipeIdList, $data);
             } 
         }
