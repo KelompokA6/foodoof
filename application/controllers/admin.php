@@ -386,7 +386,6 @@ class Admin extends CI_Controller {
     $all_data = [];
     foreach (range(1,13) as $i) {
       $sumber = "http://infopangan.jakarta.go.id/api/price/series_by_location?type=market&lid=$i&m=$m&y=$y";
-      die(file_get_contents($sumber));
       $data = json_decode(file_get_contents($sumber))->data;
       // ambil name sama average aja
       $data = array_map(function($x){
