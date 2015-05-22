@@ -386,7 +386,6 @@ class Admin extends CI_Controller {
     $all_data = [];
     foreach (range(1,13) as $i) {
       $sumber = "http://infopangan.jakarta.go.id/api/price/series_by_location?type=market&lid=$i&m=$m&y=$y";
-      die(file_get_contents($sumber));
       $data = json_decode(file_get_contents($sumber))->data;
       // ambil name sama average aja
       $data = array_map(function($x){
@@ -409,15 +408,6 @@ class Admin extends CI_Controller {
       }
     }
 
-    # AMPAS!
-    /*include('webParser.php');
-		$wp = new webParser();
-		$wp->set_source(file_get_contents('http://pasarjaya.co.id/komoditas'));
-    // die(file_get_contents("http://pasarjaya.co.id/komoditas"));
-		// $json = $wp->element_to_json('#detail');
-		$html = $wp->scrape_snippet('#detail');
-		die($html);
-
     foreach ($all_data as $name => $price) {
     	$units = "Kg";
     	if($name == "Garam Dapur") { $units = "gram"; $price *= 5; }
@@ -429,7 +419,7 @@ class Admin extends CI_Controller {
     	if($name == "Margarin Blueband Cup") $units = "kemasan";
     	if($name == "Margarin Blueband Sachet") $units = "kemasan";
       (new Catalog())->addCatalog($name, 1, $units, $price);
-    }*/
+    }
     redirect(base_url('index.php/admin/catalog'));
   }
 
