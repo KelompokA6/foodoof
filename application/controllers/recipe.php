@@ -109,16 +109,6 @@ class Recipe extends CI_Controller {
 		// for ($i=0; $i < sizeof($category) ; $i++) { 
 		// 	$recipe->addCategory($id, $category[$i]);
 		// }
-		if (ctype_space($name)){
-			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
-			$this->session->set_flashdata('alert-notification', $alert);
-			redirect(base_url()."index.php/recipe/edit/$id");
-		}
-		if (! preg_match("/^[a-zA-Z0-9$%@\\*()\& '-]{1,100}$/", trim($name))){
-			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
-			$this->session->set_flashdata('alert-notification', $alert);
-			redirect(base_url()."index.php/recipe/edit/$id");
-		}
 		$ingredients = array();
 		for ($i=0; $i < sizeof($subjek) ; $i++) { 
 			$temp['name'] = htmlspecialchars($subjek[$i]);
@@ -137,6 +127,19 @@ class Recipe extends CI_Controller {
 		// print_r($steps);
 		// die();
 		date_default_timezone_set ('Asia/Jakarta');
+		if (ctype_space($name)){
+			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
+			$this->session->set_flashdata('alert-notification', $alert);
+			$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d %H:%M:%S"), $ingredients, $steps);
+			redirect(base_url()."index.php/recipe/edit/$id");
+		}
+		if (! preg_match("/^[a-zA-Z0-9$%@\\*()\& '-]{1,100}$/", trim($name))){
+			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
+			$this->session->set_flashdata('alert-notification', $alert);
+			$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d %H:%M:%S"), $ingredients, $steps);
+			redirect(base_url()."index.php/recipe/edit/$id");
+		}
+		
 		$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d %H:%M:%S"), $ingredients, $steps);
 		if($isSuccess === false){
 			$alert = "<div id='alert-notification' data-message='Edit Recipe Failed' data-status='failed' class='hidden'></div>";
