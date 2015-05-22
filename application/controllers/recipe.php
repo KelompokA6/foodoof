@@ -131,12 +131,14 @@ class Recipe extends CI_Controller {
 			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
 			$this->session->set_flashdata('alert-notification', $alert);
 			$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d %H:%M:%S"), $ingredients, $steps);
+			$recipe->where('id',$id)->update('tmp_status', '1');
 			redirect(base_url()."index.php/recipe/edit/$id");
 		}
 		if (! preg_match("/^[a-zA-Z0-9$%@\\*()\& '-]{1,100}$/", trim($name))){
 			$alert = "<div id='alert-notification' data-message='Failed Edit Recipe' data-status='failed' class='hidden'></div>";
 			$this->session->set_flashdata('alert-notification', $alert);
 			$isSuccess = $recipe->saveRecipe($id, $name, $portion, $duration, $description, strftime("%Y-%m-%d %H:%M:%S"), $ingredients, $steps);
+			$recipe->where('id',$id)->update('tmp_status', '1');
 			redirect(base_url()."index.php/recipe/edit/$id");
 		}
 		
