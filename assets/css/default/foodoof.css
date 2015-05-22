@@ -30,6 +30,7 @@ body{
   font-size: 16px;
 }
 h1,h2,h3,h4,h5,h6{
+  font-weight: bold;
   font-family: 'Open Sans',Helvetica,Arial,Sans-serif;
 }
 h4{
@@ -640,10 +641,10 @@ footer > div > div > div > ul > li > a{
     margin-left:5px;
   }
   .recipe-timeline-edit-btn{
-    padding-left:40px;
+    padding-left:34px;
   }
   .recipe-timeline-check-publish{
-    padding-left:55px;
+    padding-left:44px;
   }
   .list-item-step{
     margin:10px 0 10px 0;
@@ -760,6 +761,7 @@ footer > div > div > div > ul > li > a{
   margin-top:5px;
 }
 .page-header-title{
+  font-weight: bold;
   padding-bottom: 9px;
   margin: 10px 0 20px;
   border-bottom: 2px dashed #f1c40f;
@@ -770,10 +772,7 @@ footer > div > div > div > ul > li > a{
   border-top:0; 
   border-bottom:0;
 }
-.category-recipe-list{
-  height: 30px;
-  line-height: 30px;
-}
+
 .ingredient-item{
   margin: 5px 0 5px 0;
 }
@@ -981,9 +980,10 @@ ul.typeahead.dropdown-menu > li.active > a{
 
 .category-recipe-list{
   padding:0 5px 0 5px;
-  font-size:12px; 
+  font-size:14px; 
   height:50px; 
   line-height:50px;
+  font-weight: bold;
 }
 .category-list{
   margin:5px 0 0 0;
@@ -1055,6 +1055,7 @@ div.list-group > a{
   background-color: #e74c3c;
 }
 .page-header {
+  font-weight: bold;
   padding-bottom: 9px;
   margin: 40px 0 20px;
   border-bottom: 1px solid #f1c40f;
@@ -1289,7 +1290,6 @@ a.author-recipe-home:hover > .recipe-author-name{
   text-transform: capitalize;
 }
 .author-recipe-home{
-  font-family: 'Roboto';
   font-size: 16px;
   text-overflow:ellipsis;
   overflow:hidden; 
@@ -1315,6 +1315,10 @@ a.author-recipe-home:hover > .recipe-author-name{
 /*
   list recipe & recipe view css
 */
+h4 > p.title-recipe{
+  font-size: 18px;
+  font-weight: bold;
+}
 .title-recipe{
   overflow:hidden; 
   white-space: nowrap;
@@ -1585,6 +1589,9 @@ textarea.enter-comment.form-control:focus{
 }
 .comment-entry{
   margin-top: 10px;
+}
+.page-header.step-entry{
+  font-weight: normal;
 }
 .step-entry:last-child{
   border-bottom: none;

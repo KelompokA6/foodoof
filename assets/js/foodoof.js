@@ -626,7 +626,9 @@ $(document).ready(function() {
 							align: 'center'
 						},
 					});
-					$("#remove-favorite").parent().parent().parent().slideToggle();  		
+					$("#remove-favorite").parent().parent().parent().slideToggle(function(){
+						$lockRemoveFav = false;
+					});  		
 			  	}
 			  	else{
 			  		$.notify({
@@ -643,12 +645,11 @@ $(document).ready(function() {
 							from: 'top',
 							align: 'center'
 						},
-					});  	
+					});
+					$lockRemoveFav = false;  	
 			  	}
 			},"json");
-			$lockRemoveFav = false;
 		}
-		
 	});
 	$lockRemoveCL = false;
 	$(document).on("click", "#remove-cooklater", function(){
@@ -671,7 +672,9 @@ $(document).ready(function() {
 							align: 'center'
 						},
 					});
-					$("#remove-cooklater").parent().parent().parent().parent().slideToggle();  		
+					$("#remove-cooklater").parent().parent().parent().parent().slideToggle(function(){
+						$lockRemoveCL = false;
+					});  		
 			  	}
 			  	else{
 			  		$.notify({
@@ -688,11 +691,11 @@ $(document).ready(function() {
 							from: 'top',
 							align: 'center'
 						},
-					});  	
+					});  
+					$lockRemoveCL = false;	
 			  	}
 			},"json");	
 		}
-		$lockRemoveCL = true;
 	});
 
 	/*

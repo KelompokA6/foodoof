@@ -45,10 +45,10 @@
 		    </div>
 		    <div class="col-md-2 col-xs-12 col-no-padding col-edit-recipe-timeline">
 		    	<div class="col-md-12 col-xs-4 col-no-padding-right text-right" title="Viewer">
-		    		<div class="col-md-4 col-xs-4 col-no-padding recipe-timeline-view">
+		    		<div class="col-md-3 col-xs-4 col-no-padding recipe-timeline-view">
 			            <i class="fa fa-eye icons-default"></i>
 			        </div>
-			        <div class="col-md-7 col-xs-8 text-viewer col-no-padding">
+			        <div class="col-md-8 col-xs-8 text-viewer col-no-padding">
 			            <p class="text-capitalize">{user_timeline_recipe_view} views</p>
 			        </div>
 		    	</div>

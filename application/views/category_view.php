@@ -25,10 +25,10 @@
         </div>
       </div>
       <div class="col-md-12 col-xs-6 details col-no-padding detail-time-recipe">
-        <div class="col-md-2 col-xs-5 col-no-padding-right">
+        <div class="col-md-3 col-xs-5 col-no-padding-right">
           <p class="text-capitalize">Last update :</p>
         </div>
-        <div class="col-md-10 col-xs-7 col-no-padding-left">
+        <div class="col-md-9 col-xs-7 col-no-padding-left">
           <p class="text-capitalize">{category_recipe_last_update}</p>
         </div>
       </div>

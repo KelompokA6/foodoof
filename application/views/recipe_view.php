@@ -1,6 +1,6 @@
 <div class="col-md-12 col-xs-12 page-header-title hr-dashed" style="margin-bottom:10px padding-bottom:0;">
 		{recipe_category_entries}
-		<div class="col-md-1 col-xs-3 border-right category-recipe-list text-center text-capitalize category-recipe-list">
+		<div class="col-md-1 col-xs-3 border-right category-recipe-list text-center text-capitalize">
 			<a href='<?php echo base_url();?>index.php/recipe/category/{recipe_category}'><h5>{recipe_category}</h5></a>
 		</div>
 		{/recipe_category_entries}
@@ -26,7 +26,7 @@
 					</div>
 				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-bottom:5px">
-					<div class="col-md-5 col-xs-6 text-right text-capitalize">
+					<div class="col-md-5 col-xs-6 text-right text-capitalize user-name">
 						<a href="<?php echo base_url();?>index.php/user/timeline/{recipe_author_id}" title="{recipe_author_name}">{recipe_author_name}</a>
 					</div>
 					<div class="col-md-7 col-xs-6 text-left text-capitalize border-dashed-left">

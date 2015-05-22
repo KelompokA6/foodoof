@@ -946,6 +946,7 @@ class Recipe_model extends DataMapper {
                     }
                 }
                 $key_and_ingredient = str_replace(" and ", " dan ", $obj->name);
+                $key_and_ingredient = str_replace(", ", " dan ", $obj->name);
                 $key_and_ingredient = explode(" dan ", $key_and_ingredient);
                 if(sizeof($key_and_ingredient)>1){
                     foreach ($key_and_ingredient as $ingre) {
