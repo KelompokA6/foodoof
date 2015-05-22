@@ -1,5 +1,5 @@
 <div class="panel">
-  <div class="col-md-12 panel-home-title text-center" style="font-size:15px">
+  <div class="col-md-12 panel-home-title text-center" style="font-size:16px; font-weight:bold">
     Category Recipe
   </div>
   <div class="panel-body panel-category" for="category">
