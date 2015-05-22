@@ -25,12 +25,12 @@
   color-theme-3: #469BF2
 */
 body{
-  font-family: 'Roboto';
+  font-family: 'Open Sans',Helvetica,Arial,Sans-serif;
   background-color: #F7F3E8;
   font-size: 16px;
 }
 h1,h2,h3,h4,h5,h6{
-  font-family: 'Lilly';
+  font-family: 'Open Sans',Helvetica,Arial,Sans-serif;
 }
 h4{
   font-size: 21px;
