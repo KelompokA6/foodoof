@@ -107,41 +107,27 @@
 						    <div class="popover-title popover-primary"><span class="close" data-dismiss="popover-x">&times;</span>Report</div>
 						    <div class="popover-content">
 						    	<?php if(!empty($this->session->userdata("user_id"))):?>
-						    	<form role="form" action="<?php echo base_url();?>index.php/home/addReport/{recipe_id}" class="form-horizontal" method="post" enctype="multipart/form-data">
-							       	<div class="form-group">
-									    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
-									      	<div class="checkbox">
-									        	<label>
-									          		<input type="checkbox" name="report_category[]" value="spam"> SPAM
-									        	</label>
-									      	</div>
-									    </div>
-									</div>
-									<div class="form-group">
-									    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
-									      	<div class="checkbox">
-									        	<label>
-									          		<input type="checkbox" name="report_category[]" value="advertisement"> Advertisement
-									        	</label>
-									      	</div>
-									    </div>
-									</div>
-									<div class="form-group">
-									    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
-									      	<div class="checkbox">
-									        	<label>
-									          		<input type="checkbox" name="report_category[]" value="pornographic"> Pornographic
-									        	</label>
-									      	</div>
-									    </div>
-									</div>
-									<div class="form-group">
-									    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
-									      	<div class="inputKeeper col-md-12 col-xs-12 col-no-padding">
-											    <input type="text" class="form-control" maxlength="254" name="report_category[]" placeholder="Other">
-											</div>
-									    </div>
-									</div>
+						    	<form id="report-form" role="form" action="<?php echo base_url();?>index.php/home/addReport/{recipe_id}" class="form-horizontal" method="post" enctype="multipart/form-data">
+								    <div class="checkbox col-md-12 col-sm-12 col-xs-12 text-left">
+							        	<label>
+							          		<input type="checkbox" name="report_category[]" value="spam"> SPAM
+							        	</label>
+							      	</div>
+							      	<div class="checkbox col-md-12 col-sm-12 col-xs-12 text-left">
+							        	<label>
+							          		<input type="checkbox" name="report_category[]" value="advertisement"> Advertisement
+							        	</label>
+							      	</div>
+								    <div class="checkbox col-md-12 col-sm-12 col-xs-12 text-left">
+							        	<label>
+							          		<input type="checkbox" name="report_category[]" value="pornographic"> Pornographic
+							        	</label>
+							      	</div>
+								    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
+								      	<div class="inputKeeper col-md-12 col-xs-12 col-no-padding">
+										    <input type="text" class="form-control" maxlength="254" name="report_category[]" placeholder="Other">
+										</div>
+								    </div>
 							      	<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding text-center border-solid-top" style="padding:10px 0;">
 							        	<button type="submit" class="btn button-primary">Send Report</button>
 							      	</div>
@@ -258,7 +244,7 @@
 					<h4 class="page-header-title">Share Your Thought! <?php if(!empty($comments_recipe_entries)){ echo "(".sizeof($comments_recipe_entries)." Comments)";}?></h4>
 					<div class="col-md-12 col-xs-12">
 						<div class="col-md-2 col-xs-2 col-no-padding-left">
-							<img src="<?php echo base_url();?>images/user/<?php echo $this->session->userdata('user_id')?>.jpg" class="img-responsive img-circle img-user-comment" title="Your">
+							<img src="<?php echo base_url();?>{user_photo}" class="img-responsive img-circle img-user-comment" title="Your">
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
 							<form class="form-horizontal" action="<?php echo base_url();?>index.php/recipe/addComment/{recipe_id}" role="form" method="post" style="margin:0">

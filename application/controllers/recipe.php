@@ -265,6 +265,7 @@ class Recipe extends CI_Controller {
 						'recipe_category_entries' => $category,
 						'recipe_author_id' => ($r->author),
 						'related_recipe_entries' => $related,
+						'user_photo' => $user->getProfile($r->author)->photo,
 						'comments_recipe_entries' => $comments,
 					);
 

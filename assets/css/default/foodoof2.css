@@ -25,12 +25,12 @@
   color-theme-3: #3498db
 */
 body{
-  font-family: 'Roboto';
+  font-family: 'Open Sans',Helvetica,Arial,Sans-serif;
   background-color: #F7F3E8;
   font-size: 16px;
 }
 h1,h2,h3,h4,h5,h6{
-  font-family: 'Lilly';
+  font-family: 'Open Sans',Helvetica,Arial,Sans-serif;
 }
 h4{
   font-size: 21px;
@@ -374,6 +374,9 @@ footer > div > div > div > ul > li > a{
   .mobile-visible{
     display: block !important;
   }
+  div.img-category > img{
+    height: 58px !important;
+  }
 }
 @media screen and (min-width:768px){
   .inline-search{
@@ -402,6 +405,9 @@ footer > div > div > div > ul > li > a{
     border-top: 0;
     border-left: 0;
     border-bottom: 0;
+  }
+  div.img-category > img{
+    height: 58px !important;
   }
 }
 @media screen and (min-width:992px){
@@ -981,10 +987,10 @@ ul.typeahead.dropdown-menu > li.active > a{
   line-height:50px;
 }
 .category-list{
-  margin:10px 0 0 0;
+  margin:5px 0 0 0;
   line-height: 48px;
   /*border-bottom: dashed 1px #e67e22;*/
-  padding:10px;
+  padding:5px 10px;
   height: 68px;
   -webkit-transition: 0.5s ease;
   -moz-transition: 0.5s ease;
@@ -1650,7 +1656,7 @@ textarea.enter-comment.form-control:focus{
   padding: 4px 14px;
 }
 .popover > .popover-title.popover-primary{
-  background-color: #D73D32 !important;
+  background-color: #3498db !important;
   color: #fff;
   text-align: center;
 }

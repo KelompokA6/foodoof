@@ -986,10 +986,10 @@ ul.typeahead.dropdown-menu > li.active > a{
   line-height:50px;
 }
 .category-list{
-  margin:10px 0 0 0;
+  margin:5px 0 0 0;
   line-height: 48px;
   /*border-bottom: dashed 1px #f1c40f;*/
-  padding:10px;
+  padding:5px 10px;
   height: 68px;
   -webkit-transition: 0.5s ease;
   -moz-transition: 0.5s ease;

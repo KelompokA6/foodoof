@@ -130,7 +130,7 @@ class Home extends CI_Controller {
 			$user->update("status","REPORTED");
 		}
 		foreach ($cat_report as $obj) {
-			if(!empty($obj)){
+			if(!empty(trim($obj))){
 				$report->recipe_id = $recipe_id;
 				$report->reason = $obj;
 				if(!$report->skip_validation()->save()){
@@ -141,7 +141,23 @@ class Home extends CI_Controller {
 				$report->clear();
 			}
 		}
-		$alert = "<div id='alert-notification' data-status='success' data-message='Thanks for your report' class='hidden'></div>";
+		if(sizeof($cat_report)>0){
+			$isSuccess = true;
+			foreach ($cat_report as $obj) {
+				if(empty(trim($obj))){
+					$isSuccess = false;
+				}
+			}
+			if($isSuccess){
+				$alert = "<div id='alert-notification' data-status='success' data-message='Thanks for your report' class='hidden'></div>";		
+			}
+			else{
+				$alert = "<div id='alert-notification' data-status='failed' data-message='Please choose at least 1 category report for your report' class='hidden'></div>";
+			}
+		}
+		else{
+			$alert = "<div id='alert-notification' data-status='failed' data-message='Please choose at least 1 category report for your report' class='hidden'></div>";		
+		}
 		$this->session->set_flashdata('alert-notification', $alert);
 		redirect(base_url()."index.php/recipe/get/$recipe_id");
 	}
