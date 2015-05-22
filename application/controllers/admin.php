@@ -377,9 +377,9 @@ class Admin extends CI_Controller {
 		$this->parser->parse('template_content', $data);	
 	}
 
-	/*  INI SAMA SEKALI BELUM JADI -_-  */
+
 	public function updateharga() {
-  	/*$now = (new DateTime());
+  	$now = (new DateTime());
     $m = (int)$now->format("m");
     $y = $now->format("Y");
 
@@ -407,10 +407,10 @@ class Admin extends CI_Controller {
       foreach ($data as $d) {
         $all_data[$d->name] = $d->price;
       }
-    }*/
+    }
 
     # AMPAS!
-    include('webParser.php');
+    /*include('webParser.php');
 		$wp = new webParser();
 		$wp->set_source(file_get_contents('http://pasarjaya.co.id/komoditas'));
     // die(file_get_contents("http://pasarjaya.co.id/komoditas"));
@@ -429,7 +429,7 @@ class Admin extends CI_Controller {
     	if($name == "Margarin Blueband Cup") $units = "kemasan";
     	if($name == "Margarin Blueband Sachet") $units = "kemasan";
       (new Catalog())->addCatalog($name, 1, $units, $price);
-    }
+    }*/
     redirect(base_url('index.php/admin/catalog'));
   }
 
