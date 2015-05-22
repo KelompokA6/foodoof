@@ -1683,6 +1683,13 @@ textarea.enter-comment.form-control:focus{
 .nav-tabs > li.active > a:hover{
   color: #fff;
 }*/
+.panel-title-side-conversation{
+  padding: 15px;
+  background-color: #3498db;
+  color:#fff;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
 span.badge{
   background-color: #e67e22;
   color:#fff; 

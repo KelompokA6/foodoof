@@ -446,7 +446,8 @@ class User extends CI_Controller {
 					"conversation_message_entries"=> array(),
 					);
 				$content_conversation = $this->parser->parse("conversation_view", $data, true);
-				$data = array("sidebar_conversation_entries" => array());
+				$data = array("sidebar_conversation_entries" => array(),
+								"sidebar_conversation_total" => 0);
 				$content_sidebar_conversation = $this->parser->parse("sidebar_conversation", $data, true);
 				$data = array(
 						"content_conversation" => $content_conversation,
