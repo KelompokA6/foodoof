@@ -204,7 +204,7 @@
 										<i class="fa fa-info-circle icons-secondary fa-lg info-ingredients-popover" role="button" data-toggle="popover" title="Info Ingredient" data-content=	"<?php echo $obj['ingre_info'];?>" data-trigger="hover"></i>
 									<?php endif;?>
 								</td>
-								<td> <?php echo $obj['ingre_quantity'];?> <?php echo $obj['ingre_units'];?> <?php echo ($obj['ingre_info']);?>
+								<td> <?php echo $obj['ingre_quantity'];?> <?php echo $obj['ingre_units'];?>
 								</td>
 							</tr>
 						<?php }?>
