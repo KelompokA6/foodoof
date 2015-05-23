@@ -437,6 +437,7 @@ class Admin extends CI_Controller {
     		$units = "gram";
     		$quantity = 200;
     	}
+    	if($name == "Gas Elpiji 3kg") continue;
     	if($name == "Margarin Blueband Cup") $units = "kemasan";
     	if($name == "Margarin Blueband Sachet") $units = "kemasan";
 
