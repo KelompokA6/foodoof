@@ -409,7 +409,7 @@ class Admin extends CI_Controller {
     }
 
     foreach ($all_data as $name => $price) {
-    	$units = "Kg";
+    	$units = "kg";
     	if($name == "Garam Dapur") { $units = "gram"; $price *= 5; }
     	if($name == "Kelapa Kupas") $units = "butir";
     	if($name == "Susu Bubuk Bendera 400gr") $units = "kardus";
@@ -418,7 +418,8 @@ class Admin extends CI_Controller {
     	if($name == "Susu Kental Enak 200gr") $units = "kaleng";
     	if($name == "Margarin Blueband Cup") $units = "kemasan";
     	if($name == "Margarin Blueband Sachet") $units = "kemasan";
-      (new Catalog())->addCatalog($name, 1, $units, $price);
+    	if(preg_match("/beras.*/", strtolower($name))) $name = "beras";
+      	(new Catalog())->addCatalog(strtolower($name), 1, $units, $price);
     }
     redirect(base_url('index.php/admin/catalog'));
   }

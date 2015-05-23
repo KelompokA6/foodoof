@@ -14,13 +14,17 @@ class Catalog extends DataMapper {
     $this->quantity = $quantity;
     $this->units = $units;
     $this->price = $price;
-    if($this->skip_validation()->save()){
-      $this->clear();
-      return true;
-    }
-    else{
-      $this->clear();
-      return false;
+    $selected = (new Catalog)->where('name',$name)->where('units', $units);
+    if($selected->count() > 0) $this->updateCatalog($selected->get()->id, $name, $quantity, $units, $price);
+    else {
+      if($this->skip_validation()->save()){
+        $this->clear();
+        return true;
+      }
+      else{
+        $this->clear();
+        return false;
+      }
     }  
   }
 
