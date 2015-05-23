@@ -417,19 +417,23 @@ class Admin extends CI_Controller {
     		$quantity = 200;
     	}
     	if($name == "Kelapa Kupas") $units = "butir";
-    	if($name == "Susu Bubuk Bendera") {
+    	if($name == "Susu Bubuk Bendera 400gr") {
+    		$name = "Susu Bubuk Bendera";
     		$units = "gram";
     		$quantity = 400;
     	}
-    	if($name == "Susu Bubuk Dancow") {
+    	if($name == "Susu Bubuk Dancow 400gr") {
+    		$name = "Susu Bubuk Dancow";
     		$units = "gram";
     		$quantity = 400;
     	}
-    	if($name == "Susu Kental Bendera") {
+    	if($name == "Susu Kental Bendera 200gr") {
+    		$name = "Susu Kental Bendera";
     		$units = "gram";
     		$quantity = 200;
     	}
-    	if($name == "Susu Kental Enak")  {
+    	if($name == "Susu Kental Enak 200gr")  {
+    		$name = "Susu Kental Enak";
     		$units = "gram";
     		$quantity = 200;
     	}
