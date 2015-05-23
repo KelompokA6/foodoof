@@ -377,6 +377,7 @@ CREATE TABLE IF NOT EXISTS `cooklater` (
   `recipe_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `submit` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `status_finish` tinyint(1) NOT NULL,
   PRIMARY KEY (`recipe_id`,`user_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
