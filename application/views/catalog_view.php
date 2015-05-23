@@ -33,7 +33,7 @@
 			<table id="catalog-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
 		        <thead>
 		            <tr>
-		                <th>ID</th>
+		                <th hidden>ID</th>
 		                <th>Name</th>
 		                <th>Quantity</th>
 		                <th>Unit</th>
@@ -42,7 +42,7 @@
 		        </thead>
 		        {catalog_entries}
 		        <tr>
-	                <td>{catalog_id}</td>
+	                <td hidden>{catalog_id}</td>
 	                <td class="edit" data-type="text" data-name="name" data-pk="{catalog_id}" data-title="Enter Name Catalog">
 	                	{catalog_name}
 	                </td>
