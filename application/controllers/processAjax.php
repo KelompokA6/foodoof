@@ -541,7 +541,7 @@ class ProcessAjax extends CI_Controller {
 		$data = array();
 		$x = 0;
 		foreach ($ingre as $obj) {
-			array_push($data, $obj->name);
+			array_push($data, ucfirst($obj->name));
 			$x++;
 		}
 		echo json_encode($data);
@@ -557,13 +557,13 @@ class ProcessAjax extends CI_Controller {
 			if($flag_email){
 				$data = array(
 					"value" =>$user->email,
-					"text" => $user->name." (".$user->email.")",
+					"text" => ucfirst($user->name)." (".$user->email.")",
 				);
 			}
 			else{
 				$data = array(
 					"value" =>$user->id,
-					"text" => $user->name." (".$user->email.")",
+					"text" => ucfirst($user->name)." (".$user->email.")",
 				);
 			}
 			array_push($listUser, $data);
@@ -571,6 +571,7 @@ class ProcessAjax extends CI_Controller {
 		echo json_encode($listUser, JSON_PRETTY_PRINT);
 	}
 	public function schedulercleantmp(){
+		date_default_timezone_set ('Asia/Jakarta');
 		$now = date("Y-m-d H:i:s");
 		$now = new DateTime($now);
 		$filesuser = scandir("./images/tmp/user");
@@ -607,6 +608,18 @@ class ProcessAjax extends CI_Controller {
 				if($diff>2){
 					unlink("./images/tmp/recipe/".$filesrecipe[$i]);
 				}
+			}
+		}
+		$recipe = new Recipe_model();
+		$recipe->where('tmp_status', '1')->get();
+		foreach ($recipe as $rcp) {
+			$recipetime = date("Y-m-d H:i:s", $rcp->create_date);
+			$recipetime = new DateTime($recipetime);
+			$diff = date_diff($recipetime, $now);
+			$diff = $diff->format("%a"); 
+			if($diff>2){
+				$rcptmp = new Recipe_model();
+				$rcptmp->where('id',$recipe->id)->delete();
 			}
 		}
 	}
