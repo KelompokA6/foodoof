@@ -218,7 +218,7 @@ $(document).ready(function() {
 	$countStep = $(".step-item").length;
 	if($countStep < 1){
 		$colAddRemoveBtnStep = $("#add-and-remove-btn-step").clone();
-		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'><div class='col-sm-8 col-xs-7 col-no-padding-right'><textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'></textarea></div><div class='col-sm-4 col-xs-5'><input class='image-steps' name='photo-step' data-src='/foodoof/assets/img/step-default.jpg' index='1' data-title='new step' type='file' accept='image/*'></div></div>";
+		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item'><div class='col-sm-8 col-xs-7 col-no-padding-right'><textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'></textarea></div><div class='col-sm-4 col-xs-5'><input class='image-steps' name='photo-step' data-src="+$baseurlnoConflict+"'assets/img/step-default.jpg' index='1' data-title='new step' type='file' accept='image/*'></div></div>";
 		$("#add-and-remove-btn-step").remove();
 		$("#step-entry").append($stepItem);
 		$("#step-entry").append($colAddRemoveBtnStep);
@@ -441,7 +441,7 @@ $(document).ready(function() {
 		  		/*console.log(data.message);*/
 		  	}
 		},"json");
-		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item animated fadeInDown'>"+"<div class='col-sm-8 col-xs-7 col-no-padding-right'>"+"<textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'></textarea>"+"</div>"+"<div class='col-sm-4 col-xs-5'>"+"<input class='image-steps' name='photo-step' data-src='/foodoof/assets/img/step-default.jpg' index='"+$countStep+"' data-title='new step' type='file' accept='image/*'>"+"</div>"+"</div>";
+		$stepItem = "<div class='col-sm-10 col-xs-10 col-no-padding step-item animated fadeInDown'>"+"<div class='col-sm-8 col-xs-7 col-no-padding-right'>"+"<textarea class='form-control' rows='6' name='step-description[]' placeholder='Steps'></textarea>"+"</div>"+"<div class='col-sm-4 col-xs-5'>"+"<input class='image-steps' name='photo-step' data-src="+$baseurlnoConflict+"'assets/img/step-default.jpg' index='"+$countStep+"' data-title='new step' type='file' accept='image/*'>"+"</div>"+"</div>";
 		$("#add-and-remove-btn-step").remove();
 		$("#step-entry").append($stepItem);
 		$("#step-entry").append($colAddRemoveBtnStep);
@@ -1284,7 +1284,7 @@ $(document).ready(function() {
     }
 	function initTypeahead(classname){
 		if(classname=="search-ingredient"){
-			$.get('/foodoof/index.php/processAjax/getAllIngredient', function(data){
+			$.get($baseurl+'/processAjax/getAllIngredient', function(data){
 			    $("."+classname).typeahead({
 				source: data,
 		        items: 4,
