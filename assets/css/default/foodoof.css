@@ -1360,7 +1360,7 @@ h4 > p.title-recipe{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
 }
 .title-recipe-home{
-  font-family: 'Lilly';
+  font-weight: bold;
   font-size: 16px;
   border-bottom: dashed 1px #f1c40f;
   padding:20px 15px 5px;
