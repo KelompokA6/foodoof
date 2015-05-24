@@ -71,6 +71,7 @@ class User extends CI_Controller {
 		$r = new Recipe_model();
 		$c = new Cooklater();
 		$listrecipeid = $c->getCookLaterRecipeByUser($id, $limit, $limit * $page - $limit);
+		$listrecipeidFinished = $c->getCookLaterFinishedRecipeByUser($id, $limit, $limit * $page - $limit);
 		// print_r($listrecipeid);
 		// die();
 		$listRecipe = array();
@@ -82,8 +83,18 @@ class User extends CI_Controller {
 				array_push($listRecipe,$x);
 			}
 		}
+
+		$listRecipeFinished = array();
+		// print_r($listrecipeid);
+		foreach ($listrecipeidFinished as $obj) {
+			$x = $r->getRecipeProfile($obj['id'], $id);
+			if($x){
+				$x->status = $obj['flag'];
+				array_push($listRecipeFinished,$x);
+			}
+		}
 		$totalpage = ceil(sizeof( $c->getCookLaterRecipeByUser($id, 1000111) )/$limit);
-		$this->user_viewer->showCookLater($profile, $listRecipe, $page, $totalpage);
+		$this->user_viewer->showCookLater($profile, $listRecipe, $listRecipeFinished, $page, $totalpage);
 	}
 
 	public function changepassword(){

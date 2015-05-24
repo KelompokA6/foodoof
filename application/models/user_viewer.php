@@ -154,7 +154,7 @@ class User_viewer extends CI_Model
     $this->parser->parse('template_content', $datacomplete);
   }
 
-  public function showCookLater($profile, $listRecipes, $pagenow, $totalpage)
+  public function showCookLater($profile, $listRecipes, $listRecipeFinished, $pagenow, $totalpage)
   {
     $profile = (object)array_map("htmlspecialchars", (array)$profile);
     // menubar
@@ -177,12 +177,16 @@ class User_viewer extends CI_Model
         $row->cook_later_recipe_rating = $row->rating;
         $row->cook_later_recipe_last_update = $row->last_update;
         $row->cook_later_recipe_view = $row->views;
-        $row->checked_status = $row->status ? "checked" : "";
-        if($row->status === '1'){
-            array_push($listRecipesFinished, $row);
-        } else{
-            array_push($listRecipesUnfinished, $row);
-        }
+        array_push($listRecipesFinished, $row);
+    }
+    foreach ($listRecipeFinished as $row) {
+        $row->cook_later_recipe_id = $row->id;
+        $row->cook_later_recipe_photo = $row->photo;
+        $row->cook_later_recipe_name = $row->name;
+        $row->cook_later_recipe_rating = $row->rating;
+        $row->cook_later_recipe_last_update = $row->last_update;
+        $row->cook_later_recipe_view = $row->views;
+        array_push($listRecipesUnfinished, $row);
     }
     // print_r($listRecipes);
     // die();

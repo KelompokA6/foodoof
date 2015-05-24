@@ -120,7 +120,7 @@
 		          </a></li>";
 		          }
 		          else{
-		          	 echo "'><a href='".base_url()."index.php/user/timeline/{cook_later_id}?page=".($cook_later_recipe_page_now - 1)."' aria-label='Previous'>
+		          	 echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_id}?page=".($cook_later_recipe_page_now - 1)."' aria-label='Previous'>
 		            <span aria-hidden='true'>&laquo;</span>
 		          </a></li>";
 		          }
@@ -132,7 +132,7 @@
 		          }
 		          echo "
 		            <li class='".$active."'>
-		              <a href='".base_url()."index.php/user/timeline/{cook_later_id}?page=".$i."'>".$i."</a>
+		              <a href='".base_url()."index.php/user/cooklater/{cook_later_id}?page=".$i."'>".$i."</a>
 		            </li>
 		          ";
 		        }
@@ -147,7 +147,7 @@
 		        ";
 		          }
 		        else{
-		        echo "'><a href='".base_url()."index.php/user/timeline/{cook_later_id}?page=".($cook_later_recipe_page_now + 1)."' aria-label='Next'>
+		        echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_id}?page=".($cook_later_recipe_page_now + 1)."' aria-label='Next'>
 		            <span aria-hidden='true'>&raquo;</span>
 		          </a></li>
 		          </ul>

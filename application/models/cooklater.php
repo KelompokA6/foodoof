@@ -18,7 +18,28 @@ class Cooklater extends DataMapper {
         $recipeIdList = array();
         if(!empty($user_id)){
             $CL = new Cooklater();
-            $CL->where('user_id', $user_id)->order_by("recipe_id","asc")->get($limit, $offset);
+            $CL->where('user_id', $user_id)->where('status_finish', '0')->order_by("recipe_id","asc")->get($limit, $offset);
+            $id = array();
+            $flag = array();
+            $data = array();
+            foreach ($CL as $obj) {
+                $data = array(
+                            'id' => $obj->recipe_id,
+                            'flag' =>  $obj->status_finish,);
+                array_push($recipeIdList, $data);
+            } 
+        }
+        return $recipeIdList;
+    }
+
+    function getCookLaterFinishedRecipeByUser($user_id=NULL, $limit=10, $offset=0){
+        if(empty($user_id)){
+            $user_id = $this->user_id;
+        }
+        $recipeIdList = array();
+        if(!empty($user_id)){
+            $CL = new Cooklater();
+            $CL->where('user_id', $user_id)->where('status_finish', '1')->order_by("recipe_id","asc")->get($limit, $offset);
             $id = array();
             $flag = array();
             $data = array();
