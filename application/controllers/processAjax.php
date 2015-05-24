@@ -761,10 +761,15 @@ class ProcessAjax extends CI_Controller {
 
 	public function generatePrice($recipe_id){
 		$r = new Recipe_model();
-		$x = $r->generatePrice($recipe_id);
+		$price = $r->generatePrice($recipe_id);
+		/*setlocale(LC_MONETARY, 'en_US');
+		$x =  money_format('%i', $X);*/
+		$pricestr = number_format($price,2,',',".");
 		$data = array(
 				"status"=>1,
-				"price"=> $x);
+				"price"=> $price,
+				"pricestr"=> $pricestr,
+				);
 		echo json_encode($data);
 	}
 }

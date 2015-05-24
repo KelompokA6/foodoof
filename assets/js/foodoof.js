@@ -1531,10 +1531,10 @@ $(document).ready(function() {
 			$.get($baseurl+"/processAjax/generatePrice/"+$(this).data("recipeid"), function( data ) {
 				if(data.status == '1'){
 					if(data.price>0){
-						$("#panel-price").html("Rp."+data.price+";-");	
+						$("#panel-price").html("Rp. "+data.pricestr+";-");	
 					}
 					else{
-						$("#panel-price").html("Price not available in our database.");
+						$("#panel-price").html("Sorry, price not available in our database.");
 					}
 			  	}
 			  	else{
