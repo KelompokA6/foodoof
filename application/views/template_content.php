@@ -44,7 +44,7 @@
       <?php
         $user_id = $this->session->userdata("user_id");
         $online_users = json_decode(file_get_contents(base_url('index.php/user/getonline')));
-        if($user_id >= 0): ?>
+        if($user_id > 0): ?>
       <input hidden id="user_id" value="<?php echo $this->session->userdata('user_id');?>">
       <div id="users-online" class="btn btn-default col-md-2 col-xs-4 col-no-padding text-left" 
       style="position:fixed; left:0; bottom:0; z-index:100; border-bottom-right-radius:0">
@@ -77,7 +77,7 @@
       </div>
       <?php endif;?>
     </div>
-    <?php if($this->session->userdata('user_id') >= 0): ?>
+    <?php if($this->session->userdata('user_id') > 0): ?>
       <div class="col-md-2 col-xs-4 col-no-padding text-right" style="position:fixed; right:0; bottom:0; z-index:100; border-bottom-left-radius:0">
         <style>
           .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
