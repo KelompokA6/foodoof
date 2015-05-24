@@ -154,7 +154,7 @@ class User_viewer extends CI_Model
     $this->parser->parse('template_content', $datacomplete);
   }
 
-  public function showCookLater($profile, $listRecipes, $listRecipeFinished, $pagenow, $totalpage)
+  public function showCookLater($profile, $listRecipes, $listRecipeFinished, $pagenow, $pagenowFinished, $totalpage, $totalpageFinished)
   {
     $profile = (object)array_map("htmlspecialchars", (array)$profile);
     // menubar
@@ -177,7 +177,7 @@ class User_viewer extends CI_Model
         $row->cook_later_recipe_rating = $row->rating;
         $row->cook_later_recipe_last_update = $row->last_update;
         $row->cook_later_recipe_view = $row->views;
-        array_push($listRecipesFinished, $row);
+        array_push($listRecipesUnfinished, $row);
     }
     foreach ($listRecipeFinished as $row) {
         $row->cook_later_recipe_id = $row->id;
@@ -186,7 +186,7 @@ class User_viewer extends CI_Model
         $row->cook_later_recipe_rating = $row->rating;
         $row->cook_later_recipe_last_update = $row->last_update;
         $row->cook_later_recipe_view = $row->views;
-        array_push($listRecipesUnfinished, $row);
+        array_push($listRecipesFinished, $row);
     }
     // print_r($listRecipes);
     // die();
@@ -196,7 +196,9 @@ class User_viewer extends CI_Model
             'cook_later_user_name' => $profile->name,
             'cook_later_user_id' => $profile->id,
             'cook_later_recipe_page_size' => $totalpage,
+            'cook_later_recipe_page_size_finished' => $totalpageFinished,
             'cook_later_recipe_page_now' => $pagenow,
+            'cook_later_recipe_page_now_finished' => $pagenowFinished,
         );
     $data_user_view['content_user'] = $this->parser->parse('cook_later_view', $data, TRUE );
 

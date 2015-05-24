@@ -66,12 +66,14 @@ class User extends CI_Controller {
 		$id = $this->user_model->wajiblogin();
 		$profile = $this->user_model->getProfile($id);
 		$page = $this->input->get('page');
+		$pageFinished = $this->input->get('page-finished');
 		if($page === FALSE) $page = 1;
+		if($pageFinished === FALSE) $pageFinished = 1;
 		$limit = 5;
 		$r = new Recipe_model();
 		$c = new Cooklater();
 		$listrecipeid = $c->getCookLaterRecipeByUser($id, $limit, $limit * $page - $limit);
-		$listrecipeidFinished = $c->getCookLaterFinishedRecipeByUser($id, $limit, $limit * $page - $limit);
+		$listrecipeidFinished = $c->getCookLaterFinishedRecipeByUser($id, $limit, $limit * $pageFinished - $limit);
 		// print_r($listrecipeid);
 		// die();
 		$listRecipe = array();
@@ -94,7 +96,17 @@ class User extends CI_Controller {
 			}
 		}
 		$totalpage = ceil(sizeof( $c->getCookLaterRecipeByUser($id, 1000111) )/$limit);
-		$this->user_viewer->showCookLater($profile, $listRecipe, $listRecipeFinished, $page, $totalpage);
+		$totalpageFinished = ceil(sizeof( $c->getCookLaterFinishedRecipeByUser($id, 1000111) )/$limit);
+		// echo "page unfinished : $page <br>";
+		// echo "page finished : $pageFinished <br>";
+		// echo "page unfinished Total: $totalpage <br>";
+		// echo "page finished Total: $totalpageFinished <br>";
+		// echo "unfinished :  <br>";
+		// print_r($listRecipe);
+		// echo "finished: <br>";
+		// print_r($listRecipeFinished);
+		// die();
+		$this->user_viewer->showCookLater($profile, $listRecipe, $listRecipeFinished, $page, $pageFinished, $totalpage, $totalpageFinished);
 	}
 
 	public function changepassword(){

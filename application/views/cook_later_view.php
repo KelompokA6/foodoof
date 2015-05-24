@@ -60,7 +60,59 @@
 						    </div>
 						</div>
 			    	<?php }?>
+			    	<div class="col-md-12 col-xs-12 text-center">
+					    <?php
+					      if($cook_later_recipe_page_size > 0){
+					        echo "<nav>
+					                <ul class='pager'>
+					                  <li class='";
+					        if($cook_later_recipe_page_size - $cook_later_recipe_page_now == ($cook_later_recipe_page_size-1)){
+					            echo "disabled";
+					            echo "'><a aria-label='Previous'>
+					            <span aria-hidden='true'>&laquo;</span>
+					          </a></li>";
+					          }
+					          else{
+					          	 echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page=".($cook_later_recipe_page_now - 1)."' aria-label='Previous'>
+					            <span aria-hidden='true'>&laquo;</span>
+					          </a></li>";
+					          }
+					       
+					        for ($i=1; $i <= $cook_later_recipe_page_size ; $i++) { 
+					          $active = "";
+					          if($i == $cook_later_recipe_page_now){
+					            $active = "active";
+					          }
+					          echo "
+					            <li class='".$active."'>
+					              <a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page=".$i."'>".$i."</a>
+					            </li>
+					          ";
+					        }
+					        echo "<li class='";
+					        if($cook_later_recipe_page_size == $cook_later_recipe_page_now){
+					            echo "disabled";
+					            echo "'><a aria-label='Next'>
+					            <span aria-hidden='true'>&raquo;</span>
+					          </a></li>
+					          </ul>
+					          </nav>
+					        ";
+					          }
+					        else{
+					        echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page=".($cook_later_recipe_page_now + 1)."' aria-label='Next'>
+					            <span aria-hidden='true'>&raquo;</span>
+					          </a></li>
+					          </ul>
+					          </nav>
+					        ";
+					        }
+					      }
+					    ?>
+					</div>
 		        </div>
+
+		        
 		        <div class="tab-pane fade" id="finished">
 		        	<?php foreach ($cook_later_recipe_entries_finished as $obj){?>
 			    		<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding page-header-title">
@@ -103,59 +155,60 @@
 						    </div>
 						</div>
 			    	<?php }?>
+			    	<div class="col-md-12 col-xs-12 text-center">
+					    <?php
+					      if($cook_later_recipe_page_size_finished > 0){
+					        echo "<nav>
+					                <ul class='pager'>
+					                  <li class='";
+					        if($cook_later_recipe_page_size_finished - $cook_later_recipe_page_now_finished == ($cook_later_recipe_page_size_finished-1)){
+					            echo "disabled";
+					            echo "'><a aria-label='Previous'>
+					            <span aria-hidden='true'>&laquo;</span>
+					          </a></li>";
+					          }
+					          else{
+					          	 echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page-finished=".($cook_later_recipe_page_now_finished - 1)."' aria-label='Previous'>
+					            <span aria-hidden='true'>&laquo;</span>
+					          </a></li>";
+					          }
+					       
+					        for ($i=1; $i <= $cook_later_recipe_page_size_finished ; $i++) { 
+					          $active = "";
+					          if($i == $cook_later_recipe_page_now_finished){
+					            $active = "active";
+					          }
+					          echo "
+					            <li class='".$active."'>
+					              <a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page-finished=".$i."'>".$i."</a>
+					            </li>
+					          ";
+					        }
+					        echo "<li class='";
+					        if($cook_later_recipe_page_size_finished == $cook_later_recipe_page_now_finished){
+					            echo "disabled";
+					            echo "'><a aria-label='Next'>
+					            <span aria-hidden='true'>&raquo;</span>
+					          </a></li>
+					          </ul>
+					          </nav>
+					        ";
+					          }
+					        else{
+					        echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page-finished=".($cook_later_recipe_page_now_finished + 1)."' aria-label='Next'>
+					            <span aria-hidden='true'>&raquo;</span>
+					          </a></li>
+					          </ul>
+					          </nav>
+					        ";
+					        }
+					      }
+					    ?>
+					</div>
 		        </div>
 		    </div>
 		</div>
 		<!-- {/cook_later_recipe_entries} -->
-		<div class="col-md-12 col-xs-12 text-center">
-		    <?php
-		      if($cook_later_recipe_page_size > 0){
-		        echo "<nav>
-		                <ul class='pager'>
-		                  <li class='";
-		        if($cook_later_recipe_page_size - $cook_later_recipe_page_now == ($cook_later_recipe_page_size-1)){
-		            echo "disabled";
-		            echo "'><a aria-label='Previous'>
-		            <span aria-hidden='true'>&laquo;</span>
-		          </a></li>";
-		          }
-		          else{
-		          	 echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_id}?page=".($cook_later_recipe_page_now - 1)."' aria-label='Previous'>
-		            <span aria-hidden='true'>&laquo;</span>
-		          </a></li>";
-		          }
-		       
-		        for ($i=1; $i <= $cook_later_recipe_page_size ; $i++) { 
-		          $active = "";
-		          if($i == $cook_later_recipe_page_now){
-		            $active = "active";
-		          }
-		          echo "
-		            <li class='".$active."'>
-		              <a href='".base_url()."index.php/user/cooklater/{cook_later_id}?page=".$i."'>".$i."</a>
-		            </li>
-		          ";
-		        }
-		        echo "<li class='";
-		        if($cook_later_recipe_page_size == $cook_later_recipe_page_now){
-		            echo "disabled";
-		            echo "'><a aria-label='Next'>
-		            <span aria-hidden='true'>&raquo;</span>
-		          </a></li>
-		          </ul>
-		          </nav>
-		        ";
-		          }
-		        else{
-		        echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_id}?page=".($cook_later_recipe_page_now + 1)."' aria-label='Next'>
-		            <span aria-hidden='true'>&raquo;</span>
-		          </a></li>
-		          </ul>
-		          </nav>
-		        ";
-		        }
-		      }
-		    ?>
-		</div>
+		
   	</div>
 </div>
