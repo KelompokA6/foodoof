@@ -1133,6 +1133,7 @@ $(document).ready(function() {
 			});
 		}
 	});
+
 	/*
 	validate input buat new message
 	*/
@@ -1585,6 +1586,20 @@ $(document).ready(function() {
 		$("ul#filterCategory").prev().html($selectedfilter+"      <span class='caret'></span>");
 	}
 
+	/*
+		tab cooklater
+	*/
+	$tabActive = getUrlParameter("tab");
+	if($tabActive.length > 0){
+		if($tabActive.toLowerCase()=="finish"){
+			$("#cook-later-finish").addClass("active");
+			$("#cook-later-unfinish").removeClass("active");
+		}
+		else if($tabActive.toLowerCase()=="unfinish"){
+			$("#cook-later-unfinish").addClass("active");
+			$("#cook-later-finish").removeClass("active");	
+		}
+	}
 	/*
 	init javascript bootstrap;
 	*/

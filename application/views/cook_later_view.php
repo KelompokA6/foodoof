@@ -11,7 +11,7 @@
 		        <li class="col-md-6 col-xs-6 col-sm-6 col-no-padding text-center"><a href="#finished" role="tab-kv" data-toggle="tab">Finished</a></li>
 		    </ul>
 		    <div id="myTabContent-5" class="tab-content">
-		        <div class="tab-pane fade in active" id="unfinished">
+		        <div class="tab-pane fade in active" id="cook-later-unfinish">
 		        	<?php foreach ($cook_later_recipe_entries_unfinished as $obj){?>
 			    		<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding page-header-title">
 							<div class="col-md-2 col-xs-6 col-md-offset-0 col-xs-offset-3 detail-list-img" style="margin-right:2px; margin-bottom:10px">
@@ -73,7 +73,7 @@
 					          </a></li>";
 					          }
 					          else{
-					          	 echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page=".($cook_later_recipe_page_now - 1)."' aria-label='Previous'>
+					          	 echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page=".($cook_later_recipe_page_now - 1)."&tab=unfinish' aria-label='Previous'>
 					            <span aria-hidden='true'>&laquo;</span>
 					          </a></li>";
 					          }
@@ -85,7 +85,7 @@
 					          }
 					          echo "
 					            <li class='".$active."'>
-					              <a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page=".$i."'>".$i."</a>
+					              <a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page=".$i."&tab=unfinish'>".$i."</a>
 					            </li>
 					          ";
 					        }
@@ -100,7 +100,7 @@
 					        ";
 					          }
 					        else{
-					        echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page=".($cook_later_recipe_page_now + 1)."' aria-label='Next'>
+					        echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page=".($cook_later_recipe_page_now + 1)."&tab=unfinish' aria-label='Next'>
 					            <span aria-hidden='true'>&raquo;</span>
 					          </a></li>
 					          </ul>
@@ -113,7 +113,7 @@
 		        </div>
 
 		        
-		        <div class="tab-pane fade" id="finished">
+		        <div class="tab-pane fade" id="cook-later-finish">
 		        	<?php foreach ($cook_later_recipe_entries_finished as $obj){?>
 			    		<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding page-header-title">
 							<div class="col-md-2 col-xs-6 col-md-offset-0 col-xs-offset-3 detail-list-img" style="margin-right:2px; margin-bottom:10px;">
@@ -168,7 +168,7 @@
 					          </a></li>";
 					          }
 					          else{
-					          	 echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page-finished=".($cook_later_recipe_page_now_finished - 1)."#finished' aria-label='Previous'>
+					          	 echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page-finished=".($cook_later_recipe_page_now_finished - 1)."&tab=finish' aria-label='Previous'>
 					            <span aria-hidden='true'>&laquo;</span>
 					          </a></li>";
 					          }
@@ -180,7 +180,7 @@
 					          }
 					          echo "
 					            <li class='".$active."'>
-					              <a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page-finished=".$i."#finished'>".$i."</a>
+					              <a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page-finished=".$i."&tab=finish'>".$i."</a>
 					            </li>
 					          ";
 					        }
@@ -195,7 +195,7 @@
 					        ";
 					          }
 					        else{
-					        echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page-finished=".($cook_later_recipe_page_now_finished + 1)."#finished' aria-label='Next'>
+					        echo "'><a href='".base_url()."index.php/user/cooklater/{cook_later_user_id}?page-finished=".($cook_later_recipe_page_now_finished + 1)."&tab=finish' aria-label='Next'>
 					            <span aria-hidden='true'>&raquo;</span>
 					          </a></li>
 					          </ul>
