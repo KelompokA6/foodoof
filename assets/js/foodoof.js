@@ -1048,6 +1048,102 @@ $(document).ready(function() {
 			$validatePassword=true;
 		}
 	});
+
+	/*
+	validate input buat comment
+	*/
+	$("form#form-comment").on("submit", function(e){
+		if( $("#enter-comment").val().trim().length == 0 ){
+			e.preventDefault();
+			$.notify({
+			// options
+				message: "Your comment not valid." 
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 2000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
+		}
+	});
+
+	/*
+	validate input buat new conversation
+	*/
+	$("form#create-conv-form").on("submit", function(e){
+		if( $("#enter-message").val().trim().length == 0 ){
+			e.preventDefault();
+			$.notify({
+			// options
+				message: "Your message not valid." 
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 2000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
+		}
+	});
+
+	/*
+	validate input buat report resep
+	*/
+	$("form#report-form").on("submit", function(e){
+		if( $("#report-other").val().length > 0 && $("#report-other").val().trim().length == 0 ){
+			e.preventDefault();
+			$.notify({
+			// options
+				message: "Your report not valid." 
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 2000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
+		}
+	});
+	/*
+	validate input buat new message
+	*/
+	$("form#form-message").on("submit", function(e){
+		if( $("#enter-message").val().trim().length == 0 ){
+			e.preventDefault();
+			$.notify({
+			// options
+				message: "Your message not valid." 
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 2000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
+		}
+	});
+
 	/*
 	show alert
 	*/
@@ -1321,7 +1417,8 @@ $(document).ready(function() {
 		  	itemText: 'text',
 		  	typeahead: {
 		    	source: data,
-		  	}
+		  	},
+		  	freeInput: false,
 		});
 	},"json");
 	$.get($baseurl+'/processAjax/getAllUsers/true', function(data){
@@ -1333,7 +1430,12 @@ $(document).ready(function() {
 		  	}
 		});
 	},"json");
-
+	$('#users-conversation').on('itemAdded', function(event) {
+		$(".bootstrap-tagsinput > input").val("");
+	});
+	$('#users-email').on('itemAdded', function(event) {
+		$(".bootstrap-tagsinput > input").val("");
+	});
 	/*
 	detail report
 	*/

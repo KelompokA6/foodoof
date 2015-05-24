@@ -353,6 +353,9 @@ class User extends CI_Controller {
 					}
 				}
 				$listMessages = $conversations->getAllMessages($conversation_id, $id, true);
+				if(sizeof($listMessages)==0){
+					$this->pageNotFound();
+				}
 				$u = new User_model();
 				$datamessage = array();
 				for ($i=(sizeof($listMessages)-1); $i >=0 ; $i--) { 
@@ -615,5 +618,17 @@ class User extends CI_Controller {
 		}
 		$this->session->set_flashdata('alert-notification', $alert);
 		redirect(base_url()."index.php/user/message");
+	}
+	function pageNotFound(){
+		$this->load->library('parser');
+		$this->load->model('home_viewer');
+		$menubar = $this->home_viewer->getMenubar();
+		$content_website = $this->parser->parse('page_not_found', array(), TRUE);
+		$data = array(
+					"menubar" => $menubar,
+					"content_website" => $content_website,
+				);
+		// $data = array_map("htmlspecialchars", $data);
+		$this->parser->parse('template_content', $data);
 	}
 }

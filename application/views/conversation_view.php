@@ -50,10 +50,10 @@
             {/conversation_message_entries}
         </ul>
         <?php if(!empty($conversation_message_entries)):?>
-            <form class="form-horizontal" action="<?php echo base_url();?>index.php/user/addmessage/{conversation_id}" role="form" method="post" enctype="multipart/form-data">
+            <form id="form-message" class="form-horizontal" action="<?php echo base_url();?>index.php/user/addmessage/{conversation_id}" role="form" method="post" enctype="multipart/form-data">
                 <div class="col-md-12 col-xs-12 col-no-padding-right form-group">
                     <div class="col-md-10 col-xs-9 col-no-padding">
-                        <textarea class="form-control" name="message" placeholder="Write Your Message In Here ..."></textarea>
+                        <textarea id="enter-message"class="form-control" name="message" placeholder="Write Your Message In Here ..."></textarea>
                     </div>
                     <div class="col-md-2 col-xs-3 col-no-padding-right" style="position:absolute; right:0; bottom:0">
                         <button type="submit" class="btn button-primary col-md-12 col-xs-12">Send</button>

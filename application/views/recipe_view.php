@@ -123,10 +123,8 @@
 							          		<input type="checkbox" name="report_category[]" value="pornographic"> Pornographic
 							        	</label>
 							      	</div>
-								    <div class="col-md-12 col-sm-12 col-xs-12 text-left">
-								      	<div class="inputKeeper col-md-12 col-xs-12 col-no-padding">
-										    <input type="text" class="form-control" maxlength="254" name="report_category[]" placeholder="Other">
-										</div>
+								    <div class="inputKeeper col-md-12 col-sm-12 col-xs-12 text-left col-no-padding">
+										<input id="report-other" type="text" class="form-control" maxlength="254" name="report_category[]" placeholder="Other">
 								    </div>
 							      	<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding text-center border-solid-top" style="padding:10px 0;">
 							        	<button type="submit" class="btn button-primary">Send Report</button>
@@ -247,10 +245,10 @@
 							<img src="<?php echo base_url();?>{user_photo}" class="img-responsive img-circle img-user-comment" title="Your">
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
-							<form class="form-horizontal" action="<?php echo base_url();?>index.php/recipe/addComment/{recipe_id}" role="form" method="post" style="margin:0">
+							<form id="form-comment" class="form-horizontal" action="<?php echo base_url();?>index.php/recipe/addComment/{recipe_id}" role="form" method="post" style="margin:0">
 								<div class="col-md-12 col-xs-12 col-no-padding-right form-group">
 									<div class="textareaKeeper col-md-10 col-xs-9 col-no-padding">
-									    <textarea class="form-control enter-comment" row="1" name="comment" placeholder="Write your comment here..."></textarea>
+									    <textarea id="enter-comment" class="form-control enter-comment" row="1" name="comment" placeholder="Write your comment here..." required></textarea>
 									</div>
 									<div class="col-md-2 col-xs-3 col-no-padding-right" style="position:absolute; right:0; bottom:0">
 										<button type="submit" class="btn button-secondary col-md-12 col-xs-12">Send</button>

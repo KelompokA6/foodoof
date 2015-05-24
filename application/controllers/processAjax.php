@@ -550,9 +550,6 @@ class ProcessAjax extends CI_Controller {
 		$users = new User_model();
 		$users->where('id !=', $this->session->userdata("user_id"))->get();
 		$listUser = array();
-		if($flag_email){
-			array_push($listUser, $data);
-		}
 		foreach ($users as $user) {
 			if($flag_email){
 				$data = array(

@@ -17,7 +17,7 @@
         <div class="form-group">
             <label for="password" class="col-md-2 col-xs-2 col-md-2 control-label">Message</label>
             <div class="col-md-10 col-xs-10 col-md-10">
-                <textarea class="form-control" row="4" name="message" placeholder="Your Message" required></textarea>
+                <textarea id="enter-message" class="form-control" row="4" name="message" placeholder="Your Message" required></textarea>
             </div>
         </div>
         <div class="form-group">                                        
