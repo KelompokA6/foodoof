@@ -613,13 +613,13 @@ class ProcessAjax extends CI_Controller {
 		$recipe = new Recipe_model();
 		$recipe->where('tmp_status', '1')->get();
 		foreach ($recipe as $rcp) {
-			$recipetime = date("Y-m-d H:i:s", $rcp->create_date);
+			$recipetime = date("Y-m-d H:i:s", strtotime($rcp->create_date));
 			$recipetime = new DateTime($recipetime);
 			$diff = date_diff($recipetime, $now);
 			$diff = $diff->format("%a"); 
 			if($diff>2){
 				$rcptmp = new Recipe_model();
-				$rcptmp->where('id',$recipe->id)->delete();
+				$rcptmp->where('id',$rcp->id)->get()->delete();
 			}
 		}
 	}
@@ -761,7 +761,7 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($data);
 	}
-	
+
 	public function generatePrice($recipe_id){
 		$r = new Recipe_model();
 		$x = $r->generatePrice($recipe_id);
