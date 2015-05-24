@@ -740,4 +740,34 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
+
+	public function updateCatalogAjax(){
+		$id = $this->input->post("pk");
+		$attr = $this->input->post("name");
+		$value = $this->input->post("value");
+		$catalog = new Catalog();
+		$catalog->where("id", $id);
+		if($catalog->update($attr, $value)){
+			$data = array(
+				"status"	=>	"success",
+				"message"	=>	"Successfully Edit ".$attr." Catalog With ID ".$id,
+			);	
+		}
+		else{
+			$data = array(
+				"status"	=>	"failed",
+				"message"	=>	"Failed Edit ".$attr." Catalog With ID ".$id,
+			);	
+		}
+		echo json_encode($data);
+	}
+	
+	public function generatePrice($recipe_id){
+		$r = new Recipe_model();
+		$x = $r->generatePrice($recipe_id);
+		$data = array(
+				"status"=>1,
+				"price"=> $x);
+		echo json_encode($data);
+	}
 }

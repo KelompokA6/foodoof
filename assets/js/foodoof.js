@@ -1347,7 +1347,7 @@ $(document).ready(function() {
 	$("#catalog-table").dataTable();
 	$('.edit').editable({
 	    mode: "inline",
-	    url: $baseurl+"/tempview/updateCatalogAjax",
+	    url: $baseurl+"/processAjax/updateCatalogAjax",
 	    success: function(response, newValue) {
 	    	response = $.parseJSON(response);
 		    if(response.status==="success"){
@@ -1412,7 +1412,7 @@ $(document).ready(function() {
 	$(document).on("click","#generate-price", function(e){
 		$("#panel-price").slideToggle("slow");
 		if($(this).data("status")==0){
-			$.get($baseurl+"/tempview/generatePrice/"+$(this).data("recipeid"), function( data ) {
+			$.get($baseurl+"/processAjax/generatePrice/"+$(this).data("recipeid"), function( data ) {
 				if(data.status == '1'){
 					if(data.price>0){
 						$("#panel-price").html("Rp."+data.price+";-");	

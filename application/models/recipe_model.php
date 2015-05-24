@@ -935,9 +935,11 @@ class Recipe_model extends DataMapper {
                             $catalog->ilike("name", trim($ingre));
                             $catalog->ilike("units",$obj->units);
                             $catalog->get();
-                            if( ( ( ($obj->quantity)/($catalog->quantity) ) * $catalog->price) < $minPrice){
-                                $minPrice = ( ( ($obj->quantity)/($catalog->quantity) ) * $catalog->price);
-                            }    
+                            if($obj->quantity>0){
+                                if( ( ( ($obj->quantity)/($catalog->quantity) ) * $catalog->price) < $minPrice){
+                                    $minPrice = ( ( ($obj->quantity)/($catalog->quantity) ) * $catalog->price);
+                                }    
+                            }   
                         }
                         $catalog->clear();
                     }
@@ -958,7 +960,9 @@ class Recipe_model extends DataMapper {
                             $catalog->ilike("name", trim($ingre));
                             $catalog->ilike("units",$obj->units);
                             $catalog->get();
-                            $result += (($obj->quantity)/($catalog->quantity))*$catalog->price;
+                            if($obj->quantity>0){
+                                $result += (($obj->quantity)/($catalog->quantity))*$catalog->price;
+                            }
                         }
                         $catalog->clear();
                     }
@@ -971,7 +975,9 @@ class Recipe_model extends DataMapper {
                     $catalog->ilike("name",$obj->name);
                     $catalog->ilike("units",$obj->units);
                     $catalog->get();
-                    $result += (($obj->quantity)/($catalog->quantity))*$catalog->price;    
+                    if($obj->quantity>0){
+                        $result += (($obj->quantity)/($catalog->quantity))*$catalog->price;    
+                    }
                 }
             }
             return $result;
