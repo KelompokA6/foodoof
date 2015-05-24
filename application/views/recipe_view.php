@@ -242,7 +242,7 @@
 					<h4 class="page-header-title">Share Your Thought! <?php if(!empty($comments_recipe_entries)){ echo "(".sizeof($comments_recipe_entries)." Comments)";}?></h4>
 					<div class="col-md-12 col-xs-12">
 						<div class="col-md-2 col-xs-2 col-no-padding-left">
-							<img src="<?php echo base_url();?>{user_photo}" class="img-responsive img-circle img-user-comment" title="Your">
+							<img src="<?php echo base_url();?>{user_photo}" class="img-responsive img-circle img-user-comment" title="You">
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
 							<form id="form-comment" class="form-horizontal" action="<?php echo base_url();?>index.php/recipe/addComment/{recipe_id}" role="form" method="post" style="margin:0">

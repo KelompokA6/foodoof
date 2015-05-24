@@ -253,6 +253,12 @@ class Recipe extends CI_Controller {
 					array_push($comments, $temp);
 				}
 			}
+			if($this->session->userdata("user_id")!=""){
+				$user_photo = $user->getProfile($this->session->userdata('user_id'))->photo;	
+			}
+			else{
+				$user_photo = "";	
+			}
 			$data = array(
 						'recipe_name' => htmlspecialchars($r->name),
 						'recipe_description' => htmlspecialchars($r->description),
@@ -269,7 +275,7 @@ class Recipe extends CI_Controller {
 						'recipe_category_entries' => $category,
 						'recipe_author_id' => ($r->author),
 						'related_recipe_entries' => $related,
-						'user_photo' => $user->getProfile($r->author)->photo,
+						'user_photo' => $user_photo,
 						'comments_recipe_entries' => $comments,
 					);
 
