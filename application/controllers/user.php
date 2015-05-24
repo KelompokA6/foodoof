@@ -310,24 +310,30 @@ class User extends CI_Controller {
 		return $mail->Send();
 	}
 
-	public function setonline($id)
+	public function setonline()
 	{
+		$id = $this->session->userdata('user_id');
+		if($id <= 0) die('not logged in');
 		$u = new User_model();
 		date_default_timezone_set("Asia/Jakarta");
-		echo $u->where('id', $id)->update('last_access', date("Y-m-d H:i:s"));
+		if($u->where('id', $id)->update('last_access', date("Y-m-d H:i:s")))
+			echo "$id is set to be online!";
+		else
+			echo "failed to set $id to be online -_-";
 	}
 
-	public function getonline($user_id = FALSE)
+	public function getonline()
 	{
-	    $u = new User_model();
-	    date_default_timezone_set("Asia/Jakarta");
-	    $one_minute_ago = (new DateTime())->modify("-20 second")->format("Y-m-d H:i:s");
-	    $res = $u->where('last_access >', $one_minute_ago)->get();
-	    $online_users = [];
-	    foreach ($res as $obj)
-	      if($obj->id != $user_id)
-	        $online_users[] = (object)["id" => $obj->id, "name" => $obj->name, "photo" => $obj->photo];
-	    echo json_encode($online_users);
+		$user_id = $this->session->userdata('user_id');
+    $u = new User_model();
+    date_default_timezone_set("Asia/Jakarta");
+    $one_minute_ago = (new DateTime())->modify("-20 second")->format("Y-m-d H:i:s");
+    $res = $u->where('last_access >', $one_minute_ago)->get();
+    $online_users = [];
+    foreach ($res as $obj)
+      if($obj->id != $user_id)
+        $online_users[] = (object)["id" => $obj->id, "name" => $obj->name, "photo" => $obj->photo];
+    echo json_encode($online_users);
 	}
 
 	public function message($conversation_id=-1)
