@@ -1000,6 +1000,19 @@ $(document).ready(function() {
 	});
 
 	/*
+	validate category recipe
+	*/
+	$countCheckCat = $("input[type='checkbox'].option-category-recipe:checked").length;
+	if($countCheckCat<1){
+		$("input[type='checkbox'][value='other'].option-category-recipe").prop('checked', true);
+	}
+	$("form#edit-recipe").on("submit", function(e){
+		if($("input[type='checkbox'].option-category-recipe:checked").length == 0 ){
+			$("input[type='checkbox'][value='other'].option-category-recipe").prop('checked', true);		
+		}
+	});
+
+	/*
 	validate old and new password
 	*/
 	$("input[type='password'][name='old_password']").change(function(e){
@@ -1436,6 +1449,7 @@ $(document).ready(function() {
 	$('#users-email').on('itemAdded', function(event) {
 		$(".bootstrap-tagsinput > input").val("");
 	});
+
 	/*
 	detail report
 	*/

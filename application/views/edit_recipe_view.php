@@ -81,7 +81,7 @@
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
-									  	<input type="checkbox" class="option-category-recipe" value="Other" name="recipe_category[]" {edit_recipe_other_checked}> Other
+									  	<input type="checkbox" class="option-category-recipe" value="other" name="recipe_category[]" {edit_recipe_other_checked}> Other
 									</label>
 								</div>
 							</div>

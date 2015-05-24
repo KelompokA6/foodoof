@@ -153,6 +153,10 @@ class Recipe extends CI_Controller {
 					$res = $recipe->addCategory($id, $selected);
 				}
 			}
+			else{
+				$recipe->deleteAllCategory($id);
+				$res = $recipe->addCategory($id, "other");
+			}
 			$alert = "<div id='alert-notification' data-status='success' data-message='Successfully Edit Recipe' class='hidden'></div>";
 			$this->session->set_flashdata('alert-notification', $alert);
 		}
