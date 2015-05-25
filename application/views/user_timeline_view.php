@@ -39,7 +39,7 @@
 		        </div>
 		        <div class="col-md-12 col-xs-12 details xs-text-center" style="margin-bottom:15px">
 		        	<div class="col-md-11" title="Rating">
-		          		<input id="input-2b" class="rating" data-recipeId="{user_timeline_recipe_id}" data-min="0" data-readonly='true' data-max="5" value="{user_timeline_recipe_rating}" data-step="0.1" data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false">
+		          		<a href="<?php echo base_url();?>index.php/recipe/get/{user_timeline_recipe_id}"><input id="input-2b" class="rating" data-recipeId="{user_timeline_recipe_id}" data-min="0" data-readonly='true' data-max="5" value="{user_timeline_recipe_rating}" data-step="0.1" data-symbol="&#xe005;" data-size="xs" data-default-caption="{rating} hearts" data-star-captions="{}" data-show-clear="false"></a>
 					</div>
 		        </div>  
 		    </div>
