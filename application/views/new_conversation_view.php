@@ -5,7 +5,7 @@
         <div class="form-group">
             <label for="to" class="col-md-2 col-xs-2 col-md-2 control-label">To</label>
             <div class="col-md-10 col-xs-10 col-md-10">
-                <input id="users-conversation" type="text" class="form-control" name="users" placeholder="User Name" required>
+                <input id="users-conversation" type="text" class="form-control" name="users" placeholder="User Name">
             </div>
         </div> 
         <div class="form-group">

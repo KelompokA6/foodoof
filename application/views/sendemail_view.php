@@ -8,7 +8,7 @@
             <div class="form-group">
                 <label for="to" class="col-md-2 col-xs-2 col-md-2 control-label">To</label>
                 <div class="col-md-10 col-xs-10 col-md-10">
-                    <input id="users-email" type="text" class="form-control" name="email_users" placeholder="Email User" required>
+                    <input id="users-email" type="text" class="form-control" name="email_users" placeholder="Email User">
                 </div>
             </div> 
             <div class="form-group">

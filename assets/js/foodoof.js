@@ -1113,6 +1113,25 @@ $(document).ready(function() {
 	validate input buat new conversation
 	*/
 	$("form#create-conv-form").on("submit", function(e){
+		$inputUser = $("#users-conversation").val();
+		if($inputUser.length < 1){
+			e.preventDefault();
+			$.notify({
+			// options
+				message: "Please choose at least 1 user." 
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 2000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
+		}
 		if( $("#enter-message").val().trim().length == 0 ){
 			e.preventDefault();
 			$.notify({
@@ -1180,6 +1199,48 @@ $(document).ready(function() {
 			});
 		}
 	});
+
+	/*
+		validate untuk kirim email
+	*/
+	$("form#send-email-form").on("submit", function(e){
+		if( $("#users-email").val().trim().length == 0 ){
+			e.preventDefault();
+			$.notify({
+			// options
+				message: "Please choose at least 1 email address user."
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 2000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
+		}
+		if($("#message-email").find("textarea").val().trim().length == 0){
+			e.preventDefault();
+			$.notify({
+			// options
+				message: "Your message not valid." 
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 2000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
+		}
+	});	
 
 	/*
 	show alert
