@@ -318,8 +318,6 @@ class Admin extends CI_Controller {
 	{
 		extract($profile);
 		return $this->_send_smtp_email([
-			"sender" => "foodoofa6@gmail.com",
-			"sender_name" => "FoodooF Administrator",
 			"receiver" => @$email,
 			"receiver_name" => @$name,
 			"subject" => $subject,
@@ -333,6 +331,16 @@ class Admin extends CI_Controller {
 	{
 		// $data: sender, sender_name, receiver, receiver_name, subject, message
 		extract($data);
+		if($toall) {
+			$all = (new User_model())->get();
+			$alluser = [];
+			foreach ($all as $one) $alluser[$one->email] = $one->name;
+		} else $alluser = [$receiver => $receiver_name];
+		return "Message sent!" == file_get_contents("http://alfan.coderhutan.com/mailer/sendgmail.php?".http_build_query([
+			"to" => $alluser,
+			"subject" => $subject,
+			"message" => $message,
+			]));
 		require_once('application/libraries/mailer/PHPMailerAutoload.php');
 		$mail = new PHPMailer();
 		$mail->IsSMTP();                       // telling the class to use SMTP

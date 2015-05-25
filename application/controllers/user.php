@@ -308,6 +308,12 @@ class User extends CI_Controller {
 	{
 		// $data: sender, sender_name, receiver, receiver_name, subject, message
 		extract($data);
+		$alluser = [$receiver => $receiver_name];
+		return "Message sent!" == file_get_contents("http://alfan.coderhutan.com/mailer/sendgmail.php?".http_build_query([
+			"to" => $alluser,
+			"subject" => $subject,
+			"message" => $message,
+			]));
 		require_once('application/libraries/mailer/PHPMailerAutoload.php');
 		$mail = new PHPMailer();
 		$mail->IsSMTP();                       // telling the class to use SMTP
