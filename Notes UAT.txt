@@ -16,3 +16,5 @@ report user buat admin gimana?
 admin gaboleh nulis resep...
 tampilan reported usernya gimana yah
 kasih tulisannya centang2nya itu buat banned!!
+kasih kolom last update di catalog
+send email udah yakin bener?
