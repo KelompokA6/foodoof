@@ -311,7 +311,7 @@ class Admin extends CI_Controller {
 
 		$send_email_alert = $success ? "<div id='alert-notification' data-message='Send Email Success' data-status='success' class='hidden'></div>" : "<div id='alert-notification' data-message='Send Email Failed' data-status='failed' class='hidden'></div>";;
 		$this->session->set_flashdata('alert-admin', $send_email_alert);
-		redirect(base_url()."index.php/admin/sendemail");
+		redirect(base_url()."index.php/admin/".($toall ? 'broadcast' : 'sendemail'));
 	}
 
 	private function _send_email($profile, $toall = FALSE)
