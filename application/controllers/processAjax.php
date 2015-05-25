@@ -308,7 +308,7 @@ class ProcessAjax extends CI_Controller {
 				if($tmp->status){
 					$result = array(
 						"status" => 1,
-						"message" => "<div class='text-center'>Success To Unpublished Your Recipe.</div>",
+						"message" => "<div class='text-center'></div>",
 						);	
 				}
 				else{
@@ -430,7 +430,7 @@ class ProcessAjax extends CI_Controller {
 			if($recipe->saveRating($user_id, $recipe_id, $value)){
 				$result = array(
 					"status" => 1,
-					"message" => "Your rating was save",
+					"message" => "Rating Saved!",
 					);
 			}
 			else{
@@ -466,13 +466,13 @@ class ProcessAjax extends CI_Controller {
 				if(strtolower($status['action']) === "delete"){
 					$result = array(
 						"status" => 1,
-						"message" => "The Recipe Was Delete To Your Favorite",
+						"message" => "Delete Recipe from Favorite Success",
 					);
 				}
 				if(strtolower($status['action']) === "add"){
 					$result = array(
 						"status" => 1,
-						"message" => "The Recipe Was Add To Your Favorite",
+						"message" => "Successfully Added Recipe to Your Favorite",
 					);
 				}
 			}
@@ -509,13 +509,13 @@ class ProcessAjax extends CI_Controller {
 				if(strtolower($status['action']) === "delete"){
 					$result = array(
 						"status" => 1,
-						"message" => "The Recipe Was Delete To Your Cook Later",
+						"message" => "Delete Recipe from Cook Later Success",
 					);
 				}
 				if(strtolower($status['action']) === "add"){
 					$result = array(
 						"status" => 1,
-						"message" => "The Recipe Was Add To Your Cook Later",
+						"message" => "Recipe Added to Your Cook Later",
 					);
 				}
 			}
