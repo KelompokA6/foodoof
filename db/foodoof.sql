@@ -218,7 +218,7 @@ INSERT INTO `catalogs` (`id`, `name`, `quantity`, `units`, `price`) VALUES
 (206, 'margarin blueband cup',  1,  'kemasan',  9821),
 (207, 'margarin blueband sachet', 1,  'kemasan',  6636),
 (208, 'susu kental enak', 200,  'gram', 8500),
-(209, 'cabe merah keriting',  1,  'kg', 27667);
+(209, 'cabe merah keriting',  1,  'kg', 27667),
 (210, 'Udang', 50, 'gram', 4000),
 (211, 'Air Dingin', 1, 'liter', 0),
 (212, 'Air Gula', 50, 'cc', 0),
