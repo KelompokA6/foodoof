@@ -124,7 +124,7 @@
 							        	</label>
 							      	</div>
 								    <div class="inputKeeper col-md-12 col-sm-12 col-xs-12 text-left col-no-padding">
-										<input id="report-other" type="text" class="form-control" maxlength="254" name="report_category[]" placeholder="Other">
+										<input id="report-other" type="text" class="form-control" maxlength="254" name="report_other" placeholder="Other">
 								    </div>
 							      	<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding text-center border-solid-top" style="padding:10px 0;">
 							        	<button type="submit" class="btn button-primary">Send Report</button>

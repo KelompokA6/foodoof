@@ -144,7 +144,7 @@ class Home extends CI_Controller {
 		if(sizeof($cat_report)>0){
 			$isSuccess = true;
 			foreach ($cat_report as $obj) {
-				if(empty(trim($obj))){
+				if(empty(trim($obj)) && (strlen($obj) > 0)){
 					$isSuccess = false;
 				}
 			}
