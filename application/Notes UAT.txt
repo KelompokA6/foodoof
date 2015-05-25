@@ -1,0 +1,18 @@
+share resep kasih judulnya aja trs via foodoof
+benerin yg di ppl-a06 kalo filter > index.php
+alternatifnya memberikan komentar : tulis aja langsung kalo spasi doang/kosong
+report othernya kenapa hrs diisi????
+convo kalo messagenya ada tp yg lainnya gak ada : diem doang!
+update catalog kl redundant... masuk tp failed tuh gimana...pas dipencet tombol update dia ilang..
+update catalog handle kl kosong atau spasi
+notifnya jangan pake ID! nama aja
+quantity update harga gaboleh minus gaboleh 0000000 atau yg lainnya!!!
+broadcast message belom nyampe ke email, alamat redirectnya ngaco
+siapin broadcast message!!
+gagalnya broadcast misalnya apa?
+send email to user kalo to nya salah jangan diem aja. ksh tau kl user itu gak valid
+send email yg ke 1 org jalan tp broadcast engga!!
+report user buat admin gimana?
+admin gaboleh nulis resep...
+tampilan reported usernya gimana yah
+kasih tulisannya centang2nya itu buat banned!!
