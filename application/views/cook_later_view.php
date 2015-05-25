@@ -6,12 +6,15 @@
     	</div>
     	<!-- Tabs Above -->
 		<div class='tabs-x tabs-above '>
-		    <ul id="myTab-5" class="nav nav-tabs" role="tablist">
-		        <li class="active col-md-6 col-xs-6 col-sm-6 col-no-padding text-center"><a href="#unfinished" role="tab" data-toggle="tab">Unfinish</a></li>
-		        <li class="col-md-6 col-xs-6 col-sm-6 col-no-padding text-center"><a href="#finished" role="tab-kv" data-toggle="tab">Finished</a></li>
+		    <ul id="tab-cook-later" class="nav nav-tabs" role="tablist">
+		        <li class="active col-md-6 col-xs-6 col-sm-6 col-no-padding text-center"><a href="#cook-later-unfinish" role="tab" data-toggle="tab">Unfinish</a></li>
+		        <li class="col-md-6 col-xs-6 col-sm-6 col-no-padding text-center"><a href="#cook-later-finish" role="tab-kv" data-toggle="tab">Finished</a></li>
 		    </ul>
 		    <div id="myTabContent-5" class="tab-content">
 		        <div class="tab-pane fade in active" id="cook-later-unfinish">
+		        	<?php if(empty($cook_later_recipe_entries_unfinished)):?>
+		        		<div class="col-md-12 col-xs-12 col-sm-12 text-center no-entry">There are no unfinish recipe in your cook later</div>
+		        	<?php endif;?>
 		        	<?php foreach ($cook_later_recipe_entries_unfinished as $obj){?>
 			    		<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding page-header-title">
 							<div class="col-md-2 col-xs-6 col-md-offset-0 col-xs-offset-3 detail-list-img" style="margin-right:2px; margin-bottom:10px">
@@ -51,7 +54,7 @@
 						    	</div>
 						    	<div class="col-md-12 col-xs-3 col-no-padding-right recipe-cooklater-remove-btn text-center xs-text-left">
 							    	<div class="col-md-12 col-md-offset-0 col-xs-offset-4 col-xs-4 col-no-padding-right recipe-cooklater-remove-btn">
-					  					<button id="remove-cooklater" class="btn button-secondary" data-recipeid="<?php echo $obj->cook_later_recipe_id; ?>" style="width:90px">
+					  					<button class="btn button-secondary remove-cooklater" data-recipeid="<?php echo $obj->cook_later_recipe_id; ?>" style="width:90px">
 					  						<i class="fa fa-trash fa-lg"></i>
 					  						Remove 
 					  					</button>
@@ -114,6 +117,9 @@
 
 		        
 		        <div class="tab-pane fade" id="cook-later-finish">
+		        	<?php if(empty($cook_later_recipe_entries_finished)):?>
+		        		<div class="col-md-12 col-xs-12 col-sm-12 text-center no-entry">There are no finish recipe in your cook later</div>
+		        	<?php endif;?>
 		        	<?php foreach ($cook_later_recipe_entries_finished as $obj){?>
 			    		<div class="col-md-12 col-xs-12 col-sm-12 col-no-padding page-header-title">
 							<div class="col-md-2 col-xs-6 col-md-offset-0 col-xs-offset-3 detail-list-img" style="margin-right:2px; margin-bottom:10px;">
@@ -146,7 +152,7 @@
 						    <div class="col-md-2 col-xs-12 col-no-padding col-edit-recipe-cooklater">
 						    	<div class="col-md-12 col-xs-12 col-no-padding-right recipe-cooklater-remove-btn text-center">
 							    	<div class="col-md-12 col-xs-12 col-no-padding-right recipe-cooklater-remove-btn">
-					  					<button id="remove-cooklater" class="btn button-secondary" data-recipeid="<?php echo $obj->cook_later_recipe_id; ?>" style="width:90px">
+					  					<button class="btn button-secondary remove-cooklater" data-recipeid="<?php echo $obj->cook_later_recipe_id; ?>" style="width:90px">
 					  						<i class="fa fa-trash fa-lg"></i>
 					  						Remove 
 					  					</button>

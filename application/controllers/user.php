@@ -50,6 +50,9 @@ class User extends CI_Controller {
 		$rcp = new Recipe_model();
 		$r = new Favorite();
 		$listrecipeid = $r->getFavoriteRecipeByUser($id, $limit, $limit * $page - $limit);
+		if($page > 1 && empty($listrecipeid)){
+			redirect(base_url('index.php/user/favorite'));
+		}
 		$listRecipe = array();
 		// print_r($listrecipeid);
 		foreach ($listrecipeid as $obj) {
@@ -66,6 +69,7 @@ class User extends CI_Controller {
 		$id = $this->user_model->wajiblogin();
 		$profile = $this->user_model->getProfile($id);
 		$page = $this->input->get('page');
+		$tab = $this->input->get('tab');
 		$pageFinished = $this->input->get('page-finished');
 		if($page === FALSE) $page = 1;
 		if($pageFinished === FALSE) $pageFinished = 1;
@@ -73,7 +77,13 @@ class User extends CI_Controller {
 		$r = new Recipe_model();
 		$c = new Cooklater();
 		$listrecipeid = $c->getCookLaterRecipeByUser($id, $limit, $limit * $page - $limit);
+		if(strtolower($tab)=="unfinish" && $page > 1 && empty($listrecipeid)){
+			redirect(base_url('index.php/user/cooklater?tab=unfinish'));
+		}
 		$listrecipeidFinished = $c->getCookLaterFinishedRecipeByUser($id, $limit, $limit * $pageFinished - $limit);
+		if(strtolower($tab)=="finish" && $pageFinished > 1 && empty($listrecipeidFinished)){
+			redirect(base_url('index.php/user/cooklater?tab=finish'));
+		}
 		// print_r($listrecipeid);
 		// die();
 		$listRecipe = array();
