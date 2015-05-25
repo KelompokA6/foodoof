@@ -384,7 +384,27 @@ $(document).ready(function() {
 	  	$(".dropdown-menu").css("display","none");
 	    $('form#form-search').submit();
 	  }
-	});     
+	});
+
+	/*
+		tab cooklater
+	*/
+	$tabActive = getUrlParameter("tab");
+	if($.type($tabActive)!= "undefined" && $tabActive.length > 0){
+		if($tabActive.toLowerCase()=="finish"){
+			$("#cook-later-finish").addClass("active");
+			$("#cook-later-unfinish").removeClass("active");
+			$("#tab-cook-later").children("li").first().removeClass("active");
+			$("#tab-cook-later").children("li").last().addClass("active");
+		}
+		else if($tabActive.toLowerCase()=="unfinish"){
+			$("#cook-later-unfinish").addClass("active");
+			$("#cook-later-finish").removeClass("active");	
+			$("#tab-cook-later").children("li").last().removeClass("active");
+			$("#tab-cook-later").children("li").first().addClass("active");
+		}
+	}
+
 	/*
 	event for add ingredient
 	*/
@@ -606,10 +626,11 @@ $(document).ready(function() {
 		},"json");
 	});
 	$lockRemoveFav = false;
-	$(document).on("click", "#remove-favorite", function(){
+	$(document).on("click", ".remove-favorite", function(){
 		if(!$lockRemoveFav){
 			$lockRemoveFav = true;
-				$.get( $baseurl+"/processAjax/setFavorite/"+$(this).data("recipeid"), function( data ) {
+			$favoriteEntryRemove = $(this);
+			$.get( $baseurl+"/processAjax/setFavorite/"+$(this).data("recipeid"), function( data ) {
 			  	if(data.status == '1'){
 			  		$.notify({
 						// options
@@ -626,7 +647,7 @@ $(document).ready(function() {
 							align: 'center'
 						},
 					});
-					$("#remove-favorite").parent().parent().parent().slideToggle(function(){
+					$favoriteEntryRemove.parent().parent().parent().slideToggle(function(){
 						$lockRemoveFav = false;
 					});  		
 			  	}
@@ -652,9 +673,10 @@ $(document).ready(function() {
 		}
 	});
 	$lockRemoveCL = false;
-	$(document).on("click", "#remove-cooklater", function(){
+	$(document).on("click", ".remove-cooklater", function(){
 		if(!$lockRemoveCL){
 			$lockRemoveCL = true;
+			$CLEntryRemove = $(this);
 			$.get( $baseurl+"/processAjax/setCookLater/"+$(this).data("recipeid"), function( data ) {
 			  	if(data.status == '1'){
 			  		$.notify({
@@ -672,7 +694,7 @@ $(document).ready(function() {
 							align: 'center'
 						},
 					});
-					$("#remove-cooklater").parent().parent().parent().parent().slideToggle(function(){
+					$CLEntryRemove.parent().parent().parent().parent().slideToggle(function(){
 						$lockRemoveCL = false;
 					});  		
 			  	}
@@ -810,7 +832,8 @@ $(document).ready(function() {
 		  		$moveCooklater.slideToggle("slow");
 		  		$cooklaterclone.children("div.col-edit-recipe-cooklater").find("div").first().remove();
 		  		$cooklaterclone.children("div.col-edit-recipe-cooklater").find("div").first().removeClass("xs-text-left").removeClass("col-no-padding-right").removeClass("col-xs-3").addClass("col-xs-12 col-sm-12");
-		  		$("#finished.tab-pane").prepend($cooklaterclone);
+		  		$("#cook-later-finish.tab-pane").prepend($cooklaterclone);
+		  		$(".no-entry").remove();
 		  	}
 		  	else{
 		  		$.notify({
@@ -1133,6 +1156,7 @@ $(document).ready(function() {
 			});
 		}
 	});
+
 	/*
 	validate input buat new message
 	*/

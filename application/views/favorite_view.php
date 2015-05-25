@@ -36,7 +36,7 @@
 		    <div class="col-md-2 col-xs-12 col-no-padding col-edit-recipe-timeline">
 		    	<?php if ($this->session->userdata('user_id') == $favorite_user_id): ?>
 		    	<div class="col-md-12 col-xs-offset-4 col-xs-4 col-no-padding-right recipe-timeline-edit-btn">
-  					<button id="remove-favorite" class="btn button-secondary" data-recipeid="{favorite_recipe_id}" style="width:90px">
+  					<button class="btn button-secondary remove-favorite" data-recipeid="{favorite_recipe_id}" style="width:90px">
   						<i class="fa fa-trash fa-lg"></i>
   						Remove
   					</button>
