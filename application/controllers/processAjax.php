@@ -448,7 +448,32 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($result);
 	}
-
+	public function checkFavorite($recipe_id=null){
+		if(empty($recipe_id)){
+			if(!empty($this->input->get("id"))){
+				$recipe_id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$recipe_id = $this->input->post("id");
+			}
+		}
+		$user_id = $this->session->userdata('user_id');
+		$result=array();
+		if(!empty($user_id) && !empty($recipe_id)){
+			$favorite = new Favorite();
+			if($favorite->where('recipe_id', $recipe_id)->where("user_id", $user_id)->count()>0){
+				$result = array(
+					"statusFav" => 1,
+				);
+			}
+			else{
+				$result = array(
+					"statusFav" => 0,
+				);
+			}
+		}
+		echo json_encode($result);
+	}	
 	public function setFavorite($recipe_id=null){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){
@@ -534,6 +559,35 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($result);
 	}
+	public function checkCL($recipe_id=null){
+		if(empty($recipe_id)){
+			if(!empty($this->input->get("id"))){
+				$recipe_id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$recipe_id = $this->input->post("id");
+			}
+		}
+		$user_id = $this->session->userdata('user_id');
+		$result=array();
+		if(!empty($user_id) && !empty($recipe_id)){
+			$CL = new Cooklater();
+			if($CL->where('recipe_id', $recipe_id)->where("user_id", $user_id)->count()>0){
+				$result = array(
+					"statusCL" => 1,
+				);
+			}
+			else{
+				$result = array(
+					"statusCL" => 0,
+				);
+			}
+		}
+		echo json_encode($result);
+	}
+	/*
+	memperoleh semua daftar bahan pada katalog
+	*/
 	public function getAllIngredient(){
 		$ingre = new Catalog();
 		$ingre->group_by('name');
@@ -546,6 +600,9 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($data);
 	}
+	/*
+	memperoleh semua daftar user
+	*/
 	public function getAllUsers($flag_email=false){
 		$users = new User_model();
 		$users->where('id !=', $this->session->userdata("user_id"))->get();
@@ -567,6 +624,9 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($listUser, JSON_PRETTY_PRINT);
 	}
+	/*
+	untuk melakukan pembersihan data sampah baik resep maupun foto
+	*/
 	public function schedulercleantmp(){
 		date_default_timezone_set ('Asia/Jakarta');
 		$now = date("Y-m-d H:i:s");
@@ -620,6 +680,9 @@ class ProcessAjax extends CI_Controller {
 			}
 		}
 	}
+	/*
+	memperoleh pesan yang belum terbaca pada sebuah conversation
+	*/
 	public function checkConversation($conversation_id=null, $flag_read=false){
 		$user_id = $this->session->userdata("user_id");
 		if(!empty($conversation_id) && !empty($user_id)){
@@ -656,6 +719,9 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
+	/*
+	memperoleh jumlah message yang belum terbaca
+	*/
 	public function checkAllConversation($conversation_id = -1){
 		$user_id = $this->session->userdata("user_id");
 		if(!empty($user_id)){
@@ -679,6 +745,9 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
+	/*
+	melakukan pemeriksaan bila ada conversation baru
+	*/
 	public function checknewconversation(){
 		date_default_timezone_set("Asia/Jakarta");
 		$user_id = $this->session->userdata("user_id");
@@ -737,7 +806,9 @@ class ProcessAjax extends CI_Controller {
 		}
 		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
-
+	/*
+	melakukan update catalog pada database
+	*/
 	public function updateCatalogAjax(){
 		$id = $this->input->post("pk");
 		$attr = $this->input->post("name");
@@ -759,6 +830,9 @@ class ProcessAjax extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	/*
+	memperoleh perkiraan harga dari sebuah resep
+	*/
 	public function generatePrice($recipe_id){
 		$r = new Recipe_model();
 		$price = $r->generatePrice($recipe_id);

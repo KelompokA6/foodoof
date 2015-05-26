@@ -587,6 +587,7 @@ $(document).ready(function() {
 	/*
 	handler event click add favorite recipe
 	*/
+	$statusFav = false;
 	$(document).on("click", "#add-favorite", function(){
 		$.get( $baseurl+"/processAjax/setFavorite/"+$(this).data("recipeid"), function( data ) {
 		  	if(data.status == '1'){
@@ -604,7 +605,16 @@ $(document).ready(function() {
 						from: 'top',
 						align: 'center'
 					},
-				});  		
+				});
+				if(!$statusFav){
+					$("#add-favorite").find("a > i").removeClass("fa-plus");
+		  			$("#add-favorite").find("a > i").addClass("fa-minus");	
+				}
+				else{
+					$("#add-favorite").find("a > i").removeClass("fa-minus");
+		  			$("#add-favorite").find("a > i").addClass("fa-plus");
+				}
+				$statusFav = !$statusFav;	
 		  	}
 		  	else{
 		  		$.notify({
@@ -625,6 +635,20 @@ $(document).ready(function() {
 		  	}
 		},"json");
 	});
+	if($("#add-favorite").length > 0){
+		$.get( $baseurl+"/processAjax/checkFavorite/"+$("#add-favorite").data("recipeid"), function( data ) {
+		  	if(data.statusFav == '1'){
+		  		$("#add-favorite").find("a > i").removeClass("fa-plus");
+		  		$("#add-favorite").find("a > i").addClass("fa-minus");
+		  		$statusFav = true;
+		  	}
+		  	else if(data.statusFav == '0'){
+		  		$("#add-favorite").find("a > i").removeClass("fa-minus");
+		  		$("#add-favorite").find("a > i").addClass("fa-plus");
+		  		$statusFav = false;
+		  	}
+		},"json");
+	}
 	$lockRemoveFav = false;
 	$(document).on("click", ".remove-favorite", function(){
 		if(!$lockRemoveFav){
@@ -672,6 +696,72 @@ $(document).ready(function() {
 			},"json");
 		}
 	});
+	
+	/*
+	handler event click add cook-later recipe
+	*/
+	$statusCL = false;
+	$(document).on("click", "#add-cook-later", function(){
+		$.get( $baseurl+"/processAjax/setCookLater/"+$(this).data("recipeid"), function( data ) {
+		  	if(data.status == '1'){
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'success',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});
+				if(!$statusCL){
+					$("#add-cook-later").find("a > i").removeClass("fa-plus");
+		  			$("#add-cook-later").find("a > i").addClass("fa-minus");	
+				}
+				else{
+					$("#add-cook-later").find("a > i").removeClass("fa-minus");
+		  			$("#add-cook-later").find("a > i").addClass("fa-plus");
+				}
+				$statusCL = !$statusCL;  		
+		  	}
+		  	else{
+		  		$.notify({
+					// options
+					message: data.message 
+				},{
+					// settings
+					mouse_over:'pause',
+					newest_on_top: true,
+					allow_dismiss: false,
+					type: 'warning',
+					delay: 1500,
+					placement: {
+						from: 'top',
+						align: 'center'
+					},
+				});  	
+		  	}
+		},"json");
+	});
+	if($("#add-cook-later").length > 0){
+		$.get( $baseurl+"/processAjax/checkCL/"+$("#add-cook-later").data("recipeid"), function( data ) {
+		  	if(data.statusCL == '1'){
+		  		$("#add-cook-later").find("a > i").removeClass("fa-plus");
+		  		$("#add-cook-later").find("a > i").addClass("fa-minus");
+		  		$statusCL = true;
+		  	}
+		  	else if(data.statusCL == '0'){
+		  		$("#add-cook-later").find("a > i").removeClass("fa-minus");
+		  		$("#add-cook-later").find("a > i").addClass("fa-plus");
+		  		$statusCL = false;
+		  	}
+		},"json");
+	}
 	$lockRemoveCL = false;
 	$(document).on("click", ".remove-cooklater", function(){
 		if(!$lockRemoveCL){
@@ -719,49 +809,6 @@ $(document).ready(function() {
 			},"json");	
 		}
 	});
-
-	/*
-	handler event click add cook-later recipe
-	*/
-	$(document).on("click", "#add-cook-later", function(){
-		$.get( $baseurl+"/processAjax/setCookLater/"+$(this).data("recipeid"), function( data ) {
-		  	if(data.status == '1'){
-		  		$.notify({
-					// options
-					message: data.message 
-				},{
-					// settings
-					mouse_over:'pause',
-					newest_on_top: true,
-					allow_dismiss: false,
-					type: 'success',
-					delay: 1500,
-					placement: {
-						from: 'top',
-						align: 'center'
-					},
-				});  		
-		  	}
-		  	else{
-		  		$.notify({
-					// options
-					message: data.message 
-				},{
-					// settings
-					mouse_over:'pause',
-					newest_on_top: true,
-					allow_dismiss: false,
-					type: 'warning',
-					delay: 1500,
-					placement: {
-						from: 'top',
-						align: 'center'
-					},
-				});  	
-		  	}
-		},"json");
-	});
-
 	/*
 	handler event click publish recipe
 	*/
@@ -1777,109 +1824,94 @@ $(document).ready(function() {
 	function checkAllConversation(){
 		checkConversation();
 		checkNewConversation()
-		/*checkUnreadConversation();*/
 		checkUnreadAllConversation();
 		setTimeout(checkAllConversation, 2950);
 	}
-	/*function checkUnreadConversation(){
-		$countUnreadAll = 0;
-		$(".conversation-list-item").each(function(i, element){
-			$conv_id = $(this).data("idconversation");
-			$conversation = $(".conversation-list-item [data-idconversation='"+$conv_id+"']");
-			$.get($baseurl+"/processAjax/checkConversation/"+$(this).data("idconversation"), function(data){
+	function checkConversation(){
+		if($("#conversation-summary").length > 0){
+			$idconversation = $("#conversation-summary").data("idconversation");
+			$.get($baseurl+"/processAjax/checkConversation/"+$idconversation+"/true", function(data){
 				if(data.status="success"){
-					if(data.countunread > 0){
-						$clone = $conversation.clone();
-						$conversation.remove();
-						$clone.attr("data-countmessage", data.countunread);
-						$clone.iosbadge({ theme: 'ios', size: 28, content: data.countunread});
-						$clone.find("div.conversation-details").find("div > div.time-conversation").find("span").livestamp(data.submit_str);
-						$clone.find("div > img").attr("src", $baseurlnoConflict+data.messages[0].user_photo);
-						$clone.find("div.conversation-details").find("div.conversation-last-message").html(data.messages[0].description);	
-						$("ul.conversation-list-group").prepend($clone);
+					if(data.messages.length > 0){
+						$messages = data.messages;
+						for (var i = ($messages.length-1); i >= 0; i--){
+							$message = "<li class='clearfix animated fadeInLeftBig conversation_message_entries col-md-12 col-xs-12 col-sm-12 message-list-item'><div class='col-md-1 col-sm-1 col-xs-1 col-no-padding'><img class='img-responsive img-rounded img-message' src='"+$baseurlnoConflict+"/"+$messages[i].user_photo+"'></div><div class='col-md-11 col-sm-11 col-xs-11 col-no-padding message-details'><div class='col-md-12 col-xs-12 col-sm-12 col-no-padding'><div class='col-md-9 col-xs-9 col-sm-9 users-message col-no-padding-right'><a href='"+$baseurl+"/index.php/user/timeline/"+$messages[i].sender_id+"'>"+$messages[i].user_name+"</a></div><div class='col-md-3 col-xs-3 col-sm-3 time-message col-no-padding text-right'><span data-livestamp='"+$messages[i].submit+"'></span></div></div><div class='col-md-12 col-xs-12 col-sm-12 col-no-padding-right message-value'>"+$messages[i].description+"</div></div></li>";
+							$("ul.message-list-group").append($message);
+						};
+						$("ul.message-list-group").animate({ scrollTop: $(document).height()});
 					}
 				}
 			}, "json");
-		});
-	}*/
-	function checkConversation(){
-		$idconversation = $("#conversation-summary").data("idconversation");
-		$.get($baseurl+"/processAjax/checkConversation/"+$idconversation+"/true", function(data){
-			if(data.status="success"){
-				if(data.messages.length > 0){
-					$messages = data.messages;
-					for (var i = ($messages.length-1); i >= 0; i--){
-						$message = "<li class='clearfix animated fadeInLeftBig conversation_message_entries col-md-12 col-xs-12 col-sm-12 message-list-item'><div class='col-md-1 col-sm-1 col-xs-1 col-no-padding'><img class='img-responsive img-rounded img-message' src='"+$baseurlnoConflict+"/"+$messages[i].user_photo+"'></div><div class='col-md-11 col-sm-11 col-xs-11 col-no-padding message-details'><div class='col-md-12 col-xs-12 col-sm-12 col-no-padding'><div class='col-md-9 col-xs-9 col-sm-9 users-message col-no-padding-right'><a href='"+$baseurl+"/index.php/user/timeline/"+$messages[i].sender_id+"'>"+$messages[i].user_name+"</a></div><div class='col-md-3 col-xs-3 col-sm-3 time-message col-no-padding text-right'><span data-livestamp='"+$messages[i].submit+"'></span></div></div><div class='col-md-12 col-xs-12 col-sm-12 col-no-padding-right message-value'>"+$messages[i].description+"</div></div></li>";
-						$("ul.message-list-group").append($message);
-					};
-					$("ul.message-list-group").animate({ scrollTop: $(document).height()});
-				}
-			}
-		}, "json");
+		}
 	}
 	function checkUnreadAllConversation(){
-		$.get($baseurl+"/processAjax/checkAllConversation/"+$("#conversation-summary").data("idconversation"), function(data){
-			if(data.status=="success"){
-				if(data.countunread > 0){
-					$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: data.countunread});
-					$("#icon-message-sidebar").iosbadge({ theme: 'ios', size: 22, content: data.countunread});	
-					if($("#total-unread-sidebar").length==0){
-						$(".panel-title-side-conversation").html("Your conversations "+"<span id='total-unread-sidebar' class='badge'>"+data.countunread+"</span>");
-					}
-					else{
-						$("#total-unread-sidebar").html(data.countunread);	
+		if($("#conversation-summary").length > 0){
+			$.get($baseurl+"/processAjax/checkAllConversation/"+$("#conversation-summary").data("idconversation"), function(data){
+				if(data.status=="success"){
+					if(data.countunread > 0){
+						$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: data.countunread});
+						$("#icon-message-sidebar").iosbadge({ theme: 'ios', size: 22, content: data.countunread});	
+						if($("#total-unread-sidebar").length==0){
+							$(".panel-title-side-conversation").html("Your conversations "+"<span id='total-unread-sidebar' class='badge'>"+data.countunread+"</span>");
+						}
+						else{
+							$("#total-unread-sidebar").html(data.countunread);	
+						}
 					}
 				}
-			}
-		},"json");
+			},"json");
+		}
 	}
 	function checkNewConversation(){
-		$.get($baseurl+"/processAjax/checknewconversation", function(data){
-			if(data.status="success"){
-				if(data.countconversation > 0){
-					$conversations = data.conversations;
-					for (var i = ($conversations.length-1); i >= 0; i--){
-						if(($.inArray($conversations[i].conversation_id, $dataConversationId) > -1) && ($conversations[i].conversation_id!=$("#conversation-summary").data("idconversation"))){
-							$(".conversation-list-item[data-idconversation='"+$conversations[i].conversation_id+"']").remove();
-						}
-						if($conversations[i].conversation_id!=$("#conversation-summary").data("idconversation")){
-							$conversation = "<a href='"+$baseurl+"/user/message/"+$conversations[i].conversation_id+"' class='animated fadeInLeftBig'>";
-							$conversation += "<li class='conversation-list-item col-md-12 col-sm-12 col-xs-12' data-idconversation='"+$conversations[i].conversation_id+"' data-countmessage='"+$conversations[i].count_unread+"'>";
-							$conversation += "<div class='col-md-2 col-sm-2 col-xs-2 col-no-padding'>";
-							$conversation += "<img class='img-responsive img-rounded img-conversation' src='"+$baseurlnoConflict+$conversations[i].user_photo+"'>";
-							$conversation += "</div>";
-							$conversation += "<div class='col-md-10 col-sm-10 col-xs-10 col-no-padding conversation-details'>";
-							$conversation += "<div class='col-md-12 col-xs-12 col-sm-12 col-no-padding'>";
-							$conversation += "<div class='col-md-8 col-xs-8 col-sm-8 users-conversation col-no-padding-right' style='font-weight:bold'>";
-							$conversation += "<div class='col-md-7 col-xs-7 col-sm-7 subject_conversation col-no-padding' title='"+$conversations[i].subject+"'>";
-							$conversation += $conversations[i].subject;
-							$conversation += "</div>";
-							$conversation += "<div class='col-md-5 col-xs-5 col-sm-5 col-no-padding' style='font-size:11px'>";
-							$conversation += "("+$conversations[i].participant+" Participants)";
-							$conversation += "</div>";
-							$conversation += "</div>";
-							$conversation += "<div class='conversation-submit col-md-4 col-xs-4 col-sm-4 time-conversation col-no-padding text-right'>";
-							$conversation += "<span data-livestamp='"+$conversations[i].submit+"'></span>";
-							$conversation += "</div>";
-							$conversation += "</div>";
-							$conversation += "<div class='conversation-last-message col-md-12 col-xs-12 col-sm-12 col-no-padding-right title-conversation'>";
-							$conversation += $conversations[0].last_message;
-							$conversation += "</div>";
-							$conversation += "</div>";
-							$conversation += "</li>";
-							$conversation += "</a>";
-							$("ul.conversation-list-group").prepend($conversation);	
-							$(".conversation-list-item > div > .img-conversation").first().parent().iosbadge({ theme: 'ios', size: 22, content: $conversations[i].count_unread});
-						}
-						if($.inArray($conversations[i].conversation_id, $dataConversationId) < 0){
-							$dataConversationId.push($conversations[i].conversation_id);
-						}	
-					};
-					$("ul.conversation-list-group").animate({ scrollTop: 0});
+		if($("ul.conversation-list-group").length > 0){
+			$.get($baseurl+"/processAjax/checknewconversation", function(data){
+				if(data.status="success"){
+					if(data.countconversation > 0){
+						$conversations = data.conversations;
+						for (var i = ($conversations.length-1); i >= 0; i--){
+							if(($.inArray($conversations[i].conversation_id, $dataConversationId) > -1) && ($conversations[i].conversation_id!=$("#conversation-summary").data("idconversation"))){
+								$(".conversation-list-item[data-idconversation='"+$conversations[i].conversation_id+"']").remove();
+							}
+							if($conversations[i].conversation_id!=$("#conversation-summary").data("idconversation")){
+								$conversation = "<a href='"+$baseurl+"/user/message/"+$conversations[i].conversation_id+"' class='animated fadeInLeftBig'>";
+								$conversation += "<li class='conversation-list-item col-md-12 col-sm-12 col-xs-12' data-idconversation='"+$conversations[i].conversation_id+"' data-countmessage='"+$conversations[i].count_unread+"'>";
+								$conversation += "<div class='col-md-2 col-sm-2 col-xs-2 col-no-padding'>";
+								$conversation += "<img class='img-responsive img-rounded img-conversation' src='"+$baseurlnoConflict+$conversations[i].user_photo+"'>";
+								$conversation += "</div>";
+								$conversation += "<div class='col-md-10 col-sm-10 col-xs-10 col-no-padding conversation-details'>";
+								$conversation += "<div class='col-md-12 col-xs-12 col-sm-12 col-no-padding'>";
+								$conversation += "<div class='col-md-8 col-xs-8 col-sm-8 users-conversation col-no-padding-right' style='font-weight:bold'>";
+								$conversation += "<div class='col-md-7 col-xs-7 col-sm-7 subject_conversation col-no-padding' title='"+$conversations[i].subject+"'>";
+								$conversation += $conversations[i].subject;
+								$conversation += "</div>";
+								$conversation += "<div class='col-md-5 col-xs-5 col-sm-5 col-no-padding' style='font-size:11px'>";
+								$conversation += "("+$conversations[i].participant+" Participants)";
+								$conversation += "</div>";
+								$conversation += "</div>";
+								$conversation += "<div class='conversation-submit col-md-4 col-xs-4 col-sm-4 time-conversation col-no-padding text-right'>";
+								$conversation += "<span data-livestamp='"+$conversations[i].submit+"'></span>";
+								$conversation += "</div>";
+								$conversation += "</div>";
+								$conversation += "<div class='conversation-last-message col-md-12 col-xs-12 col-sm-12 col-no-padding-right title-conversation'>";
+								$conversation += $conversations[0].last_message;
+								$conversation += "</div>";
+								$conversation += "</div>";
+								$conversation += "</li>";
+								$conversation += "</a>";
+								$("ul.conversation-list-group").prepend($conversation);	
+								$(".conversation-list-item > div > .img-conversation").first().parent().iosbadge({ theme: 'ios', size: 22, content: $conversations[i].count_unread});
+							}
+							if($.inArray($conversations[i].conversation_id, $dataConversationId) < 0){
+								$dataConversationId.push($conversations[i].conversation_id);
+							}	
+						};
+						$("ul.conversation-list-group").animate({ scrollTop: 0});
+					}
 				}
-			}
-		}, "json");
+			}, "json");
+		}
 	}
+
 	$dataConversationId = Array();
 	$(".conversation-list-item").each(function(i){
 		$dataConversationId.push($(this).data("idconversation"));
