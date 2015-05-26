@@ -19,7 +19,7 @@
     </h3>
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 text-right">
-    <form id="filterRecipe" action="<?php echo base_url();?>search?">
+    <form id="filterRecipe" action="<?php echo base_url();?>index.php/search?">
       <input type="hidden" name="searchby" value="title">
       <input type="hidden" name="q" value="{search_by_title_recipe_key}">
       <div class="pull-right dropdown">
