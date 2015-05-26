@@ -88,14 +88,14 @@
   {search_by_ingredient_recipe_entries}
   <div class="col-md-12 col-xs-12 col-no-padding-right page-header" style="margin-top:5px">
     <div class="col-md-3 col-xs-12 detail-list-img" style="margin-right:2px">
-        <a href="<?php echo base_url();?>recipe/get/{search_by_ingredient_recipe_id}" title="{search_by_ingredient_recipe_name}">
+        <a href="<?php echo base_url();?>index.php/recipe/get/{search_by_ingredient_recipe_id}" title="{search_by_ingredient_recipe_name}">
           <img class="img-responsive img-rounded img-list-search-ingredient" src="<?php echo base_url();?>{search_by_ingredient_recipe_photo}"/>
         </a>
     </div>
     <div class="col-md-8 col-xs-12 detail-list-search-ingredient">
       <div class="col-md-12 col-xs-12 details">
         <div class="col-md-12 col-xs-12 xs-text-center">
-          <a href="<?php echo base_url();?>recipe/get/{search_by_ingredient_recipe_id}" title="{search_by_ingredient_recipe_name}">
+          <a href="<?php echo base_url();?>index.php/recipe/get/{search_by_ingredient_recipe_id}" title="{search_by_ingredient_recipe_name}">
             <h4><p class="text-capitalize title-recipe">{search_by_ingredient_recipe_name}</p></h4>
           </a>
         </div>
