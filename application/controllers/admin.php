@@ -229,17 +229,24 @@ class Admin extends CI_Controller {
 		}
 		$cat = new Catalog();
 		$success = TRUE;
-		
+		$duplicate = FALSE;		
 		$name = $this->input->post("entry_subject");
 		$quantity = $this->input->post("entry_quantity");
 		$units = $this->input->post("entry_unit");
 		$price = $this->input->post("entry_price");
-		
-		if(!$cat->addCatalog($name, $quantity, $units, $price)){
-			$success = FALSE;
+		if($cat->ilike("name", $name)->ilike("units", $units)->count()<1){
+			if(!$cat->addCatalog($name, $quantity, $units, $price)){
+				$success = FALSE;
+			}	
+		}
+		else{
+			$duplicate = true;
 		}
 		
 		$highlight_alert = $success ? "<div class=\"alert alert-success text-center\">catalog updated</div>" : "<div class=\"alert alert-danger\">update catalog failed</div>";
+		if($duplicate){
+			$highlight_alert = "<div class=\"alert alert-danger\">There are duplicate catalog</div>";
+		}
 		$this->session->set_flashdata('alert-admin', $highlight_alert);
 		redirect(base_url()."index.php/admin/catalog");
 	}
