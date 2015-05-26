@@ -747,13 +747,13 @@ class ProcessAjax extends CI_Controller {
 		if($catalog->update($attr, $value)){
 			$data = array(
 				"status"	=>	"success",
-				"message"	=>	"Successfully Edit ".$attr." Catalog With ID ".$id,
+				"message"	=>	"Successfully Edit ".strtoupper($attr),
 			);	
 		}
 		else{
 			$data = array(
 				"status"	=>	"failed",
-				"message"	=>	"Failed Edit ".$attr." Catalog With ID ".$id,
+				"message"	=>	"Failed Edit ".strtoupper($attr),
 			);	
 		}
 		echo json_encode($data);

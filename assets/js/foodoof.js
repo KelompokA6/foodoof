@@ -1585,6 +1585,14 @@ $(document).ready(function() {
 					},
 				});		
 		    }
+		},
+		validate: function(value) {
+		    if($.trim(value) == '') {
+		        return 'This field is required';
+		    }
+		    if($.trim(value) < 0) {
+		        return 'This field is minimum 0';
+		    }
 		}
 	});
 	$("#add-entry-catalog").on("click", function(e){
@@ -1605,6 +1613,27 @@ $(document).ready(function() {
 	    if($input.attr("type")==="number"){
 	    	$input.attr("min", "0");
 	    }
+	});
+	$(document).on("submit", "form.editableform", function(e){
+		if($(this).find("div").find("div").find("div.editable-input").find("input").val().trim().length < 1){
+			console.log("Masuk");
+			e.preventDefault();
+			$.notify({
+			// options
+				message: "Name Catalog not valid." 
+			},{
+				// settings
+				mouse_over:'pause',
+				newest_on_top: true,
+				allow_dismiss: false,
+				type: 'danger',
+				delay: 2000,
+				placement: {
+					from: 'top',
+					align: 'center'
+				},
+			});
+		}
 	});
 	
 	/*
