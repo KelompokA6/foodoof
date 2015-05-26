@@ -289,7 +289,7 @@ class User extends CI_Controller {
 			"receiver" => $email,
 			"receiver_name" => $name,
 			"subject" => "Welcome to FoodooF",
-			"message" => "Hello $name! Nice to glad you in Foodoof.\nYour account has been created. You can login in <a href='".base_url('index.php/home/login')."'>FoodooF</a> page using this email and your password is $password.",
+			"message" => "Hello $name! It's nice to have you in Foodoof.\nYour account has been created. You can login in <a href='".base_url('index.php/home/login')."'>FoodooF</a> page using this email and your password is $password.",
 			]);
 	}
 
