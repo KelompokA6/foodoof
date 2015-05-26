@@ -77,7 +77,7 @@
 	            </li>
 
 	            <li role="presentation" id="share-twitter">
-	              <a role="menuitem" class="twitter-share" tabindex="-1" href="https://twitter.com/intent/tweet?text=FoodooF%20-%20Infinite%20Cooking%20Idea&url={URL}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+	              <a role="menuitem" class="twitter-share" tabindex="-1" href="https://twitter.com/intent/tweet?text={recipe_name}&url={URL}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
 	                <span class="fa-stack fa-lg fa-stack-lg">
 	                  <i class="fa fa-square fa-stack-1x icons-secondary"></i>
 	                  <i class="fa fa-twitter fa-stack-1x fa-inverse fa-xs"></i>
