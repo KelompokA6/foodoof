@@ -4,7 +4,7 @@
 			<span id="total-unread-sidebar" class="badge"><?php echo $sidebar_conversation_total;?></span>
 		<?php endif;?>
 		<a href='<?php echo base_url();?>index.php/user/createconversation' class='pull-right' title="New Conversation">
-            <button class='btn button-secondary'>
+            <button class='btn button-secondary' style="padding-top:8px;">
                 <i class='fa fa-plus fa-lg'></i>
             </button>
         </a>
