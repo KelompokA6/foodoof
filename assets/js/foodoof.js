@@ -1546,6 +1546,57 @@ $(document).ready(function() {
 		init table catalog
 	*/
 	$("#catalog-table").dataTable();
+	$("#catalog-table").on( 'draw.dt', function () {
+		$('.edit').editable({
+		    mode: "inline",
+		    url: $baseurl+"/processAjax/updateCatalogAjax",
+		    success: function(response, newValue) {
+		    	response = $.parseJSON(response);
+			    if(response.status==="success"){
+			    	$.notify({
+						// options
+						message: response.message 
+					},{
+						// settings
+						mouse_over:'pause',
+						newest_on_top: true,
+						allow_dismiss: false,
+						type: 'success',
+						delay: 2000,
+						placement: {
+							from: 'top',
+							align: 'center'
+						},
+					});
+			    }
+			    else{
+			    	$.notify({
+						// options
+						message: response.message 
+					},{
+						// settings
+						mouse_over:'pause',
+						newest_on_top: true,
+						allow_dismiss: false,
+						type: 'warnig',
+						delay: 2000,
+						placement: {
+							from: 'top',
+							align: 'center'
+						},
+					});		
+			    }
+			},
+			validate: function(value) {
+			    if($.trim(value) == '') {
+			        return 'This field is required';
+			    }
+			    if($.trim(value) < 0) {
+			        return 'This field is minimum 0';
+			    }
+			}
+		});
+	});
 	$('.edit').editable({
 	    mode: "inline",
 	    url: $baseurl+"/processAjax/updateCatalogAjax",
@@ -1613,27 +1664,6 @@ $(document).ready(function() {
 	    if($input.attr("type")==="number"){
 	    	$input.attr("min", "0");
 	    }
-	});
-	$(document).on("submit", "form.editableform", function(e){
-		if($(this).find("div").find("div").find("div.editable-input").find("input").val().trim().length < 1){
-			console.log("Masuk");
-			e.preventDefault();
-			$.notify({
-			// options
-				message: "Name Catalog not valid." 
-			},{
-				// settings
-				mouse_over:'pause',
-				newest_on_top: true,
-				allow_dismiss: false,
-				type: 'danger',
-				delay: 2000,
-				placement: {
-					from: 'top',
-					align: 'center'
-				},
-			});
-		}
 	});
 	
 	/*
