@@ -322,7 +322,6 @@ class Admin extends CI_Controller {
 	private function _send_email($profile, $toall = FALSE)
 	{
 		extract($profile);
-		if(strlen(trim($to)) == 0) return "receiver cannot be empty";
 		if(strlen(trim($subject)) == 0) return "subject cannot be empty";
 		if(strlen(trim($message)) == 0) return "message cannot be empty";
 		return $this->_send_smtp_email([
