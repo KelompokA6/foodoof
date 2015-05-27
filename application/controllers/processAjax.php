@@ -425,7 +425,13 @@ class ProcessAjax extends CI_Controller {
 			$value = $this->input->post("value");
 		}
 		$user_id = $this->session->userdata('user_id');
-		if(!empty($user_id) && !empty($recipe_id) && empty($value)){
+		if($value <= 0){
+			$result = array(
+					"status" => 0,
+					"message" => "Please rate seriously.",
+					);
+		}
+		else if(!empty($user_id) && !empty($recipe_id)){
 			$recipe = new Recipe_model();
 			if($recipe->saveRating($user_id, $recipe_id, $value)){
 				$result = array(

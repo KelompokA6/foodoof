@@ -1009,7 +1009,13 @@ class Recipe_model extends DataMapper {
             $cat = new Category();
             $data = new stdClass();
             $data->name = $obj;
-            $data->count = $cat->where('name',$obj)->count();
+            $cat->query("select * from categories a join recipes b on a.recipe_id=b.id where b.status='1' AND a.name='".$obj."'");
+            $x=0;
+            foreach ($cat as $a) {
+                $x++;
+            }
+            $data->count = $x;
+            $cat->clear();
             array_push($arrResult, $data);
         }
         return $arrResult; 
