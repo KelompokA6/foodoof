@@ -66,6 +66,11 @@
 								</div>
 								<div class="form-group col-md-4 col-xs-6">
 									<label class="checkbox-inline">
+									  	<input type="checkbox" class="option-category-recipe" value="traditional food" name="recipe_category[]" {edit_recipe_traditional_food_checked}> Traditional Food
+									</label>
+								</div>
+								<div class="form-group col-md-4 col-xs-6">
+									<label class="checkbox-inline">
 									  	<input type="checkbox" class="option-category-recipe" value="chinese food" name="recipe_category[]" {edit_recipe_chinese_food_checked}> Chinese Food
 									</label>
 								</div>
