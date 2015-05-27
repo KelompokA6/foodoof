@@ -1821,7 +1821,7 @@ $(document).ready(function() {
 		}
 	});
 	$("ul.message-list-group").animate({ scrollTop: $(document).height()});
-
+	$("head").append($("#meta").html());
 	function checkAllConversation(){
 		checkConversation();
 		checkNewConversation()

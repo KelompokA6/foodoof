@@ -58,6 +58,15 @@
 						<a href="<?php echo base_url();?>index.php/recipe/cetak/<?php echo $recipe_id?>"><button class="btn button-primary col-md-12 col-xs-12"><i class="fa fa-print pull-left fa-inverse icons"></i>Print Recipe</button></a>
 					</div>
 				</div>
+				<div id="meta">
+					<meta property="og:locale" content="ina_ID" />
+					<meta property="og:type" content="website" />
+					<meta property="og:title" content="{recipe_name}" />
+					<meta property="og:description" content="{recipe_description}" />
+					<meta property="og:url" content="{URL}" />
+					<meta property="og:site_name" content="foodoof" />
+					<meta property="og:image" content="<?php echo base_url();?>{recipe_photo}" />
+				</div>
 				<div class="col-md-12 col-xs-12 col-no-padding text-center" style="margin-top:5px">
 					<div class="col-md-6 col-xs-6" style="padding-right:5px" title="Share Recipe">
 						<button type="button" class="btn button-primary col-md-12 col-xs-12" data-toggle="dropdown" aria-expanded="false">
