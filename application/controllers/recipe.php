@@ -48,14 +48,14 @@ class Recipe extends CI_Controller {
 							'edit_recipe_step_title' => $id+"-"+$i++,
 							'edit_recipe_step_no_step' => $obj->no_step,
 							'edit_recipe_step_description' => htmlspecialchars($obj->description),
-							'edit_recipe_step_photo' => $obj->photo,
+							'edit_recipe_step_photo' => $obj->photo.$this->session->flashdata('version'),
 						);
 					array_push($steps, $temp);
 				}
 			}
 			$data = array(
 						'edit_recipe_id' => $id,
-						'edit_recipe_photo' => $r->photo,
+						'edit_recipe_photo' => $r->photo.$this->session->flashdata('version'),
 						'edit_recipe_title' => htmlspecialchars($r->name),
 						'edit_recipe_portion' => $r->portion,
 						'edit_recipe_description' => htmlspecialchars($r->description),
@@ -158,6 +158,8 @@ class Recipe extends CI_Controller {
 				$recipe->deleteAllCategory($id);
 				$res = $recipe->addCategory($id, "other");
 			}
+			$this->load->helper('string');
+			$this->session->set_flashdata('version', "?version=".random_string('numeric', 8));
 			$alert = "<div id='alert-notification' data-status='success' data-message='Successfully Edit Recipe' class='hidden'></div>";
 			$this->session->set_flashdata('alert-notification', $alert);
 		}
@@ -216,7 +218,7 @@ class Recipe extends CI_Controller {
 					$temp = array(
 							'steps_number' => $obj->no_step,
 							'steps_description' => htmlspecialchars($obj->description),
-							'steps_photo' => $obj->photo,
+							'steps_photo' => $obj->photo.$this->session->flashdata('version'),
 						);
 					array_push($steps, $temp);
 				}
@@ -235,7 +237,7 @@ class Recipe extends CI_Controller {
 				foreach ($recipe->getRelatedRecipe($id) as $obj) {
 					$temp = array(
 							'related_recipe_name' => $obj->name,
-							'related_recipe_photo' => $obj->photo,
+							'related_recipe_photo' => $obj->photo.$this->session->flashdata('version'),
 							'related_recipe_id' => $obj->id,
 						);
 					array_push($related, $temp);
@@ -249,13 +251,13 @@ class Recipe extends CI_Controller {
 							'comment_description' => nl2br($obj->description),
 							'comment_submit' => strtotime($obj->submit),
 							'comment_user_name' => $user->getProfile($obj->user_id)->name,
-							'comment_user_photo' => $user->getProfile($obj->user_id)->photo,
+							'comment_user_photo' => $user->getProfile($obj->user_id)->photo.$this->session->flashdata('version'),
 						);
 					array_push($comments, $temp);
 				}
 			}
 			if($this->session->userdata("user_id")!=""){
-				$user_photo = $user->getProfile($this->session->userdata('user_id'))->photo;	
+				$user_photo = $user->getProfile($this->session->userdata('user_id'))->photo.$this->session->flashdata('version');	
 			}
 			else{
 				$user_photo = "";	
@@ -272,11 +274,11 @@ class Recipe extends CI_Controller {
 						'recipe_ingredients' => $ingre,
 						'recipe_steps' => $steps,
 						'recipe_rating' => $r->rating,
-						'recipe_photo' => $r->photo,
+						'recipe_photo' => $r->photo.$this->session->flashdata('version'),
 						'recipe_category_entries' => $category,
 						'recipe_author_id' => ($r->author),
 						'related_recipe_entries' => $related,
-						'user_photo' => $user_photo,
+						'user_photo' => $user_photo.$this->session->flashdata('version'),
 						'comments_recipe_entries' => $comments,
 					);
 

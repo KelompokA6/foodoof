@@ -11,8 +11,8 @@
 				<?php }?>
 				<?php foreach ($reported_user_entries as $reported_user_entry) {?>
 				<div class="col-md-12 col-xs-12 col-sm-12 border-solid-bottom list-reported" style="padding:5px 0">
-					<label class=" col-md-9 col-xs-9 col-sm-3 control-label text-left">
-			      		<input type="checkbox" class="col-md-1 col-xs-1 col-sm-1 checkboxuser" name= 'id_reported[]' value='<?php echo $reported_user_entry["reported_user_id"];?>'>
+					<label class=" col-md-9 col-xs-9 col-sm-3 control-label text-left" title="Reported User">
+			      		<input type="checkbox" class="col-md-1 col-xs-1 col-sm-1 checkboxuser" title="Banned" name= 'id_reported[]' value='<?php echo $reported_user_entry["reported_user_id"];?>'>
 				      	<div class="col-md-1 col-xs-2 col-sm-1 col-no-padding">
 							<img src="<?php echo base_url();?><?php echo $reported_user_entry["reported_user_photo"];?>" class="img-responsive img-rounded img-report">
 						</div>
