@@ -124,17 +124,11 @@ class Home extends CI_Controller {
 		$user_id = $r->getRecipeProfile($recipe_id)->author;		
 		$cat_report = $this->input->post("report_category");
 		$report = new Report();
-		$user = new User_model();
-		if($user->where("id", $user_id)->where("status","BANNED")->count()==0){
-			$user->clear();
-			$user->where("id", $user_id);
-			$user->update("status","REPORTED");
-		}
 		$isSuccess = false;
 		if(sizeof($cat_report)>0){
 			$isSuccess = true;
 			foreach ($cat_report as $obj) {
-				if(empty(trim($obj)) && (strlen($obj) > 0)){
+				if(empty(trim($obj)) && (strlen($obj) > 0)|| empty($obj)){
 					$isSuccess = false;
 				}
 			}
@@ -146,6 +140,12 @@ class Home extends CI_Controller {
 			}
 		}
 		if($isSuccess){
+			$user = new User_model();
+			if($user->where("id", $user_id)->where("status","BANNED")->count()==0){
+				$user->clear();
+				$user->where("id", $user_id);
+				$user->update("status","REPORTED");
+			}
 			foreach ($cat_report as $obj) {
 				if(!empty(trim($obj))){
 					$report->recipe_id = $recipe_id;
@@ -157,6 +157,16 @@ class Home extends CI_Controller {
 					}
 					$report->clear();
 				}
+			}
+			$report->recipe_id = $recipe_id;
+			if(empty($this->input->post("report_other"))){
+				$report->reason = $this->input->post("report_other");
+				if(!$report->skip_validation()->save()){
+					$alert = "<div id='alert-notification' data-status='failed' data-message='Failed Report' class='hidden'></div>";
+					$this->session->set_flashdata('alert-notification', $alert);
+					redirect(base_url()."index.php/recipe/get/$recipe_id");
+				}
+				$report->clear();	
 			}
 		}
 		else{

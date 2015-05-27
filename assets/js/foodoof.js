@@ -1203,7 +1203,8 @@ $(document).ready(function() {
 	validate input buat report resep
 	*/
 	$("form#report-form").on("submit", function(e){
-		if( $("#report-other").val().length > 0 && $("#report-other").val().trim().length == 0 ){
+		$check = $("form#report-form > .checkbox > label > input[type='checkbox'][name='report_category[]']:checked").length;
+		if($check == 0 && $("#report-other").val().length >= 0 && $("#report-other").val().trim().length == 0 ){
 			e.preventDefault();
 			$.notify({
 			// options
