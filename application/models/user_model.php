@@ -23,6 +23,7 @@ class User_model extends DataMapper {
                 'user_id' => $this->id,
                 'user_name' => $this->name,
                 'user_photo' => $this->photo,
+                'theme' => $this->theme,
             ) : "password doesn't match";
     }
 
