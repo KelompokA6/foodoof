@@ -175,6 +175,7 @@ class Admin extends CI_Controller {
 				'catalog_quantity' => $obj->quantity,
 				'catalog_unit' => $obj->units,
 				'catalog_price' => $obj->price,
+				'catalog_last_update' => $obj->last_update,
 			);
 			array_push($entries, $temp);
 		}

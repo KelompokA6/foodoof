@@ -38,6 +38,7 @@
 		                <th>Quantity</th>
 		                <th>Unit</th>
 		                <th>Price</th>
+		                <th>Last Update</th>
 		            </tr>
 		        </thead>
 		        {catalog_entries}
@@ -54,6 +55,9 @@
 	                </td>
 	                <td class="edit" data-type="number" data-name="price" data-pk="{catalog_id}" data-title="Enter Price Catalog">
 	                	{catalog_price}
+	                </td>
+									<td class="" data-type="text" data-name="last_update" data-pk="{catalog_id}">
+	                	{catalog_last_update}
 	                </td>
 	            </tr>
 		        {/catalog_entries}
