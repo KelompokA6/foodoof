@@ -64,6 +64,7 @@ class Catalog extends DataMapper {
       $data->quantity = $catalogs->quantity;
       $data->units = $catalogs->units;
       $data->price = $catalogs->price;
+      $data->last_update = $catalogs->last_update;
       array_push($arrResult, $data);
     }
     return $arrResult;
