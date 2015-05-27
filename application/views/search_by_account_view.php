@@ -30,7 +30,7 @@
       </div>
       <div class="col-md-12 col-xs-12 details">
           <div class="col-md-2 col-xs-6 xs-text-right">
-            <h4><p class="text-capitalize">{search_by_account_gender}, </p></h4>
+            <h4><p class="text-capitalize">{search_by_account_gender}</p></h4>
           </div>
           <div class="col-md-10 col-xs-6 text-left border-dashed-left">
             <h4><p class="text-capitalize">{search_by_account_age}</p></h4>

@@ -145,7 +145,7 @@ class Search extends CI_Controller {
       $row->search_by_account_photo = $row->photo;
       $row->search_by_account_name = $row->name;
       $row->search_by_account_gender = $row->gender;
-      $row->search_by_account_age = (new DateTime())->diff(new DateTime($row->bdate))->y;
+      $row->search_by_account_age = $row->bdate == '1970-01-01' ? '' : (new DateTime())->diff(new DateTime($row->bdate))->y . " years old";
     }
     $list_account = array_map(function($row){return $row = (object)array_map("htmlspecialchars", (array)$row);}, $list_account);
     $datalist['search_by_account_entries'] = $list_account;
