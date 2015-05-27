@@ -11,11 +11,7 @@
         }
       ?>
       of '{search_by_title_recipe_key}'
-      <?php 
-        if (!empty($search_by_title_recipe_category)){
-          echo " with category $search_by_title_recipe_category";
-        }
-      ?>
+      
     </h3>
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 text-right">
