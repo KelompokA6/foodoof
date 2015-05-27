@@ -14,7 +14,7 @@
 			<h3 class="text-capitalize"> {profile_user_name}</h3>
 		</div>
 		<div class="col-md-12 col-xs-12">
-			<h3 class="text-capitalize"> {profile_user_gender}, {profile_user_age} Years old</h3>
+			<h3 class="text-capitalize"> {profile_user_gender}, {profile_user_age}</h3>
 		</div>
 		<div class="col-md-12 col-xs-12">
 			<div class="col-md-12 col-xs-12 col-no-padding-left profile-info">

@@ -54,7 +54,7 @@ class User_viewer extends CI_Model
             'profile_user_name' => $profile->name,
             'profile_user_gender' => $profile->gender == 'M' ? 'male' : 'female',
             'profile_user_bdate' => $profile->bdate,
-            'profile_user_age' => (new DateTime())->diff(new DateTime($profile->bdate))->y,
+            'profile_user_age' => $profile->bdate == '1970-01-01' ? '' : (new DateTime())->diff(new DateTime($profile->bdate))->y . " years old",
             'profile_user_email' => $profile->email,
             'profile_user_phone' => $profile->phone,
             'profile_user_last_access' => $profile->last_access,
