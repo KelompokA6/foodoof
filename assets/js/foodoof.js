@@ -1269,7 +1269,7 @@ $(document).ready(function() {
 				},
 			});
 		}
-		if($("#tinymce").html().trim().length == 0){
+		/*if($("body#tinymce").html().trim().length == 0){
 			e.preventDefault();
 			$.notify({
 			// options
@@ -1286,7 +1286,7 @@ $(document).ready(function() {
 					align: 'center'
 				},
 			});
-		}
+		}*/
 	});	
 
 	/*
