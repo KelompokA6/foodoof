@@ -173,13 +173,13 @@ class Home extends CI_Controller {
 		if($themenow === FALSE) $themenow = '';
 		if($themenow) // $themenow != FALSE, berarti ini tema 2
 		{
-			(new User_model())->where('id', $this->input->userdata('user_id'))->update('theme', '');
-			$this->input->set_userdata('theme', '');
+			(new User_model())->where('id', $this->session->userdata('user_id'))->update('theme', '');
+			$this->session->set_userdata('theme', '');
 		}
 		else // nah, ini baru tema 2
 		{
-			(new User_model())->where('id', $this->input->userdata('user_id'))->update('theme', '2');
-			$this->input->set_userdata('theme', '2');
+			(new User_model())->where('id', $this->session->userdata('user_id'))->update('theme', '2');
+			$this->session->set_userdata('theme', '2');
 		}
 		redirect($url);
 	}
