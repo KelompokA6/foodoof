@@ -97,8 +97,9 @@ class Recipe extends CI_Controller {
 		$description = htmlspecialchars($this->input->post("recipe_description"));
 		$portion = htmlspecialchars($this->input->post("recipe_portion"));
 		$duration = htmlspecialchars($this->input->post("recipe_duration"));
-		$category = htmlspecialchars($this->input->post("recipe_category"));
-		//print_r($category);
+		$category = $this->input->post("recipe_category");
+		// print_r($category);
+		// die();
 		$subjek =  $this->input->post("ingredient_subject");
 		// print_r($subjek);
 		// die;
