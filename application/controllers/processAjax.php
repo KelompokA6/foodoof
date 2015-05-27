@@ -777,7 +777,7 @@ class ProcessAjax extends CI_Controller {
 				if(empty($subject)){
 					$x = 0;
 					foreach ($members as $member) {
-						if($x==(sizeof($member)-1)){
+						if($x==(sizeof($members)-1)){
 							$subject .= $u->getProfile($member)->name;
 						}
 						else if($x<2){

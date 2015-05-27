@@ -1846,22 +1846,20 @@ $(document).ready(function() {
 		}
 	}
 	function checkUnreadAllConversation(){
-		if($("#conversation-summary").length > 0){
-			$.get($baseurl+"/processAjax/checkAllConversation/"+$("#conversation-summary").data("idconversation"), function(data){
-				if(data.status=="success"){
-					if(data.countunread > 0){
-						$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: data.countunread});
-						$("#icon-message-sidebar").iosbadge({ theme: 'ios', size: 22, content: data.countunread});	
-						if($("#total-unread-sidebar").length==0){
-							$(".panel-title-side-conversation").html("Your conversations "+"<span id='total-unread-sidebar' class='badge'>"+data.countunread+"</span>");
-						}
-						else{
-							$("#total-unread-sidebar").html(data.countunread);	
-						}
+		$.get($baseurl+"/processAjax/checkAllConversation/", function(data){
+			if(data.status=="success"){
+				if(data.countunread > 0){
+					$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: data.countunread});
+					$("#icon-message-sidebar").iosbadge({ theme: 'ios', size: 22, content: data.countunread});	
+					if($("#total-unread-sidebar").length==0){
+						$(".panel-title-side-conversation").html("Your conversations "+"<span id='total-unread-sidebar' class='badge'>"+data.countunread+"</span>");
+					}
+					else{
+						$("#total-unread-sidebar").html(data.countunread);	
 					}
 				}
-			},"json");
-		}
+			}
+		},"json");
 	}
 	function checkNewConversation(){
 		if($("ul.conversation-list-group").length > 0){
@@ -1882,11 +1880,8 @@ $(document).ready(function() {
 								$conversation += "<div class='col-md-10 col-sm-10 col-xs-10 col-no-padding conversation-details'>";
 								$conversation += "<div class='col-md-12 col-xs-12 col-sm-12 col-no-padding'>";
 								$conversation += "<div class='col-md-8 col-xs-8 col-sm-8 users-conversation col-no-padding-right' style='font-weight:bold'>";
-								$conversation += "<div class='col-md-7 col-xs-7 col-sm-7 subject_conversation col-no-padding' title='"+$conversations[i].subject+"'>";
-								$conversation += $conversations[i].subject;
-								$conversation += "</div>";
-								$conversation += "<div class='col-md-5 col-xs-5 col-sm-5 col-no-padding' style='font-size:11px'>";
-								$conversation += "("+$conversations[i].participant+" Participants)";
+								$conversation += "<div class='col-md-12 col-xs-12 col-sm-12 subject_conversation col-no-padding' title='"+$conversations[i].subject+"'>";
+								$conversation += $conversations[i].subject+" ("+$conversations[i].participant+" Participants)";;
 								$conversation += "</div>";
 								$conversation += "</div>";
 								$conversation += "<div class='conversation-submit col-md-4 col-xs-4 col-sm-4 time-conversation col-no-padding text-right'>";

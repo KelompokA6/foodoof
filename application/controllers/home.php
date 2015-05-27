@@ -159,7 +159,7 @@ class Home extends CI_Controller {
 				}
 			}
 			$report->recipe_id = $recipe_id;
-			if(empty($this->input->post("report_other"))){
+			if(!empty($this->input->post("report_other"))){
 				$report->reason = $this->input->post("report_other");
 				if(!$report->skip_validation()->save()){
 					$alert = "<div id='alert-notification' data-status='failed' data-message='Failed Report' class='hidden'></div>";
