@@ -1269,7 +1269,7 @@ $(document).ready(function() {
 				},
 			});
 		}
-		if($("#message-email").find("textarea").val().trim().length == 0){
+		if($("#tinymce").html().trim().length == 0){
 			e.preventDefault();
 			$.notify({
 			// options
