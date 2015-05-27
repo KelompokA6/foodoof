@@ -25,19 +25,19 @@
   color-theme-3: #3498db
 */
 body{
-  font-family: 'Open Sans',Helvetica,Arial,Sans-serif;
+  font-family: 'Myriad Pro',Helvetica,Arial,Sans-serif;
   background-color: #F7F3E8;
   font-size: 16px;
 }
 h1,h2,h3,h4,h5,h6{
   font-weight: bold;
-  font-family: 'Open Sans',Helvetica,Arial,Sans-serif;
+  font-family: 'Myriad Pro',Helvetica,Arial,Sans-serif;
 }
 h4{
   font-size: 21px;
 }
 footer{
-  font-family: 'Roboto';
+  font-family: 'Myriad Pro';
   /*background-color: #D6D6D0;*/
   background-color: #3498db; 
   color:  #fff;
@@ -687,25 +687,25 @@ footer > div > div > div > ul > li > a{
   border: solid 0.15em #FFF;
 }
 .button-secondary{
-  background-color: #e67e22;
-  color: #fff;
+  background-color: #ecf0f1 !important;
+  color: #3498db !important;
 }
 .button-secondary:hover,
 .button-secondary:focus{
-  background-color: #d35400;
-  color: #fff;
+  background-color: #3498db !important;
+  color: #f2f2f2 !important;
 }
 .button-secondary.inverse{
-  background-color: #f2f2f2;
-  color: #e67e22;
+  background-color: #f2f2f2 !important;
+  color: #ecf0f1 !important;
   border: solid 0.15em #f2f2f2;
   max-height: 34px;
 }
 .button-secondary.inverse:hover,
 .button-secondary.inverse:focus{
-  background-color: #FFF;
-  color: #e67e22;
-  border: solid 0.15em #FFF;
+  background-color: #3498db !important;
+  color: #ecf0f1 !important;
+  border: solid 0.15em #3498db !important;
 }
 .nav-bar-btn{
   text-transform: uppercase;
@@ -719,15 +719,15 @@ footer > div > div > div > ul > li > a{
   padding: 10px 5px;
 }
 .button-category{
-  background: #fff;
-  border-color:#f5f5f5;
-  color:#e67e22;
+  background: #3498db !important;
+  border-color:#f5f5f5 !important;
+  color:#ecf0f1 !important;
 }
 .button-category:focus,
 .button-category:hover{
-  background: #fff;
-  border-color:#e67e22;
-  color:#000;
+  background: #3498db !important;
+  border-color:#ecf0f1 !important;
+  color:#000 !important;
 }
 
 
@@ -738,10 +738,10 @@ footer > div > div > div > ul > li > a{
   color:  #3498db !important;
 }
 .icons-secondary{
-  color:  #e67e22 !important;
+  color:  #ecf0f1 !important;
 }
 .icons-default{
-  color:  #e67e22 !important;
+  color:  #ecf0f1 !important;
 }
 .fa-stack-lg{
   position: relative;
@@ -756,7 +756,7 @@ footer > div > div > div > ul > li > a{
 }
 
 .navbar-toggle-foodoof > .icons-default{
-  background-color:  #e67e22 !important;
+  background-color:  #ecf0f1 !important;
 }
 .header-title{
   margin-top:5px;
