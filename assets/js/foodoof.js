@@ -1689,8 +1689,8 @@ $(document).ready(function() {
 		    if($.trim(value) == '') {
 		        return 'This field is required';
 		    }
-		    if($.trim(value) < 0) {
-		        return 'This field is minimum 0';
+		    if($.trim(value) <= 0) {
+		        return 'This field is must greater than 0';
 		    }
 		}
 	});
