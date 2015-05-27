@@ -298,9 +298,7 @@ class Admin extends CI_Controller {
 			$data = array();
 			$data["subject"] = $subject;
 			$data["message"] = $message;
-			if(!$this->_send_email($data, $toall)){
-				$success = false;
-			}
+			$success = $this->_send_email($data, $toall);
 		} else {
 			foreach ($users_email as $email) {
 				$data = array();
@@ -311,13 +309,12 @@ class Admin extends CI_Controller {
 				$user->where("email", $email);
 				$user->get();
 				$data["name"] = $user->name;
-				if(!$this->_send_email($data, $toall)){
-					$success = false;
-				}
+				$success = $this->_send_email($data, $toall);
 			}
 		}
 
-		$send_email_alert = $success ? "<div id='alert-notification' data-message='Send Email Success' data-status='success' class='hidden'></div>" : "<div id='alert-notification' data-message='Send Email Failed' data-status='failed' class='hidden'></div>";;
+		if($success === FALSE) $success = "Send Email Failed";
+		$send_email_alert = $success === TRUE ? "<div id='alert-notification' data-message='Send Email Success' data-status='success' class='hidden'></div>" : "<div id='alert-notification' data-message='$success' data-status='failed' class='hidden'></div>";;
 		$this->session->set_flashdata('alert-admin', $send_email_alert);
 		redirect(base_url()."index.php/admin/".($toall ? 'broadcast' : 'sendemail'));
 	}
@@ -325,6 +322,9 @@ class Admin extends CI_Controller {
 	private function _send_email($profile, $toall = FALSE)
 	{
 		extract($profile);
+		if(strlen(trim($to)) == 0) return "receiver cannot be empty";
+		if(strlen(trim($subject)) == 0) return "subject cannot be empty";
+		if(strlen(trim($message)) == 0) return "message cannot be empty";
 		return $this->_send_smtp_email([
 			"receiver" => @$email,
 			"receiver_name" => @$name,
@@ -349,37 +349,6 @@ class Admin extends CI_Controller {
 			"subject" => $subject,
 			"message" => $message,
 			]));
-		require_once('application/libraries/mailer/PHPMailerAutoload.php');
-		$mail = new PHPMailer();
-		$mail->IsSMTP();                       // telling the class to use SMTP
-		$mail->SMTPDebug = 0;                  // 0 = no output, 1 = errors and messages, 2 = messages only.
-		$mail->SMTPAuth = true;                // enable SMTP authentication 
-		$mail->SMTPSecure = "tls";             // sets the prefix to the servier
-		$mail->Host = "smtp.gmail.com";        // sets Gmail as the SMTP server
-		$mail->Port = 587;                     // set the SMTP port for the GMAIL 
-
-		$mail->Username = "foodoofa6";         // Gmail username
-		$mail->Password = "badakfoodoof";      // Gmail password
-
-		// $mail->CharSet = 'windows-1250';
-		$mail->SetFrom (@$sender, @$sender_name);
-		$mail->Subject = @$subject;
-		$mail->ContentType = 'text/html';
-		$mail->IsHTML(TRUE);
-		$mail->Body = @$message; 
-		// you may also use $mail->Body = file_get_contents('your_mail_template.html');
-
-		if($toall) {
-			foreach ((new User_model())->get() as $user) {
-				$mail->clearAddresses();
-				$mail->AddAddress ($user->email, $user->name);
-				$mail->Send();
-			}
-			return TRUE;
-		}
-		$mail->AddAddress ($receiver, @$receiver_name);
-		// you may also use this format $mail->AddAddress ($recipient);
-		return $mail->Send();
 	}
 	function pageNotFound(){
 		$this->load->library('parser');
