@@ -22,7 +22,7 @@ class Tempfahmi extends CI_Controller {
 		$user = new User_model();
 		$auth = $recipe->authEditRecipe($id);
 		if ($auth){
-			$r = $recipe->getRecipeProfile($id);
+			$r = $recipe->getRecipe($id);
 			$data = array();
 			$this->load->model('home_viewer');
 			$menubar = $this->home_viewer->getMenubar();

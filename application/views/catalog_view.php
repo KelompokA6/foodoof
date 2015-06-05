@@ -64,7 +64,7 @@
 		    </table>
 			<!-- </form> -->
 			<div class="col-md-12 col-sm-12 col-xs-12 text-center">
-	    		<a href="<?php echo base_url('index.php/admin/updateharga');?>" type="submit" class="btn button-primary">Update</a>
+	    		<a href="<?php echo base_url('index.php/admin/updatePrice');?>" type="submit" class="btn button-primary">Update</a>
 	    	</div>
 		</div>
 	</div>

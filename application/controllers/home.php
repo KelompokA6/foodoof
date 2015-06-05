@@ -121,7 +121,7 @@ class Home extends CI_Controller {
 
 	public function addReport($recipe_id){
 		$r = new Recipe_model();
-		$user_id = $r->getRecipeProfile($recipe_id)->author;		
+		$user_id = $r->getRecipe($recipe_id)->author;		
 		$cat_report = $this->input->post("report_category");
 		$report = new Report();
 		$isSuccess = false;

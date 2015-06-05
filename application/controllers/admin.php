@@ -122,7 +122,7 @@ class Admin extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 	}
 
-	public function save(){
+	public function saveHighlight(){
 		$this->load->library('session');
 		if($this->session->userdata('user_id')==''){
 			redirect(base_url()."index.php/home/login", "refresh");
@@ -197,6 +197,9 @@ class Admin extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 	}
 
+	/*
+	 melakukan update catalog pada database
+	 */
 	public function updateCatalogAjax(){
 		$id = $this->input->post("pk");
 		$attr = $this->input->post("name");
@@ -205,15 +208,15 @@ class Admin extends CI_Controller {
 		$catalog->where("id", $id);
 		if($catalog->update($attr, $value)){
 			$data = array(
-				"status"	=>	"success",
-				"message"	=>	"Successfully Edit ".$attr." Catalog With ID ".$id,
-			);	
+					"status"	=>	"success",
+					"message"	=>	"Successfully Edit ".strtoupper($attr),
+			);
 		}
 		else{
 			$data = array(
-				"status"	=>	"failed",
-				"message"	=>	"Failed Edit ".$attr." Catalog With ID ".$id,
-			);	
+					"status"	=>	"failed",
+					"message"	=>	"Failed Edit ".strtoupper($attr),
+			);
 		}
 		echo json_encode($data);
 	}
@@ -362,7 +365,7 @@ class Admin extends CI_Controller {
 	}
 
 
-	public function updateharga() {
+	public function updatePrice() {
   	$now = (new DateTime());
     $m = (int)$now->format("m");
     $y = $now->format("Y");
@@ -432,7 +435,7 @@ class Admin extends CI_Controller {
     redirect(base_url('index.php/admin/catalog'));
   }
 
-  public function banneduser(){
+  public function bannedUser(){
   	$user = new User_model();
   	$ban = $this->input->post("id_reported");
   	$issuccess = true;
@@ -481,4 +484,5 @@ class Admin extends CI_Controller {
 				);
 		$this->parser->parse('template_content', $data);
 	}
+	
 }

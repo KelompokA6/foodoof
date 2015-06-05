@@ -101,7 +101,7 @@ class Tempview extends CI_Controller {
 
 	public function getR(){
 		$recipe = new Recipe_model();
-		$t = $recipe->getRecipeProfile(1)->name;
+		$t = $recipe->getRecipe(1)->name;
 		print_r($t);
 	}
 	public function delete($id){

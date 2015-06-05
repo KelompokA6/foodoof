@@ -254,7 +254,7 @@ class User extends CI_Controller {
 		return TRUE;
 	}
 
-	public function forgotpassword(){ //dari sequence lupa password, buat minta password nya dr userManager
+	public function forgotPassword(){ //dari sequence lupa password, buat minta password nya dr userManager
 		$data['forget_password_alert'] = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$email = $this->input->post('email_user');
@@ -338,7 +338,7 @@ class User extends CI_Controller {
 		return $mail->Send();
 	}
 
-	public function setonline()
+	public function setOnline()
 	{
 		$id = $this->session->userdata('user_id');
 		if($id <= 0) die('not logged in');
@@ -350,7 +350,7 @@ class User extends CI_Controller {
 			echo "failed to set $id to be online -_-";
 	}
 
-	public function getonline()
+	public function getOnline()
 	{
 		$user_id = $this->session->userdata('user_id');
     $u = new User_model();
@@ -513,7 +513,7 @@ class User extends CI_Controller {
 		}else redirect(base_url('index.php/home/login'));
 	}
 	
-	public function createconversation()
+	public function createConversation()
 	{
 		$id = $this->user_model->wajiblogin();
 		if($id)
@@ -584,7 +584,7 @@ class User extends CI_Controller {
 			$this->parser->parse('template_content', $data);
 		}else redirect(base_url('index.php/home/login'));
 	}
-	public function addconversation(){
+	public function addConversation(){
 		$users = explode(",", $this->input->post("users"));
 		$subject = $this->input->post("subject");
 		$message = $this->input->post("message");
@@ -635,7 +635,7 @@ class User extends CI_Controller {
 		$this->session->set_flashdata('alert-notification', $alert);
 		redirect(base_url()."index.php/user/message");
 	}
-	public function addmessage($conversation_id){
+	public function addMessage($conversation_id){
 		$message = $this->input->post("message");
 		$messages = new Message();
 		if($messages->addMessage($conversation_id, $message, $this->session->userdata("user_id"))){
@@ -658,5 +658,273 @@ class User extends CI_Controller {
 				);
 		// $data = array_map("htmlspecialchars", $data);
 		$this->parser->parse('template_content', $data);
+	}
+	public function uploadProfileUser($id){
+		$config['upload_path'] = './images/tmp/user';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '5120';
+		$config['overwrite'] = TRUE;
+		$config['file_name'] = $id.".jpg";
+		$this->upload->initialize($config);
+		if(empty($id)){
+			if(!empty($this->input->get("id"))){
+				$id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$id = $this->input->post("id");
+			}
+		}
+		if($this->session->userdata('user_id')!='' && !empty($id)){
+			if($this->upload->do_upload('photo-user')){
+				$configImage['source_image'] = './images/tmp/user/'.$id.'.jpg';
+				$configImage['create_thumb'] = TRUE;
+				$configImage['maintain_ratio'] = TRUE;
+				$configImage['width']	= 360;
+				$configImage['height']	= 360;
+				$configImage['image_library'] = 'gd2';
+				$this->load->library('image_lib', $configImage);
+				if ($this->image_lib->resize())
+				{
+					unlink('./images/tmp/user/'.$id.'.jpg');
+					rename ( './images/tmp/user/'.$id.'_thumb.jpg', './images/tmp/user/'.$id.'.jpg');
+					$p1 = "<img src='".base_url()."images/tmp/user/".$id.".jpg' class='file-preview-image'>";
+					$p2 = ['caption' => "user-".$id , 'width' => '120px', 'url' => base_url()."images/tmp/user/".$id.".jpg"];
+					$result = array(
+							"status" => 1,
+							"message" => "Upload success",
+							'initialPreview' => $p1,
+							'initialPreviewConfig' => $p2,
+							'append' => false
+					);
+				}
+				else{
+					$result = array(
+							"status" => 0,
+							"message" => "Web server error",
+					);
+				}
+			}
+			else{
+				$result = array(
+						"status" => 0,
+						"message" => "Upload failed",
+				);
+			}
+		}
+		else{
+			$result = array(
+					"status" => 0,
+					"message" => "Please login first",
+			);
+		}
+		echo json_encode($result);
+	}
+	
+	/*
+	 memperoleh semua daftar user
+	 */
+	public function getAllUsers($flag_email=false){
+		$users = new User_model();
+		$users->where('id !=', $this->session->userdata("user_id"))->get();
+		$listUser = array();
+		foreach ($users as $user) {
+			if($flag_email){
+				$data = array(
+						"value" =>$user->email,
+						"text" => ucfirst($user->name)." (".$user->email.")",
+				);
+			}
+			else{
+				$data = array(
+						"value" =>$user->id,
+						"text" => ucfirst($user->name)." (".$user->email.")",
+				);
+			}
+			array_push($listUser, $data);
+		}
+		echo json_encode($listUser, JSON_PRETTY_PRINT);
+	}
+	/*
+	 untuk melakukan pembersihan data sampah baik resep maupun foto
+	 */
+	public function schedulercleantmp(){
+		date_default_timezone_set ('Asia/Jakarta');
+		$now = date("Y-m-d H:i:s");
+		$now = new DateTime($now);
+		$filesuser = scandir("./images/tmp/user");
+		$filesstep = scandir("./images/tmp/step");
+		$filesrecipe = scandir("./images/tmp/recipe");
+		for ($i=2; $i < sizeof($filesuser) ; $i++) {
+			if($filesuser[$i]!=="index.html"){
+				$filetime = date("Y-m-d H:i:s", filemtime("./images/tmp/user/".$filesuser[$i]));
+				$filetime = new DateTime($filetime);
+				$diff = date_diff($filetime, $now);
+				$diff = $diff->format("%a");
+				if($diff>2){
+					unlink("./images/tmp/user/".$filesuser[$i]);
+				}
+			}
+		}
+		for ($i=2; $i < sizeof($filesstep) ; $i++) {
+			if($filesstep[$i]!=="index.html"){
+				$filetime = date("Y-m-d H:i:s", filemtime("./images/tmp/step/".$filesstep[$i]));
+				$filetime = new DateTime($filetime);
+				$diff = date_diff($filetime, $now);
+				$diff = $diff->format("%a");
+				if($diff>2){
+					unlink("./images/tmp/step/".$filesstep[$i]);
+				}
+			}
+		}
+		for ($i=2; $i < sizeof($filesrecipe) ; $i++) {
+			if($filesrecipe[$i]!=="index.html"){
+				$filetime = date("Y-m-d H:i:s", filemtime("./images/tmp/recipe/".$filesrecipe[$i]));
+				$filetime = new DateTime($filetime);
+				$diff = date_diff($filetime, $now);
+				$diff = $diff->format("%a");
+				if($diff>2){
+					unlink("./images/tmp/recipe/".$filesrecipe[$i]);
+				}
+			}
+		}
+		$recipe = new Recipe_model();
+		$recipe->where('tmp_status', '1')->get();
+		foreach ($recipe as $rcp) {
+			$recipetime = date("Y-m-d H:i:s", strtotime($rcp->create_date));
+			$recipetime = new DateTime($recipetime);
+			$diff = date_diff($recipetime, $now);
+			$diff = $diff->format("%a");
+			if($diff>2){
+				$rcptmp = new Recipe_model();
+				$rcptmp->where('id',$rcp->id)->get()->delete();
+			}
+		}
+	}
+	
+	/*
+	 memperoleh pesan yang belum terbaca pada sebuah conversation
+	 */
+	public function checkConversation($conversation_id=null, $flag_read=false){
+		$user_id = $this->session->userdata("user_id");
+		if(!empty($conversation_id) && !empty($user_id)){
+			$u = new User_model();
+			$conversations = new Conversation();
+			$unread = $conversations->getCountUnreadMessage($conversation_id, $user_id);
+			$listMessage = array();
+			if(!empty($unread)){
+				$listMessage = $conversations->getAllMessages($conversation_id, $user_id, $flag_read, $unread);
+				foreach ($listMessage as $message) {
+					$user_photo = $u->getProfile($message->sender_id)->photo;
+					$member = $conversations->getMembers($conversation_id, $user_id);
+					if(sizeof($member)==1){
+						$user_photo = $u->getProfile($member)->photo;
+					}
+					$message->user_name = $u->getProfile($message->sender_id)->name;
+					$message->user_photo = $user_photo;
+					$message->sender_id = ($message->sender_id);
+				}
+			}
+			if($flag_read){
+				$unread = 0;
+			}
+			$data = array(
+					"status" =>"success",
+					"countunread" => $unread,
+					"messages" => $listMessage,
+			);
+		}
+		else{
+			$data = array(
+					"status" =>"failed",
+			);
+		}
+		echo json_encode($data, JSON_PRETTY_PRINT);
+	}
+	/*
+	 memperoleh jumlah message yang belum terbaca
+	 */
+	public function checkAllConversation($conversation_id = -1){
+		$user_id = $this->session->userdata("user_id");
+		if(!empty($user_id)){
+			$conversation = new Conversation();
+			$u = new User_model();
+			$listConversation = $u->getAllConversationUser($this->session->userdata('user_id'));
+			$countUnreadMessage = 0;
+			foreach ($listConversation as $conversations) {
+				if($conversation_id!=$conversations->id){
+					$countUnreadMessage += $conversation->getCountUnreadMessage($conversations->id, $this->session->userdata('user_id'));
+				}
+			}
+			$data = array(
+					"status" =>"success",
+					"countunread" => $countUnreadMessage,);
+		}
+		else{
+			$data = array(
+					"status" =>"failed",
+			);
+		}
+		echo json_encode($data, JSON_PRETTY_PRINT);
+	}
+	/*
+	 melakukan pemeriksaan bila ada conversation baru
+	 */
+	public function checkNewConversation(){
+		date_default_timezone_set("Asia/Jakarta");
+		$user_id = $this->session->userdata("user_id");
+		if(!empty($user_id)){
+			$conversations = new Conversation();
+			$conversations->where("user_id", $user_id);
+			$conversations->where("submit >=", (new DateTime())->modify("-3 second")->format("Y-m-d H:i:s"));
+			$conversations->order_by("submit", "desc");
+			$conversations->get();
+			$dataconversation = array();
+			$u = new User_model();
+			foreach ($conversations as $conversation) {
+				$tmp = new stdClass();
+				$tmp->conversation_id = $conversation->id;
+				$tmp->submit = $conversation->submit;
+				$msg = $conversations->getAllMessages($conversation->id, $user_id)[0];
+				$tmp->last_message = $msg->description;
+				$subject = $conversation->subject;
+				$user_photo = $u->getProfile($msg->sender_id)->photo;
+				$members = $conversations->getMembers($conversation->id, $user_id);
+				if(empty($subject)){
+					$x = 0;
+					foreach ($members as $member) {
+						if($x==(sizeof($members)-1)){
+							$subject .= $u->getProfile($member)->name;
+						}
+						else if($x<2){
+							$subject .= $u->getProfile($member)->name.", ";
+						}
+						$x++;
+					}
+					if(sizeof($members)>2){
+						$subject .= "and ".(sizeof($members)-2)." others";
+					}
+				}
+				if(sizeof($members==1)){
+					$user_photo = $u->getProfile($members[0])->photo;
+				}
+				$tmp->subject = $subject;
+				$tmp->participant = sizeof($members)+1;
+				$tmp->user_photo = $user_photo;
+				$tmp->count_unread = $conversations->getCountUnreadMessage($conversation->id, $user_id);
+				array_push($dataconversation, $tmp);
+			}
+			$data = array(
+					"status" =>"success",
+					"countconversation" => sizeof($dataconversation),
+					"conversations" => $dataconversation,
+			);
+		}
+		else{
+			$data = array(
+					"status" =>"failed",
+					"message" =>"please login first",
+			);
+		}
+		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
 }

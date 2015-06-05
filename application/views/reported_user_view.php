@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="<?php echo base_url();?>index.php/admin/banneduser" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="<?php echo base_url();?>index.php/admin/bannedUser" method="post" enctype="multipart/form-data">
 	<div class="col-md-12 col-xs-12 col-no-padding">
 		<div class="panel panel-default">
 			<div class="panel-body">
@@ -69,7 +69,7 @@
 			    <?php } ?>
 			    <?php if(!empty($reported_user_entries)){?>
 				    <div class="col-md-12 col-xs-12 col-sm-12 border-solid-top text-center" style="padding-top:20px">
-				    	<button type="submit" class="btn button-primary btn-lg">Save</button>
+				    	<button type="submit" class="btn button-primary btn-lg">Banned</button>
 				    </div>
 			    <?php }?>
 			</div>
