@@ -7,7 +7,7 @@ $(document).ready(function() {
 	$hasChanged = false;
 	$baseurl = "http://localhost/foodoof/index.php";
 	$baseurlnoConflict = "http://localhost/foodoof/";
-	$.get( $baseurl+"/processAjax/schedulercleantmp", function( data ) {
+	$.get( $baseurl+"/user/schedulercleantmp", function( data ) {
 	},"json");
 	/*
 	script for init fileinput of user's photo
@@ -20,7 +20,7 @@ $(document).ready(function() {
 		showCaption: false,
 		showRemove: false,
 		showUpload: false,
-		uploadUrl: $baseurl+"/processAjax/uploadProfileUser/"+$("#photo-profile").data("id"), // server upload action
+		uploadUrl: $baseurl+"/user/uploadProfileUser/"+$("#photo-profile").data("id"), // server upload action
 		uploadAsync: false,
 		previewTemplates: {
 	    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -78,7 +78,7 @@ $(document).ready(function() {
 		showRemove: false,
 		showUpload: false,
 		maxFileCount: 1,
-		uploadUrl: $baseurl+"/processAjax/uploadProfileRecipe/"+$recipeId, // server upload action
+		uploadUrl: $baseurl+"/recipe/uploadProfileRecipe/"+$recipeId, // server upload action
 		uploadAsync: false,
 		previewTemplates: {
 	    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -140,7 +140,7 @@ $(document).ready(function() {
 			showCaption: false,
 			showRemove: false,
 			showUpload: false,
-			uploadUrl: $baseurl+"/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
+			uploadUrl: $baseurl+"/recipe/uploadStepsRecipe/"+$recipeId+"/", // server upload action
 			uploadAsync: false,	
 			previewTemplates: {
 		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -231,7 +231,7 @@ $(document).ready(function() {
 			showCaption: false,
 			showRemove: false,
 			showUpload: false,
-			uploadUrl: $baseurl+"/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
+			uploadUrl: $baseurl+"/recipe/uploadStepsRecipe/"+$recipeId+"/", // server upload action
 			uploadAsync: false,	
 			previewTemplates: {
 		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -453,7 +453,7 @@ $(document).ready(function() {
 	$colAddRemoveBtnStep = $("#add-and-remove-btn-step").clone();
 	$(document).on('click',"#add-step",function(){
 		$countStep++;
-		$.get($baseurl+"/processAjax/addStepImage/"+$recipeId+"/"+$countStep, function( data ) {
+		$.get($baseurl+"/recipe/addStepImage/"+$recipeId+"/"+$countStep, function( data ) {
 			if(data.status == '1'){
 		  		/*console.log(data.message);  */		
 		  	}
@@ -479,7 +479,7 @@ $(document).ready(function() {
 			showCaption: false,
 			showRemove: false,
 			showUpload: false,
-			uploadUrl: $baseurl+"/processAjax/uploadStepsRecipe/"+$recipeId+"/", // server upload action
+			uploadUrl: $baseurl+"/recipe/uploadStepsRecipe/"+$recipeId+"/", // server upload action
 			uploadAsync: false,	
 			previewTemplates: {
 		    	image: "<div class='file-preview-frame' id='{previewId}' data-fileindex='{fileindex}'>\n" +
@@ -536,7 +536,7 @@ $(document).ready(function() {
 		$("#add-and-remove-btn-step").remove();
 		$(".step-item:last").remove();
 		$("#step-entry").append($colAddRemoveBtnStep);
-		$.get($baseurl+"/processAjax/removeStepImage/"+$recipeId+"/"+$countStep, function( data ) {
+		$.get($baseurl+"/recipe/removeStepImage/"+$recipeId+"/"+$countStep, function( data ) {
 			if(data.status == '1'){
 		  		/*console.log(data.message); */ 		
 		  	}
@@ -560,7 +560,7 @@ $(document).ready(function() {
 	$(document).on("click", ".rating-container", function(){
 		$valueRating = $("#rating-recipe").val();
 		$recipeIdView = $("#rating-recipe").data("recipeid");
-		$.get( $baseurl+"/processAjax/setRating/"+$recipeIdView+"/"+$valueRating, function( data ) {
+		$.get( $baseurl+"/recipe/setRating/"+$recipeIdView+"/"+$valueRating, function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
@@ -589,7 +589,7 @@ $(document).ready(function() {
 	*/
 	$statusFav = false;
 	$(document).on("click", "#add-favorite", function(){
-		$.get( $baseurl+"/processAjax/setFavorite/"+$(this).data("recipeid"), function( data ) {
+		$.get( $baseurl+"/user/setFavorite/"+$(this).data("recipeid"), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
@@ -636,7 +636,7 @@ $(document).ready(function() {
 		},"json");
 	});
 	if($("#add-favorite").length > 0){
-		$.get( $baseurl+"/processAjax/checkFavorite/"+$("#add-favorite").data("recipeid"), function( data ) {
+		$.get( $baseurl+"/user/checkFavorite/"+$("#add-favorite").data("recipeid"), function( data ) {
 		  	if(data.statusFav == '1'){
 		  		$("#add-favorite").find("a > i").removeClass("fa-plus");
 		  		$("#add-favorite").find("a > i").addClass("fa-minus");
@@ -654,7 +654,7 @@ $(document).ready(function() {
 		if(!$lockRemoveFav){
 			$lockRemoveFav = true;
 			$favoriteEntryRemove = $(this);
-			$.get( $baseurl+"/processAjax/setFavorite/"+$(this).data("recipeid"), function( data ) {
+			$.get( $baseurl+"/user/setFavorite/"+$(this).data("recipeid"), function( data ) {
 			  	if(data.status == '1'){
 			  		$.notify({
 						// options
@@ -702,7 +702,7 @@ $(document).ready(function() {
 	*/
 	$statusCL = false;
 	$(document).on("click", "#add-cook-later", function(){
-		$.get( $baseurl+"/processAjax/setCookLater/"+$(this).data("recipeid"), function( data ) {
+		$.get( $baseurl+"/user/setCookLater/"+$(this).data("recipeid"), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
@@ -749,7 +749,7 @@ $(document).ready(function() {
 		},"json");
 	});
 	if($("#add-cook-later").length > 0){
-		$.get( $baseurl+"/processAjax/checkCL/"+$("#add-cook-later").data("recipeid"), function( data ) {
+		$.get( $baseurl+"/user/checkCL/"+$("#add-cook-later").data("recipeid"), function( data ) {
 		  	if(data.statusCL == '1'){
 		  		$("#add-cook-later").find("a > i").removeClass("fa-plus");
 		  		$("#add-cook-later").find("a > i").addClass("fa-minus");
@@ -767,7 +767,7 @@ $(document).ready(function() {
 		if(!$lockRemoveCL){
 			$lockRemoveCL = true;
 			$CLEntryRemove = $(this);
-			$.get( $baseurl+"/processAjax/setCookLater/"+$(this).data("recipeid"), function( data ) {
+			$.get( $baseurl+"/user/setCookLater/"+$(this).data("recipeid"), function( data ) {
 			  	if(data.status == '1'){
 			  		$.notify({
 						// options
@@ -814,7 +814,7 @@ $(document).ready(function() {
 	*/
 	$(document).on("change", ".checkedPublish", function(){
 		var check = $(this).prop('checked');
-		$.get( $baseurl+"/processAjax/setPublish/"+$(this).val(), function( data ) {
+		$.get( $baseurl+"/recipe/setPublish/"+$(this).val(), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
@@ -859,7 +859,7 @@ $(document).ready(function() {
 	$(document).on("change", ".checked-cook-later", function(){
 		$moveCooklater = $(this).parent().parent().parent().parent().parent();
 		$cooklaterclone = $moveCooklater.clone();
-		$.get($baseurl+"/processAjax/setFinished/"+$(this).val(), function( data ) {
+		$.get($baseurl+"/user/setFinished/"+$(this).val(), function( data ) {
 		  	if(data.status == '1'){
 		  		$.notify({
 					// options
@@ -1526,7 +1526,7 @@ $(document).ready(function() {
     }
 	function initTypeahead(classname){
 		if(classname=="search-ingredient"){
-			$.get($baseurl+'/processAjax/getAllIngredient', function(data){
+			$.get($baseurl+'/recipe/getAllIngredient', function(data){
 			    $("."+classname).typeahead({
 				source: data,
 		        items: 4,
@@ -1557,7 +1557,7 @@ $(document).ready(function() {
 	/*
 		init tag input
 	*/
-	$.get($baseurl+'/processAjax/getAllUsers', function(data){
+	$.get($baseurl+'/user/getAllUsers', function(data){
 		$("#users-conversation").tagsinput({
 		  	itemValue: 'value',
 		  	itemText: 'text',
@@ -1567,7 +1567,7 @@ $(document).ready(function() {
 		  	freeInput: false,
 		});
 	},"json");
-	$.get($baseurl+'/processAjax/getAllUsers/true', function(data){
+	$.get($baseurl+'/user/getAllUsers/true', function(data){
 		$("#users-email").tagsinput({
 		  	itemValue: 'value',
 		  	itemText: 'text',
@@ -1597,7 +1597,7 @@ $(document).ready(function() {
 	$("#catalog-table").on( 'draw.dt', function () {
 		$('.edit').editable({
 		    mode: "inline",
-		    url: $baseurl+"/processAjax/updateCatalogAjax",
+		    url: $baseurl+"/recipe/updateCatalogAjax",
 		    success: function(response, newValue) {
 		    	response = $.parseJSON(response);
 			    if(response.status==="success"){
@@ -1647,7 +1647,7 @@ $(document).ready(function() {
 	});
 	$('.edit').editable({
 	    mode: "inline",
-	    url: $baseurl+"/processAjax/updateCatalogAjax",
+	    url: $baseurl+"/recipe/updateCatalogAjax",
 	    success: function(response, newValue) {
 	    	response = $.parseJSON(response);
 		    if(response.status==="success"){
@@ -1720,7 +1720,7 @@ $(document).ready(function() {
 	$(document).on("click","#generate-price", function(e){
 		$("#panel-price").slideToggle("slow");
 		if($(this).data("status")==0){
-			$.get($baseurl+"/processAjax/generatePrice/"+$(this).data("recipeid"), function( data ) {
+			$.get($baseurl+"/recipe/generatePrice/"+$(this).data("recipeid"), function( data ) {
 				if(data.status == '1'){
 					if(data.price>0){
 						$("#panel-price").html("Rp. "+data.pricestr+";-");	
@@ -1831,7 +1831,7 @@ $(document).ready(function() {
 	function checkConversation(){
 		if($("#conversation-summary").length > 0){
 			$idconversation = $("#conversation-summary").data("idconversation");
-			$.get($baseurl+"/processAjax/checkConversation/"+$idconversation+"/true", function(data){
+			$.get($baseurl+"/user/checkConversation/"+$idconversation+"/true", function(data){
 				if(data.status="success"){
 					if(data.messages.length > 0){
 						$messages = data.messages;
@@ -1846,7 +1846,7 @@ $(document).ready(function() {
 		}
 	}
 	function checkUnreadAllConversation(){
-		$.get($baseurl+"/processAjax/checkAllConversation/", function(data){
+		$.get($baseurl+"/user/checkAllConversation/", function(data){
 			if(data.status=="success"){
 				if(data.countunread > 0){
 					$("#icon-message").iosbadge({ theme: 'ios', size: 22, content: data.countunread});
@@ -1863,7 +1863,7 @@ $(document).ready(function() {
 	}
 	function checkNewConversation(){
 		if($("ul.conversation-list-group").length > 0){
-			$.get($baseurl+"/processAjax/checknewconversation", function(data){
+			$.get($baseurl+"/user/checknewconversation", function(data){
 				if(data.status="success"){
 					if(data.countconversation > 0){
 						$conversations = data.conversations;

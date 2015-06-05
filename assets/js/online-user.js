@@ -4,7 +4,7 @@ $(function() {
 
   sample = $('#sample-online-user');
   function getonline(){
-    $.get(branch+"/index.php/user/getonline", function(response){
+    $.get(branch+"/index.php/user/getOnline", function(response){
       response = eval(response);
       $('#online-panel').empty();
       $('#online-count-1').html(response.length+" Users Online");
@@ -26,7 +26,7 @@ $(function() {
   {
     // update ke database, last_access-nya, loop
     function setonline(){
-      $.get(branch+"/index.php/user/setonline", function(response){
+      $.get(branch+"/index.php/user/setOnline", function(response){
         if(response == "not logged in") window.location.reload();
         else console.log(response);
       });

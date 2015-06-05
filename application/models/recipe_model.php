@@ -1062,83 +1062,7 @@ class Recipe_model extends DataMapper {
         $recipe->clear();
         return $recipe->where('id', $recipe_id)->update('views', $countViews);
     }
-
-    /*
-        Digunakan untuk menyimpan recipe to favorite list, bila sudah ada maka akan dihapus dari list
-    */
-    function addFavorite($user_id=null, $recipe_id=null){
-        if(empty($recipe_id)){
-            $recipe_id = $this->id;
-        }
-        if(!empty($recipe_id) && !empty($user_id)){
-            $favorite = new Favorite();
-            $favorite->recipe_id = $recipe_id;
-            $favorite->user_id = $user_id;
-            $favoritetmp = new Favorite();
-            $favoritetmp->where('recipe_id', $recipe_id);
-            $favoritetmp->where('user_id', $user_id);
-            if($favoritetmp->count() > 0){
-                if($this->db->delete('favorites', array('recipe_id' => $recipe_id, 'user_id' => $user_id ))){
-                    $result['status'] = true;
-                    $result['action'] = "delete";
-                    return $result;
-                }
-                else{
-                    return false;
-                } 
-            }
-            else{
-                if($favorite->skip_validation()->save()){
-                    $result['status'] = true;
-                    $result['action'] = "add";
-                    return $result;
-                }
-                else{
-                    return false;
-                }
-            }
-        }
-        return false;
-    }
-
-    /*
-        Digunakan untuk menyimpan recipe to cook later list, bila sudah ada maka akan dihapus dari list
-    */
-    function addCookLater($user_id=null, $recipe_id=null){
-        if(empty($recipe_id)){
-            $recipe_id = $this->id;
-        }
-        if(!empty($recipe_id) && !empty($user_id)){
-            $CL = new Cooklater();
-            $CL->recipe_id = $recipe_id;
-            $CL->user_id = $user_id;
-            $CLtmp = new Cooklater();
-            $CLtmp->where('recipe_id', $recipe_id);
-            $CLtmp->where('user_id', $user_id);
-            if($CLtmp->count() > 0){
-                if($this->db->delete('cooklater', array('recipe_id' => $recipe_id, 'user_id' => $user_id ))){
-                    $result['status'] = true;
-                    $result['action'] = "delete";
-                    return $result;
-                }
-                else{
-                    return false;
-                } 
-            }
-            else{
-                if($CL->skip_validation()->save()){
-                    $result['status'] = true;
-                    $result['action'] = "add";
-                    return $result;
-                }
-                else{
-                    return false;
-                }
-            }
-        }
-        return false;
-    }
-    
+  
     /*
         Digunakan untuk mengubah status publish dari sebuah resep. nilai kembalian merupakan boolean berhasil mengubah status.
     */
@@ -1266,27 +1190,7 @@ class Recipe_model extends DataMapper {
         }
         return -1;
     }
-
-    /*
-        mengembalikan list recipe-recipe yang dilaporkan berdasarkan id user
-    */
-    function getListReportByRecipeId($recipe_id=null){
-        if(empty($recipe_id)){
-            $recipe_id = $this->id;
-        }
-        if(!empty($recipe_id)){
-            $report = new Report();
-            $report->get_by_recipe_id($recipe_id);
-            $list_reported_recipe = array();
-            foreach ($report as $reports) {
-                $data = new stdClass();
-                $data->user_id = $reports->user_id;
-                array_push($list_reported_recipe, $data);
-            }
-            return $list_reported_recipe;
-        }
-        return array();
-    }
+   
     /*
         mengembalikan detil report dari sebuah recipe
     */

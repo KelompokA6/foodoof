@@ -40,6 +40,10 @@
 
 $route['default_controller'] = "home";
 $route['404_override'] = '';
+/*$route['recipe/(:any)'] ='recipeController/$1';
+$route['user/(:any)'] ='userController/$1';
+$route['admin/(:any)'] ='adminController/$1';
+$route['(:any)'] ='homeContoller/$1';*/
 
 
 /* End of file routes.php */
