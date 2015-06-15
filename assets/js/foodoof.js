@@ -590,7 +590,7 @@ $(document).ready(function() {
 	$statusFav = false;
 	$(document).on("click", "#add-favorite", function(){
 		var chooseOK = true;
-		if(statusFav){
+		if($statusFav){
 			var r = confirm("Are you sure to remove this recipe from your favorite?");
 			if (r == false) {
 				chooseOK = false;
@@ -715,7 +715,7 @@ $(document).ready(function() {
 	$statusCL = false;
 	$(document).on("click", "#add-cook-later", function(){
 		var chooseOK = true;
-		if(statusFav){
+		if($statusCL){
 			var r = confirm("Are you sure to remove this recipe from your cook later?");
 			if (r == false) {
 				chooseOK = false;
