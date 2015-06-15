@@ -656,6 +656,9 @@ class Recipe extends CI_Controller {
 		echo json_encode($result);
 	}
 	
+	/*
+		digunakan untuk membuat resep publish ataupun tidak 
+	*/
 	public function setPublish($recipe_id=null){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){
@@ -707,6 +710,9 @@ class Recipe extends CI_Controller {
 		echo json_encode($result);
 	}
 	
+	/*
+		digunakan untuk memberikan rating terhadap sebuah resep 
+	*/
 	public function setRating($recipe_id=null, $value = 0){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){
