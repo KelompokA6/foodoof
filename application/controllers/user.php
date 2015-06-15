@@ -1064,4 +1064,38 @@ class User extends CI_Controller {
 		}
 		echo json_encode($result);
 	}
+
+	public function setFinished($recipe_id=null){
+		if(empty($recipe_id)){
+			if(!empty($this->input->get("id"))){
+				$recipe_id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$recipe_id = $this->input->post("id");
+			}
+		}
+		$user_id = $this->session->userdata('user_id');
+		if(!empty($user_id) && !empty($recipe_id)){
+			$c = new Cooklater();
+			if($c->setFinishedCookLater($user_id, $recipe_id, '1')){
+				$result = array(
+						"status" => 1,
+						"message" => "<div class='text-center'>Your recipe has been moved to finished recipe.</div>",
+				);
+			}
+			else{
+				$result = array(
+						"status" => 0,
+						"message" => "<div class='text-center'>Failed To Unpublished Your Recipe.</div>",
+				);
+			}
+		}
+		else{
+			$result = array(
+					"status" => 0,
+					"message" => "<div class='text-center'>Please Login First</div>",
+			);
+		}
+		echo json_encode($result);
+	}
 }

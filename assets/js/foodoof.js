@@ -589,71 +589,14 @@ $(document).ready(function() {
 	*/
 	$statusFav = false;
 	$(document).on("click", "#add-favorite", function(){
-		$.get( $baseurl+"/user/setFavorite/"+$(this).data("recipeid"), function( data ) {
-		  	if(data.status == '1'){
-		  		$.notify({
-					// options
-					message: data.message
-				},{
-					// settings
-					mouse_over:'pause',
-					newest_on_top: true,
-					allow_dismiss: false,
-					type: 'success',
-					delay: 1500,
-					placement: {
-						from: 'top',
-						align: 'center'
-					},
-				});
-				if(!$statusFav){
-					$("#add-favorite").find("a > i").removeClass("fa-plus");
-		  			$("#add-favorite").find("a > i").addClass("fa-minus");	
-				}
-				else{
-					$("#add-favorite").find("a > i").removeClass("fa-minus");
-		  			$("#add-favorite").find("a > i").addClass("fa-plus");
-				}
-				$statusFav = !$statusFav;	
-		  	}
-		  	else{
-		  		$.notify({
-					// options
-					message: data.message 
-				},{
-					// settings
-					mouse_over:'pause',
-					newest_on_top: true,
-					allow_dismiss: false,
-					type: 'warning',
-					delay: 1500,
-					placement: {
-						from: 'top',
-						align: 'center'
-					},
-				});  	
-		  	}
-		},"json");
-	});
-	if($("#add-favorite").length > 0){
-		$.get( $baseurl+"/user/checkFavorite/"+$("#add-favorite").data("recipeid"), function( data ) {
-		  	if(data.statusFav == '1'){
-		  		$("#add-favorite").find("a > i").removeClass("fa-plus");
-		  		$("#add-favorite").find("a > i").addClass("fa-minus");
-		  		$statusFav = true;
-		  	}
-		  	else if(data.statusFav == '0'){
-		  		$("#add-favorite").find("a > i").removeClass("fa-minus");
-		  		$("#add-favorite").find("a > i").addClass("fa-plus");
-		  		$statusFav = false;
-		  	}
-		},"json");
-	}
-	$lockRemoveFav = false;
-	$(document).on("click", ".remove-favorite", function(){
-		if(!$lockRemoveFav){
-			$lockRemoveFav = true;
-			$favoriteEntryRemove = $(this);
+		var chooseOK = true;
+		if(statusFav){
+			var r = confirm("Are you sure to remove this recipe from your favorite?");
+			if (r == false) {
+				chooseOK = false;
+			}
+		}
+		if(chooseOK){
 			$.get( $baseurl+"/user/setFavorite/"+$(this).data("recipeid"), function( data ) {
 			  	if(data.status == '1'){
 			  		$.notify({
@@ -671,9 +614,15 @@ $(document).ready(function() {
 							align: 'center'
 						},
 					});
-					$favoriteEntryRemove.parent().parent().parent().slideToggle(function(){
-						$lockRemoveFav = false;
-					});  		
+					if(!$statusFav){
+						$("#add-favorite").find("a > i").removeClass("fa-plus");
+			  			$("#add-favorite").find("a > i").addClass("fa-minus");	
+					}
+					else{
+						$("#add-favorite").find("a > i").removeClass("fa-minus");
+			  			$("#add-favorite").find("a > i").addClass("fa-plus");
+					}
+					$statusFav = !$statusFav;	
 			  	}
 			  	else{
 			  		$.notify({
@@ -690,10 +639,73 @@ $(document).ready(function() {
 							from: 'top',
 							align: 'center'
 						},
-					});
-					$lockRemoveFav = false;  	
+					});  	
 			  	}
 			},"json");
+		}
+	});
+	if($("#add-favorite").length > 0){
+		$.get( $baseurl+"/user/checkFavorite/"+$("#add-favorite").data("recipeid"), function( data ) {
+		  	if(data.statusFav == '1'){
+		  		$("#add-favorite").find("a > i").removeClass("fa-plus");
+		  		$("#add-favorite").find("a > i").addClass("fa-minus");
+		  		$statusFav = true;
+		  	}
+		  	else if(data.statusFav == '0'){
+		  		$("#add-favorite").find("a > i").removeClass("fa-minus");
+		  		$("#add-favorite").find("a > i").addClass("fa-plus");
+		  		$statusFav = false;
+		  	}
+		},"json");
+	}
+	$lockRemoveFav = false;
+	$(document).on("click", ".remove-favorite", function(){
+		var r = confirm("Are you sure to remove this recipe from your favorite?");
+		if (r == true) {
+			if(!$lockRemoveFav){
+				$lockRemoveFav = true;
+				$favoriteEntryRemove = $(this);
+				$.get( $baseurl+"/user/setFavorite/"+$(this).data("recipeid"), function( data ) {
+				  	if(data.status == '1'){
+				  		$.notify({
+							// options
+							message: data.message
+						},{
+							// settings
+							mouse_over:'pause',
+							newest_on_top: true,
+							allow_dismiss: false,
+							type: 'success',
+							delay: 1500,
+							placement: {
+								from: 'top',
+								align: 'center'
+							},
+						});
+						$favoriteEntryRemove.parent().parent().parent().slideToggle(function(){
+							$lockRemoveFav = false;
+						});  		
+				  	}
+				  	else{
+				  		$.notify({
+							// options
+							message: data.message 
+						},{
+							// settings
+							mouse_over:'pause',
+							newest_on_top: true,
+							allow_dismiss: false,
+							type: 'warning',
+							delay: 1500,
+							placement: {
+								from: 'top',
+								align: 'center'
+							},
+						});
+						$lockRemoveFav = false;  	
+				  	}
+				},"json");
+			}
 		}
 	});
 	
@@ -702,51 +714,60 @@ $(document).ready(function() {
 	*/
 	$statusCL = false;
 	$(document).on("click", "#add-cook-later", function(){
-		$.get( $baseurl+"/user/setCookLater/"+$(this).data("recipeid"), function( data ) {
-		  	if(data.status == '1'){
-		  		$.notify({
-					// options
-					message: data.message 
-				},{
-					// settings
-					mouse_over:'pause',
-					newest_on_top: true,
-					allow_dismiss: false,
-					type: 'success',
-					delay: 1500,
-					placement: {
-						from: 'top',
-						align: 'center'
-					},
-				});
-				if(!$statusCL){
-					$("#add-cook-later").find("a > i").removeClass("fa-plus");
-		  			$("#add-cook-later").find("a > i").addClass("fa-minus");	
-				}
-				else{
-					$("#add-cook-later").find("a > i").removeClass("fa-minus");
-		  			$("#add-cook-later").find("a > i").addClass("fa-plus");
-				}
-				$statusCL = !$statusCL;  		
-		  	}
-		  	else{
-		  		$.notify({
-					// options
-					message: data.message 
-				},{
-					// settings
-					mouse_over:'pause',
-					newest_on_top: true,
-					allow_dismiss: false,
-					type: 'warning',
-					delay: 1500,
-					placement: {
-						from: 'top',
-						align: 'center'
-					},
-				});  	
-		  	}
-		},"json");
+		var chooseOK = true;
+		if(statusFav){
+			var r = confirm("Are you sure to remove this recipe from your cook later?");
+			if (r == false) {
+				chooseOK = false;
+			}
+		}
+		if(chooseOK){
+			$.get( $baseurl+"/user/setCookLater/"+$(this).data("recipeid"), function( data ) {
+			  	if(data.status == '1'){
+			  		$.notify({
+						// options
+						message: data.message 
+					},{
+						// settings
+						mouse_over:'pause',
+						newest_on_top: true,
+						allow_dismiss: false,
+						type: 'success',
+						delay: 1500,
+						placement: {
+							from: 'top',
+							align: 'center'
+						},
+					});
+					if(!$statusCL){
+						$("#add-cook-later").find("a > i").removeClass("fa-plus");
+			  			$("#add-cook-later").find("a > i").addClass("fa-minus");	
+					}
+					else{
+						$("#add-cook-later").find("a > i").removeClass("fa-minus");
+			  			$("#add-cook-later").find("a > i").addClass("fa-plus");
+					}
+					$statusCL = !$statusCL;  		
+			  	}
+			  	else{
+			  		$.notify({
+						// options
+						message: data.message 
+					},{
+						// settings
+						mouse_over:'pause',
+						newest_on_top: true,
+						allow_dismiss: false,
+						type: 'warning',
+						delay: 1500,
+						placement: {
+							from: 'top',
+							align: 'center'
+						},
+					});  	
+			  	}
+			},"json");
+		}
 	});
 	if($("#add-cook-later").length > 0){
 		$.get( $baseurl+"/user/checkCL/"+$("#add-cook-later").data("recipeid"), function( data ) {
@@ -764,49 +785,52 @@ $(document).ready(function() {
 	}
 	$lockRemoveCL = false;
 	$(document).on("click", ".remove-cooklater", function(){
-		if(!$lockRemoveCL){
-			$lockRemoveCL = true;
-			$CLEntryRemove = $(this);
-			$.get( $baseurl+"/user/setCookLater/"+$(this).data("recipeid"), function( data ) {
-			  	if(data.status == '1'){
-			  		$.notify({
-						// options
-						message: data.message
-					},{
-						// settings
-						mouse_over:'pause',
-						newest_on_top: true,
-						allow_dismiss: false,
-						type: 'success',
-						delay: 1500,
-						placement: {
-							from: 'top',
-							align: 'center'
-						},
-					});
-					$CLEntryRemove.parent().parent().parent().parent().slideToggle(function(){
-						$lockRemoveCL = false;
-					});  		
-			  	}
-			  	else{
-			  		$.notify({
-						// options
-						message: data.message 
-					},{
-						// settings
-						mouse_over:'pause',
-						newest_on_top: true,
-						allow_dismiss: false,
-						type: 'warning',
-						delay: 1500,
-						placement: {
-							from: 'top',
-							align: 'center'
-						},
-					});  
-					$lockRemoveCL = false;	
-			  	}
-			},"json");	
+		var r = confirm("Are you sure to remove this recipe from your cook later?");
+		if (r == true) {
+			if(!$lockRemoveCL){
+				$lockRemoveCL = true;
+				$CLEntryRemove = $(this);
+				$.get( $baseurl+"/user/setCookLater/"+$(this).data("recipeid"), function( data ) {
+				  	if(data.status == '1'){
+				  		$.notify({
+							// options
+							message: data.message
+						},{
+							// settings
+							mouse_over:'pause',
+							newest_on_top: true,
+							allow_dismiss: false,
+							type: 'success',
+							delay: 1500,
+							placement: {
+								from: 'top',
+								align: 'center'
+							},
+						});
+						$CLEntryRemove.parent().parent().parent().parent().slideToggle(function(){
+							$lockRemoveCL = false;
+						});  		
+				  	}
+				  	else{
+				  		$.notify({
+							// options
+							message: data.message 
+						},{
+							// settings
+							mouse_over:'pause',
+							newest_on_top: true,
+							allow_dismiss: false,
+							type: 'warning',
+							delay: 1500,
+							placement: {
+								from: 'top',
+								align: 'center'
+							},
+						});  
+						$lockRemoveCL = false;	
+				  	}
+				},"json");	
+			}
 		}
 	});
 	/*

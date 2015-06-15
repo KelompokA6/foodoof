@@ -55,7 +55,7 @@
 			            </ul>
 					</div>
 					<div class="col-md-6 col-xs-6" style="padding-left:5px" title="Print Recipe">
-						<a href="<?php echo base_url();?>index.php/recipe/cetak/<?php echo $recipe_id?>"><button class="btn button-primary col-md-12 col-xs-12"><i class="fa fa-print pull-left fa-inverse icons"></i>Print Recipe</button></a>
+						<a href="<?php echo base_url();?>index.php/recipe/printRecipe/<?php echo $recipe_id?>"><button class="btn button-primary col-md-12 col-xs-12"><i class="fa fa-print pull-left fa-inverse icons"></i>Print Recipe</button></a>
 					</div>
 				</div>
 				<div id="meta">

@@ -10,6 +10,9 @@ class Recipe extends CI_Controller {
 		$this->load->model('user_viewer');
 	}
 
+	/*
+		digunakan untuk menampilkan halaman edit resep
+	*/
 	public function edit($id){
 		$this->load->library('parser');
 		$recipe = new Recipe_model();
@@ -83,7 +86,9 @@ class Recipe extends CI_Controller {
 		
 	}
 
-	// ini pake post, lihat registration
+	/*
+		digunakan untuk menyimpan resep
+	*/
 	public function save($id){
 		$recipe = new Recipe_model();
 		$user = new User_model();
@@ -161,6 +166,9 @@ class Recipe extends CI_Controller {
 		redirect(base_url()."index.php/recipe/edit/$id");
 	}
 
+	/*
+		digunakan untuk membuat resep
+	*/
 	public function create(){
 		$recipe = new Recipe_model();
 		$id = $recipe->createRecipe_model(); 
@@ -171,6 +179,9 @@ class Recipe extends CI_Controller {
 		}
 	}
 
+	/*
+		digunakan untuk menampilkan halaman resep
+	*/
 	public function get($id, $print=FALSE){
 		$recipe = new Recipe_model();
 		$recipe->incrementViews($id);
@@ -297,6 +308,9 @@ class Recipe extends CI_Controller {
 		}	
 	}
 
+	/*
+		digunakan untuk menampilkan halaman yang tidak ada
+	*/
 	function pageNotFound(){
 		$this->load->library('parser');
 		$this->load->model('home_viewer');
@@ -310,6 +324,9 @@ class Recipe extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 	}
 
+	/*
+		digunakan untuk menampilkan halaman resep berdasarkan sebuah kategori 
+	*/
 	public function category($name){
 		$name=urldecode($name);
 		$user = new User_model();
@@ -369,6 +386,9 @@ class Recipe extends CI_Controller {
 		// var_dump($total);
 	}
 	
+	/*
+		digunakan untuk menambahkan comment ke sebuah resep 
+	*/
 	public function addComment($recipe_id){
 		$comment = $this->input->post("comment");
 		$r = new Recipe_model();
@@ -383,7 +403,10 @@ class Recipe extends CI_Controller {
 		redirect(base_url()."index.php/recipe/get/$recipe_id");
 	}
 
-	public function print($id){
+	/*
+		digunakan untuk menampilkan halaman print dari sebuah resep 
+	*/
+	public function printRecipe($id){
 		// As PDF creation takes a bit of memory, we're saving the created file in /downloads/reports/
 		$pdfFilePath = "./assets/recipe$id.pdf";
 		$data['page_title'] = 'Hello world'; // pass data to the view
@@ -402,6 +425,9 @@ class Recipe extends CI_Controller {
 		redirect(base_url()."/assets/recipe$id.pdf");
 	}
 	
+	/*
+		digunakan untuk mengupload photo sebuah resep 
+	*/
 	public function uploadProfileRecipe($id=null){
 		$config['upload_path'] = './images/tmp/recipe';
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -463,6 +489,9 @@ class Recipe extends CI_Controller {
 		echo json_encode($result);
 	}
 	
+	/*
+		digunakan untuk mengupload photo sebuah step resep 
+	*/
 	public function uploadStepsRecipe($id, $no_step=null){
 		if(empty($no_step)){
 			if(!empty($this->input->get('no_step'))){
@@ -535,6 +564,9 @@ class Recipe extends CI_Controller {
 		echo json_encode($result);
 	}
 	
+	/*
+		digunakan untuk membahkan step dari resep 
+	*/
 	public function addStepImage($recipe_id = null, $no_step=null){
 		if(empty($no_step)){
 			if(!empty($this->input->get('no_step'))){
@@ -567,6 +599,9 @@ class Recipe extends CI_Controller {
 		echo json_encode($result);
 	}
 	
+	/*
+		digunakan untuk menghapus sebuah gambar step dari resep 
+	*/
 	public function removeStepImage($recipe_id = null, $no_step=null){
 		if(empty($no_step)){
 			if(!empty($this->input->get('no_step'))){
@@ -661,40 +696,6 @@ class Recipe extends CI_Controller {
 							"message" => "<div class='text-center'>Failed To Published Your Recipe.</div>",
 					);
 				}
-			}
-		}
-		else{
-			$result = array(
-					"status" => 0,
-					"message" => "<div class='text-center'>Please Login First</div>",
-			);
-		}
-		echo json_encode($result);
-	}
-	
-	public function setFinished($recipe_id=null){
-		if(empty($recipe_id)){
-			if(!empty($this->input->get("id"))){
-				$recipe_id = $this->input->get("id");
-			}
-			if(!empty($this->input->post("id"))){
-				$recipe_id = $this->input->post("id");
-			}
-		}
-		$user_id = $this->session->userdata('user_id');
-		if(!empty($user_id) && !empty($recipe_id)){
-			$c = new Cooklater();
-			if($c->setFinishedCookLater($user_id, $recipe_id, '1')){
-				$result = array(
-						"status" => 1,
-						"message" => "<div class='text-center'>Your recipe has been moved to finished recipe.</div>",
-				);
-			}
-			else{
-				$result = array(
-						"status" => 0,
-						"message" => "<div class='text-center'>Failed To Unpublished Your Recipe.</div>",
-				);
 			}
 		}
 		else{
