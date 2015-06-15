@@ -1,3 +1,0 @@
-$('#loginbtn').click(function(){
-  
-});
