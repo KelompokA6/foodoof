@@ -828,7 +828,7 @@ class Recipe_model extends DataMapper {
             $id = $this->id;
         }
         $rcp = new Recipe_model();
-        $rcp = $rcp->getRecipe($id);
+        $rcp = $rcp->getRecipe($id, $this->session->userdata('user_id'));
         $author = $rcp->author;
         $category = $rcp->category;
         $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$rcp->name."') AND status=1 AND tmp_status=0  AND id != ".$id." order by MATCH (name) AGAINST ('".$rcp->name."') limit ".$limit."";
