@@ -5,7 +5,9 @@ class Recipe extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('upload');
 		$this->load->library('session');
+		$this->load->helper('file');
 		$this->load->model('user_model');
 		$this->load->model('user_viewer');
 	}
