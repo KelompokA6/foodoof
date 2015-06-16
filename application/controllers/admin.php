@@ -8,6 +8,10 @@ class Admin extends CI_Controller {
 	public function index(){
 		$this->highlight();
 	}
+
+	/*
+		digunakan untuk menampilkan halaman pengaturan highlight resep
+	*/
 	public function highlight(){
 		$this->load->model('home_viewer');
 		$this->load->library('session');
@@ -57,6 +61,10 @@ class Admin extends CI_Controller {
 				);
 		$this->parser->parse('template_content', $data);
 	}
+
+	/*
+		digunakan untuk menampilkan halaman pengaturan report resep
+	*/
 	public function report(){
 		$this->load->model('home_viewer');
 		$this->load->library('session');
@@ -122,6 +130,9 @@ class Admin extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 	}
 
+	/*
+		digunakan untuk menyimpan pengaturan highlight resep
+	*/
 	public function saveHighlight(){
 		$this->load->library('session');
 		if($this->session->userdata('user_id')==''){
@@ -150,6 +161,10 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('alert-admin', $highlight_alert);
 		redirect(base_url()."index.php/admin");
 	}
+
+	/*
+		digunakan untuk menampilkan halaman pengaturan catalog bahan
+	*/
 	public function catalog(){
 		$this->load->model('home_viewer');
 		$this->load->library('session');
@@ -221,6 +236,9 @@ class Admin extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	/*
+		digunakan untuk menambahkan catalog bahan yang baru
+	*/
 	public function saveNewCatalog(){
 		$this->load->library('session');
 		if($this->session->userdata('user_id')==''){
@@ -255,6 +273,9 @@ class Admin extends CI_Controller {
 		redirect(base_url()."index.php/admin/catalog");
 	}
 
+	/*
+		digunakan untuk menampilkan halaman mengirim email
+	*/
 	public function sendemail(){
 		$this->load->model('home_viewer');
 		$this->load->library('session');
@@ -282,6 +303,9 @@ class Admin extends CI_Controller {
 		$this->parser->parse('template_content', $data);
 	}
 
+	/*
+		digunakan untuk mengirim email
+	*/
 	public function sendmail($toall = FALSE){
 		if($this->session->userdata('user_id')==''){
 			redirect(base_url()."index.php/home/login", "refresh");
@@ -322,6 +346,9 @@ class Admin extends CI_Controller {
 		redirect(base_url()."index.php/admin/".($toall ? 'broadcast' : 'sendemail'));
 	}
 
+	/*
+		digunakan untuk mengirim email
+	*/
 	private function _send_email($profile, $toall = FALSE)
 	{
 		extract($profile);
@@ -352,6 +379,10 @@ class Admin extends CI_Controller {
 			"message" => $message,
 			]));
 	}
+
+	/*
+		digunakan untuk menampilkan halaman yang tidak ditemukan
+	*/
 	function pageNotFound(){
 		$this->load->library('parser');
 		$this->load->model('home_viewer');
@@ -364,7 +395,9 @@ class Admin extends CI_Controller {
 		$this->parser->parse('template_content', $data);	
 	}
 
-
+	/*
+		digunakan untuk mengupdate harga bahan secara otomatis dari infopangan.co.id
+	*/
 	public function updatePrice() {
   	$now = (new DateTime());
     $m = (int)$now->format("m");
@@ -435,30 +468,36 @@ class Admin extends CI_Controller {
     redirect(base_url('index.php/admin/catalog'));
   }
 
-  public function bannedUser(){
-  	$user = new User_model();
-  	$ban = $this->input->post("id_reported");
-  	$issuccess = true;
-  	foreach ($ban as $userid) {
-  		if(!$user->where('id', $userid)->update('status', "BANNED")){
-  			echo "gagal";
-  		}
-  		$user->clear();
+  /*
+		digunakan untuk mengbanned user
+	*/
+ 	public function bannedUser(){
+	  	$user = new User_model();
+	  	$ban = $this->input->post("id_reported");
+	  	$issuccess = true;
+	  	foreach ($ban as $userid) {
+	  		if(!$user->where('id', $userid)->update('status', "BANNED")){
+	  			echo "gagal";
+	  		}
+	  		$user->clear();
+	  	}
+	  	if(sizeof($ban) == 0 || (sizeof($ban)==1 && empty($ban[0]))){
+	  		$issuccess = false;
+	  	}
+	  	if($issuccess){
+	  		$alert = "<div id='alert-notification' data-message='Banned User Success' data-status='success' class='hidden'></div>";
+	  	}
+	  	if(!$issuccess){
+	  		$alert = "<div id='alert-notification' data-message='Banned User Failed' data-status='failed' class='hidden'></div>";
+	  	}
+		$this->session->set_flashdata('alert-admin', $alert);
+		redirect(base_url()."index.php/admin/report");
   	}
-  	if(sizeof($ban) == 0 || (sizeof($ban)==1 && empty($ban[0]))){
-  		$issuccess = false;
-  	}
-  	if($issuccess){
-  		$alert = "<div id='alert-notification' data-message='Banned User Success' data-status='success' class='hidden'></div>";
-  	}
-  	if(!$issuccess){
-  		$alert = "<div id='alert-notification' data-message='Banned User Failed' data-status='failed' class='hidden'></div>";
-  	}
-	$this->session->set_flashdata('alert-admin', $alert);
-	redirect(base_url()."index.php/admin/report");
-  }
 
-  public function broadcast(){
+ 	 /*
+		digunakan untuk menampilkan halaman broadcast
+	*/
+ 	public function broadcast(){
 		$this->load->model('home_viewer');
 		$this->load->library('session');
 		if($this->session->userdata('user_id')==''){

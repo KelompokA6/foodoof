@@ -4,7 +4,9 @@ class User extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('upload');
 		$this->load->library('session');
+		$this->load->helper('file');
 		$this->load->model('user_model');
 		$this->load->model('user_viewer');
 	}
@@ -13,6 +15,9 @@ class User extends CI_Controller {
 		$this->timeline();
 	}
 
+	/*
+		digunakan untuk menampilkan halaman profile user 
+	*/
 	public function profile($id = -1){
 		if ($id == -1) {
 			$id = $this->user_model->wajiblogin();
@@ -21,6 +26,9 @@ class User extends CI_Controller {
 		$this->user_viewer->showProfile($profile);
 	}
 
+	/*
+		digunakan untuk menampilkan halaman timeline user 
+	*/
 	public function timeline($id = -1){
 		if ($id == -1) {
 			$id = $this->user_model->wajiblogin();
@@ -39,6 +47,9 @@ class User extends CI_Controller {
 		$this->user_viewer->showUserTimeline($profile, $listRecipe, $page, $totalpage);
 	}
 
+	/*
+		digunakan untuk menampilkan halaman favorite user 
+	*/
 	public function favorite($id = -1){
 		if ($id == -1) {
 			$id = $this->user_model->wajiblogin();
@@ -54,7 +65,6 @@ class User extends CI_Controller {
 			redirect(base_url('index.php/user/favorite'));
 		}
 		$listRecipe = array();
-		// print_r($listrecipeid);
 		foreach ($listrecipeid as $obj) {
 			$x = $rcp->getRecipeProfile($obj, $id);
 			if($x){
@@ -65,6 +75,9 @@ class User extends CI_Controller {
 		$this->user_viewer->showFavorite($profile, $listRecipe, $page, $totalpage);
 	}
 
+	/*
+		digunakan untuk menampilkan halaman cook later user 
+	*/
 	public function cooklater(){
 		$id = $this->user_model->wajiblogin();
 		$profile = $this->user_model->getProfile($id);
@@ -84,10 +97,7 @@ class User extends CI_Controller {
 		if(strtolower($tab)=="finish" && $pageFinished > 1 && empty($listrecipeidFinished)){
 			redirect(base_url('index.php/user/cooklater?tab=finish'));
 		}
-		// print_r($listrecipeid);
-		// die();
 		$listRecipe = array();
-		// print_r($listrecipeid);
 		foreach ($listrecipeid as $obj) {
 			$x = $r->getRecipeProfile($obj['id'], $id);
 			if($x){
@@ -97,7 +107,6 @@ class User extends CI_Controller {
 		}
 
 		$listRecipeFinished = array();
-		// print_r($listrecipeid);
 		foreach ($listrecipeidFinished as $obj) {
 			$x = $r->getRecipeProfile($obj['id'], $id);
 			if($x){
@@ -107,18 +116,12 @@ class User extends CI_Controller {
 		}
 		$totalpage = ceil(sizeof( $c->getCookLaterRecipeByUser($id, 1000111) )/$limit);
 		$totalpageFinished = ceil(sizeof( $c->getCookLaterFinishedRecipeByUser($id, 1000111) )/$limit);
-		// echo "page unfinished : $page <br>";
-		// echo "page finished : $pageFinished <br>";
-		// echo "page unfinished Total: $totalpage <br>";
-		// echo "page finished Total: $totalpageFinished <br>";
-		// echo "unfinished :  <br>";
-		// print_r($listRecipe);
-		// echo "finished: <br>";
-		// print_r($listRecipeFinished);
-		// die();
 		$this->user_viewer->showCookLater($profile, $listRecipe, $listRecipeFinished, $page, $pageFinished, $totalpage, $totalpageFinished);
 	}
 
+	/*
+		digunakan untuk menampilkan halaman change password user 
+	*/
 	public function changepassword(){
 		$data['id'] = $this->user_model->wajiblogin();
 		$data['change_password_alert'] = '';
@@ -142,6 +145,9 @@ class User extends CI_Controller {
 		$this->user_viewer->showChangePassword($profile, $data);
 	}
 
+	/*
+		digunakan untuk validasi change password 
+	*/
 	private function _is_valid_changepassword($data)
 	{
 		$u = new User_model();
@@ -162,6 +168,9 @@ class User extends CI_Controller {
 		return "user doesn't exists";
 	}
 
+	/*
+		digunakan untuk menampilkan halaman register user 
+	*/
 	public function join(){
 		$data['join_alert'] = '';
 		$data['name'] = '';
@@ -204,6 +213,9 @@ class User extends CI_Controller {
 		$this->user_viewer->showRegister($data);
 	}
 
+	/*
+		digunakan untuk menampilkan halaman edit profile user 
+	*/
 	public function edit(){
 		$data['id'] = $this->user_model->wajiblogin();
 
@@ -242,6 +254,9 @@ class User extends CI_Controller {
 		$this->user_viewer->showEditProfile($profile);
 	}
 
+	/*
+		digunakan untuk validasi edit profile user 
+	*/
 	private function _validate_edit_profile($profile)
 	{
 		// trim all
@@ -254,7 +269,10 @@ class User extends CI_Controller {
 		return TRUE;
 	}
 
-	public function forgotPassword(){ //dari sequence lupa password, buat minta password nya dr userManager
+	/*
+		digunakan untuk menampilkan halaman forgot password user 
+	*/
+	public function forgotPassword(){ 
 		$data['forget_password_alert'] = '';
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$email = $this->input->post('email_user');
@@ -270,6 +288,9 @@ class User extends CI_Controller {
 		$this->user_viewer->showForgotPassword($data);
 	}
 
+	/*
+		digunakan untuk validasi register user baru 
+	*/
 	private function _validate_join($profile){
 		// email sudah kedaftar belum?
 		$u = new User_model();
@@ -280,6 +301,9 @@ class User extends CI_Controller {
 		return TRUE;
 	}
 
+	/*
+		digunakan untuk mengirim email 
+	*/
 	private function _send_email($profile)
 	{
 		extract($profile);
@@ -293,6 +317,9 @@ class User extends CI_Controller {
 			]);
 	}
 
+	/*
+		digunakan untuk mengirim password via email 
+	*/
 	private function _sendPassword($email, $name, $password) {
 		return $this->_send_smtp_email([
 			"sender" => "foodoofa6@gmail.com",
@@ -338,6 +365,9 @@ class User extends CI_Controller {
 		return $mail->Send();
 	}
 
+	/*
+		digunakan untuk mengubah user online
+	*/
 	public function setOnline()
 	{
 		$id = $this->session->userdata('user_id');
@@ -350,6 +380,9 @@ class User extends CI_Controller {
 			echo "failed to set $id to be online -_-";
 	}
 
+	/*
+		digunakan untuk melihat user sedang online
+	*/
 	public function getOnline()
 	{
 		$user_id = $this->session->userdata('user_id');
@@ -364,6 +397,9 @@ class User extends CI_Controller {
     echo json_encode($online_users);
 	}
 
+	/*
+		digunakan untuk menampilkan halaman message sebuah conversation 
+	*/
 	public function message($conversation_id=-1)
 	{
 		$id = $this->user_model->wajiblogin();
@@ -513,6 +549,9 @@ class User extends CI_Controller {
 		}else redirect(base_url('index.php/home/login'));
 	}
 	
+	/*
+		digunakan untuk menampilkan halaman membuat conversation
+	*/
 	public function createConversation()
 	{
 		$id = $this->user_model->wajiblogin();
@@ -584,6 +623,10 @@ class User extends CI_Controller {
 			$this->parser->parse('template_content', $data);
 		}else redirect(base_url('index.php/home/login'));
 	}
+
+	/*
+		digunakan untuk menambah sebuah conversation 
+	*/
 	public function addConversation(){
 		$users = explode(",", $this->input->post("users"));
 		$subject = $this->input->post("subject");
@@ -635,6 +678,10 @@ class User extends CI_Controller {
 		$this->session->set_flashdata('alert-notification', $alert);
 		redirect(base_url()."index.php/user/message");
 	}
+
+	/*
+		digunakan untuk menambahkan sebuah message ke conversation 
+	*/
 	public function addMessage($conversation_id){
 		$message = $this->input->post("message");
 		$messages = new Message();
@@ -647,6 +694,10 @@ class User extends CI_Controller {
 		$this->session->set_flashdata('alert-notification', $alert);
 		redirect(base_url()."index.php/user/message");
 	}
+
+	/*
+		digunakan untuk menampilkan halaman tidak ditemukan 
+	*/
 	function pageNotFound(){
 		$this->load->library('parser');
 		$this->load->model('home_viewer');
@@ -659,6 +710,10 @@ class User extends CI_Controller {
 		// $data = array_map("htmlspecialchars", $data);
 		$this->parser->parse('template_content', $data);
 	}
+
+	/*
+		digunakan untuk upload foto profile user 
+	*/
 	public function uploadProfileUser($id){
 		$config['upload_path'] = './images/tmp/user';
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -927,6 +982,10 @@ class User extends CI_Controller {
 		}
 		echo json_encode($data, JSON_PRETTY_PRINT);
 	}
+
+	/*
+		digunakan untuk pengecekan sebuah resep bila telah termasuk kedalam favorite 
+	*/
 	public function checkFavorite($recipe_id=null){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){
@@ -953,6 +1012,10 @@ class User extends CI_Controller {
 		}
 		echo json_encode($result);
 	}
+
+	/*
+		digunakan untuk mengubah status favorite sebuah resep 
+	*/
 	public function setFavorite($recipe_id=null){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){
@@ -996,6 +1059,9 @@ class User extends CI_Controller {
 		echo json_encode($result);
 	}
 	
+	/*
+		digunakan untuk mengubah status cook later sebuah resep 
+	*/
 	public function setCookLater($recipe_id=null){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){
@@ -1038,6 +1104,10 @@ class User extends CI_Controller {
 		}
 		echo json_encode($result);
 	}
+
+	/*
+		digunakan untuk memeriksa status cook later sebuah resep 
+	*/
 	public function checkCL($recipe_id=null){
 		if(empty($recipe_id)){
 			if(!empty($this->input->get("id"))){
@@ -1061,6 +1131,43 @@ class User extends CI_Controller {
 						"statusCL" => 0,
 				);
 			}
+		}
+		echo json_encode($result);
+	}
+
+	/*
+		digunakan untuk mengubah status finish sebuah resep pada cook later
+	*/
+	public function setFinished($recipe_id=null){
+		if(empty($recipe_id)){
+			if(!empty($this->input->get("id"))){
+				$recipe_id = $this->input->get("id");
+			}
+			if(!empty($this->input->post("id"))){
+				$recipe_id = $this->input->post("id");
+			}
+		}
+		$user_id = $this->session->userdata('user_id');
+		if(!empty($user_id) && !empty($recipe_id)){
+			$c = new Cooklater();
+			if($c->setFinishedCookLater($user_id, $recipe_id, '1')){
+				$result = array(
+						"status" => 1,
+						"message" => "<div class='text-center'>Your recipe has been moved to finished recipe.</div>",
+				);
+			}
+			else{
+				$result = array(
+						"status" => 0,
+						"message" => "<div class='text-center'>Failed To Unpublished Your Recipe.</div>",
+				);
+			}
+		}
+		else{
+			$result = array(
+					"status" => 0,
+					"message" => "<div class='text-center'>Please Login First</div>",
+			);
 		}
 		echo json_encode($result);
 	}

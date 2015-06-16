@@ -531,7 +531,7 @@ class Recipe_model extends DataMapper {
         Digunakan untuk memperoleh profile sebuah resep. resep yang diperoleh harus berstatus publish atau yang melihat merupakan pemilik resep tersebut.
         Kalau status tidak publish maka return false, tapi bila tidak publish dan yg request pemilik return object resep.
     */
-    function getRecipeProfile($id=NULL, $user_id=NULL){
+    function getRecipe($id=NULL, $user_id=NULL){
         if($id == NULL){
             $id = $this->id;
         }
@@ -828,7 +828,7 @@ class Recipe_model extends DataMapper {
             $id = $this->id;
         }
         $rcp = new Recipe_model();
-        $rcp = $rcp->getRecipeProfile($id);
+        $rcp = $rcp->getRecipe($id, $this->session->userdata('user_id'));
         $author = $rcp->author;
         $category = $rcp->category;
         $sql = "SELECT * FROM recipes WHERE MATCH (name) AGAINST ('".$rcp->name."') AND status=1 AND tmp_status=0  AND id != ".$id." order by MATCH (name) AGAINST ('".$rcp->name."') limit ".$limit."";
@@ -870,7 +870,7 @@ class Recipe_model extends DataMapper {
             }
             $categoriesRecipe->group_by("recipe_id")->get();
             foreach ($categoriesRecipe as $catRcp) {
-                $r = $rcptmp->getRecipeProfile($catRcp->recipe_id);
+                $r = $rcptmp->getRecipe($catRcp->recipe_id);
                 if($r && ($r->id != $id) && ($r->author != $author) && !in_array($r->id, $relateRecipeidList)){
                     $listtmp[$catRcp->recipe_id] = $r->rating;
                     $rcptmp->clear();    
@@ -886,7 +886,7 @@ class Recipe_model extends DataMapper {
             }
             $rcptmp->clear();
             foreach ($relateRecipeidList as $recipe) {
-                array_push($relateRecipeList, $rcptmp->getRecipeProfile($recipe));
+                array_push($relateRecipeList, $rcptmp->getRecipe($recipe));
                 $rcptmp->clear();
             }
             usort($relateRecipeList, function($a, $b){
@@ -1228,7 +1228,7 @@ class Recipe_model extends DataMapper {
             $cother = $x;
             $data = new stdClass();
             $r=new Recipe_model();
-            $data->name = $r->getRecipeProfile($recipe_id)->name;
+            $data->name = $r->getRecipe($recipe_id)->name;
             $data->count_advertisement = $cads;
             $data->count_spam = $cspam;
             $data->count_pornographic = $cporn;

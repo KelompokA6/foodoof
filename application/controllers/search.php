@@ -9,6 +9,9 @@ class Search extends CI_Controller {
     $this->load->model(array('home_viewer'));
   }
 
+  /*
+    digunakan untuk menampilkan pencarian resep maupun akun
+  */
   public function index()
   {
     # ?q=&searchby=on
@@ -51,6 +54,9 @@ class Search extends CI_Controller {
     }else redirect(base_url());
   }
 
+  /*
+    digunakan untuk menampilkan pencarian resep berdasarkan judul
+  */
   private function show_search_by_title($key, $list_recipe, $total, $pagenow, $countall, $cat)
   {
     $datalist['search_by_title_recipe_result'] = $countall;
@@ -92,6 +98,9 @@ class Search extends CI_Controller {
     $this->parser->parse('template_content', $datacomplete);
   }
 
+  /*
+    digunakan untuk menampilkan pencarian resep berdasarkan bahan
+  */
   private function show_search_by_ingredient($key, $list_recipe, $total, $pagenow, $countall, $cat)
   {
     $datalist['search_by_ingredient_recipe_result'] = $countall;
@@ -134,6 +143,9 @@ class Search extends CI_Controller {
     $this->parser->parse('template_content', $datacomplete);
   }
 
+  /*
+    digunakan untuk menampilkan pencarian akun
+  */
   private function show_search_by_account($key, $list_account, $total, $pagenow, $countall)
   {
     $datalist['search_by_account_result'] = $countall;

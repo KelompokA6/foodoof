@@ -8,6 +8,9 @@ class Home extends CI_Controller {
 		$this->load->model('home_viewer');
 	}
 
+	/*
+	digunakan untuk menampilkan halaman homepage
+	*/
 	public function index()
 	{
 		$r = new Recipe_model();
@@ -30,6 +33,9 @@ class Home extends CI_Controller {
 		$this->home_viewer->showHome($listTopRecipe, $listHightlight, $listRecently);
 	}
 
+	/*
+	digunakan untuk login user
+	*/
 	public function login()
 	{
 		if ($this->session->userdata('user_id') > 0) {
@@ -61,6 +67,9 @@ class Home extends CI_Controller {
 		$this->home_viewer->showLogin($data);
 	}
 
+	/*
+	digunakan untuk logout
+	*/
 	public function logout()
 	{
 		// hilangkan jejak online
@@ -77,6 +86,9 @@ class Home extends CI_Controller {
 		die;
 	}
 
+	/*
+	digunakan untuk menampilkan halaman highlight resep
+	*/
 	public function highlight()
 	{
 		$r = new Recipe_model();
@@ -91,6 +103,9 @@ class Home extends CI_Controller {
 		$this->home_viewer->showHighlight($listHightlight);
 	}
 
+	/*
+	digunakan untuk menampilkan halaman top resep
+	*/
 	public function toprecipe()
 	{
 		$r = new Recipe_model();
@@ -105,6 +120,9 @@ class Home extends CI_Controller {
 		$this->home_viewer->showTop($listTopRecipe);
 	}
 
+	/*
+	digunakan untuk menampilkan halaman recently resep
+	*/
 	public function recently()
 	{
 		$r = new Recipe_model();
@@ -119,6 +137,9 @@ class Home extends CI_Controller {
 		$this->home_viewer->showRecently($listRecently);
 	}
 
+	/*
+	digunakan untuk report terhadap sebuah resep
+	*/
 	public function addReport($recipe_id){
 		$r = new Recipe_model();
 		$user_id = $r->getRecipe($recipe_id)->author;		
@@ -176,6 +197,9 @@ class Home extends CI_Controller {
 		redirect(base_url()."index.php/recipe/get/$recipe_id");
 	}
 
+	/*
+	digunakan untuk mengubah theme
+	*/
 	public function changeTheme()
 	{
 		$url = $this->input->get('url');

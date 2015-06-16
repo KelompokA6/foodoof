@@ -55,7 +55,7 @@
 			            </ul>
 					</div>
 					<div class="col-md-6 col-xs-6" style="padding-left:5px" title="Print Recipe">
-						<a href="<?php echo base_url();?>index.php/recipe/cetak/<?php echo $recipe_id?>"><button class="btn button-primary col-md-12 col-xs-12"><i class="fa fa-print pull-left fa-inverse icons"></i>Print Recipe</button></a>
+						<a href="<?php echo base_url();?>index.php/recipe/printRecipe/<?php echo $recipe_id?>"><button class="btn button-primary col-md-12 col-xs-12"><i class="fa fa-print pull-left fa-inverse icons"></i>Print Recipe</button></a>
 					</div>
 				</div>
 				<div id="meta">
@@ -270,14 +270,16 @@
 					{comments_recipe_entries}
 					<div class="col-md-12 col-xs-12 comment-entry">
 						<div class="col-md-2 col-xs-2 col-no-padding-left">
-							<img src="<?php echo base_url();?>{comment_user_photo}" class="img-responsive img-circle img-user-comment" title="{comment_user_name}">
+							<a href="<?php echo base_url();?>index.php/user/timeline/{comment_user_id}">
+								<img src="<?php echo base_url();?>{comment_user_photo}" class="img-responsive img-circle img-user-comment" title="{comment_user_name}">
+							</a>
 						</div>
 						<div class="col-md-10 col-xs-10 bubble">
 							<div class="col-md-12 col-xs-12 col-no-padding-left comment-value">
 								{comment_description}
 							</div>
 							<div class="col-md-12 col-xs-12 col-no-padding-left comment-time border-dashed-top">
-								<a href="<?php echo base_url();?>index.php/user/{comment_user_id}">{comment_user_name}</a> | <span data-livestamp="{comment_submit}"></span>
+								<a href="<?php echo base_url();?>index.php/user/timeline/{comment_user_id}">{comment_user_name}</a> | <span data-livestamp="{comment_submit}"></span>
 							</div>
 						</div>
 					</div>

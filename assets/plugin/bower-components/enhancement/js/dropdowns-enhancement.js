@@ -137,7 +137,7 @@
                 str && text.push($.trim(str));
             });
 
-            text = text.length < 4 ? text.join(', ') : text.length + ' selected';
+            text = text.length + ' selected';
         }
 
         var caret = $toggle.find('.caret');
