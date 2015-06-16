@@ -1,6 +1,6 @@
-share resep kasih judulnya aja trs via foodoof DONE
-benerin yg di ppl-a06 kalo filter > index.php DONE
-alternatifnya memberikan komentar : tulis aja langsung kalo spasi doang/kosong DONE
+share resep kasih judulnya aja trs via foodoof
+benerin yg di ppl-a06 kalo filter > index.php
+alternatifnya memberikan komentar : tulis aja langsung kalo spasi doang/kosong
 report othernya kenapa hrs diisi????
 convo kalo messagenya ada tp yg lainnya gak ada : diem doang!
 update catalog kl redundant... masuk tp failed tuh gimana...pas dipencet tombol update dia ilang..
@@ -16,5 +16,3 @@ report user buat admin gimana?
 admin gaboleh nulis resep...
 tampilan reported usernya gimana yah
 kasih tulisannya centang2nya itu buat banned!!
-kasih kolom last update di catalog
-send email udah yakin bener?
